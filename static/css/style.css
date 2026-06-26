@@ -30,14 +30,22 @@ header{
     box-shadow:0 5px 18px rgba(0,0,0,.12);
 }
 
-.logo h2{
+.logo{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:30px;
+}
+
+.logo span{
     color:#fff;
     font-size:30px;
+    font-weight:700;
     cursor:pointer;
     transition:.3s;
 }
 
-.logo h2:hover{
+.logo span:hover{
     color:#38bdf8;
 }
 
