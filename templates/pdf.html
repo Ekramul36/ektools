@@ -81,11 +81,32 @@
 
             <br>
 
-            <input
-                type="password"
-                name="password"
-                placeholder="Enter PDF Password"
-                required>
+            <div style="position:relative; width:100%;">
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter PDF Password"
+                    required
+                    style="width:100%; padding-right:45px;">
+
+                <span
+                    id="togglePassword"
+                    style="
+                        position:absolute;
+                        right:15px;
+                        top:50%;
+                        transform:translateY(-50%);
+                        cursor:pointer;
+                        font-size:20px;
+                        user-select:none;">
+                    👁️
+                </span>
+
+            </div>
+
+            <br>
 
             <button class="btn" type="submit">
                 <i class="fa-solid fa-lock-open"></i>

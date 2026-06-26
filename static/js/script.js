@@ -19,6 +19,13 @@ if (form && loader) {
 
         }, 150);
 
+        // Hide loader after 3 seconds
+        setTimeout(function(){
+
+            loader.style.display = "none";
+
+        }, 3000);
+
     });
 
 }
@@ -73,6 +80,33 @@ if(pdfsInput && fileName){
         else{
 
             fileName.innerHTML = this.files.length + " PDF files selected";
+
+        }
+
+    });
+
+}
+
+// ================================
+// Password Show / Hide
+// ================================
+
+const togglePassword = document.getElementById("togglePassword");
+const password = document.getElementById("password");
+
+if(togglePassword && password){
+
+    togglePassword.addEventListener("click", function(){
+
+        if(password.type === "password"){
+
+            password.type = "text";
+            this.innerHTML = "🙈";
+
+        }else{
+
+            password.type = "password";
+            this.innerHTML = "👁️";
 
         }
 
