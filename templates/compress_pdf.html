@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compress PDF - EkTools</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <h2>🚀 EkTools</h2>
+    </div>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/unlock-pdf">Unlock PDF</a>
+        <a href="/merge-pdf">Merge PDF</a>
+        <a href="/split-pdf">Split PDF</a>
+        <a href="/compress-pdf">Compress PDF</a>
+        <a href="/about">About</a>
+    </nav>
+</header>
+
+<section class="hero">
+
+    <h1><i class="fa-solid fa-file-zipper"></i> Compress PDF</h1>
+
+    <p>
+        Reduce PDF size while maintaining quality.
+    </p>
+
+</section>
+
+<section class="tools">
+
+    <div class="card">
+
+        <h2><i class="fa-solid fa-file-pdf"></i> Upload PDF</h2>
+
+        {% if error %}
+        <div style="
+            background:#ffe6e6;
+            color:#c62828;
+            border:1px solid #ffb3b3;
+            padding:12px;
+            border-radius:8px;
+            margin-bottom:20px;
+            text-align:center;
+            font-weight:bold;
+        ">
+            <i class="fa-solid fa-circle-xmark"></i>
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form action="/compress-pdf" method="POST" enctype="multipart/form-data">
+
+            <label class="upload-box">
+
+                <i class="fa-solid fa-file-pdf"></i>
+
+                <p>Click to choose PDF</p>
+
+                <input
+                    type="file"
+                    name="pdf"
+                    id="pdf"
+                    accept=".pdf"
+                    required>
+
+                <div class="file-name" id="file-name">
+                    No file selected
+                </div>
+
+            </label>
+
+            <br>
+
+            <button class="btn" type="submit">
+                <i class="fa-solid fa-file-zipper"></i>
+                Compress PDF
+            </button>
+
+            <br><br>
+
+            <a href="/" class="btn back-btn">
+                <i class="fa-solid fa-house"></i>
+                Back to Home
+            </a>
+
+        </form>
+
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 EkTools. All Rights Reserved.</p>
+</footer>
+
+<div class="loader" id="loader">
+    <div class="spinner"></div>
+    <p>Compressing PDF...</p>
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
