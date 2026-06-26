@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, send_file, send_from_directory
 from pypdf import PdfReader, PdfWriter
 import fitz
 import os
@@ -261,6 +261,8 @@ def compress_pdf():
             )
 
     return render_template("compress_pdf.html")
-
+@app.route("/robots.txt")
+def robots():
+    return send_from_directory("static", "robots.txt")
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ektools.onrender.com/sitemap.xml
