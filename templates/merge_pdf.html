@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unlock PDF - EkTools</title>
+    <title>Merge PDF - EkTools</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
@@ -19,19 +19,19 @@
 
     <nav>
         <a href="/">Home</a>
-        <a href="/unlock-pdf">Unlock PDF</a>
-        <a href="/merge-pdf">Merge PDF</a>
-        <a href="/split-pdf">Split PDF</a>
+        <a href="/unlock-pdf">PDF Tools</a>
+        <a href="/image">Image Tools</a>
+        <a href="#">Converters</a>
         <a href="/about">About</a>
     </nav>
 </header>
 
 <section class="hero">
 
-    <h1><i class="fa-solid fa-lock-open"></i> Unlock PDF</h1>
+    <h1><i class="fa-solid fa-file-pdf"></i> Merge PDF</h1>
 
     <p>
-        Remove password protection from your PDF instantly.
+        Merge multiple PDF files into a single PDF instantly.
     </p>
 
 </section>
@@ -40,7 +40,7 @@
 
     <div class="card">
 
-        <h2><i class="fa-solid fa-file-pdf"></i> Upload PDF</h2>
+        <h2><i class="fa-solid fa-file-pdf"></i> Upload PDFs</h2>
 
         {% if error %}
         <div style="
@@ -58,19 +58,20 @@
         </div>
         {% endif %}
 
-        <form action="/unlock-pdf" method="POST" enctype="multipart/form-data">
+        <form action="/merge-pdf" method="POST" enctype="multipart/form-data">
 
             <label class="upload-box">
 
                 <i class="fa-solid fa-file-pdf"></i>
 
-                <p>Click to choose PDF</p>
+                <p>Click to choose PDF files</p>
 
                 <input
                     type="file"
-                    name="pdf"
-                    id="pdf"
+                    name="pdfs"
+                    id="pdfs"
                     accept=".pdf"
+                    multiple
                     required>
 
                 <div class="file-name" id="file-name">
@@ -81,20 +82,14 @@
 
             <br>
 
-            <input
-                type="password"
-                name="password"
-                placeholder="Enter PDF Password"
-                required>
-
             <button class="btn" type="submit">
-                <i class="fa-solid fa-lock-open"></i>
-                Unlock PDF
+                <i class="fa-solid fa-object-group"></i>
+                Merge PDF
             </button>
 
             <br><br>
 
-            <a href="/" class="btn back-btn">
+            <a href="/" class="btn">
                 <i class="fa-solid fa-house"></i>
                 Back to Home
             </a>
@@ -109,12 +104,22 @@
     <p>© 2026 EkTools. All Rights Reserved.</p>
 </footer>
 
-<div class="loader" id="loader">
-    <div class="spinner"></div>
-    <p>Processing PDF...</p>
-</div>
+<script>
+const input = document.getElementById("pdfs");
+const fileName = document.getElementById("file-name");
 
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+input.addEventListener("change", function () {
+
+    if (this.files.length === 0) {
+        fileName.innerHTML = "No file selected";
+    } else if (this.files.length === 1) {
+        fileName.innerHTML = this.files[0].name;
+    } else {
+        fileName.innerHTML = this.files.length + " PDF files selected";
+    }
+
+});
+</script>
 
 </body>
 </html>
