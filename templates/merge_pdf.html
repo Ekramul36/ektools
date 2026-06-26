@@ -6,33 +6,39 @@
     <title>Merge PDF - EkTools</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
+
 <body>
 
 <header>
+
     <div class="logo">
-        <h2>🚀 EkTools</h2>
+        🚀 <span>EkTools</span>
     </div>
 
-    <nav>
+    <div class="menu-toggle" id="menu-toggle">
+        ☰
+    </div>
+
+    <nav id="nav-menu">
         <a href="/">Home</a>
-        <a href="/unlock-pdf">PDF Tools</a>
+        <a href="/unlock-pdf">Unlock PDF</a>
+        <a href="/merge-pdf">Merge PDF</a>
+        <a href="/split-pdf">Split PDF</a>
+        <a href="/compress-pdf">Compress PDF</a>
         <a href="/image">Image Tools</a>
-        <a href="#">Converters</a>
         <a href="/about">About</a>
     </nav>
+
 </header>
 
 <section class="hero">
 
     <h1><i class="fa-solid fa-file-pdf"></i> Merge PDF</h1>
 
-    <p>
-        Merge multiple PDF files into a single PDF instantly.
-    </p>
+    <p>Merge multiple PDF files into a single PDF instantly.</p>
 
 </section>
 
@@ -43,16 +49,7 @@
         <h2><i class="fa-solid fa-file-pdf"></i> Upload PDFs</h2>
 
         {% if error %}
-        <div style="
-            background:#ffe6e6;
-            color:#c62828;
-            border:1px solid #ffb3b3;
-            padding:12px;
-            border-radius:8px;
-            margin-bottom:20px;
-            text-align:center;
-            font-weight:bold;
-        ">
+        <div style="background:#ffe6e6;color:#c62828;border:1px solid #ffb3b3;padding:12px;border-radius:8px;margin-bottom:20px;text-align:center;font-weight:bold;">
             <i class="fa-solid fa-circle-xmark"></i>
             {{ error }}
         </div>
@@ -89,7 +86,7 @@
 
             <br><br>
 
-            <a href="/" class="btn">
+            <a href="/" class="btn back-btn">
                 <i class="fa-solid fa-house"></i>
                 Back to Home
             </a>
@@ -101,25 +98,43 @@
 </section>
 
 <footer>
+
     <p>© 2026 EkTools. All Rights Reserved.</p>
+
 </footer>
+
+<div class="loader" id="loader">
+    <div class="spinner"></div>
+    <p>Processing PDF...</p>
+</div>
 
 <script>
 const input = document.getElementById("pdfs");
 const fileName = document.getElementById("file-name");
 
-input.addEventListener("change", function () {
+if(input){
+    input.addEventListener("change", function () {
 
-    if (this.files.length === 0) {
-        fileName.innerHTML = "No file selected";
-    } else if (this.files.length === 1) {
-        fileName.innerHTML = this.files[0].name;
-    } else {
-        fileName.innerHTML = this.files.length + " PDF files selected";
-    }
+        if (this.files.length === 0) {
+            fileName.innerHTML = "No file selected";
+        } else if (this.files.length === 1) {
+            fileName.innerHTML = this.files[0].name;
+        } else {
+            fileName.innerHTML = this.files.length + " PDF files selected";
+        }
 
+    });
+}
+
+const menu = document.getElementById("menu-toggle");
+const nav = document.getElementById("nav-menu");
+
+menu.addEventListener("click", function () {
+    nav.classList.toggle("show");
 });
 </script>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </body>
 </html>
