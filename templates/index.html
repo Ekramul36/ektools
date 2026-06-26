@@ -24,7 +24,6 @@
     </div>
 
     <nav id="nav-menu">
-
         <a href="/">Home</a>
         <a href="/unlock-pdf">Unlock PDF</a>
         <a href="/merge-pdf">Merge PDF</a>
@@ -32,7 +31,6 @@
         <a href="/compress-pdf">Compress PDF</a>
         <a href="/image">Image Tools</a>
         <a href="/about">About</a>
-
     </nav>
 
 </header>
@@ -60,105 +58,74 @@
     </a>
 
 </section>
-
 <section class="tools">
 
-    <h2 class="section-title">
-        Popular Tools
-    </h2>
+    <h2 class="section-title">Popular Tools</h2>
 
     <div class="cards">
 
-        <div class="card">
-
-            <div class="icon">
-                🔓
+        <a href="/unlock-pdf" class="card-link">
+            <div class="card">
+                <div class="icon">🔓</div>
+                <div>
+                    <h3>Unlock PDF</h3>
+                    <p>Remove password from PDF files instantly.</p>
+                </div>
             </div>
+        </a>
 
-            <div>
-
-                <h3>Unlock PDF</h3>
-
-                <p>Remove password from PDF files instantly.</p>
-
+        <a href="/merge-pdf" class="card-link">
+            <div class="card">
+                <div class="icon">📄</div>
+                <div>
+                    <h3>Merge PDF</h3>
+                    <p>Combine multiple PDFs into one document.</p>
+                </div>
             </div>
+        </a>
 
-        </div>
-
-        <div class="card">
-
-            <div class="icon">
-                📄
+        <a href="/split-pdf" class="card-link">
+            <div class="card">
+                <div class="icon">✂️</div>
+                <div>
+                    <h3>Split PDF</h3>
+                    <p>Extract selected pages from PDF.</p>
+                </div>
             </div>
+        </a>
 
-            <div>
-
-                <h3>Merge PDF</h3>
-
-                <p>Combine multiple PDFs into one document.</p>
-
+        <a href="/compress-pdf" class="card-link">
+            <div class="card">
+                <div class="icon">🗜️</div>
+                <div>
+                    <h3>Compress PDF</h3>
+                    <p>Reduce PDF size while keeping quality.</p>
+                </div>
             </div>
-
-        </div>
-
-        <div class="card">
-
-            <div class="icon">
-                ✂️
-            </div>
-
-            <div>
-
-                <h3>Split PDF</h3>
-
-                <p>Extract selected pages from PDF.</p>
-
-            </div>
-
-        </div>
-
-        <div class="card">
-
-            <div class="icon">
-                🗜️
-            </div>
-
-            <div>
-
-                <h3>Compress PDF</h3>
-
-                <p>Reduce PDF size while keeping quality.</p>
-
-            </div>
-
-        </div>
+        </a>
 
     </div>
 
 </section>
-
 <footer>
 
-<p>© 2026 EkTools. All Rights Reserved.</p>
+    <p>© 2026 EkTools. All Rights Reserved.</p>
 
-<a href="/privacy">Privacy Policy</a> |
-<a href="/about">About</a> |
-<a href="/terms">Terms & Conditions</a> |
-<a href="/contact">Contact</a>
+    <a href="/privacy">Privacy Policy</a> |
+    <a href="/about">About</a> |
+    <a href="/terms">Terms & Conditions</a> |
+    <a href="/contact">Contact</a>
 
 </footer>
 
 <script>
 
-const menu=document.getElementById("menu-toggle");
+const menu = document.getElementById("menu-toggle");
+const nav = document.getElementById("nav-menu");
 
-const nav=document.getElementById("nav-menu");
-
-menu.onclick=function(){
-
-nav.classList.toggle("show");
-
-}
+menu.addEventListener("click", function () {
+    nav.classList.toggle("show");
+});
 
 </script>
 
