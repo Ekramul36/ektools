@@ -516,3 +516,12 @@ nav a{
         display:block !important;
     }
 }
+.card-link{
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.card-link:hover{
+    color: inherit;
+}
