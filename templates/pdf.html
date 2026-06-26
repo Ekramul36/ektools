@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlock PDF - EkTools</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <h2>🚀 EkTools</h2>
+    </div>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/unlock-pdf">PDF Tools</a>
+        <a href="/image">Image Tools</a>
+        <a href="#">Converters</a>
+        <a href="/about">About</a>
+    </nav>
+</header>
+
+<section class="hero">
+
+    <h1><i class="fa-solid fa-lock-open"></i> Unlock PDF</h1>
+
+    <p>
+        Remove password protection from your PDF files safely and instantly.
+    </p>
+
+</section>
+
+<section class="tools">
+
+    <div class="card">
+
+        <h2><i class="fa-solid fa-file-pdf"></i> Upload PDF</h2>
+
+        {% if error %}
+        <div style="
+            background:#ffe6e6;
+            color:#c62828;
+            border:1px solid #ffb3b3;
+            padding:12px;
+            border-radius:8px;
+            margin-bottom:20px;
+            text-align:center;
+            font-weight:bold;
+        ">
+            <i class="fa-solid fa-circle-xmark"></i>
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form action="/unlock-pdf" method="POST" enctype="multipart/form-data">
+
+            <input
+                type="file"
+                name="pdf"
+                accept=".pdf"
+                required>
+
+            <br><br>
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Enter PDF Password"
+                required>
+
+            <br><br>
+
+            <button class="btn" type="submit">
+                <i class="fa-solid fa-lock-open"></i>
+                Unlock PDF
+            </button>
+
+        </form>
+
+        <br>
+
+        <a href="/" class="btn">
+            <i class="fa-solid fa-house"></i>
+            Back to Home
+        </a>
+
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 EkTools. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
