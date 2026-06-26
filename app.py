@@ -264,6 +264,9 @@ def compress_pdf():
 @app.route("/robots.txt")
 def robots():
     return send_from_directory("static", "robots.txt")
+@app.route("/google1b7c2f73edcb5802.html")
+def google_verification():
+    return send_from_directory("static", "google1b7c2f73edcb5802.html")
 @app.route("/sitemap.xml")
 def sitemap():
     return send_from_directory("static", "sitemap.xml")
