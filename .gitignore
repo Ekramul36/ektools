@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+
+# Environment
+venv/
+.env
+
+# Generated PDFs
+uploads/*
+outputs/*
+
+# Keep folders
+!uploads/.gitkeep
+!outputs/.gitkeep
