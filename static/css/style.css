@@ -363,19 +363,25 @@ MOBILE
 @media(max-width:768px){
 
 header{
-
-    flex-direction:column;
-
-    gap:15px;
-
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 20px;
 }
 
 nav{
+    display:none;
+    position:absolute;
+    top:60px;
+    left:0;
+    width:100%;
+    background:#0f172a;
+    flex-direction:column;
+    padding:10px 0;
+}
 
-    flex-wrap:wrap;
-
-    justify-content:center;
-
+nav.show{
+    display:flex;
 }
 
 nav a{
@@ -386,7 +392,7 @@ nav a{
 
 .hero{
 
-    padding:15px 20px;
+    padding:px 20px;
 
 }
 
