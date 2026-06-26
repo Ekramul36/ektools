@@ -34,12 +34,12 @@ header{
     display:flex;
     align-items:center;
     gap:8px;
-    font-size:30px;
+    font-size:24px;
 }
 
 .logo span{
     color:#fff;
-    font-size:30px;
+    font-size:24px;
     font-weight:700;
     cursor:pointer;
     transition:.3s;
@@ -496,4 +496,13 @@ nav a{
     }
 
 }
+}
+.menu-toggle{
+    color: #ffffff !important;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.menu-toggle:hover{
+    color: #38bdf8 !important;
 }
