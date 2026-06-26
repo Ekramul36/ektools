@@ -8,31 +8,38 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
     <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
+
 <body>
 
 <header>
+
     <div class="logo">
-        <h2>🚀 EkTools</h2>
+        🚀 <span>EkTools</span>
     </div>
 
-    <nav>
+    <div class="menu-toggle" id="menu-toggle">
+        ☰
+    </div>
+
+    <nav id="nav-menu">
         <a href="/">Home</a>
         <a href="/unlock-pdf">Unlock PDF</a>
         <a href="/merge-pdf">Merge PDF</a>
         <a href="/split-pdf">Split PDF</a>
+        <a href="/compress-pdf">Compress PDF</a>
+        <a href="/image">Image Tools</a>
         <a href="/about">About</a>
     </nav>
+
 </header>
 
 <section class="hero">
 
     <h1><i class="fa-solid fa-lock-open"></i> Unlock PDF</h1>
 
-    <p>
-        Remove password protection from your PDF instantly.
-    </p>
+    <p>Remove password protection from your PDF instantly.</p>
 
 </section>
 
@@ -43,16 +50,7 @@
         <h2><i class="fa-solid fa-file-pdf"></i> Upload PDF</h2>
 
         {% if error %}
-        <div style="
-            background:#ffe6e6;
-            color:#c62828;
-            border:1px solid #ffb3b3;
-            padding:12px;
-            border-radius:8px;
-            margin-bottom:20px;
-            text-align:center;
-            font-weight:bold;
-        ">
+        <div style="background:#ffe6e6;color:#c62828;border:1px solid #ffb3b3;padding:12px;border-radius:8px;margin-bottom:20px;text-align:center;font-weight:bold;">
             <i class="fa-solid fa-circle-xmark"></i>
             {{ error }}
         </div>
@@ -81,7 +79,7 @@
 
             <br>
 
-            <div style="position:relative; width:100%;">
+            <div style="position:relative;width:100%;">
 
                 <input
                     type="password"
@@ -89,18 +87,11 @@
                     name="password"
                     placeholder="Enter PDF Password"
                     required
-                    style="width:100%; padding-right:45px;">
+                    style="width:100%;padding-right:45px;">
 
                 <span
                     id="togglePassword"
-                    style="
-                        position:absolute;
-                        right:15px;
-                        top:50%;
-                        transform:translateY(-50%);
-                        cursor:pointer;
-                        font-size:20px;
-                        user-select:none;">
+                    style="position:absolute;right:15px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:20px;user-select:none;">
                     👁️
                 </span>
 
@@ -127,13 +118,26 @@
 </section>
 
 <footer>
+
     <p>© 2026 EkTools. All Rights Reserved.</p>
+
 </footer>
 
 <div class="loader" id="loader">
     <div class="spinner"></div>
     <p>Processing PDF...</p>
 </div>
+
+<script>
+
+const menu = document.getElementById("menu-toggle");
+const nav = document.getElementById("nav-menu");
+
+menu.addEventListener("click", function () {
+    nav.classList.toggle("show");
+});
+
+</script>
 
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 

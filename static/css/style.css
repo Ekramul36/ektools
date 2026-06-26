@@ -369,6 +369,13 @@ MOBILE
 ========================= */
 
 @media(max-width:768px){
+    .menu-toggle{
+    display:block;
+}
+
+.logo span{
+    font-size:18px;
+}
 
 header{
     flex-direction:row;
@@ -498,11 +505,12 @@ nav a{
 }
 }
 .menu-toggle{
-    color: #ffffff !important;
-    font-size: 30px;
-    cursor: pointer;
+    display:none;
+    color:#ffffff;
+    font-size:30px;
+    cursor:pointer;
 }
 
 .menu-toggle:hover{
-    color: #38bdf8 !important;
+    color:#38bdf8;
 }
