@@ -3,12 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unlock PDF - EkTools</title>
+    <title>Privacy Policy - EkTools</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
 
@@ -22,120 +19,67 @@
         <a href="/unlock-pdf">Unlock PDF</a>
         <a href="/merge-pdf">Merge PDF</a>
         <a href="/split-pdf">Split PDF</a>
+        <a href="/compress-pdf">Compress PDF</a>
         <a href="/about">About</a>
     </nav>
 </header>
-
-<section class="hero">
-
-    <h1><i class="fa-solid fa-lock-open"></i> Unlock PDF</h1>
-
-    <p>
-        Remove password protection from your PDF instantly.
-    </p>
-
-</section>
 
 <section class="tools">
 
     <div class="card">
 
-        <h2><i class="fa-solid fa-file-pdf"></i> Upload PDF</h2>
+        <h1>Privacy Policy</h1>
 
-        {% if error %}
-        <div style="
-            background:#ffe6e6;
-            color:#c62828;
-            border:1px solid #ffb3b3;
-            padding:12px;
-            border-radius:8px;
-            margin-bottom:20px;
-            text-align:center;
-            font-weight:bold;
-        ">
-            <i class="fa-solid fa-circle-xmark"></i>
-            {{ error }}
-        </div>
-        {% endif %}
+        <br>
 
-        <form action="/unlock-pdf" method="POST" enctype="multipart/form-data">
+        <p>
+            Welcome to <strong>EkTools</strong>. Your privacy is important to us.
+        </p>
 
-            <label class="upload-box">
+        <br>
 
-                <i class="fa-solid fa-file-pdf"></i>
+        <h3>1. Uploaded Files</h3>
 
-                <p>Click to choose PDF</p>
+        <p>
+            Files uploaded to EkTools are processed automatically.
+            We do not permanently store, sell, or share your files.
+        </p>
 
-                <input
-                    type="file"
-                    name="pdf"
-                    id="pdf"
-                    accept=".pdf"
-                    required>
+        <br>
 
-                <div class="file-name" id="file-name">
-                    No file selected
-                </div>
+        <h3>2. File Security</h3>
 
-            </label>
+        <p>
+            Your uploaded PDF files are used only to perform the requested task
+            (Unlock, Merge, Split, Compress, etc.).
+        </p>
 
-            <br>
+        <br>
 
-            <div style="position:relative; width:100%;">
+        <h3>3. Cookies</h3>
 
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Enter PDF Password"
-                    required
-                    style="width:100%; padding-right:45px;">
+        <p>
+            EkTools may use cookies to improve website performance and user experience.
+        </p>
 
-                <span
-                    id="togglePassword"
-                    style="
-                        position:absolute;
-                        right:15px;
-                        top:50%;
-                        transform:translateY(-50%);
-                        cursor:pointer;
-                        font-size:20px;
-                        user-select:none;">
-                    👁️
-                </span>
+        <br>
 
-            </div>
+        <h3>4. Third-Party Services</h3>
 
-            <br>
+        <p>
+            We may use services such as Google Analytics and Google AdSense in the future.
+        </p>
 
-            <button class="btn" type="submit">
-                <i class="fa-solid fa-lock-open"></i>
-                Unlock PDF
-            </button>
+        <br>
 
-            <br><br>
+        <h3>5. Contact</h3>
 
-            <a href="/" class="btn back-btn">
-                <i class="fa-solid fa-house"></i>
-                Back to Home
-            </a>
+        <p>
+            If you have any questions about this Privacy Policy,
+            please contact the EkTools team.
+        </p>
 
-        </form>
+        <br><br>
 
-    </div>
-
-</section>
-
-<footer>
-    <p>© 2026 EkTools. All Rights Reserved.</p>
-</footer>
-
-<div class="loader" id="loader">
-    <div class="spinner"></div>
-    <p>Processing PDF...</p>
-</div>
-
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
-
-</body>
-</html>
+        <a href="/" class="btn back-btn">
+            🏠 Back
