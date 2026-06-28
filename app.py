@@ -155,10 +155,27 @@ def compress_pdf():
 # IMAGE TOOLS
 # ──────────────────────────────────────────
 
-@app.route("/image")
+@app.route("/image", methods=["GET", "POST"])
 def image():
+    if request.method == "POST":
+        try:
+            from PIL import Image as PILImage
+            images = request.files.getlist("images")
+            if not images or images[0].filename == "":
+                return render_template("image.html", error="Please select image files.")
+            pdf_images = []
+            for img_file in images:
+                img = PILImage.open(img_file).convert("RGB")
+                pdf_images.append(img)
+            output_path = os.path.join(OUTPUT_FOLDER, "Images_to_PDF.pdf")
+            if len(pdf_images) == 1:
+                pdf_images[0].save(output_path, "PDF")
+            else:
+                pdf_images[0].save(output_path, "PDF", save_all=True, append_images=pdf_images[1:])
+            return send_file(output_path, as_attachment=True, download_name="Images_to_PDF.pdf")
+        except Exception as e:
+            return render_template("image.html", error=f"Error: {str(e)}")
     return render_template("image.html")
-
 
 # ──────────────────────────────────────────
 # CALCULATORS
