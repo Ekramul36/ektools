@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF Editor — EkZapp</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);height:100vh;display:flex;flex-direction:column;overflow:hidden}
+
+/* NAV */
+nav{background:var(--white);border-bottom:1px solid var(--border);height:52px;flex-shrink:0;display:flex;align-items:center;padding:0 16px;gap:12px;z-index:100}
+.logo{text-decoration:none;display:flex;align-items:center;gap:7px;flex-shrink:0}
+.logo-icon{width:28px;height:28px;border-radius:7px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:800}
+.logo-text{font-size:14px;font-weight:700;color:var(--ink)}
+.logo-text span{color:var(--blue)}
+.nav-sep{width:1px;height:20px;background:var(--border)}
+.back{color:var(--gray);text-decoration:none;font-size:12px;font-weight:500;padding:5px 10px;border-radius:5px;border:1px solid var(--border);background:white}
+.back:hover{border-color:var(--blue);color:var(--blue)}
+.nav-title{font-size:13px;font-weight:600;color:var(--ink)}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+.btn-download{background:var(--blue);color:white;border:none;padding:7px 16px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;display:flex;align-items:center;gap:5px}
+.btn-download:hover{background:var(--blue-dk)}
+.btn-download:disabled{opacity:.5;cursor:not-allowed}
+
+/* TOOLBAR */
+.toolbar{background:var(--white);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;align-items:center;gap:6px;flex-shrink:0;overflow-x:auto;scrollbar-width:none}
+.toolbar::-webkit-scrollbar{display:none}
+.tool-btn{padding:6px 12px;border-radius:6px;border:1.5px solid var(--border);background:white;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;color:var(--gray);white-space:nowrap;transition:all .15s;display:flex;align-items:center;gap:5px}
+.tool-btn:hover{border-color:var(--blue);color:var(--blue)}
+.tool-btn.active{background:var(--blue);color:white;border-color:var(--blue)}
+.tool-sep{width:1px;height:24px;background:var(--border);flex-shrink:0}
+.color-btn{width:24px;height:24px;border-radius:50%;border:2px solid var(--border);cursor:pointer;flex-shrink:0}
+.color-btn.active{border-color:var(--ink);border-width:3px}
+.font-size-input{width:52px;padding:5px 8px;border:1.5px solid var(--border);border-radius:6px;font-size:12px;font-family:'Inter',sans-serif;outline:none}
+.font-size-input:focus{border-color:var(--blue)}
+
+/* MAIN */
+.main{flex:1;display:flex;overflow:hidden}
+
+/* SIDEBAR */
+.sidebar{width:200px;background:var(--white);border-right:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
+.sidebar-title{padding:12px 14px;font-size:11px;font-weight:700;color:var(--gray);letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--border)}
+.pages-list{flex:1;overflow-y:auto;padding:8px}
+.page-thumb{border:2px solid var(--border);border-radius:6px;margin-bottom:8px;cursor:pointer;overflow:hidden;transition:all .15s}
+.page-thumb:hover,.page-thumb.active{border-color:var(--blue)}
+.page-thumb canvas{width:100%;display:block}
+.page-num{text-align:center;font-size:10px;color:var(--gray);padding:4px;background:var(--light)}
+
+/* CANVAS AREA */
+.canvas-area{flex:1;overflow:auto;background:#525659;display:flex;justify-content:center;align-items:flex-start;padding:24px}
+.pdf-container{position:relative;box-shadow:0 4px 24px rgba(0,0,0,.3)}
+#pdfCanvas{display:block}
+#editCanvas{position:absolute;top:0;left:0;cursor:crosshair}
+
+/* UPLOAD SCREEN */
+.upload-screen{flex:1;display:flex;align-items:center;justify-content:center;background:#525659}
+.upload-box{background:white;border-radius:16px;padding:48px 40px;text-align:center;max-width:440px;width:100%;box-shadow:0 4px 24px rgba(0,0,0,.15)}
+.upload-icon{font-size:3rem;margin-bottom:16px}
+.upload-box h2{font-size:1.4rem;font-weight:800;margin-bottom:8px}
+.upload-box p{color:var(--gray);font-size:14px;margin-bottom:24px}
+.upload-btn{background:var(--blue);color:white;border:none;padding:12px 28px;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;position:relative;overflow:hidden}
+.upload-btn input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.upload-btn:hover{background:var(--blue-dk)}
+
+/* TEXT INPUT OVERLAY */
+.text-input-overlay{position:absolute;background:transparent;border:2px dashed var(--blue);outline:none;font-family:'Inter',sans-serif;min-width:80px;min-height:24px;padding:2px 4px;resize:both;overflow:hidden;z-index:10;cursor:move}
+
+/* WHITEOUT */
+.whiteout-box{position:absolute;background:white;border:2px dashed #ccc;cursor:move;z-index:9}
+.whiteout-box.selected{border-color:var(--blue)}
+.whiteout-resize{position:absolute;bottom:-4px;right:-4px;width:10px;height:10px;background:var(--blue);border-radius:2px;cursor:se-resize}
+
+/* PAGE NAV */
+.page-nav{background:var(--white);border-top:1px solid var(--border);padding:8px 16px;display:flex;align-items:center;justify-content:center;gap:12px;flex-shrink:0}
+.page-nav-btn{padding:5px 12px;border:1.5px solid var(--border);border-radius:6px;background:white;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif}
+.page-nav-btn:hover{border-color:var(--blue)}
+.page-nav-btn:disabled{opacity:.4;cursor:not-allowed}
+.page-info{font-size:12px;color:var(--gray);font-weight:500}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+  <div class="nav-sep"></div>
+  <a class="back" href="/">← All Tools</a>
+  <span class="nav-title">PDF Editor</span>
+  <div class="nav-right">
+    <button class="btn-download" id="downloadBtn" onclick="downloadPDF()" disabled>⬇ Download PDF</button>
+  </div>
+</nav>
+
+<!-- TOOLBAR -->
+<div class="toolbar" id="toolbar" style="display:none">
+  <button class="tool-btn active" id="btn-text" onclick="setTool('text')">📝 Text</button>
+  <button class="tool-btn" id="btn-whiteout" onclick="setTool('whiteout')">⬜ Whiteout</button>
+  <button class="tool-btn" id="btn-highlight" onclick="setTool('highlight')">🖊 Highlight</button>
+  <button class="tool-btn" id="btn-draw" onclick="setTool('draw')">✏️ Draw</button>
+  <div class="tool-sep"></div>
+  <input class="font-size-input" type="number" id="fontSize" value="14" min="8" max="72" title="Font size">
+  <div class="tool-sep"></div>
+  <div class="color-btn active" style="background:#000000" onclick="setColor('#000000',this)" title="Black"></div>
+  <div class="color-btn" style="background:#DC2626" onclick="setColor('#DC2626',this)" title="Red"></div>
+  <div class="color-btn" style="background:#2563EB" onclick="setColor('#2563EB',this)" title="Blue"></div>
+  <div class="color-btn" style="background:#16A34A" onclick="setColor('#16A34A',this)" title="Green"></div>
+  <div class="color-btn" style="background:#FFFFFF;border-color:#999" onclick="setColor('#FFFFFF',this)" title="White (Whiteout)"></div>
+  <div class="tool-sep"></div>
+  <button class="tool-btn" onclick="undoLast()">↩ Undo</button>
+  <button class="tool-btn" onclick="clearAll()">🗑 Clear All</button>
+</div>
+
+<!-- MAIN -->
+<div class="main" id="main">
+  <!-- UPLOAD -->
+  <div class="upload-screen" id="uploadScreen">
+    <div class="upload-box">
+      <div class="upload-icon">📄</div>
+      <h2>Open PDF to Edit</h2>
+      <p>Upload your PDF file to start editing. Add text, whiteout, highlight and draw on any PDF.</p>
+      <button class="upload-btn">
+        📂 Choose PDF File
+        <input type="file" accept=".pdf" onchange="loadPDF(this)">
+      </button>
+    </div>
+  </div>
+
+  <!-- EDITOR (hidden until PDF loaded) -->
+  <div id="editorScreen" style="display:none;flex:1;display:none;overflow:hidden">
+    <div style="display:flex;flex:1;overflow:hidden;height:100%">
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+        <div class="sidebar-title">Pages</div>
+        <div class="pages-list" id="pagesList"></div>
+      </div>
+      <!-- CANVAS -->
+      <div class="canvas-area" id="canvasArea">
+        <div class="pdf-container" id="pdfContainer">
+          <canvas id="pdfCanvas"></canvas>
+          <canvas id="editCanvas"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE NAV -->
+<div class="page-nav" id="pageNav" style="display:none">
+  <button class="page-nav-btn" id="prevBtn" onclick="changePage(-1)" disabled>← Prev</button>
+  <span class="page-info" id="pageInfo">Page 1 of 1</span>
+  <button class="page-nav-btn" id="nextBtn" onclick="changePage(1)" disabled>Next →</button>
+</div>
+
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+let pdfDoc=null,currentPage=1,totalPages=0;
+let currentTool='text',currentColor='#000000';
+let isDrawing=false,drawCtx=null,lastX=0,lastY=0;
+let annotations=[]; // {type,page,data}
+let pdfBytes=null;
+let scale=1.5;
+
+async function loadPDF(input){
+  const file=input.files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=async e=>{
+    pdfBytes=e.target.result;
+    const data=new Uint8Array(pdfBytes);
+    pdfDoc=await pdfjsLib.getDocument({data}).promise;
+    totalPages=pdfDoc.numPages;
+    currentPage=1;
+    annotations=[];
+    document.getElementById('uploadScreen').style.display='none';
+    const es=document.getElementById('editorScreen');
+    es.style.display='flex';
+    es.style.flex='1';
+    es.style.overflow='hidden';
+    document.getElementById('toolbar').style.display='flex';
+    document.getElementById('pageNav').style.display='flex';
+    document.getElementById('downloadBtn').disabled=false;
+    await buildThumbs();
+    await renderPage(currentPage);
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+async function buildThumbs(){
+  const list=document.getElementById('pagesList');
+  list.innerHTML='';
+  for(let i=1;i<=totalPages;i++){
+    const page=await pdfDoc.getPage(i);
+    const vp=page.getViewport({scale:.3});
+    const c=document.createElement('canvas');
+    c.width=vp.width;c.height=vp.height;
+    await page.render({canvasContext:c.getContext('2d'),viewport:vp}).promise;
+    const wrap=document.createElement('div');
+    wrap.className='page-thumb'+(i===1?' active':'');
+    wrap.id='thumb-'+i;
+    wrap.onclick=()=>renderPage(i);
+    wrap.appendChild(c);
+    const num=document.createElement('div');
+    num.className='page-num';
+    num.textContent=i;
+    wrap.appendChild(num);
+    list.appendChild(wrap);
+  }
+}
+
+async function renderPage(pageNum){
+  currentPage=pageNum;
+  document.querySelectorAll('.page-thumb').forEach(t=>t.classList.remove('active'));
+  const th=document.getElementById('thumb-'+pageNum);
+  if(th){th.classList.add('active');th.scrollIntoView({block:'nearest'});}
+  document.getElementById('pageInfo').textContent=`Page ${pageNum} of ${totalPages}`;
+  document.getElementById('prevBtn').disabled=pageNum<=1;
+  document.getElementById('nextBtn').disabled=pageNum>=totalPages;
+
+  const page=await pdfDoc.getPage(pageNum);
+  const vp=page.getViewport({scale});
+  const pdfCanvas=document.getElementById('pdfCanvas');
+  const editCanvas=document.getElementById('editCanvas');
+  pdfCanvas.width=vp.width;pdfCanvas.height=vp.height;
+  editCanvas.width=vp.width;editCanvas.height=vp.height;
+
+  await page.render({canvasContext:pdfCanvas.getContext('2d'),viewport:vp}).promise;
+
+  drawCtx=editCanvas.getContext('2d');
+  drawCtx.clearRect(0,0,editCanvas.width,editCanvas.height);
+  redrawAnnotations();
+  setupEditCanvas();
+}
+
+function redrawAnnotations(){
+  if(!drawCtx)return;
+  annotations.filter(a=>a.page===currentPage).forEach(a=>{
+    if(a.type==='draw'){
+      drawCtx.beginPath();
+      drawCtx.strokeStyle=a.color;
+      drawCtx.lineWidth=a.width||2;
+      drawCtx.lineCap='round';
+      if(a.points&&a.points.length>1){
+        drawCtx.moveTo(a.points[0].x,a.points[0].y);
+        a.points.forEach(p=>drawCtx.lineTo(p.x,p.y));
+        drawCtx.stroke();
+      }
+    } else if(a.type==='highlight'){
+      drawCtx.fillStyle=a.color;
+      drawCtx.fillRect(a.x,a.y,a.w,a.h);
+    } else if(a.type==='whiteout'){
+      drawCtx.fillStyle='#ffffff';
+      drawCtx.fillRect(a.x,a.y,a.w,a.h);
+    } else if(a.type==='text'){
+      drawCtx.font=`${a.size||14}px Inter,sans-serif`;
+      drawCtx.fillStyle=a.color||'#000';
+      drawCtx.fillText(a.text,a.x,a.y);
+    }
+  });
+}
+
+let drawPoints=[],isHighlighting=false,hlStart={};
+
+function setupEditCanvas(){
+  const ec=document.getElementById('editCanvas');
+  ec.onmousedown=e=>{
+    const r=ec.getBoundingClientRect();
+    const x=e.clientX-r.left,y=e.clientY-r.top;
+    if(currentTool==='text'){
+      addTextInput(x,y);
+    } else if(currentTool==='draw'){
+      isDrawing=true;drawPoints=[{x,y}];lastX=x;lastY=y;
+    } else if(currentTool==='highlight'||currentTool==='whiteout'){
+      isHighlighting=true;hlStart={x,y};
+    }
+  };
+  ec.onmousemove=e=>{
+    const r=ec.getBoundingClientRect();
+    const x=e.clientX-r.left,y=e.clientY-r.top;
+    if(currentTool==='draw'&&isDrawing){
+      drawCtx.beginPath();
+      drawCtx.strokeStyle=currentColor;
+      drawCtx.lineWidth=2;drawCtx.lineCap='round';
+      drawCtx.moveTo(lastX,lastY);drawCtx.lineTo(x,y);drawCtx.stroke();
+      drawPoints.push({x,y});lastX=x;lastY=y;
+    }
+  };
+  ec.onmouseup=e=>{
+    const r=ec.getBoundingClientRect();
+    const x=e.clientX-r.left,y=e.clientY-r.top;
+    if(currentTool==='draw'&&isDrawing){
+      isDrawing=false;
+      if(drawPoints.length>1){
+        annotations.push({type:'draw',page:currentPage,color:currentColor,width:2,points:[...drawPoints]});
+      }
+      drawPoints=[];
+    } else if((currentTool==='highlight'||currentTool==='whiteout')&&isHighlighting){
+      isHighlighting=false;
+      const w=x-hlStart.x,h=y-hlStart.y;
+      if(Math.abs(w)>5&&Math.abs(h)>5){
+        if(currentTool==='highlight'){
+          const color=currentColor==='#000000'?'rgba(255,220,0,0.4)':'rgba(255,220,0,0.4)';
+          drawCtx.fillStyle=color;
+          drawCtx.fillRect(hlStart.x,hlStart.y,w,h);
+          annotations.push({type:'highlight',page:currentPage,color,x:hlStart.x,y:hlStart.y,w,h});
+        } else {
+          drawCtx.fillStyle='#ffffff';
+          drawCtx.fillRect(hlStart.x,hlStart.y,w,h);
+          annotations.push({type:'whiteout',page:currentPage,x:hlStart.x,y:hlStart.y,w,h});
+        }
+      }
+    }
+  };
+  ec.onmouseleave=()=>{isDrawing=false;isHighlighting=false;};
+}
+
+function addTextInput(x,y){
+  const ec=document.getElementById('editCanvas');
+  const container=document.getElementById('pdfContainer');
+  const inp=document.createElement('div');
+  inp.contentEditable=true;
+  inp.className='text-input-overlay';
+  inp.style.left=x+'px';
+  inp.style.top=(y-parseInt(document.getElementById('fontSize').value))+'px';
+  inp.style.fontSize=document.getElementById('fontSize').value+'px';
+  inp.style.color=currentColor;
+  inp.style.fontFamily='Inter,sans-serif';
+  container.appendChild(inp);
+  inp.focus();
+
+  // drag
+  let dragging=false,dx=0,dy=0;
+  inp.onmousedown=ev=>{
+    if(ev.target!==inp)return;
+    dragging=true;
+    dx=ev.clientX-inp.offsetLeft;
+    dy=ev.clientY-inp.offsetTop;
+    ev.stopPropagation();
+  };
+  document.onmousemove=ev=>{
+    if(dragging){inp.style.left=(ev.clientX-dx)+'px';inp.style.top=(ev.clientY-dy)+'px';}
+  };
+  document.onmouseup=()=>dragging=false;
+
+  inp.onblur=()=>{
+    const text=inp.innerText.trim();
+    if(text){
+      const tx=parseInt(inp.style.left);
+      const ty=parseInt(inp.style.top)+parseInt(inp.style.fontSize);
+      annotations.push({type:'text',page:currentPage,text,x:tx,y:ty,size:parseInt(inp.style.fontSize),color:currentColor});
+      drawCtx.font=`${inp.style.fontSize} Inter,sans-serif`;
+      drawCtx.fillStyle=currentColor;
+      drawCtx.fillText(text,tx,ty);
+    }
+    inp.remove();
+  };
+}
+
+function setTool(t){
+  currentTool=t;
+  document.querySelectorAll('.tool-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('btn-'+t).classList.add('active');
+  const ec=document.getElementById('editCanvas');
+  ec.style.cursor=t==='text'?'text':t==='draw'?'crosshair':'crosshair';
+}
+
+function setColor(c,el){
+  currentColor=c;
+  document.querySelectorAll('.color-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function undoLast(){
+  const idx=annotations.map((a,i)=>a.page===currentPage?i:-1).filter(i=>i>=0);
+  if(idx.length>0){
+    annotations.splice(idx[idx.length-1],1);
+    drawCtx.clearRect(0,0,document.getElementById('editCanvas').width,document.getElementById('editCanvas').height);
+    redrawAnnotations();
+    // remove any text inputs
+    document.querySelectorAll('.text-input-overlay').forEach(el=>el.remove());
+  }
+}
+
+function clearAll(){
+  if(!confirm('Clear all edits on this page?'))return;
+  annotations=annotations.filter(a=>a.page!==currentPage);
+  drawCtx.clearRect(0,0,document.getElementById('editCanvas').width,document.getElementById('editCanvas').height);
+  document.querySelectorAll('.text-input-overlay').forEach(el=>el.remove());
+}
+
+async function downloadPDF(){
+  // Commit any open text inputs first
+  document.querySelectorAll('.text-input-overlay').forEach(el=>el.blur());
+
+  const {jsPDF}=window.jspdf;
+  let firstPage=true;
+  let doc=null;
+
+  for(let p=1;p<=totalPages;p++){
+    const page=await pdfDoc.getPage(p);
+    const vp=page.getViewport({scale:2});
+    const c=document.createElement('canvas');
+    c.width=vp.width;c.height=vp.height;
+    const ctx=c.getContext('2d');
+    await page.render({canvasContext:ctx,viewport:vp}).promise;
+
+    // Draw annotations for this page
+    annotations.filter(a=>a.page===p).forEach(a=>{
+      if(a.type==='draw'){
+        ctx.beginPath();ctx.strokeStyle=a.color;ctx.lineWidth=(a.width||2)*2;ctx.lineCap='round';
+        if(a.points&&a.points.length>1){
+          ctx.moveTo(a.points[0].x*(2/scale),a.points[0].y*(2/scale));
+          a.points.forEach(pt=>ctx.lineTo(pt.x*(2/scale),pt.y*(2/scale)));
+          ctx.stroke();
+        }
+      } else if(a.type==='highlight'){
+        ctx.fillStyle=a.color;ctx.fillRect(a.x*(2/scale),a.y*(2/scale),a.w*(2/scale),a.h*(2/scale));
+      } else if(a.type==='whiteout'){
+        ctx.fillStyle='#ffffff';ctx.fillRect(a.x*(2/scale),a.y*(2/scale),a.w*(2/scale),a.h*(2/scale));
+      } else if(a.type==='text'){
+        ctx.font=`${(a.size||14)*(2/scale)}px Inter,sans-serif`;
+        ctx.fillStyle=a.color||'#000';
+        ctx.fillText(a.text,a.x*(2/scale),a.y*(2/scale));
+      }
+    });
+
+    const imgData=c.toDataURL('image/jpeg',0.92);
+    const pw=vp.width/2,ph=vp.height/2;
+    const mmW=pw*0.264583,mmH=ph*0.264583;
+
+    if(firstPage){
+      doc=new jsPDF({orientation:mmW>mmH?'l':'p',unit:'mm',format:[mmW,mmH]});
+      firstPage=false;
+    } else {
+      doc.addPage([mmW,mmH],mmW>mmH?'l':'p');
+    }
+    doc.addImage(imgData,'JPEG',0,0,mmW,mmH);
+  }
+  doc.save('EkZapp_Edited.pdf');
+}
+
+function changePage(dir){
+  const np=currentPage+dir;
+  if(np>=1&&np<=totalPages){
+    // commit text inputs
+    document.querySelectorAll('.text-input-overlay').forEach(el=>el.blur());
+    renderPage(np);
+  }
+}
+</script>
+</body>
+</html>

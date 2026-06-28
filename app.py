@@ -230,10 +230,9 @@ def lorem_generator():
     return render_template("lorem.html")
 
 
-# ──────────────────────────────────────────
-# OTHER PAGES
-# ──────────────────────────────────────────
-
+@app.route("/pdf-editor")
+def pdf_editor():
+    return render_template("pdf_editor.html")
 @app.route("/about")
 def about():
     return render_template("about.html")
