@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image to PDF — EkZapp</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
+.logo-text span{color:var(--blue)}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:12px;border-left:1px solid var(--border);padding-left:12px}
+.nav-links a{padding:6px 10px;border-radius:6px;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;white-space:nowrap;transition:all .15s}
+.nav-links a:hover,.nav-links a.active{background:var(--blue-lt);color:var(--blue)}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.back:hover{border-color:var(--blue);color:var(--blue)}
+.container{max-width:600px;margin:48px auto;padding:0 20px}
+.tool-header{text-align:center;margin-bottom:32px}
+.tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:#EDE9FE;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
+.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.tool-header p{color:var(--gray);font-size:14px}
+.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.info-bar{background:var(--blue-lt);border:1px solid #BFDBFE;border-radius:8px;padding:10px 14px;margin-bottom:20px;font-size:13px;color:#1E40AF}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.drop-area{border:2px dashed var(--border);border-radius:10px;padding:36px 20px;text-align:center;background:var(--light);cursor:pointer;transition:all .2s;position:relative}
+.drop-area:hover{border-color:var(--blue);background:var(--blue-lt)}
+.drop-icon{font-size:2.2rem;margin-bottom:10px}
+.drop-area h3{font-size:14px;font-weight:600;margin-bottom:4px}
+.drop-area p{font-size:12px;color:var(--gray)}
+.drop-area input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer}
+.preview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;display:none}
+.preview-item{position:relative;border-radius:6px;overflow:hidden;border:1px solid var(--border)}
+.preview-item img{width:100%;height:80px;object-fit:cover;display:block}
+.preview-count{background:var(--blue-lt);border:1px solid #BFDBFE;border-radius:6px;padding:8px 12px;font-size:12px;color:#1E40AF;margin-top:8px;font-weight:600;display:none}
+.field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none;background:white;transition:border .15s}
+.field select:focus{border-color:var(--blue)}
+.btn{width:100%;padding:13px;background:var(--blue);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s}
+.btn:hover{background:var(--blue-dk)}
+.error-box{background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:12px 16px;color:var(--red);font-size:13px;margin-bottom:16px}
+.trust{display:flex;justify-content:center;gap:20px;margin-top:16px;flex-wrap:wrap}
+.trust-item{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:4px}
+.other-tools{margin-top:40px}
+.other-tools h3{font-size:13px;font-weight:600;color:var(--gray);letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
+.tools-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tool-mini{background:white;border:1px solid var(--border);border-radius:10px;padding:14px;text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px;transition:all .15s}
+.tool-mini:hover{border-color:var(--blue)}
+.tool-mini-icon{font-size:1.2rem}
+.tool-mini span{font-size:13px;font-weight:600}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <ul class="nav-links">
+      <li><a href="/unlock-pdf">Unlock PDF</a></li>
+      <li><a href="/merge-pdf">Merge PDF</a></li>
+      <li><a href="/split-pdf">Split PDF</a></li>
+      <li><a href="/compress-pdf">Compress PDF</a></li>
+      <li><a href="/image" class="active">Image to PDF</a></li>
+    </ul>
+    <a class="back" href="/">← All Tools</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="tool-header">
+    <div class="tool-icon-wrap">🖼️</div>
+    <h1>Image to PDF</h1>
+    <p>Convert JPG, PNG, WebP images to PDF instantly</p>
+  </div>
+
+  <div class="card">
+    <div class="info-bar">📸 You can select multiple images — they will all be added to one PDF</div>
+
+    {% if error %}<div class="error-box">⚠️ {{ error }}</div>{% endif %}
+
+    <form method="POST" enctype="multipart/form-data">
+      <div class="field">
+        <label>Select Image Files</label>
+        <div class="drop-area" id="dropArea">
+          <div class="drop-icon">🖼️</div>
+          <h3>Click to select or drag & drop</h3>
+          <p>Supports JPG, PNG, WebP, BMP, GIF</p>
+          <input type="file" name="images" accept="image/*" multiple required onchange="showPreviews(this)">
+        </div>
+        <div class="preview-count" id="previewCount"></div>
+        <div class="preview-grid" id="previewGrid"></div>
+      </div>
+
+      <div class="field">
+        <label>Page Size</label>
+        <select name="page_size">
+          <option value="A4" selected>A4 (Most common)</option>
+          <option value="Letter">Letter</option>
+          <option value="A3">A3</option>
+          <option value="fit">Fit to image</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn">🖼️ Convert to PDF</button>
+    </form>
+
+    <div class="trust">
+      <div class="trust-item">🔒 SSL Encrypted</div>
+      <div class="trust-item">🗑️ Auto-deleted</div>
+      <div class="trust-item">📵 No signup needed</div>
+    </div>
+  </div>
+
+  <div class="other-tools">
+    <h3>Other PDF Tools</h3>
+    <div class="tools-row">
+      <a class="tool-mini" href="/unlock-pdf"><span class="tool-mini-icon">🔓</span><span>Unlock PDF</span></a>
+      <a class="tool-mini" href="/merge-pdf"><span class="tool-mini-icon">🔗</span><span>Merge PDF</span></a>
+      <a class="tool-mini" href="/compress-pdf"><span class="tool-mini-icon">⚡</span><span>Compress PDF</span></a>
+    </div>
+  </div>
+</div>
+
+<script>
+function showPreviews(input){
+  if(input.files&&input.files.length>0){
+    const count=document.getElementById('previewCount');
+    const grid=document.getElementById('previewGrid');
+    count.textContent=`✓ ${input.files.length} image${input.files.length>1?'s':''} selected`;
+    count.style.display='block';
+    grid.innerHTML='';
+    grid.style.display='grid';
+    Array.from(input.files).slice(0,6).forEach(f=>{
+      const reader=new FileReader();
+      reader.onload=e=>{
+        grid.innerHTML+=`<div class="preview-item"><img src="${e.target.result}" alt="${f.name}"></div>`;
+      };
+      reader.readAsDataURL(f);
+    });
+    if(input.files.length>6){
+      grid.innerHTML+=`<div class="preview-item" style="display:flex;align-items:center;justify-content:center;height:80px;background:#F0F5FF;font-size:13px;font-weight:600;color:#2563EB">+${input.files.length-6} more</div>`;
+    }
+  }
+}
+</script>
+</body>
+</html>
