@@ -1,151 +1,587 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>EkTools - Free Online PDF Tools | Unlock, Merge, Split & Compress PDF</title>
-
-    <meta name="description" content="EkTools offers free online PDF tools. Unlock PDF, Merge PDF, Split PDF and Compress PDF quickly, securely and without registration.">
-
-    <meta name="keywords" content="PDF Tools, Unlock PDF, Merge PDF, Split PDF, Compress PDF, Free PDF Tools, Online PDF Tools">
-
-    <meta name="author" content="EkTools">
-
-    <meta name="robots" content="index, follow">
-
-    <meta name="theme-color" content="#2563eb">
-    <meta property="og:title" content="EkTools - Free Online PDF Tools">
-<meta property="og:description" content="Unlock, Merge, Split and Compress PDF for free.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EkZapp — We help with all your file tasks</title>
+<meta name="description" content="Free online PDF & file tools. Merge, split, compress, unlock PDF. No signup required.">
+<meta name="keywords" content="PDF tools, unlock PDF, merge PDF, split PDF, compress PDF, image to PDF, free PDF tools">
+<meta name="author" content="EkZapp">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#2563EB">
+<meta property="og:title" content="EkZapp — Free PDF & File Tools">
+<meta property="og:description" content="Merge, split, compress, unlock PDF for free. No signup needed.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://ektools.onrender.com">
+<meta property="og:url" content="https://ekzapp.com">
+<link rel="canonical" href="https://ekzapp.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#2563EB;
+  --blue-dk:#1D4ED8;
+  --blue-lt:#EFF6FF;
+  --ink:#111827;
+  --gray:#6B7280;
+  --light:#F9FAFB;
+  --border:#E5E7EB;
+  --white:#fff;
+  --cream:#F0F5FF;
+  --green:#16A34A;
+  --green-lt:#F0FDF4;
+  --orange:#EA580C;
+  --orange-lt:#FFF7ED;
+  --purple:#7C3AED;
+  --purple-lt:#F5F3FF;
+  --r:10px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;font-size:14px}
 
-<link rel="canonical" href="https://ektools.onrender.com/">
+/* NAV */
+nav{
+  background:var(--white);border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:200;height:54px;
+}
+.nav-inner{
+  max-width:1100px;margin:0 auto;padding:0 20px;
+  height:100%;display:flex;align-items:center;gap:12px;
+}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px;flex-shrink:0}
+.logo-icon{
+  width:32px;height:32px;border-radius:8px;background:var(--blue);
+  display:flex;align-items:center;justify-content:center;
+  color:white;font-size:13px;font-weight:800;
+}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
+.logo-text span{color:var(--blue)}
+.nav-sep{width:1px;height:20px;background:var(--border);flex-shrink:0}
+.nav-menu{display:flex;list-style:none;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1}
+.nav-menu::-webkit-scrollbar{display:none}
+.nav-menu a{
+  padding:6px 10px;border-radius:6px;color:var(--gray);
+  text-decoration:none;font-size:13px;font-weight:500;
+  white-space:nowrap;transition:all .15s;
+}
+.nav-menu a:hover{background:#F3F4F6;color:var(--ink)}
+.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0}
+.nav-link{color:var(--gray);font-size:13px;font-weight:500;text-decoration:none;padding:6px 10px}
+.nav-link:hover{color:var(--ink)}
+.nav-btn{
+  padding:7px 16px;border-radius:7px;background:var(--blue);color:white;
+  font-size:13px;font-weight:600;text-decoration:none;transition:all .15s;
+}
+.nav-btn:hover{background:var(--blue-dk)}
+.hamburger{
+  display:none;background:none;border:none;cursor:pointer;
+  font-size:1.3rem;color:var(--ink);padding:4px;
+}
 
-    
+/* HERO */
+.hero{
+  background:var(--white);padding:52px 20px 44px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(37,99,235,.1) 1px,transparent 1px);
+  background-size:24px 24px;pointer-events:none;
+}
+.hero::after{
+  content:'';position:absolute;bottom:-60px;left:50%;transform:translateX(-50%);
+  width:800px;height:200px;background:var(--cream);border-radius:50%;
+  pointer-events:none;z-index:0;
+}
+.hero-content{position:relative;z-index:1}
+.hero h1{
+  font-size:clamp(1.8rem,5vw,2.8rem);font-weight:800;color:var(--ink);
+  letter-spacing:-.03em;line-height:1.1;margin-bottom:10px;
+}
+.hero-sub{font-size:clamp(1rem,3vw,1.2rem);color:var(--blue);font-weight:600;margin-bottom:28px}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--blue);color:white;padding:13px 28px;border-radius:8px;
+  font-size:15px;font-weight:700;text-decoration:none;
+  transition:all .2s;margin-bottom:12px;
+  box-shadow:0 4px 14px rgba(37,99,235,.35);
+}
+.hero-cta:hover{background:var(--blue-dk);transform:translateY(-1px)}
+.hero-or{
+  font-size:13px;color:#9CA3AF;
+  display:flex;align-items:center;justify-content:center;gap:6px;margin-top:4px;
+}
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+/* INFO BAR */
+.info-bar{
+  background:var(--white);border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);padding:12px 20px;
+}
+.info-bar-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;justify-content:center;align-items:center;
+  gap:32px;flex-wrap:wrap;
+}
+.info-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--gray);font-weight:500}
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+/* TOOLS */
+.tools-bg{background:var(--cream);padding:36px 20px 56px}
+.tools-inner{max-width:1100px;margin:0 auto}
+
+.cat-section{margin-bottom:32px}
+.cat-label{
+  font-size:11px;font-weight:700;color:var(--blue);
+  letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;
+}
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+
+.tool-card{
+  background:var(--white);border:1px solid rgba(0,0,0,.07);
+  border-radius:var(--r);padding:14px 16px;
+  cursor:pointer;text-decoration:none;color:inherit;
+  display:flex;gap:12px;align-items:flex-start;
+  transition:all .2s;box-shadow:0 1px 3px rgba(0,0,0,.06);
+}
+.tool-card:hover{
+  box-shadow:0 4px 12px rgba(0,0,0,.1);
+  transform:translateY(-1px);border-color:var(--blue);
+}
+.tool-icon-wrap{
+  width:36px;height:36px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;flex-shrink:0;
+}
+.tool-card h3{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px}
+.tool-card p{font-size:11.5px;color:var(--gray);line-height:1.4}
+.tool-badge{
+  display:inline-block;margin-top:4px;font-size:9px;font-weight:700;
+  padding:2px 7px;border-radius:100px;text-transform:uppercase;
+  letter-spacing:.04em;border:1px solid;
+}
+.bf{background:var(--green-lt);color:var(--green);border-color:rgba(22,163,74,.2)}
+.bp{background:var(--orange-lt);color:var(--orange);border-color:rgba(234,88,12,.2)}
+.bn{background:var(--purple-lt);color:var(--purple);border-color:rgba(124,58,237,.2)}
+
+.ib-blue{background:#DBEAFE}.ib-red{background:#FFE4E6}.ib-green{background:#DCFCE7}
+.ib-purple{background:#EDE9FE}.ib-orange{background:#FFEDD5}.ib-teal{background:#CCFBF1}
+.ib-yellow{background:#FEF9C3}.ib-pink{background:#FCE7F3}.ib-indigo{background:#E0E7FF}
+
+/* PRICING */
+.pricing-section{background:var(--white);padding:56px 20px;border-top:1px solid var(--border)}
+.pricing-inner{max-width:1100px;margin:0 auto}
+.sec-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
+.sec-title{font-size:clamp(1.5rem,3vw,2rem);font-weight:800;letter-spacing:-.03em;margin-bottom:6px}
+.sec-sub{color:var(--gray);margin-bottom:36px}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:860px}
+.pc{border:1.5px solid var(--border);border-radius:12px;padding:26px 22px;position:relative;background:var(--white)}
+.pc.hot{background:var(--blue);border-color:var(--blue)}
+.pc-plan{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:14px}
+.pc.hot .pc-plan{color:rgba(255,255,255,.5)}
+.pc-price{font-size:2.2rem;font-weight:800;letter-spacing:-.04em;color:var(--ink);line-height:1}
+.pc.hot .pc-price{color:white}
+.pc-per{font-size:12px;color:var(--gray);margin-top:3px;margin-bottom:18px}
+.pc.hot .pc-per{color:rgba(255,255,255,.5)}
+.pc-feats{list-style:none;margin-bottom:22px}
+.pc-feats li{
+  padding:7px 0;border-bottom:1px solid var(--border);
+  font-size:12.5px;color:var(--gray);
+  display:flex;align-items:center;gap:8px;
+}
+.pc.hot .pc-feats li{border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.8)}
+.pc-feats li::before{content:'✓';color:var(--blue);font-weight:700;font-size:12px}
+.pc.hot .pc-feats li::before{color:rgba(255,255,255,.9)}
+.pc-btn{
+  width:100%;padding:11px;border-radius:8px;font-size:13px;font-weight:600;
+  cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;
+  border:1.5px solid var(--border);background:var(--white);color:var(--ink);
+}
+.pc-btn:hover{border-color:var(--blue);color:var(--blue)}
+.pc.hot .pc-btn{background:white;color:var(--blue);border-color:white}
+.pop-tag{
+  position:absolute;top:-11px;left:50%;transform:translateX(-50%);
+  background:var(--orange);color:white;font-size:10px;font-weight:700;
+  padding:3px 12px;border-radius:100px;white-space:nowrap;
+  letter-spacing:.04em;text-transform:uppercase;
+}
+
+/* FOOTER */
+footer{background:#1F2937;padding:36px 20px 20px}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:28px}
+.f-logo{font-size:15px;font-weight:700;color:white;margin-bottom:8px}
+.f-logo span{color:var(--blue)}
+.f-desc{color:rgba(255,255,255,.35);font-size:12px;line-height:1.6}
+.fc h4{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+.fc ul{list-style:none}
+.fc li{margin-bottom:8px}
+.fc a{color:rgba(255,255,255,.4);text-decoration:none;font-size:12px;transition:color .15s}
+.fc a:hover{color:white}
+.f-bottom{
+  border-top:1px solid rgba(255,255,255,.08);padding-top:16px;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+  color:rgba(255,255,255,.2);font-size:11px;
+}
+
+@media(max-width:900px){
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .pricing-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .nav-menu{display:none}
+  .nav-menu.show{display:flex;flex-direction:column;position:absolute;top:54px;left:0;right:0;background:white;border-bottom:1px solid var(--border);padding:8px;z-index:300}
+  .hamburger{display:block}
+}
+@media(max-width:560px){
+  .cat-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .nav-right .nav-link{display:none}
+}
+</style>
 </head>
-
 <body>
 
-<header>
-
-    <div class="logo">
-        🚀 <span>EkTools</span>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/">
+      <div class="logo-icon">EZ</div>
+      <span class="logo-text">Ek<span>Zapp</span></span>
+    </a>
+    <div class="nav-sep"></div>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="/">Home</a></li>
+      <li><a href="/unlock-pdf">Unlock PDF</a></li>
+      <li><a href="/merge-pdf">Merge PDF</a></li>
+      <li><a href="/split-pdf">Split PDF</a></li>
+      <li><a href="/compress-pdf">Compress PDF</a></li>
+      <li><a href="/image">Image Tools</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+    <div class="nav-right">
+      <a class="nav-link" href="#pricing">Pricing</a>
+      <button class="hamburger" id="hamburger">☰</button>
     </div>
+  </div>
+</nav>
 
-    <div class="menu-toggle" id="menu-toggle">
-        ☰
-    </div>
-
-    <nav id="nav-menu">
-        <a href="/">Home</a>
-        <a href="/unlock-pdf">Unlock PDF</a>
-        <a href="/merge-pdf">Merge PDF</a>
-        <a href="/split-pdf">Split PDF</a>
-        <a href="/compress-pdf">Compress PDF</a>
-        <a href="/image">Image Tools</a>
-        <a href="/about">About</a>
-    </nav>
-
-</header>
-
+<!-- HERO -->
 <section class="hero">
-
-    <a href="/unlock-pdf" class="btn">
-        🔓 Unlock PDF
+  <div class="hero-content">
+    <h1>We help with all your file tasks</h1>
+    <p class="hero-sub">Every tool you need, all in one place</p>
+    <a class="hero-cta" href="/unlock-pdf">
+      Edit a PDF document - it's free ›
     </a>
-
-    <a href="/merge-pdf" class="btn">
-        📄 Merge PDF
-    </a>
-
-    <a href="/split-pdf" class="btn">
-        ✂️ Split PDF
-    </a>
-
-    <a href="/compress-pdf" class="btn">
-        🗜️ Compress PDF
-    </a>
-
-    <a href="/image" class="btn">
-        🖼️ Image to PDF
-    </a>
-
+    <p class="hero-or">or choose one of our tools below ↓</p>
+  </div>
 </section>
-<section class="tools">
 
-    <h2 class="section-title">Popular Tools</h2>
+<!-- INFO BAR -->
+<div class="info-bar">
+  <div class="info-bar-inner">
+    <div class="info-item">🔒 SSL Encrypted</div>
+    <div class="info-item">🗑️ Files auto-deleted</div>
+    <div class="info-item">⚡ Instant processing</div>
+    <div class="info-item">📵 No signup needed</div>
+    <div class="info-item">🌐 Works everywhere</div>
+  </div>
+</div>
 
-    <div class="cards">
+<!-- TOOLS -->
+<div class="tools-bg">
+  <div class="tools-inner">
 
-        <a href="/unlock-pdf" class="card-link">
-            <div class="card">
-                <div class="icon">🔓</div>
-                <div>
-                    <h3>Unlock PDF</h3>
-                    <p>Remove password from PDF files instantly.</p>
-                </div>
-            </div>
+    <div class="cat-section">
+      <div class="cat-label">Most Popular</div>
+      <div class="cat-grid">
+        <a class="tool-card" href="/unlock-pdf">
+          <div class="tool-icon-wrap ib-orange">🔓</div>
+          <div>
+            <h3>Unlock PDF</h3>
+            <p>Remove password from PDF files instantly.</p>
+            <span class="tool-badge bf">FREE</span>
+          </div>
         </a>
-
-        <a href="/merge-pdf" class="card-link">
-            <div class="card">
-                <div class="icon">📄</div>
-                <div>
-                    <h3>Merge PDF</h3>
-                    <p>Combine multiple PDFs into one document.</p>
-                </div>
-            </div>
+        <a class="tool-card" href="/merge-pdf">
+          <div class="tool-icon-wrap ib-green">🔗</div>
+          <div>
+            <h3>Merge PDF</h3>
+            <p>Combine multiple PDFs into one document.</p>
+            <span class="tool-badge bf">FREE</span>
+          </div>
         </a>
-
-        <a href="/split-pdf" class="card-link">
-            <div class="card">
-                <div class="icon">✂️</div>
-                <div>
-                    <h3>Split PDF</h3>
-                    <p>Extract selected pages from PDF.</p>
-                </div>
-            </div>
+        <a class="tool-card" href="/split-pdf">
+          <div class="tool-icon-wrap ib-red">✂️</div>
+          <div>
+            <h3>Split PDF</h3>
+            <p>Extract selected pages from your PDF.</p>
+            <span class="tool-badge bf">FREE</span>
+          </div>
         </a>
-
-        <a href="/compress-pdf" class="card-link">
-            <div class="card">
-                <div class="icon">🗜️</div>
-                <div>
-                    <h3>Compress PDF</h3>
-                    <p>Reduce PDF size while keeping quality.</p>
-                </div>
-            </div>
+        <a class="tool-card" href="/compress-pdf">
+          <div class="tool-icon-wrap ib-blue">⚡</div>
+          <div>
+            <h3>Compress PDF</h3>
+            <p>Reduce PDF size while keeping quality.</p>
+            <span class="tool-badge bf">FREE</span>
+          </div>
         </a>
-
+        <a class="tool-card" href="/image">
+          <div class="tool-icon-wrap ib-purple">🖼️</div>
+          <div>
+            <h3>Image to PDF</h3>
+            <p>Convert JPG/PNG images to PDF instantly.</p>
+            <span class="tool-badge bf">FREE</span>
+          </div>
+        </a>
+        <a class="tool-card" href="/merge-pdf">
+          <div class="tool-icon-wrap ib-teal">📝</div>
+          <div>
+            <h3>PDF Editor</h3>
+            <p>Edit, fill and sign PDF documents online.</p>
+            <span class="tool-badge bf">FREE</span>
+          </div>
+        </a>
+      </div>
     </div>
 
+    <div class="cat-section">
+      <div class="cat-label">PDF Tools</div>
+      <div class="cat-grid">
+        <a class="tool-card" href="/merge-pdf">
+          <div class="tool-icon-wrap ib-green">🔗</div>
+          <div>
+            <h3>Merge PDF</h3>
+            <p>Combine multiple PDFs and images into one.</p>
+            <span class="tool-badge bf">FREE</span>
+          </div>
+        </a>
+        <a class="tool-card" href="/split-pdf">
+          <div class="tool-icon-wrap ib-red">✂️</div>
+          <div>
+            <h3>Split PDF</h3>
+            <p>Split by page range or extract every page.</p>
+            <span class="tool-badge bf">FREE</span>
+          </div>
+        </a>
+        <a class="tool-card" href="/compress-pdf">
+          <div class="tool-icon-wrap ib-orange">⚡</div>
+          <div>
+            <h3>Compress PDF</h3>
+            <p>Reduce file size without losing quality.</p>
+            <span class="tool-badge bf">FREE</span>
+          </div>
+        </a>
+        <a class="tool-card" href="/unlock-pdf">
+          <div class="tool-icon-wrap ib-blue">🔓</div>
+          <div>
+            <h3>Unlock PDF</h3>
+            <p>Remove password protection from PDF.</p>
+            <span class="tool-badge bf">FREE</span>
+          </div>
+        </a>
+        <a class="tool-card" href="/split-pdf">
+          <div class="tool-icon-wrap ib-indigo">📑</div>
+          <div>
+            <h3>Extract Pages</h3>
+            <p>Get only the pages you need from PDF.</p>
+            <span class="tool-badge bf">FREE</span>
+          </div>
+        </a>
+        <a class="tool-card" href="/image">
+          <div class="tool-icon-wrap ib-pink">📸</div>
+          <div>
+            <h3>Image to PDF</h3>
+            <p>Turn images into PDF documents.</p>
+            <span class="tool-badge bf">FREE</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="cat-section">
+      <div class="cat-label">Calculators</div>
+      <div class="cat-grid">
+        <a class="tool-card" href="/calculators/age">
+          <div class="tool-icon-wrap ib-yellow">🎂</div>
+          <div>
+            <h3>Age Calculator</h3>
+            <p>Calculate exact age from date of birth.</p>
+            <span class="tool-badge bf">FREE</span>
+          </div>
+        </a>
+        <a class="tool-card" href="/calculators/bmi">
+          <div class="tool-icon-wrap ib-green">⚖️</div>
+          <div>
+            <h3>BMI Calculator</h3>
+            <p>Calculate your Body Mass Index.</p>
+            <span class="tool-badge bf">FREE</span>
+          </div>
+        </a>
+        <a class="tool-card" href="/calculators/gst">
+          <div class="tool-icon-wrap ib-orange">💰</div>
+          <div>
+            <h3>GST Calculator</h3>
+            <p>Calculate GST amount for any price.</p>
+            <span class="tool-badge bf">FREE</span>
+          </div>
+        </a>
+        <a class="tool-card" href="/calculators/emi">
+          <div class="tool-icon-wrap ib-blue">🏦</div>
+          <div>
+            <h3>EMI Calculator</h3>
+            <p>Find your monthly loan EMI amount.</p>
+            <span class="tool-badge bf">FREE</span>
+          </div>
+        </a>
+        <a class="tool-card" href="/calculators/percentage">
+          <div class="tool-icon-wrap ib-pink">💯</div>
+          <div>
+            <h3>Percentage Calc</h3>
+            <p>Calculate any percentage instantly.</p>
+            <span class="tool-badge bf">FREE</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="cat-section">
+      <div class="cat-label">Text & Other Tools</div>
+      <div class="cat-grid">
+        <a class="tool-card" href="/tools/word-counter">
+          <div class="tool-icon-wrap ib-blue">🔢</div>
+          <div>
+            <h3>Word Counter</h3>
+            <p>Count words, characters and sentences.</p>
+            <span class="tool-badge bf">FREE</span>
+          </div>
+        </a>
+        <a class="tool-card" href="/tools/case-converter">
+          <div class="tool-icon-wrap ib-purple">🔡</div>
+          <div>
+            <h3>Case Converter</h3>
+            <p>Switch to UPPER, lower or Title Case.</p>
+            <span class="tool-badge bf">FREE</span>
+          </div>
+        </a>
+        <a class="tool-card" href="/tools/mb-converter">
+          <div class="tool-icon-wrap ib-teal">💾</div>
+          <div>
+            <h3>MB/GB Converter</h3>
+            <p>Convert between KB, MB, GB, TB.</p>
+            <span class="tool-badge bf">FREE</span>
+          </div>
+        </a>
+        <a class="tool-card" href="/tools/lorem">
+          <div class="tool-icon-wrap ib-orange">📋</div>
+          <div>
+            <h3>Lorem Generator</h3>
+            <p>Generate dummy placeholder text.</p>
+            <span class="tool-badge bf">FREE</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="pricing-inner">
+    <div class="sec-label">Pricing</div>
+    <h2 class="sec-title">Simple, honest pricing</h2>
+    <p class="sec-sub">Start free. Upgrade when you need more.</p>
+    <div class="pricing-grid">
+      <div class="pc">
+        <div class="pc-plan">Free</div>
+        <div class="pc-price">₹0</div>
+        <div class="pc-per">forever free</div>
+        <ul class="pc-feats">
+          <li>All tools included</li>
+          <li>3 tasks per hour</li>
+          <li>Up to 50 MB per file</li>
+          <li>Files deleted in 2 hours</li>
+        </ul>
+        <button class="pc-btn">Get Started Free</button>
+      </div>
+      <div class="pc hot">
+        <div class="pop-tag">Most Popular</div>
+        <div class="pc-plan">Pro</div>
+        <div class="pc-price">₹99</div>
+        <div class="pc-per">per month</div>
+        <ul class="pc-feats">
+          <li>Unlimited tasks</li>
+          <li>Up to 500 MB per file</li>
+          <li>Priority speed</li>
+          <li>Batch processing</li>
+          <li>No ads</li>
+        </ul>
+        <button class="pc-btn">Start Pro →</button>
+      </div>
+      <div class="pc">
+        <div class="pc-plan">Business</div>
+        <div class="pc-price">₹299</div>
+        <div class="pc-per">per month</div>
+        <ul class="pc-feats">
+          <li>Everything in Pro</li>
+          <li>5 team members</li>
+          <li>API access</li>
+          <li>Priority support</li>
+        </ul>
+        <button class="pc-btn">Get Business</button>
+      </div>
+    </div>
+  </div>
 </section>
+
+<!-- FOOTER -->
 <footer>
-
-    <p>© 2026 EkTools. All Rights Reserved.</p>
-
-    <a href="/privacy">Privacy Policy</a> |
-    <a href="/about">About</a> |
-    <a href="/terms">Terms & Conditions</a> |
-    <a href="/contact">Contact</a>
-
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="f-logo">Ek<span>Zapp</span></div>
+        <p class="f-desc">Fast, free and secure PDF and file tools. No account required. Files deleted after 2 hours.</p>
+      </div>
+      <div class="fc">
+        <h4>PDF Tools</h4>
+        <ul>
+          <li><a href="/merge-pdf">Merge PDF</a></li>
+          <li><a href="/split-pdf">Split PDF</a></li>
+          <li><a href="/compress-pdf">Compress PDF</a></li>
+          <li><a href="/unlock-pdf">Unlock PDF</a></li>
+          <li><a href="/image">Image to PDF</a></li>
+        </ul>
+      </div>
+      <div class="fc">
+        <h4>Calculators</h4>
+        <ul>
+          <li><a href="/calculators/age">Age Calculator</a></li>
+          <li><a href="/calculators/gst">GST Calculator</a></li>
+          <li><a href="/calculators/bmi">BMI Calculator</a></li>
+          <li><a href="/calculators/emi">EMI Calculator</a></li>
+        </ul>
+      </div>
+      <div class="fc">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/terms">Terms of Use</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 EkZapp.com — All rights reserved</span>
+      <span>Free service for files up to 50 MB</span>
+    </div>
+  </div>
 </footer>
 
 <script>
-
-const menu = document.getElementById("menu-toggle");
-const nav = document.getElementById("nav-menu");
-
-menu.addEventListener("click", function () {
-    nav.classList.toggle("show");
-});
-
+const hamburger=document.getElementById('hamburger');
+const navMenu=document.getElementById('navMenu');
+hamburger.addEventListener('click',()=>navMenu.classList.toggle('show'));
 </script>
 
 </body>
