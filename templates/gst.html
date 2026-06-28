@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GST Calculator — EkZapp</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--cream:#F0F5FF}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
+.logo-text span{color:var(--blue)}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.back:hover{border-color:var(--blue);color:var(--blue)}
+.container{max-width:560px;margin:40px auto;padding:0 20px}
+.tool-header{text-align:center;margin-bottom:32px}
+.tool-icon{font-size:2.5rem;margin-bottom:12px}
+.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.tool-header p{color:var(--gray);font-size:14px}
+.card{background:white;border:1px solid var(--border);border-radius:12px;padding:28px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.field input,.field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none;transition:border .15s;background:white}
+.field input:focus,.field select:focus{border-color:var(--blue)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn{width:100%;padding:12px;background:var(--blue);color:white;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;margin-top:4px;margin-bottom:16px}
+.btn:hover{background:var(--blue-dk)}
+.result{background:var(--cream);border:1px solid #BFDBFE;border-radius:8px;padding:16px;display:none}
+.result.show{display:block}
+.result-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #BFDBFE;font-size:14px}
+.result-row:last-child{border:none;font-weight:700;font-size:15px;color:var(--blue)}
+.result-row span:last-child{font-weight:600}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <a class="back" href="/">← All Tools</a>
+  </div>
+</nav>
+<div class="container">
+  <div class="tool-header">
+    <div class="tool-icon">💰</div>
+    <h1>GST Calculator</h1>
+    <p>Calculate GST amount for any price instantly</p>
+  </div>
+  <div class="card">
+    <div class="field">
+      <label>Amount (₹)</label>
+      <input type="number" id="amt" placeholder="Enter amount" min="0">
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>GST Rate</label>
+        <select id="rate">
+          <option value="5">5%</option>
+          <option value="12">12%</option>
+          <option value="18" selected>18%</option>
+          <option value="28">28%</option>
+          <option value="custom">Custom</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Type</label>
+        <select id="type">
+          <option value="excl">Exclusive (Add GST)</option>
+          <option value="incl">Inclusive (Extract GST)</option>
+        </select>
+      </div>
+    </div>
+    <div class="field" id="customField" style="display:none">
+      <label>Custom Rate (%)</label>
+      <input type="number" id="customRate" placeholder="Enter rate">
+    </div>
+    <button class="btn" onclick="calcGst()">Calculate GST</button>
+    <div class="result" id="result">
+      <div class="result-row"><span>Original Amount</span><span id="rBase"></span></div>
+      <div class="result-row"><span id="rGstLabel">GST Amount</span><span id="rGst"></span></div>
+      <div class="result-row"><span>Total Amount</span><span id="rTotal"></span></div>
+    </div>
+  </div>
+</div>
+<script>
+document.getElementById('rate').addEventListener('change',function(){
+  document.getElementById('customField').style.display=this.value==='custom'?'block':'none';
+});
+function calcGst(){
+  const amt=parseFloat(document.getElementById('amt').value);
+  const rateEl=document.getElementById('rate');
+  const rate=rateEl.value==='custom'?parseFloat(document.getElementById('customRate').value):parseFloat(rateEl.value);
+  const type=document.getElementById('type').value;
+  if(!amt||!rate){alert('Please enter amount and rate');return;}
+  let base,gst,total;
+  if(type==='excl'){base=amt;gst=amt*rate/100;total=amt+gst;}
+  else{total=amt;base=amt*100/(100+rate);gst=amt-base;}
+  document.getElementById('rBase').textContent='₹'+base.toFixed(2);
+  document.getElementById('rGstLabel').textContent=`GST (${rate}%)`;
+  document.getElementById('rGst').textContent='₹'+gst.toFixed(2);
+  document.getElementById('rTotal').textContent='₹'+total.toFixed(2);
+  document.getElementById('result').classList.add('show');
+}
+</script>
+</body>
+</html>

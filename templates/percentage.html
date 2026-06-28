@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Percentage Calculator — EkZapp</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--cream:#F0F5FF}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
+.logo-text span{color:var(--blue)}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.back:hover{border-color:var(--blue);color:var(--blue)}
+.container{max-width:560px;margin:40px auto;padding:0 20px}
+.tool-header{text-align:center;margin-bottom:32px}
+.tool-icon{font-size:2.5rem;margin-bottom:12px}
+.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.tool-header p{color:var(--gray);font-size:14px}
+.card{background:white;border:1px solid var(--border);border-radius:12px;padding:28px;margin-bottom:16px}
+.card h3{font-size:14px;font-weight:600;margin-bottom:14px;color:var(--gray)}
+.field-inline{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.field-inline input{flex:1;min-width:80px;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none;transition:border .15s}
+.field-inline input:focus{border-color:var(--blue)}
+.field-inline span{font-size:14px;color:var(--gray);white-space:nowrap}
+.btn-sm{padding:9px 20px;background:var(--blue);color:white;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap}
+.btn-sm:hover{background:var(--blue-dk)}
+.ans{background:var(--cream);border:1px solid #BFDBFE;border-radius:6px;padding:10px 14px;font-size:14px;font-weight:600;color:#1E40AF;display:none;margin-top:10px}
+.ans.show{display:block}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <a class="back" href="/">← All Tools</a>
+  </div>
+</nav>
+<div class="container">
+  <div class="tool-header">
+    <div class="tool-icon">💯</div>
+    <h1>Percentage Calculator</h1>
+    <p>Calculate any percentage in seconds</p>
+  </div>
+
+  <div class="card">
+    <h3>What is X% of Y?</h3>
+    <div class="field-inline">
+      <input type="number" id="p1x" placeholder="X">
+      <span>% of</span>
+      <input type="number" id="p1y" placeholder="Y">
+      <span>=</span>
+      <button class="btn-sm" onclick="calc1()">Calculate</button>
+    </div>
+    <div class="ans" id="ans1"></div>
+  </div>
+
+  <div class="card">
+    <h3>X is what % of Y?</h3>
+    <div class="field-inline">
+      <input type="number" id="p2x" placeholder="X">
+      <span>is what % of</span>
+      <input type="number" id="p2y" placeholder="Y">
+      <button class="btn-sm" onclick="calc2()">Calculate</button>
+    </div>
+    <div class="ans" id="ans2"></div>
+  </div>
+
+  <div class="card">
+    <h3>Percentage change from X to Y</h3>
+    <div class="field-inline">
+      <input type="number" id="p3x" placeholder="From">
+      <span>to</span>
+      <input type="number" id="p3y" placeholder="To">
+      <button class="btn-sm" onclick="calc3()">Calculate</button>
+    </div>
+    <div class="ans" id="ans3"></div>
+  </div>
+</div>
+<script>
+function calc1(){
+  const x=parseFloat(document.getElementById('p1x').value),y=parseFloat(document.getElementById('p1y').value);
+  if(isNaN(x)||isNaN(y)){alert('Please enter values');return;}
+  const r=(x/100)*y;
+  const el=document.getElementById('ans1');
+  el.textContent=`${x}% of ${y} = ${r.toFixed(2)}`;
+  el.classList.add('show');
+}
+function calc2(){
+  const x=parseFloat(document.getElementById('p2x').value),y=parseFloat(document.getElementById('p2y').value);
+  if(isNaN(x)||isNaN(y)||y===0){alert('Please enter valid values');return;}
+  const r=(x/y)*100;
+  const el=document.getElementById('ans2');
+  el.textContent=`${x} is ${r.toFixed(2)}% of ${y}`;
+  el.classList.add('show');
+}
+function calc3(){
+  const x=parseFloat(document.getElementById('p3x').value),y=parseFloat(document.getElementById('p3y').value);
+  if(isNaN(x)||isNaN(y)||x===0){alert('Please enter valid values');return;}
+  const r=((y-x)/Math.abs(x))*100;
+  const el=document.getElementById('ans3');
+  el.textContent=`${r>=0?'Increase':'Decrease'} of ${Math.abs(r).toFixed(2)}%`;
+  el.classList.add('show');
+}
+</script>
+</body>
+</html>

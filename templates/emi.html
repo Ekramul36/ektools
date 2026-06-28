@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EMI Calculator — EkZapp</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--cream:#F0F5FF}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
+.logo-text span{color:var(--blue)}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.back:hover{border-color:var(--blue);color:var(--blue)}
+.container{max-width:560px;margin:40px auto;padding:0 20px}
+.tool-header{text-align:center;margin-bottom:32px}
+.tool-icon{font-size:2.5rem;margin-bottom:12px}
+.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.tool-header p{color:var(--gray);font-size:14px}
+.card{background:white;border:1px solid var(--border);border-radius:12px;padding:28px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.field input{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none;transition:border .15s}
+.field input:focus{border-color:var(--blue)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn{width:100%;padding:12px;background:var(--blue);color:white;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;margin-bottom:16px}
+.btn:hover{background:var(--blue-dk)}
+.result{background:var(--cream);border:1px solid #BFDBFE;border-radius:8px;padding:16px;display:none}
+.result.show{display:block}
+.emi-big{text-align:center;margin-bottom:14px}
+.emi-big strong{font-size:2.5rem;font-weight:800;color:var(--blue);display:block}
+.emi-big span{font-size:13px;color:var(--gray)}
+.result-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #BFDBFE;font-size:13px}
+.result-row:last-child{border:none}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <a class="back" href="/">← All Tools</a>
+  </div>
+</nav>
+<div class="container">
+  <div class="tool-header">
+    <div class="tool-icon">🏦</div>
+    <h1>EMI Calculator</h1>
+    <p>Calculate your monthly loan EMI amount</p>
+  </div>
+  <div class="card">
+    <div class="field">
+      <label>Loan Amount (₹)</label>
+      <input type="number" id="principal" placeholder="e.g. 500000">
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Interest Rate (% per year)</label>
+        <input type="number" id="rate" placeholder="e.g. 8.5" step="0.1">
+      </div>
+      <div class="field">
+        <label>Loan Tenure (years)</label>
+        <input type="number" id="tenure" placeholder="e.g. 5">
+      </div>
+    </div>
+    <button class="btn" onclick="calcEmi()">Calculate EMI</button>
+    <div class="result" id="result">
+      <div class="emi-big">
+        <strong id="emiAmt"></strong>
+        <span>Monthly EMI</span>
+      </div>
+      <div class="result-row"><span>Principal Amount</span><span id="rPrincipal"></span></div>
+      <div class="result-row"><span>Total Interest</span><span id="rInterest"></span></div>
+      <div class="result-row"><span>Total Payment</span><span id="rTotal"></span></div>
+    </div>
+  </div>
+</div>
+<script>
+function calcEmi(){
+  const p=parseFloat(document.getElementById('principal').value);
+  const r=parseFloat(document.getElementById('rate').value)/12/100;
+  const n=parseFloat(document.getElementById('tenure').value)*12;
+  if(!p||!r||!n){alert('Please fill all fields');return;}
+  const emi=(p*r*Math.pow(1+r,n))/(Math.pow(1+r,n)-1);
+  const total=emi*n, interest=total-p;
+  document.getElementById('emiAmt').textContent='₹'+Math.round(emi).toLocaleString();
+  document.getElementById('rPrincipal').textContent='₹'+p.toLocaleString();
+  document.getElementById('rInterest').textContent='₹'+Math.round(interest).toLocaleString();
+  document.getElementById('rTotal').textContent='₹'+Math.round(total).toLocaleString();
+  document.getElementById('result').classList.add('show');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Converter — EkZapp</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--cream:#F0F5FF}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
+.logo-text span{color:var(--blue)}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.container{max-width:720px;margin:40px auto;padding:0 20px}
+.tool-header{text-align:center;margin-bottom:32px}
+.tool-icon{font-size:2.5rem;margin-bottom:12px}
+.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.tool-header p{color:var(--gray);font-size:14px}
+.card{background:white;border:1px solid var(--border);border-radius:12px;padding:24px}
+textarea{width:100%;height:160px;padding:14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;resize:vertical;outline:none;transition:border .15s;margin-bottom:14px}
+textarea:focus{border-color:var(--blue)}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.case-btn{padding:8px 16px;border-radius:7px;border:1.5px solid var(--border);background:var(--light);font-size:12.5px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s}
+.case-btn:hover,.case-btn.active{background:var(--blue);color:white;border-color:var(--blue)}
+.result-box{background:var(--cream);border:1px solid #BFDBFE;border-radius:8px;padding:14px;min-height:80px;font-size:14px;white-space:pre-wrap;word-break:break-all;display:none}
+.result-box.show{display:block}
+.copy-btn{margin-top:10px;padding:7px 18px;background:var(--blue);color:white;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <a class="back" href="/">← All Tools</a>
+  </div>
+</nav>
+<div class="container">
+  <div class="tool-header">
+    <div class="tool-icon">🔡</div>
+    <h1>Case Converter</h1>
+    <p>Convert text to UPPER, lower, Title or alternating case</p>
+  </div>
+  <div class="card">
+    <textarea id="input" placeholder="Type or paste your text here..."></textarea>
+    <div class="btns">
+      <button class="case-btn" onclick="convert('upper')">UPPERCASE</button>
+      <button class="case-btn" onclick="convert('lower')">lowercase</button>
+      <button class="case-btn" onclick="convert('title')">Title Case</button>
+      <button class="case-btn" onclick="convert('sentence')">Sentence case</button>
+      <button class="case-btn" onclick="convert('alt')">aLtErNaTe</button>
+    </div>
+    <div class="result-box" id="result"></div>
+    <button class="copy-btn" id="copyBtn" style="display:none" onclick="copyText()">Copy to Clipboard</button>
+  </div>
+</div>
+<script>
+let lastResult='';
+function convert(type){
+  const t=document.getElementById('input').value;
+  if(!t.trim()){alert('Please enter some text');return;}
+  let r='';
+  if(type==='upper')r=t.toUpperCase();
+  else if(type==='lower')r=t.toLowerCase();
+  else if(type==='title')r=t.replace(/\w\S*/g,w=>w.charAt(0).toUpperCase()+w.substr(1).toLowerCase());
+  else if(type==='sentence')r=t.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g,c=>c.toUpperCase());
+  else if(type==='alt')r=t.split('').map((c,i)=>i%2?c.toUpperCase():c.toLowerCase()).join('');
+  lastResult=r;
+  const el=document.getElementById('result');
+  el.textContent=r;
+  el.classList.add('show');
+  document.getElementById('copyBtn').style.display='inline-block';
+}
+function copyText(){
+  navigator.clipboard.writeText(lastResult).then(()=>{
+    document.getElementById('copyBtn').textContent='Copied!';
+    setTimeout(()=>document.getElementById('copyBtn').textContent='Copy to Clipboard',2000);
+  });
+}
+</script>
+</body>
+</html>

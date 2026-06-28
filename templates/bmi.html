@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BMI Calculator — EkZapp</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--cream:#F0F5FF}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
+.logo-text span{color:var(--blue)}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.back:hover{border-color:var(--blue);color:var(--blue)}
+.container{max-width:560px;margin:40px auto;padding:0 20px}
+.tool-header{text-align:center;margin-bottom:32px}
+.tool-icon{font-size:2.5rem;margin-bottom:12px}
+.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.tool-header p{color:var(--gray);font-size:14px}
+.card{background:white;border:1px solid var(--border);border-radius:12px;padding:28px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.field input{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none;transition:border .15s}
+.field input:focus{border-color:var(--blue)}
+.btn{width:100%;padding:12px;background:var(--blue);color:white;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;margin-bottom:16px}
+.btn:hover{background:var(--blue-dk)}
+.result{background:var(--cream);border:1px solid #BFDBFE;border-radius:8px;padding:20px;display:none;text-align:center}
+.result.show{display:block}
+.bmi-num{font-size:3rem;font-weight:800;color:var(--blue);line-height:1}
+.bmi-cat{font-size:1.1rem;font-weight:600;margin:8px 0}
+.bmi-scale{margin-top:14px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.scale-item{padding:8px 4px;border-radius:6px;font-size:11px;font-weight:600;text-align:center}
+.s1{background:#DBEAFE;color:#1E40AF}
+.s2{background:#DCFCE7;color:#166534}
+.s3{background:#FEF9C3;color:#854D0E}
+.s4{background:#FFE4E6;color:#9F1239}
+.scale-item.active{outline:2px solid var(--blue)}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <a class="back" href="/">← All Tools</a>
+  </div>
+</nav>
+<div class="container">
+  <div class="tool-header">
+    <div class="tool-icon">⚖️</div>
+    <h1>BMI Calculator</h1>
+    <p>Calculate your Body Mass Index instantly</p>
+  </div>
+  <div class="card">
+    <div class="field-row">
+      <div class="field">
+        <label>Weight (kg)</label>
+        <input type="number" id="weight" placeholder="e.g. 70" min="1">
+      </div>
+      <div class="field">
+        <label>Height (cm)</label>
+        <input type="number" id="height" placeholder="e.g. 170" min="1">
+      </div>
+    </div>
+    <button class="btn" onclick="calcBmi()">Calculate BMI</button>
+    <div class="result" id="result">
+      <div class="bmi-num" id="bmiNum">0</div>
+      <div class="bmi-cat" id="bmiCat"></div>
+      <div class="bmi-scale">
+        <div class="scale-item s1" id="s1">Underweight<br>&lt;18.5</div>
+        <div class="scale-item s2" id="s2">Normal<br>18.5–24.9</div>
+        <div class="scale-item s3" id="s3">Overweight<br>25–29.9</div>
+        <div class="scale-item s4" id="s4">Obese<br>&gt;30</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+function calcBmi(){
+  const w=parseFloat(document.getElementById('weight').value);
+  const h=parseFloat(document.getElementById('height').value)/100;
+  if(!w||!h||w<=0||h<=0){alert('Please enter valid weight and height');return;}
+  const bmi=(w/(h*h)).toFixed(1);
+  document.getElementById('bmiNum').textContent=bmi;
+  let cat='',sid='';
+  if(bmi<18.5){cat='Underweight 🔵';sid='s1';}
+  else if(bmi<25){cat='Normal weight 🟢';sid='s2';}
+  else if(bmi<30){cat='Overweight 🟡';sid='s3';}
+  else{cat='Obese 🔴';sid='s4';}
+  document.getElementById('bmiCat').textContent=cat;
+  ['s1','s2','s3','s4'].forEach(s=>document.getElementById(s).classList.remove('active'));
+  document.getElementById(sid).classList.add('active');
+  document.getElementById('result').classList.add('show');
+}
+</script>
+</body>
+</html>
