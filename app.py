@@ -761,7 +761,7 @@ def ocr_tool():
 def remove_background():
     if request.method == "POST":
         try:
-            2qJ63NFCUXfz8q5Sn7j2JDGP
+            '2qJ63NFCUXfz8q5Sn7j2JDGP'
             from PIL import Image as PILImage
             import io
 
