@@ -9,63 +9,202 @@
   gtag('js', new Date());
   gtag('config', 'G-VW5QLMV046');
 </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - EkTools</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — EkZapp</title>
+<meta name="description" content="Contact EkZapp — we'd love to hear from you.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--green:#16A34A;--red:#DC2626}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
+.logo-text span{color:var(--blue)}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.back:hover{border-color:var(--blue);color:var(--blue)}
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+.container{max-width:680px;margin:48px auto;padding:0 20px 60px}
+
+.hero{text-align:center;margin-bottom:36px}
+.hero-icon{width:64px;height:64px;border-radius:16px;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
+.hero h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.hero p{color:var(--gray);font-size:14px;line-height:1.6}
+
+/* Contact info cards */
+.contact-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px}
+.contact-card{background:white;border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.contact-card .icon{font-size:1.8rem;margin-bottom:10px}
+.contact-card h3{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.contact-card a{font-size:13px;color:var(--blue);text-decoration:none;word-break:break-all}
+.contact-card a:hover{text-decoration:underline}
+.contact-card p{font-size:12px;color:var(--gray);margin-top:4px}
+
+/* Form card */
+.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card h2{font-size:16px;font-weight:700;margin-bottom:20px;color:var(--ink)}
+
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field.full{grid-column:1/-1}
+.field label{font-size:13px;font-weight:600;color:var(--ink)}
+.field input,.field select,.field textarea{padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none;transition:border .15s;background:white;color:var(--ink)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue)}
+.field textarea{resize:vertical;min-height:120px}
+
+.btn{width:100%;padding:13px;background:var(--blue);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:4px}
+.btn:hover{background:var(--blue-dk)}
+
+.success-box{background:#F0FDF4;border:1px solid #BBF7D0;border-radius:10px;padding:16px 20px;color:var(--green);font-size:14px;font-weight:500;text-align:center;margin-bottom:20px;display:none}
+.success-box.show{display:block}
+
+/* FAQ */
+.faq-card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-top:20px}
+.faq-card h2{font-size:16px;font-weight:700;margin-bottom:16px}
+.faq-item{border-bottom:1px solid var(--border);padding:12px 0}
+.faq-item:last-child{border-bottom:none;padding-bottom:0}
+.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.faq-a{font-size:13px;color:var(--gray);line-height:1.6}
+
+footer{text-align:center;margin-top:40px;color:var(--gray);font-size:13px}
+footer a{color:var(--blue);text-decoration:none;margin:0 8px}
+
+@media(max-width:500px){.contact-cards{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <a class="back" href="/">← All Tools</a>
+  </div>
+</nav>
 
-<header>
-    <div class="logo">
-        <h2>🚀 EkTools</h2>
+<div class="container">
+
+  <div class="hero">
+    <div class="hero-icon">✉️</div>
+    <h1>Contact Us</h1>
+    <p>Have a question, suggestion, or found a bug? We'd love to hear from you!</p>
+  </div>
+
+  <!-- Contact Info -->
+  <div class="contact-cards">
+    <div class="contact-card">
+      <div class="icon">📧</div>
+      <h3>Email Us</h3>
+      <a href="mailto:ekramul24k@gmail.com">ekramul24k@gmail.com</a>
+      <p>We reply within 24 hours</p>
+    </div>
+    <div class="contact-card">
+      <div class="icon">⏰</div>
+      <h3>Response Time</h3>
+      <a>Within 24 Hours</a>
+      <p>Mon – Sat, 9AM – 9PM IST</p>
+    </div>
+  </div>
+
+  <!-- Contact Form -->
+  <div class="card">
+    <h2>💬 Send us a Message</h2>
+
+    <div class="success-box" id="successBox">
+      ✅ Message sent successfully! We'll get back to you within 24 hours.
     </div>
 
-    <nav>
-        <a href="/">Home</a>
-        <a href="/unlock-pdf">Unlock PDF</a>
-        <a href="/merge-pdf">Merge PDF</a>
-        <a href="/split-pdf">Split PDF</a>
-        <a href="/compress-pdf">Compress PDF</a>
-        <a href="/about">About</a>
-        <a href="/privacy">Privacy Policy</a>
-    </nav>
-</header>
-
-<section class="tools">
-
-    <div class="card">
-
-        <h1>Contact Us</h1>
-
-        <p>
-            If you have any questions, suggestions or find any bugs,
-            feel free to contact us.
-        </p>
-
-        <br>
-
-        <h3>Email</h3>
-<p>
-    <a href="mailto:ekramul25k@gmail.com">ekramul25k@gmail.com</a>
-</p>
-        <br>
-
-        <h3>Website</h3>
-        <p>EkTools</p>
-
-        <br>
-
-        <a href="/" class="btn">🏠 Back to Home</a>
-
+    <div class="form-grid">
+      <div class="field">
+        <label>Your Name</label>
+        <input type="text" id="nameInput" placeholder="John Doe">
+      </div>
+      <div class="field">
+        <label>Your Email</label>
+        <input type="email" id="emailInput" placeholder="you@example.com">
+      </div>
+      <div class="field full">
+        <label>Subject</label>
+        <select id="subjectInput">
+          <option value="">Select a topic</option>
+          <option value="Bug Report">🐛 Bug Report</option>
+          <option value="Feature Request">✨ Feature Request</option>
+          <option value="Tool Not Working">⚠️ Tool Not Working</option>
+          <option value="General Question">❓ General Question</option>
+          <option value="Other">💬 Other</option>
+        </select>
+      </div>
+      <div class="field full">
+        <label>Message</label>
+        <textarea id="messageInput" placeholder="Describe your issue or suggestion in detail..."></textarea>
+      </div>
     </div>
 
-</section>
+    <button class="btn" onclick="sendMessage()">
+      📨 Send Message
+    </button>
+  </div>
 
-<footer>
-    <p>© 2026 EkTools. All Rights Reserved.</p>
-</footer>
+  <!-- FAQ -->
+  <div class="faq-card">
+    <h2>❓ Common Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">Are all tools really free?</div>
+      <div class="faq-a">Yes! All tools on EkZapp are 100% free to use with no signup required.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is my uploaded file safe?</div>
+      <div class="faq-a">Absolutely. Files are processed securely and deleted automatically after download. We never store or share your files.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">A tool is not working — what should I do?</div>
+      <div class="faq-a">Try refreshing the page. If the issue persists, contact us using the form above with details about the tool and error message.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I request a new tool?</div>
+      <div class="faq-a">Yes! We love suggestions. Use the contact form above and select "Feature Request" as the subject.</div>
+    </div>
+  </div>
 
+  <footer>
+    <p>© 2026 EkZapp. All Rights Reserved.</p>
+    <p style="margin-top:8px">
+      <a href="/about">About</a>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms of Service</a>
+      <a href="/contact">Contact</a>
+    </p>
+  </footer>
+
+</div>
+
+<script>
+function sendMessage() {
+  const name    = document.getElementById('nameInput').value.trim();
+  const email   = document.getElementById('emailInput').value.trim();
+  const subject = document.getElementById('subjectInput').value;
+  const message = document.getElementById('messageInput').value.trim();
+
+  if (!name) { alert('Please enter your name.'); return; }
+  if (!email || !email.includes('@')) { alert('Please enter a valid email.'); return; }
+  if (!subject) { alert('Please select a subject.'); return; }
+  if (!message) { alert('Please write a message.'); return; }
+
+  // Open mail client with prefilled data
+  const mailtoLink = `mailto:ekramul24k@gmail.com`
+    + `?subject=${encodeURIComponent('[EkZapp] ' + subject + ' — from ' + name)}`
+    + `&body=${encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message)}`;
+
+  window.location.href = mailtoLink;
+
+  // Show success message
+  document.getElementById('successBox').classList.add('show');
+  document.getElementById('nameInput').value = '';
+  document.getElementById('emailInput').value = '';
+  document.getElementById('subjectInput').value = '';
+  document.getElementById('messageInput').value = '';
+}
+</script>
 </body>
 </html>

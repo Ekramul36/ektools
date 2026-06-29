@@ -9,68 +9,167 @@
   gtag('js', new Date());
   gtag('config', 'G-VW5QLMV046');
 </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - EkTools</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — EkZapp</title>
+<meta name="description" content="Learn about EkZapp — a free online tools platform for PDF, Image, and more.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
+.logo-text span{color:var(--blue)}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.back:hover{border-color:var(--blue);color:var(--blue)}
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+.container{max-width:760px;margin:48px auto;padding:0 20px 60px}
+
+/* Hero */
+.hero{text-align:center;margin-bottom:40px}
+.hero-icon{width:72px;height:72px;border-radius:20px;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;font-size:2.2rem;margin:0 auto 20px}
+.hero h1{font-size:2rem;font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+.hero p{color:var(--gray);font-size:15px;max-width:500px;margin:0 auto;line-height:1.6}
+
+/* Cards */
+.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:20px}
+.card h2{font-size:16px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px}
+.stat{background:white;border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.stat-num{font-size:1.8rem;font-weight:800;color:var(--blue);display:block}
+.stat-label{font-size:12px;color:var(--gray);margin-top:4px}
+
+/* Tools grid */
+.tools-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.tool-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;background:var(--light);font-size:13px;font-weight:500}
+.tool-item span:first-child{font-size:1.1rem}
+
+/* Values */
+.values{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.value-item{padding:16px;border-radius:10px;background:var(--light);border:1px solid var(--border)}
+.value-icon{font-size:1.4rem;margin-bottom:8px}
+.value-item h3{font-size:13px;font-weight:700;margin-bottom:4px}
+.value-item p{font-size:12px;color:var(--gray);line-height:1.5}
+
+/* CTA */
+.cta{text-align:center;background:linear-gradient(135deg,var(--blue),var(--blue-dk));border-radius:14px;padding:32px 20px;color:white}
+.cta h2{font-size:1.3rem;font-weight:800;margin-bottom:8px}
+.cta p{font-size:14px;opacity:.85;margin-bottom:20px}
+.cta a{display:inline-block;background:white;color:var(--blue);padding:12px 28px;border-radius:8px;font-weight:700;font-size:14px;text-decoration:none;transition:opacity .15s}
+.cta a:hover{opacity:.9}
+
+/* Footer */
+footer{text-align:center;margin-top:40px;color:var(--gray);font-size:13px}
+footer a{color:var(--blue);text-decoration:none;margin:0 8px}
+
+@media(max-width:500px){.stats{grid-template-columns:1fr 1fr}.values{grid-template-columns:1fr}.tools-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <a class="back" href="/">← All Tools</a>
+  </div>
+</nav>
 
-<header>
-    <div class="logo">
-        <h2>🚀 EkTools</h2>
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-icon">⚡</div>
+    <h1>About EkZapp</h1>
+    <p>A free, fast, and secure online tools platform — no signup, no software, just results.</p>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat"><span class="stat-num">30+</span><span class="stat-label">Free Tools</span></div>
+    <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Free Forever</span></div>
+    <div class="stat"><span class="stat-num">0</span><span class="stat-label">Signup Required</span></div>
+  </div>
+
+  <!-- Mission -->
+  <div class="card">
+    <h2>🎯 Our Mission</h2>
+    <p style="font-size:14px;color:var(--gray);line-height:1.7">EkZapp was built with one goal — to give everyone access to powerful online tools without any barriers. No registration, no installation, no hidden fees. Whether you need to work with PDFs, images, or calculations, EkZapp has you covered — fast and free.</p>
+  </div>
+
+  <!-- Tools -->
+  <div class="card">
+    <h2>🛠️ Available Tools</h2>
+    <div class="tools-grid">
+      <div class="tool-item"><span>🔓</span><span>Unlock PDF</span></div>
+      <div class="tool-item"><span>🔗</span><span>Merge PDF</span></div>
+      <div class="tool-item"><span>✂️</span><span>Split PDF</span></div>
+      <div class="tool-item"><span>⚡</span><span>Compress PDF</span></div>
+      <div class="tool-item"><span>🔄</span><span>Rotate PDF</span></div>
+      <div class="tool-item"><span>💧</span><span>Watermark PDF</span></div>
+      <div class="tool-item"><span>🔒</span><span>Protect PDF</span></div>
+      <div class="tool-item"><span>🖼️</span><span>PDF to JPG</span></div>
+      <div class="tool-item"><span>📝</span><span>PDF to Word</span></div>
+      <div class="tool-item"><span>📊</span><span>PDF to Excel</span></div>
+      <div class="tool-item"><span>🗑️</span><span>Delete Pages</span></div>
+      <div class="tool-item"><span>🖊️</span><span>PDF Editor</span></div>
+      <div class="tool-item"><span>🖼️</span><span>Remove Background</span></div>
+      <div class="tool-item"><span>📷</span><span>Passport Photo</span></div>
+      <div class="tool-item"><span>🔍</span><span>OCR — Image to Text</span></div>
+      <div class="tool-item"><span>🧾</span><span>Invoice Generator</span></div>
+      <div class="tool-item"><span>🧮</span><span>Age / BMI / EMI / GST</span></div>
+      <div class="tool-item"><span>📱</span><span>QR Generator</span></div>
     </div>
+  </div>
 
-    <nav>
-        <a href="/">Home</a>
-        <a href="/unlock-pdf">Unlock PDF</a>
-        <a href="/merge-pdf">Merge PDF</a>
-        <a href="/split-pdf">Split PDF</a>
-        <a href="/compress-pdf">Compress PDF</a>
-        <a href="/privacy">Privacy Policy</a>
-    </nav>
-</header>
-
-<section class="tools">
-
-    <div class="card">
-
-        <h1>About EkTools</h1>
-
-        <p>
-            EkTools is a free online platform that provides simple, fast and secure PDF tools.
-        </p>
-
-        <br>
-
-        <p>
-            Our goal is to make PDF editing easy for everyone without requiring registration or software installation.
-        </p>
-
-        <br>
-
-        <h3>Available Tools</h3>
-
-        <ul>
-            <li>🔓 Unlock PDF</li>
-            <li>📄 Merge PDF</li>
-            <li>✂️ Split PDF</li>
-            <li>🗜️ Compress PDF</li>
-            <li>🖼️ Image Tools (Coming Soon)</li>
-        </ul>
-
-        <br>
-
-        <a href="/" class="btn">🏠 Back to Home</a>
-
+  <!-- Values -->
+  <div class="card">
+    <h2>💎 Why EkZapp?</h2>
+    <div class="values">
+      <div class="value-item">
+        <div class="value-icon">🆓</div>
+        <h3>Always Free</h3>
+        <p>All tools are completely free to use. No hidden charges, no premium plans for basic features.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">🔒</div>
+        <h3>Secure & Private</h3>
+        <p>Your files are processed securely over SSL and deleted automatically after processing.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">⚡</div>
+        <h3>Fast & Simple</h3>
+        <p>No software to install, no signup needed. Just upload, process, and download in seconds.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">📱</div>
+        <h3>Works Everywhere</h3>
+        <p>Fully responsive — works perfectly on mobile, tablet, and desktop browsers.</p>
+      </div>
     </div>
+  </div>
 
-</section>
+  <!-- CTA -->
+  <div class="cta">
+    <h2>Ready to get started?</h2>
+    <p>Explore 30+ free tools — no signup required</p>
+    <a href="/">🚀 Explore All Tools</a>
+  </div>
 
-<footer>
-    <p>© 2026 EkTools. All Rights Reserved.</p>
-</footer>
+  <footer>
+    <p>© 2026 EkZapp. All Rights Reserved.</p>
+    <p style="margin-top:8px">
+      <a href="/about">About</a>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms of Service</a>
+      <a href="/contact">Contact</a>
+    </p>
+  </footer>
 
+</div>
 </body>
 </html>
