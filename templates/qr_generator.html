@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR Code Generator — EkZapp</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
+.logo-text span{color:var(--blue)}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.back:hover{border-color:var(--blue);color:var(--blue)}
+.container{max-width:600px;margin:48px auto;padding:0 20px}
+.tool-header{text-align:center;margin-bottom:32px}
+.tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:#EDE9FE;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
+.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.tool-header p{color:var(--gray);font-size:14px}
+.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.field input,.field select,.field textarea{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none;transition:border .15s;background:white}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue)}
+.field textarea{resize:vertical;min-height:80px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn{width:100%;padding:13px;background:var(--blue);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;margin-bottom:16px}
+.btn:hover{background:var(--blue-dk)}
+.qr-result{display:none;text-align:center;padding:20px;background:var(--light);border-radius:10px;border:1px solid var(--border)}
+.qr-result.show{display:block}
+#qrcode{display:flex;justify-content:center;margin-bottom:16px}
+#qrcode canvas,#qrcode img{border-radius:8px}
+.btn-download{background:var(--blue);color:white;border:none;padding:10px 24px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <a class="back" href="/">← All Tools</a>
+  </div>
+</nav>
+<div class="container">
+  <div class="tool-header">
+    <div class="tool-icon-wrap">📱</div>
+    <h1>QR Code Generator</h1>
+    <p>Generate QR codes for URLs, text, contact info and more</p>
+  </div>
+  <div class="card">
+    <div class="field">
+      <label>Type</label>
+      <select id="qrType" onchange="updatePlaceholder()">
+        <option value="url">URL / Website</option>
+        <option value="text">Text</option>
+        <option value="email">Email</option>
+        <option value="phone">Phone Number</option>
+        <option value="sms">SMS</option>
+        <option value="wifi">WiFi</option>
+      </select>
+    </div>
+    <div class="field" id="mainField">
+      <label id="mainLabel">URL</label>
+      <input type="text" id="mainInput" placeholder="https://ekzapp.com">
+    </div>
+    <div class="field" id="wifiExtra" style="display:none">
+      <label>WiFi Password</label>
+      <input type="text" id="wifiPass" placeholder="WiFi password">
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>QR Size</label>
+        <select id="qrSize">
+          <option value="200">Small (200px)</option>
+          <option value="300" selected>Medium (300px)</option>
+          <option value="400">Large (400px)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Color</label>
+        <input type="color" id="qrColor" value="#000000" style="height:42px;padding:4px">
+      </div>
+    </div>
+    <button class="btn" onclick="generateQR()">📱 Generate QR Code</button>
+    <div class="qr-result" id="qrResult">
+      <div id="qrcode"></div>
+      <button class="btn-download" onclick="downloadQR()">⬇ Download QR Code</button>
+    </div>
+  </div>
+</div>
+<script>
+function updatePlaceholder(){
+  const t=document.getElementById('qrType').value;
+  const label=document.getElementById('mainLabel');
+  const input=document.getElementById('mainInput');
+  const wifi=document.getElementById('wifiExtra');
+  wifi.style.display='none';
+  if(t==='url'){label.textContent='URL';input.placeholder='https://ekzapp.com';}
+  else if(t==='text'){label.textContent='Text';input.placeholder='Enter your text here';}
+  else if(t==='email'){label.textContent='Email Address';input.placeholder='email@example.com';}
+  else if(t==='phone'){label.textContent='Phone Number';input.placeholder='+91 9876543210';}
+  else if(t==='sms'){label.textContent='Phone Number';input.placeholder='+91 9876543210';}
+  else if(t==='wifi'){label.textContent='WiFi Network Name (SSID)';input.placeholder='MyWiFiNetwork';wifi.style.display='block';}
+}
+function getQRContent(){
+  const t=document.getElementById('qrType').value;
+  const v=document.getElementById('mainInput').value.trim();
+  if(!v)return null;
+  if(t==='url')return v;
+  if(t==='text')return v;
+  if(t==='email')return `mailto:${v}`;
+  if(t==='phone')return `tel:${v}`;
+  if(t==='sms')return `sms:${v}`;
+  if(t==='wifi'){const p=document.getElementById('wifiPass').value;return `WIFI:T:WPA;S:${v};P:${p};;`;}
+  return v;
+}
+function generateQR(){
+  const content=getQRContent();
+  if(!content){alert('Please enter a value');return;}
+  const size=parseInt(document.getElementById('qrSize').value);
+  const color=document.getElementById('qrColor').value;
+  document.getElementById('qrcode').innerHTML='';
+  new QRCode(document.getElementById('qrcode'),{text:content,width:size,height:size,colorDark:color,colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});
+  document.getElementById('qrResult').classList.add('show');
+}
+function downloadQR(){
+  const canvas=document.querySelector('#qrcode canvas');
+  if(!canvas){alert('Generate QR first');return;}
+  const a=document.createElement('a');
+  a.download='QRCode_EkZapp.png';
+  a.href=canvas.toDataURL('image/png');
+  a.click();
+}
+</script>
+</body>
+</html>

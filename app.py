@@ -420,6 +420,28 @@ def pdf_to_word():
             return render_template("pdf_to_word.html", error=f"Error: {str(e)}")
 
     return render_template("pdf_to_word.html")
+@app.route("/tools/qr-generator")
+def qr_generator():
+    return render_template("qr_generator.html")
 
+@app.route("/tools/password-generator")
+def password_generator():
+    return render_template("password_generator.html")
+
+@app.route("/tools/currency-converter")
+def currency_converter():
+    return render_template("currency_converter.html")
+
+@app.route("/tools/unit-converter")
+def unit_converter():
+    return render_template("unit_converter.html")
+
+@app.route("/calculators/sip")
+def sip_calculator():
+    return render_template("sip_calculator.html")
+
+@app.route("/calculators/date")
+def date_calculator():
+    return render_template("date_calculator.html")
 if __name__ == "__main__":
     app.run(debug=True)

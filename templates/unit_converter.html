@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit Converter — EkZapp</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
+.logo-text span{color:var(--blue)}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.container{max-width:600px;margin:48px auto;padding:0 20px}
+.tool-header{text-align:center;margin-bottom:32px}
+.tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:#FEF9C3;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
+.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.tool-header p{color:var(--gray);font-size:14px}
+.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.cat-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
+.cat-tab{padding:7px 14px;border-radius:7px;border:1.5px solid var(--border);background:white;cursor:pointer;font-size:12.5px;font-weight:600;font-family:'Inter',sans-serif;color:var(--gray);transition:all .15s}
+.cat-tab:hover,.cat-tab.active{background:var(--blue);color:white;border-color:var(--blue)}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.field input,.field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none;background:white}
+.field input:focus{border-color:var(--blue)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn{width:100%;padding:13px;background:var(--blue);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;margin-top:4px;margin-bottom:14px}
+.btn:hover{background:var(--blue-dk)}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;display:none}
+.result-grid.show{display:grid}
+.result-item{background:var(--blue-lt);border:1px solid #BFDBFE;border-radius:8px;padding:12px;text-align:center}
+.result-item strong{display:block;font-size:1.1rem;font-weight:700;color:var(--blue);word-break:break-all}
+.result-item span{font-size:11px;color:var(--gray)}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <a class="back" href="/">← All Tools</a>
+  </div>
+</nav>
+<div class="container">
+  <div class="tool-header">
+    <div class="tool-icon-wrap">📏</div>
+    <h1>Unit Converter</h1>
+    <p>Convert length, weight, temperature, speed and more</p>
+  </div>
+  <div class="card">
+    <div class="cat-tabs">
+      <button class="cat-tab active" onclick="setCategory('length',this)">📏 Length</button>
+      <button class="cat-tab" onclick="setCategory('weight',this)">⚖️ Weight</button>
+      <button class="cat-tab" onclick="setCategory('temperature',this)">🌡️ Temp</button>
+      <button class="cat-tab" onclick="setCategory('speed',this)">🚀 Speed</button>
+      <button class="cat-tab" onclick="setCategory('area',this)">📐 Area</button>
+      <button class="cat-tab" onclick="setCategory('volume',this)">🧴 Volume</button>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Value</label>
+        <input type="number" id="val" placeholder="Enter value">
+      </div>
+      <div class="field">
+        <label>From</label>
+        <select id="from"></select>
+      </div>
+    </div>
+    <button class="btn" onclick="convertAll()">📏 Convert</button>
+    <div class="result-grid" id="results"></div>
+  </div>
+</div>
+<script>
+const categories={
+  length:{units:['Meter','Kilometer','Centimeter','Millimeter','Mile','Yard','Foot','Inch','Nautical Mile'],
+    toBase:{Meter:1,Kilometer:1000,Centimeter:.01,Millimeter:.001,Mile:1609.34,Yard:.9144,Foot:.3048,Inch:.0254,'Nautical Mile':1852}},
+  weight:{units:['Kilogram','Gram','Milligram','Pound','Ounce','Ton','Stone'],
+    toBase:{Kilogram:1,Gram:.001,Milligram:.000001,Pound:.453592,Ounce:.0283495,Ton:1000,Stone:6.35029}},
+  temperature:{units:['Celsius','Fahrenheit','Kelvin'],toBase:null},
+  speed:{units:['m/s','km/h','mph','Knot','ft/s'],
+    toBase:{'m/s':1,'km/h':.277778,mph:.44704,Knot:.514444,'ft/s':.3048}},
+  area:{units:['m²','km²','cm²','mm²','hectare','acre','ft²','in²'],
+    toBase:{'m²':1,'km²':1e6,'cm²':.0001,'mm²':1e-6,hectare:10000,acre:4046.86,'ft²':.0929,'in²':.000645}},
+  volume:{units:['Liter','Milliliter','Cubic Meter','Gallon (US)','Quart','Pint','Cup','Fluid Oz'],
+    toBase:{Liter:.001,Milliliter:.000001,'Cubic Meter':1,'Gallon (US)':.00378541,Quart:.000946353,Pint:.000473176,Cup:.000236588,'Fluid Oz':0.0000295735}}
+};
+
+let currentCat='length';
+
+function setCategory(cat,btn){
+  currentCat=cat;
+  document.querySelectorAll('.cat-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  populateFrom();
+  document.getElementById('results').innerHTML='';
+  document.getElementById('results').classList.remove('show');
+}
+
+function populateFrom(){
+  const sel=document.getElementById('from');
+  sel.innerHTML='';
+  categories[currentCat].units.forEach(u=>sel.innerHTML+=`<option value="${u}">${u}</option>`);
+}
+
+function convertTemp(val,from){
+  let celsius;
+  if(from==='Celsius')celsius=val;
+  else if(from==='Fahrenheit')celsius=(val-32)*5/9;
+  else celsius=val-273.15;
+  return{Celsius:celsius.toFixed(4),Fahrenheit:(celsius*9/5+32).toFixed(4),Kelvin:(celsius+273.15).toFixed(4)};
+}
+
+function convertAll(){
+  const val=parseFloat(document.getElementById('val').value);
+  const from=document.getElementById('from').value;
+  if(isNaN(val)){alert('Please enter a value');return;}
+  const grid=document.getElementById('results');
+  grid.innerHTML='';
+  const cat=categories[currentCat];
+  if(currentCat==='temperature'){
+    const res=convertTemp(val,from);
+    cat.units.forEach(u=>{
+      grid.innerHTML+=`<div class="result-item"><strong>${res[u]}</strong><span>${u}</span></div>`;
+    });
+  } else {
+    const baseVal=val*cat.toBase[from];
+    cat.units.forEach(u=>{
+      const result=baseVal/cat.toBase[u];
+      const display=result<0.001?result.toExponential(4):result.toFixed(4);
+      grid.innerHTML+=`<div class="result-item"><strong>${display}</strong><span>${u}</span></div>`;
+    });
+  }
+  grid.classList.add('show');
+}
+
+populateFrom();
+</script>
+</body>
+</html>

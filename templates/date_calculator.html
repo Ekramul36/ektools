@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Date Calculator — EkZapp</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
+.logo-text span{color:var(--blue)}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.container{max-width:560px;margin:48px auto;padding:0 20px}
+.tool-header{text-align:center;margin-bottom:32px}
+.tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:#EDE9FE;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
+.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.tool-header p{color:var(--gray);font-size:14px}
+.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:16px}
+.card h3{font-size:14px;font-weight:700;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.field input{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none}
+.field input:focus{border-color:var(--blue)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn{width:100%;padding:12px;background:var(--blue);color:white;border:none;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;margin-bottom:12px}
+.btn:hover{background:var(--blue-dk)}
+.result-box{background:var(--blue-lt);border:1px solid #BFDBFE;border-radius:8px;padding:14px;display:none}
+.result-box.show{display:block}
+.result-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #BFDBFE;font-size:13px}
+.result-row:last-child{border:none;font-weight:700;color:var(--blue)}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <a class="back" href="/">← All Tools</a>
+  </div>
+</nav>
+<div class="container">
+  <div class="tool-header">
+    <div class="tool-icon-wrap">📅</div>
+    <h1>Date Calculator</h1>
+    <p>Calculate difference between dates or add/subtract days</p>
+  </div>
+
+  <div class="card">
+    <h3>📅 Date Difference</h3>
+    <div class="field-row">
+      <div class="field"><label>Start Date</label><input type="date" id="d1"></div>
+      <div class="field"><label>End Date</label><input type="date" id="d2"></div>
+    </div>
+    <button class="btn" onclick="calcDiff()">Calculate Difference</button>
+    <div class="result-box" id="diffResult">
+      <div class="result-row"><span>Days</span><span id="rDays"></span></div>
+      <div class="result-row"><span>Weeks</span><span id="rWeeks"></span></div>
+      <div class="result-row"><span>Months (approx)</span><span id="rMonths"></span></div>
+      <div class="result-row"><span>Years (approx)</span><span id="rYears"></span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>➕ Add/Subtract Days</h3>
+    <div class="field"><label>Start Date</label><input type="date" id="addDate"></div>
+    <div class="field-row">
+      <div class="field"><label>Days to Add/Subtract</label><input type="number" id="addDays" placeholder="e.g. 30 or -30"></div>
+      <div class="field" style="display:flex;align-items:flex-end">
+        <button class="btn" style="margin-bottom:0" onclick="calcAdd()">Calculate</button>
+      </div>
+    </div>
+    <div class="result-box" id="addResult">
+      <div class="result-row"><span>Result Date</span><span id="rDate"></span></div>
+      <div class="result-row"><span>Day of Week</span><span id="rDay"></span></div>
+    </div>
+  </div>
+</div>
+<script>
+const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+document.getElementById('d1').value=new Date().toISOString().split('T')[0];
+document.getElementById('d2').value=new Date().toISOString().split('T')[0];
+document.getElementById('addDate').value=new Date().toISOString().split('T')[0];
+
+function calcDiff(){
+  const d1=new Date(document.getElementById('d1').value);
+  const d2=new Date(document.getElementById('d2').value);
+  if(!d1||!d2){alert('Please select both dates');return;}
+  const diff=Math.abs(d2-d1);
+  const diffDays=Math.floor(diff/86400000);
+  document.getElementById('rDays').textContent=diffDays.toLocaleString()+' days';
+  document.getElementById('rWeeks').textContent=(diffDays/7).toFixed(1)+' weeks';
+  document.getElementById('rMonths').textContent=(diffDays/30.44).toFixed(1)+' months';
+  document.getElementById('rYears').textContent=(diffDays/365.25).toFixed(2)+' years';
+  document.getElementById('diffResult').classList.add('show');
+}
+
+function calcAdd(){
+  const d=new Date(document.getElementById('addDate').value);
+  const n=parseInt(document.getElementById('addDays').value);
+  if(!d||isNaN(n)){alert('Please fill all fields');return;}
+  d.setDate(d.getDate()+n);
+  document.getElementById('rDate').textContent=d.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+  document.getElementById('rDay').textContent=days[d.getDay()];
+  document.getElementById('addResult').classList.add('show');
+}
+</script>
+</body>
+</html>

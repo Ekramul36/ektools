@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIP Calculator — EkZapp</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--green:#16A34A;--green-lt:#F0FDF4}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
+.logo-text span{color:var(--blue)}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.container{max-width:560px;margin:48px auto;padding:0 20px}
+.tool-header{text-align:center;margin-bottom:32px}
+.tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:var(--green-lt);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
+.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.tool-header p{color:var(--gray);font-size:14px}
+.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px;display:flex;justify-content:space-between}
+.field label span{color:var(--blue);font-weight:700}
+.field input{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none;transition:border .15s}
+.field input:focus{border-color:var(--blue)}
+input[type="range"]{width:100%;accent-color:var(--blue);margin-top:6px}
+.btn{width:100%;padding:13px;background:var(--blue);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;margin-bottom:16px}
+.btn:hover{background:var(--blue-dk)}
+.result{display:none;background:var(--green-lt);border:1px solid rgba(22,163,74,.2);border-radius:10px;padding:20px}
+.result.show{display:block}
+.result-main{text-align:center;margin-bottom:16px}
+.result-main strong{display:block;font-size:2rem;font-weight:800;color:var(--green)}
+.result-main span{font-size:13px;color:var(--gray)}
+.result-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.result-item{background:white;border-radius:8px;padding:12px;text-align:center;border:1px solid rgba(22,163,74,.15)}
+.result-item strong{display:block;font-size:1rem;font-weight:700;color:var(--ink)}
+.result-item span{font-size:11px;color:var(--gray)}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <a class="back" href="/">← All Tools</a>
+  </div>
+</nav>
+<div class="container">
+  <div class="tool-header">
+    <div class="tool-icon-wrap">📈</div>
+    <h1>SIP Calculator</h1>
+    <p>Calculate your Systematic Investment Plan returns</p>
+  </div>
+  <div class="card">
+    <div class="field">
+      <label>Monthly Investment (₹) <span id="sipVal">₹5,000</span></label>
+      <input type="range" id="sip" min="500" max="100000" step="500" value="5000" oninput="updateSIP()">
+    </div>
+    <div class="field">
+      <label>Expected Annual Return (%) <span id="returnVal">12%</span></label>
+      <input type="range" id="returns" min="1" max="30" step="0.5" value="12" oninput="updateReturn()">
+    </div>
+    <div class="field">
+      <label>Investment Period (Years) <span id="periodVal">10 years</span></label>
+      <input type="range" id="period" min="1" max="40" value="10" oninput="updatePeriod()">
+    </div>
+    <button class="btn" onclick="calcSIP()">📈 Calculate Returns</button>
+    <div class="result" id="result">
+      <div class="result-main">
+        <strong id="totalValue"></strong>
+        <span>Total Value at Maturity</span>
+      </div>
+      <div class="result-grid">
+        <div class="result-item"><strong id="invested"></strong><span>Total Invested</span></div>
+        <div class="result-item"><strong id="gains"></strong><span>Total Gains</strong></div>
+        <div class="result-item"><strong id="returnPct"></strong><span>Return %</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+function fmt(n){return'₹'+Math.round(n).toLocaleString('en-IN')}
+function updateSIP(){document.getElementById('sipVal').textContent=fmt(document.getElementById('sip').value)}
+function updateReturn(){document.getElementById('returnVal').textContent=document.getElementById('returns').value+'%'}
+function updatePeriod(){document.getElementById('periodVal').textContent=document.getElementById('period').value+' years'}
+function calcSIP(){
+  const P=parseFloat(document.getElementById('sip').value);
+  const r=parseFloat(document.getElementById('returns').value)/12/100;
+  const n=parseFloat(document.getElementById('period').value)*12;
+  const total=P*((Math.pow(1+r,n)-1)/r)*(1+r);
+  const invested=P*n;
+  const gains=total-invested;
+  document.getElementById('totalValue').textContent=fmt(total);
+  document.getElementById('invested').textContent=fmt(invested);
+  document.getElementById('gains').textContent=fmt(gains);
+  document.getElementById('returnPct').textContent=((gains/invested)*100).toFixed(1)+'%';
+  document.getElementById('result').classList.add('show');
+}
+updateSIP();updateReturn();updatePeriod();
+</script>
+</body>
+</html>

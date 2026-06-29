@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Currency Converter — EkZapp</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
+.logo-text span{color:var(--blue)}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.container{max-width:560px;margin:48px auto;padding:0 20px}
+.tool-header{text-align:center;margin-bottom:32px}
+.tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:#DCFCE7;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
+.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.tool-header p{color:var(--gray);font-size:14px}
+.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.currency-row{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:end;margin-bottom:16px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.field input,.field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none;background:white}
+.field input:focus,.field select:focus{border-color:var(--blue)}
+.swap-btn{background:var(--light);border:1.5px solid var(--border);border-radius:8px;width:40px;height:42px;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:all .15s;margin-bottom:0}
+.swap-btn:hover{border-color:var(--blue);background:var(--blue-lt)}
+.btn{width:100%;padding:13px;background:var(--blue);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;margin-bottom:16px}
+.btn:hover{background:var(--blue-dk)}
+.result{background:var(--blue-lt);border:1px solid #BFDBFE;border-radius:10px;padding:20px;text-align:center;display:none}
+.result.show{display:block}
+.result-amount{font-size:2rem;font-weight:800;color:var(--blue);margin-bottom:4px}
+.result-rate{font-size:13px;color:var(--gray)}
+.popular{margin-top:20px}
+.popular h3{font-size:13px;font-weight:600;color:var(--gray);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+.rate-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.rate-item{background:var(--light);border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:12px}
+.rate-item strong{display:block;font-size:14px;font-weight:700;color:var(--ink)}
+.rate-item span{color:var(--gray)}
+.loading{text-align:center;color:var(--gray);font-size:13px;padding:10px}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <a class="back" href="/">← All Tools</a>
+  </div>
+</nav>
+<div class="container">
+  <div class="tool-header">
+    <div class="tool-icon-wrap">💱</div>
+    <h1>Currency Converter</h1>
+    <p>Live exchange rates for 150+ currencies</p>
+  </div>
+  <div class="card">
+    <div class="currency-row">
+      <div class="field">
+        <label>Amount</label>
+        <input type="number" id="amount" value="1" min="0">
+      </div>
+      <button class="swap-btn" onclick="swapCurrencies()">⇄</button>
+      <div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+      <div class="field">
+        <label>From</label>
+        <select id="from"></select>
+      </div>
+      <div class="field">
+        <label>To</label>
+        <select id="to"></select>
+      </div>
+    </div>
+    <button class="btn" onclick="convert()">💱 Convert</button>
+    <div class="result" id="result">
+      <div class="result-amount" id="resultAmount"></div>
+      <div class="result-rate" id="resultRate"></div>
+    </div>
+    <div class="popular">
+      <h3>Popular Rates (vs INR)</h3>
+      <div class="loading" id="ratesLoading">Loading live rates...</div>
+      <div class="rate-grid" id="rateGrid" style="display:none"></div>
+    </div>
+  </div>
+</div>
+<script>
+const currencies=['AED','AUD','BDT','BRL','CAD','CHF','CNY','EUR','GBP','HKD','IDR','INR','JPY','KRW','MXN','MYR','NPR','NZD','PHP','PKR','SAR','SGD','THB','TRY','TWD','USD','ZAR'];
+let rates={};
+
+function populateSelects(){
+  const f=document.getElementById('from');
+  const t=document.getElementById('to');
+  currencies.forEach(c=>{
+    f.innerHTML+=`<option value="${c}" ${c==='USD'?'selected':''}>${c}</option>`;
+    t.innerHTML+=`<option value="${c}" ${c==='INR'?'selected':''}>${c}</option>`;
+  });
+}
+
+async function fetchRates(){
+  try{
+    const r=await fetch('https://api.exchangerate-api.com/v4/latest/INR');
+    const d=await r.json();
+    rates=d.rates;
+    showPopularRates();
+  }catch(e){
+    document.getElementById('ratesLoading').textContent='Could not load live rates. Using approximate rates.';
+    rates={USD:0.012,EUR:0.011,GBP:0.0094,JPY:1.78,CNY:0.086,AUD:0.018,CAD:0.016,SGD:0.016,AED:0.044,BDT:1.31,PKR:3.34,NPR:1.6,INR:1};
+    showPopularRates();
+  }
+}
+
+function showPopularRates(){
+  document.getElementById('ratesLoading').style.display='none';
+  const grid=document.getElementById('rateGrid');
+  grid.style.display='grid';
+  const popular=['USD','EUR','GBP','JPY','AED','BDT'];
+  popular.forEach(c=>{
+    if(rates[c]){
+      const rate=(1/rates[c]).toFixed(2);
+      grid.innerHTML+=`<div class="rate-item"><strong>₹${rate}</strong><span>1 ${c}</span></div>`;
+    }
+  });
+}
+
+function convert(){
+  const amt=parseFloat(document.getElementById('amount').value);
+  const from=document.getElementById('from').value;
+  const to=document.getElementById('to').value;
+  if(isNaN(amt)){alert('Please enter an amount');return;}
+  if(!rates[from]||!rates[to]){alert('Rates not loaded yet');return;}
+  const inINR=amt/rates[from];
+  const result=inINR*rates[to];
+  document.getElementById('resultAmount').textContent=`${result.toFixed(4)} ${to}`;
+  document.getElementById('resultRate').textContent=`1 ${from} = ${(rates[to]/rates[from]).toFixed(6)} ${to}`;
+  document.getElementById('result').classList.add('show');
+}
+
+function swapCurrencies(){
+  const f=document.getElementById('from');
+  const t=document.getElementById('to');
+  const tmp=f.value;
+  f.value=t.value;
+  t.value=tmp;
+}
+
+populateSelects();
+fetchRates();
+</script>
+</body>
+</html>
