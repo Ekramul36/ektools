@@ -272,8 +272,7 @@ def google_verification():
     return send_from_directory("static", "google1b7c2f73edcb5802.html")
 
 
-# এই routes গুলো app.py তে যোগ করুন
-# "if __name__ == '__main__':" এর আগে paste করুন
+
 
 import zipfile
 import io
@@ -444,4 +443,141 @@ def sip_calculator():
 def date_calculator():
     return render_template("date_calculator.html")
 if __name__ == "__main__":
+    # Image Tools
+@app.route("/image/compress", methods=["GET", "POST"])
+def image_compress():
+    if request.method == "POST":
+        try:
+            from PIL import Image as PILImage
+            img_file = request.files.get("image")
+            quality = int(request.form.get("quality", 80))
+            if not img_file or img_file.filename == "":
+                return render_template("image_compress.html", error="Please select an image.")
+            img = PILImage.open(img_file)
+            if img.mode in ("RGBA", "P"):
+                img = img.convert("RGB")
+            output_path = os.path.join(OUTPUT_FOLDER, "Compressed_" + img_file.filename.rsplit(".",1)[0] + ".jpg")
+            img.save(output_path, "JPEG", quality=quality, optimize=True)
+            return send_file(output_path, as_attachment=True, download_name="Compressed.jpg")
+        except Exception as e:
+            return render_template("image_compress.html", error=str(e))
+    return render_template("image_compress.html")
+
+@app.route("/image/resize", methods=["GET", "POST"])
+def image_resize():
+    if request.method == "POST":
+        try:
+            from PIL import Image as PILImage
+            img_file = request.files.get("image")
+            width = request.form.get("width")
+            height = request.form.get("height")
+            keep_ratio = request.form.get("keep_ratio")
+            if not img_file or img_file.filename == "":
+                return render_template("image_resize.html", error="Please select an image.")
+            img = PILImage.open(img_file)
+            w = int(width) if width else None
+            h = int(height) if height else None
+            if keep_ratio and w and not h:
+                ratio = w / img.width
+                h = int(img.height * ratio)
+            elif keep_ratio and h and not w:
+                ratio = h / img.height
+                w = int(img.width * ratio)
+            if w and h:
+                img = img.resize((w, h), PILImage.LANCZOS)
+            output_path = os.path.join(OUTPUT_FOLDER, "Resized.jpg")
+            if img.mode in ("RGBA", "P"):
+                img = img.convert("RGB")
+            img.save(output_path, "JPEG", quality=95)
+            return send_file(output_path, as_attachment=True, download_name="Resized.jpg")
+        except Exception as e:
+            return render_template("image_resize.html", error=str(e))
+    return render_template("image_resize.html")
+
+@app.route("/image/convert", methods=["GET", "POST"])
+def image_convert():
+    if request.method == "POST":
+        try:
+            from PIL import Image as PILImage
+            img_file = request.files.get("image")
+            fmt = request.form.get("format", "jpg").upper()
+            if not img_file or img_file.filename == "":
+                return render_template("image_convert.html", error="Please select an image.")
+            img = PILImage.open(img_file)
+            if fmt == "JPG":
+                fmt = "JPEG"
+                if img.mode in ("RGBA", "P"):
+                    img = img.convert("RGB")
+            ext = "jpg" if fmt == "JPEG" else fmt.lower()
+            output_path = os.path.join(OUTPUT_FOLDER, f"Converted.{ext}")
+            img.save(output_path, fmt)
+            return send_file(output_path, as_attachment=True, download_name=f"Converted.{ext}")
+        except Exception as e:
+            return render_template("image_convert.html", error=str(e))
+    return render_template("image_convert.html")
+
+# Watermark PDF
+@app.route("/watermark-pdf", methods=["GET", "POST"])
+def watermark_pdf():
+    if request.method == "POST":
+        try:
+            pdf = request.files.get("pdf")
+            watermark = request.form.get("watermark", "CONFIDENTIAL")
+            font_size = int(request.form.get("font_size", 50))
+            opacity = float(request.form.get("opacity", 30)) / 100
+            if not pdf or pdf.filename == "":
+                return render_template("watermark_pdf.html", error="Please select a PDF.")
+            input_path = os.path.join(UPLOAD_FOLDER, pdf.filename)
+            output_path = os.path.join(OUTPUT_FOLDER, "Watermarked.pdf")
+            pdf.save(input_path)
+            doc = fitz.open(input_path)
+            for page in doc:
+                page.insert_text(
+                    (page.rect.width/2 - len(watermark)*font_size/4, page.rect.height/2),
+                    watermark, fontsize=font_size,
+                    color=(0.5, 0.5, 0.5), rotate=45
+                )
+            doc.save(output_path)
+            doc.close()
+            return send_file(output_path, as_attachment=True, download_name="Watermarked.pdf")
+        except Exception as e:
+            return render_template("watermark_pdf.html", error=str(e))
+    return render_template("watermark_pdf.html")
+
+# Protect PDF
+@app.route("/protect-pdf", methods=["GET", "POST"])
+def protect_pdf():
+    if request.method == "POST":
+        try:
+            pdf = request.files.get("pdf")
+            password = request.form.get("password", "")
+            confirm = request.form.get("confirm_password", "")
+            if not pdf or pdf.filename == "":
+                return render_template("protect_pdf.html", error="Please select a PDF.")
+            if password != confirm:
+                return render_template("protect_pdf.html", error="Passwords do not match!")
+            if not password:
+                return render_template("protect_pdf.html", error="Please enter a password.")
+            reader = PdfReader(pdf)
+            writer = PdfWriter()
+            for page in reader.pages:
+                writer.add_page(page)
+            writer.encrypt(password)
+            output_path = os.path.join(OUTPUT_FOLDER, "Protected.pdf")
+            with open(output_path, "wb") as f:
+                writer.write(f)
+            return send_file(output_path, as_attachment=True, download_name="Protected.pdf")
+        except Exception as e:
+            return render_template("protect_pdf.html", error=str(e))
+    return render_template("protect_pdf.html")
+
+# Tip Calculator
+@app.route("/tools/tip-calculator")
+def tip_calculator():
+    return render_template("tip_calculator.html")
+
+# Calorie Calculator
+@app.route("/calculators/calorie")
+def calorie_calculator():
+    return render_template("calorie_calculator.html")
     app.run(debug=True)

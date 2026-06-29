@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calorie Calculator — EkZapp</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--green:#16A34A;--green-lt:#F0FDF4;--orange:#EA580C;--orange-lt:#FFF7ED}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
+.logo-text span{color:var(--blue)}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.container{max-width:560px;margin:48px auto;padding:0 20px}
+.tool-header{text-align:center;margin-bottom:32px}
+.tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:var(--orange-lt);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
+.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.tool-header p{color:var(--gray);font-size:14px}
+.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.field input,.field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none;background:white}
+.field input:focus,.field select:focus{border-color:var(--blue)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.gender-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.gender-btn{padding:10px;border:1.5px solid var(--border);border-radius:8px;background:white;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;text-align:center;transition:all .15s}
+.gender-btn:hover,.gender-btn.active{background:var(--blue);color:white;border-color:var(--blue)}
+.btn{width:100%;padding:13px;background:var(--blue);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;margin-bottom:16px}
+.btn:hover{background:var(--blue-dk)}
+.result{display:none;background:var(--orange-lt);border:1px solid rgba(234,88,12,.2);border-radius:10px;padding:20px}
+.result.show{display:block}
+.result-main{text-align:center;margin-bottom:16px}
+.result-main strong{display:block;font-size:2rem;font-weight:800;color:var(--orange)}
+.result-main span{font-size:13px;color:var(--gray)}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.result-item{background:white;border-radius:8px;padding:12px;text-align:center}
+.result-item strong{display:block;font-size:1rem;font-weight:700;color:var(--ink)}
+.result-item span{font-size:11px;color:var(--gray)}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <a class="back" href="/">← All Tools</a>
+  </div>
+</nav>
+<div class="container">
+  <div class="tool-header">
+    <div class="tool-icon-wrap">🔥</div>
+    <h1>Calorie Calculator</h1>
+    <p>Calculate your daily calorie needs based on your goals</p>
+  </div>
+  <div class="card">
+    <div class="field">
+      <label>Gender</label>
+      <div class="gender-btns">
+        <button class="gender-btn active" id="gMale" onclick="setGender('male')">👨 Male</button>
+        <button class="gender-btn" id="gFemale" onclick="setGender('female')">👩 Female</button>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>Age (years)</label><input type="number" id="age" placeholder="e.g. 25"></div>
+      <div class="field"><label>Weight (kg)</label><input type="number" id="weight" placeholder="e.g. 70"></div>
+    </div>
+    <div class="field"><label>Height (cm)</label><input type="number" id="height" placeholder="e.g. 170"></div>
+    <div class="field">
+      <label>Activity Level</label>
+      <select id="activity">
+        <option value="1.2">Sedentary (little/no exercise)</option>
+        <option value="1.375">Light (1-3 days/week)</option>
+        <option value="1.55" selected>Moderate (3-5 days/week)</option>
+        <option value="1.725">Active (6-7 days/week)</option>
+        <option value="1.9">Very Active (hard exercise daily)</option>
+      </select>
+    </div>
+    <button class="btn" onclick="calcCalories()">🔥 Calculate Calories</button>
+    <div class="result" id="result">
+      <div class="result-main">
+        <strong id="mainCalories"></strong>
+        <span>Daily Calories to Maintain Weight</span>
+      </div>
+      <div class="result-grid">
+        <div class="result-item"><strong id="loseCalories"></strong><span>To Lose Weight (-500)</span></div>
+        <div class="result-item"><strong id="gainCalories"></strong><span>To Gain Weight (+500)</span></div>
+        <div class="result-item"><strong id="bmrCalories"></strong><span>BMR (at rest)</span></div>
+        <div class="result-item"><strong id="fastCalories"></strong><span>Fast Weight Loss (-1000)</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+let gender='male';
+function setGender(g){
+  gender=g;
+  document.getElementById('gMale').classList.toggle('active',g==='male');
+  document.getElementById('gFemale').classList.toggle('active',g==='female');
+}
+function calcCalories(){
+  const age=parseFloat(document.getElementById('age').value);
+  const w=parseFloat(document.getElementById('weight').value);
+  const h=parseFloat(document.getElementById('height').value);
+  const act=parseFloat(document.getElementById('activity').value);
+  if(!age||!w||!h){alert('Please fill all fields');return;}
+  let bmr;
+  if(gender==='male')bmr=10*w+6.25*h-5*age+5;
+  else bmr=10*w+6.25*h-5*age-161;
+  const tdee=bmr*act;
+  document.getElementById('mainCalories').textContent=Math.round(tdee)+' kcal';
+  document.getElementById('loseCalories').textContent=Math.round(tdee-500)+' kcal';
+  document.getElementById('gainCalories').textContent=Math.round(tdee+500)+' kcal';
+  document.getElementById('bmrCalories').textContent=Math.round(bmr)+' kcal';
+  document.getElementById('fastCalories').textContent=Math.round(tdee-1000)+' kcal';
+  document.getElementById('result').classList.add('show');
+}
+</script>
+</body>
+</html>
