@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Split PDF — EkZapp</title>
+<title>Split PDF — Extract PDF Pages Free | EkZapp</title>
+<meta name="description" content="Split PDF online for free. Extract specific pages or page range from your PDF. No signup required.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -20,7 +21,7 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .nav-links a:hover,.nav-links a.active{background:var(--blue-lt);color:var(--blue)}
 .back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
 .back:hover{border-color:var(--blue);color:var(--blue)}
-.container{max-width:600px;margin:48px auto;padding:0 20px}
+.container{max-width:600px;margin:48px auto;padding:0 20px 60px}
 .tool-header{text-align:center;margin-bottom:32px}
 .tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:#FFE4E6;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
 .tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
@@ -44,7 +45,20 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .error-box{background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:12px 16px;color:var(--red);font-size:13px;margin-bottom:16px}
 .trust{display:flex;justify-content:center;gap:20px;margin-top:16px;flex-wrap:wrap}
 .trust-item{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:4px}
-.other-tools{margin-top:40px}
+.guide-section{margin-top:32px;background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.guide-section h2{font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:20px}
+.steps{display:flex;flex-direction:column;gap:16px}
+.step{display:flex;gap:14px;align-items:flex-start}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--blue);color:white;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-body h3{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px}
+.step-body p{font-size:12.5px;color:var(--gray);line-height:1.5}
+.faq-section{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+.faq-section h2{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:16px}
+.faq-item{border-bottom:1px solid var(--border);padding:14px 0}
+.faq-item:last-child{border-bottom:none;padding-bottom:0}
+.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.faq-a{font-size:12.5px;color:var(--gray);line-height:1.5}
+.other-tools{margin-top:32px}
 .other-tools h3{font-size:13px;font-weight:600;color:var(--gray);letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
 .tools-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .tool-mini{background:white;border:1px solid var(--border);border-radius:10px;padding:14px;text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px;transition:all .15s}
@@ -66,12 +80,14 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
     <a class="back" href="/">← All Tools</a>
   </div>
 </nav>
+
 <div class="container">
   <div class="tool-header">
     <div class="tool-icon-wrap">✂️</div>
     <h1>Split PDF</h1>
     <p>Extract specific pages or split your PDF into parts</p>
   </div>
+
   <div class="card">
     <div class="info-bar">💡 Enter a page number (e.g. 3) or range (e.g. 2-5)</div>
     {% if error %}<div class="error-box">⚠️ {{ error }}</div>{% endif %}
@@ -99,6 +115,62 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
       <div class="trust-item">📵 No signup needed</div>
     </div>
   </div>
+
+  <!-- HOW TO USE -->
+  <div class="guide-section">
+    <h2>📖 How to Split a PDF</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Upload Your PDF File</h3>
+          <p>Click the upload area or drag and drop the PDF you want to split. Maximum file size is 50 MB.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Enter Page Number or Range</h3>
+          <p>Type the pages you want to extract. For a single page enter "3". For a range enter "2-5" to get pages 2 through 5.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Click "Split PDF"</h3>
+          <p>Our tool will extract the selected pages and create a new PDF with only those pages instantly.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Download Your Split PDF</h3>
+          <p>The new PDF with your selected pages downloads automatically. Your original file is never modified.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-section">
+      <h2>❓ Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <div class="faq-q">How do I extract only one page from a PDF?</div>
+        <div class="faq-a">Just enter the page number in the field. For example, type "5" to extract only page 5 from your PDF.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I extract multiple pages at once?</div>
+        <div class="faq-a">Yes. Enter a page range like "3-7" to extract pages 3 through 7 into a single new PDF.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Will my original PDF be changed?</div>
+        <div class="faq-a">No. Your original PDF is never modified. A brand new PDF is created with only the pages you selected.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is this tool free?</div>
+        <div class="faq-a">Yes, 100% free. No signup, no credit card required.</div>
+      </div>
+    </div>
+  </div>
+
   <div class="other-tools">
     <h3>Other PDF Tools</h3>
     <div class="tools-row">
@@ -108,6 +180,7 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
     </div>
   </div>
 </div>
+
 <script>
 function showFileName(input){
   if(input.files&&input.files[0]){
