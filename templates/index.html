@@ -48,99 +48,69 @@ html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;font-size:14px}
 
 /* NAV */
-nav{
-  background:var(--white);border-bottom:1px solid var(--border);
-  position:sticky;top:0;z-index:200;height:54px;
-}
-.nav-inner{
-  max-width:1100px;margin:0 auto;padding:0 20px;
-  height:100%;display:flex;align-items:center;gap:12px;
-}
+nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;height:54px;}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px;}
 .logo{text-decoration:none;display:flex;align-items:center;gap:8px;flex-shrink:0}
-.logo-icon{
-  width:32px;height:32px;border-radius:8px;background:var(--blue);
-  display:flex;align-items:center;justify-content:center;
-  color:white;font-size:13px;font-weight:800;
-}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800;}
 .logo-text{font-size:15px;font-weight:700;color:var(--ink)}
 .logo-text span{color:var(--blue)}
 .nav-sep{width:1px;height:20px;background:var(--border);flex-shrink:0}
 .nav-menu{display:flex;list-style:none;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1}
 .nav-menu::-webkit-scrollbar{display:none}
-.nav-menu a{
-  padding:6px 10px;border-radius:6px;color:var(--gray);
-  text-decoration:none;font-size:13px;font-weight:500;
-  white-space:nowrap;transition:all .15s;
-}
+.nav-menu a{padding:6px 10px;border-radius:6px;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;white-space:nowrap;transition:all .15s;}
 .nav-menu a:hover{background:#F3F4F6;color:var(--ink)}
 .nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0}
 .nav-link{color:var(--gray);font-size:13px;font-weight:500;text-decoration:none;padding:6px 10px}
 .nav-link:hover{color:var(--ink)}
-.nav-btn{
-  padding:7px 16px;border-radius:7px;background:var(--blue);color:white;
-  font-size:13px;font-weight:600;text-decoration:none;transition:all .15s;
-}
+.nav-btn{padding:7px 16px;border-radius:7px;background:var(--blue);color:white;font-size:13px;font-weight:600;text-decoration:none;transition:all .15s;}
 .nav-btn:hover{background:var(--blue-dk)}
-.hamburger{
-  display:none;background:none;border:none;cursor:pointer;
-  font-size:1.3rem;color:var(--ink);padding:4px;
-}
+.hamburger{display:none;background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--ink);padding:4px;}
 
 /* HERO */
-.hero{
-  background:var(--white);padding:52px 20px 44px;text-align:center;
-  position:relative;overflow:hidden;
-}
-.hero::before{
-  content:'';position:absolute;inset:0;
-  background-image:radial-gradient(circle,rgba(37,99,235,.1) 1px,transparent 1px);
-  background-size:24px 24px;pointer-events:none;
-}
-.hero::after{
-  content:'';position:absolute;bottom:-60px;left:50%;transform:translateX(-50%);
-  width:800px;height:200px;background:var(--cream);border-radius:50%;
-  pointer-events:none;z-index:0;
-}
+.hero{background:var(--white);padding:52px 20px 44px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(37,99,235,.1) 1px,transparent 1px);background-size:24px 24px;pointer-events:none;}
+.hero::after{content:'';position:absolute;bottom:-60px;left:50%;transform:translateX(-50%);width:800px;height:200px;background:var(--cream);border-radius:50%;pointer-events:none;z-index:0;}
 .hero-content{position:relative;z-index:1}
-.hero h1{
-  font-size:clamp(1.8rem,5vw,2.8rem);font-weight:800;color:var(--ink);
-  letter-spacing:-.03em;line-height:1.1;margin-bottom:10px;
-}
+.hero h1{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:800;color:var(--ink);letter-spacing:-.03em;line-height:1.1;margin-bottom:10px;}
 .hero-sub{font-size:clamp(1rem,3vw,1.2rem);color:var(--blue);font-weight:600;margin-bottom:28px}
-.hero-cta{
-  display:inline-flex;align-items:center;gap:10px;
-  background:var(--blue);color:white;padding:13px 28px;border-radius:8px;
-  font-size:15px;font-weight:700;text-decoration:none;
-  transition:all .2s;margin-bottom:12px;
-  box-shadow:0 4px 14px rgba(37,99,235,.35);
+
+/* SEARCH BOX */
+.search-wrap{position:relative;max-width:520px;margin:0 auto 20px;z-index:10;}
+.search-input{
+  width:100%;padding:14px 20px 14px 48px;
+  border:2px solid var(--border);border-radius:12px;
+  font-size:15px;font-family:'Inter',sans-serif;
+  color:var(--ink);background:white;outline:none;
+  box-shadow:0 4px 20px rgba(0,0,0,.08);
+  transition:border .2s,box-shadow .2s;
 }
-.hero-cta:hover{background:var(--blue-dk);transform:translateY(-1px)}
-.hero-or{
-  font-size:13px;color:#9CA3AF;
-  display:flex;align-items:center;justify-content:center;gap:6px;margin-top:4px;
-}
+.search-input:focus{border-color:var(--blue);box-shadow:0 4px 20px rgba(37,99,235,.15);}
+.search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:1.1rem;pointer-events:none;}
+.search-clear{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--gray);display:none;padding:2px 6px;border-radius:4px;}
+.search-clear:hover{background:#F3F4F6}
+
+/* SEARCH RESULTS */
+.search-results-section{display:none;padding:24px 20px 40px;background:var(--cream);}
+.search-results-inner{max-width:1100px;margin:0 auto;}
+.search-count{font-size:13px;color:var(--gray);margin-bottom:14px;font-weight:500;}
+.search-count span{color:var(--blue);font-weight:700;}
+.no-results{text-align:center;padding:40px 20px;color:var(--gray);}
+.no-results .no-icon{font-size:3rem;margin-bottom:12px;}
+.no-results p{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:6px;}
+.no-results small{font-size:13px;}
+
+.hero-or{font-size:13px;color:#9CA3AF;display:flex;align-items:center;justify-content:center;gap:6px;margin-top:4px;}
 
 /* INFO BAR */
-.info-bar{
-  background:var(--white);border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);padding:12px 20px;
-}
-.info-bar-inner{
-  max-width:1100px;margin:0 auto;
-  display:flex;justify-content:center;align-items:center;
-  gap:32px;flex-wrap:wrap;
-}
+.info-bar{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:12px 20px;}
+.info-bar-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:center;align-items:center;gap:32px;flex-wrap:wrap;}
 .info-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--gray);font-weight:500}
 
 /* TOOLS */
 .tools-bg{background:var(--cream);padding:36px 20px 56px}
 .tools-inner{max-width:1100px;margin:0 auto}
-
 .cat-section{margin-bottom:32px}
-.cat-label{
-  font-size:11px;font-weight:700;color:var(--blue);
-  letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;
-}
+.cat-label{font-size:11px;font-weight:700;color:var(--blue);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;}
 .cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 
 .tool-card{
@@ -150,25 +120,13 @@ nav{
   display:flex;gap:12px;align-items:flex-start;
   transition:all .2s;box-shadow:0 1px 3px rgba(0,0,0,.06);
 }
-.tool-card:hover{
-  box-shadow:0 4px 12px rgba(0,0,0,.1);
-  transform:translateY(-1px);border-color:var(--blue);
-}
-.tool-icon-wrap{
-  width:36px;height:36px;border-radius:8px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.1rem;flex-shrink:0;
-}
+.tool-card:hover{box-shadow:0 4px 12px rgba(0,0,0,.1);transform:translateY(-1px);border-color:var(--blue);}
+.tool-card.hidden{display:none}
+.tool-icon-wrap{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
 .tool-card h3{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px}
 .tool-card p{font-size:11.5px;color:var(--gray);line-height:1.4}
-.tool-badge{
-  display:inline-block;margin-top:4px;font-size:9px;font-weight:700;
-  padding:2px 7px;border-radius:100px;text-transform:uppercase;
-  letter-spacing:.04em;border:1px solid;
-}
+.tool-badge{display:inline-block;margin-top:4px;font-size:9px;font-weight:700;padding:2px 7px;border-radius:100px;text-transform:uppercase;letter-spacing:.04em;border:1px solid;}
 .bf{background:var(--green-lt);color:var(--green);border-color:rgba(22,163,74,.2)}
-.bp{background:var(--orange-lt);color:var(--orange);border-color:rgba(234,88,12,.2)}
-.bn{background:var(--purple-lt);color:var(--purple);border-color:rgba(124,58,237,.2)}
 
 .ib-blue{background:#DBEAFE}.ib-red{background:#FFE4E6}.ib-green{background:#DCFCE7}
 .ib-purple{background:#EDE9FE}.ib-orange{background:#FFEDD5}.ib-teal{background:#CCFBF1}
@@ -190,27 +148,14 @@ nav{
 .pc-per{font-size:12px;color:var(--gray);margin-top:3px;margin-bottom:18px}
 .pc.hot .pc-per{color:rgba(255,255,255,.5)}
 .pc-feats{list-style:none;margin-bottom:22px}
-.pc-feats li{
-  padding:7px 0;border-bottom:1px solid var(--border);
-  font-size:12.5px;color:var(--gray);
-  display:flex;align-items:center;gap:8px;
-}
+.pc-feats li{padding:7px 0;border-bottom:1px solid var(--border);font-size:12.5px;color:var(--gray);display:flex;align-items:center;gap:8px;}
 .pc.hot .pc-feats li{border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.8)}
 .pc-feats li::before{content:'✓';color:var(--blue);font-weight:700;font-size:12px}
 .pc.hot .pc-feats li::before{color:rgba(255,255,255,.9)}
-.pc-btn{
-  width:100%;padding:11px;border-radius:8px;font-size:13px;font-weight:600;
-  cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;
-  border:1.5px solid var(--border);background:var(--white);color:var(--ink);
-}
+.pc-btn{width:100%;padding:11px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;border:1.5px solid var(--border);background:var(--white);color:var(--ink);}
 .pc-btn:hover{border-color:var(--blue);color:var(--blue)}
 .pc.hot .pc-btn{background:white;color:var(--blue);border-color:white}
-.pop-tag{
-  position:absolute;top:-11px;left:50%;transform:translateX(-50%);
-  background:var(--orange);color:white;font-size:10px;font-weight:700;
-  padding:3px 12px;border-radius:100px;white-space:nowrap;
-  letter-spacing:.04em;text-transform:uppercase;
-}
+.pop-tag{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--orange);color:white;font-size:10px;font-weight:700;padding:3px 12px;border-radius:100px;white-space:nowrap;letter-spacing:.04em;text-transform:uppercase;}
 
 /* FOOTER */
 footer{background:#1F2937;padding:36px 20px 20px}
@@ -224,14 +169,13 @@ footer{background:#1F2937;padding:36px 20px 20px}
 .fc li{margin-bottom:8px}
 .fc a{color:rgba(255,255,255,.4);text-decoration:none;font-size:12px;transition:color .15s}
 .fc a:hover{color:white}
-.f-bottom{
-  border-top:1px solid rgba(255,255,255,.08);padding-top:16px;
-  display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
-  color:rgba(255,255,255,.2);font-size:11px;
-}
+.f-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;color:rgba(255,255,255,.2);font-size:11px;}
+
+/* SEARCH RESULT GRID */
+.search-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 
 @media(max-width:900px){
-  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .cat-grid,.search-grid{grid-template-columns:repeat(2,1fr)}
   .pricing-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
   .nav-menu{display:none}
@@ -239,7 +183,7 @@ footer{background:#1F2937;padding:36px 20px 20px}
   .hamburger{display:block}
 }
 @media(max-width:560px){
-  .cat-grid{grid-template-columns:1fr}
+  .cat-grid,.search-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr}
   .nav-right .nav-link{display:none}
 }
@@ -250,10 +194,7 @@ footer{background:#1F2937;padding:36px 20px 20px}
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a class="logo" href="/">
-      <div class="logo-icon">EZ</div>
-      <span class="logo-text">Ek<span>Zapp</span></span>
-    </a>
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
     <div class="nav-sep"></div>
     <ul class="nav-menu" id="navMenu">
       <li><a href="/">Home</a></li>
@@ -277,15 +218,39 @@ footer{background:#1F2937;padding:36px 20px 20px}
   <div class="hero-content">
     <h1>We help with all your file tasks</h1>
     <p class="hero-sub">Every tool you need, all in one place</p>
-    <a class="hero-cta" href="/unlock-pdf">
-      Edit a PDF document - it's free ›
-    </a>
-    <p class="hero-or">or choose one of our tools below ↓</p>
+
+    <!-- SEARCH BOX -->
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input
+        type="text"
+        class="search-input"
+        id="searchInput"
+        placeholder="Search tools... e.g. Unlock PDF, Image to PDF"
+        autocomplete="off"
+      >
+      <button class="search-clear" id="searchClear" title="Clear">✕</button>
+    </div>
+
+    <p class="hero-or" id="heroOr">or choose one of our tools below ↓</p>
   </div>
 </section>
 
+<!-- SEARCH RESULTS (hidden by default) -->
+<div class="search-results-section" id="searchResultsSection">
+  <div class="search-results-inner">
+    <div class="search-count" id="searchCount"></div>
+    <div class="search-grid" id="searchGrid"></div>
+    <div class="no-results" id="noResults" style="display:none">
+      <div class="no-icon">🔎</div>
+      <p>No tools found</p>
+      <small>Try searching "PDF", "image", "calculator" etc.</small>
+    </div>
+  </div>
+</div>
+
 <!-- INFO BAR -->
-<div class="info-bar">
+<div class="info-bar" id="infoBar">
   <div class="info-bar-inner">
     <div class="info-item">🔒 SSL Encrypted</div>
     <div class="info-item">🗑️ Files auto-deleted</div>
@@ -296,34 +261,34 @@ footer{background:#1F2937;padding:36px 20px 20px}
 </div>
 
 <!-- TOOLS -->
-<div class="tools-bg">
+<div class="tools-bg" id="toolsBg">
   <div class="tools-inner">
 
     <!-- MOST POPULAR -->
     <div class="cat-section">
       <div class="cat-label">Most Popular</div>
       <div class="cat-grid">
-        <a class="tool-card" href="/unlock-pdf">
+        <a class="tool-card" href="/unlock-pdf" data-search="unlock pdf remove password pdf">
           <div class="tool-icon-wrap ib-orange">🔓</div>
           <div><h3>Unlock PDF</h3><p>Remove password from PDF files instantly.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/merge-pdf">
+        <a class="tool-card" href="/merge-pdf" data-search="merge pdf combine pdf join pdf">
           <div class="tool-icon-wrap ib-green">🔗</div>
           <div><h3>Merge PDF</h3><p>Combine multiple PDFs into one document.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/split-pdf">
+        <a class="tool-card" href="/split-pdf" data-search="split pdf extract pages pdf">
           <div class="tool-icon-wrap ib-red">✂️</div>
           <div><h3>Split PDF</h3><p>Extract selected pages from your PDF.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/compress-pdf">
+        <a class="tool-card" href="/compress-pdf" data-search="compress pdf reduce pdf size">
           <div class="tool-icon-wrap ib-blue">⚡</div>
           <div><h3>Compress PDF</h3><p>Reduce PDF size while keeping quality.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/image/compress">
+        <a class="tool-card" href="/image/compress" data-search="compress image reduce image size photo">
           <div class="tool-icon-wrap ib-orange">🗜️</div>
           <div><h3>Compress Image</h3><p>Reduce image size without losing quality.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/image">
+        <a class="tool-card" href="/image" data-search="image to pdf jpg png to pdf convert image pdf">
           <div class="tool-icon-wrap ib-purple">🖼️</div>
           <div><h3>Image to PDF</h3><p>Convert JPG/PNG images to PDF instantly.</p><span class="tool-badge bf">FREE</span></div>
         </a>
@@ -334,51 +299,51 @@ footer{background:#1F2937;padding:36px 20px 20px}
     <div class="cat-section">
       <div class="cat-label">PDF Tools</div>
       <div class="cat-grid">
-        <a class="tool-card" href="/merge-pdf">
+        <a class="tool-card" href="/merge-pdf" data-search="merge pdf combine pdf join pdf">
           <div class="tool-icon-wrap ib-green">🔗</div>
           <div><h3>Merge PDF</h3><p>Combine multiple PDFs and images into one.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/split-pdf">
+        <a class="tool-card" href="/split-pdf" data-search="split pdf extract pages pdf">
           <div class="tool-icon-wrap ib-red">✂️</div>
           <div><h3>Split PDF</h3><p>Split by page range or extract every page.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/compress-pdf">
+        <a class="tool-card" href="/compress-pdf" data-search="compress pdf reduce pdf size">
           <div class="tool-icon-wrap ib-orange">⚡</div>
           <div><h3>Compress PDF</h3><p>Reduce file size without losing quality.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/unlock-pdf">
+        <a class="tool-card" href="/unlock-pdf" data-search="unlock pdf remove password pdf">
           <div class="tool-icon-wrap ib-blue">🔓</div>
           <div><h3>Unlock PDF</h3><p>Remove password protection from PDF.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/pdf-to-jpg">
+        <a class="tool-card" href="/pdf-to-jpg" data-search="pdf to jpg pdf to image convert pdf image">
           <div class="tool-icon-wrap ib-green">🖼️</div>
           <div><h3>PDF to JPG</h3><p>Convert PDF pages to JPG images.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/pdf-to-word">
+        <a class="tool-card" href="/pdf-to-word" data-search="pdf to word convert pdf word doc">
           <div class="tool-icon-wrap ib-blue">📝</div>
           <div><h3>PDF to Word</h3><p>Convert PDF to editable Word file.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/rotate-pdf">
+        <a class="tool-card" href="/rotate-pdf" data-search="rotate pdf turn pdf pages">
           <div class="tool-icon-wrap ib-purple">🔄</div>
           <div><h3>Rotate PDF</h3><p>Rotate all pages of your PDF.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/delete-pages">
+        <a class="tool-card" href="/delete-pages" data-search="delete pages pdf remove pages pdf">
           <div class="tool-icon-wrap ib-red">🗑️</div>
           <div><h3>Delete Pages</h3><p>Remove specific pages from PDF.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/watermark-pdf">
+        <a class="tool-card" href="/watermark-pdf" data-search="watermark pdf add watermark text pdf">
           <div class="tool-icon-wrap ib-purple">💧</div>
           <div><h3>Add Watermark</h3><p>Add text watermark to your PDF.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/protect-pdf">
+        <a class="tool-card" href="/protect-pdf" data-search="protect pdf password pdf lock pdf">
           <div class="tool-icon-wrap ib-blue">🔒</div>
           <div><h3>Protect PDF</h3><p>Add password protection to PDF.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/pdf-editor">
+        <a class="tool-card" href="/pdf-editor" data-search="pdf editor edit pdf annotate sign pdf">
           <div class="tool-icon-wrap ib-teal">✏️</div>
           <div><h3>PDF Editor</h3><p>Edit, annotate and sign PDF files.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/image">
+        <a class="tool-card" href="/image" data-search="image to pdf jpg png to pdf convert image pdf">
           <div class="tool-icon-wrap ib-pink">📸</div>
           <div><h3>Image to PDF</h3><p>Turn images into PDF documents.</p><span class="tool-badge bf">FREE</span></div>
         </a>
@@ -389,19 +354,19 @@ footer{background:#1F2937;padding:36px 20px 20px}
     <div class="cat-section">
       <div class="cat-label">Image Tools</div>
       <div class="cat-grid">
-        <a class="tool-card" href="/image">
+        <a class="tool-card" href="/image" data-search="image to pdf jpg png to pdf convert image pdf">
           <div class="tool-icon-wrap ib-purple">🖼️</div>
           <div><h3>Image to PDF</h3><p>Convert JPG/PNG images to PDF.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/image/compress">
+        <a class="tool-card" href="/image/compress" data-search="compress image reduce image size photo">
           <div class="tool-icon-wrap ib-orange">🗜️</div>
           <div><h3>Compress Image</h3><p>Reduce image size without losing quality.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/image/resize">
+        <a class="tool-card" href="/image/resize" data-search="resize image change image size dimensions">
           <div class="tool-icon-wrap ib-blue">📐</div>
           <div><h3>Resize Image</h3><p>Change image dimensions instantly.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/image/convert">
+        <a class="tool-card" href="/image/convert" data-search="convert image jpg png webp bmp format">
           <div class="tool-icon-wrap ib-green">🔁</div>
           <div><h3>Convert Image</h3><p>Convert between JPG, PNG, WebP, BMP.</p><span class="tool-badge bf">FREE</span></div>
         </a>
@@ -412,39 +377,39 @@ footer{background:#1F2937;padding:36px 20px 20px}
     <div class="cat-section">
       <div class="cat-label">Calculators</div>
       <div class="cat-grid">
-        <a class="tool-card" href="/calculators/age">
+        <a class="tool-card" href="/calculators/age" data-search="age calculator birthday date of birth">
           <div class="tool-icon-wrap ib-yellow">🎂</div>
           <div><h3>Age Calculator</h3><p>Calculate exact age from date of birth.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/calculators/bmi">
+        <a class="tool-card" href="/calculators/bmi" data-search="bmi calculator body mass index weight height">
           <div class="tool-icon-wrap ib-green">⚖️</div>
           <div><h3>BMI Calculator</h3><p>Calculate your Body Mass Index.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/calculators/gst">
+        <a class="tool-card" href="/calculators/gst" data-search="gst calculator tax india">
           <div class="tool-icon-wrap ib-orange">💰</div>
           <div><h3>GST Calculator</h3><p>Calculate GST amount for any price.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/calculators/emi">
+        <a class="tool-card" href="/calculators/emi" data-search="emi calculator loan monthly installment">
           <div class="tool-icon-wrap ib-blue">🏦</div>
           <div><h3>EMI Calculator</h3><p>Find your monthly loan EMI amount.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/calculators/percentage">
+        <a class="tool-card" href="/calculators/percentage" data-search="percentage calculator percent">
           <div class="tool-icon-wrap ib-pink">💯</div>
           <div><h3>Percentage Calculator</h3><p>Calculate any percentage instantly.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/calculators/sip">
+        <a class="tool-card" href="/calculators/sip" data-search="sip calculator investment returns mutual fund">
           <div class="tool-icon-wrap ib-green">📈</div>
           <div><h3>SIP Calculator</h3><p>Calculate your SIP investment returns.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/calculators/date">
+        <a class="tool-card" href="/calculators/date" data-search="date calculator difference between dates days">
           <div class="tool-icon-wrap ib-blue">📅</div>
           <div><h3>Date Calculator</h3><p>Calculate difference between two dates.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/calculators/calorie">
+        <a class="tool-card" href="/calculators/calorie" data-search="calorie calculator daily calories food diet">
           <div class="tool-icon-wrap ib-orange">🔥</div>
           <div><h3>Calorie Calculator</h3><p>Calculate your daily calorie needs.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/tools/tip-calculator">
+        <a class="tool-card" href="/tools/tip-calculator" data-search="tip calculator bill split restaurant">
           <div class="tool-icon-wrap ib-yellow">🍽️</div>
           <div><h3>Tip Calculator</h3><p>Calculate tip and split bill easily.</p><span class="tool-badge bf">FREE</span></div>
         </a>
@@ -455,35 +420,35 @@ footer{background:#1F2937;padding:36px 20px 20px}
     <div class="cat-section">
       <div class="cat-label">Text & Other Tools</div>
       <div class="cat-grid">
-        <a class="tool-card" href="/tools/word-counter">
+        <a class="tool-card" href="/tools/word-counter" data-search="word counter count words characters sentences">
           <div class="tool-icon-wrap ib-blue">🔢</div>
           <div><h3>Word Counter</h3><p>Count words, characters and sentences.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/tools/case-converter">
+        <a class="tool-card" href="/tools/case-converter" data-search="case converter uppercase lowercase title case text">
           <div class="tool-icon-wrap ib-purple">🔡</div>
           <div><h3>Case Converter</h3><p>Switch to UPPER, lower or Title Case.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/tools/mb-converter">
+        <a class="tool-card" href="/tools/mb-converter" data-search="mb gb converter kb mb gb tb storage size">
           <div class="tool-icon-wrap ib-teal">💾</div>
           <div><h3>MB/GB Converter</h3><p>Convert between KB, MB, GB, TB.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/tools/lorem">
+        <a class="tool-card" href="/tools/lorem" data-search="lorem ipsum generator dummy text placeholder">
           <div class="tool-icon-wrap ib-orange">📋</div>
           <div><h3>Lorem Generator</h3><p>Generate dummy placeholder text.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/tools/qr-generator">
+        <a class="tool-card" href="/tools/qr-generator" data-search="qr code generator qr url text wifi">
           <div class="tool-icon-wrap ib-purple">📱</div>
           <div><h3>QR Code Generator</h3><p>Generate QR codes for URLs, text, WiFi.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/tools/password-generator">
+        <a class="tool-card" href="/tools/password-generator" data-search="password generator strong secure password">
           <div class="tool-icon-wrap ib-green">🔐</div>
           <div><h3>Password Generator</h3><p>Generate strong, secure passwords.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/tools/currency-converter">
+        <a class="tool-card" href="/tools/currency-converter" data-search="currency converter exchange rate usd inr eur">
           <div class="tool-icon-wrap ib-teal">💱</div>
           <div><h3>Currency Converter</h3><p>Live exchange rates for 150+ currencies.</p><span class="tool-badge bf">FREE</span></div>
         </a>
-        <a class="tool-card" href="/tools/unit-converter">
+        <a class="tool-card" href="/tools/unit-converter" data-search="unit converter length weight temperature km miles kg">
           <div class="tool-icon-wrap ib-yellow">📏</div>
           <div><h3>Unit Converter</h3><p>Convert length, weight, temperature & more.</p><span class="tool-badge bf">FREE</span></div>
         </a>
@@ -592,9 +557,99 @@ footer{background:#1F2937;padding:36px 20px 20px}
 </footer>
 
 <script>
+// NAV
 const hamburger=document.getElementById('hamburger');
 const navMenu=document.getElementById('navMenu');
 hamburger.addEventListener('click',()=>navMenu.classList.toggle('show'));
+
+// SEARCH
+const searchInput = document.getElementById('searchInput');
+const searchClear = document.getElementById('searchClear');
+const searchResultsSection = document.getElementById('searchResultsSection');
+const searchGrid = document.getElementById('searchGrid');
+const searchCount = document.getElementById('searchCount');
+const noResults = document.getElementById('noResults');
+const toolsBg = document.getElementById('toolsBg');
+const infoBar = document.getElementById('infoBar');
+const heroOr = document.getElementById('heroOr');
+
+// সব tool cards collect করি
+const allCards = document.querySelectorAll('.tool-card');
+
+// Unique tools বানাই (duplicate avoid করতে href দিয়ে)
+function getUniqueTools() {
+  const seen = new Set();
+  const tools = [];
+  allCards.forEach(card => {
+    const href = card.getAttribute('href');
+    if (!seen.has(href)) {
+      seen.add(href);
+      tools.push({
+        href: href,
+        html: card.innerHTML,
+        search: card.getAttribute('data-search') || '',
+        title: card.querySelector('h3') ? card.querySelector('h3').textContent.toLowerCase() : ''
+      });
+    }
+  });
+  return tools;
+}
+
+const allTools = getUniqueTools();
+
+function doSearch(query) {
+  const q = query.trim().toLowerCase();
+
+  if (!q) {
+    // Search খালি — সব কিছু দেখাও
+    searchResultsSection.style.display = 'none';
+    toolsBg.style.display = 'block';
+    infoBar.style.display = 'block';
+    heroOr.style.display = 'flex';
+    searchClear.style.display = 'none';
+    return;
+  }
+
+  // Search active
+  searchClear.style.display = 'block';
+  toolsBg.style.display = 'none';
+  infoBar.style.display = 'none';
+  heroOr.style.display = 'none';
+  searchResultsSection.style.display = 'block';
+
+  // Filter tools
+  const results = allTools.filter(tool => {
+    return tool.title.includes(q) || tool.search.includes(q);
+  });
+
+  if (results.length === 0) {
+    searchGrid.innerHTML = '';
+    noResults.style.display = 'block';
+    searchCount.innerHTML = '';
+  } else {
+    noResults.style.display = 'none';
+    searchCount.innerHTML = `<span>${results.length}</span> tool${results.length > 1 ? 's' : ''} found for "<strong>${query}</strong>"`;
+    searchGrid.innerHTML = results.map(tool =>
+      `<a class="tool-card" href="${tool.href}">${tool.html}</a>`
+    ).join('');
+  }
+}
+
+searchInput.addEventListener('input', () => doSearch(searchInput.value));
+
+searchClear.addEventListener('click', () => {
+  searchInput.value = '';
+  doSearch('');
+  searchInput.focus();
+});
+
+// Keyboard shortcut: press "/" to focus search
+document.addEventListener('keydown', e => {
+  if (e.key === '/' && document.activeElement !== searchInput) {
+    e.preventDefault();
+    searchInput.focus();
+  }
+});
 </script>
 
 </body>
