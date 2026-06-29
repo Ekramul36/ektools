@@ -1,114 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VW5QLMV046"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-VW5QLMV046');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Passport Photo Maker — EkZapp</title>
-<meta name="description" content="Create passport and visa photos online free. Multiple sizes supported.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626;}
-body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
-nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
-.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
-.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
-.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
-.logo-text{font-size:15px;font-weight:700;color:var(--ink)}.logo-text span{color:var(--blue)}
-.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
-.back:hover{border-color:var(--blue);color:var(--blue)}
-.container{max-width:600px;margin:48px auto;padding:0 20px}
-.tool-header{text-align:center;margin-bottom:32px}
-.tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
-.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
-.tool-header p{color:var(--gray);font-size:14px}
-.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.drop-area{border:2px dashed var(--border);border-radius:10px;padding:36px 20px;text-align:center;background:var(--light);cursor:pointer;transition:all .2s;position:relative}
-.drop-area:hover,.drop-area.dragover{border-color:var(--blue);background:var(--blue-lt)}
-.drop-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer}
-.drop-icon{font-size:2.2rem;margin-bottom:10px}
-.drop-area h3{font-size:14px;font-weight:600;margin-bottom:4px}
-.drop-area p{font-size:12px;color:var(--gray)}
-.file-name{font-size:13px;font-weight:600;color:var(--blue);margin-top:8px;display:none}
-.btn{width:100%;padding:13px;background:var(--blue);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;margin-top:16px;display:block}
-.btn:hover{background:var(--blue-dk)}
-.error-box{background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:12px 16px;color:var(--red);font-size:13px;margin-bottom:16px}
-.trust{display:flex;justify-content:center;gap:20px;margin-top:16px;flex-wrap:wrap}
-.trust-item{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:4px}
-.result-box{background:var(--light);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;font-size:13px;line-height:1.7;white-space:pre-wrap;max-height:320px;overflow-y:auto}
-.copy-btn{margin-top:10px;padding:8px 18px;border:1.5px solid var(--border);border-radius:8px;background:white;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif}
-.copy-btn:hover{border-color:var(--blue);color:var(--blue)}
-.how-to{margin-top:36px;background:white;border:1px solid var(--border);border-radius:14px;padding:24px}
-.how-to h2{font-size:15px;font-weight:700;margin-bottom:16px}
-.steps{display:flex;flex-direction:column;gap:12px}
-.step{display:flex;gap:12px;align-items:flex-start}
-.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue-lt);color:var(--blue);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
-.step-text{font-size:13px;color:var(--gray);line-height:1.5}
-.step-text strong{color:var(--ink)}
-.faq{margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
-.faq h3{font-size:13px;font-weight:700;margin-bottom:6px}
-.faq p{font-size:13px;color:var(--gray);line-height:1.5}
-.field{margin-top:16px}
-.field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
-.field select,.field input[type=text],.field input[type=number]{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none}
-.field select:focus,.field input:focus{border-color:var(--blue)}
-</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Passport Photo Maker – EkZapp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #F9FAFB; margin: 0; padding: 0; }
+        .container { max-width: 720px; margin: 50px auto; padding: 0 20px; }
+        .card { background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); padding: 40px; }
+        h1 { font-size: 26px; color: #111827; margin: 0 0 6px; }
+        .subtitle { color: #6B7280; font-size: 14px; margin-bottom: 30px; }
+
+        .upload-area {
+            border: 2px dashed #D1D5DB; border-radius: 12px;
+            padding: 45px 20px; text-align: center;
+            cursor: pointer; transition: all 0.2s; background: #F9FAFB;
+        }
+        .upload-area:hover { border-color: #2563EB; background: #EFF6FF; }
+        .upload-area .icon { font-size: 40px; margin-bottom: 10px; }
+        .upload-area p { color: #6B7280; font-size: 14px; margin: 6px 0; }
+        .upload-area strong { color: #2563EB; }
+        input[type="file"] { display: none; }
+
+        .preview-wrap { margin-top: 16px; text-align: center; display: none; }
+        .preview-wrap img { max-width: 200px; max-height: 200px; border-radius: 8px; border: 2px solid #E5E7EB; object-fit: cover; }
+
+        .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+        .option-group label { display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 6px; }
+        .option-group select, .option-group input[type="color"] {
+            width: 100%; padding: 10px 12px; border: 1px solid #D1D5DB;
+            border-radius: 8px; font-size: 14px; background: white; color: #111827;
+            cursor: pointer; appearance: auto;
+        }
+        .option-group input[type="color"] { height: 44px; padding: 4px 8px; }
+
+        .bg-presets { display: flex; gap: 10px; margin-top: 8px; }
+        .bg-preset {
+            width: 36px; height: 36px; border-radius: 50%; border: 2px solid #E5E7EB;
+            cursor: pointer; transition: transform 0.15s;
+        }
+        .bg-preset:hover { transform: scale(1.15); border-color: #2563EB; }
+        .bg-preset.active { border-color: #2563EB; border-width: 3px; }
+
+        .btn {
+            display: block; width: 100%; padding: 14px;
+            background: linear-gradient(135deg, #2563EB, #1D4ED8);
+            color: white; border: none; border-radius: 10px;
+            font-size: 16px; font-weight: 600; cursor: pointer;
+            margin-top: 28px; transition: opacity 0.2s;
+        }
+        .btn:hover { opacity: 0.9; }
+        .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        .alert-error {
+            background: #FEF2F2; color: #B91C1C; border: 1px solid #FECACA;
+            border-radius: 10px; padding: 14px 18px; margin-bottom: 20px; font-size: 14px;
+        }
+
+        .info-box { background: #EFF6FF; border-radius: 10px; padding: 16px 20px; margin-top: 28px; }
+        .info-box h3 { font-size: 14px; color: #1D4ED8; margin: 0 0 10px; }
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .info-item { font-size: 13px; color: #1E40AF; }
+        .info-item strong { display: block; color: #1D4ED8; }
+
+        .spinner { display: none; text-align: center; margin-top: 10px; color: #6B7280; font-size: 14px; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #2563EB; font-size: 14px; text-decoration: none; }
+        .back-link:hover { text-decoration: underline; }
+        .file-name { margin-top: 10px; font-size: 13px; color: #374151; font-weight: 500; }
+    </style>
 </head>
 <body>
-<nav><div class="nav-inner">
-  <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
-  <a class="back" href="/">← All Tools</a>
-</div></nav>
+
+{% include 'navbar.html' ignore missing %}
+
 <div class="container">
-  <div class="tool-header">
-    <div class="tool-icon-wrap">📸</div>
-    <h1>Passport Photo Maker</h1>
-    <p>Create passport and visa photos online free. Multiple sizes supported.</p>
-  </div>
-  <div class="card">
-    {% if error %}<div class="error-box">⚠️ {{ error }}</div>{% endif %}
-    <div class="drop-area" id="dropArea">
-        <div class="drop-icon">📄</div>
-        <h3>Click to upload your photo</h3>
-        <p>Accepted: image/*</p>
-        <p class="file-name" id="fileName"></p>
-        <input type="file" name="image" accept="image/*" required onchange="showFileName(this)">
-      </div>
-<div class="field">
-  <label>Photo Size</label>
-  <select name="size">
-    <option value="35x45">India Passport — 35×45 mm</option>
-    <option value="51x51">USA Passport — 51×51 mm</option>
-    <option value="35x35">UK Passport — 35×35 mm</option>
-    <option value="40x60">Schengen Visa — 40×60 mm</option>
-  </select>
-</div>
-<div class="field">
-  <label>Background Color</label>
-  <select name="bg_color">
-    <option value="white">White</option>
-    <option value="#EFF6FF">Light Blue</option>
-    <option value="#F9FAFB">Off White</option>
-  </select>
-</div>
-<button type="submit" class="btn" style="margin-top:16px">📸 Create Passport Photo</button>
-    <div class="trust">
-      <div class="trust-item">🔒 SSL Encrypted</div>
-      <div class="trust-item">🗑️ Auto-deleted</div>
-      <div class="trust-item">📵 No signup</div>
+    <a href="/" class="back-link">← Back to Tools</a>
+
+    <div class="card">
+        <h1>📷 Passport Photo Maker</h1>
+        <p class="subtitle">Create professional passport & visa photos with custom size and background — free!</p>
+
+        {% if error %}
+        <div class="alert-error">⚠️ {{ error }}</div>
+        {% endif %}
+
+        <form method="POST" enctype="multipart/form-data" id="passportForm">
+
+            <!-- Upload -->
+            <div class="upload-area" id="dropZone" onclick="document.getElementById('imageInput').click()">
+                <div class="icon">🤳</div>
+                <p><strong>Click to upload</strong> your photo</p>
+                <p>JPG, PNG, WEBP — Max 10MB</p>
+            </div>
+            <input type="file" id="imageInput" name="image" accept="image/*" onchange="previewFile(this)">
+            <div class="file-name" id="fileName"></div>
+
+            <div class="preview-wrap" id="previewWrap">
+                <img id="previewImg" src="" alt="Preview">
+            </div>
+
+            <!-- Options -->
+            <div class="options-grid">
+                <div class="option-group">
+                    <label>📐 Photo Size</label>
+                    <select name="size" id="sizeSelect">
+                        <option value="35x45">🇮🇳 India Passport — 35×45 mm</option>
+                        <option value="51x51">🇺🇸 US Passport — 2×2 inch (51×51mm)</option>
+                        <option value="35x35">🇬🇧 UK Passport — 35×35 mm</option>
+                        <option value="40x60">🇪🇺 Schengen Visa — 40×60 mm</option>
+                    </select>
+                </div>
+
+                <div class="option-group">
+                    <label>🎨 Background Color</label>
+                    <div class="bg-presets" id="bgPresets">
+                        <div class="bg-preset active" style="background:#ffffff;" data-color="#ffffff" title="White" onclick="setBg(this, '#ffffff')"></div>
+                        <div class="bg-preset" style="background:#6B96D5;" data-color="#6B96D5" title="Light Blue" onclick="setBg(this, '#6B96D5')"></div>
+                        <div class="bg-preset" style="background:#F0F0F0;" data-color="#F0F0F0" title="Light Gray" onclick="setBg(this, '#F0F0F0')"></div>
+                        <div class="bg-preset" style="background:#FAFAFA;" data-color="#FAFAFA" title="Off White" onclick="setBg(this, '#FAFAFA')"></div>
+                    </div>
+                    <input type="color" id="bgColorPicker" value="#ffffff" style="margin-top:10px; width:100%; height:40px; border-radius:8px; border:1px solid #D1D5DB; cursor:pointer;" onchange="updateBgFromPicker(this.value)">
+                    <input type="hidden" name="bg_color" id="bgColorInput" value="white">
+                </div>
+            </div>
+
+            <button type="submit" class="btn" id="submitBtn">
+                📸 Generate Passport Photo
+            </button>
+            <div class="spinner" id="spinner">⏳ Creating your passport photo sheet...</div>
+        </form>
+
+        <!-- Size Info -->
+        <div class="info-box">
+            <h3>📋 Standard Passport Photo Sizes</h3>
+            <div class="info-grid">
+                <div class="info-item"><strong>🇮🇳 India</strong> 35×45 mm</div>
+                <div class="info-item"><strong>🇺🇸 USA</strong> 51×51 mm (2×2")</div>
+                <div class="info-item"><strong>🇬🇧 UK</strong> 35×35 mm</div>
+                <div class="info-item"><strong>🇪🇺 Schengen</strong> 40×60 mm</div>
+            </div>
+            <p style="font-size:12px; color:#3B82F6; margin: 12px 0 0;">Output: A4 sheet with 16 photos @ 300 DPI — ready to print!</p>
+        </div>
     </div>
-  </div>
-  <div class="how-to">
-    <h2>📖 How to Use — Passport Photo Maker</h2>
-    <div class="steps"><div class="step"><div class="step-num">1</div><div class="step-text"><strong>Upload your photo</strong> — Upload a clear front-facing photo with good lighting.</div></div><div class="step"><div class="step-num">2</div><div class="step-text"><strong>Select size & background</strong> — Choose your country's passport size and background color.</div></div><div class="step"><div class="step-num">3</div><div class="step-text"><strong>Download print sheet</strong> — Get a printable A4 sheet with multiple passport photos.</div></div></div><div class="faq"><h3>What size should my original photo be?</h3><p>Any photo works. For best results use a clear, front-facing photo with good lighting.</p></div><div class="faq"><h3>How many photos will I get?</h3><p>You get a print-ready A4 sheet with multiple copies of your passport photo at 300 DPI.</p></div>
-  </div>
 </div>
+
 <script>
-function showFileName(input){if(input.files&&input.files[0]){const fn=document.getElementById('fileName');fn.textContent='✓ '+input.files[0].name;fn.style.display='block';}}
-function copyText(){const t=document.getElementById('resultBox');if(t)navigator.clipboard.writeText(t.innerText).then(()=>alert('Copied!'));}
-const da=document.getElementById('dropArea');
-if(da){da.addEventListener('dragover',e=>{e.preventDefault();da.classList.add('dragover')});da.addEventListener('dragleave',()=>da.classList.remove('dragover'));da.addEventListener('drop',e=>{e.preventDefault();da.classList.remove('dragover')});}
+    function previewFile(input) {
+        const file = input.files[0];
+        if (!file) return;
+        document.getElementById('fileName').textContent = '📎 ' + file.name;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('previewImg').src = e.target.result;
+            document.getElementById('previewWrap').style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function setBg(el, color) {
+        document.querySelectorAll('.bg-preset').forEach(p => p.classList.remove('active'));
+        el.classList.add('active');
+        document.getElementById('bgColorInput').value = color;
+        document.getElementById('bgColorPicker').value = color.startsWith('#') ? color : '#ffffff';
+    }
+
+    function updateBgFromPicker(color) {
+        document.querySelectorAll('.bg-preset').forEach(p => p.classList.remove('active'));
+        document.getElementById('bgColorInput').value = color;
+    }
+
+    // Drag & Drop
+    const dropZone = document.getElementById('dropZone');
+    dropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropZone.style.borderColor = '#2563EB';
+        dropZone.style.background = '#EFF6FF';
+    });
+    dropZone.addEventListener('dragleave', () => {
+        dropZone.style.borderColor = '#D1D5DB';
+        dropZone.style.background = '#F9FAFB';
+    });
+    dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        const file = e.dataTransfer.files[0];
+        if (file) {
+            document.getElementById('imageInput').files = e.dataTransfer.files;
+            previewFile(document.getElementById('imageInput'));
+        }
+    });
+
+    // Submit handler
+    document.getElementById('passportForm').addEventListener('submit', function(e) {
+        const fileInput = document.getElementById('imageInput');
+        if (!fileInput.files || fileInput.files.length === 0) {
+            e.preventDefault();
+            alert('Please select a photo first!');
+            return;
+        }
+        document.getElementById('submitBtn').disabled = true;
+        document.getElementById('submitBtn').textContent = '⏳ Processing...';
+        document.getElementById('spinner').style.display = 'block';
+    });
 </script>
-</body></html>
+
+</body>
+</html>
