@@ -761,7 +761,7 @@ def ocr_tool():
 def remove_background():
     if request.method == "POST":
         try:
-            '2qJ63NFCUXfz8q5Sn7j2JDGP'
+            
             from PIL import Image as PILImage
             import io
 
@@ -770,8 +770,13 @@ def remove_background():
                 return render_template("remove_background.html", error="Please select an image.")
 
             input_bytes = img_file.read()
-            output_bytes = remove(input_bytes)
-
+            response = req_lib.post(
+    'https://api.remove.bg/v1.0/removebg',
+    files={'image_file': input_bytes},
+    data={'size': 'auto'},
+    headers={'X-Api-Key': '2qJ63NFCUXfz8q5Sn7j2JDGP'},
+)
+output_bytes = response.content
             output_path = os.path.join(OUTPUT_FOLDER, "No_Background.png")
             with open(output_path, "wb") as f:
                 f.write(output_bytes)
