@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file, send_from_directory
+from flask import Flask, render_template, request, send_file, send_from_directory, redirect
 from pypdf import PdfReader, PdfWriter
 import fitz
 import os
@@ -177,6 +177,7 @@ def image():
             return render_template("image.html", error=f"Error: {str(e)}")
     return render_template("image.html")
 
+
 # ──────────────────────────────────────────
 # CALCULATORS
 # ──────────────────────────────────────────
@@ -185,21 +186,17 @@ def image():
 def age_calculator():
     return render_template("age.html")
 
-
 @app.route("/calculators/bmi")
 def bmi_calculator():
     return render_template("bmi.html")
-
 
 @app.route("/calculators/gst")
 def gst_calculator():
     return render_template("gst.html")
 
-
 @app.route("/calculators/emi")
 def emi_calculator():
     return render_template("emi.html")
-
 
 @app.route("/calculators/percentage")
 def percentage_calculator():
@@ -214,39 +211,33 @@ def percentage_calculator():
 def word_counter():
     return render_template("word_counter.html")
 
-
 @app.route("/tools/case-converter")
 def case_converter():
     return render_template("case_converter.html")
-
 
 @app.route("/tools/mb-converter")
 def mb_converter():
     return render_template("mb_converter.html")
 
-
 @app.route("/tools/lorem")
 def lorem_generator():
     return render_template("lorem.html")
 
-
 @app.route("/pdf-editor")
 def pdf_editor():
     return render_template("pdf_editor.html")
+
 @app.route("/about")
 def about():
     return render_template("about.html")
-
 
 @app.route("/privacy")
 def privacy():
     return render_template("privacy.html")
 
-
 @app.route("/terms")
 def terms():
     return render_template("terms.html")
-
 
 @app.route("/contact")
 def contact():
@@ -261,23 +252,22 @@ def contact():
 def robots():
     return send_from_directory("static", "robots.txt")
 
-
 @app.route("/sitemap.xml")
 def sitemap():
     return send_from_directory("static", "sitemap.xml")
-
 
 @app.route("/google1b7c2f73edcb5802.html")
 def google_verification():
     return send_from_directory("static", "google1b7c2f73edcb5802.html")
 
 
-
-
 import zipfile
 import io
 
-# ---------------- PDF to JPG ----------------
+# ──────────────────────────────────────────
+# PDF TO JPG
+# ──────────────────────────────────────────
+
 @app.route("/pdf-to-jpg", methods=["GET", "POST"])
 def pdf_to_jpg():
     if request.method == "POST":
@@ -319,7 +309,10 @@ def pdf_to_jpg():
     return render_template("pdf_to_jpg.html")
 
 
-# ---------------- Rotate PDF ----------------
+# ──────────────────────────────────────────
+# ROTATE PDF
+# ──────────────────────────────────────────
+
 @app.route("/rotate-pdf", methods=["GET", "POST"])
 def rotate_pdf():
     if request.method == "POST":
@@ -349,7 +342,10 @@ def rotate_pdf():
     return render_template("rotate_pdf.html")
 
 
-# ---------------- Delete Pages ----------------
+# ──────────────────────────────────────────
+# DELETE PAGES
+# ──────────────────────────────────────────
+
 @app.route("/delete-pages", methods=["GET", "POST"])
 def delete_pages():
     if request.method == "POST":
@@ -361,7 +357,6 @@ def delete_pages():
                 return render_template("delete_pages.html", error="Please select a PDF file.")
 
             reader = PdfReader(pdf)
-            total = len(reader.pages)
 
             pages_to_delete = set()
             for part in pages_input.split(","):
@@ -393,7 +388,10 @@ def delete_pages():
     return render_template("delete_pages.html")
 
 
-# ---------------- PDF to Word ----------------
+# ──────────────────────────────────────────
+# PDF TO WORD
+# ──────────────────────────────────────────
+
 @app.route("/pdf-to-word", methods=["GET", "POST"])
 def pdf_to_word():
     if request.method == "POST":
@@ -419,6 +417,8 @@ def pdf_to_word():
             return render_template("pdf_to_word.html", error=f"Error: {str(e)}")
 
     return render_template("pdf_to_word.html")
+
+
 @app.route("/tools/qr-generator")
 def qr_generator():
     return render_template("qr_generator.html")
@@ -442,6 +442,11 @@ def sip_calculator():
 @app.route("/calculators/date")
 def date_calculator():
     return render_template("date_calculator.html")
+
+
+# ──────────────────────────────────────────
+# IMAGE COMPRESS / RESIZE / CONVERT
+# ──────────────────────────────────────────
 
 @app.route("/image/compress", methods=["GET", "POST"])
 def image_compress():
@@ -515,7 +520,11 @@ def image_convert():
             return render_template("image_convert.html", error=str(e))
     return render_template("image_convert.html")
 
-# Watermark PDF
+
+# ──────────────────────────────────────────
+# WATERMARK PDF
+# ──────────────────────────────────────────
+
 @app.route("/watermark-pdf", methods=["GET", "POST"])
 def watermark_pdf():
     if request.method == "POST":
@@ -543,7 +552,11 @@ def watermark_pdf():
             return render_template("watermark_pdf.html", error=str(e))
     return render_template("watermark_pdf.html")
 
-# Protect PDF
+
+# ──────────────────────────────────────────
+# PROTECT PDF
+# ──────────────────────────────────────────
+
 @app.route("/protect-pdf", methods=["GET", "POST"])
 def protect_pdf():
     if request.method == "POST":
@@ -570,18 +583,20 @@ def protect_pdf():
             return render_template("protect_pdf.html", error=str(e))
     return render_template("protect_pdf.html")
 
-# Tip Calculator
+
 @app.route("/tools/tip-calculator")
 def tip_calculator():
     return render_template("tip_calculator.html")
 
-# Calorie Calculator
 @app.route("/calculators/calorie")
 def calorie_calculator():
     return render_template("calorie_calculator.html")
-    # ──────────────────────────────────────────
+
+
+# ──────────────────────────────────────────
 # WORD TO PDF
 # ──────────────────────────────────────────
+
 @app.route("/word-to-pdf", methods=["GET", "POST"])
 def word_to_pdf():
     if request.method == "POST":
@@ -603,6 +618,7 @@ def word_to_pdf():
 # ──────────────────────────────────────────
 # EXCEL TO PDF
 # ──────────────────────────────────────────
+
 @app.route("/excel-to-pdf", methods=["GET", "POST"])
 def excel_to_pdf():
     if request.method == "POST":
@@ -656,6 +672,7 @@ def excel_to_pdf():
 # ──────────────────────────────────────────
 # PDF TO EXCEL
 # ──────────────────────────────────────────
+
 @app.route("/pdf-to-excel", methods=["GET", "POST"])
 def pdf_to_excel():
     if request.method == "POST":
@@ -712,6 +729,7 @@ def pdf_to_excel():
 # ──────────────────────────────────────────
 # OCR — IMAGE TO TEXT
 # ──────────────────────────────────────────
+
 @app.route("/ocr", methods=["GET", "POST"])
 def ocr_tool():
     if request.method == "POST":
@@ -738,6 +756,7 @@ def ocr_tool():
 # ──────────────────────────────────────────
 # BACKGROUND REMOVER
 # ──────────────────────────────────────────
+
 @app.route("/remove-background", methods=["GET", "POST"])
 def remove_background():
     if request.method == "POST":
@@ -766,21 +785,25 @@ def remove_background():
 # ──────────────────────────────────────────
 # PASSPORT PHOTO MAKER
 # ──────────────────────────────────────────
+
 @app.route("/passport-photo", methods=["GET", "POST"])
 def passport_photo():
     if request.method == "POST":
         try:
             from PIL import Image as PILImage
+            import base64
+            import io as BytesIO_io
 
-            img_file = request.files.get("image")
+            img_file    = request.files.get("image")
             size_preset = request.form.get("size", "35x45")
-            bg_color = request.form.get("bg_color", "white")
+            bg_color    = request.form.get("bg_color", "#ffffff")
+            copies      = int(request.form.get("copies", 8))
 
             if not img_file or img_file.filename == "":
                 return render_template("passport_photo.html", error="Please select an image.")
 
             sizes = {
-                "35x45": (413, 531),   # India passport (300dpi)
+                "35x45": (413, 531),   # India passport (300 dpi)
                 "51x51": (600, 600),   # US passport
                 "35x35": (413, 413),   # UK passport
                 "40x60": (472, 709),   # Schengen visa
@@ -789,8 +812,8 @@ def passport_photo():
 
             img = PILImage.open(img_file).convert("RGBA")
 
-            # Resize to fill and crop to center
-            img_ratio = img.width / img.height
+            # Center crop to target ratio
+            img_ratio    = img.width / img.height
             target_ratio = w / h
             if img_ratio > target_ratio:
                 new_h = h
@@ -799,56 +822,90 @@ def passport_photo():
                 new_w = w
                 new_h = int(w / img_ratio)
 
-            img = img.resize((new_w, new_h), PILImage.LANCZOS)
+            img  = img.resize((new_w, new_h), PILImage.LANCZOS)
             left = (new_w - w) // 2
-            top = (new_h - h) // 2
-            img = img.crop((left, top, left + w, top + h))
+            top  = (new_h - h) // 2
+            img  = img.crop((left, top, left + w, top + h))
 
-            # Background
-            bg = PILImage.new("RGB", (w, h), bg_color)
+            # Background color
+            try:
+                bg = PILImage.new("RGB", (w, h), bg_color)
+            except Exception:
+                bg = PILImage.new("RGB", (w, h), "white")
+
             if img.mode == "RGBA":
                 bg.paste(img, mask=img.split()[3])
             else:
                 bg.paste(img)
 
-            # Print sheet: 4 photos on A4
-            dpi = 300
-            a4_w = int(8.27 * dpi)
-            a4_h = int(11.69 * dpi)
-            sheet = PILImage.new("RGB", (a4_w, a4_h), "white")
+            # Build A4 print sheet @ 300 DPI
+            dpi    = 300
+            a4_w   = int(8.27 * dpi)
+            a4_h   = int(11.69 * dpi)
+            sheet  = PILImage.new("RGB", (a4_w, a4_h), "white")
             margin = int(0.3 * dpi)
-            gap = int(0.1 * dpi)
-            x, y = margin, margin
-            for row in range(4):
-                for col in range(4):
-                    cx = x + col * (w + gap)
-                    cy = y + row * (h + gap)
-                    if cx + w <= a4_w - margin and cy + h <= a4_h - margin:
-                        sheet.paste(bg, (cx, cy))
+            gap    = int(0.1 * dpi)
 
+            placed = 0
+            x_pos  = margin
+            y_pos  = margin
+
+            while placed < copies:
+                if x_pos + w > a4_w - margin:
+                    x_pos  = margin
+                    y_pos += h + gap
+                if y_pos + h > a4_h - margin:
+                    break
+                sheet.paste(bg, (x_pos, y_pos))
+                x_pos += w + gap
+                placed += 1
+
+            # Save full-res file for download
             output_path = os.path.join(OUTPUT_FOLDER, "Passport_Photo.jpg")
             sheet.save(output_path, "JPEG", quality=95, dpi=(dpi, dpi))
-            return send_file(output_path, as_attachment=True, download_name="Passport_Photo.jpg")
+
+            # Smaller preview (base64)
+            preview = sheet.copy()
+            preview.thumbnail((800, 1000), PILImage.LANCZOS)
+            buf = BytesIO_io.BytesIO()
+            preview.save(buf, format="JPEG", quality=75)
+            img_b64 = base64.b64encode(buf.getvalue()).decode()
+
+            return render_template("passport_photo.html",
+                                   preview_image=img_b64,
+                                   download_ready=True,
+                                   copies=placed,
+                                   size=size_preset)
+
         except Exception as e:
             return render_template("passport_photo.html", error=f"Error: {str(e)}")
+
     return render_template("passport_photo.html")
+
+
+@app.route("/passport-photo/download")
+def passport_photo_download():
+    output_path = os.path.join(OUTPUT_FOLDER, "Passport_Photo.jpg")
+    if os.path.exists(output_path):
+        return send_file(output_path, as_attachment=True, download_name="Passport_Photo.jpg")
+    return redirect("/passport-photo")
 
 
 # ──────────────────────────────────────────
 # INVOICE GENERATOR
 # ──────────────────────────────────────────
+
 @app.route("/invoice-generator", methods=["GET", "POST"])
 def invoice_generator():
     if request.method == "POST":
         try:
             from reportlab.lib.pagesizes import A4
             from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Spacer, Paragraph
-            from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+            from reportlab.lib.styles import getSampleStyleSheet
             from reportlab.lib import colors
             from reportlab.lib.units import mm
             from datetime import datetime
 
-            # Form data
             from_name    = request.form.get("from_name", "")
             from_address = request.form.get("from_address", "")
             from_gst     = request.form.get("from_gst", "")
@@ -860,9 +917,9 @@ def invoice_generator():
             gst_rate     = float(request.form.get("gst_rate", 18))
             notes        = request.form.get("notes", "Thank you for your business!")
 
-            items_desc  = request.form.getlist("item_desc[]")
-            items_qty   = request.form.getlist("item_qty[]")
-            items_rate  = request.form.getlist("item_rate[]")
+            items_desc = request.form.getlist("item_desc[]")
+            items_qty  = request.form.getlist("item_qty[]")
+            items_rate = request.form.getlist("item_rate[]")
 
             output_path = os.path.join(OUTPUT_FOLDER, "Invoice.pdf")
             doc = SimpleDocTemplate(output_path, pagesize=A4,
@@ -870,14 +927,11 @@ def invoice_generator():
                                     topMargin=15*mm, bottomMargin=15*mm)
 
             styles = getSampleStyleSheet()
-            blue = colors.HexColor('#2563EB')
-            ink  = colors.HexColor('#111827')
-            gray = colors.HexColor('#6B7280')
+            blue  = colors.HexColor('#2563EB')
             light = colors.HexColor('#F9FAFB')
 
             elements = []
 
-            # Header
             header_data = [[
                 Paragraph(f"<font size='20' color='#2563EB'><b>INVOICE</b></font>", styles['Normal']),
                 Paragraph(f"<font size='9' color='#6B7280'>Invoice No: <b>{invoice_no}</b><br/>Date: {invoice_date}" +
@@ -891,7 +945,6 @@ def invoice_generator():
             elements.append(header_table)
             elements.append(Spacer(1, 8*mm))
 
-            # From / To
             ft_data = [[
                 Paragraph(f"<font size='8' color='#6B7280'>FROM</font><br/>"
                           f"<font size='10'><b>{from_name}</b></font><br/>"
@@ -907,7 +960,6 @@ def invoice_generator():
             ft_table.setStyle(TableStyle([
                 ('VALIGN', (0,0), (-1,-1), 'TOP'),
                 ('BACKGROUND', (0,0), (-1,-1), light),
-                ('ROUNDEDCORNERS', [4,4,4,4]),
                 ('BOX', (0,0), (-1,-1), 0.5, colors.HexColor('#E5E7EB')),
                 ('PADDING', (0,0), (-1,-1), 8),
                 ('LINEAFTER', (0,0), (0,-1), 0.5, colors.HexColor('#E5E7EB')),
@@ -915,7 +967,6 @@ def invoice_generator():
             elements.append(ft_table)
             elements.append(Spacer(1, 8*mm))
 
-            # Items table
             item_header = ['#', 'Description', 'Qty', 'Rate (₹)', 'Amount (₹)']
             item_rows = [item_header]
             subtotal = 0
@@ -933,7 +984,8 @@ def invoice_generator():
 
             item_rows.append(['', '', '', 'Subtotal', f'₹{subtotal:,.2f}'])
             item_rows.append(['', '', '', f'GST ({gst_rate:.0f}%)', f'₹{gst_amount:,.2f}'])
-            item_rows.append(['', '', '', Paragraph('<b>TOTAL</b>', styles['Normal']), Paragraph(f'<b>₹{total:,.2f}</b>', styles['Normal'])])
+            item_rows.append(['', '', '', Paragraph('<b>TOTAL</b>', styles['Normal']),
+                              Paragraph(f'<b>₹{total:,.2f}</b>', styles['Normal'])])
 
             col_widths = [10*mm, 80*mm, 15*mm, 30*mm, 35*mm]
             items_table = Table(item_rows, colWidths=col_widths)
@@ -955,14 +1007,19 @@ def invoice_generator():
             elements.append(items_table)
             elements.append(Spacer(1, 8*mm))
 
-            # Notes
             if notes:
-                elements.append(Paragraph(f"<font size='8' color='#6B7280'><b>Notes:</b> {notes}</font>", styles['Normal']))
+                elements.append(Paragraph(
+                    f"<font size='8' color='#6B7280'><b>Notes:</b> {notes}</font>",
+                    styles['Normal']))
 
             doc.build(elements)
-            return send_file(output_path, as_attachment=True, download_name=f"Invoice_{invoice_no}.pdf")
+            return send_file(output_path, as_attachment=True,
+                             download_name=f"Invoice_{invoice_no}.pdf")
 
         except Exception as e:
             return render_template("invoice_generator.html", error=f"Error: {str(e)}")
     return render_template("invoice_generator.html")
+
+
+if __name__ == "__main__":
     app.run(debug=True)
