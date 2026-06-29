@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VW5QLMV046"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-VW5QLMV046');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Excel to PDF — EkZapp</title>
+<meta name="description" content="Convert Excel (.xlsx) files to PDF instantly. Free, no signup.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626;}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}.logo-text span{color:var(--blue)}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.back:hover{border-color:var(--blue);color:var(--blue)}
+.container{max-width:600px;margin:48px auto;padding:0 20px}
+.tool-header{text-align:center;margin-bottom:32px}
+.tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
+.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.tool-header p{color:var(--gray);font-size:14px}
+.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.drop-area{border:2px dashed var(--border);border-radius:10px;padding:36px 20px;text-align:center;background:var(--light);cursor:pointer;transition:all .2s;position:relative}
+.drop-area:hover,.drop-area.dragover{border-color:var(--blue);background:var(--blue-lt)}
+.drop-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer}
+.drop-icon{font-size:2.2rem;margin-bottom:10px}
+.drop-area h3{font-size:14px;font-weight:600;margin-bottom:4px}
+.drop-area p{font-size:12px;color:var(--gray)}
+.file-name{font-size:13px;font-weight:600;color:var(--blue);margin-top:8px;display:none}
+.btn{width:100%;padding:13px;background:var(--blue);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;margin-top:16px;display:block}
+.btn:hover{background:var(--blue-dk)}
+.error-box{background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:12px 16px;color:var(--red);font-size:13px;margin-bottom:16px}
+.trust{display:flex;justify-content:center;gap:20px;margin-top:16px;flex-wrap:wrap}
+.trust-item{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:4px}
+.result-box{background:var(--light);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;font-size:13px;line-height:1.7;white-space:pre-wrap;max-height:320px;overflow-y:auto}
+.copy-btn{margin-top:10px;padding:8px 18px;border:1.5px solid var(--border);border-radius:8px;background:white;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif}
+.copy-btn:hover{border-color:var(--blue);color:var(--blue)}
+.how-to{margin-top:36px;background:white;border:1px solid var(--border);border-radius:14px;padding:24px}
+.how-to h2{font-size:15px;font-weight:700;margin-bottom:16px}
+.steps{display:flex;flex-direction:column;gap:12px}
+.step{display:flex;gap:12px;align-items:flex-start}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue-lt);color:var(--blue);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.step-text{font-size:13px;color:var(--gray);line-height:1.5}
+.step-text strong{color:var(--ink)}
+.faq{margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
+.faq h3{font-size:13px;font-weight:700;margin-bottom:6px}
+.faq p{font-size:13px;color:var(--gray);line-height:1.5}
+.field{margin-top:16px}
+.field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+.field select,.field input[type=text],.field input[type=number]{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none}
+.field select:focus,.field input:focus{border-color:var(--blue)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner">
+  <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+  <a class="back" href="/">← All Tools</a>
+</div></nav>
+<div class="container">
+  <div class="tool-header">
+    <div class="tool-icon-wrap">📊</div>
+    <h1>Excel to PDF</h1>
+    <p>Convert Excel (.xlsx) files to PDF instantly. Free, no signup.</p>
+  </div>
+  <div class="card">
+    {% if error %}<div class="error-box">⚠️ {{ error }}</div>{% endif %}
+    <div class="drop-area" id="dropArea">
+        <div class="drop-icon">📄</div>
+        <h3>Click to select or drag & drop</h3>
+        <p>Accepted: .xlsx,.xls</p>
+        <p class="file-name" id="fileName"></p>
+        <input type="file" name="file" accept=".xlsx,.xls" required onchange="showFileName(this)">
+      </div>
+<button type="submit" class="btn" style="margin-top:16px">📊 Convert to PDF</button>
+    <div class="trust">
+      <div class="trust-item">🔒 SSL Encrypted</div>
+      <div class="trust-item">🗑️ Auto-deleted</div>
+      <div class="trust-item">📵 No signup</div>
+    </div>
+  </div>
+  <div class="how-to">
+    <h2>📖 How to Use — Excel to PDF</h2>
+    <div class="steps"><div class="step"><div class="step-num">1</div><div class="step-text"><strong>Select your Excel file</strong> — Click upload or drag & drop your .xlsx or .xls file.</div></div><div class="step"><div class="step-num">2</div><div class="step-text"><strong>Click Convert to PDF</strong> — Our server converts your spreadsheet to a clean PDF.</div></div><div class="step"><div class="step-num">3</div><div class="step-text"><strong>Download your PDF</strong> — Your PDF downloads automatically with all your data.</div></div></div><div class="faq"><h3>Will my table data be preserved?</h3><p>Yes! All rows, columns and data are converted. Colors and basic formatting are preserved.</p></div><div class="faq"><h3>Is my file safe?</h3><p>Your file is processed securely and automatically deleted. We never store your documents.</p></div>
+  </div>
+</div>
+<script>
+function showFileName(input){if(input.files&&input.files[0]){const fn=document.getElementById('fileName');fn.textContent='✓ '+input.files[0].name;fn.style.display='block';}}
+function copyText(){const t=document.getElementById('resultBox');if(t)navigator.clipboard.writeText(t.innerText).then(()=>alert('Copied!'));}
+const da=document.getElementById('dropArea');
+if(da){da.addEventListener('dragover',e=>{e.preventDefault();da.classList.add('dragover')});da.addEventListener('dragleave',()=>da.classList.remove('dragover'));da.addEventListener('drop',e=>{e.preventDefault();da.classList.remove('dragover')});}
+</script>
+</body></html>

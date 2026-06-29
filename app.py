@@ -579,4 +579,390 @@ def tip_calculator():
 @app.route("/calculators/calorie")
 def calorie_calculator():
     return render_template("calorie_calculator.html")
+    # ──────────────────────────────────────────
+# WORD TO PDF
+# ──────────────────────────────────────────
+@app.route("/word-to-pdf", methods=["GET", "POST"])
+def word_to_pdf():
+    if request.method == "POST":
+        try:
+            from docx2pdf import convert
+            doc = request.files.get("file")
+            if not doc or doc.filename == "":
+                return render_template("word_to_pdf.html", error="Please select a Word file.")
+            input_path = os.path.join(UPLOAD_FOLDER, doc.filename)
+            output_path = os.path.join(OUTPUT_FOLDER, "Converted.pdf")
+            doc.save(input_path)
+            convert(input_path, output_path)
+            return send_file(output_path, as_attachment=True, download_name="Converted.pdf")
+        except Exception as e:
+            return render_template("word_to_pdf.html", error=f"Error: {str(e)}")
+    return render_template("word_to_pdf.html")
+
+
+# ──────────────────────────────────────────
+# EXCEL TO PDF
+# ──────────────────────────────────────────
+@app.route("/excel-to-pdf", methods=["GET", "POST"])
+def excel_to_pdf():
+    if request.method == "POST":
+        try:
+            import openpyxl
+            from reportlab.lib.pagesizes import A4, landscape
+            from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
+            from reportlab.lib import colors
+
+            xl = request.files.get("file")
+            if not xl or xl.filename == "":
+                return render_template("excel_to_pdf.html", error="Please select an Excel file.")
+
+            input_path = os.path.join(UPLOAD_FOLDER, xl.filename)
+            output_path = os.path.join(OUTPUT_FOLDER, "Converted.pdf")
+            xl.save(input_path)
+
+            wb = openpyxl.load_workbook(input_path, data_only=True)
+            ws = wb.active
+
+            data = []
+            for row in ws.iter_rows(values_only=True):
+                data.append([str(cell) if cell is not None else "" for cell in row])
+
+            if not data:
+                return render_template("excel_to_pdf.html", error="Excel file is empty.")
+
+            doc = SimpleDocTemplate(output_path, pagesize=landscape(A4))
+            col_count = len(data[0])
+            col_width = (landscape(A4)[0] - 40) / col_count if col_count > 0 else 100
+
+            table = Table(data, colWidths=[col_width] * col_count)
+            table.setStyle(TableStyle([
+                ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#2563EB')),
+                ('TEXTCOLOR', (0,0), (-1,0), colors.white),
+                ('FONTNAME', (0,0), (-1,0), 'Helvetica-Bold'),
+                ('FONTSIZE', (0,0), (-1,-1), 8),
+                ('ROWBACKGROUNDS', (0,1), (-1,-1), [colors.white, colors.HexColor('#F9FAFB')]),
+                ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor('#E5E7EB')),
+                ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
+                ('PADDING', (0,0), (-1,-1), 4),
+            ]))
+
+            doc.build([table])
+            return send_file(output_path, as_attachment=True, download_name="Converted.pdf")
+        except Exception as e:
+            return render_template("excel_to_pdf.html", error=f"Error: {str(e)}")
+    return render_template("excel_to_pdf.html")
+
+
+# ──────────────────────────────────────────
+# PDF TO EXCEL
+# ──────────────────────────────────────────
+@app.route("/pdf-to-excel", methods=["GET", "POST"])
+def pdf_to_excel():
+    if request.method == "POST":
+        try:
+            import pdfplumber
+            import openpyxl
+
+            pdf = request.files.get("pdf")
+            if not pdf or pdf.filename == "":
+                return render_template("pdf_to_excel.html", error="Please select a PDF file.")
+
+            input_path = os.path.join(UPLOAD_FOLDER, pdf.filename)
+            output_path = os.path.join(OUTPUT_FOLDER, "Converted.xlsx")
+            pdf.save(input_path)
+
+            wb = openpyxl.Workbook()
+            first = True
+
+            with pdfplumber.open(input_path) as pdf_doc:
+                for i, page in enumerate(pdf_doc.pages):
+                    tables = page.extract_tables()
+                    if tables:
+                        for t_idx, table in enumerate(tables):
+                            if first:
+                                ws = wb.active
+                                ws.title = f"Page{i+1}"
+                                first = False
+                            else:
+                                ws = wb.create_sheet(f"Page{i+1}_T{t_idx+1}")
+                            for row in table:
+                                ws.append([cell if cell else "" for cell in row])
+                    else:
+                        text = page.extract_text()
+                        if text:
+                            if first:
+                                ws = wb.active
+                                ws.title = f"Page{i+1}"
+                                first = False
+                            else:
+                                ws = wb.create_sheet(f"Page{i+1}")
+                            for line in text.split('\n'):
+                                ws.append([line])
+
+            if first:
+                return render_template("pdf_to_excel.html", error="No content found in PDF.")
+
+            wb.save(output_path)
+            return send_file(output_path, as_attachment=True, download_name="Converted.xlsx")
+        except Exception as e:
+            return render_template("pdf_to_excel.html", error=f"Error: {str(e)}")
+    return render_template("pdf_to_excel.html")
+
+
+# ──────────────────────────────────────────
+# OCR — IMAGE TO TEXT
+# ──────────────────────────────────────────
+@app.route("/ocr", methods=["GET", "POST"])
+def ocr_tool():
+    if request.method == "POST":
+        try:
+            import pytesseract
+            from PIL import Image as PILImage
+
+            img_file = request.files.get("image")
+            if not img_file or img_file.filename == "":
+                return render_template("ocr.html", error="Please select an image.")
+
+            img = PILImage.open(img_file)
+            text = pytesseract.image_to_string(img, lang='eng')
+
+            if not text.strip():
+                return render_template("ocr.html", error="No text found in image.", result="")
+
+            return render_template("ocr.html", result=text)
+        except Exception as e:
+            return render_template("ocr.html", error=f"Error: {str(e)}")
+    return render_template("ocr.html")
+
+
+# ──────────────────────────────────────────
+# BACKGROUND REMOVER
+# ──────────────────────────────────────────
+@app.route("/remove-background", methods=["GET", "POST"])
+def remove_background():
+    if request.method == "POST":
+        try:
+            from rembg import remove
+            from PIL import Image as PILImage
+            import io
+
+            img_file = request.files.get("image")
+            if not img_file or img_file.filename == "":
+                return render_template("remove_background.html", error="Please select an image.")
+
+            input_bytes = img_file.read()
+            output_bytes = remove(input_bytes)
+
+            output_path = os.path.join(OUTPUT_FOLDER, "No_Background.png")
+            with open(output_path, "wb") as f:
+                f.write(output_bytes)
+
+            return send_file(output_path, as_attachment=True, download_name="No_Background.png")
+        except Exception as e:
+            return render_template("remove_background.html", error=f"Error: {str(e)}")
+    return render_template("remove_background.html")
+
+
+# ──────────────────────────────────────────
+# PASSPORT PHOTO MAKER
+# ──────────────────────────────────────────
+@app.route("/passport-photo", methods=["GET", "POST"])
+def passport_photo():
+    if request.method == "POST":
+        try:
+            from PIL import Image as PILImage
+
+            img_file = request.files.get("image")
+            size_preset = request.form.get("size", "35x45")
+            bg_color = request.form.get("bg_color", "white")
+
+            if not img_file or img_file.filename == "":
+                return render_template("passport_photo.html", error="Please select an image.")
+
+            sizes = {
+                "35x45": (413, 531),   # India passport (300dpi)
+                "51x51": (600, 600),   # US passport
+                "35x35": (413, 413),   # UK passport
+                "40x60": (472, 709),   # Schengen visa
+            }
+            w, h = sizes.get(size_preset, (413, 531))
+
+            img = PILImage.open(img_file).convert("RGBA")
+
+            # Resize to fill and crop to center
+            img_ratio = img.width / img.height
+            target_ratio = w / h
+            if img_ratio > target_ratio:
+                new_h = h
+                new_w = int(h * img_ratio)
+            else:
+                new_w = w
+                new_h = int(w / img_ratio)
+
+            img = img.resize((new_w, new_h), PILImage.LANCZOS)
+            left = (new_w - w) // 2
+            top = (new_h - h) // 2
+            img = img.crop((left, top, left + w, top + h))
+
+            # Background
+            bg = PILImage.new("RGB", (w, h), bg_color)
+            if img.mode == "RGBA":
+                bg.paste(img, mask=img.split()[3])
+            else:
+                bg.paste(img)
+
+            # Print sheet: 4 photos on A4
+            dpi = 300
+            a4_w = int(8.27 * dpi)
+            a4_h = int(11.69 * dpi)
+            sheet = PILImage.new("RGB", (a4_w, a4_h), "white")
+            margin = int(0.3 * dpi)
+            gap = int(0.1 * dpi)
+            x, y = margin, margin
+            for row in range(4):
+                for col in range(4):
+                    cx = x + col * (w + gap)
+                    cy = y + row * (h + gap)
+                    if cx + w <= a4_w - margin and cy + h <= a4_h - margin:
+                        sheet.paste(bg, (cx, cy))
+
+            output_path = os.path.join(OUTPUT_FOLDER, "Passport_Photo.jpg")
+            sheet.save(output_path, "JPEG", quality=95, dpi=(dpi, dpi))
+            return send_file(output_path, as_attachment=True, download_name="Passport_Photo.jpg")
+        except Exception as e:
+            return render_template("passport_photo.html", error=f"Error: {str(e)}")
+    return render_template("passport_photo.html")
+
+
+# ──────────────────────────────────────────
+# INVOICE GENERATOR
+# ──────────────────────────────────────────
+@app.route("/invoice-generator", methods=["GET", "POST"])
+def invoice_generator():
+    if request.method == "POST":
+        try:
+            from reportlab.lib.pagesizes import A4
+            from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Spacer, Paragraph
+            from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+            from reportlab.lib import colors
+            from reportlab.lib.units import mm
+            from datetime import datetime
+
+            # Form data
+            from_name    = request.form.get("from_name", "")
+            from_address = request.form.get("from_address", "")
+            from_gst     = request.form.get("from_gst", "")
+            to_name      = request.form.get("to_name", "")
+            to_address   = request.form.get("to_address", "")
+            invoice_no   = request.form.get("invoice_no", "INV-001")
+            invoice_date = request.form.get("invoice_date", datetime.now().strftime("%d/%m/%Y"))
+            due_date     = request.form.get("due_date", "")
+            gst_rate     = float(request.form.get("gst_rate", 18))
+            notes        = request.form.get("notes", "Thank you for your business!")
+
+            items_desc  = request.form.getlist("item_desc[]")
+            items_qty   = request.form.getlist("item_qty[]")
+            items_rate  = request.form.getlist("item_rate[]")
+
+            output_path = os.path.join(OUTPUT_FOLDER, "Invoice.pdf")
+            doc = SimpleDocTemplate(output_path, pagesize=A4,
+                                    leftMargin=15*mm, rightMargin=15*mm,
+                                    topMargin=15*mm, bottomMargin=15*mm)
+
+            styles = getSampleStyleSheet()
+            blue = colors.HexColor('#2563EB')
+            ink  = colors.HexColor('#111827')
+            gray = colors.HexColor('#6B7280')
+            light = colors.HexColor('#F9FAFB')
+
+            elements = []
+
+            # Header
+            header_data = [[
+                Paragraph(f"<font size='20' color='#2563EB'><b>INVOICE</b></font>", styles['Normal']),
+                Paragraph(f"<font size='9' color='#6B7280'>Invoice No: <b>{invoice_no}</b><br/>Date: {invoice_date}" +
+                          (f"<br/>Due: {due_date}" if due_date else "") + "</font>", styles['Normal'])
+            ]]
+            header_table = Table(header_data, colWidths=[90*mm, 80*mm])
+            header_table.setStyle(TableStyle([
+                ('VALIGN', (0,0), (-1,-1), 'TOP'),
+                ('ALIGN', (1,0), (1,0), 'RIGHT'),
+            ]))
+            elements.append(header_table)
+            elements.append(Spacer(1, 8*mm))
+
+            # From / To
+            ft_data = [[
+                Paragraph(f"<font size='8' color='#6B7280'>FROM</font><br/>"
+                          f"<font size='10'><b>{from_name}</b></font><br/>"
+                          f"<font size='8' color='#6B7280'>{from_address.replace(chr(10),'<br/>')}</font>" +
+                          (f"<br/><font size='8' color='#6B7280'>GST: {from_gst}</font>" if from_gst else ""),
+                          styles['Normal']),
+                Paragraph(f"<font size='8' color='#6B7280'>BILL TO</font><br/>"
+                          f"<font size='10'><b>{to_name}</b></font><br/>"
+                          f"<font size='8' color='#6B7280'>{to_address.replace(chr(10),'<br/>')}</font>",
+                          styles['Normal'])
+            ]]
+            ft_table = Table(ft_data, colWidths=[85*mm, 85*mm])
+            ft_table.setStyle(TableStyle([
+                ('VALIGN', (0,0), (-1,-1), 'TOP'),
+                ('BACKGROUND', (0,0), (-1,-1), light),
+                ('ROUNDEDCORNERS', [4,4,4,4]),
+                ('BOX', (0,0), (-1,-1), 0.5, colors.HexColor('#E5E7EB')),
+                ('PADDING', (0,0), (-1,-1), 8),
+                ('LINEAFTER', (0,0), (0,-1), 0.5, colors.HexColor('#E5E7EB')),
+            ]))
+            elements.append(ft_table)
+            elements.append(Spacer(1, 8*mm))
+
+            # Items table
+            item_header = ['#', 'Description', 'Qty', 'Rate (₹)', 'Amount (₹)']
+            item_rows = [item_header]
+            subtotal = 0
+
+            for i, (desc, qty, rate) in enumerate(zip(items_desc, items_qty, items_rate)):
+                if desc.strip():
+                    q = float(qty) if qty else 1
+                    r = float(rate) if rate else 0
+                    amount = q * r
+                    subtotal += amount
+                    item_rows.append([str(i+1), desc, f"{q:.0f}", f"₹{r:,.2f}", f"₹{amount:,.2f}"])
+
+            gst_amount = subtotal * gst_rate / 100
+            total = subtotal + gst_amount
+
+            item_rows.append(['', '', '', 'Subtotal', f'₹{subtotal:,.2f}'])
+            item_rows.append(['', '', '', f'GST ({gst_rate:.0f}%)', f'₹{gst_amount:,.2f}'])
+            item_rows.append(['', '', '', Paragraph('<b>TOTAL</b>', styles['Normal']), Paragraph(f'<b>₹{total:,.2f}</b>', styles['Normal'])])
+
+            col_widths = [10*mm, 80*mm, 15*mm, 30*mm, 35*mm]
+            items_table = Table(item_rows, colWidths=col_widths)
+            last = len(item_rows) - 1
+            items_table.setStyle(TableStyle([
+                ('BACKGROUND', (0,0), (-1,0), blue),
+                ('TEXTCOLOR', (0,0), (-1,0), colors.white),
+                ('FONTNAME', (0,0), (-1,0), 'Helvetica-Bold'),
+                ('FONTSIZE', (0,0), (-1,-1), 8),
+                ('ROWBACKGROUNDS', (0,1), (-1, last-3), [colors.white, light]),
+                ('GRID', (0,0), (-1, last-3), 0.3, colors.HexColor('#E5E7EB')),
+                ('ALIGN', (2,0), (-1,-1), 'RIGHT'),
+                ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
+                ('PADDING', (0,0), (-1,-1), 5),
+                ('LINEABOVE', (3, last-2), (-1, last), 0.5, colors.HexColor('#E5E7EB')),
+                ('BACKGROUND', (3, last), (-1, last), colors.HexColor('#EFF6FF')),
+                ('FONTNAME', (3, last), (-1, last), 'Helvetica-Bold'),
+            ]))
+            elements.append(items_table)
+            elements.append(Spacer(1, 8*mm))
+
+            # Notes
+            if notes:
+                elements.append(Paragraph(f"<font size='8' color='#6B7280'><b>Notes:</b> {notes}</font>", styles['Normal']))
+
+            doc.build(elements)
+            return send_file(output_path, as_attachment=True, download_name=f"Invoice_{invoice_no}.pdf")
+
+        except Exception as e:
+            return render_template("invoice_generator.html", error=f"Error: {str(e)}")
+    return render_template("invoice_generator.html")
     app.run(debug=True)
