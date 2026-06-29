@@ -442,8 +442,7 @@ def sip_calculator():
 @app.route("/calculators/date")
 def date_calculator():
     return render_template("date_calculator.html")
-if __name__ == "__main__":
-    # Image Tools
+
 @app.route("/image/compress", methods=["GET", "POST"])
 def image_compress():
     if request.method == "POST":
