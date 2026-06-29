@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GST Calculator — EkZapp</title>
+<title>GST Calculator — Calculate GST Amount Free | EkZapp</title>
+<meta name="description" content="Calculate GST amount for any price instantly. Add or remove GST with 5%, 12%, 18%, 28% rates. Free online GST calculator India.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -17,7 +18,7 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .logo-text span{color:var(--blue)}
 .back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
 .back:hover{border-color:var(--blue);color:var(--blue)}
-.container{max-width:560px;margin:40px auto;padding:0 20px}
+.container{max-width:560px;margin:40px auto;padding:0 20px 60px}
 .tool-header{text-align:center;margin-bottom:32px}
 .tool-icon{font-size:2.5rem;margin-bottom:12px}
 .tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
@@ -35,6 +36,19 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .result-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #BFDBFE;font-size:14px}
 .result-row:last-child{border:none;font-weight:700;font-size:15px;color:var(--blue)}
 .result-row span:last-child{font-weight:600}
+.guide-section{margin-top:24px;background:white;border:1px solid var(--border);border-radius:12px;padding:24px}
+.guide-section h2{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:16px}
+.steps{display:flex;flex-direction:column;gap:14px}
+.step{display:flex;gap:12px;align-items:flex-start}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-body h3{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.step-body p{font-size:12px;color:var(--gray);line-height:1.5}
+.faq-section{margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
+.faq-section h2{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:12px}
+.faq-item{border-bottom:1px solid var(--border);padding:12px 0}
+.faq-item:last-child{border-bottom:none;padding-bottom:0}
+.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.faq-a{font-size:12px;color:var(--gray);line-height:1.5}
 </style>
 </head>
 <body>
@@ -51,33 +65,12 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
     <p>Calculate GST amount for any price instantly</p>
   </div>
   <div class="card">
-    <div class="field">
-      <label>Amount (₹)</label>
-      <input type="number" id="amt" placeholder="Enter amount" min="0">
-    </div>
+    <div class="field"><label>Amount (₹)</label><input type="number" id="amt" placeholder="Enter amount" min="0"></div>
     <div class="field-row">
-      <div class="field">
-        <label>GST Rate</label>
-        <select id="rate">
-          <option value="5">5%</option>
-          <option value="12">12%</option>
-          <option value="18" selected>18%</option>
-          <option value="28">28%</option>
-          <option value="custom">Custom</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>Type</label>
-        <select id="type">
-          <option value="excl">Exclusive (Add GST)</option>
-          <option value="incl">Inclusive (Extract GST)</option>
-        </select>
-      </div>
+      <div class="field"><label>GST Rate</label><select id="rate"><option value="5">5%</option><option value="12">12%</option><option value="18" selected>18%</option><option value="28">28%</option><option value="custom">Custom</option></select></div>
+      <div class="field"><label>Type</label><select id="type"><option value="excl">Exclusive (Add GST)</option><option value="incl">Inclusive (Extract GST)</option></select></div>
     </div>
-    <div class="field" id="customField" style="display:none">
-      <label>Custom Rate (%)</label>
-      <input type="number" id="customRate" placeholder="Enter rate">
-    </div>
+    <div class="field" id="customField" style="display:none"><label>Custom Rate (%)</label><input type="number" id="customRate" placeholder="Enter rate"></div>
     <button class="btn" onclick="calcGst()">Calculate GST</button>
     <div class="result" id="result">
       <div class="result-row"><span>Original Amount</span><span id="rBase"></span></div>
@@ -85,11 +78,24 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
       <div class="result-row"><span>Total Amount</span><span id="rTotal"></span></div>
     </div>
   </div>
+  <div class="guide-section">
+    <h2>📖 How to Use the GST Calculator</h2>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Enter the Amount</h3><p>Type the original price or amount on which you want to calculate GST.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Select GST Rate</h3><p>Choose the applicable GST rate — 5%, 12%, 18%, or 28%. You can also enter a custom rate.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Choose Add or Remove GST</h3><p>Select "Exclusive" to add GST to a price, or "Inclusive" to extract GST from a price that already includes it.</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><h3>See the Results</h3><p>The GST amount, base price, and total price are displayed instantly.</p></div></div>
+    </div>
+    <div class="faq-section">
+      <h2>❓ Frequently Asked Questions</h2>
+      <div class="faq-item"><div class="faq-q">What is Exclusive GST?</div><div class="faq-a">Exclusive means GST is added on top of the price. If item costs ₹100 with 18% GST, total = ₹118.</div></div>
+      <div class="faq-item"><div class="faq-q">What is Inclusive GST?</div><div class="faq-a">Inclusive means the price already includes GST. Use this to find out how much GST is hidden inside a price.</div></div>
+      <div class="faq-item"><div class="faq-q">Is this tool free?</div><div class="faq-a">Yes, completely free. No signup required.</div></div>
+    </div>
+  </div>
 </div>
 <script>
-document.getElementById('rate').addEventListener('change',function(){
-  document.getElementById('customField').style.display=this.value==='custom'?'block':'none';
-});
+document.getElementById('rate').addEventListener('change',function(){document.getElementById('customField').style.display=this.value==='custom'?'block':'none';});
 function calcGst(){
   const amt=parseFloat(document.getElementById('amt').value);
   const rateEl=document.getElementById('rate');

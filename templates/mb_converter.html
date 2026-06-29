@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MB/GB Converter — EkZapp</title>
+<title>MB GB Converter — File Size Converter Free | EkZapp</title>
+<meta name="description" content="Convert between Bytes, KB, MB, GB, TB online for free. Instant file size conversion. No signup required.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -16,7 +17,7 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .logo-text{font-size:15px;font-weight:700;color:var(--ink)}
 .logo-text span{color:var(--blue)}
 .back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
-.container{max-width:560px;margin:40px auto;padding:0 20px}
+.container{max-width:560px;margin:40px auto;padding:0 20px 60px}
 .tool-header{text-align:center;margin-bottom:32px}
 .tool-icon{font-size:2.5rem;margin-bottom:12px}
 .tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
@@ -33,6 +34,19 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .result-item{background:var(--cream);border:1px solid #BFDBFE;border-radius:8px;padding:14px;text-align:center}
 .result-item strong{display:block;font-size:1.2rem;font-weight:700;color:var(--blue);word-break:break-all}
 .result-item span{font-size:12px;color:var(--gray)}
+.guide-section{margin-top:24px;background:white;border:1px solid var(--border);border-radius:12px;padding:24px}
+.guide-section h2{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:16px}
+.steps{display:flex;flex-direction:column;gap:14px}
+.step{display:flex;gap:12px;align-items:flex-start}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-body h3{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.step-body p{font-size:12px;color:var(--gray);line-height:1.5}
+.faq-section{margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
+.faq-section h2{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:12px}
+.faq-item{border-bottom:1px solid var(--border);padding:12px 0}
+.faq-item:last-child{border-bottom:none;padding-bottom:0}
+.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.faq-a{font-size:12px;color:var(--gray);line-height:1.5}
 </style>
 </head>
 <body>
@@ -50,20 +64,8 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
   </div>
   <div class="card">
     <div class="field-row">
-      <div class="field">
-        <label>Value</label>
-        <input type="number" id="val" placeholder="Enter value" min="0">
-      </div>
-      <div class="field">
-        <label>From Unit</label>
-        <select id="unit">
-          <option value="B">Bytes (B)</option>
-          <option value="KB">Kilobytes (KB)</option>
-          <option value="MB" selected>Megabytes (MB)</option>
-          <option value="GB">Gigabytes (GB)</option>
-          <option value="TB">Terabytes (TB)</option>
-        </select>
-      </div>
+      <div class="field"><label>Value</label><input type="number" id="val" placeholder="Enter value" min="0"></div>
+      <div class="field"><label>From Unit</label><select id="unit"><option value="B">Bytes (B)</option><option value="KB">Kilobytes (KB)</option><option value="MB" selected>Megabytes (MB)</option><option value="GB">Gigabytes (GB)</option><option value="TB">Terabytes (TB)</option></select></div>
     </div>
     <button class="btn" onclick="convert()">Convert</button>
     <div class="result-grid" id="result">
@@ -72,6 +74,20 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
       <div class="result-item"><strong id="rMB"></strong><span>Megabytes (MB)</span></div>
       <div class="result-item"><strong id="rGB"></strong><span>Gigabytes (GB)</span></div>
       <div class="result-item"><strong id="rTB"></strong><span>Terabytes (TB)</span></div>
+    </div>
+  </div>
+  <div class="guide-section">
+    <h2>📖 How to Use the MB/GB Converter</h2>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Enter the Value</h3><p>Type the number you want to convert in the value field.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Select the Unit</h3><p>Choose the starting unit — Bytes, KB, MB, GB, or TB.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Click "Convert"</h3><p>The equivalent values in all units (Bytes, KB, MB, GB, TB) will be shown instantly.</p></div></div>
+    </div>
+    <div class="faq-section">
+      <h2>❓ Frequently Asked Questions</h2>
+      <div class="faq-item"><div class="faq-q">How many MB is 1 GB?</div><div class="faq-a">1 GB = 1024 MB. This calculator uses binary (1024-based) conversion which is the standard for storage devices.</div></div>
+      <div class="faq-item"><div class="faq-q">How many GB is 1 TB?</div><div class="faq-a">1 TB = 1024 GB.</div></div>
+      <div class="faq-item"><div class="faq-q">Is this tool free?</div><div class="faq-a">Yes, 100% free. No signup required.</div></div>
     </div>
   </div>
 </div>
