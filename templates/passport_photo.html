@@ -1,208 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Passport Photo Maker – EkZapp</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #F9FAFB; margin: 0; padding: 0; }
-        .container { max-width: 720px; margin: 50px auto; padding: 0 20px; }
-        .card { background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); padding: 40px; }
-        h1 { font-size: 26px; color: #111827; margin: 0 0 6px; }
-        .subtitle { color: #6B7280; font-size: 14px; margin-bottom: 30px; }
+        body { font-family: 'Segoe UI', sans-serif; background: #F9FAFB; margin: 0; }
+        .container { max-width: 740px; margin: 40px auto; padding: 0 20px 60px; }
+        .back-link { display:inline-block; margin-bottom:18px; color:#2563EB; font-size:14px; text-decoration:none; }
+        .back-link:hover { text-decoration:underline; }
+        .card { background:#fff; border-radius:16px; box-shadow:0 4px 24px rgba(0,0,0,0.08); padding:36px; }
+        h1 { font-size:26px; color:#111827; margin:0 0 6px; }
+        .subtitle { color:#6B7280; font-size:14px; margin-bottom:28px; }
+        .upload-area { border:2px dashed #D1D5DB; border-radius:12px; padding:40px 20px; text-align:center; cursor:pointer; transition:all .2s; background:#F9FAFB; }
+        .upload-area:hover { border-color:#2563EB; background:#EFF6FF; }
+        .upload-area .icon { font-size:38px; margin-bottom:8px; }
+        .upload-area p { color:#6B7280; font-size:14px; margin:4px 0; }
+        .upload-area strong { color:#2563EB; }
+        input[type="file"] { display:none; }
+        .file-name { margin-top:10px; font-size:13px; color:#374151; font-weight:500; min-height:18px; }
+        .thumb-wrap { margin-top:14px; text-align:center; display:none; }
+        .thumb-wrap img { max-width:120px; max-height:120px; border-radius:8px; border:2px solid #E5E7EB; object-fit:cover; }
+        .options-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:22px; }
+        .opt { display:flex; flex-direction:column; gap:6px; }
+        .opt label { font-size:13px; font-weight:600; color:#374151; }
+        .opt select { padding:10px 12px; border:1px solid #D1D5DB; border-radius:8px; font-size:14px; background:white; cursor:pointer; }
+        .copies-row { margin-top:20px; }
+        .copies-row label { font-size:13px; font-weight:600; color:#374151; display:block; margin-bottom:8px; }
+        .copies-options { display:flex; gap:10px; flex-wrap:wrap; }
+        .copy-btn { padding:8px 20px; border:2px solid #E5E7EB; border-radius:8px; background:white; font-size:14px; font-weight:600; cursor:pointer; color:#374151; transition:all .15s; }
+        .copy-btn:hover { border-color:#2563EB; color:#2563EB; }
+        .copy-btn.active { border-color:#2563EB; background:#EFF6FF; color:#2563EB; }
+        .bg-row { margin-top:20px; }
+        .bg-row label { font-size:13px; font-weight:600; color:#374151; display:block; margin-bottom:8px; }
+        .bg-presets { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+        .bg-swatch { width:34px; height:34px; border-radius:50%; border:2px solid #E5E7EB; cursor:pointer; transition:transform .15s; }
+        .bg-swatch:hover { transform:scale(1.15); }
+        .bg-swatch.active { border-color:#2563EB; border-width:3px; box-shadow:0 0 0 2px #BFDBFE; }
+        .bg-custom { display:flex; align-items:center; gap:8px; margin-top:10px; }
+        .bg-custom input[type="color"] { width:44px; height:34px; border-radius:8px; border:1px solid #D1D5DB; cursor:pointer; padding:2px; }
+        .bg-custom span { font-size:13px; color:#6B7280; }
+        .btn-generate { display:block; width:100%; padding:14px; background:linear-gradient(135deg,#2563EB,#1D4ED8); color:white; border:none; border-radius:10px; font-size:16px; font-weight:600; cursor:pointer; margin-top:26px; transition:opacity .2s; }
+        .btn-generate:hover { opacity:.9; }
+        .btn-generate:disabled { opacity:.6; cursor:not-allowed; }
+        .alert-error { background:#FEF2F2; color:#B91C1C; border:1px solid #FECACA; border-radius:10px; padding:14px 18px; margin-bottom:20px; font-size:14px; }
+        .preview-section { margin-top:32px; border-top:2px solid #E5E7EB; padding-top:28px; text-align:center; }
+        .preview-section h2 { font-size:20px; color:#111827; margin:0 0 6px; }
+        .preview-section p { font-size:14px; color:#6B7280; margin:0 0 20px; }
+        .preview-img-wrap img { max-width:100%; border-radius:12px; border:1px solid #E5E7EB; box-shadow:0 4px 16px rgba(0,0,0,0.1); }
+        .btn-download { display:inline-block; margin-top:22px; padding:14px 40px; background:linear-gradient(135deg,#059669,#047857); color:white; border-radius:10px; font-size:16px; font-weight:600; text-decoration:none; transition:opacity .2s; }
+        .btn-download:hover { opacity:.9; }
+        .btn-new { display:inline-block; margin-top:14px; color:#2563EB; font-size:14px; cursor:pointer; text-decoration:underline; background:none; border:none; }
+        .info-box { background:#EFF6FF; border-radius:10px; padding:16px 20px; margin-top:24px; }
+        .info-box h3 { font-size:13px; color:#1D4ED8; margin:0 0 8px; }
+        .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+        .info-item { font-size:12px; color:#1E40AF; }
+        @media(max-width:500px) { .options-grid { grid-template-columns:1fr; } }
 
-        .upload-area {
-            border: 2px dashed #D1D5DB; border-radius: 12px;
-            padding: 45px 20px; text-align: center;
-            cursor: pointer; transition: all 0.2s; background: #F9FAFB;
-        }
-        .upload-area:hover { border-color: #2563EB; background: #EFF6FF; }
-        .upload-area .icon { font-size: 40px; margin-bottom: 10px; }
-        .upload-area p { color: #6B7280; font-size: 14px; margin: 6px 0; }
-        .upload-area strong { color: #2563EB; }
-        input[type="file"] { display: none; }
-
-        .preview-wrap { margin-top: 16px; text-align: center; display: none; }
-        .preview-wrap img { max-width: 200px; max-height: 200px; border-radius: 8px; border: 2px solid #E5E7EB; object-fit: cover; }
-
-        .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
-        .option-group label { display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 6px; }
-        .option-group select, .option-group input[type="color"] {
-            width: 100%; padding: 10px 12px; border: 1px solid #D1D5DB;
-            border-radius: 8px; font-size: 14px; background: white; color: #111827;
-            cursor: pointer; appearance: auto;
-        }
-        .option-group input[type="color"] { height: 44px; padding: 4px 8px; }
-
-        .bg-presets { display: flex; gap: 10px; margin-top: 8px; }
-        .bg-preset {
-            width: 36px; height: 36px; border-radius: 50%; border: 2px solid #E5E7EB;
-            cursor: pointer; transition: transform 0.15s;
-        }
-        .bg-preset:hover { transform: scale(1.15); border-color: #2563EB; }
-        .bg-preset.active { border-color: #2563EB; border-width: 3px; }
-
-        .btn {
-            display: block; width: 100%; padding: 14px;
-            background: linear-gradient(135deg, #2563EB, #1D4ED8);
-            color: white; border: none; border-radius: 10px;
-            font-size: 16px; font-weight: 600; cursor: pointer;
-            margin-top: 28px; transition: opacity 0.2s;
-        }
-        .btn:hover { opacity: 0.9; }
-        .btn:disabled { opacity: 0.6; cursor: not-allowed; }
-
-        .alert-error {
-            background: #FEF2F2; color: #B91C1C; border: 1px solid #FECACA;
-            border-radius: 10px; padding: 14px 18px; margin-bottom: 20px; font-size: 14px;
-        }
-
-        .info-box { background: #EFF6FF; border-radius: 10px; padding: 16px 20px; margin-top: 28px; }
-        .info-box h3 { font-size: 14px; color: #1D4ED8; margin: 0 0 10px; }
-        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-        .info-item { font-size: 13px; color: #1E40AF; }
-        .info-item strong { display: block; color: #1D4ED8; }
-
-        .spinner { display: none; text-align: center; margin-top: 10px; color: #6B7280; font-size: 14px; }
-        .back-link { display: inline-block; margin-bottom: 20px; color: #2563EB; font-size: 14px; text-decoration: none; }
-        .back-link:hover { text-decoration: underline; }
-        .file-name { margin-top: 10px; font-size: 13px; color: #374151; font-weight: 500; }
+        /* User Guide */
+        .guide { margin-top:28px; border-radius:12px; border:1px solid #E5E7EB; overflow:hidden; }
+        .guide-header { background:#F9FAFB; padding:14px 20px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #E5E7EB; }
+        .guide-header h3 { margin:0; font-size:15px; color:#111827; }
+        .guide-header span { font-size:18px; transition:transform .2s; }
+        .guide-header.open span { transform:rotate(180deg); }
+        .guide-body { display:none; padding:20px; }
+        .guide-body.open { display:block; }
+        .steps { list-style:none; margin:0; padding:0; counter-reset:step; }
+        .steps li { counter-increment:step; display:flex; gap:14px; align-items:flex-start; margin-bottom:16px; }
+        .steps li:last-child { margin-bottom:0; }
+        .step-num { min-width:30px; height:30px; border-radius:50%; background:#2563EB; color:white; font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+        .step-text strong { display:block; font-size:14px; color:#111827; margin-bottom:3px; }
+        .step-text span { font-size:13px; color:#6B7280; line-height:1.5; }
+        .guide-tips { margin-top:16px; background:#FFF7ED; border-radius:8px; padding:14px 16px; }
+        .guide-tips h4 { margin:0 0 8px; font-size:13px; color:#92400E; }
+        .guide-tips ul { margin:0; padding-left:16px; }
+        .guide-tips ul li { font-size:13px; color:#78350F; margin-bottom:5px; line-height:1.4; }
+        .faq { margin-top:14px; }
+        .faq-item { border-bottom:1px solid #F3F4F6; padding:10px 0; }
+        .faq-item:last-child { border-bottom:none; }
+        .faq-q { font-size:13px; font-weight:600; color:#374151; margin-bottom:4px; }
+        .faq-a { font-size:13px; color:#6B7280; line-height:1.5; }
     </style>
 </head>
 <body>
-
 {% include 'navbar.html' ignore missing %}
-
 <div class="container">
     <a href="/" class="back-link">← Back to Tools</a>
-
     <div class="card">
         <h1>📷 Passport Photo Maker</h1>
-        <p class="subtitle">Create professional passport & visa photos with custom size and background — free!</p>
+        <p class="subtitle">Create professional passport & visa photos — choose size, copies & background. Preview before download!</p>
 
         {% if error %}
         <div class="alert-error">⚠️ {{ error }}</div>
         {% endif %}
 
-        <form method="POST" enctype="multipart/form-data" id="passportForm">
+        {% if preview_image and download_ready %}
+        <div class="preview-section">
+            <h2>✅ Your Passport Photo is Ready!</h2>
+            <p>{{ copies }} photo(s) arranged on A4 sheet — check preview below</p>
+            <div class="preview-img-wrap">
+                <img src="data:image/jpeg;base64,{{ preview_image }}" alt="Passport Photo Preview">
+            </div>
+            <br>
+            <a href="/passport-photo/download" class="btn-download">⬇️ Download JPEG</a>
+            <br>
+            <button class="btn-new" onclick="window.location.href='/passport-photo'">🔄 Make Another</button>
+        </div>
 
-            <!-- Upload -->
+        {% else %}
+        <form method="POST" enctype="multipart/form-data" id="passportForm">
             <div class="upload-area" id="dropZone" onclick="document.getElementById('imageInput').click()">
                 <div class="icon">🤳</div>
-                <p><strong>Click to upload</strong> your photo</p>
+                <p><strong>Click to upload</strong> or drag & drop your photo</p>
                 <p>JPG, PNG, WEBP — Max 10MB</p>
             </div>
-            <input type="file" id="imageInput" name="image" accept="image/*" onchange="previewFile(this)">
+            <input type="file" id="imageInput" name="image" accept="image/*" onchange="previewThumb(this)">
             <div class="file-name" id="fileName"></div>
+            <div class="thumb-wrap" id="thumbWrap"><img id="thumbImg" src="" alt="Preview"></div>
 
-            <div class="preview-wrap" id="previewWrap">
-                <img id="previewImg" src="" alt="Preview">
-            </div>
-
-            <!-- Options -->
             <div class="options-grid">
-                <div class="option-group">
+                <div class="opt">
                     <label>📐 Photo Size</label>
-                    <select name="size" id="sizeSelect">
-                        <option value="35x45">🇮🇳 India Passport — 35×45 mm</option>
-                        <option value="51x51">🇺🇸 US Passport — 2×2 inch (51×51mm)</option>
-                        <option value="35x35">🇬🇧 UK Passport — 35×35 mm</option>
-                        <option value="40x60">🇪🇺 Schengen Visa — 40×60 mm</option>
+                    <select name="size">
+                        <option value="35x45">🇮🇳 India — 35×45 mm</option>
+                        <option value="51x51">🇺🇸 USA — 51×51 mm (2×2")</option>
+                        <option value="35x35">🇬🇧 UK — 35×35 mm</option>
+                        <option value="40x60">🇪🇺 Schengen — 40×60 mm</option>
                     </select>
                 </div>
+            </div>
 
-                <div class="option-group">
-                    <label>🎨 Background Color</label>
-                    <div class="bg-presets" id="bgPresets">
-                        <div class="bg-preset active" style="background:#ffffff;" data-color="#ffffff" title="White" onclick="setBg(this, '#ffffff')"></div>
-                        <div class="bg-preset" style="background:#6B96D5;" data-color="#6B96D5" title="Light Blue" onclick="setBg(this, '#6B96D5')"></div>
-                        <div class="bg-preset" style="background:#F0F0F0;" data-color="#F0F0F0" title="Light Gray" onclick="setBg(this, '#F0F0F0')"></div>
-                        <div class="bg-preset" style="background:#FAFAFA;" data-color="#FAFAFA" title="Off White" onclick="setBg(this, '#FAFAFA')"></div>
-                    </div>
-                    <input type="color" id="bgColorPicker" value="#ffffff" style="margin-top:10px; width:100%; height:40px; border-radius:8px; border:1px solid #D1D5DB; cursor:pointer;" onchange="updateBgFromPicker(this.value)">
-                    <input type="hidden" name="bg_color" id="bgColorInput" value="white">
+            <div class="copies-row">
+                <label>🔢 Number of Copies on A4 Sheet</label>
+                <div class="copies-options">
+                    <button type="button" class="copy-btn" onclick="setCopies(4,this)">4 copies</button>
+                    <button type="button" class="copy-btn active" onclick="setCopies(8,this)">8 copies</button>
+                    <button type="button" class="copy-btn" onclick="setCopies(12,this)">12 copies</button>
+                    <button type="button" class="copy-btn" onclick="setCopies(16,this)">16 copies</button>
                 </div>
+                <input type="hidden" name="copies" id="copiesInput" value="8">
             </div>
 
-            <button type="submit" class="btn" id="submitBtn">
-                📸 Generate Passport Photo
-            </button>
-            <div class="spinner" id="spinner">⏳ Creating your passport photo sheet...</div>
+            <div class="bg-row">
+                <label>🎨 Background Color</label>
+                <div class="bg-presets">
+                    <div class="bg-swatch active" style="background:#ffffff;" title="White" onclick="setBg(this,'#ffffff')"></div>
+                    <div class="bg-swatch" style="background:#6B96D5;" title="Light Blue" onclick="setBg(this,'#6B96D5')"></div>
+                    <div class="bg-swatch" style="background:#F0F0F0;" title="Light Gray" onclick="setBg(this,'#F0F0F0')"></div>
+                    <div class="bg-swatch" style="background:#FFF9F0;" title="Cream" onclick="setBg(this,'#FFF9F0')"></div>
+                    <div class="bg-swatch" style="background:#C8E6C9;" title="Light Green" onclick="setBg(this,'#C8E6C9')"></div>
+                </div>
+                <div class="bg-custom">
+                    <input type="color" id="bgPicker" value="#ffffff" onchange="updateBgFromPicker(this.value)">
+                    <span>Or pick custom color</span>
+                </div>
+                <input type="hidden" name="bg_color" id="bgColorInput" value="#ffffff">
+            </div>
+
+            <button type="submit" class="btn-generate" id="submitBtn">📸 Generate & Preview</button>
         </form>
+        {% endif %}
 
-        <!-- Size Info -->
         <div class="info-box">
-            <h3>📋 Standard Passport Photo Sizes</h3>
+            <h3>📋 Standard Sizes Reference</h3>
             <div class="info-grid">
-                <div class="info-item"><strong>🇮🇳 India</strong> 35×45 mm</div>
-                <div class="info-item"><strong>🇺🇸 USA</strong> 51×51 mm (2×2")</div>
-                <div class="info-item"><strong>🇬🇧 UK</strong> 35×35 mm</div>
-                <div class="info-item"><strong>🇪🇺 Schengen</strong> 40×60 mm</div>
+                <div class="info-item">🇮🇳 India — 35×45 mm</div>
+                <div class="info-item">🇺🇸 USA — 51×51 mm</div>
+                <div class="info-item">🇬🇧 UK — 35×35 mm</div>
+                <div class="info-item">🇪🇺 Schengen — 40×60 mm</div>
             </div>
-            <p style="font-size:12px; color:#3B82F6; margin: 12px 0 0;">Output: A4 sheet with 16 photos @ 300 DPI — ready to print!</p>
+            <p style="font-size:12px;color:#3B82F6;margin:10px 0 0;">Output: A4 sheet @ 300 DPI — print-ready!</p>
         </div>
+
+        <!-- ─── USER GUIDE ─── -->
+        <div class="guide">
+            <div class="guide-header" id="guideToggle" onclick="toggleGuide()">
+                <h3>📖 How to Use — Step by Step Guide</h3>
+                <span id="guideArrow">▼</span>
+            </div>
+            <div class="guide-body" id="guideBody">
+
+                <!-- Steps -->
+                <ul class="steps">
+                    <li>
+                        <div class="step-num">1</div>
+                        <div class="step-text">
+                            <strong>Upload Your Photo</strong>
+                            <span>Click the upload area or drag & drop your photo. Use a clear, front-facing photo with good lighting. Accepted formats: JPG, PNG, WEBP (max 10MB).</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="step-num">2</div>
+                        <div class="step-text">
+                            <strong>Select Photo Size</strong>
+                            <span>Choose the country/visa type from the dropdown. India passport needs 35×45 mm, US passport needs 2×2 inch (51×51 mm), and so on.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="step-num">3</div>
+                        <div class="step-text">
+                            <strong>Choose Number of Copies</strong>
+                            <span>Select how many photos you want on the A4 sheet — 4, 8, 12, or 16. More copies = better value when printing at a photo studio.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="step-num">4</div>
+                        <div class="step-text">
+                            <strong>Pick Background Color</strong>
+                            <span>Most countries require a plain white background. Some (like USA) allow off-white. Click a preset swatch or use the color picker for custom colors.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="step-num">5</div>
+                        <div class="step-text">
+                            <strong>Generate & Preview</strong>
+                            <span>Click "Generate & Preview" — your A4 photo sheet will appear on screen. Check if it looks good before downloading.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="step-num">6</div>
+                        <div class="step-text">
+                            <strong>Download & Print</strong>
+                            <span>Click "Download JPEG" to save the file. Then print it at any photo studio or print shop at actual size (A4, 300 DPI) — do NOT resize while printing!</span>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Tips -->
+                <div class="guide-tips">
+                    <h4>💡 Tips for a Perfect Passport Photo</h4>
+                    <ul>
+                        <li>Use a <strong>plain background</strong> while taking the photo — white wall or light-coloured wall works best</li>
+                        <li>Face the camera <strong>directly</strong> — no tilting, no sunglasses, no hat</li>
+                        <li>Make sure your <strong>full face</strong> is visible with neutral expression (slight smile is usually okay)</li>
+                        <li>Use <strong>natural lighting</strong> — avoid harsh shadows on the face</li>
+                        <li>Photo should be taken <strong>recently</strong> (within last 6 months for most countries)</li>
+                        <li>When printing, tell the studio to print at <strong>actual size / 100% scale</strong> on A4 glossy photo paper</li>
+                    </ul>
+                </div>
+
+                <!-- FAQ -->
+                <div class="faq" style="margin-top:18px;">
+                    <p style="font-size:14px;font-weight:600;color:#111827;margin:0 0 12px;">❓ Frequently Asked Questions</p>
+
+                    <div class="faq-item">
+                        <div class="faq-q">Is this tool free?</div>
+                        <div class="faq-a">Yes, completely free! No signup, no watermark, no hidden charges.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q">Will my photo be saved on the server?</div>
+                        <div class="faq-a">Your photo is processed temporarily and deleted automatically. We do not store or share your photos.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q">What if my background is not white?</div>
+                        <div class="faq-a">This tool does not automatically remove backgrounds. For best results, take a photo in front of a plain wall. Or use our <a href="/remove-background" style="color:#2563EB;">Remove Background</a> tool first, then come back here.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q">Can I use this for Indian passport / Aadhaar / visa?</div>
+                        <div class="faq-a">Yes! Select "India — 35×45 mm" for Indian passport, Aadhaar card, PAN card, and most Indian government documents. For US visa select the USA 51×51 mm option.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q">How do I print correctly?</div>
+                        <div class="faq-a">Open the downloaded JPEG and print at A4 size with "Actual Size" or "100%" scale selected. Use glossy photo paper at a photo studio for best results.</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 </div>
-
 <script>
-    function previewFile(input) {
-        const file = input.files[0];
-        if (!file) return;
-        document.getElementById('fileName').textContent = '📎 ' + file.name;
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            document.getElementById('previewImg').src = e.target.result;
-            document.getElementById('previewWrap').style.display = 'block';
-        };
-        reader.readAsDataURL(file);
-    }
-
-    function setBg(el, color) {
-        document.querySelectorAll('.bg-preset').forEach(p => p.classList.remove('active'));
-        el.classList.add('active');
-        document.getElementById('bgColorInput').value = color;
-        document.getElementById('bgColorPicker').value = color.startsWith('#') ? color : '#ffffff';
-    }
-
-    function updateBgFromPicker(color) {
-        document.querySelectorAll('.bg-preset').forEach(p => p.classList.remove('active'));
-        document.getElementById('bgColorInput').value = color;
-    }
-
-    // Drag & Drop
-    const dropZone = document.getElementById('dropZone');
-    dropZone.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        dropZone.style.borderColor = '#2563EB';
-        dropZone.style.background = '#EFF6FF';
-    });
-    dropZone.addEventListener('dragleave', () => {
-        dropZone.style.borderColor = '#D1D5DB';
-        dropZone.style.background = '#F9FAFB';
-    });
-    dropZone.addEventListener('drop', (e) => {
-        e.preventDefault();
-        const file = e.dataTransfer.files[0];
-        if (file) {
-            document.getElementById('imageInput').files = e.dataTransfer.files;
-            previewFile(document.getElementById('imageInput'));
-        }
-    });
-
-    // Submit handler
-    document.getElementById('passportForm').addEventListener('submit', function(e) {
-        const fileInput = document.getElementById('imageInput');
-        if (!fileInput.files || fileInput.files.length === 0) {
-            e.preventDefault();
-            alert('Please select a photo first!');
-            return;
-        }
+function toggleGuide() {
+    const body = document.getElementById('guideBody');
+    const header = document.getElementById('guideToggle');
+    const arrow = document.getElementById('guideArrow');
+    body.classList.toggle('open');
+    header.classList.toggle('open');
+    arrow.textContent = body.classList.contains('open') ? '▲' : '▼';
+}
+function previewThumb(input) {
+    const file = input.files[0]; if (!file) return;
+    document.getElementById('fileName').textContent = '📎 ' + file.name;
+    const reader = new FileReader();
+    reader.onload = e => { document.getElementById('thumbImg').src = e.target.result; document.getElementById('thumbWrap').style.display = 'block'; };
+    reader.readAsDataURL(file);
+}
+function setCopies(n, btn) {
+    document.querySelectorAll('.copy-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('copiesInput').value = n;
+}
+function setBg(el, color) {
+    document.querySelectorAll('.bg-swatch').forEach(s => s.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('bgColorInput').value = color;
+    document.getElementById('bgPicker').value = color;
+}
+function updateBgFromPicker(color) {
+    document.querySelectorAll('.bg-swatch').forEach(s => s.classList.remove('active'));
+    document.getElementById('bgColorInput').value = color;
+}
+const dz = document.getElementById('dropZone');
+if (dz) {
+    dz.addEventListener('dragover', e => { e.preventDefault(); dz.style.borderColor='#2563EB'; dz.style.background='#EFF6FF'; });
+    dz.addEventListener('dragleave', () => { dz.style.borderColor='#D1D5DB'; dz.style.background='#F9FAFB'; });
+    dz.addEventListener('drop', e => { e.preventDefault(); const inp=document.getElementById('imageInput'); inp.files=e.dataTransfer.files; previewThumb(inp); });
+}
+const form = document.getElementById('passportForm');
+if (form) {
+    form.addEventListener('submit', function(e) {
+        const fi = document.getElementById('imageInput');
+        if (!fi || !fi.files.length) { e.preventDefault(); alert('Please select a photo!'); return; }
         document.getElementById('submitBtn').disabled = true;
-        document.getElementById('submitBtn').textContent = '⏳ Processing...';
-        document.getElementById('spinner').style.display = 'block';
+        document.getElementById('submitBtn').textContent = '⏳ Generating preview...';
     });
+}
 </script>
-
 </body>
 </html>
