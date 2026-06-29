@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tip Calculator — EkZapp</title>
+<title>Tip Calculator — Calculate Tip and Split Bill Free | EkZapp</title>
+<meta name="description" content="Calculate tip and split bill among friends online for free. Restaurant tip calculator India.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--green:#16A34A;--green-lt:#F0FDF4}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--green:#16A34A;--green-lt:#F0FDF4}
 body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
 nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
 .logo{text-decoration:none;display:flex;align-items:center;gap:8px}
 .logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
-.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
-.logo-text span{color:var(--blue)}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}.logo-text span{color:var(--blue)}
 .back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
-.container{max-width:560px;margin:48px auto;padding:0 20px}
+.container{max-width:560px;margin:48px auto;padding:0 20px 60px}
 .tool-header{text-align:center;margin-bottom:32px}
 .tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:#FEF9C3;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
 .tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
@@ -35,26 +35,27 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .result.show{display:block}
 .result-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(22,163,74,.15);font-size:14px}
 .result-row:last-child{border:none;font-weight:700;font-size:15px;color:var(--green)}
+.guide-section{margin-top:24px;background:white;border:1px solid var(--border);border-radius:12px;padding:24px}
+.guide-section h2{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:16px}
+.steps{display:flex;flex-direction:column;gap:14px}
+.step{display:flex;gap:12px;align-items:flex-start}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-body h3{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.step-body p{font-size:12px;color:var(--gray);line-height:1.5}
+.faq-section{margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
+.faq-section h2{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:12px}
+.faq-item{border-bottom:1px solid var(--border);padding:12px 0}
+.faq-item:last-child{border-bottom:none;padding-bottom:0}
+.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.faq-a{font-size:12px;color:var(--gray);line-height:1.5}
 </style>
 </head>
 <body>
-<nav>
-  <div class="nav-inner">
-    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
-    <a class="back" href="/">← All Tools</a>
-  </div>
-</nav>
+<nav><div class="nav-inner"><a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a><a class="back" href="/">← All Tools</a></div></nav>
 <div class="container">
-  <div class="tool-header">
-    <div class="tool-icon-wrap">🍽️</div>
-    <h1>Tip Calculator</h1>
-    <p>Calculate tip and split bill among friends</p>
-  </div>
+  <div class="tool-header"><div class="tool-icon-wrap">🍽️</div><h1>Tip Calculator</h1><p>Calculate tip and split bill among friends</p></div>
   <div class="card">
-    <div class="field">
-      <label>Bill Amount (₹)</label>
-      <input type="number" id="bill" placeholder="e.g. 1500" oninput="calc()">
-    </div>
+    <div class="field"><label>Bill Amount (₹)</label><input type="number" id="bill" placeholder="e.g. 1500" oninput="calc()"></div>
     <div class="field">
       <label>Tip Percentage</label>
       <div class="tip-btns">
@@ -66,10 +67,7 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
       </div>
       <input type="number" id="tipPct" value="15" placeholder="Custom %" oninput="calc()">
     </div>
-    <div class="field">
-      <label>Number of People</label>
-      <input type="number" id="people" value="1" min="1" oninput="calc()">
-    </div>
+    <div class="field"><label>Number of People</label><input type="number" id="people" value="1" min="1" oninput="calc()"></div>
     <button class="btn" onclick="calc()">🍽️ Calculate Tip</button>
     <div class="result" id="result">
       <div class="result-row"><span>Bill Amount</span><span id="rBill"></span></div>
@@ -78,24 +76,31 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
       <div class="result-row"><span>Per Person</span><span id="rPer"></span></div>
     </div>
   </div>
+  <div class="guide-section">
+    <h2>📖 How to Use the Tip Calculator</h2>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Enter the Bill Amount</h3><p>Type the total bill amount from your restaurant or service receipt.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Select Tip Percentage</h3><p>Click a tip button (5%, 10%, 15%, 18%, 20%) or type a custom percentage in the field below.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Enter Number of People</h3><p>If splitting the bill, enter how many people are sharing the total cost.</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><h3>See the Results</h3><p>Tip amount, total bill, and per-person share are calculated instantly.</p></div></div>
+    </div>
+    <div class="faq-section">
+      <h2>❓ Frequently Asked Questions</h2>
+      <div class="faq-item"><div class="faq-q">How much tip should I leave in India?</div><div class="faq-a">In India, 5-10% is common. In restaurants with good service, 10-15% is appreciated.</div></div>
+      <div class="faq-item"><div class="faq-q">Can I split the bill unevenly?</div><div class="faq-a">This tool splits the bill equally. For uneven splits, use the per-person amount as a base and adjust manually.</div></div>
+      <div class="faq-item"><div class="faq-q">Is this tool free?</div><div class="faq-a">Yes, 100% free. No signup required.</div></div>
+    </div>
+  </div>
 </div>
 <script>
 let tipPct=15;
-function setTip(pct,btn){
-  tipPct=pct;
-  document.getElementById('tipPct').value=pct;
-  document.querySelectorAll('.tip-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  calc();
-}
+function setTip(pct,btn){tipPct=pct;document.getElementById('tipPct').value=pct;document.querySelectorAll('.tip-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');calc();}
 function calc(){
   const bill=parseFloat(document.getElementById('bill').value)||0;
   const tip=parseFloat(document.getElementById('tipPct').value)||0;
   const people=parseInt(document.getElementById('people').value)||1;
   if(!bill)return;
-  const tipAmt=bill*tip/100;
-  const total=bill+tipAmt;
-  const per=total/people;
+  const tipAmt=bill*tip/100,total=bill+tipAmt,per=total/people;
   const fmt=n=>'₹'+n.toFixed(2);
   document.getElementById('rBill').textContent=fmt(bill);
   document.getElementById('rTip').textContent=fmt(tipAmt)+' ('+tip+'%)';

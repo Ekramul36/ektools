@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SIP Calculator — EkZapp</title>
+<title>SIP Calculator — Calculate SIP Returns Free | EkZapp</title>
+<meta name="description" content="Calculate your SIP investment returns online for free. Systematic Investment Plan calculator for mutual funds.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -13,10 +14,9 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
 .logo{text-decoration:none;display:flex;align-items:center;gap:8px}
 .logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
-.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
-.logo-text span{color:var(--blue)}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}.logo-text span{color:var(--blue)}
 .back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
-.container{max-width:560px;margin:48px auto;padding:0 20px}
+.container{max-width:560px;margin:48px auto;padding:0 20px 60px}
 .tool-header{text-align:center;margin-bottom:32px}
 .tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:var(--green-lt);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
 .tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
@@ -39,45 +39,52 @@ input[type="range"]{width:100%;accent-color:var(--blue);margin-top:6px}
 .result-item{background:white;border-radius:8px;padding:12px;text-align:center;border:1px solid rgba(22,163,74,.15)}
 .result-item strong{display:block;font-size:1rem;font-weight:700;color:var(--ink)}
 .result-item span{font-size:11px;color:var(--gray)}
+.guide-section{margin-top:24px;background:white;border:1px solid var(--border);border-radius:12px;padding:24px}
+.guide-section h2{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:16px}
+.steps{display:flex;flex-direction:column;gap:14px}
+.step{display:flex;gap:12px;align-items:flex-start}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-body h3{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.step-body p{font-size:12px;color:var(--gray);line-height:1.5}
+.faq-section{margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
+.faq-section h2{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:12px}
+.faq-item{border-bottom:1px solid var(--border);padding:12px 0}
+.faq-item:last-child{border-bottom:none;padding-bottom:0}
+.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.faq-a{font-size:12px;color:var(--gray);line-height:1.5}
 </style>
 </head>
 <body>
-<nav>
-  <div class="nav-inner">
-    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
-    <a class="back" href="/">← All Tools</a>
-  </div>
-</nav>
+<nav><div class="nav-inner"><a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a><a class="back" href="/">← All Tools</a></div></nav>
 <div class="container">
-  <div class="tool-header">
-    <div class="tool-icon-wrap">📈</div>
-    <h1>SIP Calculator</h1>
-    <p>Calculate your Systematic Investment Plan returns</p>
-  </div>
+  <div class="tool-header"><div class="tool-icon-wrap">📈</div><h1>SIP Calculator</h1><p>Calculate your Systematic Investment Plan returns</p></div>
   <div class="card">
-    <div class="field">
-      <label>Monthly Investment (₹) <span id="sipVal">₹5,000</span></label>
-      <input type="range" id="sip" min="500" max="100000" step="500" value="5000" oninput="updateSIP()">
-    </div>
-    <div class="field">
-      <label>Expected Annual Return (%) <span id="returnVal">12%</span></label>
-      <input type="range" id="returns" min="1" max="30" step="0.5" value="12" oninput="updateReturn()">
-    </div>
-    <div class="field">
-      <label>Investment Period (Years) <span id="periodVal">10 years</span></label>
-      <input type="range" id="period" min="1" max="40" value="10" oninput="updatePeriod()">
-    </div>
+    <div class="field"><label>Monthly Investment (₹) <span id="sipVal">₹5,000</span></label><input type="range" id="sip" min="500" max="100000" step="500" value="5000" oninput="updateSIP()"></div>
+    <div class="field"><label>Expected Annual Return (%) <span id="returnVal">12%</span></label><input type="range" id="returns" min="1" max="30" step="0.5" value="12" oninput="updateReturn()"></div>
+    <div class="field"><label>Investment Period (Years) <span id="periodVal">10 years</span></label><input type="range" id="period" min="1" max="40" value="10" oninput="updatePeriod()"></div>
     <button class="btn" onclick="calcSIP()">📈 Calculate Returns</button>
     <div class="result" id="result">
-      <div class="result-main">
-        <strong id="totalValue"></strong>
-        <span>Total Value at Maturity</span>
-      </div>
+      <div class="result-main"><strong id="totalValue"></strong><span>Total Value at Maturity</span></div>
       <div class="result-grid">
         <div class="result-item"><strong id="invested"></strong><span>Total Invested</span></div>
-        <div class="result-item"><strong id="gains"></strong><span>Total Gains</strong></div>
+        <div class="result-item"><strong id="gains"></strong><span>Total Gains</span></div>
         <div class="result-item"><strong id="returnPct"></strong><span>Return %</span></div>
       </div>
+    </div>
+  </div>
+  <div class="guide-section">
+    <h2>📖 How to Use the SIP Calculator</h2>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Set Monthly Investment</h3><p>Drag the slider to set how much you want to invest every month in rupees.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Set Expected Return Rate</h3><p>Drag the slider to set the expected annual return. Equity mutual funds typically return 10-15% per year historically.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Set Investment Period</h3><p>Drag the slider to set how many years you plan to invest.</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Click "Calculate Returns"</h3><p>Your total investment, estimated gains, and final corpus value will be shown instantly.</p></div></div>
+    </div>
+    <div class="faq-section">
+      <h2>❓ Frequently Asked Questions</h2>
+      <div class="faq-item"><div class="faq-q">What is SIP?</div><div class="faq-a">SIP stands for Systematic Investment Plan — a way to invest a fixed amount regularly in mutual funds every month.</div></div>
+      <div class="faq-item"><div class="faq-q">Are SIP returns guaranteed?</div><div class="faq-a">No. SIP returns are market-linked and not guaranteed. This calculator gives an estimate based on the return rate you enter.</div></div>
+      <div class="faq-item"><div class="faq-q">Is this tool free?</div><div class="faq-a">Yes, completely free. No signup required.</div></div>
     </div>
   </div>
 </div>
@@ -91,8 +98,7 @@ function calcSIP(){
   const r=parseFloat(document.getElementById('returns').value)/12/100;
   const n=parseFloat(document.getElementById('period').value)*12;
   const total=P*((Math.pow(1+r,n)-1)/r)*(1+r);
-  const invested=P*n;
-  const gains=total-invested;
+  const invested=P*n,gains=total-invested;
   document.getElementById('totalValue').textContent=fmt(total);
   document.getElementById('invested').textContent=fmt(invested);
   document.getElementById('gains').textContent=fmt(gains);
