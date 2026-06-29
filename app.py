@@ -773,7 +773,7 @@ def remove_background():
                 'https://api.remove.bg/v1.0/removebg',
                 files={'image_file': input_bytes},
                 data={'size': 'auto'},
-                headers={'X-Api-Key': '2qJ63NFCUXfz8q5Sn7j2JDGP'},
+                headers={'X-Api-Key': os.environ.get('REMOVE_BG_API_KEY')},
             )
 
             output_bytes = response.content
