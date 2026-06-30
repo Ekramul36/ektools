@@ -985,5 +985,16 @@ def invoice_generator():
 @app.route("/youtube-thumbnail")
 def youtube_thumbnail():
     return render_template("youtube_thumbnail.html")
+@app.route("/income-tax-calculator")
+def income_tax_calculator():
+    return render_template("income_tax_calculator.html")
+
+@app.route("/json-formatter")
+def json_formatter():
+    return render_template("json_formatter.html")
+
+@app.route("/color-picker")
+def color_picker():
+    return render_template("color_picker.html")
 if __name__ == "__main__":
     app.run(debug=True)

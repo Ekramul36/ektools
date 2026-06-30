@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Income Tax Calculator India 2024-25 — Free Online | EkZapp</title>
+<meta name="description" content="Calculate your income tax for FY 2024-25 online free. Supports new tax regime and old tax regime. Get instant tax calculation with deductions.">
+<meta name="keywords" content="income tax calculator, income tax calculator 2024-25, income tax india, new tax regime calculator, old tax regime calculator">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ekzapp.com/income-tax-calculator">
+<meta property="og:title" content="Income Tax Calculator India 2024-25 — EkZapp">
+<meta property="og:description" content="Calculate your income tax for FY 2024-25 free. New & old tax regime supported.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ekzapp.com/income-tax-calculator">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Income Tax Calculator India",
+  "url": "https://ekzapp.com/income-tax-calculator",
+  "description": "Calculate your income tax for FY 2024-25 online free. Supports new and old tax regime.",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web",
+  "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;
+  --ink:#111827;--gray:#4B5563;--light:#F9FAFB;--border:#E5E7EB;
+  --white:#fff;--cream:#F0F5FF;--green:#16A34A;--green-lt:#F0FDF4;
+  --red:#DC2626;--orange:#EA580C;--r:10px;
+}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--white);font-size:14px;-webkit-font-smoothing:antialiased;}
+nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;height:54px;}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px;}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px;}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800;}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}.logo-text span{color:var(--blue)}
+.nav-back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;}
+.nav-back:hover{color:var(--ink)}
+.hero{background:linear-gradient(135deg,#1D4ED8 0%,#2563EB 100%);padding:48px 20px 40px;text-align:center;}
+.hero h1{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;color:white;margin-bottom:10px;}
+.hero p{color:rgba(255,255,255,.85);font-size:15px;}
+.main{max-width:800px;margin:0 auto;padding:36px 20px 60px;}
+.card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.06);margin-bottom:24px;}
+.card-title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.regime-tabs{display:flex;gap:8px;margin-bottom:24px;}
+.tab{flex:1;padding:12px;border:2px solid var(--border);border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;text-align:center;color:var(--gray);background:var(--white);transition:all .2s;font-family:'Inter',sans-serif;}
+.tab.active{border-color:var(--blue);background:var(--blue-lt);color:var(--blue);}
+.form-group{margin-bottom:18px;}
+.form-label{font-size:12px;font-weight:600;color:var(--gray);margin-bottom:6px;display:block;text-transform:uppercase;letter-spacing:.05em;}
+.form-input{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;color:var(--ink);outline:none;transition:border .2s;}
+.form-input:focus{border-color:var(--blue);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.btn-calc{width:100%;padding:14px;background:var(--blue);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:background .15s;margin-top:8px;}
+.btn-calc:hover{background:var(--blue-dk)}
+.result-card{background:linear-gradient(135deg,#1D4ED8,#2563EB);border-radius:16px;padding:28px;color:white;margin-bottom:24px;display:none;}
+.result-title{font-size:13px;font-weight:600;opacity:.7;margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em;}
+.result-amount{font-size:2.4rem;font-weight:800;letter-spacing:-.03em;margin-bottom:4px;}
+.result-sub{font-size:13px;opacity:.7;}
+.breakdown{background:var(--light);border-radius:12px;padding:20px;margin-bottom:24px;display:none;}
+.breakdown-title{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:14px;}
+.breakdown-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.breakdown-row:last-child{border:none;font-weight:700;color:var(--ink);}
+.breakdown-row span:first-child{color:var(--gray)}
+.breakdown-row span:last-child{color:var(--ink);font-weight:600;}
+.breakdown-row.total span{color:var(--blue);font-size:14px;}
+.slab-table{width:100%;border-collapse:collapse;font-size:13px;}
+.slab-table th{background:var(--blue);color:white;padding:10px 14px;text-align:left;font-weight:600;}
+.slab-table td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--gray);}
+.slab-table tr:last-child td{border:none;}
+.slab-table tr:nth-child(even) td{background:var(--light);}
+.how-section{background:var(--cream);border-radius:16px;padding:24px;margin-bottom:24px;}
+.how-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:16px;}
+.faq-item{border-bottom:1px solid var(--border);padding:14px 0;}
+.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px;}
+.faq-a{font-size:13px;color:var(--gray);line-height:1.6;}
+footer{background:#1F2937;padding:24px 20px;text-align:center;}
+.f-bottom{color:rgba(255,255,255,.4);font-size:12px;}
+.f-bottom a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 8px;}
+.f-bottom a:hover{color:white}
+.note{background:#FEF9C3;border:1px solid #FDE047;border-radius:8px;padding:12px 14px;font-size:12px;color:#713F12;margin-top:14px;}
+@media(max-width:560px){.form-row{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <a class="nav-back" href="/">← All Tools</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <h1>🧾 Income Tax Calculator India</h1>
+  <p>FY 2024-25 (AY 2025-26) — New & Old Tax Regime</p>
+</header>
+
+<main class="main">
+
+  <div class="result-card" id="resultCard">
+    <div class="result-title">Total Tax Payable (incl. cess)</div>
+    <div class="result-amount" id="resultAmount">₹0</div>
+    <div class="result-sub" id="resultSub"></div>
+  </div>
+
+  <div class="breakdown" id="breakdown">
+    <div class="breakdown-title">Tax Breakdown</div>
+    <div id="breakdownRows"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">⚙️ Calculate Your Tax</div>
+
+    <div class="regime-tabs">
+      <button class="tab active" onclick="setRegime('new')" id="tabNew">🆕 New Regime</button>
+      <button class="tab" onclick="setRegime('old')" id="tabOld">📋 Old Regime</button>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Annual Income (₹)</label>
+        <input type="number" class="form-input" id="income" placeholder="e.g. 1200000" min="0">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Age</label>
+        <select class="form-input" id="age">
+          <option value="below60">Below 60</option>
+          <option value="60to80">60 to 80 (Senior)</option>
+          <option value="above80">Above 80 (Super Senior)</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="oldRegimeFields" style="display:none;">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">HRA Exemption (₹)</label>
+          <input type="number" class="form-input" id="hra" placeholder="0" min="0">
+        </div>
+        <div class="form-group">
+          <label class="form-label">80C Deductions (₹)</label>
+          <input type="number" class="form-input" id="sec80c" placeholder="Max 1,50,000" min="0" max="150000">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">80D Medical Insurance (₹)</label>
+          <input type="number" class="form-input" id="sec80d" placeholder="Max 25,000" min="0">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Other Deductions (₹)</label>
+          <input type="number" class="form-input" id="otherDed" placeholder="0" min="0">
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-calc" onclick="calculate()">Calculate Tax →</button>
+    <div class="note">⚠️ This calculator is for estimation only. Please consult a CA for exact tax computation.</div>
+  </div>
+
+  <!-- TAX SLABS -->
+  <div class="card">
+    <div class="card-title">📊 Tax Slabs FY 2024-25</div>
+    <div style="overflow-x:auto">
+      <table class="slab-table">
+        <tr><th>Income Range</th><th>New Regime</th><th>Old Regime (Below 60)</th></tr>
+        <tr><td>Up to ₹3,00,000</td><td>Nil</td><td>Nil</td></tr>
+        <tr><td>₹3,00,001 – ₹6,00,000</td><td>5%</td><td>5% (above ₹2.5L)</td></tr>
+        <tr><td>₹6,00,001 – ₹9,00,000</td><td>10%</td><td>20%</td></tr>
+        <tr><td>₹9,00,001 – ₹12,00,000</td><td>15%</td><td>30%</td></tr>
+        <tr><td>₹12,00,001 – ₹15,00,000</td><td>20%</td><td>30%</td></tr>
+        <tr><td>Above ₹15,00,000</td><td>30%</td><td>30%</td></tr>
+      </table>
+    </div>
+    <p style="font-size:12px;color:var(--gray);margin-top:12px;">* 4% Health & Education Cess applicable on tax amount. Standard deduction ₹75,000 (New) / ₹50,000 (Old).</p>
+  </div>
+
+  <!-- HOW TO USE -->
+  <div class="how-section">
+    <div class="how-title">How to Use</div>
+    <p style="font-size:13px;color:var(--gray);line-height:1.8;">
+      1. Select New or Old Tax Regime<br>
+      2. Enter your Annual Gross Income<br>
+      3. Select your Age category<br>
+      4. For Old Regime — enter HRA, 80C, 80D deductions<br>
+      5. Click Calculate Tax to see your tax liability
+    </p>
+  </div>
+
+  <!-- FAQ -->
+  <div class="card">
+    <div class="card-title">❓ Frequently Asked Questions</div>
+    <div class="faq-item">
+      <div class="faq-q">Which tax regime is better — New or Old?</div>
+      <div class="faq-a">New regime is better if you have fewer deductions. Old regime is better if you have high 80C, HRA, and other deductions. Use this calculator to compare both.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is the standard deduction for FY 2024-25?</div>
+      <div class="faq-a">Standard deduction is ₹75,000 under the New Regime and ₹50,000 under the Old Regime for salaried individuals.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is the basic exemption limit?</div>
+      <div class="faq-a">Under New Regime: ₹3,00,000. Under Old Regime: ₹2,50,000 (below 60), ₹3,00,000 (60-80), ₹5,00,000 (above 80).</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is there a rebate under Section 87A?</div>
+      <div class="faq-a">Yes. Under New Regime, if taxable income is up to ₹7,00,000, tax is zero due to Section 87A rebate. Under Old Regime, rebate is up to ₹5,00,000.</div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="f-bottom">
+    <span>© 2026 EkZapp.com</span>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="/contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+let regime = 'new';
+
+function setRegime(r) {
+  regime = r;
+  document.getElementById('tabNew').classList.toggle('active', r === 'new');
+  document.getElementById('tabOld').classList.toggle('active', r === 'old');
+  document.getElementById('oldRegimeFields').style.display = r === 'old' ? 'block' : 'none';
+}
+
+function fmt(n) {
+  return '₹' + Math.round(n).toLocaleString('en-IN');
+}
+
+function calcNewRegime(income, age) {
+  const stdDed = 75000;
+  let taxable = Math.max(0, income - stdDed);
+  let tax = 0;
+  const slabs = [
+    [300000, 0],
+    [300000, 0.05],
+    [300000, 0.10],
+    [300000, 0.15],
+    [300000, 0.20],
+    [Infinity, 0.30],
+  ];
+  let remaining = taxable;
+  for (const [limit, rate] of slabs) {
+    const chunk = Math.min(remaining, limit);
+    tax += chunk * rate;
+    remaining -= chunk;
+    if (remaining <= 0) break;
+  }
+  // 87A rebate
+  if (taxable <= 700000) tax = 0;
+  const cess = tax * 0.04;
+  return { taxable, tax, cess, total: tax + cess, stdDed };
+}
+
+function calcOldRegime(income, age) {
+  const stdDed = 50000;
+  const hra = parseFloat(document.getElementById('hra').value) || 0;
+  const sec80c = Math.min(parseFloat(document.getElementById('sec80c').value) || 0, 150000);
+  const sec80d = parseFloat(document.getElementById('sec80d').value) || 0;
+  const other = parseFloat(document.getElementById('otherDed').value) || 0;
+  const totalDed = stdDed + hra + sec80c + sec80d + other;
+  let taxable = Math.max(0, income - totalDed);
+
+  let exemption = age === 'above80' ? 500000 : age === '60to80' ? 300000 : 250000;
+  let tax = 0;
+
+  if (taxable > exemption) {
+    const above = taxable - exemption;
+    if (age === 'above80') {
+      if (above <= 500000) tax = above * 0.20;
+      else tax = 500000 * 0.20 + (above - 500000) * 0.30;
+    } else {
+      const s1 = 250000, s2 = 500000;
+      if (above <= s1) tax = above * 0.05;
+      else if (above <= s1 + s2) tax = s1 * 0.05 + (above - s1) * 0.20;
+      else tax = s1 * 0.05 + s2 * 0.20 + (above - s1 - s2) * 0.30;
+    }
+  }
+  // 87A rebate old regime
+  if (taxable <= 500000) tax = 0;
+  const cess = tax * 0.04;
+  return { taxable, tax, cess, total: tax + cess, stdDed, totalDed };
+}
+
+function calculate() {
+  const income = parseFloat(document.getElementById('income').value) || 0;
+  const age = document.getElementById('age').value;
+
+  if (!income || income <= 0) {
+    alert('Please enter your annual income.');
+    return;
+  }
+
+  const r = regime === 'new' ? calcNewRegime(income, age) : calcOldRegime(income, age);
+
+  document.getElementById('resultAmount').textContent = fmt(r.total);
+  document.getElementById('resultSub').textContent =
+    `Taxable Income: ${fmt(r.taxable)} | Tax: ${fmt(r.tax)} | Cess: ${fmt(r.cess)}`;
+  document.getElementById('resultCard').style.display = 'block';
+
+  let rows = `
+    <div class="breakdown-row"><span>Gross Income</span><span>${fmt(income)}</span></div>
+    <div class="breakdown-row"><span>Standard Deduction</span><span>- ${fmt(r.stdDed)}</span></div>`;
+
+  if (regime === 'old' && r.totalDed > r.stdDed) {
+    rows += `<div class="breakdown-row"><span>Other Deductions</span><span>- ${fmt(r.totalDed - r.stdDed)}</span></div>`;
+  }
+
+  rows += `
+    <div class="breakdown-row"><span>Taxable Income</span><span>${fmt(r.taxable)}</span></div>
+    <div class="breakdown-row"><span>Income Tax</span><span>${fmt(r.tax)}</span></div>
+    <div class="breakdown-row"><span>Health & Education Cess (4%)</span><span>${fmt(r.cess)}</span></div>
+    <div class="breakdown-row total"><span>Total Tax Payable</span><span>${fmt(r.total)}</span></div>`;
+
+  document.getElementById('breakdownRows').innerHTML = rows;
+  document.getElementById('breakdown').style.display = 'block';
+  document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

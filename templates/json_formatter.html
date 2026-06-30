@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON Formatter & Beautifier — Free Online JSON Tool | EkZapp</title>
+<meta name="description" content="Format, beautify, validate and minify JSON online for free. Instant JSON formatter with syntax highlighting and error detection. No signup required.">
+<meta name="keywords" content="json formatter, json beautifier, json validator, json minifier, format json online, json pretty print">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ekzapp.com/json-formatter">
+<meta property="og:title" content="JSON Formatter & Beautifier — EkZapp">
+<meta property="og:description" content="Format, validate and minify JSON online for free. Instant results with error detection.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ekzapp.com/json-formatter">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "JSON Formatter & Beautifier",
+  "url": "https://ekzapp.com/json-formatter",
+  "description": "Format, beautify, validate and minify JSON online for free. No signup required.",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web",
+  "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;
+  --ink:#111827;--gray:#4B5563;--light:#F9FAFB;--border:#E5E7EB;
+  --white:#fff;--cream:#F0F5FF;--green:#16A34A;--green-lt:#F0FDF4;
+  --red:#DC2626;--r:10px;
+}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--white);font-size:14px;-webkit-font-smoothing:antialiased;}
+nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;height:54px;}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px;}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px;}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800;}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}.logo-text span{color:var(--blue)}
+.nav-back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;}
+.nav-back:hover{color:var(--ink)}
+.hero{background:linear-gradient(135deg,#064E3B 0%,#065F46 100%);padding:48px 20px 40px;text-align:center;}
+.hero h1{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;color:white;margin-bottom:10px;}
+.hero p{color:rgba(255,255,255,.85);font-size:15px;}
+.main{max-width:1200px;margin:0 auto;padding:24px 20px 60px;}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+.btn{padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;border:1.5px solid var(--border);background:var(--white);color:var(--ink);transition:all .15s;}
+.btn:hover{border-color:var(--blue);color:var(--blue)}
+.btn-primary{background:var(--blue);color:white;border-color:var(--blue);}
+.btn-primary:hover{background:var(--blue-dk);color:white;border-color:var(--blue-dk)}
+.btn-green{background:var(--green);color:white;border-color:var(--green);}
+.btn-green:hover{background:#15803D;color:white}
+.btn-red{background:#DC2626;color:white;border-color:#DC2626;}
+.btn-red:hover{background:#B91C1C;color:white}
+.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.editor-box{display:flex;flex-direction:column;}
+.editor-label{font-size:12px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;}
+.editor-label-right{display:flex;gap:6px;}
+.copy-btn{padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--white);color:var(--gray);font-family:'Inter',sans-serif;}
+.copy-btn:hover{border-color:var(--blue);color:var(--blue)}
+textarea{width:100%;height:420px;padding:16px;border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-family:'Courier New',Courier,monospace;color:var(--ink);resize:vertical;outline:none;line-height:1.6;background:var(--light);}
+textarea:focus{border-color:var(--blue);background:white;}
+.output-area{width:100%;height:420px;padding:16px;border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-family:'Courier New',Courier,monospace;color:var(--ink);overflow:auto;background:var(--light);white-space:pre;line-height:1.6;}
+.status-bar{margin-top:10px;padding:10px 14px;border-radius:8px;font-size:13px;font-weight:500;display:none;}
+.status-ok{background:var(--green-lt);border:1px solid #86EFAC;color:#166534;}
+.status-err{background:#FEF2F2;border:1px solid #FECACA;color:#991B1B;}
+.stats-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;}
+.stat-item{background:var(--blue-lt);border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;color:var(--blue);}
+.how-section{background:var(--cream);border-radius:16px;padding:24px;margin-top:24px;margin-bottom:24px;}
+.how-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:12px;}
+.card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.06);margin-top:24px;}
+.faq-item{border-bottom:1px solid var(--border);padding:14px 0;}
+.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px;}
+.faq-a{font-size:13px;color:var(--gray);line-height:1.6;}
+footer{background:#1F2937;padding:24px 20px;text-align:center;margin-top:40px;}
+.f-bottom{color:rgba(255,255,255,.4);font-size:12px;}
+.f-bottom a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 8px;}
+.f-bottom a:hover{color:white}
+@media(max-width:768px){
+  .editor-grid{grid-template-columns:1fr;}
+  textarea,.output-area{height:280px;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <a class="nav-back" href="/">← All Tools</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <h1>🔧 JSON Formatter & Beautifier</h1>
+  <p>Format, validate, minify and beautify JSON instantly — free & online</p>
+</header>
+
+<main class="main">
+
+  <div class="toolbar">
+    <button class="btn btn-primary" onclick="formatJSON()">✨ Format / Beautify</button>
+    <button class="btn btn-green" onclick="validateJSON()">✅ Validate</button>
+    <button class="btn" onclick="minifyJSON()">🗜️ Minify</button>
+    <button class="btn" onclick="clearAll()">🗑️ Clear</button>
+    <button class="btn" onclick="loadSample()">📋 Load Sample</button>
+  </div>
+
+  <div class="editor-grid">
+    <div class="editor-box">
+      <div class="editor-label">
+        Input JSON
+        <div class="editor-label-right">
+          <button class="copy-btn" onclick="pasteFromClipboard()">📋 Paste</button>
+          <button class="copy-btn" onclick="clearInput()">✕ Clear</button>
+        </div>
+      </div>
+      <textarea id="inputJSON" placeholder='Paste your JSON here...&#10;&#10;Example:&#10;{"name":"EkZapp","tools":["PDF","Image","Calculator"],"free":true}'></textarea>
+      <div class="status-bar" id="statusBar"></div>
+    </div>
+
+    <div class="editor-box">
+      <div class="editor-label">
+        Output
+        <div class="editor-label-right">
+          <button class="copy-btn" onclick="copyOutput()">📋 Copy</button>
+          <button class="copy-btn" onclick="downloadOutput()">⬇️ Download</button>
+        </div>
+      </div>
+      <div class="output-area" id="outputJSON"></div>
+      <div class="stats-row" id="statsRow"></div>
+    </div>
+  </div>
+
+  <div class="how-section">
+    <div class="how-title">How to Use</div>
+    <p style="font-size:13px;color:var(--gray);line-height:1.8;">
+      1. Paste your JSON in the left box<br>
+      2. Click <strong>Format / Beautify</strong> to pretty-print with indentation<br>
+      3. Click <strong>Validate</strong> to check if JSON is valid<br>
+      4. Click <strong>Minify</strong> to compress JSON to one line<br>
+      5. Copy or Download the output
+    </p>
+  </div>
+
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;color:var(--ink);margin-bottom:14px;">❓ Frequently Asked Questions</div>
+    <div class="faq-item">
+      <div class="faq-q">What is JSON formatting?</div>
+      <div class="faq-a">JSON formatting (beautifying) adds proper indentation and line breaks to make JSON data readable. Minifying removes all whitespace to reduce file size.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is my JSON data safe?</div>
+      <div class="faq-a">Yes! All processing happens in your browser. Your JSON data is never sent to any server.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is JSON validation?</div>
+      <div class="faq-a">JSON validation checks if your JSON follows the correct syntax. Common errors include missing quotes, extra commas, or unclosed brackets.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I format large JSON files?</div>
+      <div class="faq-a">Yes, EkZapp JSON Formatter handles large JSON files efficiently in your browser without any upload limits.</div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="f-bottom">
+    <span>© 2026 EkZapp.com</span>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="/contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+function getInput() { return document.getElementById('inputJSON').value.trim(); }
+function setOutput(text) { document.getElementById('outputJSON').textContent = text; }
+function showStatus(msg, ok) {
+  const el = document.getElementById('statusBar');
+  el.textContent = msg;
+  el.className = 'status-bar ' + (ok ? 'status-ok' : 'status-err');
+  el.style.display = 'block';
+}
+function showStats(parsed) {
+  const keys = JSON.stringify(parsed).match(/"[^"]+"\s*:/g);
+  const size = new Blob([JSON.stringify(parsed)]).size;
+  document.getElementById('statsRow').innerHTML = `
+    <div class="stat-item">Keys: ${keys ? keys.length : 0}</div>
+    <div class="stat-item">Size: ${size} bytes</div>
+    <div class="stat-item">Type: ${Array.isArray(parsed) ? 'Array' : 'Object'}</div>
+  `;
+}
+
+function formatJSON() {
+  const input = getInput();
+  if (!input) { showStatus('Please paste JSON first.', false); return; }
+  try {
+    const parsed = JSON.parse(input);
+    setOutput(JSON.stringify(parsed, null, 2));
+    showStatus('✅ Valid JSON — formatted successfully!', true);
+    showStats(parsed);
+  } catch(e) {
+    setOutput('');
+    showStatus('❌ Invalid JSON: ' + e.message, false);
+  }
+}
+
+function validateJSON() {
+  const input = getInput();
+  if (!input) { showStatus('Please paste JSON first.', false); return; }
+  try {
+    const parsed = JSON.parse(input);
+    showStatus('✅ Valid JSON!', true);
+    showStats(parsed);
+  } catch(e) {
+    showStatus('❌ Invalid JSON: ' + e.message, false);
+  }
+}
+
+function minifyJSON() {
+  const input = getInput();
+  if (!input) { showStatus('Please paste JSON first.', false); return; }
+  try {
+    const parsed = JSON.parse(input);
+    setOutput(JSON.stringify(parsed));
+    showStatus('✅ JSON minified successfully!', true);
+  } catch(e) {
+    showStatus('❌ Invalid JSON: ' + e.message, false);
+  }
+}
+
+function clearAll() {
+  document.getElementById('inputJSON').value = '';
+  setOutput('');
+  document.getElementById('statusBar').style.display = 'none';
+  document.getElementById('statsRow').innerHTML = '';
+}
+
+function clearInput() {
+  document.getElementById('inputJSON').value = '';
+}
+
+function loadSample() {
+  document.getElementById('inputJSON').value = JSON.stringify({
+    "name": "EkZapp",
+    "url": "https://ekzapp.com",
+    "description": "Free online utility tools",
+    "tools": ["PDF Merge", "Image Compress", "QR Generator", "Invoice"],
+    "free": true,
+    "users": 10000,
+    "contact": { "email": "hello@ekzapp.com", "twitter": "@ekzapp" }
+  });
+}
+
+async function pasteFromClipboard() {
+  try {
+    const text = await navigator.clipboard.readText();
+    document.getElementById('inputJSON').value = text;
+  } catch(e) {
+    showStatus('Could not access clipboard. Please paste manually (Ctrl+V).', false);
+  }
+}
+
+function copyOutput() {
+  const text = document.getElementById('outputJSON').textContent;
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = event.target;
+    btn.textContent = '✅ Copied!';
+    setTimeout(() => btn.textContent = '📋 Copy', 2000);
+  });
+}
+
+function downloadOutput() {
+  const text = document.getElementById('outputJSON').textContent;
+  if (!text) return;
+  const blob = new Blob([text], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'formatted.json'; a.click();
+  URL.revokeObjectURL(url);
+}
+
+// Auto format on Ctrl+Enter
+document.getElementById('inputJSON').addEventListener('keydown', function(e) {
+  if (e.ctrlKey && e.key === 'Enter') formatJSON();
+});
+</script>
+</body>
+</html>
