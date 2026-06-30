@@ -14,12 +14,18 @@ os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
 
 # ──────────────────────────────────────────
-# SEO — robots.txt & sitemap.xml
+# SEO — robots.txt & sitemap.xml & ads.txt
 # ──────────────────────────────────────────
 
 @app.route('/robots.txt')
 def robots():
     content = "User-agent: *\nAllow: /\n\nSitemap: https://ekzapp.com/sitemap.xml"
+    return Response(content, mimetype='text/plain')
+
+
+@app.route('/ads.txt')
+def ads_txt():
+    content = "google.com, pub-3671123199046758, DIRECT, f08c47fec0942fa0"
     return Response(content, mimetype='text/plain')
 
 
@@ -531,7 +537,6 @@ def image_to_pdf():
             return render_template("image.html", error=f"Error: {str(e)}")
     return render_template("image.html")
 
-# Old route redirect (backward compatibility)
 @app.route("/image", methods=["GET", "POST"])
 def image():
     return redirect("/image-to-pdf")
@@ -556,7 +561,6 @@ def compress_image():
             return render_template("image_compress.html", error=str(e))
     return render_template("image_compress.html")
 
-# Old route redirect
 @app.route("/image/compress", methods=["GET", "POST"])
 def image_compress_old():
     return redirect("/compress-image")
@@ -732,7 +736,7 @@ def passport_photo_download():
 def age_calculator():
     return render_template("age.html")
 
-@app.route("/calculators/age")  # old URL redirect
+@app.route("/calculators/age")
 def age_calculator_old():
     return redirect("/age-calculator")
 
