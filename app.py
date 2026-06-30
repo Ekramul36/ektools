@@ -982,6 +982,8 @@ def invoice_generator():
 # ──────────────────────────────────────────
 # RUN
 # ──────────────────────────────────────────
-
+@app.route("/youtube-thumbnail")
+def youtube_thumbnail():
+    return render_template("youtube_thumbnail.html")
 if __name__ == "__main__":
     app.run(debug=True)

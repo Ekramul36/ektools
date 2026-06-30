@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube Thumbnail Downloader — Download HD Thumbnails Free | EkZapp</title>
+<meta name="description" content="Download YouTube video thumbnails in HD, Full HD and SD quality for free. Just paste the YouTube URL and download the thumbnail instantly. No signup required.">
+<meta name="keywords" content="youtube thumbnail downloader, download youtube thumbnail, youtube thumbnail hd, youtube thumbnail grabber">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="YouTube Thumbnail Downloader — Download HD Thumbnails Free">
+<meta property="og:description" content="Download YouTube video thumbnails in HD, Full HD and SD quality for free. Just paste the YouTube URL and download instantly.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ekzapp.com/youtube-thumbnail">
+<meta property="og:image" content="https://ekzapp.com/static/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="YouTube Thumbnail Downloader — EkZapp">
+<meta name="twitter:description" content="Download YouTube thumbnails in HD for free. No signup required.">
+<link rel="canonical" href="https://ekzapp.com/youtube-thumbnail">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "YouTube Thumbnail Downloader",
+  "url": "https://ekzapp.com/youtube-thumbnail",
+  "description": "Download YouTube video thumbnails in HD quality for free. No signup required.",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web",
+  "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;
+  --ink:#111827;--gray:#4B5563;--light:#F9FAFB;--border:#E5E7EB;
+  --white:#fff;--cream:#F0F5FF;--green:#16A34A;--green-lt:#F0FDF4;
+  --red:#DC2626;--r:10px;
+}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--white);font-size:14px;-webkit-font-smoothing:antialiased;}
+nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;height:54px;}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px;}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px;}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800;}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}.logo-text span{color:var(--blue)}
+.nav-back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;display:flex;align-items:center;gap:4px;}
+.nav-back:hover{color:var(--ink)}
+.hero{background:linear-gradient(135deg,#FF0000 0%,#CC0000 100%);padding:48px 20px 40px;text-align:center;}
+.hero h1{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;color:white;margin-bottom:10px;letter-spacing:-.02em;}
+.hero p{color:rgba(255,255,255,.85);font-size:15px;max-width:500px;margin:0 auto;}
+.main{max-width:700px;margin:0 auto;padding:36px 20px 60px;}
+.card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.06);margin-bottom:24px;}
+.input-label{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:8px;display:block;}
+.input-wrap{display:flex;gap:10px;}
+.url-input{flex:1;padding:12px 16px;border:2px solid var(--border);border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;color:var(--ink);outline:none;transition:border .2s;}
+.url-input:focus{border-color:var(--blue);}
+.url-input::placeholder{color:#9CA3AF}
+.btn-get{padding:12px 20px;background:#FF0000;color:white;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;transition:background .15s;}
+.btn-get:hover{background:#CC0000}
+.error-msg{background:#FEF2F2;border:1px solid #FECACA;color:var(--red);padding:12px 16px;border-radius:8px;font-size:13px;margin-top:14px;display:none;}
+.results{display:none;}
+.results-title{font-size:13px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px;}
+.thumb-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.thumb-item{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--light);}
+.thumb-img-wrap{position:relative;background:#000;aspect-ratio:16/9;overflow:hidden;}
+.thumb-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
+.thumb-quality{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.7);color:white;font-size:10px;font-weight:700;padding:3px 8px;border-radius:100px;text-transform:uppercase;}
+.thumb-info{padding:10px 12px;}
+.thumb-size{font-size:11px;color:var(--gray);font-weight:500;margin-bottom:8px;}
+.btn-download{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:9px;background:var(--blue);color:white;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;transition:background .15s;}
+.btn-download:hover{background:var(--blue-dk)}
+.video-info{background:var(--light);border-radius:10px;padding:14px 16px;margin-bottom:20px;display:none;}
+.video-id-label{font-size:11px;color:var(--gray);font-weight:500;margin-bottom:4px;}
+.video-id-val{font-size:13px;font-weight:600;color:var(--ink);word-break:break-all;}
+.how-section{background:var(--cream);border-radius:16px;padding:24px;margin-bottom:24px;}
+.how-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:16px;}
+.how-steps{display:flex;flex-direction:column;gap:12px;}
+.how-step{display:flex;gap:12px;align-items:flex-start;}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.step-text{font-size:13px;color:var(--gray);padding-top:5px;line-height:1.5;}
+.faq-section{margin-top:8px;}
+.faq-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:14px;}
+.faq-item{border-bottom:1px solid var(--border);padding:14px 0;}
+.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px;}
+.faq-a{font-size:13px;color:var(--gray);line-height:1.6;}
+footer{background:#1F2937;padding:24px 20px;text-align:center;}
+.f-bottom{color:rgba(255,255,255,.4);font-size:12px;}
+.f-bottom a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 8px;}
+.f-bottom a:hover{color:white}
+@media(max-width:560px){
+  .input-wrap{flex-direction:column;}
+  .thumb-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <a class="nav-back" href="/">← All Tools</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <h1>📥 YouTube Thumbnail Downloader</h1>
+  <p>Download YouTube video thumbnails in HD, Full HD & SD quality — free & instant</p>
+</header>
+
+<main class="main">
+
+  <div class="card">
+    <label class="input-label" for="urlInput">Paste YouTube Video URL</label>
+    <div class="input-wrap">
+      <input type="text" class="url-input" id="urlInput" placeholder="https://www.youtube.com/watch?v=..." autocomplete="off">
+      <button class="btn-get" onclick="getThumbnail()">Get Thumbnails</button>
+    </div>
+    <div class="error-msg" id="errorMsg"></div>
+  </div>
+
+  <div class="video-info" id="videoInfo">
+    <div class="video-id-label">Video ID detected:</div>
+    <div class="video-id-val" id="videoIdVal"></div>
+  </div>
+
+  <div class="results" id="results">
+    <div class="results-title">Choose quality & download</div>
+    <div class="thumb-grid" id="thumbGrid"></div>
+  </div>
+
+  <!-- HOW TO USE -->
+  <div class="how-section">
+    <div class="how-title">How to Use</div>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="step-num">1</div>
+        <div class="step-text">Copy the YouTube video URL from your browser or the Share button.</div>
+      </div>
+      <div class="how-step">
+        <div class="step-num">2</div>
+        <div class="step-text">Paste the URL in the box above and click <strong>Get Thumbnails</strong>.</div>
+      </div>
+      <div class="how-step">
+        <div class="step-num">3</div>
+        <div class="step-text">Choose your preferred quality — HD, Full HD or SD — and click Download.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="card faq-section">
+    <div class="faq-title">Frequently Asked Questions</div>
+    <div class="faq-item">
+      <div class="faq-q">Is this tool free?</div>
+      <div class="faq-a">Yes, EkZapp YouTube Thumbnail Downloader is completely free with no signup required.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What thumbnail qualities are available?</div>
+      <div class="faq-a">We provide Maximum Resolution (1280×720), High Quality (480×360), Medium Quality (320×180), and Standard Quality (120×90).</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What YouTube URL formats are supported?</div>
+      <div class="faq-a">All standard YouTube URLs are supported: youtube.com/watch?v=..., youtu.be/..., youtube.com/shorts/... and more.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I download thumbnails from YouTube Shorts?</div>
+      <div class="faq-a">Yes! YouTube Shorts URLs are fully supported. Just paste the Shorts URL and download the thumbnail.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is there any limit on downloads?</div>
+      <div class="faq-a">No limit at all. You can download as many thumbnails as you need for free.</div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="f-bottom">
+    <span>© 2026 EkZapp.com</span>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="/contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+function extractVideoId(url) {
+  url = url.trim();
+  const patterns = [
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/v\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/,
+    /^([a-zA-Z0-9_-]{11})$/
+  ];
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match) return match[1];
+  }
+  return null;
+}
+
+function getThumbnail() {
+  const url = document.getElementById('urlInput').value.trim();
+  const errorMsg = document.getElementById('errorMsg');
+  const results = document.getElementById('results');
+  const videoInfo = document.getElementById('videoInfo');
+  const thumbGrid = document.getElementById('thumbGrid');
+
+  errorMsg.style.display = 'none';
+  results.style.display = 'none';
+  videoInfo.style.display = 'none';
+
+  if (!url) {
+    errorMsg.textContent = 'Please paste a YouTube URL.';
+    errorMsg.style.display = 'block';
+    return;
+  }
+
+  const videoId = extractVideoId(url);
+  if (!videoId) {
+    errorMsg.textContent = 'Invalid YouTube URL. Please check and try again.';
+    errorMsg.style.display = 'block';
+    return;
+  }
+
+  document.getElementById('videoIdVal').textContent = videoId;
+  videoInfo.style.display = 'block';
+
+  const qualities = [
+    { label: 'Max Resolution', key: 'maxresdefault', size: '1280×720' },
+    { label: 'High Quality', key: 'hqdefault', size: '480×360' },
+    { label: 'Medium Quality', key: 'mqdefault', size: '320×180' },
+    { label: 'Standard', key: 'default', size: '120×90' },
+  ];
+
+  thumbGrid.innerHTML = qualities.map(q => `
+    <div class="thumb-item">
+      <div class="thumb-img-wrap">
+        <img src="https://img.youtube.com/vi/${videoId}/${q.key}.jpg" alt="${q.label} thumbnail" onerror="this.src='https://img.youtube.com/vi/${videoId}/hqdefault.jpg'">
+        <span class="thumb-quality">${q.label}</span>
+      </div>
+      <div class="thumb-info">
+        <div class="thumb-size">${q.size} px</div>
+        <a class="btn-download" href="https://img.youtube.com/vi/${videoId}/${q.key}.jpg" download="thumbnail_${videoId}_${q.key}.jpg" target="_blank">
+          ⬇️ Download
+        </a>
+      </div>
+    </div>
+  `).join('');
+
+  results.style.display = 'block';
+}
+
+document.getElementById('urlInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') getThumbnail();
+});
+</script>
+
+</body>
+</html>
