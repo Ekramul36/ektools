@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ektools.onrender.com/sitemap.xml
+Sitemap: https://ekzapp.com/sitemap.xml

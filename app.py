@@ -1029,4 +1029,77 @@ def invoice_generator():
 
 
 if __name__ == "__main__":
+    from flask import Response
+import datetime
+
+@app.route('/robots.txt')
+def robots():
+    content = """User-agent: *
+Allow: /
+
+Sitemap: https://ekzapp.com/sitemap.xml"""
+    return Response(content, mimetype='text/plain')
+
+
+@app.route('/sitemap.xml')
+def sitemap():
+    pages = [
+        ('/', '1.0', 'daily'),
+        ('/about', '0.8', 'monthly'),
+        ('/contact', '0.8', 'monthly'),
+        ('/privacy', '0.5', 'monthly'),
+        ('/terms', '0.5', 'monthly'),
+        ('/unlock-pdf', '0.9', 'weekly'),
+        ('/merge-pdf', '0.9', 'weekly'),
+        ('/split-pdf', '0.9', 'weekly'),
+        ('/compress-pdf', '0.9', 'weekly'),
+        ('/rotate-pdf', '0.9', 'weekly'),
+        ('/delete-pages', '0.9', 'weekly'),
+        ('/watermark-pdf', '0.9', 'weekly'),
+        ('/protect-pdf', '0.9', 'weekly'),
+        ('/pdf-to-jpg', '0.9', 'weekly'),
+        ('/pdf-to-word', '0.9', 'weekly'),
+        ('/word-to-pdf', '0.9', 'weekly'),
+        ('/excel-to-pdf', '0.9', 'weekly'),
+        ('/pdf-to-excel', '0.9', 'weekly'),
+        ('/ocr', '0.9', 'weekly'),
+        ('/pdf-editor', '0.9', 'weekly'),
+        ('/image-to-pdf', '0.9', 'weekly'),
+        ('/compress-image', '0.9', 'weekly'),
+        ('/resize-image', '0.9', 'weekly'),
+        ('/convert-image', '0.9', 'weekly'),
+        ('/remove-background', '0.9', 'weekly'),
+        ('/passport-photo', '0.9', 'weekly'),
+        ('/age-calculator', '0.9', 'weekly'),
+        ('/bmi-calculator', '0.9', 'weekly'),
+        ('/gst-calculator', '0.9', 'weekly'),
+        ('/emi-calculator', '0.9', 'weekly'),
+        ('/percentage-calculator', '0.9', 'weekly'),
+        ('/sip-calculator', '0.9', 'weekly'),
+        ('/date-calculator', '0.9', 'weekly'),
+        ('/calorie-calculator', '0.9', 'weekly'),
+        ('/tip-calculator', '0.9', 'weekly'),
+        ('/word-counter', '0.9', 'weekly'),
+        ('/case-converter', '0.9', 'weekly'),
+        ('/mb-converter', '0.9', 'weekly'),
+        ('/lorem-ipsum', '0.9', 'weekly'),
+        ('/qr-generator', '0.9', 'weekly'),
+        ('/password-generator', '0.9', 'weekly'),
+        ('/currency-converter', '0.9', 'weekly'),
+        ('/unit-converter', '0.9', 'weekly'),
+        ('/invoice-generator', '0.9', 'weekly'),
+    ]
+
+    today = datetime.date.today().isoformat()
+    xml = ['<?xml version="1.0" encoding="UTF-8"?>']
+    xml.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
+    for path, priority, freq in pages:
+        xml.append(f'''  <url>
+    <loc>https://ekzapp.com{path}</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>{freq}</changefreq>
+    <priority>{priority}</priority>
+  </url>''')
+    xml.append('</urlset>')
+    return Response('\n'.join(xml), mimetype='application/xml')
     app.run(debug=True)
