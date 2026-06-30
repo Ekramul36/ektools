@@ -28,7 +28,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;
-  --ink:#111827;--gray:#6B7280;--light:#F9FAFB;--border:#E5E7EB;
+  --ink:#111827;--gray:#4B5563;--light:#F9FAFB;--border:#E5E7EB;
   --white:#fff;--cream:#F0F5FF;
   --green:#16A34A;--green-lt:#F0FDF4;
   --orange:#EA580C;--orange-lt:#FFF7ED;
@@ -56,7 +56,7 @@ nav{background:var(--white);border-bottom:1px solid var(--border);position:stick
 .hero::after{content:'';position:absolute;bottom:-60px;left:50%;transform:translateX(-50%);width:800px;height:200px;background:var(--cream);border-radius:50%;pointer-events:none;z-index:0;}
 .hero-content{position:relative;z-index:1}
 .hero h1{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:800;color:var(--ink);letter-spacing:-.03em;line-height:1.1;margin-bottom:10px;}
-.hero-sub{font-size:clamp(1rem,3vw,1.2rem);color:var(--blue);font-weight:600;margin-bottom:28px}
+.hero-sub{font-size:clamp(1rem,3vw,1.2rem);color:#1D4ED8;font-weight:600;margin-bottom:28px}
 .search-wrap{position:relative;max-width:520px;margin:0 auto 20px;z-index:10;}
 .search-input{width:100%;padding:14px 20px 14px 48px;border:2px solid var(--border);border-radius:12px;font-size:15px;font-family:'Inter',sans-serif;color:var(--ink);background:white;outline:none;box-shadow:0 4px 20px rgba(0,0,0,.08);transition:border .2s,box-shadow .2s;}
 .search-input:focus{border-color:var(--blue);box-shadow:0 4px 20px rgba(37,99,235,.15);}
@@ -70,7 +70,7 @@ nav{background:var(--white);border-bottom:1px solid var(--border);position:stick
 .no-results{text-align:center;padding:40px 20px;color:var(--gray);}
 .no-results .no-icon{font-size:3rem;margin-bottom:12px;}
 .no-results p{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:6px;}
-.hero-or{font-size:13px;color:#9CA3AF;display:flex;align-items:center;justify-content:center;gap:6px;margin-top:4px;}
+.hero-or{font-size:13px;color:#6B7280;display:flex;align-items:center;justify-content:center;gap:6px;margin-top:4px;}
 .info-bar{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:12px 20px;}
 .info-bar-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:center;align-items:center;gap:32px;flex-wrap:wrap;}
 .info-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--gray);font-weight:500}
@@ -85,7 +85,7 @@ nav{background:var(--white);border-bottom:1px solid var(--border);position:stick
 .tool-card h3{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px}
 .tool-card p{font-size:11.5px;color:var(--gray);line-height:1.4}
 .tool-badge{display:inline-block;margin-top:4px;font-size:9px;font-weight:700;padding:2px 7px;border-radius:100px;text-transform:uppercase;letter-spacing:.04em;border:1px solid;}
-.bf{background:var(--green-lt);color:var(--green);border-color:rgba(22,163,74,.2)}
+.bf{background:var(--green-lt);color:#15803D;border-color:rgba(22,163,74,.2)}
 .ib-blue{background:#DBEAFE}.ib-red{background:#FFE4E6}.ib-green{background:#DCFCE7}
 .ib-purple{background:#EDE9FE}.ib-orange{background:#FFEDD5}.ib-teal{background:#CCFBF1}
 .ib-yellow{background:#FEF9C3}.ib-pink{background:#FCE7F3}.ib-indigo{background:#E0E7FF}
@@ -99,14 +99,14 @@ nav{background:var(--white);border-bottom:1px solid var(--border);position:stick
 .pc{border:1.5px solid var(--border);border-radius:12px;padding:26px 22px;position:relative;background:var(--white)}
 .pc.hot{background:var(--blue);border-color:var(--blue)}
 .pc-plan{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:14px}
-.pc.hot .pc-plan{color:rgba(255,255,255,.5)}
+.pc.hot .pc-plan{color:rgba(255,255,255,.8)}
 .pc-price{font-size:2.2rem;font-weight:800;letter-spacing:-.04em;color:var(--ink);line-height:1}
 .pc.hot .pc-price{color:white}
 .pc-per{font-size:12px;color:var(--gray);margin-top:3px;margin-bottom:18px}
-.pc.hot .pc-per{color:rgba(255,255,255,.5)}
+.pc.hot .pc-per{color:rgba(255,255,255,.8)}
 .pc-feats{list-style:none;margin-bottom:22px}
 .pc-feats li{padding:7px 0;border-bottom:1px solid var(--border);font-size:12.5px;color:var(--gray);display:flex;align-items:center;gap:8px;}
-.pc.hot .pc-feats li{border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.8)}
+.pc.hot .pc-feats li{border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.9)}
 .pc-feats li::before{content:'✓';color:var(--blue);font-weight:700;font-size:12px}
 .pc.hot .pc-feats li::before{color:rgba(255,255,255,.9)}
 .pc-btn{width:100%;padding:11px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;border:1.5px solid var(--border);background:var(--white);color:var(--ink);}
@@ -117,16 +117,15 @@ footer{background:#1F2937;padding:36px 20px 20px}
 .footer-inner{max-width:1100px;margin:0 auto}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:28px}
 .f-logo{font-size:15px;font-weight:700;color:white;margin-bottom:8px}
-.f-logo span{color:var(--blue)}
-.f-desc{color:rgba(255,255,255,.35);font-size:12px;line-height:1.6}
-.fc h4{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+.f-logo span{color:#93C5FD}
+.f-desc{color:rgba(255,255,255,.5);font-size:12px;line-height:1.6}
+.fc h4{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px}
 .fc ul{list-style:none}.fc li{margin-bottom:8px}
-.fc a{color:rgba(255,255,255,.4);text-decoration:none;font-size:12px;transition:color .15s}
+.fc a{color:rgba(255,255,255,.6);text-decoration:none;font-size:12px;transition:color .15s}
 .fc a:hover{color:white}
-.f-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;color:rgba(255,255,255,.2);font-size:11px;}
+.f-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;color:rgba(255,255,255,.4);font-size:11px;}
 .search-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-/* NEW badge */
-.bn{background:#EDE9FE;color:#7C3AED;border-color:rgba(124,58,237,.2)}
+.bn{background:#EDE9FE;color:#6D28D9;border-color:rgba(124,58,237,.2)}
 @media(max-width:900px){
   .cat-grid,.search-grid{grid-template-columns:repeat(2,1fr)}
   .pricing-grid{grid-template-columns:1fr}
@@ -158,7 +157,7 @@ footer{background:#1F2937;padding:36px 20px 20px}
 </head>
 <body>
 
-<nav>
+<nav aria-label="Main navigation">
   <div class="nav-inner">
     <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
     <div class="nav-sep"></div>
@@ -174,30 +173,30 @@ footer{background:#1F2937;padding:36px 20px 20px}
     </ul>
     <div class="nav-right">
       <a class="nav-link" href="#pricing">Pricing</a>
-      <button class="hamburger" id="hamburger">☰</button>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
     </div>
   </div>
 </nav>
 
-<section class="hero">
+<header class="hero">
   <div class="hero-content">
     <h1>We help with all your file tasks</h1>
     <p class="hero-sub">Every tool you need, all in one place</p>
     <div class="search-wrap">
-      <span class="search-icon">🔍</span>
-      <input type="text" class="search-input" id="searchInput" placeholder="Search tools... e.g. Word to PDF, Background Remover" autocomplete="off">
-      <button class="search-clear" id="searchClear" title="Clear">✕</button>
+      <span class="search-icon" aria-hidden="true">🔍</span>
+      <input type="text" class="search-input" id="searchInput" placeholder="Search tools... e.g. Word to PDF, Background Remover" autocomplete="off" aria-label="Search tools">
+      <button class="search-clear" id="searchClear" title="Clear" aria-label="Clear search">✕</button>
     </div>
     <p class="hero-or" id="heroOr">or choose one of our tools below ↓</p>
   </div>
-</section>
+</header>
 
-<div class="search-results-section" id="searchResultsSection">
+<div class="search-results-section" id="searchResultsSection" role="region" aria-label="Search results">
   <div class="search-results-inner">
-    <div class="search-count" id="searchCount"></div>
+    <div class="search-count" id="searchCount" aria-live="polite"></div>
     <div class="search-grid" id="searchGrid"></div>
     <div class="no-results" id="noResults" style="display:none">
-      <div class="no-icon">🔎</div>
+      <div class="no-icon" aria-hidden="true">🔎</div>
       <p>No tools found</p>
       <small>Try "PDF", "image", "word", "invoice" etc.</small>
     </div>
@@ -214,243 +213,243 @@ footer{background:#1F2937;padding:36px 20px 20px}
   </div>
 </div>
 
-<div class="tools-bg" id="toolsBg">
+<main id="toolsBg" class="tools-bg">
   <div class="tools-inner">
 
     <!-- MOST POPULAR -->
-    <div class="cat-section">
-      <div class="cat-label">⭐ Most Popular</div>
+    <section class="cat-section" aria-labelledby="cat-popular">
+      <h2 class="cat-label" id="cat-popular">⭐ Most Popular</h2>
       <div class="cat-grid">
         <a class="tool-card" href="/word-to-pdf" data-search="word to pdf convert word docx to pdf doc">
-          <div class="tool-icon-wrap ib-blue">📝</div>
+          <div class="tool-icon-wrap ib-blue" aria-hidden="true">📝</div>
           <div><h3>Word to PDF</h3><p>Convert Word .docx files to PDF instantly.</p><span class="tool-badge bn">NEW</span></div>
         </a>
         <a class="tool-card" href="/remove-background" data-search="remove background bg remover image background transparent">
-          <div class="tool-icon-wrap ib-purple">✂️</div>
+          <div class="tool-icon-wrap ib-purple" aria-hidden="true">✂️</div>
           <div><h3>Background Remover</h3><p>Remove image background using AI instantly.</p><span class="tool-badge bn">NEW</span></div>
         </a>
         <a class="tool-card" href="/unlock-pdf" data-search="unlock pdf remove password pdf">
-          <div class="tool-icon-wrap ib-orange">🔓</div>
+          <div class="tool-icon-wrap ib-orange" aria-hidden="true">🔓</div>
           <div><h3>Unlock PDF</h3><p>Remove password from PDF files instantly.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/merge-pdf" data-search="merge pdf combine pdf join pdf">
-          <div class="tool-icon-wrap ib-green">🔗</div>
+          <div class="tool-icon-wrap ib-green" aria-hidden="true">🔗</div>
           <div><h3>Merge PDF</h3><p>Combine multiple PDFs into one document.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/compress-pdf" data-search="compress pdf reduce pdf size">
-          <div class="tool-icon-wrap ib-blue">⚡</div>
+          <div class="tool-icon-wrap ib-blue" aria-hidden="true">⚡</div>
           <div><h3>Compress PDF</h3><p>Reduce PDF size while keeping quality.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/image/compress" data-search="compress image reduce image size photo">
-          <div class="tool-icon-wrap ib-orange">🗜️</div>
+          <div class="tool-icon-wrap ib-orange" aria-hidden="true">🗜️</div>
           <div><h3>Compress Image</h3><p>Reduce image size without losing quality.</p><span class="tool-badge bf">FREE</span></div>
         </a>
       </div>
-    </div>
+    </section>
 
     <!-- PDF TOOLS -->
-    <div class="cat-section">
-      <div class="cat-label">📄 PDF Tools</div>
+    <section class="cat-section" aria-labelledby="cat-pdf">
+      <h2 class="cat-label" id="cat-pdf">📄 PDF Tools</h2>
       <div class="cat-grid">
         <a class="tool-card" href="/word-to-pdf" data-search="word to pdf convert word docx doc to pdf">
-          <div class="tool-icon-wrap ib-blue">📝</div>
+          <div class="tool-icon-wrap ib-blue" aria-hidden="true">📝</div>
           <div><h3>Word to PDF</h3><p>Convert .docx Word files to PDF.</p><span class="tool-badge bn">NEW</span></div>
         </a>
         <a class="tool-card" href="/excel-to-pdf" data-search="excel to pdf convert xlsx xls to pdf spreadsheet">
-          <div class="tool-icon-wrap ib-green">📊</div>
+          <div class="tool-icon-wrap ib-green" aria-hidden="true">📊</div>
           <div><h3>Excel to PDF</h3><p>Convert Excel spreadsheets to PDF.</p><span class="tool-badge bn">NEW</span></div>
         </a>
         <a class="tool-card" href="/merge-pdf" data-search="merge pdf combine pdf join pdf">
-          <div class="tool-icon-wrap ib-green">🔗</div>
+          <div class="tool-icon-wrap ib-green" aria-hidden="true">🔗</div>
           <div><h3>Merge PDF</h3><p>Combine multiple PDFs into one.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/split-pdf" data-search="split pdf extract pages pdf">
-          <div class="tool-icon-wrap ib-red">✂️</div>
+          <div class="tool-icon-wrap ib-red" aria-hidden="true">✂️</div>
           <div><h3>Split PDF</h3><p>Split by page range or extract pages.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/compress-pdf" data-search="compress pdf reduce pdf size">
-          <div class="tool-icon-wrap ib-orange">⚡</div>
+          <div class="tool-icon-wrap ib-orange" aria-hidden="true">⚡</div>
           <div><h3>Compress PDF</h3><p>Reduce file size without losing quality.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/unlock-pdf" data-search="unlock pdf remove password pdf">
-          <div class="tool-icon-wrap ib-blue">🔓</div>
+          <div class="tool-icon-wrap ib-blue" aria-hidden="true">🔓</div>
           <div><h3>Unlock PDF</h3><p>Remove password protection from PDF.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/pdf-to-jpg" data-search="pdf to jpg pdf to image convert pdf image">
-          <div class="tool-icon-wrap ib-green">🖼️</div>
+          <div class="tool-icon-wrap ib-green" aria-hidden="true">🖼️</div>
           <div><h3>PDF to JPG</h3><p>Convert PDF pages to JPG images.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/pdf-to-word" data-search="pdf to word convert pdf word doc">
-          <div class="tool-icon-wrap ib-blue">📝</div>
+          <div class="tool-icon-wrap ib-blue" aria-hidden="true">📝</div>
           <div><h3>PDF to Word</h3><p>Convert PDF to editable Word file.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/pdf-to-excel" data-search="pdf to excel convert pdf xlsx table spreadsheet">
-          <div class="tool-icon-wrap ib-green">📊</div>
+          <div class="tool-icon-wrap ib-green" aria-hidden="true">📊</div>
           <div><h3>PDF to Excel</h3><p>Extract tables from PDF to Excel.</p><span class="tool-badge bn">NEW</span></div>
         </a>
         <a class="tool-card" href="/rotate-pdf" data-search="rotate pdf turn pdf pages">
-          <div class="tool-icon-wrap ib-purple">🔄</div>
+          <div class="tool-icon-wrap ib-purple" aria-hidden="true">🔄</div>
           <div><h3>Rotate PDF</h3><p>Rotate all pages of your PDF.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/delete-pages" data-search="delete pages pdf remove pages pdf">
-          <div class="tool-icon-wrap ib-red">🗑️</div>
+          <div class="tool-icon-wrap ib-red" aria-hidden="true">🗑️</div>
           <div><h3>Delete Pages</h3><p>Remove specific pages from PDF.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/watermark-pdf" data-search="watermark pdf add watermark text pdf">
-          <div class="tool-icon-wrap ib-purple">💧</div>
+          <div class="tool-icon-wrap ib-purple" aria-hidden="true">💧</div>
           <div><h3>Add Watermark</h3><p>Add text watermark to your PDF.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/protect-pdf" data-search="protect pdf password pdf lock pdf">
-          <div class="tool-icon-wrap ib-blue">🔒</div>
+          <div class="tool-icon-wrap ib-blue" aria-hidden="true">🔒</div>
           <div><h3>Protect PDF</h3><p>Add password protection to PDF.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/pdf-editor" data-search="pdf editor edit pdf annotate sign pdf">
-          <div class="tool-icon-wrap ib-teal">✏️</div>
+          <div class="tool-icon-wrap ib-teal" aria-hidden="true">✏️</div>
           <div><h3>PDF Editor</h3><p>Edit, annotate and sign PDF files.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/image" data-search="image to pdf jpg png to pdf convert image pdf">
-          <div class="tool-icon-wrap ib-pink">📸</div>
+          <div class="tool-icon-wrap ib-pink" aria-hidden="true">📸</div>
           <div><h3>Image to PDF</h3><p>Turn images into PDF documents.</p><span class="tool-badge bf">FREE</span></div>
         </a>
       </div>
-    </div>
+    </section>
 
     <!-- IMAGE TOOLS -->
-    <div class="cat-section">
-      <div class="cat-label">🖼️ Image Tools</div>
+    <section class="cat-section" aria-labelledby="cat-image">
+      <h2 class="cat-label" id="cat-image">🖼️ Image Tools</h2>
       <div class="cat-grid">
         <a class="tool-card" href="/remove-background" data-search="remove background bg remover image background transparent">
-          <div class="tool-icon-wrap ib-purple">✂️</div>
+          <div class="tool-icon-wrap ib-purple" aria-hidden="true">✂️</div>
           <div><h3>Background Remover</h3><p>Remove image background using AI.</p><span class="tool-badge bn">NEW</span></div>
         </a>
         <a class="tool-card" href="/passport-photo" data-search="passport photo visa photo id photo maker india usa uk">
-          <div class="tool-icon-wrap ib-blue">📸</div>
+          <div class="tool-icon-wrap ib-blue" aria-hidden="true">📸</div>
           <div><h3>Passport Photo</h3><p>Create passport & visa photos online.</p><span class="tool-badge bn">NEW</span></div>
         </a>
         <a class="tool-card" href="/ocr" data-search="ocr image to text extract text from image scan document">
-          <div class="tool-icon-wrap ib-teal">🔍</div>
+          <div class="tool-icon-wrap ib-teal" aria-hidden="true">🔍</div>
           <div><h3>Image to Text (OCR)</h3><p>Extract text from images and scanned docs.</p><span class="tool-badge bn">NEW</span></div>
         </a>
         <a class="tool-card" href="/image" data-search="image to pdf jpg png to pdf convert image pdf">
-          <div class="tool-icon-wrap ib-purple">🖼️</div>
+          <div class="tool-icon-wrap ib-purple" aria-hidden="true">🖼️</div>
           <div><h3>Image to PDF</h3><p>Convert JPG/PNG images to PDF.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/image/compress" data-search="compress image reduce image size photo">
-          <div class="tool-icon-wrap ib-orange">🗜️</div>
+          <div class="tool-icon-wrap ib-orange" aria-hidden="true">🗜️</div>
           <div><h3>Compress Image</h3><p>Reduce image size without losing quality.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/image/resize" data-search="resize image change image size dimensions">
-          <div class="tool-icon-wrap ib-blue">📐</div>
+          <div class="tool-icon-wrap ib-blue" aria-hidden="true">📐</div>
           <div><h3>Resize Image</h3><p>Change image dimensions instantly.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/image/convert" data-search="convert image jpg png webp bmp format">
-          <div class="tool-icon-wrap ib-green">🔁</div>
+          <div class="tool-icon-wrap ib-green" aria-hidden="true">🔁</div>
           <div><h3>Convert Image</h3><p>Convert between JPG, PNG, WebP, BMP.</p><span class="tool-badge bf">FREE</span></div>
         </a>
       </div>
-    </div>
+    </section>
 
     <!-- BUSINESS TOOLS -->
-    <div class="cat-section">
-      <div class="cat-label">💼 Business Tools</div>
+    <section class="cat-section" aria-labelledby="cat-business">
+      <h2 class="cat-label" id="cat-business">💼 Business Tools</h2>
       <div class="cat-grid">
         <a class="tool-card" href="/invoice-generator" data-search="invoice generator gst invoice bill pdf freelancer business">
-          <div class="tool-icon-wrap ib-green">🧾</div>
+          <div class="tool-icon-wrap ib-green" aria-hidden="true">🧾</div>
           <div><h3>Invoice Generator</h3><p>Create GST invoices and download as PDF.</p><span class="tool-badge bn">NEW</span></div>
         </a>
         <a class="tool-card" href="/tools/qr-generator" data-search="qr code generator qr url text wifi">
-          <div class="tool-icon-wrap ib-purple">📱</div>
+          <div class="tool-icon-wrap ib-purple" aria-hidden="true">📱</div>
           <div><h3>QR Code Generator</h3><p>Generate QR codes for URLs, text, WiFi.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/tools/password-generator" data-search="password generator strong secure password">
-          <div class="tool-icon-wrap ib-green">🔐</div>
+          <div class="tool-icon-wrap ib-green" aria-hidden="true">🔐</div>
           <div><h3>Password Generator</h3><p>Generate strong, secure passwords.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/tools/currency-converter" data-search="currency converter exchange rate usd inr eur">
-          <div class="tool-icon-wrap ib-teal">💱</div>
+          <div class="tool-icon-wrap ib-teal" aria-hidden="true">💱</div>
           <div><h3>Currency Converter</h3><p>Live exchange rates for 150+ currencies.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/tools/unit-converter" data-search="unit converter length weight temperature km miles kg">
-          <div class="tool-icon-wrap ib-yellow">📏</div>
+          <div class="tool-icon-wrap ib-yellow" aria-hidden="true">📏</div>
           <div><h3>Unit Converter</h3><p>Convert length, weight, temperature & more.</p><span class="tool-badge bf">FREE</span></div>
         </a>
       </div>
-    </div>
+    </section>
 
     <!-- CALCULATORS -->
-    <div class="cat-section">
-      <div class="cat-label">🧮 Calculators</div>
+    <section class="cat-section" aria-labelledby="cat-calc">
+      <h2 class="cat-label" id="cat-calc">🧮 Calculators</h2>
       <div class="cat-grid">
         <a class="tool-card" href="/calculators/age" data-search="age calculator birthday date of birth">
-          <div class="tool-icon-wrap ib-yellow">🎂</div>
+          <div class="tool-icon-wrap ib-yellow" aria-hidden="true">🎂</div>
           <div><h3>Age Calculator</h3><p>Calculate exact age from date of birth.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/calculators/bmi" data-search="bmi calculator body mass index weight height">
-          <div class="tool-icon-wrap ib-green">⚖️</div>
+          <div class="tool-icon-wrap ib-green" aria-hidden="true">⚖️</div>
           <div><h3>BMI Calculator</h3><p>Calculate your Body Mass Index.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/calculators/gst" data-search="gst calculator tax india">
-          <div class="tool-icon-wrap ib-orange">💰</div>
+          <div class="tool-icon-wrap ib-orange" aria-hidden="true">💰</div>
           <div><h3>GST Calculator</h3><p>Calculate GST amount for any price.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/calculators/emi" data-search="emi calculator loan monthly installment">
-          <div class="tool-icon-wrap ib-blue">🏦</div>
+          <div class="tool-icon-wrap ib-blue" aria-hidden="true">🏦</div>
           <div><h3>EMI Calculator</h3><p>Find your monthly loan EMI amount.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/calculators/percentage" data-search="percentage calculator percent">
-          <div class="tool-icon-wrap ib-pink">💯</div>
+          <div class="tool-icon-wrap ib-pink" aria-hidden="true">💯</div>
           <div><h3>Percentage Calculator</h3><p>Calculate any percentage instantly.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/calculators/sip" data-search="sip calculator investment returns mutual fund">
-          <div class="tool-icon-wrap ib-green">📈</div>
+          <div class="tool-icon-wrap ib-green" aria-hidden="true">📈</div>
           <div><h3>SIP Calculator</h3><p>Calculate your SIP investment returns.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/calculators/date" data-search="date calculator difference between dates days">
-          <div class="tool-icon-wrap ib-blue">📅</div>
+          <div class="tool-icon-wrap ib-blue" aria-hidden="true">📅</div>
           <div><h3>Date Calculator</h3><p>Calculate difference between two dates.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/calculators/calorie" data-search="calorie calculator daily calories food diet">
-          <div class="tool-icon-wrap ib-orange">🔥</div>
+          <div class="tool-icon-wrap ib-orange" aria-hidden="true">🔥</div>
           <div><h3>Calorie Calculator</h3><p>Calculate your daily calorie needs.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/tools/tip-calculator" data-search="tip calculator bill split restaurant">
-          <div class="tool-icon-wrap ib-yellow">🍽️</div>
+          <div class="tool-icon-wrap ib-yellow" aria-hidden="true">🍽️</div>
           <div><h3>Tip Calculator</h3><p>Calculate tip and split bill easily.</p><span class="tool-badge bf">FREE</span></div>
         </a>
       </div>
-    </div>
+    </section>
 
     <!-- TEXT TOOLS -->
-    <div class="cat-section">
-      <div class="cat-label">📝 Text Tools</div>
+    <section class="cat-section" aria-labelledby="cat-text">
+      <h2 class="cat-label" id="cat-text">📝 Text Tools</h2>
       <div class="cat-grid">
         <a class="tool-card" href="/tools/word-counter" data-search="word counter count words characters sentences">
-          <div class="tool-icon-wrap ib-blue">🔢</div>
+          <div class="tool-icon-wrap ib-blue" aria-hidden="true">🔢</div>
           <div><h3>Word Counter</h3><p>Count words, characters and sentences.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/tools/case-converter" data-search="case converter uppercase lowercase title case text">
-          <div class="tool-icon-wrap ib-purple">🔡</div>
+          <div class="tool-icon-wrap ib-purple" aria-hidden="true">🔡</div>
           <div><h3>Case Converter</h3><p>Switch to UPPER, lower or Title Case.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/tools/mb-converter" data-search="mb gb converter kb mb gb tb storage size">
-          <div class="tool-icon-wrap ib-teal">💾</div>
+          <div class="tool-icon-wrap ib-teal" aria-hidden="true">💾</div>
           <div><h3>MB/GB Converter</h3><p>Convert between KB, MB, GB, TB.</p><span class="tool-badge bf">FREE</span></div>
         </a>
         <a class="tool-card" href="/tools/lorem" data-search="lorem ipsum generator dummy text placeholder">
-          <div class="tool-icon-wrap ib-orange">📋</div>
+          <div class="tool-icon-wrap ib-orange" aria-hidden="true">📋</div>
           <div><h3>Lorem Generator</h3><p>Generate dummy placeholder text.</p><span class="tool-badge bf">FREE</span></div>
         </a>
       </div>
-    </div>
+    </section>
 
   </div>
-</div>
+</main>
 
 <!-- PRICING -->
-<section class="pricing-section" id="pricing">
+<section class="pricing-section" id="pricing" aria-labelledby="pricing-title">
   <div class="pricing-inner">
     <div class="sec-label">Pricing</div>
-    <h2 class="sec-title">Simple, honest pricing</h2>
+    <h2 class="sec-title" id="pricing-title">Simple, honest pricing</h2>
     <p class="sec-sub">Start free. Upgrade when you need more.</p>
     <div class="pricing-grid">
       <div class="pc">
