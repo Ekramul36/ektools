@@ -56,6 +56,7 @@ def sitemap():
         ('/compress-image', '0.9', 'weekly'),
         ('/resize-image', '0.9', 'weekly'),
         ('/convert-image', '0.9', 'weekly'),
+        ('/image-size-reducer', '0.9', 'weekly'),
         ('/remove-background', '0.9', 'weekly'),
         ('/passport-photo', '0.9', 'weekly'),
         ('/age-calculator', '0.9', 'weekly'),
@@ -634,6 +635,89 @@ def convert_image():
 @app.route("/image/convert", methods=["GET", "POST"])
 def image_convert_old():
     return redirect("/convert-image")
+
+
+@app.route("/image-size-reducer", methods=["GET", "POST"])
+def image_size_reducer():
+    if request.method == "POST":
+        try:
+            from PIL import Image as PILImage
+            import io as io_module
+            import base64
+
+            img_file = request.files.get("image")
+            target_kb = request.form.get("target_kb", type=int)
+
+            if not img_file or img_file.filename == "":
+                return render_template("image_size_reducer.html", error="Please select an image.")
+            if not target_kb or target_kb < 5:
+                return render_template("image_size_reducer.html", error="Target size must be at least 5 KB.")
+
+            # Measure the original file size in KB
+            img_file.seek(0, os.SEEK_END)
+            original_size_kb = img_file.tell() / 1024
+            img_file.seek(0)
+
+            target_bytes = target_kb * 1024
+            img = PILImage.open(img_file)
+
+            # Flatten transparency / palette / CMYK to white-background RGB
+            if img.mode in ("RGBA", "LA", "P"):
+                bg = PILImage.new("RGB", img.size, (255, 255, 255))
+                if img.mode == "P":
+                    img = img.convert("RGBA")
+                bg.paste(img, mask=img.split()[-1] if img.mode == "RGBA" else None)
+                img = bg
+            elif img.mode != "RGB":
+                img = img.convert("RGB")
+
+            ow, oh = img.size
+            best_buffer = None
+
+            # Step 1: binary-search JPEG quality at full resolution
+            low, high = 5, 95
+            while low <= high:
+                mid = (low + high) // 2
+                buf = io_module.BytesIO()
+                img.save(buf, format="JPEG", quality=mid, optimize=True)
+                if buf.tell() <= target_bytes:
+                    best_buffer = buf
+                    low = mid + 1
+                else:
+                    high = mid - 1
+
+            # Step 2: if still too big at lowest quality, shrink resolution
+            if best_buffer is None:
+                scale = 0.9
+                buf = None
+                while scale > 0.1:
+                    resized = img.resize((max(1, int(ow * scale)), max(1, int(oh * scale))), PILImage.LANCZOS)
+                    buf = io_module.BytesIO()
+                    resized.save(buf, format="JPEG", quality=5, optimize=True)
+                    if buf.tell() <= target_bytes:
+                        best_buffer = buf
+                        break
+                    scale -= 0.1
+                if best_buffer is None:
+                    best_buffer = buf  # last attempt, smallest we could get
+
+            best_buffer.seek(0)
+            final_size_kb = len(best_buffer.getvalue()) / 1024
+            img_b64 = base64.b64encode(best_buffer.getvalue()).decode("utf-8")
+            data_uri = f"data:image/jpeg;base64,{img_b64}"
+            fname = img_file.filename.rsplit(".", 1)[0]
+
+            return render_template(
+                "image_size_reducer.html",
+                result_image=data_uri,
+                original_size_kb=round(original_size_kb, 1),
+                final_size_kb=round(final_size_kb, 1),
+                target_kb=target_kb,
+                download_filename=f"{fname}_compressed.jpg",
+            )
+        except Exception as e:
+            return render_template("image_size_reducer.html", error=f"Error: {str(e)}")
+    return render_template("image_size_reducer.html")
 
 
 @app.route("/remove-background", methods=["GET", "POST"])

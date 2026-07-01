@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Size Reducer — Compress JPG/PNG to KB | EkZapp</title>
+<meta name="description" content="Reduce image file size to an exact KB target. Compress JPG, PNG, WEBP for exam forms & job applications. Free online, no signup.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--cream:#F0F5FF;--green:#16A34A;--red:#DC2626}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
+.logo-text span{color:var(--blue)}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:12px;border-left:1px solid var(--border);padding-left:12px}
+.nav-links a{padding:6px 10px;border-radius:6px;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;white-space:nowrap;transition:all .15s}
+.nav-links a:hover,.nav-links a.active{background:var(--blue-lt);color:var(--blue)}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.back:hover{border-color:var(--blue);color:var(--blue)}
+
+.container{max-width:600px;margin:48px auto;padding:0 20px 60px}
+.tool-header{text-align:center;margin-bottom:32px}
+.tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
+.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.tool-header p{color:var(--gray);font-size:14px}
+
+.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+
+.info-bar{background:var(--blue-lt);border:1px solid #BFDBFE;border-radius:8px;padding:10px 14px;margin-bottom:20px;font-size:13px;color:#1E40AF;display:flex;align-items:center;gap:8px}
+
+form{display:flex;flex-direction:column;gap:16px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
+
+.drop-area{border:2px dashed var(--border);border-radius:10px;padding:36px 20px;text-align:center;background:var(--light);cursor:pointer;transition:all .2s;position:relative}
+.drop-area:hover,.drop-area.dragover{border-color:var(--blue);background:var(--blue-lt)}
+.drop-icon{font-size:2.2rem;margin-bottom:10px}
+.drop-area h3{font-size:14px;font-weight:600;margin-bottom:4px}
+.drop-area p{font-size:12px;color:var(--gray)}
+.drop-area input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer}
+.file-name{font-size:13px;font-weight:600;color:var(--blue);margin-top:8px;display:none}
+
+.text-input{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none;transition:border .15s}
+.text-input:focus{border-color:var(--blue)}
+.field-hint{font-size:12px;color:var(--gray);margin-top:5px}
+
+.btn{width:100%;padding:13px;background:var(--blue);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn:hover{background:var(--blue-dk)}
+
+.error-box{background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:12px 16px;color:var(--red);font-size:13px;font-weight:500;display:flex;align-items:center;gap:8px}
+
+.result{margin-top:20px;border-top:1px solid var(--border);padding-top:24px}
+.result h2{font-size:15px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.preview-img{max-width:100%;border-radius:10px;border:1px solid var(--border);margin-bottom:16px;display:block}
+.stats{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.stat{flex:1;min-width:120px;border-radius:10px;padding:12px 14px;text-align:center}
+.stat.orig{background:var(--light);border:1px solid var(--border)}
+.stat.final{background:#F0FDF4;border:1px solid #BBF7D0}
+.stat-label{font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.stat-val{font-size:18px;font-weight:800;color:var(--ink)}
+.stat.final .stat-val{color:var(--green)}
+.download-btn{width:100%;padding:13px;background:var(--green);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .15s}
+.download-btn:hover{background:#15803D}
+
+.trust{display:flex;justify-content:center;gap:20px;margin-top:16px;flex-wrap:wrap}
+.trust-item{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:4px}
+
+.guide{margin-top:24px;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.guide-header{background:var(--light);padding:14px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);user-select:none}
+.guide-header h3{margin:0;font-size:15px;color:var(--ink)}
+.guide-arrow{font-size:16px;transition:transform .2s;color:var(--gray)}
+.guide-body{display:none;padding:20px}
+.guide-body.open{display:block}
+
+.steps{list-style:none;margin:0;padding:0}
+.steps li{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px}
+.steps li:last-child{margin-bottom:0}
+.step-num{min-width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-text strong{display:block;font-size:14px;color:var(--ink);margin-bottom:3px}
+.step-text span{font-size:13px;color:var(--gray);line-height:1.5}
+
+.guide-tips{margin-top:16px;background:#FFF7ED;border-radius:8px;padding:14px 16px}
+.guide-tips h4{margin:0 0 8px;font-size:13px;color:#92400E}
+.guide-tips ul{margin:0;padding-left:16px}
+.guide-tips ul li{font-size:13px;color:#78350F;margin-bottom:5px;line-height:1.4}
+
+.faq{margin-top:16px}
+.faq-item{border-bottom:1px solid var(--border);padding:10px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.faq-a{font-size:13px;color:var(--gray);line-height:1.5}
+
+.other-tools{margin-top:28px}
+.other-tools h3{font-size:13px;font-weight:600;color:var(--gray);letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
+.tools-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tool-mini{background:white;border:1px solid var(--border);border-radius:10px;padding:14px;text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px;transition:all .15s}
+.tool-mini:hover{border-color:var(--blue);box-shadow:0 2px 8px rgba(37,99,235,.1)}
+.tool-mini-icon{font-size:1.2rem}
+.tool-mini span{font-size:13px;font-weight:600}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Image Size Reducer",
+  "url": "https://ekzapp.com/image-size-reducer",
+  "description": "Reduce image file size to an exact KB target online for free. Compress JPG, PNG and WEBP images for exam forms and job applications.",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web",
+  "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
+}
+</script>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <ul class="nav-links">
+      <li><a href="/image-size-reducer" class="active">Size Reducer</a></li>
+      <li><a href="/compress-image">Compress Image</a></li>
+      <li><a href="/resize-image">Resize Image</a></li>
+      <li><a href="/convert-image">Convert Image</a></li>
+    </ul>
+    <a class="back" href="/">&larr; All Tools</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="tool-header">
+    <div class="tool-icon-wrap">&#128201;</div>
+    <h1>Image Size Reducer</h1>
+    <p>Compress JPG, PNG or WEBP to your exact KB target</p>
+  </div>
+
+  <div class="card">
+    <div class="info-bar">
+      &#128274; Your file is processed securely and automatically deleted after processing
+    </div>
+
+    {% if error %}
+    <div class="error-box" style="margin-bottom:16px">
+      &#9888;&#65039; {{ error }}
+    </div>
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data">
+      <div class="field">
+        <label>Select Image File</label>
+        <div class="drop-area" id="dropArea">
+          <div class="drop-icon">&#128444;&#65039;</div>
+          <h3>Click to select or drag &amp; drop</h3>
+          <p>Supports JPG, PNG, WEBP</p>
+          <p class="file-name" id="fileName"></p>
+          <input type="file" name="image" accept="image/*" required onchange="showFileName(this)">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Target Size (KB)</label>
+        <input type="number" class="text-input" name="target_kb" min="5" max="10000"
+               placeholder="e.g. 100" value="{{ target_kb if target_kb else '' }}" required>
+        <p class="field-hint">Exam forms usually ask for 20KB&ndash;200KB. Enter your required size.</p>
+      </div>
+
+      <button type="submit" class="btn">
+        &#128201; Reduce Size
+      </button>
+    </form>
+
+    {% if result_image %}
+    <div class="result">
+      <h2>&#9989; Preview</h2>
+      <img src="{{ result_image }}" alt="Compressed image preview" class="preview-img">
+      <div class="stats">
+        <div class="stat orig">
+          <div class="stat-label">Original</div>
+          <div class="stat-val">{{ original_size_kb }} KB</div>
+        </div>
+        <div class="stat final">
+          <div class="stat-label">Final (target {{ target_kb }} KB)</div>
+          <div class="stat-val">{{ final_size_kb }} KB</div>
+        </div>
+      </div>
+      <a href="{{ result_image }}" download="{{ download_filename }}" class="download-btn">
+        &#11015;&#65039; Download Compressed Image
+      </a>
+    </div>
+    {% endif %}
+
+    <div class="trust">
+      <div class="trust-item">&#128274; SSL Encrypted</div>
+      <div class="trust-item">&#128465;&#65039; Auto-deleted</div>
+      <div class="trust-item">&#128245; No signup needed</div>
+    </div>
+  </div>
+
+  <div class="guide">
+    <div class="guide-header" onclick="toggleGuide()">
+      <h3>&#128214; How to Use &mdash; Step by Step Guide</h3>
+      <span class="guide-arrow" id="guideArrow">&#9660;</span>
+    </div>
+    <div class="guide-body" id="guideBody">
+
+      <ul class="steps">
+        <li>
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <strong>Upload your image</strong>
+            <span>Click the upload area or drag &amp; drop your JPG, PNG or WEBP file.</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <strong>Enter target size in KB</strong>
+            <span>Type the exact file size you need, for example 50, 100 or 200 KB.</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <strong>Click "Reduce Size"</strong>
+            <span>The tool automatically adjusts quality to get as close to your target as possible.</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-num">4</div>
+          <div class="step-text">
+            <strong>Preview &amp; download</strong>
+            <span>Check the preview and final KB size, then download your compressed image.</span>
+          </div>
+        </li>
+      </ul>
+
+      <div class="guide-tips">
+        <h4>&#128161; Tips</h4>
+        <ul>
+          <li>Perfect for exam forms &amp; job applications that require a specific photo size</li>
+          <li>Very small targets (like 10KB) may slightly reduce image resolution</li>
+          <li>PNG images with transparency get a white background when saved as JPG</li>
+          <li>Your file is deleted from our server automatically after processing</li>
+        </ul>
+      </div>
+
+      <div class="faq">
+        <p style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:12px;">&#10067; Frequently Asked Questions</p>
+
+        <div class="faq-item">
+          <div class="faq-q">Is this tool free?</div>
+          <div class="faq-a">Yes, completely free! No signup, no watermark, no hidden charges.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Will I get the exact target KB?</div>
+          <div class="faq-a">The tool gets as close as possible to your target without going over it. For very small sizes, resolution may be reduced slightly to fit.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Does it convert PNG to JPG?</div>
+          <div class="faq-a">Yes. For effective compression the image is saved as JPEG. Transparent areas become white.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is my image safe?</div>
+          <div class="faq-a">Yes. Your file is processed securely and deleted automatically. We never store or share your files.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What is the maximum file size?</div>
+          <div class="faq-a">You can upload images up to 50MB in size.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="other-tools">
+    <h3>Other Image Tools</h3>
+    <div class="tools-row">
+      <a class="tool-mini" href="/compress-image"><span class="tool-mini-icon">&#9889;</span><span>Compress Image</span></a>
+      <a class="tool-mini" href="/resize-image"><span class="tool-mini-icon">&#128208;</span><span>Resize Image</span></a>
+      <a class="tool-mini" href="/convert-image"><span class="tool-mini-icon">&#128260;</span><span>Convert Image</span></a>
+    </div>
+  </div>
+</div>
+
+<script>
+function showFileName(input){
+  if(input.files&&input.files[0]){
+    const fn=document.getElementById('fileName');
+    fn.textContent='\u2713 '+input.files[0].name;
+    fn.style.display='block';
+  }
+}
+const da=document.getElementById('dropArea');
+da.addEventListener('dragover',e=>{e.preventDefault();da.classList.add('dragover')});
+da.addEventListener('dragleave',()=>da.classList.remove('dragover'));
+da.addEventListener('drop',e=>{e.preventDefault();da.classList.remove('dragover')});
+
+function toggleGuide(){
+  const body = document.getElementById('guideBody');
+  const arrow = document.getElementById('guideArrow');
+  body.classList.toggle('open');
+  arrow.style.transform = body.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+}
+</script>
+</body>
+</html>
