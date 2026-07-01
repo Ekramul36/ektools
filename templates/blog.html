@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VW5QLMV046"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VW5QLMV046');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Free Tips & Guides for PDF, Image & Calculator Tools | EkZapp</title>
+<meta name="description" content="Guides, tips, and how-tos for getting the most out of EkZapp's free online PDF, image, calculator, and text tools.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
+.logo-text span{color:var(--blue)}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:12px;border-left:1px solid var(--border);padding-left:12px}
+.nav-links a{padding:6px 10px;border-radius:6px;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;white-space:nowrap;transition:all .15s}
+.nav-links a:hover,.nav-links a.active{background:var(--blue-lt);color:var(--blue)}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.back:hover{border-color:var(--blue);color:var(--blue)}
+.container{max-width:900px;margin:48px auto;padding:0 20px 60px}
+.page-header{text-align:center;margin-bottom:40px}
+.page-header h1{font-size:2rem;font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+.page-header p{color:var(--gray);font-size:14px}
+.post-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.post-card{background:white;border:1px solid var(--border);border-radius:14px;padding:22px;text-decoration:none;color:inherit;transition:all .15s;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.post-card:hover{border-color:var(--blue);box-shadow:0 4px 12px rgba(37,99,235,.12);transform:translateY(-2px)}
+.post-tag{display:inline-block;background:var(--blue-lt);color:var(--blue);font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;margin-bottom:12px;width:fit-content}
+.post-card h2{font-size:16px;font-weight:700;margin-bottom:8px;line-height:1.4}
+.post-card p{font-size:13px;color:var(--gray);line-height:1.6;flex-grow:1}
+.post-date{font-size:12px;color:var(--gray);margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+.empty-state{text-align:center;padding:60px 20px;color:var(--gray);font-size:14px}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <ul class="nav-links">
+      <li><a href="/unlock-pdf">Unlock PDF</a></li>
+      <li><a href="/merge-pdf">Merge PDF</a></li>
+      <li><a href="/split-pdf">Split PDF</a></li>
+      <li><a href="/blog" class="active">Blog</a></li>
+    </ul>
+    <a class="back" href="/">← All Tools</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="page-header">
+    <h1>EkZapp Blog</h1>
+    <p>Guides and tips to get the most out of our free online tools</p>
+  </div>
+
+  {% if posts %}
+  <div class="post-grid">
+    {% for post in posts %}
+    <a class="post-card" href="/blog/{{ post.slug }}">
+      <span class="post-tag">{{ post.category }}</span>
+      <h2>{{ post.title }}</h2>
+      <p>{{ post.excerpt }}</p>
+      <div class="post-date">{{ post.date }}</div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty-state">No posts yet. Check back soon!</div>
+  {% endif %}
+</div>
+</body>
+</html>

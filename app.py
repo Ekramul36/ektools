@@ -76,6 +76,12 @@ def sitemap():
         ('/currency-converter', '0.9', 'weekly'),
         ('/unit-converter', '0.9', 'weekly'),
         ('/invoice-generator', '0.9', 'weekly'),
+        ('/youtube-thumbnail', '0.9', 'weekly'),
+        ('/income-tax-calculator', '0.9', 'weekly'),
+        ('/json-formatter', '0.9', 'weekly'),
+        ('/color-picker', '0.9', 'weekly'),
+        ('/blog', '0.8', 'weekly'),
+        ('/blog/merge-pdf-files-online', '0.7', 'monthly'),
     ]
     today = datetime.date.today().isoformat()
     xml = ['<?xml version="1.0" encoding="UTF-8"?>',
@@ -200,20 +206,19 @@ def split_pdf():
 
 @app.route("/compress-pdf", methods=["GET", "POST"])
 def compress_pdf():
-    if request.method == "POST":
-        pdf = request.files.get("pdf")
-        if not pdf or pdf.filename == "":
-            return render_template("compress_pdf.html", error="Please select a PDF.")
-        input_path = os.path.join(UPLOAD_FOLDER, pdf.filename)
-        output_path = os.path.join(OUTPUT_FOLDER, "Compressed_" + pdf.filename)
-        pdf.save(input_path)
-        try:
-            doc = fitz.open(input_path)
-            doc.save(output_path, garbage=4, deflate=True, clean=True)
-            doc.close()
-            return send_file(output_path, as_attachment=True, download_name="Compressed_" + pdf.filename)
-        except Exception as e:
-            return render_template("compress_pdf.html", error=str(e))
+    pdf = request.files.get("pdf")
+    if not pdf or pdf.filename == "":
+        return render_template("compress_pdf.html", error="Please select a PDF.")
+    input_path = os.path.join(UPLOAD_FOLDER, pdf.filename)
+    output_path = os.path.join(OUTPUT_FOLDER, "Compressed_" + pdf.filename)
+    pdf.save(input_path)
+    try:
+        doc = fitz.open(input_path)
+        doc.save(output_path, garbage=4, deflate=True, clean=True)
+        doc.close()
+        return send_file(output_path, as_attachment=True, download_name="Compressed_" + pdf.filename)
+    except Exception as e:
+        return render_template("compress_pdf.html", error=str(e))
     return render_template("compress_pdf.html")
 
 
@@ -980,11 +985,12 @@ def invoice_generator():
 
 
 # ──────────────────────────────────────────
-# RUN
+# EXTRA TOOLS
 # ──────────────────────────────────────────
 @app.route("/youtube-thumbnail")
 def youtube_thumbnail():
     return render_template("youtube_thumbnail.html")
+
 @app.route("/income-tax-calculator")
 def income_tax_calculator():
     return render_template("income_tax_calculator.html")
@@ -996,5 +1002,45 @@ def json_formatter():
 @app.route("/color-picker")
 def color_picker():
     return render_template("color_picker.html")
+
+
+# ──────────────────────────────────────────
+# BLOG
+# ──────────────────────────────────────────
+
+BLOG_POSTS = [
+    {
+        "slug": "merge-pdf-files-online",
+        "title": "How to Merge PDF Files Online for Free (No Signup Required)",
+        "excerpt": "Learn how to combine multiple PDF files into one document online for free, in 3 simple steps.",
+        "category": "PDF Tools",
+        "date": "July 1, 2026"
+    }
+    # Add more posts here as dicts, e.g.:
+    # {
+    #     "slug": "compress-pdf-guide",
+    #     "title": "How to Compress a PDF Without Losing Quality",
+    #     "excerpt": "...",
+    #     "category": "PDF Tools",
+    #     "date": "July 5, 2026"
+    # },
+]
+
+@app.route("/blog")
+def blog_index():
+    return render_template("blog.html", posts=BLOG_POSTS)
+
+@app.route("/blog/merge-pdf-files-online")
+def blog_merge_pdf():
+    return render_template("blog_post_merge_pdf.html")
+
+# NOTE: as you add more blog posts, add a matching @app.route("/blog/<slug>")
+# function for each new HTML file, the same way as blog_merge_pdf() above.
+# Also remember to add the new URL to the sitemap() function above.
+
+
+# ──────────────────────────────────────────
+# RUN
+# ──────────────────────────────────────────
 if __name__ == "__main__":
     app.run(debug=True)
