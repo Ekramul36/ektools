@@ -126,6 +126,15 @@ footer{background:#1F2937;padding:36px 20px 20px}
 .f-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;color:rgba(255,255,255,.4);font-size:11px;}
 .search-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .bn{background:#EDE9FE;color:#6D28D9;border-color:rgba(124,58,237,.2)}
+.blog-section{background:var(--white);padding:48px 20px;border-top:1px solid var(--border)}
+.blog-inner{max-width:1100px;margin:0 auto}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.blog-card{background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:20px;text-decoration:none;color:inherit;transition:all .15s;display:flex;flex-direction:column;}
+.blog-card:hover{border-color:var(--blue);box-shadow:0 4px 12px rgba(37,99,235,.1);transform:translateY(-2px)}
+.blog-tag{display:inline-block;background:var(--blue-lt);color:var(--blue);font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;margin-bottom:10px;width:fit-content}
+.blog-card h3{font-size:14px;font-weight:700;margin-bottom:6px;line-height:1.4}
+.blog-card p{font-size:12px;color:var(--gray);line-height:1.5}
+.blog-readmore{margin-top:12px;font-size:12px;font-weight:600;color:var(--blue)}
 @media(max-width:900px){
   .cat-grid,.search-grid{grid-template-columns:repeat(2,1fr)}
   .pricing-grid{grid-template-columns:1fr}
@@ -133,6 +142,7 @@ footer{background:#1F2937;padding:36px 20px 20px}
   .nav-menu{display:none}
   .nav-menu.show{display:flex;flex-direction:column;position:absolute;top:54px;left:0;right:0;background:white;border-bottom:1px solid var(--border);padding:8px;z-index:300}
   .hamburger{display:block}
+  .blog-grid{grid-template-columns:1fr}
 }
 @media(max-width:560px){
   .cat-grid,.search-grid{grid-template-columns:1fr}
@@ -169,6 +179,7 @@ footer{background:#1F2937;padding:36px 20px 20px}
       <li><a href="/remove-background">BG Remover</a></li>
       <li><a href="/ocr">Image to Text</a></li>
       <li><a href="/invoice-generator">Invoice</a></li>
+      <li><a href="/blog">Blog</a></li>
       <li><a href="/about">About</a></li>
     </ul>
     <div class="nav-right">
@@ -487,6 +498,23 @@ footer{background:#1F2937;padding:36px 20px 20px}
   </div>
 </main>
 
+<!-- BLOG PREVIEW -->
+<section class="blog-section" aria-labelledby="blog-title">
+  <div class="blog-inner">
+    <div class="sec-label">Blog</div>
+    <h2 class="sec-title" id="blog-title">Latest from our blog</h2>
+    <p class="sec-sub">Guides and tips to get the most out of our free tools</p>
+    <div class="blog-grid">
+      <a class="blog-card" href="/blog/merge-pdf-files-online">
+        <span class="blog-tag">PDF Tools</span>
+        <h3>How to Merge PDF Files Online for Free</h3>
+        <p>Learn how to combine multiple PDF files into one document in 3 simple steps — no signup required.</p>
+        <span class="blog-readmore">Read more →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- PRICING -->
 <section class="pricing-section" id="pricing" aria-labelledby="pricing-title">
   <div class="pricing-inner">
@@ -574,6 +602,7 @@ footer{background:#1F2937;padding:36px 20px 20px}
         <h4>Company</h4>
         <ul>
           <li><a href="/about">About</a></li>
+          <li><a href="/blog">Blog</a></li>
           <li><a href="/privacy">Privacy Policy</a></li>
           <li><a href="/terms">Terms of Use</a></li>
           <li><a href="/contact">Contact</a></li>
