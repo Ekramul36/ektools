@@ -80,6 +80,10 @@ def sitemap():
         ('/income-tax-calculator', '0.9', 'weekly'),
         ('/json-formatter', '0.9', 'weekly'),
         ('/color-picker', '0.9', 'weekly'),
+        ('/signature-generator', '0.9', 'weekly'),
+        ('/meme-generator', '0.9', 'weekly'),
+        ('/resume-builder', '0.9', 'weekly'),
+        ('/add-page-numbers', '0.9', 'weekly'),
         ('/blog', '0.8', 'weekly'),
         ('/blog/merge-pdf-files-online', '0.7', 'monthly'),
     ]
@@ -1002,6 +1006,161 @@ def json_formatter():
 @app.route("/color-picker")
 def color_picker():
     return render_template("color_picker.html")
+
+
+# ──────────────────────────────────────────
+# NEWEST TOOLS — Signature, Meme, Resume, Page Numbers
+# ──────────────────────────────────────────
+
+@app.route("/signature-generator")
+def signature_generator():
+    return render_template("signature_generator.html")
+
+
+@app.route("/meme-generator")
+def meme_generator():
+    return render_template("meme_generator.html")
+
+
+@app.route("/resume-builder", methods=["GET", "POST"])
+def resume_builder():
+    if request.method == "POST":
+        try:
+            from reportlab.lib.pagesizes import A4
+            from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+            from reportlab.lib.styles import getSampleStyleSheet
+            from reportlab.lib import colors
+            from reportlab.lib.units import mm
+
+            full_name = request.form.get("full_name", "")
+            email     = request.form.get("email", "")
+            phone     = request.form.get("phone", "")
+            location  = request.form.get("location", "")
+            link      = request.form.get("link", "")
+            summary   = request.form.get("summary", "")
+            skills    = request.form.get("skills", "")
+
+            exp_titles    = request.form.getlist("exp_title[]")
+            exp_companies = request.form.getlist("exp_company[]")
+            exp_durations = request.form.getlist("exp_duration[]")
+            exp_descs     = request.form.getlist("exp_desc[]")
+
+            edu_degrees = request.form.getlist("edu_degree[]")
+            edu_schools = request.form.getlist("edu_school[]")
+            edu_years   = request.form.getlist("edu_year[]")
+
+            if not full_name.strip():
+                return render_template("resume_builder.html", error="Please enter your full name.")
+
+            output_path = os.path.join(OUTPUT_FOLDER, "Resume.pdf")
+            doc = SimpleDocTemplate(output_path, pagesize=A4,
+                                    leftMargin=18*mm, rightMargin=18*mm,
+                                    topMargin=16*mm, bottomMargin=16*mm)
+            styles = getSampleStyleSheet()
+            elements = []
+
+            elements.append(Paragraph(f"<font size='22'><b>{full_name}</b></font>", styles['Normal']))
+            contact_bits = [x for x in [email, phone, location, link] if x.strip()]
+            if contact_bits:
+                elements.append(Spacer(1, 3*mm))
+                elements.append(Paragraph(f"<font size='9' color='#6B7280'>{' | '.join(contact_bits)}</font>", styles['Normal']))
+            elements.append(Spacer(1, 6*mm))
+
+            if summary.strip():
+                elements.append(Paragraph("<font size='11' color='#2563EB'><b>PROFESSIONAL SUMMARY</b></font>", styles['Normal']))
+                elements.append(Spacer(1, 2*mm))
+                elements.append(Paragraph(f"<font size='9.5'>{summary}</font>", styles['Normal']))
+                elements.append(Spacer(1, 6*mm))
+
+            if any(t.strip() for t in exp_titles):
+                elements.append(Paragraph("<font size='11' color='#2563EB'><b>WORK EXPERIENCE</b></font>", styles['Normal']))
+                elements.append(Spacer(1, 3*mm))
+                for title, company, duration, desc in zip(exp_titles, exp_companies, exp_durations, exp_descs):
+                    if not title.strip():
+                        continue
+                    elements.append(Paragraph(f"<font size='10'><b>{title}</b></font> — <font size='10' color='#6B7280'>{company}</font>", styles['Normal']))
+                    if duration.strip():
+                        elements.append(Paragraph(f"<font size='8.5' color='#6B7280'>{duration}</font>", styles['Normal']))
+                    if desc.strip():
+                        elements.append(Spacer(1, 1*mm))
+                        elements.append(Paragraph(f"<font size='9'>{desc}</font>", styles['Normal']))
+                    elements.append(Spacer(1, 4*mm))
+
+            if any(d.strip() for d in edu_degrees):
+                elements.append(Paragraph("<font size='11' color='#2563EB'><b>EDUCATION</b></font>", styles['Normal']))
+                elements.append(Spacer(1, 3*mm))
+                for degree, school, year in zip(edu_degrees, edu_schools, edu_years):
+                    if not degree.strip():
+                        continue
+                    elements.append(Paragraph(f"<font size='10'><b>{degree}</b></font> — <font size='10' color='#6B7280'>{school}</font>", styles['Normal']))
+                    if year.strip():
+                        elements.append(Paragraph(f"<font size='8.5' color='#6B7280'>{year}</font>", styles['Normal']))
+                    elements.append(Spacer(1, 4*mm))
+
+            if skills.strip():
+                elements.append(Paragraph("<font size='11' color='#2563EB'><b>SKILLS</b></font>", styles['Normal']))
+                elements.append(Spacer(1, 2*mm))
+                elements.append(Paragraph(f"<font size='9.5'>{skills}</font>", styles['Normal']))
+
+            doc.build(elements)
+            return send_file(output_path, as_attachment=True, download_name=f"{full_name.replace(' ', '_')}_Resume.pdf")
+        except Exception as e:
+            return render_template("resume_builder.html", error=f"Error: {str(e)}")
+    return render_template("resume_builder.html")
+
+
+@app.route("/add-page-numbers", methods=["GET", "POST"])
+def add_page_numbers():
+    if request.method == "POST":
+        try:
+            pdf = request.files.get("pdf")
+            position = request.form.get("position", "bottom-center")
+            start_number = int(request.form.get("start_number", 1))
+            fmt = request.form.get("format", "number")
+
+            if not pdf or pdf.filename == "":
+                return render_template("add_page_numbers.html", error="Please select a PDF file.")
+
+            input_path = os.path.join(UPLOAD_FOLDER, pdf.filename)
+            output_path = os.path.join(OUTPUT_FOLDER, "Numbered_" + pdf.filename)
+            pdf.save(input_path)
+
+            doc = fitz.open(input_path)
+            total = len(doc)
+
+            for i, page in enumerate(doc):
+                num = start_number + i
+                if fmt == "page_of_total":
+                    text = f"Page {num} of {total + start_number - 1}"
+                elif fmt == "dash":
+                    text = f"- {num} -"
+                else:
+                    text = str(num)
+
+                rect = page.rect
+                margin = 24
+                font_size = 10
+
+                if "bottom" in position:
+                    y = rect.height - margin
+                else:
+                    y = margin + font_size
+
+                if "center" in position:
+                    x = rect.width / 2 - (len(text) * font_size / 4)
+                elif "right" in position:
+                    x = rect.width - margin - (len(text) * font_size / 2)
+                else:
+                    x = margin
+
+                page.insert_text((x, y), text, fontsize=font_size, color=(0.2, 0.2, 0.2))
+
+            doc.save(output_path)
+            doc.close()
+            return send_file(output_path, as_attachment=True, download_name="Numbered_" + pdf.filename)
+        except Exception as e:
+            return render_template("add_page_numbers.html", error=f"Error: {str(e)}")
+    return render_template("add_page_numbers.html")
 
 
 # ──────────────────────────────────────────
