@@ -87,6 +87,7 @@ def sitemap():
         ('/add-page-numbers', '0.9', 'weekly'),
         ('/blog', '0.8', 'weekly'),
         ('/blog/merge-pdf-files-online', '0.7', 'monthly'),
+        ('/blog/reduce-image-size-to-kb', '0.7', 'monthly'),
     ]
     today = datetime.date.today().isoformat()
     xml = ['<?xml version="1.0" encoding="UTF-8"?>',
@@ -1258,7 +1259,14 @@ BLOG_POSTS = [
         "excerpt": "Learn how to combine multiple PDF files into one document online for free, in 3 simple steps.",
         "category": "PDF Tools",
         "date": "July 1, 2026"
-    }
+    },
+    {
+        "slug": "reduce-image-size-to-kb",
+        "title": "How to Reduce Image Size to 50 KB or 100 KB Online (Free)",
+        "excerpt": "Reduce any JPG or PNG photo to an exact KB size for exam forms and job applications — free and instant.",
+        "category": "Image Tools",
+        "date": "July 1, 2026"
+    },
     # Add more posts here as dicts, e.g.:
     # {
     #     "slug": "compress-pdf-guide",
@@ -1276,6 +1284,10 @@ def blog_index():
 @app.route("/blog/merge-pdf-files-online")
 def blog_merge_pdf():
     return render_template("blog_post_merge_pdf.html")
+
+@app.route("/blog/reduce-image-size-to-kb")
+def blog_reduce_image_size():
+    return render_template("blog_post_reduce_image_size.html")
 
 # NOTE: as you add more blog posts, add a matching @app.route("/blog/<slug>")
 # function for each new HTML file, the same way as blog_merge_pdf() above.
