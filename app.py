@@ -597,16 +597,54 @@ def compress_image():
     if request.method == "POST":
         try:
             from PIL import Image as PILImage
+            import io as io_module
+            import base64
+
             img_file = request.files.get("image")
             quality = int(request.form.get("quality", 80))
             if not img_file or img_file.filename == "":
                 return render_template("image_compress.html", error="Please select an image.")
+
+            # Measure original size in KB before touching the file
+            img_file.seek(0, os.SEEK_END)
+            original_size_kb = img_file.tell() / 1024
+            img_file.seek(0)
+
             img = PILImage.open(img_file)
-            if img.mode in ("RGBA", "P"):
+            if img.mode in ("RGBA", "LA", "P"):
+                bg = PILImage.new("RGB", img.size, (255, 255, 255))
+                if img.mode == "P":
+                    img = img.convert("RGBA")
+                bg.paste(img, mask=img.split()[-1] if img.mode == "RGBA" else None)
+                img = bg
+            elif img.mode != "RGB":
                 img = img.convert("RGB")
-            output_path = os.path.join(OUTPUT_FOLDER, unique_name("Compressed", "jpg"))
-            img.save(output_path, "JPEG", quality=quality, optimize=True)
-            return send_file(output_path, as_attachment=True, download_name="Compressed.jpg")
+
+            buf = io_module.BytesIO()
+            img.save(buf, format="JPEG", quality=quality, optimize=True)
+            buf.seek(0)
+            final_bytes = buf.getvalue()
+            final_size_kb = len(final_bytes) / 1024
+
+            img_b64 = base64.b64encode(final_bytes).decode("utf-8")
+            data_uri = f"data:image/jpeg;base64,{img_b64}"
+            fname = img_file.filename.rsplit(".", 1)[0]
+
+            reduction_pct = 0
+            if original_size_kb > 0:
+                reduction_pct = round((1 - (final_size_kb / original_size_kb)) * 100, 1)
+                if reduction_pct < 0:
+                    reduction_pct = 0
+
+            return render_template(
+                "image_compress.html",
+                result_image=data_uri,
+                original_size_kb=round(original_size_kb, 1),
+                final_size_kb=round(final_size_kb, 1),
+                reduction_pct=reduction_pct,
+                quality=quality,
+                download_filename=f"{fname}_compressed.jpg",
+            )
         except Exception as e:
             return render_template("image_compress.html", error=str(e))
     return render_template("image_compress.html")

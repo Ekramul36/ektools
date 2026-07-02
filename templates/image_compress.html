@@ -16,7 +16,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--green:#16A34A;--green-lt:#F0FDF4}
 body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
 nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
@@ -38,17 +38,46 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .field label span{color:var(--blue)}
 .drop-area{border:2px dashed var(--border);border-radius:10px;padding:36px 20px;text-align:center;background:var(--light);cursor:pointer;transition:all .2s;position:relative}
 .drop-area:hover{border-color:var(--blue);background:var(--blue-lt)}
+.drop-area.has-file{padding:16px}
 .drop-icon{font-size:2.2rem;margin-bottom:10px}
 .drop-area h3{font-size:14px;font-weight:600;margin-bottom:4px}
 .drop-area p{font-size:12px;color:var(--gray)}
 .drop-area input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer}
-.file-name{font-size:13px;font-weight:600;color:var(--blue);margin-top:8px;display:none}
+
+/* Instant preview panel (shown right after file select, before submit) */
+.preview-panel{display:none;align-items:center;gap:14px;text-align:left;}
+.preview-panel.show{display:flex}
+.preview-panel img{width:74px;height:74px;object-fit:cover;border-radius:10px;border:1px solid var(--border);background:white;flex-shrink:0}
+.preview-info{flex:1;min-width:0}
+.preview-info .pname{font-size:13px;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.preview-info .pmeta{font-size:12px;color:var(--gray);margin-top:2px;}
+.preview-info .pmeta b{color:var(--blue);}
+.change-btn{font-size:12px;color:var(--blue);font-weight:600;cursor:pointer;background:none;border:none;text-decoration:underline;flex-shrink:0;}
+
 input[type="range"]{width:100%;accent-color:var(--blue)}
 .btn{width:100%;padding:13px;background:var(--blue);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;margin-top:4px}
 .btn:hover{background:var(--blue-dk)}
+.btn:disabled{background:#9CA3AF;cursor:not-allowed;}
 .error-box{background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:12px 16px;color:#DC2626;font-size:13px;margin-bottom:16px}
 .trust{display:flex;justify-content:center;gap:20px;margin-top:16px;flex-wrap:wrap}
 .trust-item{font-size:12px;color:var(--gray)}
+
+/* Result section (shown after compression completes) */
+.result-card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:24px;}
+.result-title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:18px;display:flex;align-items:center;gap:8px;}
+.result-preview{text-align:center;margin-bottom:18px;}
+.result-preview img{max-width:100%;max-height:280px;border-radius:10px;border:1px solid var(--border);}
+.compare-row{display:flex;gap:12px;margin-bottom:18px;}
+.compare-box{flex:1;background:var(--light);border-radius:10px;padding:14px;text-align:center;}
+.compare-box.after{background:var(--green-lt);}
+.compare-box .clabel{font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:.03em;font-weight:700;margin-bottom:4px;}
+.compare-box .cval{font-size:20px;font-weight:800;color:var(--ink);}
+.compare-box.after .cval{color:var(--green);}
+.reduction-badge{background:var(--green-lt);color:var(--green);font-size:13px;font-weight:700;padding:8px 14px;border-radius:8px;text-align:center;margin-bottom:18px;}
+.download-btn{display:block;width:100%;text-align:center;padding:13px;background:var(--green);color:white;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none;}
+.download-btn:hover{opacity:.9;}
+.compress-again{display:block;text-align:center;margin-top:12px;font-size:13px;color:var(--blue);text-decoration:none;font-weight:600;}
+
 .guide-section{margin-top:32px;background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
 .guide-section h2{font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:20px}
 .steps{display:flex;flex-direction:column;gap:16px}
@@ -90,25 +119,63 @@ input[type="range"]{width:100%;accent-color:var(--blue)}
     <h1>Compress Image</h1>
     <p>Reduce image file size without losing quality</p>
   </div>
+
+  {% if error %}<div class="error-box">⚠️ {{ error }}</div>{% endif %}
+
+  {% if result_image %}
+  <!-- ============ RESULT VIEW (shown after compression) ============ -->
+  <div class="result-card">
+    <div class="result-title">✅ Your image has been compressed!</div>
+
+    <div class="result-preview">
+      <img src="{{ result_image }}" alt="Compressed preview">
+    </div>
+
+    <div class="compare-row">
+      <div class="compare-box">
+        <div class="clabel">Original</div>
+        <div class="cval">{{ original_size_kb }} KB</div>
+      </div>
+      <div class="compare-box after">
+        <div class="clabel">Compressed</div>
+        <div class="cval">{{ final_size_kb }} KB</div>
+      </div>
+    </div>
+
+    <div class="reduction-badge">🎉 Reduced by {{ reduction_pct }}% — Quality: {{ quality }}%</div>
+
+    <a href="{{ result_image }}" download="{{ download_filename }}" class="download-btn">⬇️ Download Compressed Image</a>
+    <a href="/compress-image" class="compress-again">Compress another image →</a>
+  </div>
+  {% else %}
+  <!-- ============ UPLOAD FORM VIEW ============ -->
   <div class="card">
     <div class="info-bar">⚡ Compress JPG, PNG, WebP images instantly</div>
-    {% if error %}<div class="error-box">⚠️ {{ error }}</div>{% endif %}
-    <form method="POST" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data" id="compressForm">
       <div class="field">
         <label>Select Image</label>
-        <div class="drop-area">
-          <div class="drop-icon">🖼️</div>
-          <h3>Click to select or drag & drop</h3>
-          <p>Supports JPG, PNG, WebP</p>
-          <p class="file-name" id="fileName"></p>
-          <input type="file" name="image" accept="image/*" required onchange="showFileName(this)">
+        <div class="drop-area" id="dropArea">
+          <div id="dropPrompt">
+            <div class="drop-icon">🖼️</div>
+            <h3>Click to select or drag & drop</h3>
+            <p>Supports JPG, PNG, WebP</p>
+          </div>
+          <div class="preview-panel" id="previewPanel">
+            <img id="previewImg" src="" alt="Selected image preview">
+            <div class="preview-info">
+              <div class="pname" id="previewName"></div>
+              <div class="pmeta" id="previewMeta"></div>
+            </div>
+            <button type="button" class="change-btn" onclick="document.getElementById('imageInput').click()">Change</button>
+          </div>
+          <input type="file" name="image" id="imageInput" accept="image/*" required onchange="handleFileSelect(this)">
         </div>
       </div>
       <div class="field">
         <label>Quality <span id="qualityVal">80%</span></label>
         <input type="range" name="quality" id="quality" min="10" max="100" value="80" oninput="document.getElementById('qualityVal').textContent=this.value+'%'">
       </div>
-      <button type="submit" class="btn">🗜️ Compress Image</button>
+      <button type="submit" class="btn" id="submitBtn" disabled>Select an image first</button>
     </form>
     <div class="trust">
       <div class="trust-item">🔒 SSL Encrypted</div>
@@ -116,13 +183,15 @@ input[type="range"]{width:100%;accent-color:var(--blue)}
       <div class="trust-item">📵 No signup needed</div>
     </div>
   </div>
+  {% endif %}
+
   <div class="guide-section">
     <h2>📖 How to Compress an Image</h2>
     <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Upload Your Image</h3><p>Click the upload area or drag and drop your JPG, PNG, or WebP image. Max size: 50 MB.</p></div></div>
+      <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Upload Your Image</h3><p>Click the upload area or drag and drop your JPG, PNG, or WebP image. You'll instantly see a preview with its original size.</p></div></div>
       <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Set the Quality Level</h3><p>Use the quality slider to choose your preferred output quality. Lower quality = smaller file size. 80% is a good balance for most images.</p></div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Click "Compress Image"</h3><p>Our tool will reduce the file size while keeping the image as clear as possible.</p></div></div>
-      <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Download the Compressed Image</h3><p>Your compressed image downloads automatically. The file is deleted from our server immediately after.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Click "Compress Image"</h3><p>Our tool reduces the file size while keeping the image as clear as possible.</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Compare & Download</h3><p>See exactly how many KB were saved, then download the compressed image.</p></div></div>
     </div>
     <div class="faq-section">
       <h2>❓ Frequently Asked Questions</h2>
@@ -133,7 +202,34 @@ input[type="range"]{width:100%;accent-color:var(--blue)}
   </div>
 </div>
 <script>
-function showFileName(input){if(input.files&&input.files[0]){const fn=document.getElementById('fileName');fn.textContent='✓ '+input.files[0].name;fn.style.display='block';}}
+function formatKB(bytes){
+  return (bytes/1024).toFixed(1) + ' KB';
+}
+
+function handleFileSelect(input){
+  if(!input.files || !input.files[0]) return;
+  const file = input.files[0];
+  const reader = new FileReader();
+
+  reader.onload = function(e){
+    const img = new Image();
+    img.onload = function(){
+      document.getElementById('previewImg').src = e.target.result;
+      document.getElementById('previewName').textContent = file.name;
+      document.getElementById('previewMeta').innerHTML =
+        img.naturalWidth + ' × ' + img.naturalHeight + ' px  •  <b>' + formatKB(file.size) + '</b>';
+      document.getElementById('dropPrompt').style.display = 'none';
+      document.getElementById('previewPanel').classList.add('show');
+      document.getElementById('dropArea').classList.add('has-file');
+
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = false;
+      btn.textContent = '🗜️ Compress Image';
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
 </script>
 </body>
 </html>
