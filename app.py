@@ -124,6 +124,8 @@ def sitemap():
         ('/blog', '0.8', 'weekly'),
         ('/blog/merge-pdf-files-online', '0.7', 'monthly'),
         ('/blog/reduce-image-size-to-kb', '0.7', 'monthly'),
+        ('/blog/compress-pdf-to-100kb-for-exam-form', '0.7', 'monthly'),
+        ('/blog/amount-in-words-for-cheque-gst-invoice', '0.7', 'monthly'),
     ]
     today = datetime.date.today().isoformat()
     xml = ['<?xml version="1.0" encoding="UTF-8"?>',
@@ -1424,6 +1426,20 @@ BLOG_POSTS = [
         "category": "Image Tools",
         "date": "July 1, 2026"
     },
+    {
+        "slug": "compress-pdf-to-100kb-for-exam-form",
+        "title": "How to Compress PDF to 100KB or 1MB Online for Free",
+        "excerpt": "Reduce your PDF file size for SSC, Railway, Bank PO and other exam forms — free, instant, no signup required.",
+        "category": "PDF Tools",
+        "date": "July 3, 2026"
+    },
+    {
+        "slug": "amount-in-words-for-cheque-gst-invoice",
+        "title": "How to Write Amount in Words for Cheques & GST Invoices",
+        "excerpt": "The correct format for cheque and invoice amounts in words, plus a free online converter for Indian Rupees.",
+        "category": "Business Tools",
+        "date": "July 3, 2026"
+    },
     # Add more posts here as dicts, e.g.:
     # {
     #     "slug": "compress-pdf-guide",
@@ -1445,6 +1461,14 @@ def blog_merge_pdf():
 @app.route("/blog/reduce-image-size-to-kb")
 def blog_reduce_image_size():
     return render_template("blog_post_reduce_image_size.html")
+
+@app.route("/blog/compress-pdf-to-100kb-for-exam-form")
+def blog_compress_pdf_exam_form():
+    return render_template("blog_post_compress_pdf_exam_form.html")
+
+@app.route("/blog/amount-in-words-for-cheque-gst-invoice")
+def blog_amount_in_words():
+    return render_template("blog_post_amount_in_words.html")
 
 # NOTE: as you add more blog posts, add a matching @app.route("/blog/<slug>")
 # function for each new HTML file, the same way as blog_merge_pdf() above.
