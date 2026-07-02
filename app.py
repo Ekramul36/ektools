@@ -1,10 +1,14 @@
-from flask import Flask, render_template, request, send_file, send_from_directory, redirect, Response, jsonify, url_for
+from flask import Flask, render_template, request, send_file, send_from_directory, redirect, Response, jsonify, url_for, session
 from pypdf import PdfReader, PdfWriter
 import fitz
 import os
 import datetime
+import uuid
+import time
+import shutil
 
 app = Flask(__name__)
+app.secret_key = os.environ.get("SECRET_KEY", "ekzapp-dev-secret-change-in-production")
 
 UPLOAD_FOLDER = "uploads"
 OUTPUT_FOLDER = "outputs"
@@ -13,6 +17,33 @@ FAVICON_OUTPUT_DIR = os.path.join("static", "generated", "favicons")
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 os.makedirs(FAVICON_OUTPUT_DIR, exist_ok=True)
+
+
+def unique_name(prefix, ext):
+    """Generate a collision-safe output filename, e.g. Merged_PDF_a1b2c3d4.pdf
+    This prevents one user's file from overwriting another user's file
+    when multiple people use the same tool at the same time."""
+    return f"{prefix}_{uuid.uuid4().hex[:8]}.{ext}"
+
+
+FAVICON_MAX_AGE_HOURS = 24  # delete generated favicon folders older than this
+
+def cleanup_old_favicons():
+    """Delete favicon batch folders older than FAVICON_MAX_AGE_HOURS."""
+    try:
+        if not os.path.isdir(FAVICON_OUTPUT_DIR):
+            return
+        now = time.time()
+        max_age_seconds = FAVICON_MAX_AGE_HOURS * 3600
+        for folder_name in os.listdir(FAVICON_OUTPUT_DIR):
+            folder_path = os.path.join(FAVICON_OUTPUT_DIR, folder_name)
+            if not os.path.isdir(folder_path):
+                continue
+            folder_age = now - os.path.getmtime(folder_path)
+            if folder_age > max_age_seconds:
+                shutil.rmtree(folder_path, ignore_errors=True)
+    except Exception:
+        pass
 
 
 # ──────────────────────────────────────────
@@ -150,8 +181,8 @@ def unlock_pdf():
             password = request.form.get("password", "")
             if not pdf or pdf.filename == "":
                 return render_template("pdf.html", error="Please select a PDF file.")
-            input_path = os.path.join(UPLOAD_FOLDER, pdf.filename)
-            output_path = os.path.join(OUTPUT_FOLDER, "Unlocked_" + pdf.filename)
+            input_path = os.path.join(UPLOAD_FOLDER, f"{uuid.uuid4().hex[:8]}_{pdf.filename}")
+            output_path = os.path.join(OUTPUT_FOLDER, unique_name("Unlocked", "pdf"))
             pdf.save(input_path)
             reader = PdfReader(input_path)
             if reader.is_encrypted:
@@ -181,7 +212,7 @@ def merge_pdf():
                 reader = PdfReader(pdf)
                 for page in reader.pages:
                     writer.add_page(page)
-            output_path = os.path.join(OUTPUT_FOLDER, "Merged_PDF.pdf")
+            output_path = os.path.join(OUTPUT_FOLDER, unique_name("Merged_PDF", "pdf"))
             with open(output_path, "wb") as output_file:
                 writer.write(output_file)
             return send_file(output_path, as_attachment=True, download_name="Merged_PDF.pdf")
@@ -206,7 +237,7 @@ def split_pdf():
                     writer.add_page(reader.pages[i])
             else:
                 writer.add_page(reader.pages[int(pages) - 1])
-            output_path = os.path.join(OUTPUT_FOLDER, "Split_PDF.pdf")
+            output_path = os.path.join(OUTPUT_FOLDER, unique_name("Split_PDF", "pdf"))
             with open(output_path, "wb") as f:
                 writer.write(f)
             return send_file(output_path, as_attachment=True, download_name="Split_PDF.pdf")
@@ -220,8 +251,8 @@ def compress_pdf():
     pdf = request.files.get("pdf")
     if not pdf or pdf.filename == "":
         return render_template("compress_pdf.html", error="Please select a PDF.")
-    input_path = os.path.join(UPLOAD_FOLDER, pdf.filename)
-    output_path = os.path.join(OUTPUT_FOLDER, "Compressed_" + pdf.filename)
+    input_path = os.path.join(UPLOAD_FOLDER, f"{uuid.uuid4().hex[:8]}_{pdf.filename}")
+    output_path = os.path.join(OUTPUT_FOLDER, unique_name("Compressed", "pdf"))
     pdf.save(input_path)
     try:
         doc = fitz.open(input_path)
@@ -246,7 +277,7 @@ def rotate_pdf():
             for page in reader.pages:
                 page.rotate(rotation)
                 writer.add_page(page)
-            output_path = os.path.join(OUTPUT_FOLDER, "Rotated_PDF.pdf")
+            output_path = os.path.join(OUTPUT_FOLDER, unique_name("Rotated_PDF", "pdf"))
             with open(output_path, "wb") as f:
                 writer.write(f)
             return send_file(output_path, as_attachment=True, download_name="Rotated_PDF.pdf")
@@ -279,7 +310,7 @@ def delete_pages():
                     writer.add_page(page)
             if len(writer.pages) == 0:
                 return render_template("delete_pages.html", error="Cannot delete all pages!")
-            output_path = os.path.join(OUTPUT_FOLDER, "Deleted_Pages.pdf")
+            output_path = os.path.join(OUTPUT_FOLDER, unique_name("Deleted_Pages", "pdf"))
             with open(output_path, "wb") as f:
                 writer.write(f)
             return send_file(output_path, as_attachment=True, download_name="Deleted_Pages.pdf")
@@ -297,8 +328,8 @@ def watermark_pdf():
             font_size = int(request.form.get("font_size", 50))
             if not pdf or pdf.filename == "":
                 return render_template("watermark_pdf.html", error="Please select a PDF.")
-            input_path = os.path.join(UPLOAD_FOLDER, pdf.filename)
-            output_path = os.path.join(OUTPUT_FOLDER, "Watermarked.pdf")
+            input_path = os.path.join(UPLOAD_FOLDER, f"{uuid.uuid4().hex[:8]}_{pdf.filename}")
+            output_path = os.path.join(OUTPUT_FOLDER, unique_name("Watermarked", "pdf"))
             pdf.save(input_path)
             doc = fitz.open(input_path)
             for page in doc:
@@ -331,7 +362,7 @@ def protect_pdf():
             for page in reader.pages:
                 writer.add_page(page)
             writer.encrypt(password)
-            output_path = os.path.join(OUTPUT_FOLDER, "Protected.pdf")
+            output_path = os.path.join(OUTPUT_FOLDER, unique_name("Protected", "pdf"))
             with open(output_path, "wb") as f:
                 writer.write(f)
             return send_file(output_path, as_attachment=True, download_name="Protected.pdf")
@@ -349,24 +380,25 @@ def pdf_to_jpg():
             quality = int(request.form.get("quality", 200))
             if not pdf or pdf.filename == "":
                 return render_template("pdf_to_jpg.html", error="Please select a PDF file.")
-            input_path = os.path.join(UPLOAD_FOLDER, pdf.filename)
+            batch_id = uuid.uuid4().hex[:8]
+            input_path = os.path.join(UPLOAD_FOLDER, f"{batch_id}_{pdf.filename}")
             pdf.save(input_path)
             doc = fitz.open(input_path)
             if doc.page_count == 1:
                 page = doc[0]
                 mat = fitz.Matrix(quality/72, quality/72)
                 pix = page.get_pixmap(matrix=mat)
-                output_path = os.path.join(OUTPUT_FOLDER, "page_1.jpg")
+                output_path = os.path.join(OUTPUT_FOLDER, f"{batch_id}_page_1.jpg")
                 pix.save(output_path)
                 doc.close()
                 return send_file(output_path, as_attachment=True, download_name="page_1.jpg")
             else:
-                zip_path = os.path.join(OUTPUT_FOLDER, "PDF_to_JPG.zip")
+                zip_path = os.path.join(OUTPUT_FOLDER, f"{batch_id}_PDF_to_JPG.zip")
                 with zipfile.ZipFile(zip_path, 'w') as zipf:
                     for i, page in enumerate(doc):
                         mat = fitz.Matrix(quality/72, quality/72)
                         pix = page.get_pixmap(matrix=mat)
-                        img_path = os.path.join(OUTPUT_FOLDER, f"page_{i+1}.jpg")
+                        img_path = os.path.join(OUTPUT_FOLDER, f"{batch_id}_page_{i+1}.jpg")
                         pix.save(img_path)
                         zipf.write(img_path, f"page_{i+1}.jpg")
                 doc.close()
@@ -384,8 +416,8 @@ def pdf_to_word():
             pdf = request.files.get("pdf")
             if not pdf or pdf.filename == "":
                 return render_template("pdf_to_word.html", error="Please select a PDF file.")
-            input_path = os.path.join(UPLOAD_FOLDER, pdf.filename)
-            output_path = os.path.join(OUTPUT_FOLDER, "Converted.docx")
+            input_path = os.path.join(UPLOAD_FOLDER, f"{uuid.uuid4().hex[:8]}_{pdf.filename}")
+            output_path = os.path.join(OUTPUT_FOLDER, unique_name("Converted", "docx"))
             pdf.save(input_path)
             cv = Converter(input_path)
             cv.convert(output_path, start=0, end=None)
@@ -404,8 +436,8 @@ def word_to_pdf():
             doc = request.files.get("file")
             if not doc or doc.filename == "":
                 return render_template("word_to_pdf.html", error="Please select a Word file.")
-            input_path = os.path.join(UPLOAD_FOLDER, doc.filename)
-            output_path = os.path.join(OUTPUT_FOLDER, "Converted.pdf")
+            input_path = os.path.join(UPLOAD_FOLDER, f"{uuid.uuid4().hex[:8]}_{doc.filename}")
+            output_path = os.path.join(OUTPUT_FOLDER, unique_name("Converted", "pdf"))
             doc.save(input_path)
             convert(input_path, output_path)
             return send_file(output_path, as_attachment=True, download_name="Converted.pdf")
@@ -425,8 +457,8 @@ def excel_to_pdf():
             xl = request.files.get("file")
             if not xl or xl.filename == "":
                 return render_template("excel_to_pdf.html", error="Please select an Excel file.")
-            input_path = os.path.join(UPLOAD_FOLDER, xl.filename)
-            output_path = os.path.join(OUTPUT_FOLDER, "Converted.pdf")
+            input_path = os.path.join(UPLOAD_FOLDER, f"{uuid.uuid4().hex[:8]}_{xl.filename}")
+            output_path = os.path.join(OUTPUT_FOLDER, unique_name("Converted", "pdf"))
             xl.save(input_path)
             wb = openpyxl.load_workbook(input_path, data_only=True)
             ws = wb.active
@@ -465,8 +497,8 @@ def pdf_to_excel():
             pdf = request.files.get("pdf")
             if not pdf or pdf.filename == "":
                 return render_template("pdf_to_excel.html", error="Please select a PDF file.")
-            input_path = os.path.join(UPLOAD_FOLDER, pdf.filename)
-            output_path = os.path.join(OUTPUT_FOLDER, "Converted.xlsx")
+            input_path = os.path.join(UPLOAD_FOLDER, f"{uuid.uuid4().hex[:8]}_{pdf.filename}")
+            output_path = os.path.join(OUTPUT_FOLDER, unique_name("Converted", "xlsx"))
             pdf.save(input_path)
             wb = openpyxl.Workbook()
             first = True
@@ -543,7 +575,7 @@ def image_to_pdf():
             for img_file in images:
                 img = PILImage.open(img_file).convert("RGB")
                 pdf_images.append(img)
-            output_path = os.path.join(OUTPUT_FOLDER, "Images_to_PDF.pdf")
+            output_path = os.path.join(OUTPUT_FOLDER, unique_name("Images_to_PDF", "pdf"))
             if len(pdf_images) == 1:
                 pdf_images[0].save(output_path, "PDF")
             else:
@@ -570,7 +602,7 @@ def compress_image():
             img = PILImage.open(img_file)
             if img.mode in ("RGBA", "P"):
                 img = img.convert("RGB")
-            output_path = os.path.join(OUTPUT_FOLDER, "Compressed.jpg")
+            output_path = os.path.join(OUTPUT_FOLDER, unique_name("Compressed", "jpg"))
             img.save(output_path, "JPEG", quality=quality, optimize=True)
             return send_file(output_path, as_attachment=True, download_name="Compressed.jpg")
         except Exception as e:
@@ -602,7 +634,7 @@ def resize_image():
                 w = int(img.width * (h / img.height))
             if w and h:
                 img = img.resize((w, h), PILImage.LANCZOS)
-            output_path = os.path.join(OUTPUT_FOLDER, "Resized.jpg")
+            output_path = os.path.join(OUTPUT_FOLDER, unique_name("Resized", "jpg"))
             if img.mode in ("RGBA", "P"):
                 img = img.convert("RGB")
             img.save(output_path, "JPEG", quality=95)
@@ -631,7 +663,7 @@ def convert_image():
                 if img.mode in ("RGBA", "P"):
                     img = img.convert("RGB")
             ext = "jpg" if fmt == "JPEG" else fmt.lower()
-            output_path = os.path.join(OUTPUT_FOLDER, f"Converted.{ext}")
+            output_path = os.path.join(OUTPUT_FOLDER, unique_name("Converted", ext))
             img.save(output_path, fmt)
             return send_file(output_path, as_attachment=True, download_name=f"Converted.{ext}")
         except Exception as e:
@@ -740,7 +772,7 @@ def remove_background():
                 data={'size': 'auto'},
                 headers={'X-Api-Key': os.environ.get('REMOVE_BG_API_KEY')},
             )
-            output_path = os.path.join(OUTPUT_FOLDER, "No_Background.png")
+            output_path = os.path.join(OUTPUT_FOLDER, unique_name("No_Background", "png"))
             with open(output_path, "wb") as f:
                 f.write(response.content)
             return send_file(output_path, as_attachment=True, download_name="No_Background.png")
@@ -804,8 +836,10 @@ def passport_photo():
                 sheet.paste(bg, (x_pos, y_pos))
                 x_pos += w + gap; placed += 1
 
-            output_path = os.path.join(OUTPUT_FOLDER, "Passport_Photo.jpg")
+            output_filename = unique_name("Passport_Photo", "jpg")
+            output_path = os.path.join(OUTPUT_FOLDER, output_filename)
             sheet.save(output_path, "JPEG", quality=95, dpi=(dpi, dpi))
+            session["passport_photo_file"] = output_filename
             preview = sheet.copy()
             preview.thumbnail((800, 1000), PILImage.LANCZOS)
             buf = BytesIO_io.BytesIO()
@@ -821,7 +855,10 @@ def passport_photo():
 
 @app.route("/passport-photo/download")
 def passport_photo_download():
-    output_path = os.path.join(OUTPUT_FOLDER, "Passport_Photo.jpg")
+    output_filename = session.get("passport_photo_file")
+    if not output_filename:
+        return redirect("/passport-photo")
+    output_path = os.path.join(OUTPUT_FOLDER, output_filename)
     if os.path.exists(output_path):
         return send_file(output_path, as_attachment=True, download_name="Passport_Photo.jpg")
     return redirect("/passport-photo")
@@ -836,8 +873,9 @@ def favicon_generator_page():
 def api_favicon_generator():
     try:
         from PIL import Image as PILImage
-        import uuid
         import zipfile
+
+        cleanup_old_favicons()
 
         if "image" not in request.files:
             return jsonify({"error": "No image uploaded"}), 400
@@ -1113,7 +1151,7 @@ def invoice_generator():
             items_qty  = request.form.getlist("item_qty[]")
             items_rate = request.form.getlist("item_rate[]")
 
-            output_path = os.path.join(OUTPUT_FOLDER, "Invoice.pdf")
+            output_path = os.path.join(OUTPUT_FOLDER, unique_name("Invoice", "pdf"))
             doc = SimpleDocTemplate(output_path, pagesize=A4,
                                     leftMargin=15*mm, rightMargin=15*mm,
                                     topMargin=15*mm, bottomMargin=15*mm)
@@ -1256,7 +1294,7 @@ def resume_builder():
             if not full_name.strip():
                 return render_template("resume_builder.html", error="Please enter your full name.")
 
-            output_path = os.path.join(OUTPUT_FOLDER, "Resume.pdf")
+            output_path = os.path.join(OUTPUT_FOLDER, unique_name("Resume", "pdf"))
             doc = SimpleDocTemplate(output_path, pagesize=A4,
                                     leftMargin=18*mm, rightMargin=18*mm,
                                     topMargin=16*mm, bottomMargin=16*mm)
@@ -1325,8 +1363,8 @@ def add_page_numbers():
             if not pdf or pdf.filename == "":
                 return render_template("add_page_numbers.html", error="Please select a PDF file.")
 
-            input_path = os.path.join(UPLOAD_FOLDER, pdf.filename)
-            output_path = os.path.join(OUTPUT_FOLDER, "Numbered_" + pdf.filename)
+            input_path = os.path.join(UPLOAD_FOLDER, f"{uuid.uuid4().hex[:8]}_{pdf.filename}")
+            output_path = os.path.join(OUTPUT_FOLDER, unique_name("Numbered", "pdf"))
             pdf.save(input_path)
 
             doc = fitz.open(input_path)
