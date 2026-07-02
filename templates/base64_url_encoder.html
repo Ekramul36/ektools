@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Base64 & URL Encoder Decoder Online Free | EkZapp</title>
+<meta name="description" content="Encode or decode Base64 strings and URLs instantly online. Free, fast, and works entirely in your browser — no data uploaded.">
+<link rel="canonical" href="https://ekzapp.com/base64-url-encoder">
+<meta property="og:title" content="Base64 & URL Encoder Decoder - Free Online Tool">
+<meta property="og:description" content="Encode or decode Base64 and URL strings instantly, free and private.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ekzapp.com/base64-url-encoder">
+<link rel="icon" href="/static/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Base64 & URL Encoder Decoder",
+  "url": "https://ekzapp.com/base64-url-encoder",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What is Base64 encoding used for?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Base64 encoding converts binary data or text into ASCII characters, commonly used to embed images in HTML/CSS, send data in JSON/XML, or transmit data safely over text-based protocols like email."}},
+    {"@type": "Question", "name": "Why do I need to URL encode a string?",
+     "acceptedAnswer": {"@type": "Answer", "text": "URL encoding converts special characters like spaces and symbols into a format that can be safely transmitted in a URL query string, preventing errors when a link is opened."}},
+    {"@type": "Question", "name": "Is this tool safe to use with sensitive data?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Yes. All encoding and decoding happens locally in your browser using JavaScript. Nothing is uploaded to a server."}}
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --blue:#2563EB;
+    --blue-dark:#1d4ed8;
+    --bg:#f4f8fd;
+    --card:#ffffff;
+    --text:#1e293b;
+    --muted:#64748b;
+    --border:#e2e8f0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:linear-gradient(180deg,#eef5ff 0%,#f7fbff 100%);
+    color:var(--text);
+    min-height:100vh;
+  }
+  header{
+    background:var(--card);
+    border-bottom:1px solid var(--border);
+    padding:16px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  header a.logo{font-weight:800;font-size:22px;color:var(--blue);text-decoration:none;}
+  header nav a{color:var(--muted);text-decoration:none;margin-left:20px;font-weight:500;font-size:14px;}
+  .container{max-width:880px;margin:0 auto;padding:40px 20px 80px;}
+  .hero{text-align:center;margin-bottom:32px;}
+  .hero h1{font-size:32px;font-weight:800;margin-bottom:10px;}
+  .hero p{color:var(--muted);font-size:16px;}
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:32px;
+    box-shadow:0 4px 20px rgba(37,99,235,0.06);
+    margin-bottom:24px;
+  }
+  .tabs{display:flex;gap:8px;margin-bottom:24px;background:#eef2f7;padding:4px;border-radius:10px;width:fit-content;}
+  .tabs button{border:none;background:transparent;padding:8px 18px;border-radius:8px;font-weight:600;font-size:14px;cursor:pointer;color:var(--muted);}
+  .tabs button.active{background:var(--blue);color:#fff;}
+  .mode-toggle{display:flex;gap:10px;margin-bottom:16px;}
+  .mode-toggle button{
+    flex:1;
+    padding:10px;
+    border:2px solid var(--border);
+    background:#fff;
+    border-radius:10px;
+    font-weight:600;
+    cursor:pointer;
+    color:var(--muted);
+  }
+  .mode-toggle button.active{border-color:var(--blue);color:var(--blue);background:#f0f7ff;}
+  textarea{
+    width:100%;
+    min-height:140px;
+    padding:16px;
+    font-size:15px;
+    font-family:'Inter',monospace;
+    border:2px solid var(--border);
+    border-radius:12px;
+    outline:none;
+    resize:vertical;
+    transition:.2s;
+  }
+  textarea:focus{border-color:var(--blue);}
+  .label{font-weight:600;font-size:13px;color:var(--muted);margin-bottom:6px;display:block;text-transform:uppercase;letter-spacing:.03em;}
+  .btn-row{display:flex;gap:10px;margin:16px 0;}
+  .btn{
+    background:var(--blue);
+    color:#fff;
+    border:none;
+    padding:10px 20px;
+    border-radius:8px;
+    font-weight:600;
+    cursor:pointer;
+    font-size:14px;
+  }
+  .btn:hover{background:var(--blue-dark);}
+  .btn.secondary{background:#eef2f7;color:var(--text);}
+  .btn.secondary:hover{background:#dde7f5;}
+  .error-msg{color:#dc2626;font-size:13px;margin-top:8px;font-weight:500;}
+  .accordion{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:10px;background:var(--card);}
+  .accordion summary{padding:16px 20px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;}
+  .accordion summary::-webkit-details-marker{display:none;}
+  .accordion[open] summary{border-bottom:1px solid var(--border);}
+  .accordion p{padding:16px 20px;color:var(--muted);font-size:14px;line-height:1.6;}
+  section.faq h2{font-size:22px;margin-bottom:16px;}
+  footer{text-align:center;padding:24px;color:var(--muted);font-size:13px;}
+  footer a{color:var(--blue);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="logo">EkZapp</a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/blog">Blog</a>
+    <a href="https://twitter.com/ekzapp" target="_blank">Twitter</a>
+  </nav>
+</header>
+
+<div class="container">
+  <div class="hero">
+    <h1>Base64 &amp; URL Encoder / Decoder</h1>
+    <p>Encode or decode text instantly — free, fast, and 100% private in your browser.</p>
+  </div>
+
+  <div class="card">
+    <div class="tabs">
+      <button id="tabBase64" class="active" onclick="switchTab('base64')">Base64</button>
+      <button id="tabUrl" onclick="switchTab('url')">URL</button>
+    </div>
+
+    <div class="mode-toggle">
+      <button id="modeEncode" class="active" onclick="setMode('encode')">Encode</button>
+      <button id="modeDecode" onclick="setMode('decode')">Decode</button>
+    </div>
+
+    <label class="label">Input</label>
+    <textarea id="inputText" placeholder="Type or paste text here..."></textarea>
+
+    <div class="btn-row">
+      <button class="btn" onclick="process()">⚡ Convert</button>
+      <button class="btn secondary" onclick="swapAndCopy()">🔁 Swap Result to Input</button>
+      <button class="btn secondary" onclick="clearAll()">🗑️ Clear</button>
+    </div>
+    <div id="errorMsg" class="error-msg"></div>
+
+    <label class="label">Output</label>
+    <textarea id="outputText" placeholder="Result will appear here..." readonly></textarea>
+
+    <div class="btn-row">
+      <button class="btn secondary" onclick="copyOutput()">📋 Copy Output</button>
+    </div>
+  </div>
+
+  <section class="faq">
+    <h2>How to Use This Tool</h2>
+    <details class="accordion" open>
+      <summary>Step-by-step guide <span>+</span></summary>
+      <p>
+        1. Choose the <strong>Base64</strong> or <strong>URL</strong> tab depending on what you want to convert.<br>
+        2. Select <strong>Encode</strong> or <strong>Decode</strong> mode.<br>
+        3. Type or paste your text into the Input box — the Output updates automatically.<br>
+        4. Click <strong>Copy Output</strong> to copy the result to your clipboard.<br>
+        5. Use <strong>Swap Result to Input</strong> to instantly reverse the conversion (e.g. check that decoding gives back your original text).
+      </p>
+    </details>
+  </section>
+
+  <section class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <details class="accordion" open>
+      <summary>What is Base64 encoding used for? <span>+</span></summary>
+      <p>Base64 encoding converts binary data or text into ASCII characters. It's commonly used to embed images directly in HTML/CSS, send data in JSON/XML APIs, or safely transmit data over text-based protocols like email.</p>
+    </details>
+    <details class="accordion">
+      <summary>Why do I need to URL encode a string?</summary>
+      <p>URL encoding (also called percent-encoding) converts special characters like spaces, &amp;, and ? into a safe format for URLs, preventing broken links and query string errors.</p>
+    </details>
+    <details class="accordion">
+      <summary>Is my data safe using this tool?</summary>
+      <p>Yes — all encoding and decoding happens locally in your browser using JavaScript. Nothing is ever uploaded to our servers.</p>
+    </details>
+    <details class="accordion">
+      <summary>What happens if I try to decode invalid Base64?</summary>
+      <p>The tool will show an error message letting you know the input isn't valid Base64, so you can double-check your text before converting.</p>
+    </details>
+  </section>
+</div>
+
+<footer>
+  © 2026 EkZapp. All rights reserved. | <a href="/">More free tools</a>
+</footer>
+
+<script>
+let currentTab = 'base64';
+let currentMode = 'encode';
+
+function switchTab(tab){
+  currentTab = tab;
+  document.getElementById('tabBase64').classList.toggle('active', tab==='base64');
+  document.getElementById('tabUrl').classList.toggle('active', tab==='url');
+  clearAll();
+}
+
+function setMode(mode){
+  currentMode = mode;
+  document.getElementById('modeEncode').classList.toggle('active', mode==='encode');
+  document.getElementById('modeDecode').classList.toggle('active', mode==='decode');
+  document.getElementById('errorMsg').textContent = '';
+}
+
+function process(){
+  const input = document.getElementById('inputText').value;
+  const errBox = document.getElementById('errorMsg');
+  const outBox = document.getElementById('outputText');
+  errBox.textContent = '';
+
+  if(!input){ outBox.value = ''; return; }
+
+  try{
+    let result = '';
+    if(currentTab === 'base64'){
+      if(currentMode === 'encode'){
+        result = btoa(unescape(encodeURIComponent(input)));
+      } else {
+        result = decodeURIComponent(escape(atob(input)));
+      }
+    } else {
+      if(currentMode === 'encode'){
+        result = encodeURIComponent(input);
+      } else {
+        result = decodeURIComponent(input);
+      }
+    }
+    outBox.value = result;
+  } catch(e){
+    outBox.value = '';
+    errBox.textContent = '⚠️ Invalid input for ' + currentMode + 'ing. Please check your text.';
+  }
+}
+
+function clearAll(){
+  document.getElementById('inputText').value = '';
+  document.getElementById('outputText').value = '';
+  document.getElementById('errorMsg').textContent = '';
+}
+
+function swapAndCopy(){
+  const out = document.getElementById('outputText').value;
+  if(!out) return;
+  document.getElementById('inputText').value = out;
+  document.getElementById('outputText').value = '';
+  setMode(currentMode === 'encode' ? 'decode' : 'encode');
+}
+
+function copyOutput(){
+  const text = document.getElementById('outputText').value;
+  if(!text) return;
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn = event.target;
+    const old = btn.textContent;
+    btn.textContent = '✅ Copied!';
+    setTimeout(()=>{ btn.textContent = old; }, 1500);
+  });
+}
+
+document.getElementById('inputText').addEventListener('input', process);
+</script>
+
+</body>
+</html>

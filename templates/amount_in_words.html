@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amount in Words Converter - Convert Number to Words Online Free | EkZapp</title>
+<meta name="description" content="Convert any number or rupee amount into words instantly. Perfect for cheque writing, invoices and legal documents. Free online tool.">
+<link rel="canonical" href="https://ekzapp.com/amount-in-words">
+<meta property="og:title" content="Amount in Words Converter - Free Online Tool">
+<meta property="og:description" content="Convert numbers to words for cheques, invoices and documents instantly.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ekzapp.com/amount-in-words">
+<link rel="icon" href="/static/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Amount in Words Converter",
+  "url": "https://ekzapp.com/amount-in-words",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "How do I convert a number to words?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Type or paste the number into the input box and the tool instantly shows the amount in words, both in Indian (lakh/crore) and International (million/billion) format."}},
+    {"@type": "Question", "name": "Can I use this to write cheque amounts?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Yes. Select the Rupees format and the tool will output the amount exactly as it should appear on a cheque, including paise."}},
+    {"@type": "Question", "name": "Does this tool work offline or store my data?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No data is sent to any server. The conversion happens entirely in your browser, so your numbers stay private."}}
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --blue:#2563EB;
+    --blue-dark:#1d4ed8;
+    --bg:#f4f8fd;
+    --card:#ffffff;
+    --text:#1e293b;
+    --muted:#64748b;
+    --border:#e2e8f0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:linear-gradient(180deg,#eef5ff 0%,#f7fbff 100%);
+    color:var(--text);
+    min-height:100vh;
+  }
+  header{
+    background:var(--card);
+    border-bottom:1px solid var(--border);
+    padding:16px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  header a.logo{
+    font-weight:800;
+    font-size:22px;
+    color:var(--blue);
+    text-decoration:none;
+  }
+  header nav a{
+    color:var(--muted);
+    text-decoration:none;
+    margin-left:20px;
+    font-weight:500;
+    font-size:14px;
+  }
+  .container{
+    max-width:820px;
+    margin:0 auto;
+    padding:40px 20px 80px;
+  }
+  .hero{text-align:center;margin-bottom:32px;}
+  .hero h1{font-size:32px;font-weight:800;margin-bottom:10px;}
+  .hero p{color:var(--muted);font-size:16px;}
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:32px;
+    box-shadow:0 4px 20px rgba(37,99,235,0.06);
+    margin-bottom:24px;
+  }
+  .format-toggle{
+    display:flex;
+    gap:8px;
+    margin-bottom:20px;
+    background:#eef2f7;
+    padding:4px;
+    border-radius:10px;
+    width:fit-content;
+  }
+  .format-toggle button{
+    border:none;
+    background:transparent;
+    padding:8px 18px;
+    border-radius:8px;
+    font-weight:600;
+    font-size:14px;
+    cursor:pointer;
+    color:var(--muted);
+  }
+  .format-toggle button.active{
+    background:var(--blue);
+    color:#fff;
+  }
+  input#numInput{
+    width:100%;
+    padding:16px 18px;
+    font-size:22px;
+    font-weight:600;
+    border:2px solid var(--border);
+    border-radius:12px;
+    outline:none;
+    transition:.2s;
+  }
+  input#numInput:focus{border-color:var(--blue);}
+  .result-box{
+    margin-top:22px;
+    padding:20px;
+    background:#f0f7ff;
+    border:1px solid #cfe3ff;
+    border-radius:12px;
+    font-size:18px;
+    font-weight:600;
+    line-height:1.6;
+    color:var(--blue-dark);
+    min-height:60px;
+  }
+  .copy-btn{
+    margin-top:14px;
+    background:var(--blue);
+    color:#fff;
+    border:none;
+    padding:10px 20px;
+    border-radius:8px;
+    font-weight:600;
+    cursor:pointer;
+    font-size:14px;
+  }
+  .copy-btn:hover{background:var(--blue-dark);}
+  .examples{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+  .examples span{
+    background:#eef2f7;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:13px;
+    color:var(--muted);
+    cursor:pointer;
+  }
+  .examples span:hover{background:#dde7f5;}
+  .accordion{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:10px;background:var(--card);}
+  .accordion summary{
+    padding:16px 20px;
+    font-weight:600;
+    cursor:pointer;
+    list-style:none;
+    display:flex;
+    justify-content:space-between;
+  }
+  .accordion summary::-webkit-details-marker{display:none;}
+  .accordion[open] summary{border-bottom:1px solid var(--border);}
+  .accordion p{padding:16px 20px;color:var(--muted);font-size:14px;line-height:1.6;}
+  section.faq h2{font-size:22px;margin-bottom:16px;}
+  footer{
+    text-align:center;
+    padding:24px;
+    color:var(--muted);
+    font-size:13px;
+  }
+  footer a{color:var(--blue);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="logo">EkZapp</a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/blog">Blog</a>
+    <a href="https://twitter.com/ekzapp" target="_blank">Twitter</a>
+  </nav>
+</header>
+
+<div class="container">
+  <div class="hero">
+    <h1>Amount in Words Converter</h1>
+    <p>Convert any number into words — perfect for cheques, invoices &amp; legal documents.</p>
+  </div>
+
+  <div class="card">
+    <div class="format-toggle">
+      <button id="btnIndian" class="active" onclick="setFormat('indian')">Indian (Lakh/Crore)</button>
+      <button id="btnIntl" onclick="setFormat('intl')">International (Million)</button>
+    </div>
+
+    <input type="text" id="numInput" placeholder="e.g. 125430.50" autofocus>
+
+    <div class="examples">
+      <span onclick="fillExample(1000)">1,000</span>
+      <span onclick="fillExample(50000)">50,000</span>
+      <span onclick="fillExample(1250000)">12,50,000</span>
+      <span onclick="fillExample(9999.75)">9,999.75</span>
+    </div>
+
+    <div class="result-box" id="resultBox">Rupees Zero Only</div>
+    <button class="copy-btn" onclick="copyResult()">📋 Copy Result</button>
+  </div>
+
+  <section class="faq">
+    <h2>How to Use This Tool</h2>
+    <details class="accordion" open>
+      <summary>Step-by-step guide <span>+</span></summary>
+      <p>
+        1. Type or paste any number into the input box (e.g. 125430.50).<br>
+        2. Choose <strong>Indian (Lakh/Crore)</strong> or <strong>International (Million)</strong> format using the toggle.<br>
+        3. The amount in words appears instantly below, including paise/decimals if present.<br>
+        4. Click <strong>Copy Result</strong> to copy the text — paste it directly onto a cheque, invoice, or document.<br>
+        5. Try the quick example chips above the result box to see common amounts converted.
+      </p>
+    </details>
+  </section>
+
+  <section class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <details class="accordion" open>
+      <summary>How do I convert a number to words? <span>+</span></summary>
+      <p>Type or paste the number into the input box above. The tool instantly converts it into words in both Indian (lakh/crore) and International (million/billion) format, updating as you type.</p>
+    </details>
+    <details class="accordion">
+      <summary>Can I use this for cheque writing? <span>+</span></summary>
+      <p>Yes — this tool is built exactly for that. Enter the amount, select Indian format, and copy the result directly onto your cheque. Paise are automatically included when present.</p>
+    </details>
+    <details class="accordion">
+      <summary>Is my data safe?</summary>
+      <p>Completely. All conversion happens locally in your browser using JavaScript — no numbers are ever sent to our servers.</p>
+    </details>
+    <details class="accordion">
+      <summary>What's the difference between Indian and International format?</summary>
+      <p>Indian format uses Lakh and Crore (1,00,000 = One Lakh), commonly used in India, Bangladesh, Pakistan and Nepal. International format uses Thousand, Million, Billion — used in most other countries.</p>
+    </details>
+  </section>
+</div>
+
+<footer>
+  © 2026 EkZapp. All rights reserved. | <a href="/">More free tools</a>
+</footer>
+
+<script>
+let currentFormat = 'indian';
+
+function setFormat(fmt){
+  currentFormat = fmt;
+  document.getElementById('btnIndian').classList.toggle('active', fmt==='indian');
+  document.getElementById('btnIntl').classList.toggle('active', fmt==='intl');
+  convert();
+}
+
+function fillExample(val){
+  document.getElementById('numInput').value = val;
+  convert();
+}
+
+const ones = ['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten',
+  'Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'];
+const tens = ['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
+
+function twoDigits(n){
+  if(n < 20) return ones[n];
+  return tens[Math.floor(n/10)] + (n%10 ? ' ' + ones[n%10] : '');
+}
+
+function threeDigits(n){
+  let str = '';
+  if(n >= 100){
+    str += ones[Math.floor(n/100)] + ' Hundred';
+    n = n % 100;
+    if(n) str += ' ';
+  }
+  if(n > 0) str += twoDigits(n);
+  return str;
+}
+
+function numberToWordsIndian(num){
+  if(num === 0) return 'Zero';
+  let crore = Math.floor(num / 10000000); num %= 10000000;
+  let lakh = Math.floor(num / 100000); num %= 100000;
+  let thousand = Math.floor(num / 1000); num %= 1000;
+  let rest = num;
+  let parts = [];
+  if(crore) parts.push(threeDigits(crore) + ' Crore');
+  if(lakh) parts.push(threeDigits(lakh) + ' Lakh');
+  if(thousand) parts.push(threeDigits(thousand) + ' Thousand');
+  if(rest) parts.push(threeDigits(rest));
+  return parts.join(' ');
+}
+
+function numberToWordsIntl(num){
+  if(num === 0) return 'Zero';
+  let billion = Math.floor(num / 1000000000); num %= 1000000000;
+  let million = Math.floor(num / 1000000); num %= 1000000;
+  let thousand = Math.floor(num / 1000); num %= 1000;
+  let rest = num;
+  let parts = [];
+  if(billion) parts.push(threeDigits(billion) + ' Billion');
+  if(million) parts.push(threeDigits(million) + ' Million');
+  if(thousand) parts.push(threeDigits(thousand) + ' Thousand');
+  if(rest) parts.push(threeDigits(rest));
+  return parts.join(' ');
+}
+
+function convert(){
+  const raw = document.getElementById('numInput').value.trim();
+  const box = document.getElementById('resultBox');
+  if(!raw){ box.textContent = 'Rupees Zero Only'; return; }
+
+  const clean = raw.replace(/,/g,'');
+  const num = parseFloat(clean);
+  if(isNaN(num) || num < 0){ box.textContent = 'Please enter a valid positive number'; return; }
+  if(num > 999999999999) { box.textContent = 'Number too large'; return; }
+
+  const wholePart = Math.floor(num);
+  const decimalPart = Math.round((num - wholePart) * 100);
+
+  const converter = currentFormat === 'indian' ? numberToWordsIndian : numberToWordsIntl;
+  let words = converter(wholePart) + ' Rupees';
+  if(decimalPart > 0){
+    words += ' and ' + converter(decimalPart) + ' Paise';
+  }
+  words += ' Only';
+
+  box.textContent = words;
+}
+
+function copyResult(){
+  const text = document.getElementById('resultBox').textContent;
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn = document.querySelector('.copy-btn');
+    const old = btn.textContent;
+    btn.textContent = '✅ Copied!';
+    setTimeout(()=>{ btn.textContent = old; }, 1500);
+  });
+}
+
+document.getElementById('numInput').addEventListener('input', convert);
+convert();
+</script>
+
+</body>
+</html>

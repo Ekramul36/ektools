@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file, send_from_directory, redirect, Response
+from flask import Flask, render_template, request, send_file, send_from_directory, redirect, Response, jsonify, url_for
 from pypdf import PdfReader, PdfWriter
 import fitz
 import os
@@ -8,9 +8,11 @@ app = Flask(__name__)
 
 UPLOAD_FOLDER = "uploads"
 OUTPUT_FOLDER = "outputs"
+FAVICON_OUTPUT_DIR = os.path.join("static", "generated", "favicons")
 
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
+os.makedirs(FAVICON_OUTPUT_DIR, exist_ok=True)
 
 
 # ──────────────────────────────────────────
@@ -85,6 +87,9 @@ def sitemap():
         ('/meme-generator', '0.9', 'weekly'),
         ('/resume-builder', '0.9', 'weekly'),
         ('/add-page-numbers', '0.9', 'weekly'),
+        ('/amount-in-words', '0.9', 'weekly'),
+        ('/base64-url-encoder', '0.9', 'weekly'),
+        ('/favicon-generator', '0.9', 'weekly'),
         ('/blog', '0.8', 'weekly'),
         ('/blog/merge-pdf-files-online', '0.7', 'monthly'),
         ('/blog/reduce-image-size-to-kb', '0.7', 'monthly'),
@@ -822,6 +827,112 @@ def passport_photo_download():
     return redirect("/passport-photo")
 
 
+@app.route("/favicon-generator")
+def favicon_generator_page():
+    return render_template("favicon_generator.html")
+
+
+@app.route("/api/favicon-generator", methods=["POST"])
+def api_favicon_generator():
+    try:
+        from PIL import Image as PILImage
+        import uuid
+        import zipfile
+
+        if "image" not in request.files:
+            return jsonify({"error": "No image uploaded"}), 400
+
+        file = request.files["image"]
+        if file.filename == "":
+            return jsonify({"error": "No file selected"}), 400
+
+        try:
+            img = PILImage.open(file.stream).convert("RGBA")
+        except Exception:
+            return jsonify({"error": "Could not read image. Please upload a valid PNG/JPG/WEBP."}), 400
+
+        FAVICON_SIZES = {
+            "favicon-16x16.png": 16,
+            "favicon-32x32.png": 32,
+            "favicon-48x48.png": 48,
+            "apple-touch-icon.png": 180,
+            "android-chrome-192x192.png": 192,
+            "android-chrome-512x512.png": 512,
+        }
+
+        # Make it square by padding onto a transparent canvas (no cropping)
+        max_side = max(img.size)
+        square_img = PILImage.new("RGBA", (max_side, max_side), (0, 0, 0, 0))
+        square_img.paste(img, ((max_side - img.width) // 2, (max_side - img.height) // 2))
+
+        batch_id = uuid.uuid4().hex[:10]
+        batch_dir = os.path.join(FAVICON_OUTPUT_DIR, batch_id)
+        os.makedirs(batch_dir, exist_ok=True)
+
+        previews = []
+        png_paths = {}
+
+        for filename, size in FAVICON_SIZES.items():
+            resized = square_img.resize((size, size), PILImage.LANCZOS)
+            out_path = os.path.join(batch_dir, filename)
+            resized.save(out_path, "PNG")
+            png_paths[filename] = out_path
+            previews.append({
+                "url": url_for("static", filename=f"generated/favicons/{batch_id}/{filename}"),
+                "label": filename.replace(".png", "")
+            })
+
+        ico_path = os.path.join(batch_dir, "favicon.ico")
+        ico_source = square_img.resize((256, 256), PILImage.LANCZOS)
+        ico_source.save(ico_path, format="ICO", sizes=[(16, 16), (32, 32), (48, 48)])
+
+        manifest_content = """{
+  "name": "",
+  "short_name": "",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}"""
+        manifest_path = os.path.join(batch_dir, "site.webmanifest")
+        with open(manifest_path, "w") as f:
+            f.write(manifest_content)
+
+        zip_filename = f"favicon-package-{batch_id}.zip"
+        zip_path = os.path.join(batch_dir, zip_filename)
+        with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
+            zf.write(ico_path, "favicon.ico")
+            for filename, path in png_paths.items():
+                zf.write(path, filename)
+            zf.write(manifest_path, "site.webmanifest")
+
+        html_snippet = """<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+<link rel="manifest" href="/site.webmanifest">"""
+
+        return jsonify({
+            "previews": previews,
+            "zip_url": url_for("static", filename=f"generated/favicons/{batch_id}/{zip_filename}"),
+            "html_snippet": html_snippet
+        })
+    except Exception as e:
+        return jsonify({"error": f"Error: {str(e)}"}), 500
+
+
 # ──────────────────────────────────────────
 # CALCULATORS
 # ──────────────────────────────────────────
@@ -897,6 +1008,10 @@ def tip_calculator():
 @app.route("/tools/tip-calculator")
 def tip_calculator_old():
     return redirect("/tip-calculator")
+
+@app.route("/amount-in-words")
+def amount_in_words_page():
+    return render_template("amount_in_words.html")
 
 
 # ──────────────────────────────────────────
@@ -1091,6 +1206,10 @@ def json_formatter():
 @app.route("/color-picker")
 def color_picker():
     return render_template("color_picker.html")
+
+@app.route("/base64-url-encoder")
+def base64_url_encoder_page():
+    return render_template("base64_url_encoder.html")
 
 
 # ──────────────────────────────────────────
