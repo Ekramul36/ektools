@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Protect — Watermark & Password-Protect Your Photos | EkZapp</title>
+<meta name="description" content="Free online tool to watermark your images and lock them into a password-protected PDF. No signup, works instantly in your browser.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #2563EB;
+    --blue-dark: #1D4ED8;
+    --bg: #F5F8FF;
+    --card-bg: #FFFFFF;
+    --text: #1E293B;
+    --muted: #64748B;
+    --border: #E2E8F0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(180deg, #FFF9F0 0%, #F0F6FF 100%);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 40px 20px 80px; }
+
+  header.site-header {
+    display: flex; justify-content: space-between; align-items: center;
+    max-width: 1100px; margin: 0 auto; padding: 20px 20px;
+  }
+  .logo { font-weight: 800; font-size: 22px; color: var(--blue); text-decoration: none; }
+  header.site-header nav a {
+    color: var(--text); text-decoration: none; margin-left: 24px; font-weight: 500; font-size: 15px;
+  }
+
+  h1 { font-size: 32px; font-weight: 800; margin-bottom: 10px; text-align: center; }
+  .subtitle { text-align: center; color: var(--muted); margin-bottom: 36px; font-size: 16px; }
+
+  .card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 24px rgba(37, 99, 235, 0.08);
+    border: 1px solid var(--border);
+  }
+
+  .dropzone {
+    border: 2px dashed #B9CDF7;
+    border-radius: 12px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    background: #FAFCFF;
+  }
+  .dropzone.dragover { border-color: var(--blue); background: #EEF3FF; }
+  .dropzone p { color: var(--muted); margin-top: 8px; font-size: 14px; }
+  .dropzone strong { color: var(--blue); }
+  #fileInput { display: none; }
+
+  #previewWrap { display: none; text-align: center; margin-top: 20px; }
+  #previewImg { max-width: 100%; max-height: 280px; border-radius: 10px; border: 1px solid var(--border); }
+  #fileMeta { font-size: 13px; color: var(--muted); margin-top: 8px; }
+
+  .field { margin-top: 24px; }
+  label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 6px; }
+  .hint { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  input[type="text"], input[type="password"] {
+    width: 100%; padding: 12px 14px; border-radius: 10px;
+    border: 1px solid var(--border); font-size: 15px; font-family: inherit;
+    outline: none; transition: border-color 0.2s;
+  }
+  input[type="text"]:focus, input[type="password"]:focus { border-color: var(--blue); }
+
+  .submit-btn {
+    width: 100%; margin-top: 28px; padding: 14px;
+    background: var(--blue); color: white; font-weight: 700; font-size: 16px;
+    border: none; border-radius: 10px; cursor: pointer; transition: background 0.2s;
+  }
+  .submit-btn:hover { background: var(--blue-dark); }
+
+  .alert {
+    padding: 12px 16px; border-radius: 10px; margin-bottom: 20px; font-size: 14px;
+  }
+  .alert-error { background: #FEF2F2; color: #B91C1C; border: 1px solid #FECACA; }
+  .alert-success { background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0; }
+
+  .download-btn {
+    display: inline-block; margin-top: 12px; padding: 12px 24px;
+    background: #15803D; color: white; text-decoration: none;
+    font-weight: 700; border-radius: 10px; font-size: 15px;
+  }
+
+  .guide { margin-top: 48px; }
+  .guide h2 { font-size: 22px; margin-bottom: 16px; }
+  details {
+    border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; margin-bottom: 10px;
+    background: var(--card-bg);
+  }
+  summary { font-weight: 600; cursor: pointer; font-size: 15px; }
+  details p { margin-top: 10px; color: var(--muted); font-size: 14px; }
+
+  footer {
+    text-align: center; padding: 30px 20px; color: var(--muted); font-size: 13px;
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="logo">EkZapp</a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/blog">Blog</a>
+  </nav>
+</header>
+
+<div class="container">
+  <h1>🔒 Image Protect</h1>
+  <p class="subtitle">Add a watermark and lock your image into a password-protected PDF — free, no signup.</p>
+
+  <div class="card">
+
+    {% if error %}
+      <div class="alert alert-error">{{ error }}</div>
+    {% endif %}
+
+    {% if success %}
+      <div class="alert alert-success">
+        ✅ Your protected PDF is ready!
+        <br>
+        <a href="/download-protected-pdf" class="download-btn">Download Protected PDF</a>
+      </div>
+    {% endif %}
+
+    <form action="/image-protect" method="POST" enctype="multipart/form-data" id="protectForm">
+
+      <div class="dropzone" id="dropzone">
+        <div id="dropzoneText">
+          <p><strong>Click to upload</strong> or drag and drop your image here</p>
+          <p>JPG, PNG — up to 10MB</p>
+        </div>
+        <div id="previewWrap">
+          <img id="previewImg" src="" alt="Preview">
+          <div id="fileMeta"></div>
+        </div>
+        <input type="file" name="image" id="fileInput" accept="image/*" required>
+      </div>
+
+      <div class="field">
+        <label for="watermark_text">Watermark text (optional)</label>
+        <input type="text" name="watermark_text" id="watermark_text" placeholder="e.g. CONFIDENTIAL, © Your Name">
+        <div class="hint">Leave blank if you only want password protection without a visible watermark.</div>
+      </div>
+
+      <div class="field">
+        <label for="password">Set a password *</label>
+        <input type="password" name="password" id="password" placeholder="Enter a password to lock the PDF" required>
+        <div class="hint">Anyone opening the PDF will need this password. Don't lose it — we don't store it.</div>
+      </div>
+
+      <button type="submit" class="submit-btn">Protect Image</button>
+    </form>
+
+  </div>
+
+  <div class="guide">
+    <h2>How it works</h2>
+    <details open>
+      <summary>What does this tool do?</summary>
+      <p>It takes your image, optionally stamps a repeating watermark across it, then converts it into a PDF locked with the password you choose. Only someone with the password can open it.</p>
+    </details>
+    <details>
+      <summary>Is my image uploaded anywhere permanently?</summary>
+      <p>No. Your file is processed and the generated PDF is automatically deleted from our server after 24 hours.</p>
+    </details>
+    <details>
+      <summary>What if I forget the password?</summary>
+      <p>We don't store your password, so we can't recover it. Keep a copy somewhere safe before sharing the file.</p>
+    </details>
+    <details>
+      <summary>Can I use this for exam forms, ID proofs, or documents?</summary>
+      <p>Yes — it's a great way to share sensitive scanned documents or photos without them being freely copied or reused.</p>
+    </details>
+  </div>
+</div>
+
+<footer>
+  © EkZapp — Free online tools for everyday tasks
+</footer>
+
+<script>
+  const dropzone = document.getElementById('dropzone');
+  const fileInput = document.getElementById('fileInput');
+  const dropzoneText = document.getElementById('dropzoneText');
+  const previewWrap = document.getElementById('previewWrap');
+  const previewImg = document.getElementById('previewImg');
+  const fileMeta = document.getElementById('fileMeta');
+
+  dropzone.addEventListener('click', () => fileInput.click());
+
+  dropzone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    dropzone.classList.add('dragover');
+  });
+  dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+  dropzone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dropzone.classList.remove('dragover');
+    if (e.dataTransfer.files.length) {
+      fileInput.files = e.dataTransfer.files;
+      showPreview(fileInput.files[0]);
+    }
+  });
+
+  fileInput.addEventListener('change', () => {
+    if (fileInput.files.length) showPreview(fileInput.files[0]);
+  });
+
+  function showPreview(file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      previewImg.src = e.target.result;
+      const img = new Image();
+      img.onload = () => {
+        const kb = (file.size / 1024).toFixed(0);
+        fileMeta.textContent = `${file.name} — ${img.width}×${img.height} — ${kb} KB`;
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+    dropzoneText.style.display = 'none';
+    previewWrap.style.display = 'block';
+  }
+</script>
+
+</body>
+</html>

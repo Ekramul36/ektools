@@ -92,6 +92,7 @@ def sitemap():
         ('/image-size-reducer', '0.9', 'weekly'),
         ('/remove-background', '0.9', 'weekly'),
         ('/passport-photo', '0.9', 'weekly'),
+        ('/image-protect', '0.9', 'weekly'),
         ('/age-calculator', '0.9', 'weekly'),
         ('/bmi-calculator', '0.9', 'weekly'),
         ('/gst-calculator', '0.9', 'weekly'),
@@ -1009,6 +1010,83 @@ def api_favicon_generator():
         })
     except Exception as e:
         return jsonify({"error": f"Error: {str(e)}"}), 500
+
+
+@app.route("/image-protect", methods=["GET", "POST"])
+def image_protect():
+    """Watermark an image and lock it into a password-protected PDF."""
+    if request.method == "POST":
+        try:
+            from PIL import Image as PILImage, ImageDraw, ImageFont
+
+            img_file = request.files.get("image")
+            watermark_text = request.form.get("watermark_text", "").strip()
+            password = request.form.get("password", "").strip()
+
+            if not img_file or img_file.filename == "":
+                return render_template("image_protect.html", error="Please select an image.")
+            if not password:
+                return render_template("image_protect.html", error="Please set a password to protect the file.")
+
+            img = PILImage.open(img_file).convert("RGB")
+
+            # Apply a tiled diagonal watermark if the user provided text
+            if watermark_text:
+                img = img.convert("RGBA")
+                watermark_layer = PILImage.new("RGBA", img.size, (255, 255, 255, 0))
+                draw = ImageDraw.Draw(watermark_layer)
+
+                font_size = max(20, img.width // 18)
+                try:
+                    font = ImageFont.truetype("arial.ttf", font_size)
+                except Exception:
+                    font = ImageFont.load_default()
+
+                bbox = draw.textbbox((0, 0), watermark_text, font=font)
+                text_w = bbox[2] - bbox[0]
+                text_h = bbox[3] - bbox[1]
+                step_x = text_w + 120
+                step_y = text_h + 120
+
+                for y in range(-img.height, img.height * 2, step_y):
+                    for x in range(-img.width, img.width * 2, step_x):
+                        draw.text((x, y), watermark_text, font=font, fill=(255, 255, 255, 110))
+
+                watermark_layer = watermark_layer.rotate(30, expand=0)
+                img = PILImage.alpha_composite(img, watermark_layer).convert("RGB")
+
+            # Convert the (watermarked) image to a PDF
+            unprotected_path = os.path.join(UPLOAD_FOLDER, f"{uuid.uuid4().hex[:8]}_to_protect.pdf")
+            img.save(unprotected_path, "PDF", resolution=150.0)
+
+            # Password-protect the PDF
+            reader = PdfReader(unprotected_path)
+            writer = PdfWriter()
+            for page in reader.pages:
+                writer.add_page(page)
+            writer.encrypt(password)
+
+            output_filename = unique_name("Protected_Image", "pdf")
+            output_path = os.path.join(OUTPUT_FOLDER, output_filename)
+            with open(output_path, "wb") as f:
+                writer.write(f)
+
+            session["protected_image_file"] = output_filename
+            return render_template("image_protect.html", success=True)
+        except Exception as e:
+            return render_template("image_protect.html", error=f"Error: {str(e)}")
+    return render_template("image_protect.html")
+
+
+@app.route("/image-protect/download")
+def image_protect_download():
+    output_filename = session.get("protected_image_file")
+    if not output_filename:
+        return redirect("/image-protect")
+    output_path = os.path.join(OUTPUT_FOLDER, output_filename)
+    if os.path.exists(output_path):
+        return send_file(output_path, as_attachment=True, download_name="Protected_Image.pdf")
+    return redirect("/image-protect")
 
 
 # ──────────────────────────────────────────
