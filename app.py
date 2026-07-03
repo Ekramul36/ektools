@@ -133,6 +133,7 @@ def sitemap():
         ('/blog/reduce-image-size-to-kb', '0.7', 'monthly'),
         ('/blog/compress-pdf-to-100kb-for-exam-form', '0.7', 'monthly'),
         ('/blog/amount-in-words-for-cheque-gst-invoice', '0.7', 'monthly'),
+        ('/blog/sign-pdf-online-free', '0.7', 'monthly'),
     ]
     today = datetime.date.today().isoformat()
     xml = ['<?xml version="1.0" encoding="UTF-8"?>',
@@ -1836,6 +1837,13 @@ BLOG_POSTS = [
         "category": "Business Tools",
         "date": "July 3, 2026"
     },
+    {
+        "slug": "sign-pdf-online-free",
+        "title": "How to Sign a PDF Online for Free (No Printing, No Signup)",
+        "excerpt": "Sign a PDF online in seconds — draw or type your signature and place it anywhere on the document. Free, no printing, no signup.",
+        "category": "PDF Tools",
+        "date": "July 3, 2026"
+    },
     # Add more posts here as dicts, e.g.:
     # {
     #     "slug": "compress-pdf-guide",
@@ -1865,6 +1873,10 @@ def blog_compress_pdf_exam_form():
 @app.route("/blog/amount-in-words-for-cheque-gst-invoice")
 def blog_amount_in_words():
     return render_template("blog_post_amount_in_words.html")
+
+@app.route("/blog/sign-pdf-online-free")
+def blog_sign_pdf():
+    return render_template("blog_post_sign_pdf.html")
 
 # NOTE: as you add more blog posts, add a matching @app.route("/blog/<slug>")
 # function for each new HTML file, the same way as blog_merge_pdf() above.
