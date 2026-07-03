@@ -85,6 +85,12 @@ def sitemap():
         ('/pdf-to-excel', '0.9', 'weekly'),
         ('/ocr', '0.9', 'weekly'),
         ('/pdf-editor', '0.9', 'weekly'),
+        ('/crop-pdf', '0.9', 'weekly'),
+        ('/extract-images', '0.9', 'weekly'),
+        ('/pdf-page-reorder', '0.9', 'weekly'),
+        ('/repair-pdf', '0.9', 'weekly'),
+        ('/sign-pdf', '0.9', 'weekly'),
+        ('/pdf-to-ppt', '0.9', 'weekly'),
         ('/image-to-pdf', '0.9', 'weekly'),
         ('/compress-image', '0.9', 'weekly'),
         ('/resize-image', '0.9', 'weekly'),
@@ -560,6 +566,280 @@ def ocr_tool():
 @app.route("/pdf-editor")
 def pdf_editor():
     return render_template("pdf_editor.html")
+
+
+# ──────────────────────────────────────────
+# NEW PDF TOOLS — Crop, Extract Images, Page Reorder, Repair, Sign, PDF to PPT
+# ──────────────────────────────────────────
+
+@app.route("/crop-pdf", methods=["GET", "POST"])
+def crop_pdf():
+    if request.method == "POST":
+        try:
+            pdf = request.files.get("pdf")
+            top = float(request.form.get("crop_top", 0) or 0)
+            bottom = float(request.form.get("crop_bottom", 0) or 0)
+            left = float(request.form.get("crop_left", 0) or 0)
+            right = float(request.form.get("crop_right", 0) or 0)
+            if not pdf or pdf.filename == "":
+                return render_template("crop_pdf.html", error="Please select a PDF file.")
+            input_path = os.path.join(UPLOAD_FOLDER, f"{uuid.uuid4().hex[:8]}_{pdf.filename}")
+            output_path = os.path.join(OUTPUT_FOLDER, unique_name("Cropped", "pdf"))
+            pdf.save(input_path)
+            mm_to_pt = 2.8346
+            doc = fitz.open(input_path)
+            for page in doc:
+                r = page.rect
+                new_rect = fitz.Rect(
+                    r.x0 + left * mm_to_pt,
+                    r.y0 + top * mm_to_pt,
+                    r.x1 - right * mm_to_pt,
+                    r.y1 - bottom * mm_to_pt
+                )
+                if new_rect.width > 10 and new_rect.height > 10:
+                    page.set_cropbox(new_rect)
+            doc.save(output_path)
+            doc.close()
+            return send_file(output_path, as_attachment=True, download_name="Cropped_" + pdf.filename)
+        except Exception as e:
+            return render_template("crop_pdf.html", error=f"Error: {str(e)}")
+    return render_template("crop_pdf.html")
+
+
+@app.route("/extract-images", methods=["GET", "POST"])
+def extract_images():
+    import zipfile
+    if request.method == "POST":
+        try:
+            pdf = request.files.get("pdf")
+            if not pdf or pdf.filename == "":
+                return render_template("extract_images.html", error="Please select a PDF file.")
+            batch_id = uuid.uuid4().hex[:8]
+            input_path = os.path.join(UPLOAD_FOLDER, f"{batch_id}_{pdf.filename}")
+            pdf.save(input_path)
+            doc = fitz.open(input_path)
+            count = 0
+            zip_path = os.path.join(OUTPUT_FOLDER, f"{batch_id}_Extracted_Images.zip")
+            with zipfile.ZipFile(zip_path, 'w') as zipf:
+                for page_index in range(len(doc)):
+                    page = doc[page_index]
+                    images = page.get_images(full=True)
+                    for img_index, img in enumerate(images):
+                        xref = img[0]
+                        base_image = doc.extract_image(xref)
+                        image_bytes = base_image["image"]
+                        ext = base_image["ext"]
+                        count += 1
+                        img_filename = f"page{page_index+1}_image{img_index+1}.{ext}"
+                        img_path = os.path.join(OUTPUT_FOLDER, f"{batch_id}_{img_filename}")
+                        with open(img_path, "wb") as f:
+                            f.write(image_bytes)
+                        zipf.write(img_path, img_filename)
+                        os.remove(img_path)
+            doc.close()
+            if count == 0:
+                return render_template("extract_images.html", error="No images found in this PDF.")
+            return send_file(zip_path, as_attachment=True, download_name="Extracted_Images.zip")
+        except Exception as e:
+            return render_template("extract_images.html", error=f"Error: {str(e)}")
+    return render_template("extract_images.html")
+
+
+@app.route("/pdf-page-reorder", methods=["GET"])
+def pdf_page_reorder():
+    return render_template("pdf_page_reorder.html")
+
+
+@app.route("/pdf-page-reorder/upload", methods=["POST"])
+def pdf_page_reorder_upload():
+    try:
+        pdf = request.files.get("pdf")
+        if not pdf or pdf.filename == "":
+            return jsonify({"error": "Please select a PDF file."}), 400
+        token = uuid.uuid4().hex
+        input_path = os.path.join(UPLOAD_FOLDER, f"reorder_{token}.pdf")
+        pdf.save(input_path)
+        reader = PdfReader(input_path)
+        num_pages = len(reader.pages)
+        return jsonify({"token": token, "num_pages": num_pages, "filename": pdf.filename})
+    except Exception as e:
+        return jsonify({"error": f"Error: {str(e)}"}), 500
+
+
+@app.route("/pdf-page-reorder/apply", methods=["POST"])
+def pdf_page_reorder_apply():
+    try:
+        token = request.form.get("token", "")
+        order = request.form.get("order", "")
+        input_path = os.path.join(UPLOAD_FOLDER, f"reorder_{token}.pdf")
+        if not token or not os.path.exists(input_path):
+            return render_template("pdf_page_reorder.html", error="Your session expired. Please upload the PDF again.")
+        order_list = [int(x.strip()) - 1 for x in order.split(",") if x.strip() != ""]
+        reader = PdfReader(input_path)
+        writer = PdfWriter()
+        for idx in order_list:
+            if 0 <= idx < len(reader.pages):
+                writer.add_page(reader.pages[idx])
+        if len(writer.pages) == 0:
+            return render_template("pdf_page_reorder.html", error="Something went wrong with the page order. Please try again.")
+        output_path = os.path.join(OUTPUT_FOLDER, unique_name("Reordered", "pdf"))
+        with open(output_path, "wb") as f:
+            writer.write(f)
+        try:
+            os.remove(input_path)
+        except Exception:
+            pass
+        return send_file(output_path, as_attachment=True, download_name="Reordered.pdf")
+    except Exception as e:
+        return render_template("pdf_page_reorder.html", error=f"Error: {str(e)}")
+
+
+@app.route("/repair-pdf", methods=["GET", "POST"])
+def repair_pdf():
+    if request.method == "POST":
+        try:
+            pdf = request.files.get("pdf")
+            if not pdf or pdf.filename == "":
+                return render_template("repair_pdf.html", error="Please select a PDF file.")
+            input_path = os.path.join(UPLOAD_FOLDER, f"{uuid.uuid4().hex[:8]}_{pdf.filename}")
+            output_path = os.path.join(OUTPUT_FOLDER, unique_name("Repaired", "pdf"))
+            pdf.save(input_path)
+            recovered_pages = 0
+            try:
+                doc = fitz.open(input_path)
+                recovered_pages = len(doc)
+                doc.save(output_path, garbage=4, deflate=True, clean=True)
+                doc.close()
+            except Exception:
+                reader = PdfReader(input_path, strict=False)
+                writer = PdfWriter()
+                for page in reader.pages:
+                    writer.add_page(page)
+                recovered_pages = len(writer.pages)
+                with open(output_path, "wb") as f:
+                    writer.write(f)
+            if recovered_pages == 0:
+                return render_template("repair_pdf.html", error="Could not recover any pages from this PDF. The file may be too severely damaged.")
+            return send_file(output_path, as_attachment=True, download_name="Repaired_" + pdf.filename)
+        except Exception as e:
+            return render_template("repair_pdf.html", error=f"This PDF appears too damaged to repair automatically. Error: {str(e)}")
+    return render_template("repair_pdf.html")
+
+
+@app.route("/sign-pdf", methods=["GET", "POST"])
+def sign_pdf():
+    if request.method == "POST":
+        try:
+            import base64
+            from PIL import Image as PILImage
+
+            pdf = request.files.get("pdf")
+            signature_data = request.form.get("signature_data", "")
+            page_choice = request.form.get("page_choice", "last")
+            position = request.form.get("position", "bottom-right")
+            sig_width_pct = float(request.form.get("sig_width", 25) or 25)
+
+            if not pdf or pdf.filename == "":
+                return render_template("sign_pdf.html", error="Please select a PDF file.")
+            if not signature_data or "," not in signature_data:
+                return render_template("sign_pdf.html", error="Please draw or type your signature first.")
+
+            sig_bytes = base64.b64decode(signature_data.split(",")[1])
+            sig_path = os.path.join(UPLOAD_FOLDER, f"{uuid.uuid4().hex[:8]}_sig.png")
+            with open(sig_path, "wb") as f:
+                f.write(sig_bytes)
+
+            input_path = os.path.join(UPLOAD_FOLDER, f"{uuid.uuid4().hex[:8]}_{pdf.filename}")
+            output_path = os.path.join(OUTPUT_FOLDER, unique_name("Signed", "pdf"))
+            pdf.save(input_path)
+
+            doc = fitz.open(input_path)
+            total = len(doc)
+
+            if page_choice == "first":
+                target_pages = [0]
+            elif page_choice == "all":
+                target_pages = list(range(total))
+            else:
+                target_pages = [total - 1]
+
+            sig_pil = PILImage.open(sig_path)
+            sig_ratio = sig_pil.height / sig_pil.width
+            margin = 24
+
+            for i in target_pages:
+                page = doc[i]
+                r = page.rect
+                sig_w = r.width * (sig_width_pct / 100)
+                sig_h = sig_w * sig_ratio
+
+                if position == "bottom-left":
+                    rect = fitz.Rect(margin, r.height - margin - sig_h, margin + sig_w, r.height - margin)
+                elif position == "top-left":
+                    rect = fitz.Rect(margin, margin, margin + sig_w, margin + sig_h)
+                elif position == "top-right":
+                    rect = fitz.Rect(r.width - margin - sig_w, margin, r.width - margin, margin + sig_h)
+                elif position == "center":
+                    rect = fitz.Rect(r.width/2 - sig_w/2, r.height/2 - sig_h/2, r.width/2 + sig_w/2, r.height/2 + sig_h/2)
+                else:
+                    rect = fitz.Rect(r.width - margin - sig_w, r.height - margin - sig_h, r.width - margin, r.height - margin)
+
+                page.insert_image(rect, filename=sig_path)
+
+            doc.save(output_path)
+            doc.close()
+            try:
+                os.remove(sig_path)
+            except Exception:
+                pass
+            return send_file(output_path, as_attachment=True, download_name="Signed_" + pdf.filename)
+        except Exception as e:
+            return render_template("sign_pdf.html", error=f"Error: {str(e)}")
+    return render_template("sign_pdf.html")
+
+
+@app.route("/pdf-to-ppt", methods=["GET", "POST"])
+def pdf_to_ppt():
+    if request.method == "POST":
+        try:
+            from pptx import Presentation
+            from pptx.util import Emu
+
+            pdf = request.files.get("pdf")
+            if not pdf or pdf.filename == "":
+                return render_template("pdf_to_ppt.html", error="Please select a PDF file.")
+
+            batch_id = uuid.uuid4().hex[:8]
+            input_path = os.path.join(UPLOAD_FOLDER, f"{batch_id}_{pdf.filename}")
+            pdf.save(input_path)
+
+            doc = fitz.open(input_path)
+            if len(doc) == 0:
+                return render_template("pdf_to_ppt.html", error="This PDF has no pages.")
+
+            prs = Presentation()
+            first_page = doc[0]
+            emu_per_pt = 12700
+            prs.slide_width = Emu(int(first_page.rect.width * emu_per_pt))
+            prs.slide_height = Emu(int(first_page.rect.height * emu_per_pt))
+            blank_layout = prs.slide_layouts[6]
+
+            for i, page in enumerate(doc):
+                mat = fitz.Matrix(2, 2)
+                pix = page.get_pixmap(matrix=mat)
+                img_path = os.path.join(UPLOAD_FOLDER, f"{batch_id}_slide_{i+1}.png")
+                pix.save(img_path)
+                slide = prs.slides.add_slide(blank_layout)
+                slide.shapes.add_picture(img_path, 0, 0, width=prs.slide_width, height=prs.slide_height)
+                os.remove(img_path)
+
+            doc.close()
+            output_path = os.path.join(OUTPUT_FOLDER, unique_name("Converted", "pptx"))
+            prs.save(output_path)
+            return send_file(output_path, as_attachment=True, download_name="Converted.pptx")
+        except Exception as e:
+            return render_template("pdf_to_ppt.html", error=f"Error: {str(e)}")
+    return render_template("pdf_to_ppt.html")
 
 
 # ──────────────────────────────────────────
