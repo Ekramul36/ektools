@@ -763,7 +763,7 @@ function getUniqueTools(){
 const allTools=getUniqueTools();
 
 function doSearch(query){
-  const q=query.trim().toLowerCase();
+  const q=query.trim().toLowerCase().replace(/[-_]+/g,' ').replace(/\s+/g,' ').trim();
   if(!q){
     searchResultsSection.style.display='none';
     toolsBg.style.display='block';
