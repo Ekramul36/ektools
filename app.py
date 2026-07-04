@@ -871,7 +871,7 @@ def image_to_pdf():
 
 @app.route("/image", methods=["GET", "POST"])
 def image():
-    return redirect("/image-to-pdf")
+    return redirect("/image-to-pdf", code=301)
 
 
 @app.route("/compress-image", methods=["GET", "POST"])
@@ -933,7 +933,7 @@ def compress_image():
 
 @app.route("/image/compress", methods=["GET", "POST"])
 def image_compress_old():
-    return redirect("/compress-image")
+    return redirect("/compress-image", code=301)
 
 
 @app.route("/resize-image", methods=["GET", "POST"])
@@ -967,7 +967,7 @@ def resize_image():
 
 @app.route("/image/resize", methods=["GET", "POST"])
 def image_resize_old():
-    return redirect("/resize-image")
+    return redirect("/resize-image", code=301)
 
 
 @app.route("/convert-image", methods=["GET", "POST"])
@@ -994,7 +994,7 @@ def convert_image():
 
 @app.route("/image/convert", methods=["GET", "POST"])
 def image_convert_old():
-    return redirect("/convert-image")
+    return redirect("/convert-image", code=301)
 
 
 @app.route("/image-size-reducer", methods=["GET", "POST"])
@@ -1380,7 +1380,7 @@ def age_calculator():
 
 @app.route("/calculators/age")
 def age_calculator_old():
-    return redirect("/age-calculator")
+    return redirect("/age-calculator", code=301)
 
 @app.route("/bmi-calculator")
 def bmi_calculator():
@@ -1388,7 +1388,7 @@ def bmi_calculator():
 
 @app.route("/calculators/bmi")
 def bmi_calculator_old():
-    return redirect("/bmi-calculator")
+    return redirect("/bmi-calculator", code=301)
 
 @app.route("/gst-calculator")
 def gst_calculator():
@@ -1396,7 +1396,7 @@ def gst_calculator():
 
 @app.route("/calculators/gst")
 def gst_calculator_old():
-    return redirect("/gst-calculator")
+    return redirect("/gst-calculator", code=301)
 
 @app.route("/emi-calculator")
 def emi_calculator():
@@ -1404,7 +1404,7 @@ def emi_calculator():
 
 @app.route("/calculators/emi")
 def emi_calculator_old():
-    return redirect("/emi-calculator")
+    return redirect("/emi-calculator", code=301)
 
 @app.route("/percentage-calculator")
 def percentage_calculator():
@@ -1412,7 +1412,7 @@ def percentage_calculator():
 
 @app.route("/calculators/percentage")
 def percentage_calculator_old():
-    return redirect("/percentage-calculator")
+    return redirect("/percentage-calculator", code=301)
 
 @app.route("/sip-calculator")
 def sip_calculator():
@@ -1420,7 +1420,7 @@ def sip_calculator():
 
 @app.route("/calculators/sip")
 def sip_calculator_old():
-    return redirect("/sip-calculator")
+    return redirect("/sip-calculator", code=301)
 
 @app.route("/date-calculator")
 def date_calculator():
@@ -1428,7 +1428,7 @@ def date_calculator():
 
 @app.route("/calculators/date")
 def date_calculator_old():
-    return redirect("/date-calculator")
+    return redirect("/date-calculator", code=301)
 
 @app.route("/calorie-calculator")
 def calorie_calculator():
@@ -1436,7 +1436,7 @@ def calorie_calculator():
 
 @app.route("/calculators/calorie")
 def calorie_calculator_old():
-    return redirect("/calorie-calculator")
+    return redirect("/calorie-calculator", code=301)
 
 @app.route("/tip-calculator")
 def tip_calculator():
@@ -1444,7 +1444,7 @@ def tip_calculator():
 
 @app.route("/tools/tip-calculator")
 def tip_calculator_old():
-    return redirect("/tip-calculator")
+    return redirect("/tip-calculator", code=301)
 
 @app.route("/amount-in-words")
 def amount_in_words_page():
@@ -1461,7 +1461,7 @@ def word_counter():
 
 @app.route("/tools/word-counter")
 def word_counter_old():
-    return redirect("/word-counter")
+    return redirect("/word-counter", code=301)
 
 @app.route("/case-converter")
 def case_converter():
@@ -1469,7 +1469,7 @@ def case_converter():
 
 @app.route("/tools/case-converter")
 def case_converter_old():
-    return redirect("/case-converter")
+    return redirect("/case-converter", code=301)
 
 @app.route("/mb-converter")
 def mb_converter():
@@ -1477,7 +1477,7 @@ def mb_converter():
 
 @app.route("/tools/mb-converter")
 def mb_converter_old():
-    return redirect("/mb-converter")
+    return redirect("/mb-converter", code=301)
 
 @app.route("/lorem-ipsum")
 def lorem_generator():
@@ -1485,7 +1485,7 @@ def lorem_generator():
 
 @app.route("/tools/lorem")
 def lorem_generator_old():
-    return redirect("/lorem-ipsum")
+    return redirect("/lorem-ipsum", code=301)
 
 @app.route("/qr-generator")
 def qr_generator():
@@ -1493,7 +1493,7 @@ def qr_generator():
 
 @app.route("/tools/qr-generator")
 def qr_generator_old():
-    return redirect("/qr-generator")
+    return redirect("/qr-generator", code=301)
 
 @app.route("/password-generator")
 def password_generator():
@@ -1501,7 +1501,7 @@ def password_generator():
 
 @app.route("/tools/password-generator")
 def password_generator_old():
-    return redirect("/password-generator")
+    return redirect("/password-generator", code=301)
 
 @app.route("/currency-converter")
 def currency_converter():
@@ -1509,7 +1509,7 @@ def currency_converter():
 
 @app.route("/tools/currency-converter")
 def currency_converter_old():
-    return redirect("/currency-converter")
+    return redirect("/currency-converter", code=301)
 
 @app.route("/unit-converter")
 def unit_converter():
@@ -1517,7 +1517,7 @@ def unit_converter():
 
 @app.route("/tools/unit-converter")
 def unit_converter_old():
-    return redirect("/unit-converter")
+    return redirect("/unit-converter", code=301)
 
 
 # ──────────────────────────────────────────
