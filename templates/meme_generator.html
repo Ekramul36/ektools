@@ -11,8 +11,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Free Meme Generator Online – No Watermark | EkZapp</title>
-<meta name="description" content="Create memes online free with EkZapp's Meme Generator. Add custom text to any image, no watermark, no signup. Download instantly in seconds.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="description" content="Create memes online free with EkZapp's Meme Generator. Drag text anywhere, add stickers, filters, custom fonts & colors. No watermark, no signup.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Anton&family=Oswald:wght@600;700&family=Bangers&family=Permanent+Marker&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626}
@@ -28,12 +28,12 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .nav-links a:hover,.nav-links a.active{background:var(--blue-lt);color:var(--blue)}
 .back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
 .back:hover{border-color:var(--blue);color:var(--blue)}
-.container{max-width:640px;margin:48px auto;padding:0 20px 60px}
+.container{max-width:720px;margin:48px auto;padding:0 20px 60px}
 .tool-header{text-align:center;margin-bottom:32px}
 .tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:#FEF9C3;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
 .tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
 .tool-header p{color:var(--gray);font-size:14px}
-.intro-copy{max-width:640px;margin:0 auto 32px;padding:0 4px;color:var(--gray);font-size:13.5px;line-height:1.7;text-align:left}
+.intro-copy{max-width:720px;margin:0 auto 32px;padding:0 4px;color:var(--gray);font-size:13.5px;line-height:1.7;text-align:left}
 .card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
 .drop-area{border:2px dashed var(--border);border-radius:10px;padding:30px 20px;text-align:center;background:var(--light);cursor:pointer;position:relative;margin-bottom:16px}
 .drop-area:hover{border-color:var(--blue);background:var(--blue-lt)}
@@ -41,13 +41,32 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .drop-icon{font-size:2rem;margin-bottom:6px}
 .drop-area h3{font-size:14px;font-weight:600}
 .canvas-wrap{display:none;text-align:center;margin-bottom:16px}
-#memeCanvas{max-width:100%;border-radius:10px;border:1px solid var(--border)}
+#memeCanvas{max-width:100%;border-radius:10px;border:1px solid var(--border);cursor:grab;touch-action:none}
+.toolbar{display:none;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.toolbar.show{display:flex}
+.tb-btn{padding:8px 14px;border-radius:8px;border:1.5px solid var(--border);background:var(--light);font-size:12.5px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;white-space:nowrap}
+.tb-btn:hover{border-color:var(--blue);color:var(--blue)}
+.tb-btn.active{background:var(--blue);color:white;border-color:var(--blue)}
+.section-label{font-size:11px;font-weight:700;color:var(--blue);letter-spacing:.06em;text-transform:uppercase;margin:18px 0 8px;display:none}
+.section-label.show{display:block}
+.sticker-row{display:none;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.sticker-row.show{display:flex}
+.sticker-btn{width:40px;height:40px;border-radius:8px;border:1.5px solid var(--border);background:var(--light);font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.sticker-btn:hover{border-color:var(--blue);background:var(--blue-lt)}
+.obj-list{display:none;flex-direction:column;gap:10px;margin-bottom:14px}
+.obj-list.show{display:flex}
+.obj-card{border:1.5px solid var(--border);border-radius:10px;padding:12px;background:var(--light)}
+.obj-card-top{display:flex;gap:8px;margin-bottom:8px}
+.obj-card-top input[type=text]{flex:1;padding:9px 12px;border:1.5px solid var(--border);border-radius:7px;font-size:13px;font-family:'Inter',sans-serif}
+.obj-card-top input[type=text]:focus{outline:none;border-color:var(--blue)}
+.obj-del{background:none;border:none;color:var(--red);cursor:pointer;font-size:16px;padding:0 8px}
+.obj-controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.obj-controls select{padding:6px 8px;border:1.5px solid var(--border);border-radius:6px;font-size:11.5px;font-family:'Inter',sans-serif;background:white}
+.obj-controls input[type=range]{width:70px}
+.obj-controls input[type=color]{width:28px;height:28px;border:1.5px solid var(--border);border-radius:6px;cursor:pointer;padding:0}
+.obj-controls label{font-size:10.5px;color:var(--gray);font-weight:600}
 .field{margin-bottom:12px}
 .field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
-.field input[type=text]{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;text-transform:uppercase}
-.field input[type=text]:focus{outline:none;border-color:var(--blue)}
-.controls-row{display:flex;gap:10px}
-.controls-row .field{flex:1}
 .btn-row{display:flex;gap:10px;margin-top:16px}
 .btn{flex:1;padding:13px;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif}
 .btn-primary{background:var(--blue);color:white}
@@ -77,7 +96,7 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .tool-mini span{font-size:13px;font-weight:600}
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Meme Generator","url":"https://ekzapp.com/meme-generator","description":"Create memes online for free by adding top and bottom text to any image.","applicationCategory":"UtilityApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+{"@context":"https://schema.org","@type":"WebApplication","name":"Meme Generator","url":"https://ekzapp.com/meme-generator","description":"Create memes online for free with draggable text, stickers, filters and custom fonts.","applicationCategory":"UtilityApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
 </script>
 <script type="application/ld+json">
 {
@@ -102,10 +121,18 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
     },
     {
       "@type": "Question",
-      "name": "What image formats can I upload?",
+      "name": "Can I move the text anywhere on the image?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "JPG, PNG, and WebP images are all supported."
+        "text": "Yes, you can add multiple text boxes and drag each one to any position on the image."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I change the font and color?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, each text box has its own font family, size, text color and outline color that you can customize."
       }
     },
     {
@@ -113,15 +140,7 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
       "name": "Is it free?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, 100% free with unlimited use."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need to sign up to make a meme?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No account is needed. Upload, edit, and download — all without registration."
+        "text": "Yes, 100% free with unlimited use, including all filters and stickers."
       }
     }
   ]
@@ -135,7 +154,7 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
     <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
     <ul class="nav-links">
       <li><a href="/meme-generator" class="active">Meme Generator</a></li>
-      <li><a href="/image/compress">Compress Image</a></li>
+      <li><a href="/compress-image">Compress Image</a></li>
       <li><a href="/qr-generator">QR Code</a></li>
     </ul>
     <a class="back" href="/">← All Tools</a>
@@ -146,11 +165,11 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
   <div class="tool-header">
     <div class="tool-icon-wrap">😂</div>
     <h1>Free Meme Generator – Create Memes Online Instantly</h1>
-    <p>Add top & bottom text to any image and download instantly</p>
+    <p>Drag text anywhere, add stickers & filters, download instantly</p>
   </div>
 
   <p class="intro-copy">
-    Turn any image into a viral-worthy meme in seconds with EkZapp's free Meme Generator. Upload your own picture, add your custom top and bottom text, adjust the caption, and download your meme instantly — with zero watermark and no signup required. Whether you're making memes for social media, group chats, or just for fun, our tool keeps things quick and simple: no complicated editors, no account creation, no waiting for processing. Everything runs directly in your browser, so your image is never uploaded to a server, and it works smoothly on both mobile and desktop.
+    Turn any image into a viral-worthy meme with EkZapp's free Meme Generator. Upload your own picture, add as many text boxes as you like and drag each one exactly where you want it, pick your own font, color and outline, apply a filter, and drop in a sticker or two — then download with zero watermark and no signup required. Everything runs directly in your browser, so your image is never uploaded to a server, and it works smoothly on both mobile and desktop.
   </p>
 
   <div class="card">
@@ -164,19 +183,49 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
       <canvas id="memeCanvas"></canvas>
     </div>
 
-    <div class="controls-row">
-      <div class="field">
-        <label>Top Text</label>
-        <input type="text" id="topText" placeholder="TOP TEXT" oninput="renderMeme()">
-      </div>
-      <div class="field">
-        <label>Bottom Text</label>
-        <input type="text" id="bottomText" placeholder="BOTTOM TEXT" oninput="renderMeme()">
-      </div>
+    <!-- Main action toolbar -->
+    <div class="toolbar" id="mainToolbar">
+      <button class="tb-btn" onclick="addTextObject()">➕ Add Text</button>
+      <button class="tb-btn" id="stickerToggleBtn" onclick="toggleStickerRow()">😀 Stickers</button>
+      <button class="tb-btn" onclick="resetTool()">🔄 New Image</button>
     </div>
 
-    <div class="btn-row">
-      <button class="btn btn-secondary" onclick="resetTool()">🔄 New Image</button>
+    <!-- Sticker palette -->
+    <div class="sticker-row" id="stickerRow">
+      <button class="sticker-btn" onclick="addSticker('😂')">😂</button>
+      <button class="sticker-btn" onclick="addSticker('😎')">😎</button>
+      <button class="sticker-btn" onclick="addSticker('🔥')">🔥</button>
+      <button class="sticker-btn" onclick="addSticker('💯')">💯</button>
+      <button class="sticker-btn" onclick="addSticker('👍')">👍</button>
+      <button class="sticker-btn" onclick="addSticker('😭')">😭</button>
+      <button class="sticker-btn" onclick="addSticker('🤣')">🤣</button>
+      <button class="sticker-btn" onclick="addSticker('💀')">💀</button>
+      <button class="sticker-btn" onclick="addSticker('❤️')">❤️</button>
+      <button class="sticker-btn" onclick="addSticker('👀')">👀</button>
+      <button class="sticker-btn" onclick="addSticker('🕶️')">🕶️</button>
+      <button class="sticker-btn" onclick="addSticker('💬')">💬</button>
+    </div>
+
+    <!-- Filters -->
+    <div class="section-label" id="filterLabel">Filters</div>
+    <div class="toolbar" id="filterToolbar">
+      <button class="tb-btn active" data-filter="none" onclick="setFilter('none')">Normal</button>
+      <button class="tb-btn" data-filter="grayscale" onclick="setFilter('grayscale')">Grayscale</button>
+      <button class="tb-btn" data-filter="sepia" onclick="setFilter('sepia')">Sepia</button>
+      <button class="tb-btn" data-filter="bright" onclick="setFilter('bright')">Bright</button>
+      <button class="tb-btn" data-filter="dark" onclick="setFilter('dark')">Dark</button>
+      <button class="tb-btn" data-filter="invert" onclick="setFilter('invert')">Invert</button>
+    </div>
+
+    <!-- Text object list -->
+    <div class="section-label" id="textLabel">Text Boxes (drag on image to move)</div>
+    <div class="obj-list" id="textObjList"></div>
+
+    <!-- Sticker object list -->
+    <div class="section-label" id="stickerLabel">Stickers (drag on image to move)</div>
+    <div class="obj-list" id="stickerObjList"></div>
+
+    <div class="btn-row" id="downloadRow" style="display:none">
       <button class="btn btn-primary" onclick="downloadMeme()">⬇️ Download Meme</button>
     </div>
 
@@ -196,7 +245,7 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
       </div>
       <div class="step">
         <div class="step-num">2</div>
-        <div class="step-body"><h3>Add Your Text</h3><p>Type your top and bottom captions — they'll appear in classic bold white meme text with a black outline, automatically.</p></div>
+        <div class="step-body"><h3>Add Text, Stickers & Filters</h3><p>Click "Add Text" to drop in a text box, drag it anywhere on the image, and customize its font, size and colors. Add stickers or a filter too.</p></div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
@@ -207,16 +256,16 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
       <h2>❓ Frequently Asked Questions</h2>
       <div class="faq-item"><div class="faq-q">Is my image uploaded to a server?</div><div class="faq-a">No. Everything is processed directly in your browser using canvas — your image never leaves your device.</div></div>
       <div class="faq-item"><div class="faq-q">Does the meme have a watermark?</div><div class="faq-a">No watermark is added. Your downloaded meme is clean and ready to share.</div></div>
-      <div class="faq-item"><div class="faq-q">What image formats can I upload?</div><div class="faq-a">JPG, PNG, and WebP images are all supported.</div></div>
-      <div class="faq-item"><div class="faq-q">Is it free?</div><div class="faq-a">Yes, 100% free with unlimited use.</div></div>
-      <div class="faq-item"><div class="faq-q">Do I need to sign up to make a meme?</div><div class="faq-a">No account is needed. Upload, edit, and download — all without registration.</div></div>
+      <div class="faq-item"><div class="faq-q">Can I move the text anywhere on the image?</div><div class="faq-a">Yes, add multiple text boxes and drag each one to any position on the image.</div></div>
+      <div class="faq-item"><div class="faq-q">Can I change the font and color?</div><div class="faq-a">Yes, each text box has its own font family, size, text color and outline color.</div></div>
+      <div class="faq-item"><div class="faq-q">Is it free?</div><div class="faq-a">Yes, 100% free with unlimited use, including all filters and stickers.</div></div>
     </div>
   </div>
 
   <div class="other-tools">
     <h3>Other Fun Tools</h3>
     <div class="tools-row">
-      <a class="tool-mini" href="/image/compress"><span>🗜️ Compress Image</span></a>
+      <a class="tool-mini" href="/compress-image"><span>🗜️ Compress Image</span></a>
       <a class="tool-mini" href="/qr-generator"><span>📱 QR Generator</span></a>
       <a class="tool-mini" href="/color-picker"><span>🎨 Color Picker</span></a>
     </div>
@@ -226,59 +275,317 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 <script>
 const canvas = document.getElementById('memeCanvas');
 const ctx = canvas.getContext('2d');
-let img = new Image();
+let baseImg = new Image();
+let filteredCanvas = document.createElement('canvas'); // holds the filtered base image
 let imgLoaded = false;
+let currentFilterName = 'none';
+
+let textObjects = [];   // {id, text, x, y, fontSize, fontFamily, color, outline, dragging, offX, offY}
+let stickerObjects = []; // {id, emoji, x, y, size, dragging, offX, offY}
+let idCounter = 1;
+
+const FONT_OPTIONS = [
+  { label: 'Impact', value: "Impact, 'Anton', sans-serif" },
+  { label: 'Anton', value: "'Anton', sans-serif" },
+  { label: 'Oswald', value: "'Oswald', sans-serif" },
+  { label: 'Bangers', value: "'Bangers', cursive" },
+  { label: 'Permanent Marker', value: "'Permanent Marker', cursive" },
+  { label: 'Bebas Neue', value: "'Bebas Neue', sans-serif" },
+  { label: 'Inter', value: "'Inter', sans-serif" },
+];
 
 function loadImage(input){
   const file = input.files[0];
   if(!file) return;
   const reader = new FileReader();
   reader.onload = function(e){
-    img = new Image();
-    img.onload = function(){
+    baseImg = new Image();
+    baseImg.onload = function(){
       imgLoaded = true;
+      textObjects = [];
+      stickerObjects = [];
+      currentFilterName = 'none';
+      document.querySelectorAll('#filterToolbar .tb-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelector('#filterToolbar .tb-btn[data-filter="none"]').classList.add('active');
+
       document.getElementById('canvasWrap').style.display = 'block';
       document.getElementById('dropArea').style.display = 'none';
+      document.getElementById('mainToolbar').classList.add('show');
+      document.getElementById('downloadRow').style.display = 'flex';
+
+      applyFilterToBase();
+      addTextObject('TOP TEXT', 0.12);
+      addTextObject('BOTTOM TEXT', 0.88);
       renderMeme();
     };
-    img.src = e.target.result;
+    baseImg.src = e.target.result;
   };
   reader.readAsDataURL(file);
 }
 
-function drawMemeText(text, y){
-  const fontSize = Math.max(24, canvas.width * 0.08);
-  ctx.font = `bold ${fontSize}px Impact, Inter, sans-serif`;
-  ctx.textAlign = 'center';
-  ctx.lineWidth = fontSize / 10;
-  ctx.strokeStyle = 'black';
-  ctx.fillStyle = 'white';
-  ctx.lineJoin = 'round';
-  const x = canvas.width / 2;
-  ctx.strokeText(text.toUpperCase(), x, y);
-  ctx.fillText(text.toUpperCase(), x, y);
+function applyFilterToBase(){
+  const maxW = 700;
+  const scale = Math.min(1, maxW / baseImg.width);
+  const w = Math.round(baseImg.width * scale);
+  const h = Math.round(baseImg.height * scale);
+  canvas.width = w; canvas.height = h;
+  filteredCanvas.width = w; filteredCanvas.height = h;
+  const fctx = filteredCanvas.getContext('2d');
+  fctx.clearRect(0,0,w,h);
+  fctx.drawImage(baseImg, 0, 0, w, h);
+
+  if(currentFilterName === 'none'){
+    return;
+  }
+  const imgData = fctx.getImageData(0,0,w,h);
+  const d = imgData.data;
+  for(let i=0;i<d.length;i+=4){
+    let r=d[i], g=d[i+1], b=d[i+2];
+    if(currentFilterName === 'grayscale'){
+      const avg = 0.299*r + 0.587*g + 0.114*b;
+      r=g=b=avg;
+    } else if(currentFilterName === 'sepia'){
+      const tr = 0.393*r + 0.769*g + 0.189*b;
+      const tg = 0.349*r + 0.686*g + 0.168*b;
+      const tb = 0.272*r + 0.534*g + 0.131*b;
+      r = Math.min(255,tr); g = Math.min(255,tg); b = Math.min(255,tb);
+    } else if(currentFilterName === 'bright'){
+      r = Math.min(255, r*1.25 + 20); g = Math.min(255, g*1.25 + 20); b = Math.min(255, b*1.25 + 20);
+    } else if(currentFilterName === 'dark'){
+      r = r*0.6; g = g*0.6; b = b*0.6;
+    } else if(currentFilterName === 'invert'){
+      r = 255-r; g = 255-g; b = 255-b;
+    }
+    d[i]=r; d[i+1]=g; d[i+2]=b;
+  }
+  fctx.putImageData(imgData, 0, 0);
+}
+
+function setFilter(name){
+  if(!imgLoaded) return;
+  currentFilterName = name;
+  document.querySelectorAll('#filterToolbar .tb-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelector(`#filterToolbar .tb-btn[data-filter="${name}"]`).classList.add('active');
+  applyFilterToBase();
+  renderMeme();
+}
+
+function addTextObject(defaultText, defaultYRatio){
+  if(!imgLoaded) return;
+  const id = 'txt' + (idCounter++);
+  const obj = {
+    id,
+    text: defaultText !== undefined ? defaultText : 'YOUR TEXT',
+    x: canvas.width / 2,
+    y: defaultYRatio !== undefined ? canvas.height * defaultYRatio : canvas.height / 2,
+    fontSize: Math.max(24, Math.round(canvas.width * 0.08)),
+    fontFamily: FONT_OPTIONS[0].value,
+    color: '#ffffff',
+    outline: '#000000',
+    dragging: false, offX: 0, offY: 0
+  };
+  textObjects.push(obj);
+  renderTextList();
+  renderMeme();
+}
+
+function removeTextObject(id){
+  textObjects = textObjects.filter(o => o.id !== id);
+  renderTextList();
+  renderMeme();
+}
+
+function toggleStickerRow(){
+  document.getElementById('stickerRow').classList.toggle('show');
+}
+
+function addSticker(emoji){
+  if(!imgLoaded) return;
+  const id = 'stk' + (idCounter++);
+  const obj = {
+    id, emoji,
+    x: canvas.width / 2,
+    y: canvas.height / 2,
+    size: Math.max(30, Math.round(canvas.width * 0.12)),
+    dragging: false, offX: 0, offY: 0
+  };
+  stickerObjects.push(obj);
+  renderStickerList();
+  renderMeme();
+}
+
+function removeSticker(id){
+  stickerObjects = stickerObjects.filter(o => o.id !== id);
+  renderStickerList();
+  renderMeme();
+}
+
+function renderTextList(){
+  const container = document.getElementById('textObjList');
+  const label = document.getElementById('textLabel');
+  if(textObjects.length === 0){
+    container.classList.remove('show'); label.classList.remove('show');
+    container.innerHTML = '';
+    return;
+  }
+  container.classList.add('show'); label.classList.add('show');
+  container.innerHTML = textObjects.map(o => `
+    <div class="obj-card">
+      <div class="obj-card-top">
+        <input type="text" value="${o.text.replace(/"/g,'&quot;')}" oninput="updateTextObj('${o.id}','text',this.value)">
+        <button class="obj-del" onclick="removeTextObject('${o.id}')" title="Delete">✕</button>
+      </div>
+      <div class="obj-controls">
+        <label>Font</label>
+        <select onchange="updateTextObj('${o.id}','fontFamily',this.value)">
+          ${FONT_OPTIONS.map(f => `<option value="${f.value}" ${f.value===o.fontFamily?'selected':''}>${f.label}</option>`).join('')}
+        </select>
+        <label>Size</label>
+        <input type="range" min="14" max="90" value="${o.fontSize}" oninput="updateTextObj('${o.id}','fontSize',parseInt(this.value))">
+        <label>Color</label>
+        <input type="color" value="${o.color}" oninput="updateTextObj('${o.id}','color',this.value)">
+        <label>Outline</label>
+        <input type="color" value="${o.outline}" oninput="updateTextObj('${o.id}','outline',this.value)">
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderStickerList(){
+  const container = document.getElementById('stickerObjList');
+  const label = document.getElementById('stickerLabel');
+  if(stickerObjects.length === 0){
+    container.classList.remove('show'); label.classList.remove('show');
+    container.innerHTML = '';
+    return;
+  }
+  container.classList.add('show'); label.classList.add('show');
+  container.innerHTML = stickerObjects.map(o => `
+    <div class="obj-card">
+      <div class="obj-card-top">
+        <span style="font-size:1.4rem">${o.emoji}</span>
+        <button class="obj-del" onclick="removeSticker('${o.id}')" title="Delete">✕</button>
+      </div>
+      <div class="obj-controls">
+        <label>Size</label>
+        <input type="range" min="16" max="200" value="${o.size}" oninput="updateStickerObj('${o.id}','size',parseInt(this.value))">
+      </div>
+    </div>
+  `).join('');
+}
+
+function updateTextObj(id, key, value){
+  const o = textObjects.find(t => t.id === id);
+  if(!o) return;
+  o[key] = value;
+  renderMeme();
+}
+function updateStickerObj(id, key, value){
+  const o = stickerObjects.find(s => s.id === id);
+  if(!o) return;
+  o[key] = value;
+  renderMeme();
 }
 
 function renderMeme(){
   if(!imgLoaded) return;
-  const maxW = 700;
-  const scale = Math.min(1, maxW / img.width);
-  canvas.width = img.width * scale;
-  canvas.height = img.height * scale;
-  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-  const top = document.getElementById('topText').value;
-  const bottom = document.getElementById('bottomText').value;
-  if(top) drawMemeText(top, canvas.height * 0.12);
-  if(bottom) drawMemeText(bottom, canvas.height * 0.94);
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.drawImage(filteredCanvas, 0, 0);
+
+  textObjects.forEach(o => {
+    ctx.font = `bold ${o.fontSize}px ${o.fontFamily}`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.lineWidth = Math.max(2, o.fontSize / 8);
+    ctx.strokeStyle = o.outline;
+    ctx.fillStyle = o.color;
+    ctx.lineJoin = 'round';
+    ctx.strokeText(o.text.toUpperCase(), o.x, o.y);
+    ctx.fillText(o.text.toUpperCase(), o.x, o.y);
+  });
+
+  stickerObjects.forEach(o => {
+    ctx.font = `${o.size}px sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(o.emoji, o.x, o.y);
+  });
+}
+
+// ---- Drag handling on canvas ----
+function getCanvasPos(e){
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width / rect.width;
+  const scaleY = canvas.height / rect.height;
+  const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+  const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+  return { x: (clientX - rect.left) * scaleX, y: (clientY - rect.top) * scaleY };
+}
+
+function hitTestText(o, x, y){
+  ctx.font = `bold ${o.fontSize}px ${o.fontFamily}`;
+  const w = ctx.measureText(o.text.toUpperCase()).width;
+  const h = o.fontSize;
+  return x >= o.x - w/2 - 6 && x <= o.x + w/2 + 6 && y >= o.y - h/2 - 6 && y <= o.y + h/2 + 6;
+}
+function hitTestSticker(o, x, y){
+  const r = o.size/2;
+  return x >= o.x - r && x <= o.x + r && y >= o.y - r && y <= o.y + r;
+}
+
+let activeDrag = null; // {type:'text'|'sticker', obj}
+
+canvas.addEventListener('mousedown', onDragStart);
+canvas.addEventListener('touchstart', onDragStart, {passive:false});
+window.addEventListener('mousemove', onDragMove);
+window.addEventListener('touchmove', onDragMove, {passive:false});
+window.addEventListener('mouseup', onDragEnd);
+window.addEventListener('touchend', onDragEnd);
+
+function onDragStart(e){
+  if(!imgLoaded) return;
+  const pos = getCanvasPos(e);
+  // check stickers first (drawn on top), then text
+  for(let i = stickerObjects.length - 1; i >= 0; i--){
+    if(hitTestSticker(stickerObjects[i], pos.x, pos.y)){
+      activeDrag = { type:'sticker', obj: stickerObjects[i] };
+      e.preventDefault();
+      return;
+    }
+  }
+  for(let i = textObjects.length - 1; i >= 0; i--){
+    if(hitTestText(textObjects[i], pos.x, pos.y)){
+      activeDrag = { type:'text', obj: textObjects[i] };
+      e.preventDefault();
+      return;
+    }
+  }
+}
+function onDragMove(e){
+  if(!activeDrag) return;
+  const pos = getCanvasPos(e);
+  activeDrag.obj.x = Math.max(0, Math.min(canvas.width, pos.x));
+  activeDrag.obj.y = Math.max(0, Math.min(canvas.height, pos.y));
+  renderMeme();
+  e.preventDefault();
+}
+function onDragEnd(){
+  activeDrag = null;
 }
 
 function resetTool(){
   imgLoaded = false;
+  textObjects = [];
+  stickerObjects = [];
+  currentFilterName = 'none';
   document.getElementById('canvasWrap').style.display = 'none';
   document.getElementById('dropArea').style.display = 'block';
+  document.getElementById('mainToolbar').classList.remove('show');
+  document.getElementById('stickerRow').classList.remove('show');
+  document.getElementById('downloadRow').style.display = 'none';
   document.getElementById('imageInput').value = '';
-  document.getElementById('topText').value = '';
-  document.getElementById('bottomText').value = '';
+  renderTextList();
+  renderStickerList();
 }
 
 function downloadMeme(){
