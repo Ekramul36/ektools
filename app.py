@@ -134,6 +134,7 @@ def sitemap():
         ('/blog/compress-pdf-to-100kb-for-exam-form', '0.7', 'monthly'),
         ('/blog/amount-in-words-for-cheque-gst-invoice', '0.7', 'monthly'),
         ('/blog/sign-pdf-online-free', '0.7', 'monthly'),
+        ('/blog/how-to-make-a-meme-online-free', '0.7', 'monthly'),
     ]
     today = datetime.date.today().isoformat()
     xml = ['<?xml version="1.0" encoding="UTF-8"?>',
@@ -1852,6 +1853,13 @@ BLOG_POSTS = [
     #     "category": "PDF Tools",
     #     "date": "July 5, 2026"
     # },
+    {
+    "slug": "how-to-make-a-meme-online-free",
+    "title": "How to Make a Meme Online for Free — Fonts, Stickers & Filters",
+    "excerpt": "Learn how to create a custom meme online for free — drag text anywhere, pick fonts, add stickers, apply filters, and download with no watermark.",
+    "category": "Fun Tools",
+    "date": "July 6, 2026"
+    },
 ]
 
 @app.route("/blog")
@@ -1877,6 +1885,10 @@ def blog_amount_in_words():
 @app.route("/blog/sign-pdf-online-free")
 def blog_sign_pdf():
     return render_template("blog_post_sign_pdf.html")
+
+@app.route("/blog/how-to-make-a-meme-online-free")
+def blog_how_to_make_a_meme():
+    return render_template("blog_post_how_to_make_a_meme.html")
 
 # NOTE: as you add more blog posts, add a matching @app.route("/blog/<slug>")
 # function for each new HTML file, the same way as blog_merge_pdf() above.
