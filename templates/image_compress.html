@@ -11,8 +11,8 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Compress Image — Reduce Image Size Free | EkZapp</title>
-<meta name="description" content="Compress JPG, PNG, WebP images online for free. Reduce image file size without losing quality. No signup required.">
+<title>Compress Image Online Free — Reduce JPG, PNG, WebP Size | EkZapp</title>
+<meta name="description" content="Compress JPG, PNG, WebP images online for free without losing quality. Reduce photo file size for email, websites, and uploads. No signup required.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -91,6 +91,12 @@ input[type="range"]{width:100%;accent-color:var(--blue)}
 .faq-item:last-child{border-bottom:none;padding-bottom:0}
 .faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
 .faq-a{font-size:12.5px;color:var(--gray);line-height:1.5}
+.article-section{margin-top:32px;background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.article-section h2{font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:14px}
+.article-section p{font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:14px}
+.article-section ul{margin:0 0 14px 20px}
+.article-section li{font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:6px}
+.article-section li strong{color:var(--ink)}
 </style>
 <script type="application/ld+json">
 {
@@ -102,6 +108,62 @@ input[type="range"]{width:100%;accent-color:var(--blue)}
   "applicationCategory": "UtilityApplication",
   "operatingSystem": "Web",
   "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much will my image be compressed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Typically 50 to 80 percent smaller depending on the original image and the quality setting you choose."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which image formats are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "JPG, PNG, and WebP formats are all supported for compression."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this tool free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, completely free. No signup is required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will compressing reduce the visual quality of my photo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A quality slider lets you control the tradeoff. At around 80 percent quality, most images look nearly identical to the original while being significantly smaller."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do I need to compress an image before uploading it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Many websites, forms, and portals set a maximum upload size, and large photos from modern phone cameras often exceed it. Compressing brings the file within limit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my uploaded image stored anywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The image is processed and returned to you, then automatically removed, it is not stored or shared."
+      }
+    }
+  ]
 }
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
@@ -116,8 +178,8 @@ input[type="range"]{width:100%;accent-color:var(--blue)}
 <div class="container">
   <div class="tool-header">
     <div class="tool-icon-wrap">🗜️</div>
-    <h1>Compress Image</h1>
-    <p>Reduce image file size without losing quality</p>
+    <h1>Compress Image Online Free</h1>
+    <p>Reduce JPG, PNG, and WebP file size without losing quality</p>
   </div>
 
   {% if error %}<div class="error-box">⚠️ {{ error }}</div>{% endif %}
@@ -183,6 +245,32 @@ input[type="range"]{width:100%;accent-color:var(--blue)}
       <div class="trust-item">📵 No signup needed</div>
     </div>
   </div>
+
+  <!-- ============ NEW: ARTICLE / DESCRIPTION SECTION ============ -->
+  <div class="article-section">
+    <h2>Why Compress an Image Online?</h2>
+    <p>
+      Photos taken on modern phone cameras are often several megabytes each, 
+      which makes them slow to upload, awkward to email, and sometimes too 
+      large for websites or online forms that enforce a size limit. EkZapp's 
+      Image Compressor reduces JPG, PNG, and WebP file sizes significantly 
+      while keeping the picture looking sharp, all directly in your browser 
+      with no software to install.
+    </p>
+    <p>
+      A live before-and-after size comparison lets you see exactly how much 
+      space you saved, and the adjustable quality slider gives you full 
+      control over the balance between file size and visual clarity.
+    </p>
+    <h2>Common Reasons to Compress an Image</h2>
+    <ul>
+      <li><strong>Website performance:</strong> Smaller images load faster, which improves page speed and user experience.</li>
+      <li><strong>Form & portal uploads:</strong> Many job, visa, and government portals cap image size — compression brings large photos within limit.</li>
+      <li><strong>Email attachments:</strong> Avoid slow uploads or bounced emails caused by oversized photos.</li>
+      <li><strong>Storage saving:</strong> Free up space on your phone or cloud drive by shrinking photo libraries.</li>
+      <li><strong>Social media & messaging:</strong> Faster sharing over WhatsApp, Instagram, or other apps with smaller file sizes.</li>
+    </ul>
+  </div>
   {% endif %}
 
   <div class="guide-section">
@@ -198,6 +286,9 @@ input[type="range"]{width:100%;accent-color:var(--blue)}
       <div class="faq-item"><div class="faq-q">How much will my image be compressed?</div><div class="faq-a">Typically 50-80% smaller depending on the original image and quality setting you choose.</div></div>
       <div class="faq-item"><div class="faq-q">Which formats are supported?</div><div class="faq-a">JPG, PNG, and WebP formats are supported for compression.</div></div>
       <div class="faq-item"><div class="faq-q">Is this tool free?</div><div class="faq-a">Yes, completely free. No signup required.</div></div>
+      <div class="faq-item"><div class="faq-q">Will compressing reduce the visual quality of my photo?</div><div class="faq-a">The quality slider lets you control the tradeoff. Around 80% quality, most images look nearly identical to the original while being significantly smaller.</div></div>
+      <div class="faq-item"><div class="faq-q">Why do I need to compress an image before uploading it?</div><div class="faq-a">Many websites, forms, and portals set a maximum upload size, and large photos from phone cameras often exceed it. Compressing brings the file within limit.</div></div>
+      <div class="faq-item"><div class="faq-q">Is my uploaded image stored anywhere?</div><div class="faq-a">No. The image is processed and returned to you, then automatically removed — it is not stored or shared.</div></div>
     </div>
   </div>
 </div>

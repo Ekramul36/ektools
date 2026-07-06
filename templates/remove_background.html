@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Remove Background – EkZapp</title>
+    <title>Remove Background from Image Online Free – EkZapp</title>
+    <meta name="description" content="Remove image background online for free. Get a transparent or white background PNG in seconds. No signup, no watermark.">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <style>
         body { font-family: 'Segoe UI', sans-serif; background: #F9FAFB; margin: 0; padding: 0; }
@@ -44,6 +45,24 @@
         .spinner { display: none; text-align: center; margin-top: 10px; color: #6B7280; font-size: 14px; }
         .back-link { display: inline-block; margin-bottom: 20px; color: #2563EB; font-size: 14px; text-decoration: none; }
         .back-link:hover { text-decoration: underline; }
+        .article-section { margin-top: 24px; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); padding: 40px; }
+        .article-section h2 { font-size: 18px; color: #111827; margin: 0 0 12px; }
+        .article-section p { font-size: 14px; color: #6B7280; line-height: 1.7; margin-bottom: 14px; }
+        .article-section ul { margin: 0 0 14px 20px; }
+        .article-section li { font-size: 14px; color: #6B7280; line-height: 1.7; margin-bottom: 6px; }
+        .article-section li strong { color: #111827; }
+        .faq-section { margin-top: 24px; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); padding: 40px; }
+        .faq-section h2 { font-size: 18px; color: #111827; margin: 0 0 16px; }
+        .faq-item { border-bottom: 1px solid #E5E7EB; padding: 14px 0; }
+        .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .faq-q { font-size: 14px; font-weight: 600; color: #111827; margin-bottom: 6px; }
+        .faq-a { font-size: 13px; color: #6B7280; line-height: 1.6; }
+        .related-tools { margin-top: 24px; }
+        .related-tools h3 { font-size: 13px; font-weight: 600; color: #6B7280; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 14px; }
+        .tools-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+        .tool-mini { background: white; border: 1px solid #E5E7EB; border-radius: 10px; padding: 14px; text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; transition: all .15s; }
+        .tool-mini:hover { border-color: #2563EB; }
+        .tool-mini span { font-size: 13px; font-weight: 600; }
     </style>
     <script type="application/ld+json">
 {
@@ -57,6 +76,62 @@
   "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is background removal really free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, completely free with no signup or watermark added to your image."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What file format is the output?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The result is a PNG file with a transparent background, so it can be placed over any color or image."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to remove the background?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Processing usually takes 15 to 30 seconds depending on image size and complexity."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What types of photos work best?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Images with a clear, well-lit subject such as a person, product, or animal produce the most accurate results."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use this for product photos or profile pictures?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, it is commonly used for e-commerce product photos, ID and passport-style photos, and profile pictures for resumes or social media."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my uploaded photo stored on your servers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The image is processed and returned to you, then removed, it is not stored or shared."
+      }
+    }
+  ]
+}
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -67,8 +142,8 @@
     <a href="/" class="back-link">← Back to Tools</a>
 
     <div class="card">
-        <h1>🖼️ Remove Background</h1>
-        <p class="subtitle">Upload a photo and instantly remove its background — free, no signup needed.</p>
+        <h1>🖼️ Remove Background from Image Online Free</h1>
+        <p class="subtitle">Upload a photo and instantly remove its background — free, no signup, no watermark.</p>
 
         {% if error %}
         <div class="alert-error">⚠️ {{ error }}</div>
@@ -100,6 +175,70 @@
                 <li>Good lighting improves accuracy</li>
                 <li>Output will be a transparent PNG file</li>
             </ul>
+        </div>
+    </div>
+
+    <!-- ============ NEW: ARTICLE / DESCRIPTION SECTION ============ -->
+    <div class="article-section">
+        <h2>Why Remove a Background from an Image?</h2>
+        <p>
+            Removing the background from a photo instantly makes the subject 
+            stand out, whether that's a product for an online store, a person 
+            for a passport-style or profile photo, or an object for a design 
+            project. EkZapp's Remove Background tool uses AI-based image 
+            segmentation to detect the subject automatically and produce a 
+            clean, transparent PNG — no manual selection or editing software 
+            required.
+        </p>
+        <p>
+            The result can be placed on any color or background, used directly 
+            with a transparent backdrop, or combined with our Passport Photo 
+            and Signature Generator tools for a complete document workflow.
+        </p>
+        <h2>Common Uses for Background Removal</h2>
+        <ul>
+            <li><strong>E-commerce product photos:</strong> Clean, background-free images for online store listings.</li>
+            <li><strong>ID & passport photos:</strong> Prepare a plain background before adding a required solid color.</li>
+            <li><strong>Profile pictures:</strong> Create a clean headshot for resumes, LinkedIn, or social media.</li>
+            <li><strong>Design & presentations:</strong> Cut out subjects for use in posters, slides, or graphics.</li>
+            <li><strong>Compositing:</strong> Combine the subject with a different background image or scene.</li>
+        </ul>
+    </div>
+
+    <div class="faq-section">
+        <h2>❓ Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <div class="faq-q">Is background removal really free?</div>
+            <div class="faq-a">Yes, completely free with no signup or watermark added to your image.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">What file format is the output?</div>
+            <div class="faq-a">The result is a PNG file with a transparent background, so it can be placed over any color or image.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">How long does it take to remove the background?</div>
+            <div class="faq-a">Processing usually takes 15–30 seconds depending on image size and complexity.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">What types of photos work best?</div>
+            <div class="faq-a">Images with a clear, well-lit subject such as a person, product, or animal produce the most accurate results.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Can I use this for product photos or profile pictures?</div>
+            <div class="faq-a">Yes, it is commonly used for e-commerce product photos, ID/passport-style photos, and profile pictures for resumes or social media.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Is my uploaded photo stored on your servers?</div>
+            <div class="faq-a">No. The image is processed and returned to you, then removed — it is not stored or shared.</div>
+        </div>
+    </div>
+
+    <div class="related-tools">
+        <h3>Related Tools</h3>
+        <div class="tools-row">
+            <a class="tool-mini" href="/passport-photo"><span>📷 Passport Photo</span></a>
+            <a class="tool-mini" href="/compress-image"><span>🗜️ Compress Image</span></a>
+            <a class="tool-mini" href="/signature-generator"><span>✍️ Signature Generator</span></a>
         </div>
     </div>
 </div>
