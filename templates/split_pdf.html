@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VW5QLMV046"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -16,7 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626;--green:#16A34A;--rose:#E11D48}
 body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
 nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
@@ -29,12 +28,12 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .nav-links a:hover,.nav-links a.active{background:var(--blue-lt);color:var(--blue)}
 .back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
 .back:hover{border-color:var(--blue);color:var(--blue)}
-.container{max-width:600px;margin:48px auto;padding:0 20px 60px}
+.container{max-width:960px;margin:48px auto;padding:0 20px 60px}
 .tool-header{text-align:center;margin-bottom:32px}
 .tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:#FFE4E6;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
 .tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
 .tool-header p{color:var(--gray);font-size:14px}
-.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06);max-width:600px;margin:0 auto}
 .info-bar{background:#FEF9C3;border:1px solid #FDE047;border-radius:8px;padding:10px 14px;margin-bottom:20px;font-size:13px;color:#854D0E}
 .field{margin-bottom:16px}
 .field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
@@ -53,32 +52,82 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .error-box{background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:12px 16px;color:var(--red);font-size:13px;margin-bottom:16px}
 .trust{display:flex;justify-content:center;gap:20px;margin-top:16px;flex-wrap:wrap}
 .trust-item{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:4px}
-.guide-section{margin-top:32px;background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.guide-section h2{font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:20px}
-.steps{display:flex;flex-direction:column;gap:16px}
-.step{display:flex;gap:14px;align-items:flex-start}
-.step-num{width:32px;height:32px;border-radius:50%;background:var(--blue);color:white;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.step-body h3{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px}
-.step-body p{font-size:12.5px;color:var(--gray);line-height:1.5}
-.faq-section{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
-.faq-section h2{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:16px}
-.faq-item{border-bottom:1px solid var(--border);padding:14px 0}
-.faq-item:last-child{border-bottom:none;padding-bottom:0}
-.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
-.faq-a{font-size:12.5px;color:var(--gray);line-height:1.5}
-.other-tools{margin-top:32px}
+.section-wrap{max-width:650px;margin:24px auto 0}
+.section-wrap-wide{max-width:900px;margin:24px auto 0}
+.hero-banner{border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#FB7185 0%,#E11D48 55%,#9F1239 100%);padding:36px 28px;text-align:center}
+.hero-banner h2{color:white;font-size:1.5rem;font-weight:800;letter-spacing:-.01em;margin-bottom:18px;text-shadow:0 2px 8px rgba(0,0,0,.15)}
+.hero-visual{max-width:520px;margin:0 auto}
+.feature-grid-section{background:white;border:1px solid var(--border);border-radius:14px;padding:32px 24px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.feature-grid-section h2{font-size:1.1rem;font-weight:700;color:var(--ink);text-align:center;margin-bottom:28px}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px 16px}
+.feature-item{text-align:center}
+.feature-icon{width:44px;height:44px;margin:0 auto 14px}
+.feature-item h4{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.feature-item p{font-size:12.5px;color:var(--gray);line-height:1.6}
+@media (max-width:720px){.feature-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:420px){.feature-grid{grid-template-columns:1fr}}
+.reason-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}
+.reason-card{background:white;border:1px solid var(--border);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:6px;transition:transform .15s,box-shadow .15s}
+.reason-card:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.reason-icon{font-size:1.5rem}
+.reason-card strong{font-size:13px;color:var(--ink)}
+.reason-card span{font-size:12px;color:var(--gray);line-height:1.4}
+@media (max-width:480px){.reason-grid{grid-template-columns:1fr}}
+.article-section{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.article-section h2{font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:10px}
+.article-section>p{font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:4px}
+.ekz-photo-card{display:flex;gap:16px;align-items:center;background:var(--light);border:1px solid var(--border);border-radius:12px;padding:16px;margin-top:20px;flex-wrap:wrap}
+.ekz-photo-card img{width:170px;height:115px;object-fit:cover;border-radius:8px;flex-shrink:0}
+.ekz-photo-card p{font-size:13px;color:var(--gray);line-height:1.6;margin:0}
+.usecase-section{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.usecase-section h2{font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:18px}
+.usecase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.usecase-card{background:var(--light);border:1px solid var(--border);border-radius:10px;padding:16px}
+.usecase-card .em{font-size:1.4rem;display:block;margin-bottom:8px}
+.usecase-card h4{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.usecase-card p{font-size:12px;color:var(--gray);line-height:1.5}
+@media (max-width:720px){.usecase-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:420px){.usecase-grid{grid-template-columns:1fr}}
+.guide{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:white}
+.guide-header{background:var(--light);padding:14px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);user-select:none}
+.guide-header h3{margin:0;font-size:15px;color:var(--ink)}
+.guide-arrow{font-size:16px;transition:transform .2s;color:var(--gray)}
+.guide-body{display:none;padding:20px}
+.guide-body.open{display:block}
+.step-icons{display:flex;justify-content:space-between;gap:8px;margin-bottom:20px;text-align:center}
+.step-icon-item{flex:1}
+.step-icon-item .em{font-size:1.6rem;display:block;margin-bottom:6px}
+.step-icon-item strong{font-size:12px;color:var(--ink);display:block}
+.step-icon-item span{font-size:11px;color:var(--gray)}
+.guide-tips{margin-top:16px;background:#FFF1F2;border-radius:8px;padding:14px 16px}
+.guide-tips h4{margin:0 0 8px;font-size:13px;color:#9F1239}
+.guide-tips ul{margin:0;padding-left:16px}
+.guide-tips ul li{font-size:13px;color:#881337;margin-bottom:5px;line-height:1.4}
+.faq details{border-bottom:1px solid var(--border);padding:10px 0}
+.faq details:last-child{border-bottom:none}
+.faq summary{font-size:13px;font-weight:600;color:var(--ink);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';font-size:16px;color:var(--gray);font-weight:400}
+.faq details[open] summary::after{content:'−'}
+.faq-a{font-size:13px;color:var(--gray);line-height:1.5;margin-top:6px}
 .other-tools h3{font-size:13px;font-weight:600;color:var(--gray);letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
-.tools-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.tool-mini{background:white;border:1px solid var(--border);border-radius:10px;padding:14px;text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px;transition:all .15s}
-.tool-mini:hover{border-color:var(--blue)}
-.tool-mini-icon{font-size:1.2rem}
-.tool-mini span{font-size:13px;font-weight:600}
-.article-section{margin-top:32px;background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.article-section h2{font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:14px}
-.article-section p{font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:14px}
-.article-section ul{margin:0 0 14px 20px}
-.article-section li{font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:6px}
-.article-section li strong{color:var(--ink)}
+.resource-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.resource-card{border-radius:12px;overflow:hidden;text-decoration:none;display:block;background:white;border:1px solid var(--border);transition:transform .15s,box-shadow .15s}
+.resource-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.08)}
+.resource-banner{height:100px;display:flex;align-items:center;justify-content:center}
+.resource-banner svg{width:100%;height:100%}
+.resource-body{padding:14px}
+.resource-body h4{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.resource-body p{font-size:11.5px;color:var(--gray);line-height:1.5}
+@media (max-width:560px){.resource-cards{grid-template-columns:1fr}}
+@keyframes ekz-separate{0%,100%{transform:translateX(0)}50%{transform:translateX(14px)}}
+@keyframes ekz-float1{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-8px) rotate(15deg)}}
+@keyframes ekz-float2{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-6px) rotate(-10deg)}}
+.ekz-sep-a{animation:ekz-separate 1.8s ease-in-out infinite reverse}
+.ekz-sep-b{animation:ekz-separate 1.8s ease-in-out infinite}
+.ekz-spark1{animation:ekz-float1 2.4s ease-in-out infinite;transform-origin:center}
+.ekz-spark2{animation:ekz-float2 3s ease-in-out infinite;transform-origin:center}
+@media (prefers-reduced-motion:reduce){.ekz-sep-a,.ekz-sep-b,.ekz-spark1,.ekz-spark2{animation:none}}
 </style>
 <script type="application/ld+json">
 {
@@ -97,54 +146,12 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How do I extract only one page from a PDF?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Just enter the page number in the field. For example, type 5 to extract only page 5 from your PDF."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I extract multiple pages at once?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Enter a page range like 3-7 to extract pages 3 through 7 into a single new PDF."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Will my original PDF be changed?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. Your original PDF is never modified. A brand new PDF is created with only the pages you selected."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is this tool free?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, 100 percent free. No signup, no credit card required."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Why would I need to split a PDF instead of sharing the whole file?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Splitting lets you share only the relevant pages, such as one chapter, one invoice, or one form, without sending the entire document."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need to install any software to split a PDF?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No installation is needed. The Split PDF tool works entirely in your browser on any device, including mobile phones."
-      }
-    }
+    {"@type":"Question","name":"How do I extract only one page from a PDF?","acceptedAnswer":{"@type":"Answer","text":"Just enter the page number in the field. For example, type 5 to extract only page 5 from your PDF."}},
+    {"@type":"Question","name":"Can I extract multiple pages at once?","acceptedAnswer":{"@type":"Answer","text":"Yes. Enter a page range like 3-7 to extract pages 3 through 7 into a single new PDF."}},
+    {"@type":"Question","name":"Will my original PDF be changed?","acceptedAnswer":{"@type":"Answer","text":"No. Your original PDF is never modified. A brand new PDF is created with only the pages you selected."}},
+    {"@type":"Question","name":"Is this tool free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100 percent free. No signup, no credit card required."}},
+    {"@type":"Question","name":"Why would I need to split a PDF instead of sharing the whole file?","acceptedAnswer":{"@type":"Answer","text":"Splitting lets you share only the relevant pages, such as one chapter, one invoice, or one form, without sending the entire document."}},
+    {"@type":"Question","name":"Do I need to install any software to split a PDF?","acceptedAnswer":{"@type":"Answer","text":"No installation is needed. The tool works entirely in your browser on any device, including mobile phones."}}
   ]
 }
 </script>
@@ -155,10 +162,10 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
   <div class="nav-inner">
     <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
     <ul class="nav-links">
-      <li><a href="/unlock-pdf">Unlock PDF</a></li>
       <li><a href="/merge-pdf">Merge PDF</a></li>
       <li><a href="/split-pdf" class="active">Split PDF</a></li>
       <li><a href="/compress-pdf">Compress PDF</a></li>
+      <li><a href="/crop-pdf">Crop PDF</a></li>
     </ul>
     <a class="back" href="/">← All Tools</a>
   </div>
@@ -199,101 +206,190 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
     </div>
   </div>
 
-  <!-- ============ NEW: ARTICLE / DESCRIPTION SECTION ============ -->
+  <div class="section-wrap-wide">
+  <div class="hero-banner">
+    <h2>One PDF, exactly the pages you need</h2>
+    <div class="hero-visual">
+      <svg width="100%" viewBox="0 0 460 200">
+        <rect x="140" y="35" width="130" height="150" rx="14" fill="white" opacity="0.15"/>
+        <g class="ekz-sep-a">
+          <rect x="60" y="45" width="115" height="130" rx="12" fill="white"/>
+          <rect x="75" y="65" width="85" height="6" rx="2" fill="#FECDD3"/>
+          <rect x="75" y="80" width="85" height="6" rx="2" fill="#FFE4E6"/>
+          <rect x="75" y="95" width="60" height="6" rx="2" fill="#FFE4E6"/>
+          <text x="117" y="150" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="700" fill="#E11D48">Pages 1-3</text>
+        </g>
+        <g class="ekz-sep-b">
+          <rect x="285" y="45" width="115" height="130" rx="12" fill="white"/>
+          <rect x="300" y="65" width="85" height="6" rx="2" fill="#FECDD3"/>
+          <rect x="300" y="80" width="85" height="6" rx="2" fill="#FFE4E6"/>
+          <rect x="300" y="95" width="60" height="6" rx="2" fill="#FFE4E6"/>
+          <text x="342" y="150" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="700" fill="#E11D48">Pages 4-6</text>
+        </g>
+        <g class="ekz-spark1"><path d="M225 20 L229 30 L239 34 L229 38 L225 48 L221 38 L211 34 L221 30 Z" fill="white" opacity="0.85"/></g>
+        <g class="ekz-spark2"><path d="M225 165 L229 173 L237 177 L229 181 L225 189 L221 181 L213 177 L221 173 Z" fill="white" opacity="0.7"/></g>
+      </svg>
+    </div>
+  </div>
+  </div>
+
+  <div class="section-wrap">
   <div class="article-section">
-    <h2>Why Split a PDF File?</h2>
+    <h2>What Splitting a PDF Is Good For</h2>
     <p>
-      Sometimes you only need a portion of a large PDF — one chapter from an 
-      e-book, a single invoice from a bundled statement, or a specific form 
-      from a scanned packet. EkZapp's Split PDF tool lets you extract exactly 
-      the pages you need, either a single page or a range, and download them 
-      as a brand new PDF while leaving your original file completely untouched.
+      Sometimes you only need part of a document — one chapter, one invoice, 
+      or one form. Splitting extracts exactly those pages into a new file, 
+      leaving your original PDF untouched.
     </p>
-    <p>
-      This works entirely in your browser with no installation required, 
-      making it easy to pull out relevant pages before sharing a document 
-      by email or uploading it to a portal that only needs specific sections.
-    </p>
-    <h2>Common Reasons to Split a PDF</h2>
-    <ul>
-      <li><strong>Sharing selectively:</strong> Send only the relevant invoice, contract page, or chapter instead of the whole document.</li>
-      <li><strong>Form submissions:</strong> Extract just the signature page or a specific form from a longer scanned packet.</li>
-      <li><strong>Organizing large documents:</strong> Break a long report or e-book into smaller, more manageable sections.</li>
-      <li><strong>Removing extra pages:</strong> Keep only the pages you need when a scan includes unnecessary blank or duplicate pages.</li>
-      <li><strong>Privacy:</strong> Share only specific pages without exposing unrelated content from the rest of the document.</li>
-    </ul>
-  </div>
-
-  <!-- HOW TO USE -->
-  <div class="guide-section">
-    <h2>📖 How to Split a PDF</h2>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-body">
-          <h3>Upload Your PDF File</h3>
-          <p>Click the upload area or drag and drop the PDF you want to split. Maximum file size is 50 MB.</p>
-        </div>
+    <div class="reason-grid">
+      <div class="reason-card">
+        <span class="reason-icon">📩</span>
+        <strong>Selective sharing</strong>
+        <span>Send only the relevant invoice or contract page.</span>
       </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <h3>Enter Page Number or Range</h3>
-          <p>Type the pages you want to extract. For a single page enter "3". For a range enter "2-5" to get pages 2 through 5.</p>
-        </div>
+      <div class="reason-card">
+        <span class="reason-icon">✍️</span>
+        <strong>Form submissions</strong>
+        <span>Extract just the signature page from a scanned packet.</span>
       </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <h3>Click "Split PDF"</h3>
-          <p>Our tool will extract the selected pages and create a new PDF with only those pages instantly.</p>
-        </div>
+      <div class="reason-card">
+        <span class="reason-icon">📖</span>
+        <strong>Organizing content</strong>
+        <span>Break a long report or e-book into smaller sections.</span>
       </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-body">
-          <h3>Download Your Split PDF</h3>
-          <p>The new PDF with your selected pages downloads automatically. Your original file is never modified.</p>
-        </div>
+      <div class="reason-card">
+        <span class="reason-icon">🔒</span>
+        <strong>Privacy</strong>
+        <span>Share specific pages without exposing the rest of the file.</span>
       </div>
     </div>
+    <div class="ekz-photo-card">
+      <img src="{{ url_for('static', filename='images/photo-notebook-writing.jpg') }}" alt="Reviewing and organizing document pages before splitting" onerror="this.style.display='none'">
+      <p>
+        Pull out just the page or section you need, instead of sending the 
+        entire document to someone who only needs one part of it.
+      </p>
+    </div>
+  </div>
+  </div>
 
-    <div class="faq-section">
-      <h2>❓ Frequently Asked Questions</h2>
-      <div class="faq-item">
-        <div class="faq-q">How do I extract only one page from a PDF?</div>
-        <div class="faq-a">Just enter the page number in the field. For example, type "5" to extract only page 5 from your PDF.</div>
+  <div class="section-wrap-wide">
+  <div class="feature-grid-section">
+    <h2>The Smarter Way to Split PDFs</h2>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <svg class="feature-icon" viewBox="0 0 48 48" fill="none"><rect x="6" y="12" width="36" height="26" rx="4" stroke="#E11D48" stroke-width="2"/><path d="M6 16 L24 28 L42 16" stroke="#E11D48" stroke-width="2" fill="none"/><circle cx="36" cy="30" r="9" fill="white" stroke="#E11D48" stroke-width="2"/><path d="M32 26 L40 34 M40 26 L32 34" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/></svg>
+        <h4>No Signup Required</h4>
+        <p>Extract pages instantly without creating an account.</p>
       </div>
-      <div class="faq-item">
-        <div class="faq-q">Can I extract multiple pages at once?</div>
-        <div class="faq-a">Yes. Enter a page range like "3-7" to extract pages 3 through 7 into a single new PDF.</div>
+      <div class="feature-item">
+        <svg class="feature-icon" viewBox="0 0 48 48" fill="none"><rect x="8" y="10" width="14" height="18" rx="2" stroke="#E11D48" stroke-width="2"/><rect x="26" y="10" width="14" height="18" rx="2" stroke="#E11D48" stroke-width="2"/><line x1="24" y1="16" x2="24" y2="24" stroke="#E11D48" stroke-width="2" stroke-dasharray="3 3"/></svg>
+        <h4>Original File Untouched</h4>
+        <p>Your source PDF is never modified or overwritten.</p>
       </div>
-      <div class="faq-item">
-        <div class="faq-q">Will my original PDF be changed?</div>
-        <div class="faq-a">No. Your original PDF is never modified. A brand new PDF is created with only the pages you selected.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Is this tool free?</div>
-        <div class="faq-a">Yes, 100% free. No signup, no credit card required.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Why would I need to split a PDF instead of sharing the whole file?</div>
-        <div class="faq-a">Splitting lets you share only the relevant pages, such as one chapter, one invoice, or one form, without sending the entire document.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Do I need to install any software to split a PDF?</div>
-        <div class="faq-a">No installation is needed. The Split PDF tool works entirely in your browser on any device, including mobile phones.</div>
+      <div class="feature-item">
+        <svg class="feature-icon" viewBox="0 0 48 48" fill="none"><path d="M24 6 L38 12 L38 24 Q38 36 24 42 Q10 36 10 24 L10 12 Z" stroke="#E11D48" stroke-width="2" fill="white"/><path d="M18 24 L22 28 L30 18" stroke="#E11D48" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        <h4>Secure & Auto-Deleted</h4>
+        <p>Files are encrypted and removed after processing.</p>
       </div>
     </div>
   </div>
+  </div>
 
+  <div class="section-wrap-wide">
+  <div class="usecase-section">
+    <h2>Who Splits PDFs Regularly</h2>
+    <div class="usecase-grid">
+      <div class="usecase-card">
+        <span class="em">🏢</span>
+        <h4>Office Admins</h4>
+        <p>Extract a single invoice page from a bundled monthly statement.</p>
+      </div>
+      <div class="usecase-card">
+        <span class="em">📚</span>
+        <h4>Students</h4>
+        <p>Pull out one chapter from a large textbook PDF for study.</p>
+      </div>
+      <div class="usecase-card">
+        <span class="em">⚖️</span>
+        <h4>Legal & HR Staff</h4>
+        <p>Separate a signature page from a longer contract packet.</p>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="section-wrap">
+  <div class="guide">
+    <div class="guide-header" onclick="toggleGuide()">
+      <h3>📖 How to Split a PDF</h3>
+      <span class="guide-arrow" id="guideArrow">▼</span>
+    </div>
+    <div class="guide-body" id="guideBody">
+      <div class="step-icons">
+        <div class="step-icon-item"><span class="em">📤</span><strong>1. Upload</strong><span>Select your PDF</span></div>
+        <div class="step-icon-item"><span class="em">🔢</span><strong>2. Enter pages</strong><span>e.g. 3 or 2-5</span></div>
+        <div class="step-icon-item"><span class="em">⬇️</span><strong>3. Download</strong><span>Get new PDF</span></div>
+      </div>
+      <div class="guide-tips">
+        <h4>💡 Tips</h4>
+        <ul>
+          <li>Use a single number for one page, or a range like "2-5"</li>
+          <li>Your original PDF stays completely unchanged</li>
+          <li>Great for pulling out just a form or signature page</li>
+          <li>Files are auto-deleted from our server after processing</li>
+        </ul>
+      </div>
+      <div class="faq">
+        <p style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px;">❓ FAQ</p>
+        <details><summary>How do I extract only one page from a PDF?</summary><div class="faq-a">Just enter the page number in the field. For example, type "5" to extract only page 5 from your PDF.</div></details>
+        <details><summary>Can I extract multiple pages at once?</summary><div class="faq-a">Yes. Enter a page range like "3-7" to extract pages 3 through 7 into a single new PDF.</div></details>
+        <details><summary>Will my original PDF be changed?</summary><div class="faq-a">No. Your original PDF is never modified. A brand new PDF is created with only the pages you selected.</div></details>
+        <details><summary>Is this tool free?</summary><div class="faq-a">Yes, 100% free. No signup, no credit card required.</div></details>
+        <details><summary>Why would I need to split a PDF instead of sharing the whole file?</summary><div class="faq-a">Splitting lets you share only the relevant pages, such as one chapter, one invoice, or one form, without sending the entire document.</div></details>
+        <details><summary>Do I need to install any software?</summary><div class="faq-a">No installation is needed. The tool works entirely in your browser on any device, including mobile phones.</div></details>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="section-wrap-wide">
   <div class="other-tools">
-    <h3>Other PDF Tools</h3>
-    <div class="tools-row">
-      <a class="tool-mini" href="/unlock-pdf"><span class="tool-mini-icon">🔓</span><span>Unlock PDF</span></a>
-      <a class="tool-mini" href="/merge-pdf"><span class="tool-mini-icon">🔗</span><span>Merge PDF</span></a>
-      <a class="tool-mini" href="/compress-pdf"><span class="tool-mini-icon">⚡</span><span>Compress PDF</span></a>
+    <h3>More PDF Tools to Try</h3>
+    <div class="resource-cards">
+      <a href="/merge-pdf" class="resource-card">
+        <div class="resource-banner" style="background:linear-gradient(135deg,#60A5FA,#1D4ED8)">
+          <svg viewBox="0 0 200 110">
+            <rect x="55" y="40" width="60" height="65" rx="8" fill="white" opacity="0.9"/>
+            <rect x="85" y="30" width="60" height="65" rx="8" fill="white"/>
+            <path d="M155 62 L172 62 M164 54 L173 62 L164 70" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="resource-body"><h4>Merge PDF</h4><p>Combine multiple PDFs into one file.</p></div>
+      </a>
+      <a href="/compress-pdf" class="resource-card">
+        <div class="resource-banner" style="background:linear-gradient(135deg,#FB923C,#EA580C)">
+          <svg viewBox="0 0 200 110">
+            <rect x="45" y="20" width="55" height="70" rx="6" fill="white"/>
+            <text x="72" y="60" font-family="Inter,sans-serif" font-size="13" font-weight="800" fill="#EA580C" text-anchor="middle">8MB</text>
+            <path d="M110 55 L130 55 M122 45 L132 55 L122 65" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="140" y="30" width="45" height="55" rx="6" fill="white"/>
+            <text x="162" y="63" font-family="Inter,sans-serif" font-size="12" font-weight="800" fill="#16A34A" text-anchor="middle">1MB</text>
+          </svg>
+        </div>
+        <div class="resource-body"><h4>Compress PDF</h4><p>Shrink file size without losing quality.</p></div>
+      </a>
+      <a href="/crop-pdf" class="resource-card">
+        <div class="resource-banner" style="background:linear-gradient(135deg,#4ADE80,#15803D)">
+          <svg viewBox="0 0 200 110">
+            <rect x="60" y="20" width="80" height="70" rx="6" fill="white"/>
+            <rect x="75" y="32" width="50" height="46" fill="none" stroke="#16A34A" stroke-width="2" stroke-dasharray="4 3"/>
+          </svg>
+        </div>
+        <div class="resource-body"><h4>Crop PDF</h4><p>Trim margins or unwanted page areas.</p></div>
+      </a>
     </div>
+  </div>
   </div>
 </div>
 
@@ -304,6 +400,12 @@ function showFileName(input){
     fn.textContent='✓ '+input.files[0].name;
     fn.style.display='block';
   }
+}
+function toggleGuide(){
+  const body = document.getElementById('guideBody');
+  const arrow = document.getElementById('guideArrow');
+  body.classList.toggle('open');
+  arrow.style.transform = body.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
 }
 </script>
 </body>

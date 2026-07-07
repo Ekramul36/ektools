@@ -16,7 +16,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626;--green:#16A34A}
 body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
 nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
@@ -29,12 +29,12 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .nav-links a:hover,.nav-links a.active{background:var(--blue-lt);color:var(--blue)}
 .back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
 .back:hover{border-color:var(--blue);color:var(--blue)}
-.container{max-width:600px;margin:48px auto;padding:0 20px 60px}
+.container{max-width:960px;margin:48px auto;padding:0 20px 60px}
 .tool-header{text-align:center;margin-bottom:32px}
 .tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:#DCFCE7;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
 .tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
 .tool-header p{color:var(--gray);font-size:14px}
-.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06);max-width:600px;margin:0 auto}
 .info-bar{background:var(--blue-lt);border:1px solid #BFDBFE;border-radius:8px;padding:10px 14px;margin-bottom:20px;font-size:13px;color:#1E40AF;display:flex;align-items:center;gap:8px}
 .field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
 .drop-area{border:2px dashed var(--border);border-radius:10px;padding:36px 20px;text-align:center;background:var(--light);cursor:pointer;transition:all .2s;position:relative}
@@ -50,32 +50,94 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .error-box{background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:12px 16px;color:var(--red);font-size:13px;margin-bottom:16px}
 .trust{display:flex;justify-content:center;gap:20px;margin-top:16px;flex-wrap:wrap}
 .trust-item{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:4px}
-.guide-section{margin-top:32px;background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.guide-section h2{font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:20px}
-.steps{display:flex;flex-direction:column;gap:16px}
-.step{display:flex;gap:14px;align-items:flex-start}
-.step-num{width:32px;height:32px;border-radius:50%;background:var(--blue);color:white;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.step-body h3{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px}
-.step-body p{font-size:12.5px;color:var(--gray);line-height:1.5}
-.faq-section{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
-.faq-section h2{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:16px}
-.faq-item{border-bottom:1px solid var(--border);padding:14px 0}
-.faq-item:last-child{border-bottom:none;padding-bottom:0}
-.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
-.faq-a{font-size:12.5px;color:var(--gray);line-height:1.5}
-.other-tools{margin-top:32px}
+.section-wrap{max-width:650px;margin:24px auto 0}
+.section-wrap-wide{max-width:900px;margin:24px auto 0}
+.hero-banner{border-radius:18px;overflow:hidden;position:relative;background:linear-gradient(135deg,#60A5FA 0%,#2563EB 55%,#1D4ED8 100%);padding:36px 28px;text-align:center}
+.hero-banner h2{color:white;font-size:1.5rem;font-weight:800;letter-spacing:-.01em;margin-bottom:18px;text-shadow:0 2px 8px rgba(0,0,0,.15)}
+.hero-visual{max-width:520px;margin:0 auto}
+.feature-grid-section{margin-top:24px;background:white;border:1px solid var(--border);border-radius:14px;padding:32px 24px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.feature-grid-section h2{font-size:1.1rem;font-weight:700;color:var(--ink);text-align:center;margin-bottom:28px}
+.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px 16px}
+.feature-item{text-align:center}
+.feature-icon{width:44px;height:44px;margin:0 auto 14px}
+.feature-item h4{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.feature-item p{font-size:12.5px;color:var(--gray);line-height:1.6}
+@media (max-width:720px){.feature-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:420px){.feature-grid{grid-template-columns:1fr}}
+.reason-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}
+.reason-card{background:white;border:1px solid var(--border);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:6px;transition:transform .15s,box-shadow .15s}
+.reason-card:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.reason-icon{font-size:1.5rem}
+.reason-card strong{font-size:13px;color:var(--ink)}
+.reason-card span{font-size:12px;color:var(--gray);line-height:1.4}
+@media (max-width:480px){.reason-grid{grid-template-columns:1fr}}
+.article-section{margin-top:24px;background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.article-section h2{font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:10px}
+.article-section>p{font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:4px}
+.ekz-photo-card{display:flex;gap:16px;align-items:center;background:var(--light);border:1px solid var(--border);border-radius:12px;padding:16px;margin-top:20px;flex-wrap:wrap}
+.ekz-photo-card img{width:170px;height:115px;object-fit:cover;border-radius:8px;flex-shrink:0}
+.ekz-photo-card p{font-size:13px;color:var(--gray);line-height:1.6;margin:0}
+.compare-section{margin-top:24px;background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.compare-section h2{font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:16px}
+.compare-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.compare-table th{text-align:center;padding:10px 8px;font-weight:700;color:var(--ink);border-bottom:2px solid var(--border)}
+.compare-table th:first-child{text-align:left}
+.compare-table td{padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--gray)}
+.compare-table td:first-child{text-align:left;color:var(--ink);font-weight:600}
+.compare-yes{color:var(--green);font-weight:700}
+.compare-no{color:#D1D5DB;font-weight:700}
+.compare-table th.highlight{color:var(--blue)}
+.usecase-section{margin-top:24px;background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.usecase-section h2{font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:18px}
+.usecase-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.usecase-card{background:var(--light);border:1px solid var(--border);border-radius:10px;padding:16px}
+.usecase-card .em{font-size:1.4rem;display:block;margin-bottom:8px}
+.usecase-card h4{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.usecase-card p{font-size:12px;color:var(--gray);line-height:1.5}
+@media (max-width:720px){.usecase-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:420px){.usecase-grid{grid-template-columns:1fr}}
+.guide{margin-top:24px;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:white}
+.guide-header{background:var(--light);padding:14px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);user-select:none}
+.guide-header h3{margin:0;font-size:15px;color:var(--ink)}
+.guide-arrow{font-size:16px;transition:transform .2s;color:var(--gray)}
+.guide-body{display:none;padding:20px}
+.guide-body.open{display:block}
+.step-icons{display:flex;justify-content:space-between;gap:8px;margin-bottom:20px;text-align:center}
+.step-icon-item{flex:1}
+.step-icon-item .em{font-size:1.6rem;display:block;margin-bottom:6px}
+.step-icon-item strong{font-size:12px;color:var(--ink);display:block}
+.step-icon-item span{font-size:11px;color:var(--gray)}
+.guide-tips{margin-top:16px;background:#EFF6FF;border-radius:8px;padding:14px 16px}
+.guide-tips h4{margin:0 0 8px;font-size:13px;color:#1E40AF}
+.guide-tips ul{margin:0;padding-left:16px}
+.guide-tips ul li{font-size:13px;color:#1E3A8A;margin-bottom:5px;line-height:1.4}
+.faq{margin-top:16px}
+.faq details{border-bottom:1px solid var(--border);padding:10px 0}
+.faq details:last-child{border-bottom:none}
+.faq summary{font-size:13px;font-weight:600;color:var(--ink);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';font-size:16px;color:var(--gray);font-weight:400}
+.faq details[open] summary::after{content:'−'}
+.faq-a{font-size:13px;color:var(--gray);line-height:1.5;margin-top:6px}
+.other-tools{margin-top:28px}
 .other-tools h3{font-size:13px;font-weight:600;color:var(--gray);letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
-.tools-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.tool-mini{background:white;border:1px solid var(--border);border-radius:10px;padding:14px;text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px;transition:all .15s}
-.tool-mini:hover{border-color:var(--blue)}
-.tool-mini-icon{font-size:1.2rem}
-.tool-mini span{font-size:13px;font-weight:600}
-.article-section{margin-top:32px;background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.article-section h2{font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:14px}
-.article-section p{font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:14px}
-.article-section ul{margin:0 0 14px 20px}
-.article-section li{font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:6px}
-.article-section li strong{color:var(--ink)}
+.resource-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.resource-card{border-radius:12px;overflow:hidden;text-decoration:none;display:block;background:white;border:1px solid var(--border);transition:transform .15s,box-shadow .15s}
+.resource-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.08)}
+.resource-banner{height:100px;display:flex;align-items:center;justify-content:center}
+.resource-banner svg{width:100%;height:100%}
+.resource-body{padding:14px}
+.resource-body h4{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.resource-body p{font-size:11.5px;color:var(--gray);line-height:1.5}
+@media (max-width:560px){.resource-cards{grid-template-columns:1fr}}
+@keyframes ekz-float1{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-8px) rotate(15deg)}}
+@keyframes ekz-float2{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-6px) rotate(-10deg)}}
+@keyframes ekz-merge{0%,100%{transform:translateX(0)}50%{transform:translateX(8px)}}
+.ekz-spark1{animation:ekz-float1 2.4s ease-in-out infinite;transform-origin:center}
+.ekz-spark2{animation:ekz-float2 3s ease-in-out infinite;transform-origin:center}
+.ekz-merge-a{animation:ekz-merge 1.8s ease-in-out infinite}
+.ekz-merge-b{animation:ekz-merge 1.8s ease-in-out infinite reverse}
+@media (prefers-reduced-motion:reduce){.ekz-spark1,.ekz-spark2,.ekz-merge-a,.ekz-merge-b{animation:none}}
 </style>
 <script type="application/ld+json">
 {
@@ -94,54 +156,12 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How many PDF files can I merge at once?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You can merge as many PDF files as you need in one go. Each individual file can be up to 50 MB."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Will the quality of my PDFs be affected after merging?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. The original quality of all pages is fully preserved. Merging does not compress or alter the content of your PDFs."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I merge password-protected PDFs?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Password-protected PDFs need to be unlocked first. Use the Unlock PDF tool to remove the password, then merge."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is this tool free?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, 100% free. No signup, no credit card, no hidden charges."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Are my uploaded files safe and private?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Files are processed securely over an encrypted connection and automatically deleted from the server right after your merged PDF is generated."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need to install any software to merge PDF files?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No installation is needed. The Merge PDF tool works entirely in your browser on any device, including mobile phones."
-      }
-    }
+    {"@type":"Question","name":"How many PDF files can I merge at once?","acceptedAnswer":{"@type":"Answer","text":"You can merge as many PDF files as you need in one go. Each individual file can be up to 50 MB."}},
+    {"@type":"Question","name":"Will merging reduce the quality of my PDF?","acceptedAnswer":{"@type":"Answer","text":"No. The original quality of all pages is fully preserved. Merging does not compress or alter the content of your PDFs."}},
+    {"@type":"Question","name":"Can I merge password-protected PDFs?","acceptedAnswer":{"@type":"Answer","text":"Password-protected PDFs need to be unlocked first. Use the Unlock PDF tool to remove the password, then merge."}},
+    {"@type":"Question","name":"Is this tool free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100 percent free. No signup, no credit card, no hidden charges."}},
+    {"@type":"Question","name":"Are my uploaded files safe and private?","acceptedAnswer":{"@type":"Answer","text":"Yes. Files are processed securely over an encrypted connection and automatically deleted from the server shortly after your merged PDF is generated."}},
+    {"@type":"Question","name":"Can I change the order of pages before merging?","acceptedAnswer":{"@type":"Answer","text":"Yes, you can drag and drop your uploaded files to arrange them in the exact order you want before merging."}}
   ]
 }
 </script>
@@ -152,10 +172,10 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
   <div class="nav-inner">
     <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
     <ul class="nav-links">
-      <li><a href="/unlock-pdf">Unlock PDF</a></li>
-      <li><a href="/merge-pdf" class="active">Merge PDF</a></li>
       <li><a href="/split-pdf">Split PDF</a></li>
+      <li><a href="/merge-pdf" class="active">Merge PDF</a></li>
       <li><a href="/compress-pdf">Compress PDF</a></li>
+      <li><a href="/crop-pdf">Crop PDF</a></li>
     </ul>
     <a class="back" href="/">← All Tools</a>
   </div>
@@ -191,102 +211,221 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
     </div>
   </div>
 
-  <!-- ============ NEW: ARTICLE / DESCRIPTION SECTION ============ -->
+  <div class="section-wrap-wide">
+  <div class="hero-banner">
+    <h2>Many PDFs, one clean file</h2>
+    <div class="hero-visual">
+      <svg width="100%" viewBox="0 0 460 200">
+        <g class="ekz-merge-a">
+          <rect x="55" y="40" width="95" height="120" rx="12" fill="white" opacity="0.95"/>
+          <rect x="68" y="60" width="70" height="6" rx="2" fill="#BFDBFE"/>
+          <rect x="68" y="74" width="70" height="6" rx="2" fill="#DBEAFE"/>
+          <rect x="68" y="88" width="50" height="6" rx="2" fill="#DBEAFE"/>
+        </g>
+        <g class="ekz-merge-b">
+          <rect x="95" y="60" width="95" height="120" rx="12" fill="white"/>
+          <rect x="108" y="80" width="70" height="6" rx="2" fill="#BFDBFE"/>
+          <rect x="108" y="94" width="70" height="6" rx="2" fill="#DBEAFE"/>
+          <rect x="108" y="108" width="50" height="6" rx="2" fill="#DBEAFE"/>
+        </g>
+        <circle cx="235" cy="110" r="24" fill="rgba(255,255,255,.25)"/>
+        <path d="M223 110 L247 110 M235 98 L247 110 L235 122" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="280" y="35" width="130" height="150" rx="14" fill="white"/>
+        <rect x="295" y="60" width="100" height="6" rx="2" fill="#BFDBFE"/>
+        <rect x="295" y="76" width="100" height="6" rx="2" fill="#DBEAFE"/>
+        <rect x="295" y="92" width="100" height="6" rx="2" fill="#DBEAFE"/>
+        <rect x="295" y="108" width="70" height="6" rx="2" fill="#DBEAFE"/>
+        <circle cx="345" cy="150" r="16" fill="#DBEAFE"/>
+        <path d="M338 150 L343 156 L353 141" stroke="#1D4ED8" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <g class="ekz-spark1"><path d="M415 40 L419 50 L429 54 L419 58 L415 68 L411 58 L401 54 L411 50 Z" fill="white" opacity="0.85"/></g>
+        <g class="ekz-spark2"><path d="M30 150 L34 158 L42 162 L34 166 L30 174 L26 166 L18 162 L26 158 Z" fill="white" opacity="0.7"/></g>
+      </svg>
+    </div>
+  </div>
+  </div>
+
+  <div class="section-wrap">
   <div class="article-section">
-    <h2>Why Merge PDF Files Online?</h2>
+    <h2>When You'd Reach for Merge PDF</h2>
     <p>
-      Merging PDF files is one of the most common document tasks — whether you're 
-      combining invoices, compiling a resume with a cover letter and certificates, 
-      joining scanned pages into a single report, or putting together study material 
-      from multiple sources. EkZapp's Merge PDF tool combines multiple PDF documents 
-      into a single file directly in your browser, with no software installation 
-      and no file size restrictions beyond the per-file limit.
+      Combining scattered pages into a single file saves time when applying 
+      for a job, filing paperwork, or organizing scanned documents.
     </p>
-    <p>
-      Unlike desktop PDF editors that require installation and licensing, this tool 
-      runs entirely online. Upload your files, arrange them in order, and download 
-      the merged result in seconds — all without creating an account.
-    </p>
-    <h2>Common Reasons to Merge PDFs</h2>
-    <ul>
-      <li><strong>Job applications:</strong> Combine your resume, cover letter, and certificates into one PDF before submitting.</li>
-      <li><strong>Finance & loans:</strong> Merge multiple bank statement pages before submitting a loan or visa application.</li>
-      <li><strong>Scanned documents:</strong> Join individually scanned ID or contract pages into one file.</li>
-      <li><strong>Business reports:</strong> Combine invoices, receipts, or monthly reports into a single document for accounting.</li>
-      <li><strong>Study material:</strong> Merge chapters, notes, or research paper sections into one reference PDF.</li>
-    </ul>
-  </div>
-
-  <!-- HOW TO USE -->
-  <div class="guide-section">
-    <h2>📖 How to Merge PDF Files</h2>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-body">
-          <h3>Upload Multiple PDF Files</h3>
-          <p>Click the upload area and select 2 or more PDF files you want to combine. You can also drag and drop them directly.</p>
-        </div>
+    <div class="reason-grid">
+      <div class="reason-card">
+        <span class="reason-icon">💼</span>
+        <strong>Job applications</strong>
+        <span>Combine resume, cover letter, and certificates into one PDF.</span>
       </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <h3>Check the File Order</h3>
-          <p>The files will be merged in the order you selected them. The list of selected files is shown below the upload area.</p>
-        </div>
+      <div class="reason-card">
+        <span class="reason-icon">🏦</span>
+        <strong>Finance & loans</strong>
+        <span>Merge bank statement pages before a loan or visa application.</span>
       </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <h3>Click "Merge PDF Files"</h3>
-          <p>Our server will instantly combine all your PDF files into one single document.</p>
-        </div>
+      <div class="reason-card">
+        <span class="reason-icon">🗃️</span>
+        <strong>Scanned paperwork</strong>
+        <span>Join individually scanned ID or contract pages into one file.</span>
       </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-body">
-          <h3>Download the Merged PDF</h3>
-          <p>Your merged PDF will download automatically. All uploaded files are permanently deleted from our server right after processing.</p>
-        </div>
+      <div class="reason-card">
+        <span class="reason-icon">📚</span>
+        <strong>Study material</strong>
+        <span>Merge chapters or research sections into one reference PDF.</span>
       </div>
     </div>
 
-    <div class="faq-section">
-      <h2>❓ Frequently Asked Questions</h2>
-      <div class="faq-item">
-        <div class="faq-q">How many PDF files can I merge at once?</div>
-        <div class="faq-a">You can merge as many PDF files as you need in one go. Each individual file can be up to 50 MB.</div>
+    <div class="ekz-photo-card">
+      <img src="{{ url_for('static', filename='images/photo-signing-documents.jpg') }}" alt="Organizing and combining multiple document pages" onerror="this.style.display='none'">
+      <p>
+        Whether it's job application papers or scanned contracts, merging keeps 
+        every related page together in one clean, shareable file.
+      </p>
+    </div>
+  </div>
+  </div>
+
+  <div class="section-wrap-wide">
+  <div class="feature-grid-section">
+    <h2>Built for Fast, Trustworthy Merging</h2>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <svg class="feature-icon" viewBox="0 0 48 48" fill="none"><rect x="6" y="12" width="36" height="26" rx="4" stroke="#2563EB" stroke-width="2"/><path d="M6 16 L24 28 L42 16" stroke="#2563EB" stroke-width="2" fill="none"/><circle cx="36" cy="30" r="9" fill="white" stroke="#2563EB" stroke-width="2"/><path d="M32 26 L40 34 M40 26 L32 34" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/></svg>
+        <h4>No Email, No Software</h4>
+        <p>Merge unlimited PDFs without signing up or installing anything.</p>
       </div>
-      <div class="faq-item">
-        <div class="faq-q">Will the quality of my PDFs be affected after merging?</div>
-        <div class="faq-a">No. The original quality of all pages is fully preserved. Merging does not compress or alter the content of your PDFs.</div>
+      <div class="feature-item">
+        <svg class="feature-icon" viewBox="0 0 48 48" fill="none"><rect x="10" y="6" width="20" height="26" rx="3" stroke="#2563EB" stroke-width="2"/><path d="M22 6 L22 12 Q22 15 25 15 L30 15" stroke="#2563EB" stroke-width="2" fill="none"/><circle cx="34" cy="30" r="9" stroke="#2563EB" stroke-width="2" fill="white"/><text x="34" y="34" font-size="9" font-weight="700" fill="#2563EB" text-anchor="middle">∞</text></svg>
+        <h4>No File Limit</h4>
+        <p>Merge as many PDFs as you need — no daily quota, no page cap.</p>
       </div>
-      <div class="faq-item">
-        <div class="faq-q">Can I merge password-protected PDFs?</div>
-        <div class="faq-a">Password-protected PDFs need to be unlocked first. Use our Unlock PDF tool to remove the password, then merge.</div>
+      <div class="feature-item">
+        <svg class="feature-icon" viewBox="0 0 48 48" fill="none"><rect x="8" y="10" width="14" height="18" rx="2" stroke="#2563EB" stroke-width="2"/><rect x="26" y="10" width="14" height="18" rx="2" stroke="#2563EB" stroke-width="2"/><path d="M24 32 L24 36" stroke="#2563EB" stroke-width="2"/><rect x="14" y="34" width="20" height="6" rx="2" stroke="#2563EB" stroke-width="2"/></svg>
+        <h4>Order Stays in Your Control</h4>
+        <p>Drag and drop files into the exact sequence before merging.</p>
       </div>
-      <div class="faq-item">
-        <div class="faq-q">Is this tool free?</div>
-        <div class="faq-a">Yes, 100% free. No signup, no credit card, no hidden charges.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Are my uploaded files safe and private?</div>
-        <div class="faq-a">Yes. Files are processed securely over an encrypted connection and automatically deleted from the server right after your merged PDF is generated.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Do I need to install any software to merge PDF files?</div>
-        <div class="faq-a">No installation is needed. The Merge PDF tool works entirely in your browser on any device, including mobile phones.</div>
+      <div class="feature-item">
+        <svg class="feature-icon" viewBox="0 0 48 48" fill="none"><path d="M24 6 L38 12 L38 24 Q38 36 24 42 Q10 36 10 24 L10 12 Z" stroke="#2563EB" stroke-width="2" fill="white"/><path d="M18 24 L22 28 L30 18" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        <h4>Encrypted & Auto-Deleted</h4>
+        <p>Files travel over SSL and are removed from our servers automatically.</p>
       </div>
     </div>
   </div>
+  </div>
 
+  <div class="section-wrap-wide">
+  <div class="compare-section">
+    <h2>Merging Online vs. Other Methods</h2>
+    <table class="compare-table">
+      <tr><th>Feature</th><th class="highlight">EkZapp (Online)</th><th>Print & Re-Scan</th><th>Desktop Software</th></tr>
+      <tr><td>No installation needed</td><td class="compare-yes">✓</td><td class="compare-yes">✓</td><td class="compare-no">✗</td></tr>
+      <tr><td>Keeps original quality</td><td class="compare-yes">✓</td><td class="compare-no">Quality loss</td><td class="compare-yes">✓</td></tr>
+      <tr><td>Works on mobile</td><td class="compare-yes">✓</td><td class="compare-no">✗</td><td class="compare-no">✗</td></tr>
+      <tr><td>Free to use</td><td class="compare-yes">✓</td><td class="compare-no">Printer/ink cost</td><td class="compare-no">Often paid</td></tr>
+      <tr><td>Time required</td><td class="compare-yes">Seconds</td><td class="compare-no">10+ minutes</td><td class="compare-no">A few minutes</td></tr>
+    </table>
+  </div>
+  </div>
+
+  <div class="section-wrap-wide">
+  <div class="usecase-section">
+    <h2>Who Merges PDFs Most Often</h2>
+    <div class="usecase-grid">
+      <div class="usecase-card">
+        <span class="em">🧑‍💼</span>
+        <h4>Job Seekers</h4>
+        <p>Combine a resume, cover letter, and certificates into a single application PDF.</p>
+      </div>
+      <div class="usecase-card">
+        <span class="em">🧾</span>
+        <h4>Accountants & Freelancers</h4>
+        <p>Merge invoices and receipts into one document for record-keeping.</p>
+      </div>
+      <div class="usecase-card">
+        <span class="em">🏫</span>
+        <h4>Students</h4>
+        <p>Combine research paper sections or class notes into one reference file.</p>
+      </div>
+      <div class="usecase-card">
+        <span class="em">🏢</span>
+        <h4>Office Admins</h4>
+        <p>Join scanned forms and ID copies into one file for record submission.</p>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="section-wrap">
+  <div class="guide">
+    <div class="guide-header" onclick="toggleGuide()">
+      <h3>📖 How to Merge PDF Files</h3>
+      <span class="guide-arrow" id="guideArrow">▼</span>
+    </div>
+    <div class="guide-body" id="guideBody">
+      <div class="step-icons">
+        <div class="step-icon-item"><span class="em">📤</span><strong>1. Upload</strong><span>Add 2+ PDFs</span></div>
+        <div class="step-icon-item"><span class="em">🔀</span><strong>2. Arrange</strong><span>Set the order</span></div>
+        <div class="step-icon-item"><span class="em">⬇️</span><strong>3. Download</strong><span>Get merged PDF</span></div>
+      </div>
+      <div class="guide-tips">
+        <h4>💡 Tips</h4>
+        <ul>
+          <li>Files merge in the order you select or arrange them</li>
+          <li>Password-protected PDFs must be unlocked first</li>
+          <li>Original quality is preserved — no compression applied</li>
+          <li>Uploaded files are auto-deleted after processing</li>
+        </ul>
+      </div>
+      <div class="faq">
+        <p style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px;">❓ FAQ</p>
+        <details><summary>How many PDF files can I merge at once?</summary><div class="faq-a">You can merge as many PDF files as you need in one go. Each individual file can be up to 50 MB.</div></details>
+        <details><summary>Will merging reduce the quality of my PDF?</summary><div class="faq-a">No. The original quality of all pages is fully preserved. Merging does not compress or alter the content of your PDFs.</div></details>
+        <details><summary>Can I merge password-protected PDFs?</summary><div class="faq-a">Password-protected PDFs need to be unlocked first. Use the Unlock PDF tool to remove the password, then merge.</div></details>
+        <details><summary>Is this tool free?</summary><div class="faq-a">Yes, 100% free. No signup, no credit card, no hidden charges.</div></details>
+        <details><summary>Are my uploaded files safe and private?</summary><div class="faq-a">Yes. Files are processed securely and automatically deleted from the server shortly after your merged PDF is generated.</div></details>
+        <details><summary>Can I change the order of pages before merging?</summary><div class="faq-a">Yes, you can drag and drop your uploaded files to arrange them in the exact order you want before merging.</div></details>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="section-wrap-wide">
   <div class="other-tools">
-    <h3>Other PDF Tools</h3>
-    <div class="tools-row">
-      <a class="tool-mini" href="/unlock-pdf"><span class="tool-mini-icon">🔓</span><span>Unlock PDF</span></a>
-      <a class="tool-mini" href="/split-pdf"><span class="tool-mini-icon">✂️</span><span>Split PDF</span></a>
-      <a class="tool-mini" href="/compress-pdf"><span class="tool-mini-icon">⚡</span><span>Compress PDF</span></a>
+    <h3>More PDF Tools to Try</h3>
+    <div class="resource-cards">
+      <a href="/split-pdf" class="resource-card">
+        <div class="resource-banner" style="background:linear-gradient(135deg,#F87171,#B91C1C)">
+          <svg viewBox="0 0 200 110">
+            <rect x="65" y="20" width="70" height="75" rx="6" fill="white"/>
+            <line x1="65" y1="57" x2="135" y2="57" stroke="#FCA5A5" stroke-width="2" stroke-dasharray="5 4"/>
+            <rect x="75" y="30" width="50" height="5" rx="2" fill="#FECACA"/>
+            <rect x="75" y="70" width="50" height="5" rx="2" fill="#FECACA"/>
+          </svg>
+        </div>
+        <div class="resource-body"><h4>Split PDF</h4><p>Extract specific pages from a PDF.</p></div>
+      </a>
+      <a href="/compress-pdf" class="resource-card">
+        <div class="resource-banner" style="background:linear-gradient(135deg,#FB923C,#EA580C)">
+          <svg viewBox="0 0 200 110">
+            <rect x="45" y="20" width="55" height="70" rx="6" fill="white"/>
+            <text x="72" y="60" font-family="Inter,sans-serif" font-size="13" font-weight="800" fill="#EA580C" text-anchor="middle">8MB</text>
+            <path d="M110 55 L130 55 M122 45 L132 55 L122 65" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="140" y="30" width="45" height="55" rx="6" fill="white"/>
+            <text x="162" y="63" font-family="Inter,sans-serif" font-size="12" font-weight="800" fill="#16A34A" text-anchor="middle">1MB</text>
+          </svg>
+        </div>
+        <div class="resource-body"><h4>Compress PDF</h4><p>Shrink file size without losing quality.</p></div>
+      </a>
+      <a href="/crop-pdf" class="resource-card">
+        <div class="resource-banner" style="background:linear-gradient(135deg,#4ADE80,#15803D)">
+          <svg viewBox="0 0 200 110">
+            <rect x="60" y="20" width="80" height="70" rx="6" fill="white"/>
+            <rect x="75" y="32" width="50" height="46" fill="none" stroke="#16A34A" stroke-width="2" stroke-dasharray="4 3"/>
+          </svg>
+        </div>
+        <div class="resource-body"><h4>Crop PDF</h4><p>Trim margins or unwanted page areas.</p></div>
+      </a>
     </div>
+  </div>
   </div>
 </div>
 
@@ -300,6 +439,12 @@ function showFiles(input){
       list.innerHTML+=`<div class="file-item">📄 ${i+1}. ${f.name}</div>`;
     });
   }
+}
+function toggleGuide(){
+  const body = document.getElementById('guideBody');
+  const arrow = document.getElementById('guideArrow');
+  body.classList.toggle('open');
+  arrow.style.transform = body.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
 }
 </script>
 </body>

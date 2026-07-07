@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VW5QLMV046"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -16,7 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--green:#16A34A;--green-lt:#F0FDF4}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--green:#16A34A;--green-lt:#F0FDF4;--teal:#0D9488}
 body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
 nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
@@ -26,12 +25,12 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .logo-text span{color:var(--blue)}
 .back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
 .back:hover{border-color:var(--blue);color:var(--blue)}
-.container{max-width:600px;margin:48px auto;padding:0 20px 60px}
+.container{max-width:960px;margin:48px auto;padding:0 20px 60px}
 .tool-header{text-align:center;margin-bottom:32px}
 .tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:#FFEDD5;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
 .tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
 .tool-header p{color:var(--gray);font-size:14px}
-.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06);max-width:600px;margin:0 auto}
 .info-bar{background:var(--blue-lt);border:1px solid #BFDBFE;border-radius:8px;padding:10px 14px;margin-bottom:20px;font-size:13px;color:#1E40AF}
 .field{margin-bottom:16px}
 .field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px;display:flex;justify-content:space-between}
@@ -43,60 +42,111 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .drop-area h3{font-size:14px;font-weight:600;margin-bottom:4px}
 .drop-area p{font-size:12px;color:var(--gray)}
 .drop-area input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer}
-
-/* Instant preview panel (shown right after file select, before submit) */
-.preview-panel{display:none;align-items:center;gap:14px;text-align:left;}
+.preview-panel{display:none;align-items:center;gap:14px;text-align:left}
 .preview-panel.show{display:flex}
 .preview-panel img{width:74px;height:74px;object-fit:cover;border-radius:10px;border:1px solid var(--border);background:white;flex-shrink:0}
 .preview-info{flex:1;min-width:0}
-.preview-info .pname{font-size:13px;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.preview-info .pmeta{font-size:12px;color:var(--gray);margin-top:2px;}
-.preview-info .pmeta b{color:var(--blue);}
-.change-btn{font-size:12px;color:var(--blue);font-weight:600;cursor:pointer;background:none;border:none;text-decoration:underline;flex-shrink:0;}
-
+.preview-info .pname{font-size:13px;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.preview-info .pmeta{font-size:12px;color:var(--gray);margin-top:2px}
+.preview-info .pmeta b{color:var(--blue)}
+.change-btn{font-size:12px;color:var(--blue);font-weight:600;cursor:pointer;background:none;border:none;text-decoration:underline;flex-shrink:0}
 input[type="range"]{width:100%;accent-color:var(--blue)}
 .btn{width:100%;padding:13px;background:var(--blue);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;margin-top:4px}
 .btn:hover{background:var(--blue-dk)}
-.btn:disabled{background:#9CA3AF;cursor:not-allowed;}
+.btn:disabled{background:#9CA3AF;cursor:not-allowed}
 .error-box{background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:12px 16px;color:#DC2626;font-size:13px;margin-bottom:16px}
 .trust{display:flex;justify-content:center;gap:20px;margin-top:16px;flex-wrap:wrap}
 .trust-item{font-size:12px;color:var(--gray)}
-
-/* Result section (shown after compression completes) */
-.result-card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:24px;}
-.result-title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:18px;display:flex;align-items:center;gap:8px;}
-.result-preview{text-align:center;margin-bottom:18px;}
-.result-preview img{max-width:100%;max-height:280px;border-radius:10px;border:1px solid var(--border);}
-.compare-row{display:flex;gap:12px;margin-bottom:18px;}
-.compare-box{flex:1;background:var(--light);border-radius:10px;padding:14px;text-align:center;}
-.compare-box.after{background:var(--green-lt);}
-.compare-box .clabel{font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:.03em;font-weight:700;margin-bottom:4px;}
-.compare-box .cval{font-size:20px;font-weight:800;color:var(--ink);}
-.compare-box.after .cval{color:var(--green);}
-.reduction-badge{background:var(--green-lt);color:var(--green);font-size:13px;font-weight:700;padding:8px 14px;border-radius:8px;text-align:center;margin-bottom:18px;}
-.download-btn{display:block;width:100%;text-align:center;padding:13px;background:var(--green);color:white;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none;}
-.download-btn:hover{opacity:.9;}
-.compress-again{display:block;text-align:center;margin-top:12px;font-size:13px;color:var(--blue);text-decoration:none;font-weight:600;}
-
-.guide-section{margin-top:32px;background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.guide-section h2{font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:20px}
-.steps{display:flex;flex-direction:column;gap:16px}
-.step{display:flex;gap:14px;align-items:flex-start}
-.step-num{width:32px;height:32px;border-radius:50%;background:var(--blue);color:white;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.step-body h3{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px}
-.step-body p{font-size:12.5px;color:var(--gray);line-height:1.5}
-.faq-section{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
-.faq-section h2{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:16px}
-.faq-item{border-bottom:1px solid var(--border);padding:14px 0}
-.faq-item:last-child{border-bottom:none;padding-bottom:0}
-.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
-.faq-a{font-size:12.5px;color:var(--gray);line-height:1.5}
-.article-section{margin-top:32px;background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.article-section h2{font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:14px}
-.article-section p{font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:14px}
-.article-section ul{margin:0 0 14px 20px}
-.article-section li{font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:6px}
-.article-section li strong{color:var(--ink)}
+.result-card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:24px;max-width:600px;margin-left:auto;margin-right:auto}
+.result-title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.result-preview{text-align:center;margin-bottom:18px}
+.result-preview img{max-width:100%;max-height:280px;border-radius:10px;border:1px solid var(--border)}
+.compare-row{display:flex;gap:12px;margin-bottom:18px}
+.compare-box{flex:1;background:var(--light);border-radius:10px;padding:14px;text-align:center}
+.compare-box.after{background:var(--green-lt)}
+.compare-box .clabel{font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:.03em;font-weight:700;margin-bottom:4px}
+.compare-box .cval{font-size:20px;font-weight:800;color:var(--ink)}
+.compare-box.after .cval{color:var(--green)}
+.reduction-badge{background:var(--green-lt);color:var(--green);font-size:13px;font-weight:700;padding:8px 14px;border-radius:8px;text-align:center;margin-bottom:18px}
+.download-btn{display:block;width:100%;text-align:center;padding:13px;background:var(--green);color:white;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none}
+.download-btn:hover{opacity:.9}
+.compress-again{display:block;text-align:center;margin-top:12px;font-size:13px;color:var(--blue);text-decoration:none;font-weight:600}
+.section-wrap{max-width:650px;margin:24px auto 0}
+.section-wrap-wide{max-width:900px;margin:24px auto 0}
+.hero-banner{border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#2DD4BF 0%,#0D9488 55%,#065F46 100%);padding:36px 28px;text-align:center}
+.hero-banner h2{color:white;font-size:1.5rem;font-weight:800;letter-spacing:-.01em;margin-bottom:18px;text-shadow:0 2px 8px rgba(0,0,0,.15)}
+.hero-visual{max-width:520px;margin:0 auto}
+.feature-grid-section{background:white;border:1px solid var(--border);border-radius:14px;padding:32px 24px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.feature-grid-section h2{font-size:1.1rem;font-weight:700;color:var(--ink);text-align:center;margin-bottom:28px}
+.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px 16px}
+.feature-item{text-align:center}
+.feature-icon{width:44px;height:44px;margin:0 auto 14px}
+.feature-item h4{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.feature-item p{font-size:12.5px;color:var(--gray);line-height:1.6}
+@media (max-width:720px){.feature-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:420px){.feature-grid{grid-template-columns:1fr}}
+.reason-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}
+.reason-card{background:white;border:1px solid var(--border);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:6px;transition:transform .15s,box-shadow .15s}
+.reason-card:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.reason-icon{font-size:1.5rem}
+.reason-card strong{font-size:13px;color:var(--ink)}
+.reason-card span{font-size:12px;color:var(--gray);line-height:1.4}
+@media (max-width:480px){.reason-grid{grid-template-columns:1fr}}
+.article-section{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.article-section h2{font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:10px}
+.article-section>p{font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:4px}
+.ekz-photo-card{display:flex;gap:16px;align-items:center;background:var(--light);border:1px solid var(--border);border-radius:12px;padding:16px;margin-top:20px;flex-wrap:wrap}
+.ekz-photo-card img{width:170px;height:115px;object-fit:cover;border-radius:8px;flex-shrink:0}
+.ekz-photo-card p{font-size:13px;color:var(--gray);line-height:1.6;margin:0}
+.compare-section{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.compare-section h2{font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:16px}
+.compare-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.compare-table th{text-align:center;padding:10px 8px;font-weight:700;color:var(--ink);border-bottom:2px solid var(--border)}
+.compare-table th:first-child{text-align:left}
+.compare-table td{padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--gray)}
+.compare-table td:first-child{text-align:left;color:var(--ink);font-weight:600}
+.compare-yes{color:var(--green);font-weight:700}
+.compare-no{color:#D1D5DB;font-weight:700}
+.compare-table th.highlight{color:var(--teal)}
+.guide{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:white}
+.guide-header{background:var(--light);padding:14px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);user-select:none}
+.guide-header h3{margin:0;font-size:15px;color:var(--ink)}
+.guide-arrow{font-size:16px;transition:transform .2s;color:var(--gray)}
+.guide-body{display:none;padding:20px}
+.guide-body.open{display:block}
+.step-icons{display:flex;justify-content:space-between;gap:8px;margin-bottom:20px;text-align:center}
+.step-icon-item{flex:1}
+.step-icon-item .em{font-size:1.6rem;display:block;margin-bottom:6px}
+.step-icon-item strong{font-size:12px;color:var(--ink);display:block}
+.step-icon-item span{font-size:11px;color:var(--gray)}
+.guide-tips{margin-top:16px;background:#F0FDFA;border-radius:8px;padding:14px 16px}
+.guide-tips h4{margin:0 0 8px;font-size:13px;color:#115E59}
+.guide-tips ul{margin:0;padding-left:16px}
+.guide-tips ul li{font-size:13px;color:#134E4A;margin-bottom:5px;line-height:1.4}
+.faq details{border-bottom:1px solid var(--border);padding:10px 0}
+.faq details:last-child{border-bottom:none}
+.faq summary{font-size:13px;font-weight:600;color:var(--ink);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';font-size:16px;color:var(--gray);font-weight:400}
+.faq details[open] summary::after{content:'−'}
+.faq-a{font-size:13px;color:var(--gray);line-height:1.5;margin-top:6px}
+.other-tools h3{font-size:13px;font-weight:600;color:var(--gray);letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
+.resource-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.resource-card{border-radius:12px;overflow:hidden;text-decoration:none;display:block;background:white;border:1px solid var(--border);transition:transform .15s,box-shadow .15s}
+.resource-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.08)}
+.resource-banner{height:100px;display:flex;align-items:center;justify-content:center}
+.resource-banner svg{width:100%;height:100%}
+.resource-body{padding:14px}
+.resource-body h4{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.resource-body p{font-size:11.5px;color:var(--gray);line-height:1.5}
+@media (max-width:560px){.resource-cards{grid-template-columns:1fr}}
+@keyframes ekz-shrink{0%,100%{transform:scale(1)}50%{transform:scale(0.82)}}
+@keyframes ekz-float1{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-8px) rotate(15deg)}}
+@keyframes ekz-float2{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-6px) rotate(-10deg)}}
+.ekz-shrink-a{animation:ekz-shrink 2.2s ease-in-out infinite;transform-origin:center}
+.ekz-spark1{animation:ekz-float1 2.4s ease-in-out infinite;transform-origin:center}
+.ekz-spark2{animation:ekz-float2 3s ease-in-out infinite;transform-origin:center}
+@media (prefers-reduced-motion:reduce){.ekz-shrink-a,.ekz-spark1,.ekz-spark2{animation:none}}
 </style>
 <script type="application/ld+json">
 {
@@ -115,54 +165,12 @@ input[type="range"]{width:100%;accent-color:var(--blue)}
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How much will my image be compressed?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Typically 50 to 80 percent smaller depending on the original image and the quality setting you choose."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Which image formats are supported?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "JPG, PNG, and WebP formats are all supported for compression."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is this tool free?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, completely free. No signup is required."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Will compressing reduce the visual quality of my photo?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "A quality slider lets you control the tradeoff. At around 80 percent quality, most images look nearly identical to the original while being significantly smaller."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Why do I need to compress an image before uploading it?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Many websites, forms, and portals set a maximum upload size, and large photos from modern phone cameras often exceed it. Compressing brings the file within limit."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is my uploaded image stored anywhere?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. The image is processed and returned to you, then automatically removed, it is not stored or shared."
-      }
-    }
+    {"@type":"Question","name":"How much will my image be compressed?","acceptedAnswer":{"@type":"Answer","text":"Typically 50 to 80 percent smaller depending on the original image and the quality setting you choose."}},
+    {"@type":"Question","name":"Which image formats are supported?","acceptedAnswer":{"@type":"Answer","text":"JPG, PNG, and WebP formats are all supported for compression."}},
+    {"@type":"Question","name":"Is this tool free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free. No signup is required."}},
+    {"@type":"Question","name":"Will compressing reduce the visual quality of my photo?","acceptedAnswer":{"@type":"Answer","text":"A quality slider lets you control the tradeoff. At around 80 percent quality, most images look nearly identical to the original while being significantly smaller."}},
+    {"@type":"Question","name":"Why do I need to compress an image before uploading it?","acceptedAnswer":{"@type":"Answer","text":"Many websites, forms, and portals set a maximum upload size, and large photos from modern phone cameras often exceed it. Compressing brings the file within limit."}},
+    {"@type":"Question","name":"Is my uploaded image stored anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. The image is processed and returned to you, then automatically removed, it is not stored or shared."}}
   ]
 }
 </script>
@@ -182,17 +190,14 @@ input[type="range"]{width:100%;accent-color:var(--blue)}
     <p>Reduce JPG, PNG, and WebP file size without losing quality</p>
   </div>
 
-  {% if error %}<div class="error-box">⚠️ {{ error }}</div>{% endif %}
+  {% if error %}<div class="error-box" style="max-width:600px;margin:0 auto 16px">⚠️ {{ error }}</div>{% endif %}
 
   {% if result_image %}
-  <!-- ============ RESULT VIEW (shown after compression) ============ -->
   <div class="result-card">
     <div class="result-title">✅ Your image has been compressed!</div>
-
     <div class="result-preview">
       <img src="{{ result_image }}" alt="Compressed preview">
     </div>
-
     <div class="compare-row">
       <div class="compare-box">
         <div class="clabel">Original</div>
@@ -203,14 +208,11 @@ input[type="range"]{width:100%;accent-color:var(--blue)}
         <div class="cval">{{ final_size_kb }} KB</div>
       </div>
     </div>
-
     <div class="reduction-badge">🎉 Reduced by {{ reduction_pct }}% — Quality: {{ quality }}%</div>
-
     <a href="{{ result_image }}" download="{{ download_filename }}" class="download-btn">⬇️ Download Compressed Image</a>
     <a href="/compress-image" class="compress-again">Compress another image →</a>
   </div>
   {% else %}
-  <!-- ============ UPLOAD FORM VIEW ============ -->
   <div class="card">
     <div class="info-bar">⚡ Compress JPG, PNG, WebP images instantly</div>
     <form method="POST" enctype="multipart/form-data" id="compressForm">
@@ -246,62 +248,188 @@ input[type="range"]{width:100%;accent-color:var(--blue)}
     </div>
   </div>
 
-  <!-- ============ NEW: ARTICLE / DESCRIPTION SECTION ============ -->
+  <div class="section-wrap-wide">
+  <div class="hero-banner">
+    <h2>Same look, a fraction of the size</h2>
+    <div class="hero-visual">
+      <svg width="100%" viewBox="0 0 460 200">
+        <rect x="50" y="35" width="130" height="130" rx="14" fill="white"/>
+        <path d="M65 145 Q85 100 105 130 Q118 112 135 138 L162 165 L65 165 Z" fill="#99F6E4" opacity="0.5"/>
+        <circle cx="85" cy="65" r="10" fill="#5EEAD4"/>
+        <text x="115" y="185" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="800" fill="white">6.2 MB</text>
+        <circle cx="235" cy="100" r="24" fill="rgba(255,255,255,.25)"/>
+        <path d="M223 100 L247 100 M235 88 L247 100 L235 112" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <g class="ekz-shrink-a">
+          <rect x="290" y="50" width="105" height="105" rx="12" fill="white"/>
+          <path d="M302 122 Q315 92 328 112 Q337 100 349 116 L368 136 L302 136 Z" fill="#99F6E4" opacity="0.5"/>
+          <circle cx="315" cy="70" r="7" fill="#5EEAD4"/>
+        </g>
+        <text x="342" y="185" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="800" fill="white">750 KB</text>
+        <g class="ekz-spark1"><path d="M415 40 L419 50 L429 54 L419 58 L415 68 L411 58 L401 54 L411 50 Z" fill="white" opacity="0.85"/></g>
+        <g class="ekz-spark2"><path d="M30 150 L34 158 L42 162 L34 166 L30 174 L26 166 L18 162 L26 158 Z" fill="white" opacity="0.7"/></g>
+      </svg>
+    </div>
+  </div>
+  </div>
+
+  <div class="section-wrap">
   <div class="article-section">
-    <h2>Why Compress an Image Online?</h2>
+    <h2>Why Compress an Image Online</h2>
     <p>
-      Photos taken on modern phone cameras are often several megabytes each, 
-      which makes them slow to upload, awkward to email, and sometimes too 
-      large for websites or online forms that enforce a size limit. EkZapp's 
-      Image Compressor reduces JPG, PNG, and WebP file sizes significantly 
-      while keeping the picture looking sharp, all directly in your browser 
-      with no software to install.
+      Phone camera photos are often several megabytes each, which slows down 
+      uploads and can exceed limits on websites and forms. Compression shrinks 
+      the file while keeping the picture looking sharp.
     </p>
-    <p>
-      A live before-and-after size comparison lets you see exactly how much 
-      space you saved, and the adjustable quality slider gives you full 
-      control over the balance between file size and visual clarity.
-    </p>
-    <h2>Common Reasons to Compress an Image</h2>
-    <ul>
-      <li><strong>Website performance:</strong> Smaller images load faster, which improves page speed and user experience.</li>
-      <li><strong>Form & portal uploads:</strong> Many job, visa, and government portals cap image size — compression brings large photos within limit.</li>
-      <li><strong>Email attachments:</strong> Avoid slow uploads or bounced emails caused by oversized photos.</li>
-      <li><strong>Storage saving:</strong> Free up space on your phone or cloud drive by shrinking photo libraries.</li>
-      <li><strong>Social media & messaging:</strong> Faster sharing over WhatsApp, Instagram, or other apps with smaller file sizes.</li>
-    </ul>
+    <div class="reason-grid">
+      <div class="reason-card">
+        <span class="reason-icon">🚀</span>
+        <strong>Website performance</strong>
+        <span>Smaller images load faster and improve page speed.</span>
+      </div>
+      <div class="reason-card">
+        <span class="reason-icon">📋</span>
+        <strong>Form & portal uploads</strong>
+        <span>Job and visa portals often cap image size — stay within limit.</span>
+      </div>
+      <div class="reason-card">
+        <span class="reason-icon">📧</span>
+        <strong>Email attachments</strong>
+        <span>Avoid slow uploads or bounced emails from big photos.</span>
+      </div>
+      <div class="reason-card">
+        <span class="reason-icon">📱</span>
+        <strong>Storage saving</strong>
+        <span>Free up space on your phone or cloud drive.</span>
+      </div>
+    </div>
+    <div class="ekz-photo-card">
+      <img src="{{ url_for('static', filename='images/photo-data-analysis.jpg') }}" alt="Reviewing photos before uploading to a website or form" onerror="this.style.display='none'">
+      <p>
+        A smaller photo uploads faster and clears strict size limits on job, 
+        visa, and government portals — without losing visible quality.
+      </p>
+    </div>
+  </div>
+  </div>
+
+  <div class="section-wrap-wide">
+  <div class="feature-grid-section">
+    <h2>What You Get With Every Compression</h2>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <svg class="feature-icon" viewBox="0 0 48 48" fill="none"><rect x="6" y="8" width="36" height="26" rx="4" stroke="#0D9488" stroke-width="2"/><path d="M12 26 Q17 16 22 22 Q26 17 32 21 L38 26" stroke="#0D9488" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="16" cy="14" r="3" fill="#0D9488"/></svg>
+        <h4>Instant Preview</h4>
+        <p>See your image and its original size the moment you upload.</p>
+      </div>
+      <div class="feature-item">
+        <svg class="feature-icon" viewBox="0 0 48 48" fill="none"><rect x="8" y="20" width="32" height="6" rx="3" fill="#CCFBF1"/><circle cx="28" cy="23" r="7" fill="#0D9488"/></svg>
+        <h4>Adjustable Quality</h4>
+        <p>A slider lets you balance file size against sharpness.</p>
+      </div>
+      <div class="feature-item">
+        <svg class="feature-icon" viewBox="0 0 48 48" fill="none"><rect x="6" y="14" width="16" height="20" rx="3" stroke="#0D9488" stroke-width="2"/><rect x="26" y="14" width="16" height="20" rx="3" stroke="#0D9488" stroke-width="2"/><path d="M22 24 L26 24" stroke="#0D9488" stroke-width="2"/></svg>
+        <h4>Before & After Compare</h4>
+        <p>See exact KB saved before you download the result.</p>
+      </div>
+      <div class="feature-item">
+        <svg class="feature-icon" viewBox="0 0 48 48" fill="none"><path d="M24 6 L38 12 L38 24 Q38 36 24 42 Q10 36 10 24 L10 12 Z" stroke="#0D9488" stroke-width="2" fill="white"/><path d="M18 24 L22 28 L30 18" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        <h4>Private & Auto-Deleted</h4>
+        <p>Images are processed and removed — never stored.</p>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="section-wrap-wide">
+  <div class="compare-section">
+    <h2>Compressed vs. Original Photo</h2>
+    <table class="compare-table">
+      <tr><th>Aspect</th><th class="highlight">After Compression</th><th>Original File</th></tr>
+      <tr><td>Typical size reduction</td><td class="compare-yes">50–80% smaller</td><td class="compare-no">Full size</td></tr>
+      <tr><td>Upload speed</td><td class="compare-yes">Much faster</td><td class="compare-no">Slower</td></tr>
+      <tr><td>Passes portal size limits</td><td class="compare-yes">✓</td><td class="compare-no">May be rejected</td></tr>
+      <tr><td>Visible quality</td><td class="compare-yes">Nearly identical</td><td class="compare-yes">Original</td></tr>
+    </table>
+  </div>
+  </div>
+
+  <div class="section-wrap">
+  <div class="guide">
+    <div class="guide-header" onclick="toggleGuide()">
+      <h3>📖 How to Compress an Image</h3>
+      <span class="guide-arrow" id="guideArrow">▼</span>
+    </div>
+    <div class="guide-body" id="guideBody">
+      <div class="step-icons">
+        <div class="step-icon-item"><span class="em">📤</span><strong>1. Upload</strong><span>Select your image</span></div>
+        <div class="step-icon-item"><span class="em">🎚️</span><strong>2. Set quality</strong><span>Adjust the slider</span></div>
+        <div class="step-icon-item"><span class="em">⬇️</span><strong>3. Download</strong><span>Get smaller file</span></div>
+      </div>
+      <div class="guide-tips">
+        <h4>💡 Tips</h4>
+        <ul>
+          <li>80% quality is a good balance for most photos</li>
+          <li>JPG, PNG, and WebP are all supported</li>
+          <li>Compare original vs. compressed size before downloading</li>
+          <li>Images are auto-deleted from our server after processing</li>
+        </ul>
+      </div>
+      <div class="faq">
+        <p style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px;">❓ FAQ</p>
+        <details><summary>How much will my image be compressed?</summary><div class="faq-a">Typically 50–80% smaller depending on the original image and quality setting you choose.</div></details>
+        <details><summary>Which formats are supported?</summary><div class="faq-a">JPG, PNG, and WebP formats are supported for compression.</div></details>
+        <details><summary>Is this tool free?</summary><div class="faq-a">Yes, completely free. No signup required.</div></details>
+        <details><summary>Will compressing reduce the visual quality of my photo?</summary><div class="faq-a">The quality slider lets you control the tradeoff. Around 80% quality, most images look nearly identical to the original while being significantly smaller.</div></details>
+        <details><summary>Why do I need to compress an image before uploading it?</summary><div class="faq-a">Many websites, forms, and portals set a maximum upload size, and large photos from phone cameras often exceed it. Compressing brings the file within limit.</div></details>
+        <details><summary>Is my uploaded image stored anywhere?</summary><div class="faq-a">No. The image is processed and returned to you, then automatically removed — it is not stored or shared.</div></details>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="section-wrap-wide">
+  <div class="other-tools">
+    <h3>More Tools to Try</h3>
+    <div class="resource-cards">
+      <a href="/remove-background" class="resource-card">
+        <div class="resource-banner" style="background:linear-gradient(135deg,#93C5FD,#1D4ED8)">
+          <svg viewBox="0 0 200 110">
+            <circle cx="100" cy="45" r="20" fill="white"/>
+            <path d="M75 95 Q75 65 100 65 Q125 65 125 95 Z" fill="white"/>
+          </svg>
+        </div>
+        <div class="resource-body"><h4>Remove Background</h4><p>Get a transparent PNG in seconds.</p></div>
+      </a>
+      <a href="/passport-photo" class="resource-card">
+        <div class="resource-banner" style="background:linear-gradient(135deg,#F472B6,#BE185D)">
+          <svg viewBox="0 0 200 110">
+            <rect x="75" y="15" width="50" height="65" rx="4" fill="white"/>
+            <circle cx="100" cy="35" r="10" fill="#FBCFE8"/>
+            <path d="M85 65 Q85 50 100 50 Q115 50 115 65 Z" fill="#FBCFE8"/>
+          </svg>
+        </div>
+        <div class="resource-body"><h4>Passport Photo</h4><p>Create ID/passport-size photos instantly.</p></div>
+      </a>
+      <a href="/favicon-generator" class="resource-card">
+        <div class="resource-banner" style="background:linear-gradient(135deg,#FCD34D,#D97706)">
+          <svg viewBox="0 0 200 110">
+            <rect x="70" y="25" width="60" height="60" rx="10" fill="white"/>
+            <rect x="85" y="40" width="30" height="30" rx="4" fill="#FDE68A"/>
+          </svg>
+        </div>
+        <div class="resource-body"><h4>Favicon Generator</h4><p>Turn any image into a website favicon.</p></div>
+      </a>
+    </div>
+  </div>
   </div>
   {% endif %}
-
-  <div class="guide-section">
-    <h2>📖 How to Compress an Image</h2>
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Upload Your Image</h3><p>Click the upload area or drag and drop your JPG, PNG, or WebP image. You'll instantly see a preview with its original size.</p></div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Set the Quality Level</h3><p>Use the quality slider to choose your preferred output quality. Lower quality = smaller file size. 80% is a good balance for most images.</p></div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Click "Compress Image"</h3><p>Our tool reduces the file size while keeping the image as clear as possible.</p></div></div>
-      <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Compare & Download</h3><p>See exactly how many KB were saved, then download the compressed image.</p></div></div>
-    </div>
-    <div class="faq-section">
-      <h2>❓ Frequently Asked Questions</h2>
-      <div class="faq-item"><div class="faq-q">How much will my image be compressed?</div><div class="faq-a">Typically 50-80% smaller depending on the original image and quality setting you choose.</div></div>
-      <div class="faq-item"><div class="faq-q">Which formats are supported?</div><div class="faq-a">JPG, PNG, and WebP formats are supported for compression.</div></div>
-      <div class="faq-item"><div class="faq-q">Is this tool free?</div><div class="faq-a">Yes, completely free. No signup required.</div></div>
-      <div class="faq-item"><div class="faq-q">Will compressing reduce the visual quality of my photo?</div><div class="faq-a">The quality slider lets you control the tradeoff. Around 80% quality, most images look nearly identical to the original while being significantly smaller.</div></div>
-      <div class="faq-item"><div class="faq-q">Why do I need to compress an image before uploading it?</div><div class="faq-a">Many websites, forms, and portals set a maximum upload size, and large photos from phone cameras often exceed it. Compressing brings the file within limit.</div></div>
-      <div class="faq-item"><div class="faq-q">Is my uploaded image stored anywhere?</div><div class="faq-a">No. The image is processed and returned to you, then automatically removed — it is not stored or shared.</div></div>
-    </div>
-  </div>
 </div>
 <script>
-function formatKB(bytes){
-  return (bytes/1024).toFixed(1) + ' KB';
-}
-
+function formatKB(bytes){ return (bytes/1024).toFixed(1) + ' KB'; }
 function handleFileSelect(input){
   if(!input.files || !input.files[0]) return;
   const file = input.files[0];
   const reader = new FileReader();
-
   reader.onload = function(e){
     const img = new Image();
     img.onload = function(){
@@ -312,7 +440,6 @@ function handleFileSelect(input){
       document.getElementById('dropPrompt').style.display = 'none';
       document.getElementById('previewPanel').classList.add('show');
       document.getElementById('dropArea').classList.add('has-file');
-
       const btn = document.getElementById('submitBtn');
       btn.disabled = false;
       btn.textContent = '🗜️ Compress Image';
@@ -320,6 +447,12 @@ function handleFileSelect(input){
     img.src = e.target.result;
   };
   reader.readAsDataURL(file);
+}
+function toggleGuide(){
+  const body = document.getElementById('guideBody');
+  const arrow = document.getElementById('guideArrow');
+  body.classList.toggle('open');
+  arrow.style.transform = body.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
 }
 </script>
 </body>
