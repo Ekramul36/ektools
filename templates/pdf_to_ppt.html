@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PDF to PPT Converter — EkZapp</title>
-<meta name="description" content="Convert PDF pages into a PowerPoint presentation online for free. No signup needed.">
+<title>PDF to PPT Converter Online Free — Convert PDF to PowerPoint | EkZapp</title>
+<meta name="description" content="Convert PDF pages into a PowerPoint (.pptx) presentation online for free. Each page becomes a slide, formatting preserved. No signup, no watermark.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -51,6 +51,29 @@ form{display:flex;flex-direction:column;gap:16px}
 .trust{display:flex;justify-content:center;gap:20px;margin-top:16px;flex-wrap:wrap}
 .trust-item{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:4px}
 
+.article-section{margin-top:24px;background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.article-section h2{font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:14px}
+.article-section p{font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:14px}
+.article-section ul{margin:0 0 14px 20px}
+.article-section li{font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:6px}
+.article-section li strong{color:var(--ink)}
+.visual-wrap{margin-bottom:24px;overflow-x:auto;}
+.visual-wrap svg{min-width:480px;}
+@keyframes ekz-float1 { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-8px) rotate(15deg)} }
+@keyframes ekz-float2 { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-6px) rotate(-10deg)} }
+@keyframes ekz-float3 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+@keyframes ekz-arrow { 0%,100%{transform:translateX(0);opacity:1} 50%{transform:translateX(6px);opacity:0.6} }
+@keyframes ekz-play { 0%,100%{transform:scale(1)} 50%{transform:scale(1.08)} }
+.ekz-spark1{animation:ekz-float1 2.4s ease-in-out infinite;transform-origin:center}
+.ekz-spark2{animation:ekz-float2 3s ease-in-out infinite;transform-origin:center}
+.ekz-spark3{animation:ekz-float3 2.8s ease-in-out infinite;transform-origin:center}
+.ekz-arrow-move{animation:ekz-arrow 1.6s ease-in-out infinite}
+.ekz-play-btn{animation:ekz-play 2s ease-in-out infinite;transform-origin:center}
+@media (prefers-reduced-motion: reduce){.ekz-spark1,.ekz-spark2,.ekz-spark3,.ekz-arrow-move,.ekz-play-btn{animation:none}}
+.ekz-photo-card{display:flex;gap:16px;align-items:center;background:var(--light);border:1px solid var(--border);border-radius:12px;padding:16px;margin-top:20px;flex-wrap:wrap}
+.ekz-photo-card img{width:180px;height:120px;object-fit:cover;border-radius:8px;flex-shrink:0}
+.ekz-photo-card p{font-size:13px;color:var(--gray);line-height:1.6;margin:0}
+
 .guide{margin-top:24px;border:1px solid var(--border);border-radius:12px;overflow:hidden}
 .guide-header{background:var(--light);padding:14px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);user-select:none}
 .guide-header h3{margin:0;font-size:15px;color:var(--ink)}
@@ -96,6 +119,62 @@ form{display:flex;flex-direction:column;gap:16px}
   "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is this tool free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, completely free with no signup, watermark, or hidden charges."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I edit the text after converting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Each slide is an image of the original page, so text is not individually editable, this keeps the exact visual formatting of the PDF intact."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if my PDF has many pages?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every page becomes one slide, so a 20-page PDF becomes a 20-slide presentation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my PDF safe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The file is processed securely over SSL and deleted automatically after download."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will the converted PPT open in Google Slides too?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, the output is a standard .pptx file that opens in Microsoft PowerPoint, Google Slides, Keynote, and LibreOffice Impress."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to install any software to convert PDF to PPT?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No installation is needed. The PDF to PPT converter works entirely in your browser on any device, including mobile phones."
+      }
+    }
+  ]
+}
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -115,8 +194,8 @@ form{display:flex;flex-direction:column;gap:16px}
 <div class="container">
   <div class="tool-header">
     <div class="tool-icon-wrap">📽️</div>
-    <h1>PDF to PPT Converter</h1>
-    <p>Turn your PDF pages into a PowerPoint presentation</p>
+    <h1>PDF to PPT Converter Online Free</h1>
+    <p>Turn your PDF pages into a PowerPoint presentation — each page becomes a slide</p>
   </div>
 
   <div class="card">
@@ -152,6 +231,81 @@ form{display:flex;flex-direction:column;gap:16px}
       <div class="trust-item">🗑️ Auto-deleted</div>
       <div class="trust-item">📵 No signup needed</div>
     </div>
+  </div>
+
+  <!-- ============ ARTICLE / DESCRIPTION SECTION WITH VISUAL ============ -->
+  <div class="article-section">
+
+    <!-- Visual diagram: PDF transforming into PPT slides (animated) -->
+    <div class="visual-wrap">
+      <svg width="100%" viewBox="0 0 680 300">
+
+        <!-- PDF document icon -->
+        <rect x="130" y="70" width="150" height="180" rx="16" fill="#FCA5A5" opacity="0.35"/>
+        <g>
+          <path d="M150 70 L250 70 Q270 70 270 90 L270 230 Q270 250 250 250 L150 250 Q130 250 130 230 L130 90 Q130 70 150 70 Z" fill="white" stroke="#DC2626" stroke-width="2.5"/>
+          <path d="M232 70 L232 108 Q232 118 242 118 L270 118" fill="none" stroke="#DC2626" stroke-width="2.5"/>
+          <path d="M160 145 Q175 110 190 135 Q200 120 215 140 L240 180 L160 180 Z" fill="#FECACA"/>
+          <circle cx="172" cy="120" r="8" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.5"/>
+        </g>
+
+        <!-- Animated arrow -->
+        <g class="ekz-arrow-move">
+          <circle cx="330" cy="155" r="22" fill="none" stroke="#2563EB" stroke-width="2"/>
+          <path d="M322 155 L340 155 M332 145 L340 155 L332 165" fill="none" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+
+        <!-- PPT slide icon -->
+        <rect x="415" y="85" width="150" height="165" rx="16" fill="#FDBA74" opacity="0.3"/>
+        <path d="M435 85 L555 85 Q575 85 575 105 L575 230 Q575 250 555 250 L435 250 Q415 250 415 230 L415 105 Q415 85 435 85 Z" fill="white" stroke="#EA580C" stroke-width="2.5"/>
+        <rect x="450" y="130" width="100" height="70" rx="6" fill="#FFEDD5" stroke="#FB923C" stroke-width="1.5"/>
+        <g class="ekz-play-btn">
+          <circle cx="500" cy="165" r="20" fill="#EA580C"/>
+          <path d="M494 155 L494 175 L512 165 Z" fill="white"/>
+        </g>
+
+        <!-- Floating sparkle accents -->
+        <g class="ekz-spark1"><path d="M370 40 L378 56 L394 64 L378 72 L370 88 L362 72 L346 64 L362 56 Z" fill="#93C5FD"/></g>
+        <g class="ekz-spark2"><path d="M600 200 L605 210 L615 215 L605 220 L600 230 L595 220 L585 215 L595 210 Z" fill="#86EFAC"/></g>
+        <g class="ekz-spark3"><path d="M100 210 L104 218 L112 222 L104 226 L100 234 L96 226 L88 222 L96 218 Z" fill="#FDE68A"/></g>
+
+        <text x="205" y="270" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#6B7280">Your PDF</text>
+        <text x="490" y="270" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#6B7280">Editable slides</text>
+
+      </svg>
+    </div>
+
+    <!-- Real photo card -->
+    <div class="ekz-photo-card">
+      <img src="{{ url_for('static', filename='images/photo-data-analysis.jpg') }}" alt="Reviewing converted presentation slides with charts and data" onerror="this.style.display='none'">
+      <p>
+        Turn static reports into presentation-ready slides in seconds — no design 
+        software, no manual copy-pasting. Just upload, convert, and present.
+      </p>
+    </div>
+
+    <h2>Why Convert a PDF to PowerPoint?</h2>
+    <p>
+      PDFs are great for sharing fixed, uneditable documents, but sometimes you 
+      need those same pages inside a slide deck — for a class presentation, a 
+      client pitch, or a training session. EkZapp's PDF to PPT converter turns 
+      each page of your PDF into a full-slide image inside a standard .pptx 
+      file, preserving the exact visual layout, fonts, and design of the 
+      original document without any manual recreation.
+    </p>
+    <p>
+      This is especially useful when you've received a PDF report, brochure, 
+      or scanned document and need to present it, add it into an existing 
+      slide deck, or simply reformat it into presentation form quickly.
+    </p>
+    <h2>Common Reasons to Convert PDF to PPT</h2>
+    <ul>
+      <li><strong>Presenting existing reports:</strong> Turn a finished PDF report into slides for a meeting without rebuilding it from scratch.</li>
+      <li><strong>Academic use:</strong> Convert lecture notes or PDF handouts into a slide format for teaching or revision.</li>
+      <li><strong>Combining decks:</strong> Bring PDF content into a larger presentation alongside other PowerPoint slides.</li>
+      <li><strong>Sharing scanned material:</strong> Present scanned documents or brochures as slides during a call.</li>
+      <li><strong>Quick reformatting:</strong> Get PDF content into an editable slide container without redesigning the layout.</li>
+    </ul>
   </div>
 
   <div class="guide">
@@ -213,6 +367,14 @@ form{display:flex;flex-direction:column;gap:16px}
         <div class="faq-item">
           <div class="faq-q">Is my PDF safe?</div>
           <div class="faq-a">Yes. Your file is processed securely over SSL and deleted automatically after download.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Will the converted PPT open in Google Slides too?</div>
+          <div class="faq-a">Yes, the output is a standard .pptx file that opens in Microsoft PowerPoint, Google Slides, Keynote, and LibreOffice Impress.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Do I need to install any software to convert PDF to PPT?</div>
+          <div class="faq-a">No installation is needed. The tool works entirely in your browser on any device, including mobile phones.</div>
         </div>
       </div>
 
