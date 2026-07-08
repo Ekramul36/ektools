@@ -135,6 +135,7 @@ def sitemap():
         ('/blog/amount-in-words-for-cheque-gst-invoice', '0.7', 'monthly'),
         ('/blog/sign-pdf-online-free', '0.7', 'monthly'),
         ('/blog/how-to-make-a-meme-online-free', '0.7', 'monthly'),
+        ('/blog/exam-photo-signature-size-guide-2026', '0.7', 'monthly'),
     ]
     today = datetime.date.today().isoformat()
     xml = ['<?xml version="1.0" encoding="UTF-8"?>',
@@ -1845,6 +1846,20 @@ BLOG_POSTS = [
         "category": "PDF Tools",
         "date": "July 3, 2026"
     },
+    {
+    "slug": "how-to-make-a-meme-online-free",
+    "title": "How to Make a Meme Online for Free — Fonts, Stickers & Filters",
+    "excerpt": "Learn how to create a custom meme online for free — drag text anywhere, pick fonts, add stickers, apply filters, and download with no watermark.",
+    "category": "Fun Tools",
+    "date": "July 6, 2026"
+    },
+    {
+    "slug": "exam-photo-signature-size-guide-2026",
+    "title": "Government Exam Photo & Signature Size Guide 2026 (UPSC, SSC, IBPS, NEET, JEE)",
+    "excerpt": "Interactive size checker plus exact KB and pixel specs for every major Indian government exam in 2026.",
+    "category": "Image Tools",
+    "date": "July 8, 2026"
+    },
     # Add more posts here as dicts, e.g.:
     # {
     #     "slug": "compress-pdf-guide",
@@ -1853,13 +1868,6 @@ BLOG_POSTS = [
     #     "category": "PDF Tools",
     #     "date": "July 5, 2026"
     # },
-    {
-    "slug": "how-to-make-a-meme-online-free",
-    "title": "How to Make a Meme Online for Free — Fonts, Stickers & Filters",
-    "excerpt": "Learn how to create a custom meme online for free — drag text anywhere, pick fonts, add stickers, apply filters, and download with no watermark.",
-    "category": "Fun Tools",
-    "date": "July 6, 2026"
-    },
 ]
 
 @app.route("/blog")
@@ -1889,6 +1897,10 @@ def blog_sign_pdf():
 @app.route("/blog/how-to-make-a-meme-online-free")
 def blog_how_to_make_a_meme():
     return render_template("blog_post_how_to_make_a_meme.html")
+
+@app.route("/blog/exam-photo-signature-size-guide-2026")
+def blog_exam_photo_signature_size_guide():
+    return render_template("blog_post_exam_photo_signature_size_guide.html")
 
 # NOTE: as you add more blog posts, add a matching @app.route("/blog/<slug>")
 # function for each new HTML file, the same way as blog_merge_pdf() above.
