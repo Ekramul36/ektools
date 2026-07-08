@@ -3,15 +3,26 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Passport Photo Maker – EkZapp</title>
+    <title>Passport Photo Maker Online Free — India, USA, UK, Schengen | EkZapp</title>
+    <meta name="description" content="Create passport and visa size photos online for free. Choose size, background, and copies, preview before download.">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <style>
+        *,*::before,*::after{box-sizing:border-box}
         body { font-family: 'Segoe UI', sans-serif; background: #F9FAFB; margin: 0; }
-        .container { max-width: 740px; margin: 40px auto; padding: 0 20px 60px; }
-        .back-link { display:inline-block; margin-bottom:18px; color:#2563EB; font-size:14px; text-decoration:none; }
+        .page-wrap{max-width:960px;margin:0 auto;padding:0 20px 64px}
+        .narrow{max-width:680px;margin:0 auto}
+        .wide{max-width:900px;margin:0 auto}
+        .back-link { display:inline-block; margin:20px 0 0; color:#2563EB; font-size:14px; text-decoration:none; }
         .back-link:hover { text-decoration:underline; }
-        .card { background:#fff; border-radius:16px; box-shadow:0 4px 24px rgba(0,0,0,0.08); padding:36px; }
-        h1 { font-size:26px; color:#111827; margin:0 0 6px; }
+
+        .pp-hero{position:relative;overflow:hidden;border-radius:20px;padding:44px 34px;margin:24px 0 28px;background:linear-gradient(135deg,#6d28d9 0%,#7c3aed 45%,#a78bfa 100%);background-size:200% 200%;animation:ppGrad 12s ease infinite}
+        @keyframes ppGrad{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+        @media (prefers-reduced-motion:reduce){.pp-hero{animation:none}}
+        .pp-hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:.78rem;padding:5px 13px;border-radius:999px;margin-bottom:14px}
+        .pp-hero h1{color:#fff;font-size:1.85rem;line-height:1.25;max-width:560px;margin:0 0 10px}
+        .pp-hero p{color:#ede9fe;font-size:1rem;max-width:520px;margin:0}
+
+        .card { background:#fff; border-radius:16px; box-shadow:0 4px 24px rgba(0,0,0,0.08); padding:36px; margin-bottom:28px; }
         .subtitle { color:#6B7280; font-size:14px; margin-bottom:28px; }
         .upload-area { border:2px dashed #D1D5DB; border-radius:12px; padding:40px 20px; text-align:center; cursor:pointer; transition:all .2s; background:#F9FAFB; }
         .upload-area:hover { border-color:#2563EB; background:#EFF6FF; }
@@ -58,8 +69,35 @@
         .info-item { font-size:12px; color:#1E40AF; }
         @media(max-width:500px) { .options-grid { grid-template-columns:1fr; } }
 
+        .pp-photo-card{display:flex;gap:20px;align-items:center;background:#F5F3FF;border-radius:16px;padding:20px;margin:28px 0;flex-wrap:wrap}
+        .pp-photo-card img{width:220px;height:150px;object-fit:cover;border-radius:10px;flex-shrink:0}
+        .pp-photo-card .pp-photo-text{flex:1;min-width:220px}
+        .pp-photo-card h3{font-size:1rem;margin:0 0 6px}
+        .pp-photo-card p{font-size:.9rem;color:#6B7280;margin:0;line-height:1.5}
+
+        .pp-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:28px 0}
+        .pp-card{border:1px solid #E5E7EB;border-radius:14px;padding:20px;background:white}
+        .pp-card svg{width:32px;height:32px;margin-bottom:10px}
+        .pp-card h3{font-size:.95rem;margin:0 0 6px}
+        .pp-card p{font-size:.85rem;color:#6B7280;margin:0;line-height:1.45}
+
+        .pp-table-wrap{overflow-x:auto;margin:24px 0}
+        table.pp-table{width:100%;border-collapse:collapse;font-size:.88rem}
+        table.pp-table th,table.pp-table td{padding:10px 12px;border-bottom:1px solid #E5E7EB;text-align:left}
+        table.pp-table th{background:#F9FAFB;font-weight:600}
+
+        .pp-related{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:28px 0}
+        .pp-related a{display:block;padding:18px;border-radius:14px;color:#fff;text-decoration:none;font-weight:600}
+        .pp-related a small{display:block;font-weight:400;opacity:.9;font-size:.78rem;margin-top:4px}
+        .pp-related a.rt1{background:linear-gradient(135deg,#7c3aed,#5b21b6)}
+        .pp-related a.rt2{background:linear-gradient(135deg,#2563EB,#1e40af)}
+        .pp-related a.rt3{background:linear-gradient(135deg,#0d9488,#0f766e)}
+
+        .section-title{font-size:1.25rem;font-weight:800;letter-spacing:-.01em;margin:0 0 6px;color:#111827}
+        .section-sub{color:#6B7280;font-size:.9rem;margin-bottom:18px}
+
         /* User Guide */
-        .guide { margin-top:28px; border-radius:12px; border:1px solid #E5E7EB; overflow:hidden; }
+        .guide { border-radius:12px; border:1px solid #E5E7EB; overflow:hidden; }
         .guide-header { background:#F9FAFB; padding:14px 20px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #E5E7EB; }
         .guide-header h3 { margin:0; font-size:15px; color:#111827; }
         .guide-header span { font-size:18px; transition:transform .2s; }
@@ -94,16 +132,37 @@
   "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question","name": "Is this tool free?","acceptedAnswer": {"@type": "Answer","text": "Yes, completely free. No signup, no watermark, no hidden charges."}},
+    {"@type": "Question","name": "Will my photo be saved on the server?","acceptedAnswer": {"@type": "Answer","text": "Your photo is processed temporarily and deleted automatically. It is not stored or shared."}},
+    {"@type": "Question","name": "What if my background is not white?","acceptedAnswer": {"@type": "Answer","text": "This tool does not automatically remove backgrounds. For best results, take the photo in front of a plain wall, or use the Remove Background tool first and come back here."}},
+    {"@type": "Question","name": "Can I use this for Indian passport, Aadhaar, or visa applications?","acceptedAnswer": {"@type": "Answer","text": "Yes. Select India 35x45mm for Indian passport, Aadhaar, PAN, and most Indian government documents. Select the USA 51x51mm option for US visa applications."}},
+    {"@type": "Question","name": "How do I print correctly?","acceptedAnswer": {"@type": "Answer","text": "Open the downloaded JPEG and print at A4 size with Actual Size or 100% scale selected, using glossy photo paper at a photo studio for best results."}}
+  ]
+}
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
 </head>
 <body>
 {% include 'navbar.html' ignore missing %}
-<div class="container">
+<div class="page-wrap">
     <a href="/" class="back-link">← Back to Tools</a>
-    <div class="card">
-        <h1>📷 Passport Photo Maker</h1>
-        <p class="subtitle">Create professional passport & visa photos — choose size, copies & background. Preview before download!</p>
 
+    <div class="narrow">
+      <div class="pp-hero">
+        <span class="pp-hero-badge">Print-ready A4 sheet</span>
+        <h1>Passport and visa photos, sized and arranged automatically</h1>
+        <p>Upload one photo, pick your country's size, and get a full A4 sheet of copies ready to print at any studio.</p>
+      </div>
+      <p class="subtitle" style="margin-top:-8px">Create professional passport & visa photos — choose size, copies & background. Preview before download!</p>
+    </div>
+
+    <div class="narrow">
+      <div class="card">
         {% if error %}
         <div class="alert-error">⚠️ {{ error }}</div>
         {% endif %}
@@ -185,7 +244,63 @@
             </div>
             <p style="font-size:12px;color:#3B82F6;margin:10px 0 0;">Output: A4 sheet @ 300 DPI — print-ready!</p>
         </div>
+      </div>
+    </div>
 
+    <div class="wide">
+      <div class="pp-photo-card">
+        <img src="/static/images/photo-laptop-meeting.jpg" alt="Preparing documents for an application" onerror="this.style.display='none'">
+        <div class="pp-photo-text">
+          <h3>One good photo, every size you need</h3>
+          <p>Take one clear, well-lit photo against a plain wall, then run it through here for each document that needs it — passport, visa, ID card — instead of visiting a studio separately for every application.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="wide">
+      <div class="section-title">Why generate your own sheet</div>
+      <div class="section-sub">A studio visit isn't always necessary once the photo itself is right.</div>
+      <div class="pp-cards">
+        <div class="pp-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="8" y="8" width="8" height="8"/></svg>
+          <h3>Exact size, every time</h3>
+          <p>Each country's dimensions are built in — no measuring or guessing at millimeters yourself.</p>
+        </div>
+        <div class="pp-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.6"><path d="M4 6h16M4 12h10M4 18h16"/></svg>
+          <h3>Multiple copies, one sheet</h3>
+          <p>4 to 16 copies arranged on a single A4 page, ready for a photo studio to print at actual size.</p>
+        </div>
+        <div class="pp-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+          <h3>Preview before printing</h3>
+          <p>See the arranged sheet on screen first, so there's no surprise once it comes back from the printer.</p>
+        </div>
+        <div class="pp-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.6"><path d="M12 3v12M8 11l4 4 4-4"/><path d="M4 17v3h16v-3"/></svg>
+          <h3>300 DPI output</h3>
+          <p>High enough resolution for clean, sharp prints at any standard photo studio.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="wide">
+      <div class="section-title">Size reference by document type</div>
+      <div class="pp-table-wrap">
+        <table class="pp-table">
+          <thead><tr><th>Country / document</th><th>Size</th><th>Typical use</th></tr></thead>
+          <tbody>
+            <tr><td>🇮🇳 India</td><td>35 × 45 mm</td><td>Passport, Aadhaar, PAN, most govt forms</td></tr>
+            <tr><td>🇺🇸 USA</td><td>51 × 51 mm (2×2")</td><td>US passport and visa applications</td></tr>
+            <tr><td>🇬🇧 UK</td><td>35 × 35 mm</td><td>UK passport and visa applications</td></tr>
+            <tr><td>🇪🇺 Schengen</td><td>40 × 60 mm</td><td>Schengen visa applications</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="color:#6B7280;font-size:13.5px;line-height:1.6">Always double-check the exact requirement on your specific application form — some embassies specify slightly different rules for background color or head size within the frame.</p>
+    </div>
+
+    <div class="narrow">
         <!-- ─── USER GUIDE ─── -->
         <div class="guide">
             <div class="guide-header" id="guideToggle" onclick="toggleGuide()">
@@ -194,7 +309,6 @@
             </div>
             <div class="guide-body" id="guideBody">
 
-                <!-- Steps -->
                 <ul class="steps">
                     <li>
                         <div class="step-num">1</div>
@@ -240,7 +354,6 @@
                     </li>
                 </ul>
 
-                <!-- Tips -->
                 <div class="guide-tips">
                     <h4>💡 Tips for a Perfect Passport Photo</h4>
                     <ul>
@@ -252,37 +365,49 @@
                         <li>When printing, tell the studio to print at <strong>actual size / 100% scale</strong> on A4 glossy photo paper</li>
                     </ul>
                 </div>
-
-                <!-- FAQ -->
-                <div class="faq" style="margin-top:18px;">
-                    <p style="font-size:14px;font-weight:600;color:#111827;margin:0 0 12px;">❓ Frequently Asked Questions</p>
-
-                    <div class="faq-item">
-                        <div class="faq-q">Is this tool free?</div>
-                        <div class="faq-a">Yes, completely free! No signup, no watermark, no hidden charges.</div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-q">Will my photo be saved on the server?</div>
-                        <div class="faq-a">Your photo is processed temporarily and deleted automatically. We do not store or share your photos.</div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-q">What if my background is not white?</div>
-                        <div class="faq-a">This tool does not automatically remove backgrounds. For best results, take a photo in front of a plain wall. Or use our <a href="/remove-background" style="color:#2563EB;">Remove Background</a> tool first, then come back here.</div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-q">Can I use this for Indian passport / Aadhaar / visa?</div>
-                        <div class="faq-a">Yes! Select "India — 35×45 mm" for Indian passport, Aadhaar card, PAN card, and most Indian government documents. For US visa select the USA 51×51 mm option.</div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-q">How do I print correctly?</div>
-                        <div class="faq-a">Open the downloaded JPEG and print at A4 size with "Actual Size" or "100%" scale selected. Use glossy photo paper at a photo studio for best results.</div>
-                    </div>
-                </div>
-
             </div>
         </div>
-
     </div>
+
+    <div class="wide">
+      <div class="section-title">Frequently asked questions</div>
+      <div class="faq">
+        <div class="faq-item">
+            <div class="faq-q">Is this tool free?</div>
+            <div class="faq-a">Yes, completely free! No signup, no watermark, no hidden charges.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Will my photo be saved on the server?</div>
+            <div class="faq-a">Your photo is processed temporarily and deleted automatically. We do not store or share your photos.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">What if my background is not white?</div>
+            <div class="faq-a">This tool does not automatically remove backgrounds. For best results, take a photo in front of a plain wall. Or use our <a href="/remove-background" style="color:#2563EB;">Remove Background</a> tool first, then come back here.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Can I use this for Indian passport / Aadhaar / visa?</div>
+            <div class="faq-a">Yes! Select "India — 35×45 mm" for Indian passport, Aadhaar card, PAN card, and most Indian government documents. For US visa select the USA 51×51 mm option.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">How do I print correctly?</div>
+            <div class="faq-a">Open the downloaded JPEG and print at A4 size with "Actual Size" or "100%" scale selected. Use glossy photo paper at a photo studio for best results.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Why does the head size matter, not just the photo dimensions?</div>
+            <div class="faq-a">Most passport rules specify how much of the frame your face should fill, not just the outer paper size — a correctly sized photo where the face is too small or too large relative to the frame can still be rejected, so keep your face centered and reasonably close-up before uploading.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wide">
+      <div class="section-title">Related tools</div>
+      <div class="pp-related">
+        <a class="rt1" href="/remove-background">Remove Background<small>Clean up the background first</small></a>
+        <a class="rt2" href="/image-size-reducer">Image Size Reducer<small>Hit an exact KB target for online forms</small></a>
+        <a class="rt3" href="/compress-image">Compress Image<small>General-purpose image compression</small></a>
+      </div>
+    </div>
+
 </div>
 <script>
 function toggleGuide() {

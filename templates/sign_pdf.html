@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sign PDF — EkZapp</title>
-<meta name="description" content="Draw or type your signature and add it to any PDF file online, free. No signup needed.">
+<title>Sign PDF Online Free — Draw or Type Your Signature | EkZapp</title>
+<meta name="description" content="Draw or type your signature and add it to any PDF file online, free. No printing, no signup needed.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -22,13 +22,20 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
 .back:hover{border-color:var(--blue);color:var(--blue)}
 
-.container{max-width:600px;margin:48px auto;padding:0 20px 60px}
-.tool-header{text-align:center;margin-bottom:32px}
-.tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
-.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
-.tool-header p{color:var(--gray);font-size:14px}
+/* Hybrid layout system */
+.page-wrap{max-width:960px;margin:0 auto;padding:0 20px 64px}
+.narrow{max-width:650px;margin:0 auto}
+.wide{max-width:900px;margin:0 auto}
 
-.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+/* Hero */
+.sp-hero{position:relative;overflow:hidden;border-radius:20px;padding:48px 36px;margin:32px 0 32px;background:linear-gradient(135deg,#1e3a8a 0%,#2563EB 45%,#3b82f6 100%);background-size:200% 200%;animation:spGrad 12s ease infinite}
+@keyframes spGrad{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@media (prefers-reduced-motion:reduce){.sp-hero{animation:none}}
+.sp-hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:.78rem;padding:5px 13px;border-radius:999px;margin-bottom:14px}
+.sp-hero h1{color:#fff;font-size:1.9rem;line-height:1.25;max-width:560px;margin:0 0 10px}
+.sp-hero p{color:#dbeafe;font-size:1rem;max-width:520px;margin:0}
+
+.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:28px}
 
 .info-bar{background:var(--blue-lt);border:1px solid #BFDBFE;border-radius:8px;padding:10px 14px;margin-bottom:20px;font-size:13px;color:#1E40AF;display:flex;align-items:center;gap:8px}
 
@@ -74,38 +81,44 @@ input[type="range"]{width:100%;accent-color:var(--blue)}
 .trust{display:flex;justify-content:center;gap:20px;margin-top:16px;flex-wrap:wrap}
 .trust-item{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:4px}
 
-.guide{margin-top:24px;border:1px solid var(--border);border-radius:12px;overflow:hidden}
-.guide-header{background:var(--light);padding:14px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);user-select:none}
-.guide-header h3{margin:0;font-size:15px;color:var(--ink)}
-.guide-arrow{font-size:16px;transition:transform .2s;color:var(--gray)}
-.guide-body{display:none;padding:20px}
-.guide-body.open{display:block}
+/* Photo card */
+.sp-photo-card{display:flex;gap:20px;align-items:center;background:var(--cream);border-radius:16px;padding:20px;margin:28px 0;flex-wrap:wrap}
+.sp-photo-card img{width:220px;height:150px;object-fit:cover;border-radius:10px;flex-shrink:0}
+.sp-photo-card .sp-photo-text{flex:1;min-width:220px}
+.sp-photo-card h3{font-size:1rem;margin:0 0 6px}
+.sp-photo-card p{font-size:.9rem;color:var(--gray);margin:0;line-height:1.5}
 
-.steps{list-style:none;margin:0;padding:0}
-.steps li{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px}
-.steps li:last-child{margin-bottom:0}
-.step-num{min-width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.step-text strong{display:block;font-size:14px;color:var(--ink);margin-bottom:3px}
-.step-text span{font-size:13px;color:var(--gray);line-height:1.5}
+/* Icon feature cards */
+.sp-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:28px 0}
+.sp-card{border:1px solid var(--border);border-radius:14px;padding:20px;background:white}
+.sp-card svg{width:32px;height:32px;margin-bottom:10px}
+.sp-card h3{font-size:.95rem;margin:0 0 6px}
+.sp-card p{font-size:.85rem;color:var(--gray);margin:0;line-height:1.45}
 
-.guide-tips{margin-top:16px;background:#FFF7ED;border-radius:8px;padding:14px 16px}
-.guide-tips h4{margin:0 0 8px;font-size:13px;color:#92400E}
-.guide-tips ul{margin:0;padding-left:16px}
-.guide-tips ul li{font-size:13px;color:#78350F;margin-bottom:5px;line-height:1.4}
+/* Comparison table */
+.sp-table-wrap{overflow-x:auto;margin:24px 0}
+table.sp-table{width:100%;border-collapse:collapse;font-size:.88rem}
+table.sp-table th,table.sp-table td{padding:10px 12px;border-bottom:1px solid var(--border);text-align:left}
+table.sp-table th{background:var(--light);font-weight:600}
+table.sp-table td.yes{color:#15803D;font-weight:600}
+table.sp-table td.no{color:#B91C1C}
 
-.faq{margin-top:16px}
-.faq-item{border-bottom:1px solid var(--border);padding:10px 0}
-.faq-item:last-child{border-bottom:none}
-.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px}
-.faq-a{font-size:13px;color:var(--gray);line-height:1.5}
+/* FAQ accordion (native details) */
+.sp-faq details{border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;background:white}
+.sp-faq summary{cursor:pointer;font-weight:600;font-size:.92rem;list-style:none}
+.sp-faq summary::-webkit-details-marker{display:none}
+.sp-faq p{margin:10px 0 0;color:var(--gray);font-size:.87rem;line-height:1.5}
 
-.other-tools{margin-top:28px}
-.other-tools h3{font-size:13px;font-weight:600;color:var(--gray);letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
-.tools-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.tool-mini{background:white;border:1px solid var(--border);border-radius:10px;padding:14px;text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px;transition:all .15s}
-.tool-mini:hover{border-color:var(--blue);box-shadow:0 2px 8px rgba(37,99,235,.1)}
-.tool-mini-icon{font-size:1.2rem}
-.tool-mini span{font-size:13px;font-weight:600}
+/* Related tools gradient banner */
+.sp-related{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:28px 0}
+.sp-related a{display:block;padding:18px;border-radius:14px;color:#fff;text-decoration:none;font-weight:600}
+.sp-related a small{display:block;font-weight:400;opacity:.9;font-size:.78rem;margin-top:4px}
+.sp-related a.rt1{background:linear-gradient(135deg,#2563EB,#1e40af)}
+.sp-related a.rt2{background:linear-gradient(135deg,#0ea5e9,#0369a1)}
+.sp-related a.rt3{background:linear-gradient(135deg,#6366f1,#4338ca)}
+
+.section-title{font-size:1.25rem;font-weight:800;letter-spacing:-.01em;margin:0 0 6px}
+.section-sub{color:var(--gray);font-size:.9rem;margin-bottom:18px}
 </style>
 <script type="application/ld+json">
 {
@@ -117,6 +130,19 @@ input[type="range"]{width:100%;accent-color:var(--blue)}
   "applicationCategory": "UtilityApplication",
   "operatingSystem": "Web",
   "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question","name": "Is this tool free?","acceptedAnswer": {"@type": "Answer","text": "Yes, completely free. No signup, no watermark, no hidden charges."}},
+    {"@type": "Question","name": "Is this a legally binding e-signature?","acceptedAnswer": {"@type": "Answer","text": "This tool visually places your signature image onto the PDF. It does not provide cryptographic digital-signature certification required for certain legal contracts — check your country's e-signature rules for formal agreements."}},
+    {"@type": "Question","name": "Can I sign multiple pages with different signatures?","acceptedAnswer": {"@type": "Answer","text": "This tool places the same signature across your chosen page(s) in one go. To use different signatures per page, sign the file again for each page."}},
+    {"@type": "Question","name": "Is my PDF safe?","acceptedAnswer": {"@type": "Answer","text": "Yes. Your file is processed securely over SSL and deleted automatically after processing."}},
+    {"@type": "Question","name": "Should I draw or type my signature?","acceptedAnswer": {"@type": "Answer","text": "Drawing looks closer to a real pen signature and varies naturally each time. Typing in a signature-style font is faster and gives a consistent result, which some people prefer for repeated use."}}
+  ]
 }
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
@@ -135,172 +161,327 @@ input[type="range"]{width:100%;accent-color:var(--blue)}
   </div>
 </nav>
 
-<div class="container">
-  <div class="tool-header">
-    <div class="tool-icon-wrap">✍️</div>
-    <h1>Sign PDF</h1>
-    <p>Draw or type your signature and place it on your PDF</p>
-  </div>
+<div class="page-wrap">
 
-  <div class="card">
-    <div class="info-bar">
-      🔒 Your file is encrypted and automatically deleted after processing
-    </div>
-
-    {% if error %}
-    <div class="error-box" style="margin-bottom:16px">
-      ⚠️ {{ error }}
-    </div>
-    {% endif %}
-
-    <form method="POST" enctype="multipart/form-data" id="signForm">
-      <div class="field">
-        <label>Select PDF File</label>
-        <div class="drop-area" id="dropArea">
-          <div class="drop-icon">📄</div>
-          <h3>Click to select or drag & drop</h3>
-          <p>Supports any PDF file</p>
-          <p class="file-name" id="fileName"></p>
-          <input type="file" name="pdf" accept=".pdf" required onchange="showFileName(this)">
-        </div>
-      </div>
-
-      <div class="field">
-        <label>Your Signature</label>
-        <div class="sig-tabs">
-          <div class="sig-tab active" id="drawTab" onclick="switchTab('draw')">✏️ Draw</div>
-          <div class="sig-tab" id="typeTab" onclick="switchTab('type')">⌨️ Type</div>
-        </div>
-        <div class="sig-pane active" id="drawPane">
-          <canvas id="sigCanvas"></canvas>
-          <div class="sig-actions">
-            <button type="button" class="sig-clear" onclick="clearCanvas()">🗑️ Clear</button>
-          </div>
-        </div>
-        <div class="sig-pane" id="typePane">
-          <input type="text" id="typeSigInput" placeholder="Type your name" oninput="renderTypedSignature()">
-        </div>
-      </div>
-
-      <div class="pos-grid">
-        <div class="field">
-          <label>Add To</label>
-          <select name="page_choice" class="select-input">
-            <option value="last">Last Page</option>
-            <option value="first">First Page</option>
-            <option value="all">All Pages</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Position</label>
-          <select name="position" class="select-input">
-            <option value="bottom-right">Bottom Right</option>
-            <option value="bottom-left">Bottom Left</option>
-            <option value="top-right">Top Right</option>
-            <option value="top-left">Top Left</option>
-            <option value="center">Center</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="field">
-        <div class="range-label"><span>Signature Size</span><span id="sizeVal">25%</span></div>
-        <input type="range" name="sig_width" min="10" max="50" value="25" oninput="document.getElementById('sizeVal').textContent=this.value+'%'">
-      </div>
-
-      <input type="hidden" name="signature_data" id="signatureData">
-
-      <button type="submit" class="btn">
-        ✍️ Sign PDF
-      </button>
-    </form>
-
-    <div class="trust">
-      <div class="trust-item">🔒 SSL Encrypted</div>
-      <div class="trust-item">🗑️ Auto-deleted</div>
-      <div class="trust-item">📵 No signup needed</div>
+  <div class="narrow">
+    <div class="sp-hero">
+      <span class="sp-hero-badge">No printing needed</span>
+      <h1>Sign a PDF in seconds — draw it, type it, done</h1>
+      <p>Skip the print-sign-scan routine. Draw or type your signature and drop it straight onto your document.</p>
     </div>
   </div>
 
-  <div class="guide">
-    <div class="guide-header" onclick="toggleGuide()">
-      <h3>📖 How to Use — Step by Step Guide</h3>
-      <span class="guide-arrow" id="guideArrow">▼</span>
+  <div class="narrow">
+    <p style="color:var(--gray);font-size:14.5px;line-height:1.7;margin-bottom:16px">Signing a document used to mean finding a printer, signing with a pen, scanning it back in, and hoping the resulting file wasn't 20MB. Every step in that chain is a place things go wrong — a jammed printer, a scanner that isn't calibrated, a scan that comes out tilted or blurry. An online signing tool skips all of it: your signature is captured digitally in the browser and placed directly onto the existing PDF, so the document never has to become a physical piece of paper at all.</p>
+    <p style="color:var(--gray);font-size:14.5px;line-height:1.7;margin-bottom:16px">Below, you can draw your signature freehand with a mouse, trackpad, or finger, or type your name and have it rendered in a cursive, signature-style font. Drawing looks closer to a real pen signature and varies slightly each time, the way a physical signature naturally does. Typing is faster and gives an identical result every time, which some people prefer when they need to sign the same kind of document repeatedly — invoices, delivery slips, internal approvals.</p>
+  </div>
+
+  <div class="narrow">
+    <div class="card">
+      <div class="info-bar">
+        🔒 Your file is encrypted and automatically deleted after processing
+      </div>
+
+      {% if error %}
+      <div class="error-box" style="margin-bottom:16px">
+        ⚠️ {{ error }}
+      </div>
+      {% endif %}
+
+      <form method="POST" enctype="multipart/form-data" id="signForm">
+        <div class="field">
+          <label>Select PDF File</label>
+          <div class="drop-area" id="dropArea">
+            <div class="drop-icon">📄</div>
+            <h3>Click to select or drag & drop</h3>
+            <p>Supports any PDF file</p>
+            <p class="file-name" id="fileName"></p>
+            <input type="file" name="pdf" accept=".pdf" required onchange="showFileName(this)">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Your Signature</label>
+          <div class="sig-tabs">
+            <div class="sig-tab active" id="drawTab" onclick="switchTab('draw')">✏️ Draw</div>
+            <div class="sig-tab" id="typeTab" onclick="switchTab('type')">⌨️ Type</div>
+          </div>
+          <div class="sig-pane active" id="drawPane">
+            <canvas id="sigCanvas"></canvas>
+            <div class="sig-actions">
+              <button type="button" class="sig-clear" onclick="clearCanvas()">🗑️ Clear</button>
+            </div>
+          </div>
+          <div class="sig-pane" id="typePane">
+            <input type="text" id="typeSigInput" placeholder="Type your name" oninput="renderTypedSignature()">
+          </div>
+        </div>
+
+        <div class="pos-grid">
+          <div class="field">
+            <label>Add To</label>
+            <select name="page_choice" class="select-input">
+              <option value="last">Last Page</option>
+              <option value="first">First Page</option>
+              <option value="all">All Pages</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Position</label>
+            <select name="position" class="select-input">
+              <option value="bottom-right">Bottom Right</option>
+              <option value="bottom-left">Bottom Left</option>
+              <option value="top-right">Top Right</option>
+              <option value="top-left">Top Left</option>
+              <option value="center">Center</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="range-label"><span>Signature Size</span><span id="sizeVal">25%</span></div>
+          <input type="range" name="sig_width" min="10" max="50" value="25" oninput="document.getElementById('sizeVal').textContent=this.value+'%'">
+        </div>
+
+        <input type="hidden" name="signature_data" id="signatureData">
+
+        <button type="submit" class="btn">
+          ✍️ Sign PDF
+        </button>
+      </form>
+
+      <div class="trust">
+        <div class="trust-item">🔒 SSL Encrypted</div>
+        <div class="trust-item">🗑️ Auto-deleted</div>
+        <div class="trust-item">📵 No signup needed</div>
+      </div>
     </div>
-    <div class="guide-body" id="guideBody">
+  </div>
 
-      <ul class="steps">
-        <li>
-          <div class="step-num">1</div>
-          <div class="step-text">
-            <strong>Upload your PDF</strong>
-            <span>Click the upload area or drag & drop the PDF you want to sign.</span>
-          </div>
-        </li>
-        <li>
-          <div class="step-num">2</div>
-          <div class="step-text">
-            <strong>Draw or type your signature</strong>
-            <span>Draw with your mouse/finger, or switch to "Type" and type your name in a signature-style font.</span>
-          </div>
-        </li>
-        <li>
-          <div class="step-num">3</div>
-          <div class="step-text">
-            <strong>Choose page and position</strong>
-            <span>Pick which page(s) to sign and where the signature should appear, then adjust the size.</span>
-          </div>
-        </li>
-        <li>
-          <div class="step-num">4</div>
-          <div class="step-text">
-            <strong>Click "Sign PDF"</strong>
-            <span>Your signed PDF downloads automatically.</span>
-          </div>
-        </li>
-      </ul>
+  <div class="wide">
+    <div class="sp-photo-card">
+      <img src="/static/images/photo-signing-documents.jpg" alt="Signing a document by hand" onerror="this.style.display='none'">
+      <div class="sp-photo-text">
+        <h3>Same signature, no paper trail</h3>
+        <p>The signature you'd normally put on paper with a pen — drawn once here, it drops straight onto your PDF at the exact size and spot you choose, without ever printing a page.</p>
+      </div>
+    </div>
+  </div>
 
-      <div class="guide-tips">
-        <h4>💡 Tips</h4>
-        <ul>
-          <li>For a cleaner look, draw slowly and use a mouse rather than a trackpad if possible</li>
-          <li>Choose "All Pages" if every page needs an initial or signature</li>
-          <li>Your file is automatically deleted from our server after processing</li>
+  <div class="wide">
+    <div class="section-title">Why people switch to signing online</div>
+    <div class="section-sub">The usual print-sign-scan chain has a lot of places to go wrong — this skips all of them.</div>
+    <div class="sp-cards">
+      <div class="sp-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.6"><path d="M3 12h4l2 6 4-14 3 8h5"/></svg>
+        <h3>No printer needed</h3>
+        <p>Draw or type directly in the browser — nothing to print, sign, or feed back into a scanner. Useful when you're signing from a phone or a laptop with no printer nearby, which is most of the time.</p>
+      </div>
+      <div class="sp-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h6"/></svg>
+        <h3>Placed exactly where you want</h3>
+        <p>Choose the page, the corner, and the size — no eyeballing where a stamp should land or redoing a scan because the signature ended up half off the page.</p>
+      </div>
+      <div class="sp-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+        <h3>Every page in one pass</h3>
+        <p>Multi-page contracts that need initials throughout? Apply the same signature to all pages at once instead of signing page by page in a PDF editor.</p>
+      </div>
+      <div class="sp-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.6"><path d="M12 3v12M8 11l4 4 4-4"/><path d="M4 17v3h16v-3"/></svg>
+        <h3>Downloads instantly</h3>
+        <p>No email round-trips or waiting for a signed copy to come back — the signed file downloads right away, ready to forward or re-upload wherever it's needed.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wide">
+    <div class="section-title">Who ends up signing PDFs online</div>
+    <div class="section-sub">A few situations where this comes up more than people expect.</div>
+    <div class="sp-cards">
+      <div class="sp-card">
+        <h3>Freelancers and contractors</h3>
+        <p>Signing off on quotes, invoices, and agreements with clients who are rarely in the same room — a printed signature would just slow down a deal that could close in minutes.</p>
+      </div>
+      <div class="sp-card">
+        <h3>Job applicants</h3>
+        <p>Offer letters, NDAs, and onboarding paperwork that need a signature back the same day, often from a phone between other tasks.</p>
+      </div>
+      <div class="sp-card">
+        <h3>Small business owners</h3>
+        <p>Vendor agreements, delivery acknowledgments, and internal forms that pile up fast enough that print-sign-scan for each one isn't realistic.</p>
+      </div>
+      <div class="sp-card">
+        <h3>Students and applicants</h3>
+        <p>Declaration forms, consent letters, and scholarship paperwork that ask for a signature but don't require notarization or a certified digital signature.</p>
+      </div>
+      <div class="sp-card">
+        <h3>Remote teams</h3>
+        <p>Internal approvals, expense sign-offs, and policy acknowledgments across a team that's never in the same office, where routing a paper copy around would take days.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wide">
+    <div class="section-title">Signing methods compared</div>
+    <div class="section-sub">Most people default to whichever method they learned first, even when a faster option is sitting right there. Here's how the common approaches actually stack up.</div>
+    <div class="sp-table-wrap">
+      <table class="sp-table">
+        <thead><tr><th>Method</th><th>Needs a printer</th><th>Needs a scanner</th><th>Typical time</th></tr></thead>
+        <tbody>
+          <tr><td>Print, sign, scan</td><td class="no">Yes</td><td class="no">Yes</td><td>10–15 min</td></tr>
+          <tr><td>Photo of a paper signature</td><td class="no">No</td><td class="no">No</td><td>5–8 min, often blurry</td></tr>
+          <tr><td>Dedicated certified e-signature platform</td><td class="yes">No</td><td class="yes">No</td><td>Varies — often requires account setup</td></tr>
+          <tr><td>Draw or type on EkZapp</td><td class="yes">No</td><td class="yes">No</td><td>Under a minute</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="color:var(--gray);font-size:13.5px;line-height:1.6">A dedicated certified platform makes sense when a document genuinely requires cryptographic, independently verifiable signing. For everyday paperwork, that setup step is usually more than the situation calls for.</p>
+  </div>
+
+  <div class="wide">
+    <div class="section-title">Common mistakes when signing PDFs online</div>
+    <div class="section-sub">A few small things that make a signed document look less polished, or get it questioned.</div>
+    <div class="sp-cards">
+      <div class="sp-card">
+        <h3>Signing too small</h3>
+        <p>A signature shrunk down to fit a tight corner can end up illegible. It's usually better to increase the size slider slightly than to squeeze a signature into an awkward spot.</p>
+      </div>
+      <div class="sp-card">
+        <h3>Wrong page selected</h3>
+        <p>Applying a signature to "Last Page" on a document where the signature block is actually on page one is an easy miss — check where the signature line actually sits before submitting.</p>
+      </div>
+      <div class="sp-card">
+        <h3>Rushed freehand drawing</h3>
+        <p>A signature drawn too quickly with a mouse often comes out as a jagged scribble. Slowing down, or switching to "Type" for a cleaner cursive rendering, both fix this.</p>
+      </div>
+      <div class="sp-card">
+        <h3>Forgetting to check the document first</h3>
+        <p>Skimming the PDF before signing — dates, names, terms — takes a minute and avoids signing something that needed a correction first.</p>
+      </div>
+      <div class="sp-card">
+        <h3>Signing the wrong version of a file</h3>
+        <p>When a document has gone through a few rounds of edits, double-check you're signing the final version rather than an earlier draft still sitting in your downloads folder.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="narrow">
+    <p style="font-weight:700;font-size:1.05rem;margin-bottom:10px">Is a signature made this way legally valid?</p>
+    <p style="color:var(--gray);font-size:14.5px;line-height:1.7;margin-bottom:14px">For everyday paperwork — internal forms, letters, acknowledgment slips, quotes, informal agreements between two parties — a visually placed signature image like the one this tool creates is widely accepted. Most day-to-day business runs on exactly this kind of signature, and has for years, long before dedicated e-signature platforms existed.</p>
+    <p style="color:var(--gray);font-size:14.5px;line-height:1.7;margin-bottom:14px">Where it's different is contracts or documents that specifically require a certified digital signature — one that's cryptographically tied to your identity and independently verifiable, rather than just an image placed on the page. Some jurisdictions require that stronger standard for things like property transactions, certain government filings, or high-value legal agreements. If you're not sure which category your document falls into, it's worth checking your country's e-signature rules or asking whoever is requesting the signed document what they require.</p>
+  </div>
+
+  <div class="narrow">
+    <div class="guide" style="border:1px solid var(--border);border-radius:12px;overflow:hidden">
+      <div class="guide-header" onclick="toggleGuide()" style="background:var(--light);padding:14px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);user-select:none">
+        <h3 style="margin:0;font-size:15px;color:var(--ink)">📖 How to Use — Step by Step Guide</h3>
+        <span class="guide-arrow" id="guideArrow" style="font-size:16px;transition:transform .2s;color:var(--gray)">▼</span>
+      </div>
+      <div class="guide-body" id="guideBody" style="display:none;padding:20px">
+
+        <ul class="steps" style="list-style:none;margin:0;padding:0">
+          <li style="display:flex;gap:14px;align-items:flex-start;margin-bottom:16px">
+            <div class="step-num" style="min-width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</div>
+            <div class="step-text">
+              <strong style="display:block;font-size:14px;color:var(--ink);margin-bottom:3px">Upload your PDF</strong>
+              <span style="font-size:13px;color:var(--gray);line-height:1.5">Click the upload area or drag & drop the PDF you want to sign. Any standard PDF works, regardless of how many pages it has.</span>
+            </div>
+          </li>
+          <li style="display:flex;gap:14px;align-items:flex-start;margin-bottom:16px">
+            <div class="step-num" style="min-width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</div>
+            <div class="step-text">
+              <strong style="display:block;font-size:14px;color:var(--ink);margin-bottom:3px">Draw or type your signature</strong>
+              <span style="font-size:13px;color:var(--gray);line-height:1.5">Draw with your mouse, trackpad, or finger, or switch to "Type" and type your name in a signature-style font. You can clear and redo the drawing as many times as you like before submitting.</span>
+            </div>
+          </li>
+          <li style="display:flex;gap:14px;align-items:flex-start;margin-bottom:16px">
+            <div class="step-num" style="min-width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</div>
+            <div class="step-text">
+              <strong style="display:block;font-size:14px;color:var(--ink);margin-bottom:3px">Choose page and position</strong>
+              <span style="font-size:13px;color:var(--gray);line-height:1.5">Pick which page(s) to sign — first, last, or all — and where on the page the signature should appear, then adjust the size using the slider so it sits comfortably within the signature block.</span>
+            </div>
+          </li>
+          <li style="display:flex;gap:14px;align-items:flex-start">
+            <div class="step-num" style="min-width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">4</div>
+            <div class="step-text">
+              <strong style="display:block;font-size:14px;color:var(--ink);margin-bottom:3px">Click "Sign PDF"</strong>
+              <span style="font-size:13px;color:var(--gray);line-height:1.5">Your signed PDF downloads automatically, with the signature placed exactly where you specified — ready to send or upload wherever it's needed.</span>
+            </div>
+          </li>
         </ul>
-      </div>
 
-      <div class="faq">
-        <p style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:12px;">❓ Frequently Asked Questions</p>
-
-        <div class="faq-item">
-          <div class="faq-q">Is this tool free?</div>
-          <div class="faq-a">Yes, completely free! No signup, no watermark, no hidden charges.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Is this a legally binding e-signature?</div>
-          <div class="faq-a">This tool visually places your signature image onto the PDF. It does not provide cryptographic digital-signature certification required for certain legal contracts.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Can I sign multiple pages with different signatures?</div>
-          <div class="faq-a">This tool places the same signature across your chosen page(s) in one go. To use different signatures per page, sign the file again for each page.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Is my PDF safe?</div>
-          <div class="faq-a">Yes. Your file is processed securely over SSL and deleted automatically after download.</div>
+        <div class="guide-tips" style="margin-top:16px;background:#FFF7ED;border-radius:8px;padding:14px 16px">
+          <h4 style="margin:0 0 8px;font-size:13px;color:#92400E">💡 Tips</h4>
+          <ul style="margin:0;padding-left:16px">
+            <li style="font-size:13px;color:#78350F;margin-bottom:5px;line-height:1.4">For a cleaner look, draw slowly and use a mouse rather than a trackpad if possible — trackpads tend to sample movement less smoothly, which shows up as jagged lines in the final signature</li>
+            <li style="font-size:13px;color:#78350F;margin-bottom:5px;line-height:1.4">Choose "All Pages" if every page needs an initial or signature, rather than uploading the file multiple times for each page individually</li>
+            <li style="font-size:13px;color:#78350F;margin-bottom:5px;line-height:1.4">If your first attempt at drawing looks messy, use the Clear button and try again rather than submitting a signature you're not happy with</li>
+            <li style="font-size:13px;color:#78350F;margin-bottom:5px;line-height:1.4">Your file is automatically deleted from our server after processing, so there's nothing left behind once you've downloaded your signed copy</li>
+          </ul>
         </div>
       </div>
-
     </div>
   </div>
 
-  <div class="other-tools">
-    <h3>Other PDF Tools</h3>
-    <div class="tools-row">
-      <a class="tool-mini" href="/signature-generator"><span class="tool-mini-icon">🖋️</span><span>Signature Gen</span></a>
-      <a class="tool-mini" href="/protect-pdf"><span class="tool-mini-icon">🔒</span><span>Protect PDF</span></a>
-      <a class="tool-mini" href="/watermark-pdf"><span class="tool-mini-icon">💧</span><span>Watermark PDF</span></a>
+  <div class="wide">
+    <div class="section-title">Frequently asked questions</div>
+    <div class="sp-faq">
+      <details open>
+        <summary>Is this tool free?</summary>
+        <p>Yes, completely free. No signup, no watermark, no hidden charges — sign as many PDFs as you need.</p>
+      </details>
+      <details>
+        <summary>Is this a legally binding e-signature?</summary>
+        <p>This tool visually places your signature image onto the PDF. It does not provide cryptographic digital-signature certification required for certain legal contracts — check your country's e-signature rules for formal agreements, and use a certified signing service if that stronger standard is required.</p>
+      </details>
+      <details>
+        <summary>Can I sign multiple pages with different signatures?</summary>
+        <p>This tool places the same signature across your chosen page(s) in one go. To use different signatures per page — for example, initials on inner pages and a full signature on the last — sign the file again for each page with the position set accordingly.</p>
+      </details>
+      <details>
+        <summary>Is my PDF safe?</summary>
+        <p>Yes. Your file is processed securely over SSL and deleted automatically after processing — it isn't stored, shared, or used for anything beyond producing your signed download.</p>
+      </details>
+      <details>
+        <summary>Should I draw or type my signature?</summary>
+        <p>Drawing looks closer to a real pen signature and varies naturally each time, just like signing on paper does. Typing in a signature-style font is faster and gives a consistent result every time, which some people prefer for documents they sign repeatedly.</p>
+      </details>
+      <details>
+        <summary>My trackpad makes the drawn signature look choppy — what can I do?</summary>
+        <p>Trackpads often produce jagged, uneven lines because they sample movement less smoothly than a mouse or touchscreen. If drawing looks rough, switching to "Type" and using the signature-style font usually gives a cleaner result than persisting with a choppy trackpad signature.</p>
+      </details>
+      <details>
+        <summary>Can I sign a PDF from my phone?</summary>
+        <p>Yes — the drawing canvas supports touch input, so you can sign with your finger directly on a phone or tablet screen, and the rest of the tool works the same as on a desktop browser.</p>
+      </details>
+      <details>
+        <summary>Does the signature stay editable after I download the PDF?</summary>
+        <p>No — once placed, the signature becomes part of the flattened page image at that position, the same way a scanned pen signature would. If you need to change it, you'll need to sign the original unsigned PDF again.</p>
+      </details>
+      <details>
+        <summary>What happens to my PDF and signature after I download the file?</summary>
+        <p>Both the uploaded PDF and the signature you drew or typed are deleted from the server shortly after your signed file is generated, so nothing lingers beyond what you download.</p>
+      </details>
     </div>
   </div>
+
+  <div class="narrow">
+    <p style="font-weight:700;font-size:1.05rem;margin-bottom:10px">A quick habit worth building</p>
+    <p style="color:var(--gray);font-size:14.5px;line-height:1.7;margin-bottom:14px">If you sign documents more than occasionally, it's worth settling on one signature you're happy with and reusing it, rather than re-drawing a fresh one every time. A consistent signature also makes it easier for the person receiving the document to recognize it as genuinely yours across multiple files, the same way a consistent pen signature does on paper.</p>
+    <p style="color:var(--gray);font-size:14.5px;line-height:1.7;margin-bottom:14px">Keep the original unsigned PDF somewhere easy to find too — if a document needs to be re-signed later, resigning the clean original is far simpler than trying to remove a signature from an already-signed copy.</p>
+    <p style="color:var(--gray);font-size:14.5px;line-height:1.7">None of this takes long once it's set up. The first time you sign a document this way usually takes a minute or two while you settle on a signature you like; every time after that is closer to ten seconds — upload, place, download, done.</p>
+  </div>
+
+  <div class="wide">
+    <div class="section-title">Related tools</div>
+    <div class="sp-related">
+      <a class="rt1" href="/signature-generator">Signature Generator<small>Create and download a standalone signature</small></a>
+      <a class="rt2" href="/protect-pdf">Protect PDF<small>Add a password after signing</small></a>
+      <a class="rt3" href="/watermark-pdf">Watermark PDF<small>Stamp CONFIDENTIAL or a custom mark</small></a>
+    </div>
+  </div>
+
 </div>
 
 <script>
@@ -417,6 +598,7 @@ function toggleGuide(){
   const body = document.getElementById('guideBody');
   const arrow = document.getElementById('guideArrow');
   body.classList.toggle('open');
+  body.style.display = body.classList.contains('open') ? 'block' : 'none';
   arrow.style.transform = body.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
 }
 </script>
