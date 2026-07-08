@@ -11,8 +11,8 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us — EkZapp</title>
-<meta name="description" content="Learn about EkZapp — a free online tools platform for PDF, Image, and more.">
+<title>About EkZapp — Who Built This and Why | EkZapp</title>
+<meta name="description" content="EkZapp is built and maintained by a single developer in India. Learn who's behind it, why it exists, and how it works.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -29,15 +29,25 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 
 .container{max-width:760px;margin:48px auto;padding:0 20px 60px}
 
-/* Hero */
 .hero{text-align:center;margin-bottom:40px}
 .hero-icon{width:72px;height:72px;border-radius:20px;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;font-size:2.2rem;margin:0 auto 20px}
 .hero h1{font-size:2rem;font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
 .hero p{color:var(--gray);font-size:15px;max-width:500px;margin:0 auto;line-height:1.6}
 
-/* Cards */
 .card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:20px}
 .card h2{font-size:16px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.card p{font-size:14px;color:var(--gray);line-height:1.7;margin-bottom:12px}
+.card p:last-child{margin-bottom:0}
+
+/* Founder card */
+.founder-card{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
+.founder-avatar{width:64px;height:64px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:800;flex-shrink:0}
+.founder-info{flex:1;min-width:220px}
+.founder-info h3{font-size:15px;font-weight:700;margin-bottom:2px}
+.founder-info .role{font-size:12.5px;color:var(--blue);font-weight:600;margin-bottom:10px}
+.founder-links{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.founder-links a{font-size:12.5px;color:var(--gray);text-decoration:none;padding:6px 12px;border:1px solid var(--border);border-radius:6px;background:var(--light)}
+.founder-links a:hover{border-color:var(--blue);color:var(--blue)}
 
 /* Stats */
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px}
@@ -46,9 +56,18 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .stat-label{font-size:12px;color:var(--gray);margin-top:4px}
 
 /* Tools grid */
+.tools-cat{margin-bottom:16px}
+.tools-cat:last-child{margin-bottom:0}
+.tools-cat h4{font-size:12px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
 .tools-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 .tool-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;background:var(--light);font-size:13px;font-weight:500}
 .tool-item span:first-child{font-size:1.1rem}
+
+/* Trust grid */
+.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.trust-item{padding:14px 16px;border-radius:10px;background:var(--light);border:1px solid var(--border)}
+.trust-item h4{font-size:13px;font-weight:700;margin-bottom:4px}
+.trust-item p{font-size:12px;color:var(--gray);line-height:1.5;margin:0}
 
 /* Values */
 .values{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
@@ -57,26 +76,38 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .value-item h3{font-size:13px;font-weight:700;margin-bottom:4px}
 .value-item p{font-size:12px;color:var(--gray);line-height:1.5}
 
-/* CTA */
+.timeline{border-left:2px solid var(--border);padding-left:18px;margin-left:6px}
+.timeline-item{position:relative;padding-bottom:16px}
+.timeline-item:last-child{padding-bottom:0}
+.timeline-item::before{content:'';position:absolute;left:-23px;top:3px;width:9px;height:9px;border-radius:50%;background:var(--blue)}
+.timeline-item .t-date{font-size:11px;color:var(--gray);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.timeline-item h4{font-size:13.5px;font-weight:700;margin:2px 0 3px}
+.timeline-item p{font-size:12.5px;color:var(--gray);line-height:1.5;margin:0}
+
 .cta{text-align:center;background:linear-gradient(135deg,var(--blue),var(--blue-dk));border-radius:14px;padding:32px 20px;color:white}
 .cta h2{font-size:1.3rem;font-weight:800;margin-bottom:8px}
 .cta p{font-size:14px;opacity:.85;margin-bottom:20px}
 .cta a{display:inline-block;background:white;color:var(--blue);padding:12px 28px;border-radius:8px;font-weight:700;font-size:14px;text-decoration:none;transition:opacity .15s}
 .cta a:hover{opacity:.9}
 
-/* Footer */
 footer{text-align:center;margin-top:40px;color:var(--gray);font-size:13px}
 footer a{color:var(--blue);text-decoration:none;margin:0 8px}
 
-@media(max-width:500px){.stats{grid-template-columns:1fr 1fr}.values{grid-template-columns:1fr}.tools-grid{grid-template-columns:1fr}}
+@media(max-width:500px){.stats{grid-template-columns:1fr 1fr}.values,.trust-grid{grid-template-columns:1fr}.tools-grid{grid-template-columns:1fr}}
 </style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
+  "@type": "AboutPage",
   "name": "About EkZapp",
   "url": "https://ekzapp.com/about",
-  "description": "Learn about EkZapp — a free online utility tools website offering PDF tools, image tools, calculators, and more."
+  "description": "EkZapp is a free online utility tools website built and maintained by an independent developer, offering PDF tools, image tools, calculators, and more.",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Ekramul Hoque",
+    "jobTitle": "Founder & Developer",
+    "url": "https://ekzapp.com/about"
+  }
 }
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
@@ -91,54 +122,125 @@ footer a{color:var(--blue);text-decoration:none;margin:0 8px}
 
 <div class="container">
 
-  <!-- Hero -->
   <div class="hero">
     <div class="hero-icon">⚡</div>
     <h1>About EkZapp</h1>
-    <p>A free, fast, and secure online tools platform — no signup, no software, just results.</p>
+    <p>A free, fast, and secure online tools platform — built and run by one developer, no signup, no software, just results.</p>
   </div>
 
-  <!-- Stats -->
   <div class="stats">
-    <div class="stat"><span class="stat-num">30+</span><span class="stat-label">Free Tools</span></div>
+    <div class="stat"><span class="stat-num">110+</span><span class="stat-label">Free Tools</span></div>
     <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Free Forever</span></div>
     <div class="stat"><span class="stat-num">0</span><span class="stat-label">Signup Required</span></div>
   </div>
 
-  <!-- Mission -->
+  <!-- Founder -->
   <div class="card">
-    <h2>🎯 Our Mission</h2>
-    <p style="font-size:14px;color:var(--gray);line-height:1.7">EkZapp was built with one goal — to give everyone access to powerful online tools without any barriers. No registration, no installation, no hidden fees. Whether you need to work with PDFs, images, or calculations, EkZapp has you covered — fast and free.</p>
+    <h2>👤 Who's behind EkZapp</h2>
+    <div class="founder-card">
+      <div class="founder-avatar">EH</div>
+      <div class="founder-info">
+        <h3>Ekramul Hoque</h3>
+        <div class="role">Founder & Developer, based in India</div>
+        <p>EkZapp is built and maintained by me, alone — I write the code, design the tools, and handle every bug report personally. It started as a side project alongside my day job, built with Flask and Python, and it's grown into a set of 110+ tools that I keep expanding based on what people actually search for and get stuck on.</p>
+        <p>I'm based in India, and a lot of the tools here — the exam photo/signature checkers, GST invoice generator, cheque amount-in-words converter — exist because I kept running into the same frustrating, badly-documented requirements myself while filling out forms, and figured other people were hitting the same wall.</p>
+        <div class="founder-links">
+          <a href="https://twitter.com/ekzapp" target="_blank" rel="noopener">𝕏 @ekzapp</a>
+          <a href="/contact">✉️ Contact me</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why it exists -->
+  <div class="card">
+    <h2>🎯 Why EkZapp exists</h2>
+    <p>Most PDF and image tool sites bury the actual tool behind ads, forced signups, or a paywall for anything beyond the most basic task. EkZapp exists because that shouldn't be necessary for compressing a photo to 50KB or merging two PDFs — a task that takes seconds shouldn't require an account.</p>
+    <p>Every tool runs entirely in your browser session: upload, process, download. Files are processed on the server only for as long as needed and deleted automatically afterward — nothing is kept, shared, or used for anything beyond producing your result.</p>
+  </div>
+
+  <!-- How it's built / trust -->
+  <div class="card">
+    <h2>🔍 How EkZapp is built</h2>
+    <div class="trust-grid">
+      <div class="trust-item">
+        <h4>Real, working tools</h4>
+        <p>Every tool actually processes your file server-side using standard libraries (PyPDF, PyMuPDF, Pillow) — not a wrapper around someone else's API pretending to be original.</p>
+      </div>
+      <div class="trust-item">
+        <h4>One person, full accountability</h4>
+        <p>No support ticket queue or outsourced team — if a tool breaks or a bug gets reported, I'm the one who reads it and fixes it.</p>
+      </div>
+      <div class="trust-item">
+        <h4>Files auto-deleted</h4>
+        <p>Uploaded files and generated outputs are removed from the server after processing — nothing lingers beyond your download.</p>
+      </div>
+      <div class="trust-item">
+        <h4>Actively maintained</h4>
+        <p>New tools and fixes ship regularly — this isn't an abandoned site running on autopilot from years ago.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="card">
+    <h2>🗓️ How EkZapp has grown</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="t-date">2026</div>
+        <h4>Project started</h4>
+        <p>Built the first version with core PDF tools (merge, split, compress, unlock) using Flask and Python, hosted on Render.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="t-date">2026</div>
+        <h4>Image and business tools added</h4>
+        <p>Passport photo maker, background remover, GST invoice generator, and Indian-market tools like amount-in-words for cheques.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="t-date">2026</div>
+        <h4>110+ tools and counting</h4>
+        <p>Expanded into calculators, text tools, developer tools, and detailed guides addressing specific, real search questions.</p>
+      </div>
+    </div>
   </div>
 
   <!-- Tools -->
   <div class="card">
-    <h2>🛠️ Available Tools</h2>
-    <div class="tools-grid">
-      <div class="tool-item"><span>🔓</span><span>Unlock PDF</span></div>
-      <div class="tool-item"><span>🔗</span><span>Merge PDF</span></div>
-      <div class="tool-item"><span>✂️</span><span>Split PDF</span></div>
-      <div class="tool-item"><span>⚡</span><span>Compress PDF</span></div>
-      <div class="tool-item"><span>🔄</span><span>Rotate PDF</span></div>
-      <div class="tool-item"><span>💧</span><span>Watermark PDF</span></div>
-      <div class="tool-item"><span>🔒</span><span>Protect PDF</span></div>
-      <div class="tool-item"><span>🖼️</span><span>PDF to JPG</span></div>
-      <div class="tool-item"><span>📝</span><span>PDF to Word</span></div>
-      <div class="tool-item"><span>📊</span><span>PDF to Excel</span></div>
-      <div class="tool-item"><span>🗑️</span><span>Delete Pages</span></div>
-      <div class="tool-item"><span>🖊️</span><span>PDF Editor</span></div>
-      <div class="tool-item"><span>🖼️</span><span>Remove Background</span></div>
-      <div class="tool-item"><span>📷</span><span>Passport Photo</span></div>
-      <div class="tool-item"><span>🔍</span><span>OCR — Image to Text</span></div>
-      <div class="tool-item"><span>🧾</span><span>Invoice Generator</span></div>
-      <div class="tool-item"><span>🧮</span><span>Age / BMI / EMI / GST</span></div>
-      <div class="tool-item"><span>📱</span><span>QR Generator</span></div>
+    <h2>🛠️ What you'll find here</h2>
+    <div class="tools-cat">
+      <h4>PDF Tools</h4>
+      <div class="tools-grid">
+        <div class="tool-item"><span>🔓</span><span>Unlock PDF</span></div>
+        <div class="tool-item"><span>🔗</span><span>Merge PDF</span></div>
+        <div class="tool-item"><span>✂️</span><span>Split / Crop PDF</span></div>
+        <div class="tool-item"><span>⚡</span><span>Compress PDF</span></div>
+        <div class="tool-item"><span>✍️</span><span>Sign PDF</span></div>
+        <div class="tool-item"><span>📽️</span><span>PDF to PPT</span></div>
+      </div>
+    </div>
+    <div class="tools-cat">
+      <h4>Image Tools</h4>
+      <div class="tools-grid">
+        <div class="tool-item"><span>🖼️</span><span>Remove Background</span></div>
+        <div class="tool-item"><span>📷</span><span>Passport Photo</span></div>
+        <div class="tool-item"><span>📉</span><span>Image Size Reducer</span></div>
+        <div class="tool-item"><span>🔍</span><span>OCR — Image to Text</span></div>
+      </div>
+    </div>
+    <div class="tools-cat">
+      <h4>Business & Calculators</h4>
+      <div class="tools-grid">
+        <div class="tool-item"><span>🧾</span><span>Invoice / GST</span></div>
+        <div class="tool-item"><span>🔢</span><span>Amount in Words</span></div>
+        <div class="tool-item"><span>🧮</span><span>Age / BMI / EMI / Tax</span></div>
+        <div class="tool-item"><span>📱</span><span>QR Generator</span></div>
+      </div>
     </div>
   </div>
 
   <!-- Values -->
   <div class="card">
-    <h2>💎 Why EkZapp?</h2>
+    <h2>💎 Why EkZapp</h2>
     <div class="values">
       <div class="value-item">
         <div class="value-icon">🆓</div>
@@ -163,10 +265,9 @@ footer a{color:var(--blue);text-decoration:none;margin:0 8px}
     </div>
   </div>
 
-  <!-- CTA -->
   <div class="cta">
     <h2>Ready to get started?</h2>
-    <p>Explore 30+ free tools — no signup required</p>
+    <p>Explore 110+ free tools — no signup required</p>
     <a href="/">🚀 Explore All Tools</a>
   </div>
 
