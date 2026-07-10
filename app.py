@@ -62,6 +62,38 @@ def ads_txt():
     return Response(content, mimetype='text/plain')
 
 
+# Site launch date — the fallback lastmod for any page not explicitly
+# overridden below. Only bump LASTMOD_OVERRIDES for a page when you
+# actually redesign/rewrite its content, not on every deploy.
+LAUNCH_DATE = '2026-06-30'
+
+LASTMOD_OVERRIDES = {
+    '/': '2026-07-04',                          # homepage internal-link fix
+    '/about': '2026-07-08',                     # E-E-A-T rewrite
+    '/merge-pdf': '2026-07-06',                 # Tier 1 redesign
+    '/compress-pdf': '2026-07-06',
+    '/split-pdf': '2026-07-06',
+    '/compress-image': '2026-07-06',
+    '/remove-background': '2026-07-07',
+    '/pdf-to-ppt': '2026-07-07',
+    '/sign-pdf': '2026-07-08',                  # Tier 2 redesign
+    '/crop-pdf': '2026-07-08',
+    '/extract-images': '2026-07-08',
+    '/passport-photo': '2026-07-08',
+    '/meme-generator': '2026-07-10',            # content enrichment pass
+    '/resume-builder': '2026-07-10',
+    '/signature-generator': '2026-07-10',
+    '/case-converter': '2026-07-10',
+    '/blog/merge-pdf-files-online': '2026-07-01',
+    '/blog/reduce-image-size-to-kb': '2026-07-01',
+    '/blog/compress-pdf-to-100kb-for-exam-form': '2026-07-03',
+    '/blog/amount-in-words-for-cheque-gst-invoice': '2026-07-03',
+    '/blog/sign-pdf-online-free': '2026-07-03',
+    '/blog/how-to-make-a-meme-online-free': '2026-07-06',
+    '/blog/exam-photo-signature-size-guide-2026': '2026-07-08',
+}
+
+
 @app.route('/sitemap.xml')
 def sitemap():
     pages = [
@@ -137,11 +169,11 @@ def sitemap():
         ('/blog/how-to-make-a-meme-online-free', '0.7', 'monthly'),
         ('/blog/exam-photo-signature-size-guide-2026', '0.7', 'monthly'),
     ]
-    today = datetime.date.today().isoformat()
     xml = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for path, priority, freq in pages:
-        xml.append(f'  <url>\n    <loc>https://ekzapp.com{path}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>{freq}</changefreq>\n    <priority>{priority}</priority>\n  </url>')
+        lastmod = LASTMOD_OVERRIDES.get(path, LAUNCH_DATE)
+        xml.append(f'  <url>\n    <loc>https://ekzapp.com{path}</loc>\n    <lastmod>{lastmod}</lastmod>\n    <changefreq>{freq}</changefreq>\n    <priority>{priority}</priority>\n  </url>')
     xml.append('</urlset>')
     return Response('\n'.join(xml), mimetype='application/xml')
 
@@ -1904,7 +1936,8 @@ def blog_exam_photo_signature_size_guide():
 
 # NOTE: as you add more blog posts, add a matching @app.route("/blog/<slug>")
 # function for each new HTML file, the same way as blog_merge_pdf() above.
-# Also remember to add the new URL to the sitemap() function above.
+# Also remember to add the new URL to the sitemap() function above, and
+# add a LASTMOD_OVERRIDES entry with today's date for the new blog URL.
 
 
 # ──────────────────────────────────────────
