@@ -13,10 +13,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Free Case Converter Online – Upper, Lower, Title Case | EkZapp</title>
 <meta name="description" content="Convert text case online free with EkZapp. Switch between UPPERCASE, lowercase, Title Case & Sentence case instantly. No signup needed.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta property="og:title" content="Free Case Converter Online – Upper, Lower, Title Case | EkZapp">
+<meta property="og:description" content="Convert text between UPPERCASE, lowercase, Title Case, Sentence case and aLtErNaTe case instantly. Free, no signup.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://ekzapp.com/case-converter">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--blue:#2563EB;--blue-dk:#1D4ED8;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--cream:#F0F5FF}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--cream:#F0F5FF;--teal:#0D9488}
 body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
 nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center}
@@ -25,13 +29,35 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .logo-text{font-size:15px;font-weight:700;color:var(--ink)}
 .logo-text span{color:var(--blue)}
 .back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
-.container{max-width:720px;margin:40px auto;padding:0 20px 60px}
-.tool-header{text-align:center;margin-bottom:32px}
-.tool-icon{font-size:2.5rem;margin-bottom:12px}
-.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
-.tool-header p{color:var(--gray);font-size:14px}
-.intro-copy{max-width:720px;margin:0 auto 32px;padding:0 4px;color:var(--gray);font-size:13.5px;line-height:1.7;text-align:left}
-.card{background:white;border:1px solid var(--border);border-radius:12px;padding:24px}
+.back:hover{border-color:var(--blue);color:var(--blue)}
+
+.wrap-outer{max-width:960px;margin:0 auto;padding:0 20px}
+.wrap-narrow{max-width:680px;margin:0 auto}
+.wrap-wide{max-width:900px;margin:0 auto}
+
+.hero{position:relative;overflow:hidden;padding:52px 20px 60px;text-align:center;
+  background:linear-gradient(125deg,#0F172A,#0D9488 55%,#2563EB);
+  background-size:200% 200%;animation:heroShift 15s ease infinite;color:white}
+@keyframes heroShift{0%{background-position:0% 30%}50%{background-position:100% 70%}100%{background-position:0% 30%}}
+.hero::before{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle at 12% 20%,rgba(255,255,255,.09) 0,transparent 42%),
+                    radial-gradient(circle at 88% 80%,rgba(255,255,255,.09) 0,transparent 42%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.25);padding:6px 14px;border-radius:999px;font-size:12px;
+  font-weight:600;margin-bottom:18px;backdrop-filter:blur(4px)}
+.hero h1{font-family:'JetBrains Mono',monospace;font-size:1.9rem;line-height:1.35;margin-bottom:14px;text-shadow:0 2px 14px rgba(0,0,0,.2)}
+.hero p{max-width:520px;margin:0 auto;font-size:15px;line-height:1.65;color:rgba(255,255,255,.85)}
+.hero-stats{display:flex;justify-content:center;gap:28px;margin-top:26px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat b{display:block;font-size:1.4rem;font-weight:800}
+.hero-stat span{font-size:11px;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.03em}
+
+.container{padding:0 20px 60px}
+.tool-section{margin-top:-30px;position:relative;z-index:2}
+.intro-copy{padding:32px 4px 0;color:var(--gray);font-size:13.5px;line-height:1.75;text-align:left;margin-bottom:16px}
+.intro-copy strong{color:var(--ink)}
+
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 10px 30px -12px rgba(17,24,39,.15)}
 textarea{width:100%;height:160px;padding:14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;resize:vertical;outline:none;transition:border .15s;margin-bottom:14px}
 textarea:focus{border-color:var(--blue)}
 .btns{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
@@ -40,19 +66,65 @@ textarea:focus{border-color:var(--blue)}
 .result-box{background:var(--cream);border:1px solid #BFDBFE;border-radius:8px;padding:14px;min-height:80px;font-size:14px;white-space:pre-wrap;word-break:break-all;display:none}
 .result-box.show{display:block}
 .copy-btn{margin-top:10px;padding:7px 18px;background:var(--blue);color:white;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif}
-.guide-section{margin-top:24px;background:white;border:1px solid var(--border);border-radius:12px;padding:24px}
-.guide-section h2{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:16px}
-.steps{display:flex;flex-direction:column;gap:14px}
-.step{display:flex;gap:12px;align-items:flex-start}
-.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.step-body h3{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px}
-.step-body p{font-size:12px;color:var(--gray);line-height:1.5}
-.faq-section{margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
-.faq-section h2{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:12px}
-.faq-item{border-bottom:1px solid var(--border);padding:12px 0}
-.faq-item:last-child{border-bottom:none;padding-bottom:0}
-.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px}
-.faq-a{font-size:12px;color:var(--gray);line-height:1.5}
+
+.sec-head{text-align:center;margin:56px 0 28px}
+.sec-eyebrow{font-size:11px;font-weight:700;color:var(--teal);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.sec-head h2{font-size:1.5rem;font-weight:800;letter-spacing:-.01em}
+.sec-head p{color:var(--gray);font-size:13.5px;margin-top:8px;max-width:520px;margin-left:auto;margin-right:auto}
+
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feature-card{background:white;border:1px solid var(--border);border-radius:14px;padding:22px 18px;text-align:left}
+.feature-card svg{width:34px;height:34px;margin-bottom:12px;stroke:var(--teal)}
+.feature-card h3{font-size:14px;font-weight:700;margin-bottom:6px}
+.feature-card p{font-size:12.5px;color:var(--gray);line-height:1.6}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.scenario-card{background:linear-gradient(155deg,#fff,#FAFAFB);border:1px solid var(--border);border-radius:14px;padding:20px}
+.scenario-emoji{font-size:1.6rem;margin-bottom:10px;display:block}
+.scenario-card h3{font-size:13.5px;font-weight:700;margin-bottom:5px}
+.scenario-card p{font-size:12.5px;color:var(--gray);line-height:1.6}
+
+.compare-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:14px;background:white}
+table.compare{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
+table.compare th,table.compare td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--border)}
+table.compare th{font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--gray);background:var(--light)}
+table.compare th.hl{color:var(--teal)}
+table.compare td.hl{font-weight:700;color:var(--teal)}
+table.compare tr:last-child td{border-bottom:none}
+.tick{color:#059669;font-weight:800}
+.cross{color:#DC2626;font-weight:800}
+.mono{font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--light);padding:2px 6px;border-radius:4px}
+
+.guide-section{margin-top:56px}
+.steps{display:flex;flex-direction:column;gap:16px}
+.step{display:flex;gap:14px;align-items:flex-start;background:white;border:1px solid var(--border);border-radius:12px;padding:16px}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--teal);color:white;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-body h3{font-size:13px;font-weight:600;margin-bottom:3px}
+.step-body p{font-size:12.5px;color:var(--gray);line-height:1.5}
+
+.faq-section{margin-top:56px}
+details.faq-item{background:white;border:1px solid var(--border);border-radius:12px;padding:4px 18px;margin-bottom:10px}
+details.faq-item summary{list-style:none;cursor:pointer;padding:14px 0;font-size:13.5px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:10px}
+details.faq-item summary::-webkit-details-marker{display:none}
+details.faq-item summary::after{content:"+";font-size:18px;color:var(--teal);font-weight:700;flex-shrink:0}
+details.faq-item[open] summary::after{content:"–"}
+details.faq-item .faq-a{font-size:12.5px;color:var(--gray);line-height:1.6;padding-bottom:16px}
+
+.related-banner{margin-top:56px;border-radius:18px;padding:30px 26px;
+  background:linear-gradient(120deg,#0F172A,#0D9488 60%,#2563EB);color:white}
+.related-banner h3{font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:16px}
+.tools-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tool-mini{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:14px;text-decoration:none;color:white;display:flex;align-items:center;gap:10px;transition:background .15s}
+.tool-mini:hover{background:rgba(255,255,255,.16)}
+.tool-mini span{font-size:13px;font-weight:600}
+
+@media(max-width:680px){
+  .hero h1{font-size:1.5rem}
+  .feature-grid{grid-template-columns:1fr}
+  .scenario-grid{grid-template-columns:1fr}
+  .tools-row{grid-template-columns:1fr}
+  .hero-stats{gap:18px}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -71,46 +143,21 @@ textarea:focus{border-color:var(--blue)}
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is Title Case?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Title Case capitalizes the first letter of every word. Example: hello world becomes Hello World."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is Sentence case?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sentence case capitalizes only the first letter of each sentence."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is there a character limit?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No limit. You can convert any length of text."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is this tool free?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, completely free. No signup required."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I copy the converted text directly?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, use the one-click Copy to Clipboard button to copy the converted text instantly."
-      }
-    }
+    {"@type":"Question","name":"What is Title Case?","acceptedAnswer":{"@type":"Answer","text":"Title Case capitalizes the first letter of every word. Example: hello world becomes Hello World. It's commonly used for headlines and article titles."}},
+    {"@type":"Question","name":"What is Sentence case?","acceptedAnswer":{"@type":"Answer","text":"Sentence case capitalizes only the first letter of each sentence, matching how normal written prose is capitalized."}},
+    {"@type":"Question","name":"Is there a character limit?","acceptedAnswer":{"@type":"Answer","text":"No limit. You can convert any length of text, from a single word to several paragraphs."}},
+    {"@type":"Question","name":"Is this tool free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free. No signup required, and there's no limit on how many times you can use it."}},
+    {"@type":"Question","name":"Can I copy the converted text directly?","acceptedAnswer":{"@type":"Answer","text":"Yes, use the one-click Copy to Clipboard button to copy the converted text instantly without manually selecting it."}},
+    {"@type":"Question","name":"What is aLtErNaTe case used for?","acceptedAnswer":{"@type":"Answer","text":"Alternating case is mostly used for a playful, sarcastic tone in casual text and social media, sometimes called mocking case."}},
+    {"@type":"Question","name":"Does this tool store the text I convert?","acceptedAnswer":{"@type":"Answer","text":"No. The conversion happens entirely in your browser using JavaScript — your text is never sent to a server or stored anywhere."}},
+    {"@type":"Question","name":"Can I use this for programming variable names?","acceptedAnswer":{"@type":"Answer","text":"UPPERCASE and lowercase are useful for constants and simple identifiers, though camelCase and snake_case conventions aren't included as separate buttons yet."}},
+    {"@type":"Question","name":"Does Title Case handle small words like 'a' and 'the' correctly?","acceptedAnswer":{"@type":"Answer","text":"The current Title Case conversion capitalizes every word, including short connector words — for strict editorial style guides, you may want to manually lowercase small words afterward."}},
+    {"@type":"Question","name":"Can I convert text with special characters or emojis?","acceptedAnswer":{"@type":"Answer","text":"Yes, special characters, numbers, and punctuation pass through unaffected; only letter casing is changed."}},
+    {"@type":"Question","name":"Will the converter change spacing or punctuation?","acceptedAnswer":{"@type":"Answer","text":"No, only letter casing is modified — spaces, line breaks, and punctuation marks stay exactly as you typed them."}},
+    {"@type":"Question","name":"Can I convert the same text to a different case again?","acceptedAnswer":{"@type":"Answer","text":"Yes, the original text stays in the input box, so you can click a different case button as many times as you like to compare results."}},
+    {"@type":"Question","name":"Does it work with non-English text?","acceptedAnswer":{"@type":"Answer","text":"Basic Latin-alphabet case conversion works reliably; behavior with accented characters or non-Latin scripts may vary depending on your browser's text handling."}},
+    {"@type":"Question","name":"Is there a keyboard shortcut to convert text faster?","acceptedAnswer":{"@type":"Answer","text":"There isn't a dedicated shortcut currently — clicking the case button you want is the fastest way to convert."}},
+    {"@type":"Question","name":"Why does Title Case sometimes look odd with acronyms?","acceptedAnswer":{"@type":"Answer","text":"The converter treats every word the same way, so an acronym like NASA becomes Nasa in Title Case — review acronyms and proper nouns after converting and fix them manually if needed."}}
   ]
 }
 </script>
@@ -123,45 +170,286 @@ textarea:focus{border-color:var(--blue)}
     <a class="back" href="/">← All Tools</a>
   </div>
 </nav>
+
+<header class="hero">
+  <div class="wrap-outer">
+    <div class="hero-badge">🔡 Free · Instant · No Signup</div>
+    <h1>UPPERCASE. lowercase. Title Case. Instantly.</h1>
+    <p>Paste your text, pick a case, copy the result — no retyping, no signup, nothing sent to a server.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><b>5</b><span>Case Types</span></div>
+      <div class="hero-stat"><b>∞</b><span>Text Length</span></div>
+      <div class="hero-stat"><b>1-tap</b><span>Copy</span></div>
+      <div class="hero-stat"><b>0</b><span>Signup</span></div>
+    </div>
+  </div>
+</header>
+
 <div class="container">
-  <div class="tool-header">
-    <div class="tool-icon">🔡</div>
-    <h1>Free Case Converter – Convert Text Case Online Instantly</h1>
-    <p>Convert text to UPPER, lower, Title or alternating case</p>
-  </div>
+  <div class="wrap-outer">
 
-  <p class="intro-copy">
-    Quickly convert text between UPPERCASE, lowercase, Title Case, Sentence case, and more with EkZapp's free Case Converter. Just paste your text, pick the case format you need, and copy the converted result instantly — no signup, no ads interrupting your workflow. This tool is perfect for writers, students, and professionals who need to quickly reformat text for headlines, titles, code variables, or documents without manually retyping everything. Whether you're fixing text that was accidentally typed in all caps or formatting a title for a blog post, this converter handles it instantly, entirely in your browser.
-  </p>
+    <div class="tool-section wrap-narrow">
+      <p class="intro-copy">
+        Quickly convert text between UPPERCASE, lowercase, Title Case, Sentence case, and playful aLtErNaTe case with EkZapp's free Case Converter. Just paste your text, pick the case format you need, and copy the converted result instantly — no signup, no ads interrupting your workflow, and no character limit on how much you paste in. This tool is perfect for writers, students, and professionals who need to quickly reformat text for headlines, titles, code variables, or documents without manually retyping everything letter by letter.
+      </p>
+      <p class="intro-copy">
+        A common situation this solves: you receive a document or email where someone accidentally left Caps Lock on, and an entire paragraph came out in ALL CAPS. Retyping it is tedious and error-prone; pasting it here and clicking "Sentence case" fixes it in one click. The same goes the other way — turning a plain heading into <strong>Title Case</strong> for a blog post, or a casual note into aLtErNaTe case for a joke message, all without opening a text editor with find-and-replace macros.
+      </p>
+      <p class="intro-copy">
+        Everything runs client-side in your browser using plain JavaScript. <strong>Nothing you paste is sent to a server</strong> — the conversion logic runs locally the instant you click a button, which is also why the result appears immediately with no loading spinner or delay, regardless of whether you're converting five words or five paragraphs.
+      </p>
+      <p class="intro-copy">
+        The five case options here cover the situations people actually run into most often, rather than trying to be an exhaustive text-transformation suite. UPPERCASE and lowercase handle the basics; Title Case and Sentence case cover the two most common formatting conventions for headings and prose; and aLtErNaTe case is included because it's become a recognizable meme format in its own right, useful for messages that want to read as sarcastic or joking at a glance.
+      </p>
+    </div>
 
-  <div class="card">
-    <textarea id="input" placeholder="Type or paste your text here..."></textarea>
-    <div class="btns">
-      <button class="case-btn" onclick="convert('upper')">UPPERCASE</button>
-      <button class="case-btn" onclick="convert('lower')">lowercase</button>
-      <button class="case-btn" onclick="convert('title')">Title Case</button>
-      <button class="case-btn" onclick="convert('sentence')">Sentence case</button>
-      <button class="case-btn" onclick="convert('alt')">aLtErNaTe</button>
+    <div class="wrap-narrow">
+      <div class="card">
+        <textarea id="input" placeholder="Type or paste your text here..."></textarea>
+        <div class="btns">
+          <button class="case-btn" onclick="convert('upper')">UPPERCASE</button>
+          <button class="case-btn" onclick="convert('lower')">lowercase</button>
+          <button class="case-btn" onclick="convert('title')">Title Case</button>
+          <button class="case-btn" onclick="convert('sentence')">Sentence case</button>
+          <button class="case-btn" onclick="convert('alt')">aLtErNaTe</button>
+        </div>
+        <div class="result-box" id="result"></div>
+        <button class="copy-btn" id="copyBtn" style="display:none" onclick="copyText()">Copy to Clipboard</button>
+      </div>
     </div>
-    <div class="result-box" id="result"></div>
-    <button class="copy-btn" id="copyBtn" style="display:none" onclick="copyText()">Copy to Clipboard</button>
-  </div>
 
-  <div class="guide-section">
-    <h2>📖 How to Use the Case Converter</h2>
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Paste or Type Your Text</h3><p>Click the text area and type or paste the text you want to convert.</p></div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Choose a Case Type</h3><p>Click the case button you want — UPPERCASE, lowercase, Title Case, Sentence case, or aLtErNaTe.</p></div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Copy the Result</h3><p>Your converted text appears instantly. Click "Copy to Clipboard" to copy it.</p></div></div>
+    <!-- Tips -->
+    <div class="wrap-narrow">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Tips</div>
+        <h2>Choosing the right case for the job</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body"><h3>Use Title Case sparingly in long headings</h3><p>Capitalizing every word in a very long headline can look cluttered — for longer titles, Sentence case often reads more cleanly.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body"><h3>Avoid full UPPERCASE in body text</h3><p>Long stretches of all-caps text are harder to read and can come across as shouting in emails or messages — save it for short labels or emphasis.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body"><h3>Double-check Title Case against your style guide</h3><p>Some style guides lowercase small connector words like "a," "the," and "of" in titles — the converter capitalizes every word, so review before publishing formal content.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body"><h3>Save aLtErNaTe case for casual contexts</h3><p>It reads clearly as a joke or sarcastic tone in chat apps and social posts, but can look like an error in professional documents.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-body"><h3>Proofread after converting</h3><p>Automated case conversion follows simple rules and doesn't understand proper nouns or acronyms — a quick scan afterward catches anything that needs a manual fix, like a brand name that shouldn't be capitalized the same way as a regular word.</p></div>
+        </div>
+      </div>
     </div>
-    <div class="faq-section">
-      <h2>❓ Frequently Asked Questions</h2>
-      <div class="faq-item"><div class="faq-q">What is Title Case?</div><div class="faq-a">Title Case capitalizes the first letter of every word. Example: "hello world" becomes "Hello World".</div></div>
-      <div class="faq-item"><div class="faq-q">What is Sentence case?</div><div class="faq-a">Sentence case capitalizes only the first letter of each sentence. Example: "hello. how are you." becomes "Hello. How are you."</div></div>
-      <div class="faq-item"><div class="faq-q">Is there a character limit?</div><div class="faq-a">No limit. You can convert any length of text.</div></div>
-      <div class="faq-item"><div class="faq-q">Is this tool free?</div><div class="faq-a">Yes, completely free. No signup required.</div></div>
-      <div class="faq-item"><div class="faq-q">Can I copy the converted text directly?</div><div class="faq-a">Yes, use the one-click Copy to Clipboard button to copy the converted text instantly.</div></div>
+
+    <!-- Feature grid -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Why EkZapp</div>
+        <h2>Five case styles, one click each</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M4 10a3 3 0 013-3h10a3 3 0 013 3v10M9 20v-6h6v6"/></svg>
+          <h3>5 Case Types</h3>
+          <p>UPPERCASE, lowercase, Title Case, Sentence case, and aLtErNaTe — each just one click away, covering the formatting situations people run into most.</p>
+        </div>
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          <h3>Nothing Uploaded</h3>
+          <p>The conversion happens locally in your browser using JavaScript — your text never touches a server or gets logged anywhere.</p>
+        </div>
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <h3>Instant Results</h3>
+          <p>No loading, no delay — the converted text appears in the result box the moment you click a case button.</p>
+        </div>
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-1M8 5a2 2 0 002 2h4a2 2 0 002-2M8 5a2 2 0 012-2h4a2 2 0 012 2"/></svg>
+          <h3>One-Tap Copy</h3>
+          <p>Copy the converted text to your clipboard in one click, without manually selecting and dragging over it.</p>
+        </div>
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+          <h3>No Length Limit</h3>
+          <p>Paste a single word or several paragraphs — there's no character cap on what you can convert in one go.</p>
+        </div>
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 10h.01M15 10h.01M8 15c1.5 1.5 6.5 1.5 8 0"/></svg>
+          <h3>Free, No Signup</h3>
+          <p>No account, no email address, no limit on how many times you use it — completely free, every time.</p>
+        </div>
+      </div>
     </div>
+
+    <!-- Scenario cards -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Made for</div>
+        <h2>Wherever text formatting trips you up</h2>
+      </div>
+      <div class="scenario-grid">
+        <div class="scenario-card">
+          <span class="scenario-emoji">✍️</span>
+          <h3>Writers & Bloggers</h3>
+          <p>Convert a rough draft heading into Title Case for a blog post, or clean up ALL CAPS text pasted from another source.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🎓</span>
+          <h3>Students & Researchers</h3>
+          <p>Format essay titles, citation entries, or headings to match a required style guide without retyping capitalization manually.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">💻</span>
+          <h3>Developers</h3>
+          <p>Quickly switch a string to UPPERCASE or lowercase for constants, config keys, or comparison logic while testing code.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">📧</span>
+          <h3>Fixing Caps-Lock Accidents</h3>
+          <p>Someone sent a message with Caps Lock stuck on — paste it in and convert to Sentence case to fix it instantly.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">😄</span>
+          <h3>Social Media & Messaging</h3>
+          <p>Turn a plain reply into aLtErNaTe case for a sarcastic tone that's become a common internet meme format.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">📋</span>
+          <h3>Form Filling</h3>
+          <p>Some government and bank forms require details in all capital letters — convert typed entries in one click before pasting them in.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">📊</span>
+          <h3>Spreadsheet Cleanup</h3>
+          <p>Standardize inconsistent capitalization in a column of names or labels pasted from different sources before importing data elsewhere.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">📰</span>
+          <h3>Headline Editors</h3>
+          <p>Quickly test how a headline reads in Title Case versus Sentence case before deciding which style fits the publication.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comparison -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Comparison</div>
+        <h2>EkZapp vs. typing it manually</h2>
+      </div>
+      <div class="compare-wrap">
+        <table class="compare">
+          <tr><th>Task</th><th class="hl">EkZapp Case Converter</th><th>Manual retyping</th></tr>
+          <tr><td>Time for a paragraph</td><td class="hl"><span class="tick">✓ Under 2 seconds</span></td><td>Several minutes</td></tr>
+          <tr><td>Typo risk</td><td class="hl"><span class="tick">✓ None</span></td><td><span class="cross">✕ High</span></td></tr>
+          <tr><td>Works on long text</td><td class="hl"><span class="tick">✓ No limit</span></td><td>Tedious past a sentence</td></tr>
+          <tr><td>Number of case styles</td><td class="hl"><span class="tick">✓ 5 options</span></td><td>Whatever you manually type</td></tr>
+          <tr><td>Cost</td><td class="hl"><span class="tick">✓ Free</span></td><td>Your time</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Guide -->
+    <div class="wrap-narrow guide-section">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">Guide</div>
+        <h2>How to use the case converter</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Paste or Type Your Text</h3><p>Click the text area and type or paste the text you want to convert — any length works.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Choose a Case Type</h3><p>Click the case button you want — UPPERCASE, lowercase, Title Case, Sentence case, or aLtErNaTe.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Copy the Result</h3><p>Your converted text appears instantly below. Click "Copy to Clipboard" to copy it in one tap.</p></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Paste It Wherever You Need</h3><p>Paste the copied text into your document, email, code editor, or form field.</p></div></div>
+      </div>
+    </div>
+
+    <!-- Case types explained -->
+    <div class="wrap-narrow">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">Reference</div>
+        <h2>What each case type means</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">A</div>
+          <div class="step-body"><h3>UPPERCASE</h3><p>Every letter capitalized — <span class="mono">hello world</span> becomes <span class="mono">HELLO WORLD</span>. Common for emphasis, headers, acronyms, and form fields that specifically require capital letters, such as some Indian bank and government application forms.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">B</div>
+          <div class="step-body"><h3>lowercase</h3><p>Every letter in small case — <span class="mono">HELLO WORLD</span> becomes <span class="mono">hello world</span>. Useful for cleaning up accidental caps-lock text, normalizing data before comparison, or matching a minimalist visual style.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">C</div>
+          <div class="step-body"><h3>Title Case</h3><p>The first letter of every word is capitalized — <span class="mono">hello world</span> becomes <span class="mono">Hello World</span>. Standard for headlines, article titles, book titles, and product names.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">D</div>
+          <div class="step-body"><h3>Sentence case</h3><p>Only the first letter of each sentence is capitalized — matches how normal prose is written, and is the standard style for body paragraphs, captions, and most everyday writing.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">E</div>
+          <div class="step-body"><h3>aLtErNaTe cAsE</h3><p>Letters alternate between upper and lower case — <span class="mono">hello world</span> becomes <span class="mono">hElLo WoRlD</span>. Mostly used for a joking or sarcastic tone in casual messages, often called "mocking spongebob case" online.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="wrap-narrow faq-section">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">FAQ</div>
+        <h2>Frequently asked questions</h2>
+      </div>
+      <details class="faq-item"><summary>What is Title Case?</summary><div class="faq-a">Title Case capitalizes the first letter of every word. Example: "hello world" becomes "Hello World". It's commonly used for headlines and article titles.</div></details>
+      <details class="faq-item"><summary>What is Sentence case?</summary><div class="faq-a">Sentence case capitalizes only the first letter of each sentence, matching how normal written prose is capitalized. Example: "hello. how are you." becomes "Hello. How are you."</div></details>
+      <details class="faq-item"><summary>Is there a character limit?</summary><div class="faq-a">No limit. You can convert any length of text, from a single word to several paragraphs.</div></details>
+      <details class="faq-item"><summary>Is this tool free?</summary><div class="faq-a">Yes, completely free. No signup required, and there's no limit on how many times you can use it.</div></details>
+      <details class="faq-item"><summary>Can I copy the converted text directly?</summary><div class="faq-a">Yes, use the one-click Copy to Clipboard button to copy the converted text instantly without manually selecting it.</div></details>
+      <details class="faq-item"><summary>What is aLtErNaTe case used for?</summary><div class="faq-a">Alternating case is mostly used for a playful, sarcastic tone in casual text and social media, sometimes called mocking case.</div></details>
+      <details class="faq-item"><summary>Does this tool store the text I convert?</summary><div class="faq-a">No. The conversion happens entirely in your browser using JavaScript — your text is never sent to a server or stored anywhere.</div></details>
+      <details class="faq-item"><summary>Can I use this for programming variable names?</summary><div class="faq-a">UPPERCASE and lowercase are useful for constants and simple identifiers, though camelCase and snake_case conventions aren't included as separate buttons yet.</div></details>
+      <details class="faq-item"><summary>Does Title Case handle small words like "a" and "the" correctly?</summary><div class="faq-a">The current Title Case conversion capitalizes every word, including short connector words — for strict editorial style guides, you may want to manually lowercase small words afterward.</div></details>
+      <details class="faq-item"><summary>Can I convert text with special characters or emojis?</summary><div class="faq-a">Yes, special characters, numbers, and punctuation pass through unaffected; only letter casing is changed.</div></details>
+      <details class="faq-item"><summary>Will the converter change spacing or punctuation?</summary><div class="faq-a">No, only letter casing is modified — spaces, line breaks, and punctuation marks stay exactly as you typed them.</div></details>
+      <details class="faq-item"><summary>Can I convert the same text to a different case again?</summary><div class="faq-a">Yes, the original text stays in the input box, so you can click a different case button as many times as you like to compare results.</div></details>
+      <details class="faq-item"><summary>Does it work with non-English text?</summary><div class="faq-a">Basic Latin-alphabet case conversion works reliably; behavior with accented characters or non-Latin scripts may vary depending on your browser's text handling.</div></details>
+      <details class="faq-item"><summary>Is there a keyboard shortcut to convert text faster?</summary><div class="faq-a">There isn't a dedicated shortcut currently — clicking the case button you want is the fastest way to convert.</div></details>
+      <details class="faq-item"><summary>Why does Title Case sometimes look odd with acronyms?</summary><div class="faq-a">The converter treats every word the same way, so an acronym like "NASA" becomes "Nasa" in Title Case — review acronyms and proper nouns after converting and fix them manually if needed.</div></details>
+    </div>
+
+    <!-- Why free -->
+    <div class="wrap-narrow">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">About this tool</div>
+        <h2>Why it's free, and how it stays that way</h2>
+      </div>
+      <p class="intro-copy" style="padding-top:0">
+        The Case Converter is one of more than fifty free tools on EkZapp, sitting alongside a Word Counter, Lorem Ipsum generator, and other lightweight text utilities. Because the entire conversion runs as plain JavaScript in your browser, there's no server processing cost involved at all — the page loads once, and every conversion afterward is essentially free to run, which is exactly why the tool has no usage limit or paywall.
+      </p>
+      <p class="intro-copy">
+        Small utilities like this one tend to get reached for often but used briefly — a quick fix in the middle of writing something else. That usage pattern is part of why the tool is deliberately kept to a single page with no extra steps: paste, click, copy, and get back to whatever you were actually working on.
+      </p>
+      <p class="intro-copy">
+        It also means there's very little that can go wrong. There's no account to lose access to, no saved history to manage, and no settings menu to configure before the tool does what you need. Every visit starts from the same blank state, which keeps the tool predictable whether you use it once a year or several times a day.
+      </p>
+    </div>
+
+    <!-- Related tools -->
+    <div class="related-banner">
+      <h3>Other text tools</h3>
+      <div class="tools-row">
+        <a class="tool-mini" href="/word-counter"><span>🔢 Word Counter</span></a>
+        <a class="tool-mini" href="/lorem-ipsum"><span>📝 Lorem Ipsum</span></a>
+        <a class="tool-mini" href="/json-formatter"><span>🧩 JSON Formatter</span></a>
+      </div>
+    </div>
+
   </div>
 </div>
 <script>

@@ -12,10 +12,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Free Signature Generator Online – Digital Signature | EkZapp</title>
 <meta name="description" content="Create a digital signature online free with EkZapp. Draw or type your signature, download as transparent PNG. No signup, instant & secure.">
+<meta property="og:title" content="Free Signature Generator Online – Digital Signature | EkZapp">
+<meta property="og:description" content="Draw or type your signature and download it as a transparent PNG. Free, no signup, private.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://ekzapp.com/signature-generator">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Sacramento&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626;--purple:#7C3AED}
 body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
 nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
@@ -28,13 +32,34 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .nav-links a:hover,.nav-links a.active{background:var(--blue-lt);color:var(--blue)}
 .back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
 .back:hover{border-color:var(--blue);color:var(--blue)}
-.container{max-width:640px;margin:48px auto;padding:0 20px 60px}
-.tool-header{text-align:center;margin-bottom:32px}
-.tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:#EDE9FE;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
-.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
-.tool-header p{color:var(--gray);font-size:14px}
-.intro-copy{max-width:640px;margin:0 auto 32px;padding:0 4px;color:var(--gray);font-size:13.5px;line-height:1.7;text-align:left}
-.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+
+.wrap-outer{max-width:960px;margin:0 auto;padding:0 20px}
+.wrap-narrow{max-width:660px;margin:0 auto}
+.wrap-wide{max-width:900px;margin:0 auto}
+
+.hero{position:relative;overflow:hidden;padding:52px 20px 60px;text-align:center;
+  background:linear-gradient(125deg,#1E1B4B,#5B21B6 55%,#7C3AED);
+  background-size:200% 200%;animation:heroShift 15s ease infinite;color:white}
+@keyframes heroShift{0%{background-position:0% 30%}50%{background-position:100% 70%}100%{background-position:0% 30%}}
+.hero::before{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle at 12% 20%,rgba(255,255,255,.09) 0,transparent 42%),
+                    radial-gradient(circle at 88% 80%,rgba(255,255,255,.09) 0,transparent 42%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.25);padding:6px 14px;border-radius:999px;font-size:12px;
+  font-weight:600;margin-bottom:18px;backdrop-filter:blur(4px)}
+.hero h1{font-family:'Dancing Script',cursive;font-size:3rem;line-height:1.2;margin-bottom:14px;text-shadow:0 2px 14px rgba(0,0,0,.2)}
+.hero p{max-width:520px;margin:0 auto;font-size:15px;line-height:1.65;color:rgba(255,255,255,.85)}
+.hero-stats{display:flex;justify-content:center;gap:28px;margin-top:26px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat b{display:block;font-size:1.4rem;font-weight:800}
+.hero-stat span{font-size:11px;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.03em}
+
+.container{padding:0 20px 60px}
+.tool-section{margin-top:-30px;position:relative;z-index:2}
+.intro-copy{padding:32px 4px 0;color:var(--gray);font-size:13.5px;line-height:1.75;text-align:left;margin-bottom:16px}
+.intro-copy strong{color:var(--ink)}
+
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 10px 30px -12px rgba(17,24,39,.15)}
 .tabs{display:flex;gap:4px;background:var(--light);border-radius:10px;padding:4px;margin-bottom:20px}
 .tab-btn{flex:1;padding:9px;border:none;background:none;border-radius:8px;font-size:13px;font-weight:600;color:var(--gray);cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s}
 .tab-btn.active{background:white;color:var(--blue);box-shadow:0 1px 3px rgba(0,0,0,.1)}
@@ -64,25 +89,64 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .btn-secondary:hover{border-color:var(--gray)}
 .trust{display:flex;justify-content:center;gap:20px;margin-top:16px;flex-wrap:wrap}
 .trust-item{font-size:12px;color:var(--gray)}
-.guide-section{margin-top:32px;background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.guide-section h2{font-size:1.1rem;font-weight:700;margin-bottom:20px}
+
+.sec-head{text-align:center;margin:56px 0 28px}
+.sec-eyebrow{font-size:11px;font-weight:700;color:var(--blue);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.sec-head h2{font-size:1.5rem;font-weight:800;letter-spacing:-.01em}
+.sec-head p{color:var(--gray);font-size:13.5px;margin-top:8px;max-width:520px;margin-left:auto;margin-right:auto}
+
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feature-card{background:white;border:1px solid var(--border);border-radius:14px;padding:22px 18px;text-align:left}
+.feature-card svg{width:34px;height:34px;margin-bottom:12px;stroke:var(--purple)}
+.feature-card h3{font-size:14px;font-weight:700;margin-bottom:6px}
+.feature-card p{font-size:12.5px;color:var(--gray);line-height:1.6}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.scenario-card{background:linear-gradient(155deg,#fff,#FAFAFB);border:1px solid var(--border);border-radius:14px;padding:20px}
+.scenario-emoji{font-size:1.6rem;margin-bottom:10px;display:block}
+.scenario-card h3{font-size:13.5px;font-weight:700;margin-bottom:5px}
+.scenario-card p{font-size:12.5px;color:var(--gray);line-height:1.6}
+
+.compare-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:14px;background:white}
+table.compare{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
+table.compare th,table.compare td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--border)}
+table.compare th{font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--gray);background:var(--light)}
+table.compare th.hl{color:var(--purple)}
+table.compare td.hl{font-weight:700;color:var(--purple)}
+table.compare tr:last-child td{border-bottom:none}
+.tick{color:#059669;font-weight:800}
+.cross{color:var(--red);font-weight:800}
+
+.guide-section{margin-top:56px}
 .steps{display:flex;flex-direction:column;gap:16px}
-.step{display:flex;gap:14px;align-items:flex-start}
-.step-num{width:32px;height:32px;border-radius:50%;background:var(--blue);color:white;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step{display:flex;gap:14px;align-items:flex-start;background:white;border:1px solid var(--border);border-radius:12px;padding:16px}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--purple);color:white;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .step-body h3{font-size:13px;font-weight:600;margin-bottom:3px}
 .step-body p{font-size:12.5px;color:var(--gray);line-height:1.5}
-.faq-section{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
-.faq-section h2{font-size:1rem;font-weight:700;margin-bottom:16px}
-.faq-item{border-bottom:1px solid var(--border);padding:14px 0}
-.faq-item:last-child{border-bottom:none;padding-bottom:0}
-.faq-q{font-size:13px;font-weight:600;margin-bottom:6px}
-.faq-a{font-size:12.5px;color:var(--gray);line-height:1.5}
-.other-tools{margin-top:32px}
-.other-tools h3{font-size:13px;font-weight:600;color:var(--gray);letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
+
+.faq-section{margin-top:56px}
+details.faq-item{background:white;border:1px solid var(--border);border-radius:12px;padding:4px 18px;margin-bottom:10px}
+details.faq-item summary{list-style:none;cursor:pointer;padding:14px 0;font-size:13.5px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:10px}
+details.faq-item summary::-webkit-details-marker{display:none}
+details.faq-item summary::after{content:"+";font-size:18px;color:var(--purple);font-weight:700;flex-shrink:0}
+details.faq-item[open] summary::after{content:"–"}
+details.faq-item .faq-a{font-size:12.5px;color:var(--gray);line-height:1.6;padding-bottom:16px}
+
+.related-banner{margin-top:56px;border-radius:18px;padding:30px 26px;
+  background:linear-gradient(120deg,#1E1B4B,#5B21B6 60%,#7C3AED);color:white}
+.related-banner h3{font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:16px}
 .tools-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.tool-mini{background:white;border:1px solid var(--border);border-radius:10px;padding:14px;text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px}
-.tool-mini:hover{border-color:var(--blue)}
+.tool-mini{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:14px;text-decoration:none;color:white;display:flex;align-items:center;gap:10px;transition:background .15s}
+.tool-mini:hover{background:rgba(255,255,255,.16)}
 .tool-mini span{font-size:13px;font-weight:600}
+
+@media(max-width:680px){
+  .hero h1{font-size:2.2rem}
+  .feature-grid{grid-template-columns:1fr}
+  .scenario-grid{grid-template-columns:1fr}
+  .tools-row{grid-template-columns:1fr}
+  .hero-stats{gap:18px}
+}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"Signature Generator","url":"https://ekzapp.com/signature-generator","description":"Create a free digital signature online by drawing or typing. Download as transparent PNG.","applicationCategory":"UtilityApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
@@ -92,46 +156,21 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is this signature legally binding?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "This tool creates a visual signature image. For legally binding e-signatures on contracts, check your local e-signature laws — this tool is best for informal documents, forms, and personal use."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does my signature get uploaded anywhere?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. Everything happens directly in your browser — nothing is sent to our servers, so your signature stays completely private."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What format is the download?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "A transparent PNG image, so you can paste it directly onto documents, PDFs, or images without a white background."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I use this on my phone?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, the draw pad works with touch input on mobile and tablets."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need to install any software?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No, everything works directly in your browser — no downloads or installs needed."
-      }
-    }
+    {"@type":"Question","name":"Is this signature legally binding?","acceptedAnswer":{"@type":"Answer","text":"This tool creates a visual signature image. For legally binding e-signatures on contracts, check your local e-signature laws — this tool is best for informal documents, forms, and personal use."}},
+    {"@type":"Question","name":"Does my signature get uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Everything happens directly in your browser — nothing is sent to our servers, so your signature stays completely private."}},
+    {"@type":"Question","name":"What format is the download?","acceptedAnswer":{"@type":"Answer","text":"A transparent PNG image, so you can paste it directly onto documents, PDFs, or images without a white background showing behind it."}},
+    {"@type":"Question","name":"Can I use this on my phone?","acceptedAnswer":{"@type":"Answer","text":"Yes, the draw pad works with touch input on mobile and tablets, and the typed-signature mode works identically on any screen size."}},
+    {"@type":"Question","name":"Do I need to install any software?","acceptedAnswer":{"@type":"Answer","text":"No, everything works directly in your browser — no downloads, extensions, or app installs needed."}},
+    {"@type":"Question","name":"Can I change the color of a drawn signature?","acceptedAnswer":{"@type":"Answer","text":"Yes, choose from four pen colors — black, blue, red, or green — before or while drawing."}},
+    {"@type":"Question","name":"How do I get a signature with no background at all?","acceptedAnswer":{"@type":"Answer","text":"Both the drawn and typed signature download as a transparent PNG by default, so there's no white box around your signature when pasted onto a document."}},
+    {"@type":"Question","name":"Can I redo my signature if I make a mistake while drawing?","acceptedAnswer":{"@type":"Answer","text":"Yes, tap Clear to wipe the canvas and draw again as many times as you need before downloading."}},
+    {"@type":"Question","name":"Which is better — drawn or typed signature?","acceptedAnswer":{"@type":"Answer","text":"A drawn signature looks more like a handwritten one if you're comfortable using a mouse or touchscreen; a typed signature in a cursive font is quicker and more consistent every time."}},
+    {"@type":"Question","name":"Can I use the same signature on multiple documents?","acceptedAnswer":{"@type":"Answer","text":"Yes, once downloaded as a PNG, you can reuse that same image file across as many documents as you like."}},
+    {"@type":"Question","name":"What's the difference between this and an official e-signature service?","acceptedAnswer":{"@type":"Answer","text":"Official e-signature services add identity verification, timestamps, and audit trails required for legal enforceability on contracts. This tool creates the visual signature image itself, without those verification layers."}},
+    {"@type":"Question","name":"Can I make my signature bigger or smaller after downloading?","acceptedAnswer":{"@type":"Answer","text":"The PNG downloads at a fixed size, but most PDF editors and document tools let you resize an inserted image freely once it's placed on the page."}},
+    {"@type":"Question","name":"Does the tool work offline?","acceptedAnswer":{"@type":"Answer","text":"The page itself needs to load once from the internet, but the drawing and typing both run locally in your browser without needing an active connection after that."}},
+    {"@type":"Question","name":"Can I create more than one signature style and pick between them?","acceptedAnswer":{"@type":"Answer","text":"Yes, there's no limit to how many times you can draw or type a new version — download as many variations as you'd like and keep the one you prefer."}},
+    {"@type":"Question","name":"Is a typed cursive signature considered less genuine than a drawn one?","acceptedAnswer":{"@type":"Answer","text":"For informal use, both are equally valid as a visual mark — a typed cursive signature simply trades some handwritten variation for speed and consistency."}}
   ]
 }
 </script>
@@ -150,95 +189,321 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
   </div>
 </nav>
 
+<header class="hero">
+  <div class="wrap-outer">
+    <div class="hero-badge">🖋️ Free · No Signup · Transparent PNG</div>
+    <h1>Your Signature, Ready in Seconds</h1>
+    <p>Draw it naturally or type your name into a cursive font — download instantly with a transparent background, nothing saved on any server.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><b>2</b><span>Modes</span></div>
+      <div class="hero-stat"><b>3</b><span>Fonts</span></div>
+      <div class="hero-stat"><b>4</b><span>Pen Colors</span></div>
+      <div class="hero-stat"><b>PNG</b><span>Transparent</span></div>
+    </div>
+  </div>
+</header>
+
 <div class="container">
-  <div class="tool-header">
-    <div class="tool-icon-wrap">🖋️</div>
-    <h1>Free Signature Generator – Create Your Digital Signature Online</h1>
-    <p>Draw or type your signature and download it free</p>
-  </div>
+  <div class="wrap-outer">
 
-  <p class="intro-copy">
-    Need a digital signature for a document, email, or contract? EkZapp's Signature Generator lets you create one in seconds — completely free, with no signup required. Draw your signature naturally using your mouse or touchscreen, or type your name and choose from elegant cursive fonts to generate a signature style instantly. Download it as a transparent PNG, ready to insert into PDFs, Word documents, or online forms. This tool is especially useful for freelancers, students, and professionals who frequently need to sign digital documents without printing, signing by hand, and scanning. Everything happens in your browser — your signature is generated instantly and isn't stored on our servers.
-  </p>
-
-  <div class="card">
-    <div class="tabs">
-      <button class="tab-btn active" onclick="switchTab('draw')">✏️ Draw</button>
-      <button class="tab-btn" onclick="switchTab('type')">⌨️ Type</button>
+    <div class="tool-section wrap-narrow">
+      <p class="intro-copy">
+        Need a digital signature for a document, email, or contract? EkZapp's Signature Generator lets you create one in seconds — completely free, with no signup required. Draw your signature naturally using your mouse or touchscreen, or type your name and choose from elegant cursive fonts to generate a signature style instantly. Download it as a <strong>transparent PNG</strong>, ready to insert into PDFs, Word documents, or online forms without a white box showing around it.
+      </p>
+      <p class="intro-copy">
+        This tool is especially useful for freelancers, students, and professionals who frequently need to sign digital documents without printing a page, signing it by hand, scanning it back in, and cropping the image — a process that can take longer than the rest of the paperwork combined. With a saved signature PNG on your device, signing a PDF becomes a matter of pasting an image in the right spot, something that takes seconds once the signature itself exists.
+      </p>
+      <p class="intro-copy">
+        Everything happens in your browser using HTML canvas — your signature is generated instantly and <strong>isn't stored on any server</strong>. That matters for a signature specifically, since it's a piece of personal identity you'd rather not have sitting in a database somewhere. Close the tab and nothing about the session remains; the only copy that exists afterward is the PNG file you chose to download to your own device.
+      </p>
+      <p class="intro-copy">
+        The three typed-signature fonts were picked to cover different tones: Dancing Script leans casual and friendly, Great Vibes reads more formal and flowing, and Sacramento sits somewhere in between with a slightly more compact, modern cursive. If you draw your signature instead, four pen colors — black, blue, red, and green — are available, so you can match a convention some documents expect, like blue ink for an "original" signature versus black for a photocopy-safe one.
+      </p>
     </div>
 
-    <!-- DRAW PANE -->
-    <div class="pane active" id="drawPane">
-      <div class="canvas-wrap">
-        <canvas id="drawCanvas"></canvas>
-        <span class="canvas-hint" id="canvasHint">Draw your signature above</span>
-      </div>
-      <div class="color-row">
-        <div class="color-dot selected" style="background:#111827" onclick="setColor('#111827',this)"></div>
-        <div class="color-dot" style="background:#2563EB" onclick="setColor('#2563EB',this)"></div>
-        <div class="color-dot" style="background:#DC2626" onclick="setColor('#DC2626',this)"></div>
-        <div class="color-dot" style="background:#16A34A" onclick="setColor('#16A34A',this)"></div>
-      </div>
-      <div class="btn-row">
-        <button class="btn btn-secondary" onclick="clearCanvas()">🗑️ Clear</button>
-        <button class="btn btn-primary" onclick="downloadDraw()">⬇️ Download PNG</button>
+    <div class="wrap-narrow">
+      <div class="card">
+        <div class="tabs">
+          <button class="tab-btn active" onclick="switchTab('draw')">✏️ Draw</button>
+          <button class="tab-btn" onclick="switchTab('type')">⌨️ Type</button>
+        </div>
+
+        <!-- DRAW PANE -->
+        <div class="pane active" id="drawPane">
+          <div class="canvas-wrap">
+            <canvas id="drawCanvas"></canvas>
+            <span class="canvas-hint" id="canvasHint">Draw your signature above</span>
+          </div>
+          <div class="color-row">
+            <div class="color-dot selected" style="background:#111827" onclick="setColor('#111827',this)"></div>
+            <div class="color-dot" style="background:#2563EB" onclick="setColor('#2563EB',this)"></div>
+            <div class="color-dot" style="background:#DC2626" onclick="setColor('#DC2626',this)"></div>
+            <div class="color-dot" style="background:#16A34A" onclick="setColor('#16A34A',this)"></div>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-secondary" onclick="clearCanvas()">🗑️ Clear</button>
+            <button class="btn btn-primary" onclick="downloadDraw()">⬇️ Download PNG</button>
+          </div>
+        </div>
+
+        <!-- TYPE PANE -->
+        <div class="pane" id="typePane">
+          <div class="field">
+            <label>Type your name</label>
+            <input type="text" id="typeInput" placeholder="e.g. John Doe" oninput="updatePreview()">
+          </div>
+          <div class="font-preview font-dancing selected" id="font1" onclick="selectFont('font-dancing',this)">Your Signature</div>
+          <div class="font-preview font-vibes" id="font2" onclick="selectFont('font-vibes',this)">Your Signature</div>
+          <div class="font-preview font-sacramento" id="font3" onclick="selectFont('font-sacramento',this)">Your Signature</div>
+          <div class="btn-row">
+            <button class="btn btn-primary" onclick="downloadType()">⬇️ Download PNG</button>
+          </div>
+        </div>
+
+        <div class="trust">
+          <div class="trust-item">🔒 Runs in your browser</div>
+          <div class="trust-item">🗑️ Nothing uploaded</div>
+          <div class="trust-item">📵 No signup needed</div>
+        </div>
       </div>
     </div>
 
-    <!-- TYPE PANE -->
-    <div class="pane" id="typePane">
-      <div class="field">
-        <label>Type your name</label>
-        <input type="text" id="typeInput" placeholder="e.g. John Doe" oninput="updatePreview()">
+    <!-- Feature grid -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Why EkZapp</div>
+        <h2>Two ways to sign, built for privacy</h2>
       </div>
-      <div class="font-preview font-dancing selected" id="font1" onclick="selectFont('font-dancing',this)">Your Signature</div>
-      <div class="font-preview font-vibes" id="font2" onclick="selectFont('font-vibes',this)">Your Signature</div>
-      <div class="font-preview font-sacramento" id="font3" onclick="selectFont('font-sacramento',this)">Your Signature</div>
-      <div class="btn-row">
-        <button class="btn btn-primary" onclick="downloadType()">⬇️ Download PNG</button>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg>
+          <h3>Draw Freehand</h3>
+          <p>Sign naturally with your mouse or finger on a canvas built for smooth, continuous strokes.</p>
+        </div>
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg>
+          <h3>Type in Cursive</h3>
+          <p>No steady hand needed — type your name and it renders in an elegant handwriting-style font instantly.</p>
+        </div>
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <h3>Instant Generation</h3>
+          <p>No waiting or processing delay — your signature renders and downloads in the same moment.</p>
+        </div>
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          <h3>Nothing Uploaded</h3>
+          <p>Signature creation happens entirely on your device — nothing is sent to or kept on a server.</p>
+        </div>
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8l8 8M16 8l-8 8"/></svg>
+          <h3>Transparent Background</h3>
+          <p>Downloads as a PNG with no white box, so it drops cleanly onto any document or form.</p>
+        </div>
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5z"/></svg>
+          <h3>Free, No Limit</h3>
+          <p>Create and re-download as many signature variations as you like at no cost.</p>
+        </div>
       </div>
     </div>
 
-    <div class="trust">
-      <div class="trust-item">🔒 Runs in your browser</div>
-      <div class="trust-item">🗑️ Nothing uploaded</div>
-      <div class="trust-item">📵 No signup needed</div>
+    <!-- Scenario cards -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Made for</div>
+        <h2>Wherever you need to sign</h2>
+      </div>
+      <div class="scenario-grid">
+        <div class="scenario-card">
+          <span class="scenario-emoji">📄</span>
+          <h3>Signing PDF Forms</h3>
+          <p>Paste your signature PNG onto a PDF using EkZapp's Sign PDF tool or any editor, without printing and scanning.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">✉️</span>
+          <h3>Email Sign-offs</h3>
+          <p>Add a personal, handwritten-style signature image to the bottom of your professional email footer.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">📝</span>
+          <h3>Agreements & Declarations</h3>
+          <p>Sign rental agreements, consent forms, or personal declarations digitally without needing a physical printout.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🎓</span>
+          <h3>Student Assignment Declarations</h3>
+          <p>Many academic submissions ask for a signed declaration page — generate one quickly for a digital submission.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🏠</span>
+          <h3>Rental & Vendor Paperwork</h3>
+          <p>Sign informal lease acknowledgments, vendor quotations, or delivery confirmations without a physical signature step.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🖨️</span>
+          <h3>Replacing Print-Sign-Scan</h3>
+          <p>Skip the printer entirely — draw or type once, save the PNG, and reuse it any time a document needs a signature.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🎨</span>
+          <h3>Certificates & Design Mockups</h3>
+          <p>Add a signature-style flourish to a certificate template, thank-you note, or design mockup that calls for a personal touch.</p>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="guide-section">
-    <h2>📖 How to Create Your Signature</h2>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-body"><h3>Choose Draw or Type</h3><p>Draw your signature freehand with your mouse or finger, or type your name and pick a cursive font style.</p></div>
+    <!-- Tips -->
+    <div class="wrap-narrow">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Tips</div>
+        <h2>Getting a signature that looks natural</h2>
       </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-body"><h3>Customize It</h3><p>Pick a pen color for drawn signatures, or choose from 3 elegant handwriting fonts for typed signatures.</p></div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-body"><h3>Download</h3><p>Click download to save your signature as a transparent PNG, ready to paste into documents, PDFs, or emails.</p></div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body"><h3>Sign slower than you think you should</h3><p>Drawing with a mouse or trackpad is less precise than pen on paper — slowing down slightly keeps the strokes smoother and more legible.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body"><h3>Use a touchscreen if you have one</h3><p>Signing with a finger on a phone or tablet usually produces a more natural-looking result than a mouse on a desktop.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body"><h3>Try more than one typed font</h3><p>Dancing Script, Great Vibes, and Sacramento each carry a different tone — preview your name in all three before picking one.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body"><h3>Keep a saved copy for reuse</h3><p>Once you're happy with a signature PNG, save it somewhere easy to find on your device so you're not regenerating it for every document.</p></div>
+        </div>
       </div>
     </div>
-    <div class="faq-section">
-      <h2>❓ Frequently Asked Questions</h2>
-      <div class="faq-item"><div class="faq-q">Is this signature legally binding?</div><div class="faq-a">This tool creates a visual signature image. For legally binding e-signatures on contracts, check your local e-signature laws — this tool is best for informal documents, forms, and personal use.</div></div>
-      <div class="faq-item"><div class="faq-q">Does my signature get uploaded anywhere?</div><div class="faq-a">No. Everything happens directly in your browser — nothing is sent to our servers, so your signature stays completely private.</div></div>
-      <div class="faq-item"><div class="faq-q">What format is the download?</div><div class="faq-a">A transparent PNG image, so you can paste it directly onto documents, PDFs, or images without a white background.</div></div>
-      <div class="faq-item"><div class="faq-q">Can I use this on my phone?</div><div class="faq-a">Yes, the draw pad works with touch input on mobile and tablets.</div></div>
-      <div class="faq-item"><div class="faq-q">Do I need to install any software?</div><div class="faq-a">No, everything works directly in your browser — no downloads or installs needed.</div></div>
-    </div>
-  </div>
 
-  <div class="other-tools">
-    <h3>Other Business Tools</h3>
-    <div class="tools-row">
-      <a class="tool-mini" href="/invoice-generator"><span>🧾 Invoice Generator</span></a>
-      <a class="tool-mini" href="/resume-builder"><span>📄 Resume Builder</span></a>
-      <a class="tool-mini" href="/pdf-editor"><span>✏️ PDF Editor</span></a>
+    <!-- Comparison -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Comparison</div>
+        <h2>EkZapp vs. typical signature tools</h2>
+      </div>
+      <div class="compare-wrap">
+        <table class="compare">
+          <tr><th>Feature</th><th class="hl">EkZapp</th><th>Typical signature sites</th></tr>
+          <tr><td>Signup required</td><td class="hl"><span class="tick">✓ Not needed</span></td><td><span class="cross">✕ Often required</span></td></tr>
+          <tr><td>Transparent PNG output</td><td class="hl"><span class="tick">✓ Default</span></td><td>Sometimes a paid feature</td></tr>
+          <tr><td>Draw + type modes</td><td class="hl"><span class="tick">✓ Both included</span></td><td>Often only one mode</td></tr>
+          <tr><td>Pen color choices</td><td class="hl"><span class="tick">✓ 4 colors</span></td><td>Usually fixed black only</td></tr>
+          <tr><td>Signature stored on server</td><td class="hl"><span class="tick">✓ Never</span></td><td>Varies, often uploaded</td></tr>
+          <tr><td>Cost</td><td class="hl"><span class="tick">✓ Free</span></td><td>Free tier often limited</td></tr>
+        </table>
+      </div>
     </div>
+
+    <!-- Guide -->
+    <div class="wrap-narrow guide-section">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">Guide</div>
+        <h2>How to create your signature</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body"><h3>Choose Draw or Type</h3><p>Draw your signature freehand with your mouse or finger, or switch to the Type tab and enter your name to see it rendered in a cursive font.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body"><h3>Customize It</h3><p>Pick a pen color for drawn signatures, or choose from 3 elegant handwriting fonts for typed signatures — click a preview to select it.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body"><h3>Redo If Needed</h3><p>Not happy with a drawn attempt? Tap Clear and draw again as many times as it takes to get a signature you're satisfied with.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body"><h3>Download</h3><p>Click download to save your signature as a transparent PNG, ready to paste into documents, PDFs, or emails.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Where to use -->
+    <div class="wrap-narrow">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">Good to know</div>
+        <h2>Where a digital signature works — and where it doesn't</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">✓</div>
+          <div class="step-body"><h3>Informal documents and forms</h3><p>Consent slips, internal office forms, personal declarations, and similar low-stakes paperwork are a good fit for this kind of visual signature.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">✓</div>
+          <div class="step-body"><h3>Email and personal branding</h3><p>A signature image in an email footer or a personal document adds a handwritten touch without any legal requirement attached.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">!</div>
+          <div class="step-body"><h3>Legally binding contracts</h3><p>For contracts, deeds, or agreements that need a legally recognized e-signature, check the e-signature laws in your jurisdiction and consider a certified e-signature service instead.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">✓</div>
+          <div class="step-body"><h3>Design mockups and templates</h3><p>Designers and marketers often need a placeholder or sample signature for a mockup, certificate design, or template — this tool covers that quickly.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">!</div>
+          <div class="step-body"><h3>Financial and government documents</h3><p>Bank forms, notarized documents, and official government paperwork typically require an in-person or officially verified signature — check the specific requirement before relying on any visual signature image.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="wrap-narrow faq-section">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">FAQ</div>
+        <h2>Frequently asked questions</h2>
+      </div>
+      <details class="faq-item"><summary>Is this signature legally binding?</summary><div class="faq-a">This tool creates a visual signature image. For legally binding e-signatures on contracts, check your local e-signature laws — this tool is best for informal documents, forms, and personal use.</div></details>
+      <details class="faq-item"><summary>Does my signature get uploaded anywhere?</summary><div class="faq-a">No. Everything happens directly in your browser — nothing is sent to our servers, so your signature stays completely private.</div></details>
+      <details class="faq-item"><summary>What format is the download?</summary><div class="faq-a">A transparent PNG image, so you can paste it directly onto documents, PDFs, or images without a white background showing behind it.</div></details>
+      <details class="faq-item"><summary>Can I use this on my phone?</summary><div class="faq-a">Yes, the draw pad works with touch input on mobile and tablets, and the typed-signature mode works identically on any screen size.</div></details>
+      <details class="faq-item"><summary>Do I need to install any software?</summary><div class="faq-a">No, everything works directly in your browser — no downloads, extensions, or app installs needed.</div></details>
+      <details class="faq-item"><summary>Can I change the color of a drawn signature?</summary><div class="faq-a">Yes, choose from four pen colors — black, blue, red, or green — before or while drawing.</div></details>
+      <details class="faq-item"><summary>How do I get a signature with no background at all?</summary><div class="faq-a">Both the drawn and typed signature download as a transparent PNG by default, so there's no white box around your signature when pasted onto a document.</div></details>
+      <details class="faq-item"><summary>Can I redo my signature if I make a mistake while drawing?</summary><div class="faq-a">Yes, tap Clear to wipe the canvas and draw again as many times as you need before downloading.</div></details>
+      <details class="faq-item"><summary>Which is better — drawn or typed signature?</summary><div class="faq-a">A drawn signature looks more like a handwritten one if you're comfortable using a mouse or touchscreen; a typed signature in a cursive font is quicker and more consistent every time.</div></details>
+      <details class="faq-item"><summary>Can I use the same signature on multiple documents?</summary><div class="faq-a">Yes, once downloaded as a PNG, you can reuse that same image file across as many documents as you like.</div></details>
+      <details class="faq-item"><summary>What's the difference between this and an official e-signature service?</summary><div class="faq-a">Official e-signature services add identity verification, timestamps, and audit trails required for legal enforceability on contracts. This tool creates the visual signature image itself, without those verification layers.</div></details>
+      <details class="faq-item"><summary>Can I make my signature bigger or smaller after downloading?</summary><div class="faq-a">The PNG downloads at a fixed size, but most PDF editors and document tools let you resize an inserted image freely once it's placed on the page.</div></details>
+      <details class="faq-item"><summary>Does the tool work offline?</summary><div class="faq-a">The page itself needs to load once from the internet, but the drawing and typing both run locally in your browser without needing an active connection after that.</div></details>
+      <details class="faq-item"><summary>Can I create more than one signature style and pick between them?</summary><div class="faq-a">Yes, there's no limit to how many times you can draw or type a new version — download as many variations as you'd like and keep the one you prefer.</div></details>
+      <details class="faq-item"><summary>Is a typed cursive signature considered less genuine than a drawn one?</summary><div class="faq-a">For informal use, both are equally valid as a visual mark — a typed cursive signature simply trades some handwritten variation for speed and consistency.</div></details>
+    </div>
+
+    <!-- Why free -->
+    <div class="wrap-narrow">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">About this tool</div>
+        <h2>Why it's free, and how it stays that way</h2>
+      </div>
+      <p class="intro-copy" style="padding-top:0">
+        The Signature Generator is one of more than fifty free tools on EkZapp, alongside PDF editing, resume building, and invoice generation. Because the drawing and typing both happen entirely in your browser using canvas, the tool costs very little to run even as more people use it — there's no server-side image processing to pay for. That's also the privacy story: nothing about your signature needs to touch a server in the first place, so keeping it private and keeping it free turned out to be the same decision.
+      </p>
+      <p class="intro-copy">
+        A signature is a small but personal thing — it's meant to represent your identity, so a tool built around it should be straightforward about what happens to your data. Here, the answer is simple: nothing is stored, nothing is logged tied to your signature, and the only copy that exists afterward is the file you chose to save on your own device.
+      </p>
+      <p class="intro-copy">
+        Keeping the tool this narrow in scope is also what makes it fast. There's no account system to check, no history to load, and no dashboard to render before you can start drawing or typing — the page opens and the canvas is ready. That simplicity is a deliberate trade-off: a tool that does one thing without extra features around it tends to load faster and behave more predictably than a bundled document suite trying to do everything at once.
+      </p>
+    </div>
+
+    <!-- Related tools -->
+    <div class="related-banner">
+      <h3>Other business tools</h3>
+      <div class="tools-row">
+        <a class="tool-mini" href="/invoice-generator"><span>🧾 Invoice Generator</span></a>
+        <a class="tool-mini" href="/resume-builder"><span>📄 Resume Builder</span></a>
+        <a class="tool-mini" href="/pdf-editor"><span>✏️ PDF Editor</span></a>
+      </div>
+    </div>
+
   </div>
 </div>
 
