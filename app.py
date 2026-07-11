@@ -91,6 +91,7 @@ LASTMOD_OVERRIDES = {
     '/blog/sign-pdf-online-free': '2026-07-03',
     '/blog/how-to-make-a-meme-online-free': '2026-07-06',
     '/blog/exam-photo-signature-size-guide-2026': '2026-07-08',
+    '/blog/split-pdf-crop-pdf-guide': '2026-07-12',
 }
 
 
@@ -168,6 +169,7 @@ def sitemap():
         ('/blog/sign-pdf-online-free', '0.7', 'monthly'),
         ('/blog/how-to-make-a-meme-online-free', '0.7', 'monthly'),
         ('/blog/exam-photo-signature-size-guide-2026', '0.7', 'monthly'),
+        ('/blog/split-pdf-crop-pdf-guide', '0.7', 'monthly'),
     ]
     xml = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
@@ -1892,6 +1894,13 @@ BLOG_POSTS = [
     "category": "Image Tools",
     "date": "July 8, 2026"
     },
+    {
+    "slug": "split-pdf-crop-pdf-guide",
+    "title": "Split PDF vs Crop PDF: Which One Do You Actually Need?",
+    "excerpt": "Split PDF and Crop PDF solve different problems. Learn the difference, when to use each, and how to fix scanned PDFs, exam forms, and oversized files for free.",
+    "category": "PDF Tools",
+    "date": "July 12, 2026"
+    },
     # Add more posts here as dicts, e.g.:
     # {
     #     "slug": "compress-pdf-guide",
@@ -1933,6 +1942,10 @@ def blog_how_to_make_a_meme():
 @app.route("/blog/exam-photo-signature-size-guide-2026")
 def blog_exam_photo_signature_size_guide():
     return render_template("blog_post_exam_photo_signature_size_guide.html")
+
+@app.route("/blog/split-pdf-crop-pdf-guide")
+def blog_split_crop_pdf_guide():
+    return render_template("blog_post_split_crop_pdf_guide.html")
 
 # NOTE: as you add more blog posts, add a matching @app.route("/blog/<slug>")
 # function for each new HTML file, the same way as blog_merge_pdf() above.
