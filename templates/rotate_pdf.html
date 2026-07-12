@@ -1,79 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VW5QLMV046"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-VW5QLMV046');
-</script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rotate PDF — Rotate PDF Pages Free | EkZapp</title>
-<meta name="description" content="Rotate PDF pages online for free. Rotate all pages 90° or 180° instantly. No signup required.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-VW5QLMV046');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rotate PDF — Fix Sideways Pages Free | EkZapp</title>
+<meta name="description" content="Rotate PDF pages online for free. Fix sideways or upside-down pages 90°, 180°, or 270° instantly. No signup required.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626;--green:#16A34A;--purple:#7C3AED}
 body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+a{color:inherit}
 nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
 .logo{text-decoration:none;display:flex;align-items:center;gap:8px}
 .logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
-.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
-.logo-text span{color:var(--blue)}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}.logo-text span{color:var(--blue)}
 .back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
 .back:hover{border-color:var(--blue);color:var(--blue)}
-.container{max-width:600px;margin:48px auto;padding:0 20px 60px}
-.tool-header{text-align:center;margin-bottom:32px}
-.tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:#EDE9FE;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
-.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
-.tool-header p{color:var(--gray);font-size:14px}
-.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.info-bar{background:var(--blue-lt);border:1px solid #BFDBFE;border-radius:8px;padding:10px 14px;margin-bottom:20px;font-size:13px;color:#1E40AF}
+.hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#4C1D95,#7C3AED 45%,#2563EB 80%);background-size:200% 200%;animation:heroShift 12s ease-in-out infinite;padding:56px 20px 120px}
+@keyframes heroShift{0%{background-position:0% 40%}50%{background-position:100% 60%}100%{background-position:0% 40%}}
+.hero-inner{max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:12px;font-weight:600;padding:6px 14px;border-radius:999px;margin-bottom:18px;backdrop-filter:blur(4px)}
+.hero h1{color:#fff;font-size:2.3rem;font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
+.hero p{color:rgba(255,255,255,.9);font-size:15px;max-width:460px;margin:0 auto}
+.hero-doc{position:absolute;opacity:.5}
+.hero-doc svg{display:block}
+.doc1{top:24px;left:6%;animation:float1 7s ease-in-out infinite}
+.doc2{top:66px;right:8%;animation:float2 8s ease-in-out infinite}
+.doc3{bottom:30px;left:15%;animation:float1 9s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-14px) rotate(-3deg)}}
+@keyframes float2{0%,100%{transform:translateY(0) rotate(8deg)}50%{transform:translateY(-10px) rotate(4deg)}}
+.outer{max-width:960px;margin:0 auto;padding:0 20px}
+.narrow{max-width:680px;margin:0 auto}
+.wide{max-width:900px;margin:0 auto}
+.tool-card-wrap{margin-top:-84px;position:relative;z-index:3}
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 12px 32px -8px rgba(124,58,237,.25)}
 .field{margin-bottom:16px}
 .field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
 .drop-area{border:2px dashed var(--border);border-radius:10px;padding:36px 20px;text-align:center;background:var(--light);cursor:pointer;transition:all .2s;position:relative}
-.drop-area:hover{border-color:var(--blue);background:var(--blue-lt)}
+.drop-area:hover,.drop-area.dragover{border-color:var(--purple);background:#F5F3FF}
 .drop-icon{font-size:2.2rem;margin-bottom:10px}
 .drop-area h3{font-size:14px;font-weight:600;margin-bottom:4px}
 .drop-area p{font-size:12px;color:var(--gray)}
 .drop-area input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer}
-.file-name{font-size:13px;font-weight:600;color:var(--blue);margin-top:8px;display:none}
-.rotate-options{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.file-name{font-size:13px;font-weight:600;color:var(--purple);margin-top:8px;display:none}
+.rotate-options{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .rotate-opt{border:1.5px solid var(--border);border-radius:8px;padding:14px;text-align:center;cursor:pointer;transition:all .15s}
-.rotate-opt:hover,.rotate-opt.selected{border-color:var(--blue);background:var(--blue-lt)}
+.rotate-opt:hover,.rotate-opt.selected{border-color:var(--purple);background:#F5F3FF}
 .rotate-opt input{display:none}
 .rotate-icon{font-size:1.8rem;margin-bottom:6px}
 .rotate-opt span{font-size:12px;font-weight:600;color:var(--gray)}
-.rotate-opt.selected span{color:var(--blue)}
-.btn{width:100%;padding:13px;background:var(--blue);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s}
-.btn:hover{background:var(--blue-dk)}
-.error-box{background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:12px 16px;color:var(--red);font-size:13px;margin-bottom:16px}
+.rotate-opt.selected span{color:var(--purple)}
+.btn{width:100%;padding:13px;background:var(--purple);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;margin-top:16px}
+.btn:hover{background:#6D28D9}
+.error-box{background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:12px 16px;color:var(--red);font-size:13px;font-weight:500;margin-bottom:16px}
 .trust{display:flex;justify-content:center;gap:20px;margin-top:16px;flex-wrap:wrap}
-.trust-item{font-size:12px;color:var(--gray)}
-.guide-section{margin-top:32px;background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.guide-section h2{font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:20px}
-.steps{display:flex;flex-direction:column;gap:16px}
-.step{display:flex;gap:14px;align-items:flex-start}
-.step-num{width:32px;height:32px;border-radius:50%;background:var(--blue);color:white;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.step-body h3{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px}
-.step-body p{font-size:12.5px;color:var(--gray);line-height:1.5}
-.faq-section{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
-.faq-section h2{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:16px}
-.faq-item{border-bottom:1px solid var(--border);padding:14px 0}
-.faq-item:last-child{border-bottom:none;padding-bottom:0}
-.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
-.faq-a{font-size:12.5px;color:var(--gray);line-height:1.5}
-.other-tools{margin-top:32px}
-.other-tools h3{font-size:13px;font-weight:600;color:var(--gray);letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
-.tools-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.tool-mini{background:white;border:1px solid var(--border);border-radius:10px;padding:14px;text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px;transition:all .15s}
-.tool-mini:hover{border-color:var(--blue)}
-.tool-mini-icon{font-size:1.2rem}
-.tool-mini span{font-size:13px;font-weight:600}
+.trust-item{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:4px}
+.section{margin-top:56px}
+.section h2{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:8px}
+.section .sub{text-align:center;color:var(--gray);font-size:14px;margin-bottom:28px}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feature{background:white;border:1px solid var(--border);border-radius:12px;padding:22px 18px;text-align:center}
+.feature svg{margin:0 auto 12px}
+.feature h3{font-size:14px;font-weight:700;margin-bottom:6px}
+.feature p{font-size:12.5px;color:var(--gray);line-height:1.5}
+.use-cases{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.use-case{background:white;border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:10px;padding:18px 20px}
+.use-case h3{font-size:13.5px;font-weight:700;margin-bottom:6px}
+.use-case p{font-size:12.5px;color:var(--gray);line-height:1.5}
+.photo-block{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.photo-block img{width:100%;height:100%;object-fit:cover;display:block;min-height:220px}
+.photo-copy{padding:24px 28px 24px 0}
+.photo-copy h2{font-size:1.2rem;font-weight:800;margin-bottom:10px;text-align:left}
+.photo-copy p{font-size:13.5px;color:var(--gray);line-height:1.6}
+.text-block p{font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px}
+.how-to{background:white;border:1px solid var(--border);border-radius:14px;padding:24px}
+.steps{display:flex;flex-direction:column;gap:12px}
+.step{display:flex;gap:12px;align-items:flex-start}
+.step-num{width:28px;height:28px;border-radius:50%;background:#F5F3FF;color:var(--purple);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-text{font-size:13px;color:var(--gray);line-height:1.5;padding-top:4px}
+.step-text strong{color:var(--ink)}
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-list details{background:white;border:1px solid var(--border);border-radius:10px;padding:14px 18px}
+.faq-list summary{font-size:13.5px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:'+';font-size:18px;color:var(--purple);font-weight:400}
+.faq-list details[open] summary::after{content:'−'}
+.faq-list p{font-size:13px;color:var(--gray);line-height:1.6;margin-top:10px}
+.related{background:linear-gradient(115deg,#4C1D95,#7C3AED,#2563EB);border-radius:16px;padding:32px 28px;color:#fff}
+.related h2{color:#fff;font-size:1.2rem;margin-bottom:18px;text-align:left}
+.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.related-item{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:14px;text-decoration:none;transition:background .15s}
+.related-item:hover{background:rgba(255,255,255,.22)}
+.related-item .ico{font-size:1.3rem;margin-bottom:6px;display:block}
+.related-item .name{font-size:12.5px;font-weight:700;color:#fff}
+footer{margin:64px 0 32px;text-align:center;font-size:12px;color:var(--gray)}
+@media(max-width:720px){
+  .feature-grid{grid-template-columns:1fr}
+  .use-cases{grid-template-columns:1fr}
+  .photo-block{grid-template-columns:1fr}
+  .photo-block img{min-height:160px}
+  .photo-copy{padding:0 20px 22px}
+  .related-grid{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:1.7rem}
+  .tool-card-wrap{margin-top:-56px}
+  .hero{padding-bottom:88px}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -81,149 +115,216 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
   "@type": "WebApplication",
   "name": "Rotate PDF",
   "url": "https://ekzapp.com/rotate-pdf",
-  "description": "Rotate PDF pages online for free. Rotate all or specific pages 90, 180, or 270 degrees instantly.",
+  "description": "Rotate PDF pages online for free. Rotate all pages 90, 180, or 270 degrees instantly.",
   "applicationCategory": "UtilityApplication",
   "operatingSystem": "Web",
   "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Will all pages be rotated, or can I choose specific ones?","acceptedAnswer":{"@type":"Answer","text":"This tool rotates every page of the PDF by the same amount. To rotate only specific pages differently, split those pages into a separate file first, rotate each part separately, then merge them back together."}},
+    {"@type":"Question","name":"What is the difference between 90° Right and 90° Left?","acceptedAnswer":{"@type":"Answer","text":"90° Right rotates pages clockwise, as if turning a book to the right. 90° Left rotates pages anti-clockwise, turning it the opposite way."}},
+    {"@type":"Question","name":"Will the text and images in my PDF be affected?","acceptedAnswer":{"@type":"Answer","text":"No. Only the page orientation changes. All content, text, and images remain exactly the same, just reoriented."}},
+    {"@type":"Question","name":"Is this tool free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free, with no signup or credit card required."}},
+    {"@type":"Question","name":"Why is my scanned PDF sideways in the first place?","acceptedAnswer":{"@type":"Answer","text":"This usually happens when a page was fed into a scanner in landscape orientation, or a phone was held sideways while photographing a document, so the resulting page was saved exactly as captured rather than corrected."}},
+    {"@type":"Question","name":"Does rotating change the file size much?","acceptedAnswer":{"@type":"Answer","text":"No, rotation only changes an orientation flag and doesn't re-encode the page content, so file size stays essentially the same."}},
+    {"@type":"Question","name":"What's the maximum file size?","acceptedAnswer":{"@type":"Answer","text":"PDF files up to 50MB are supported."}}
+  ]
+}
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
 </head>
 <body>
-<nav>
-  <div class="nav-inner">
-    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
-    <a class="back" href="/">← All Tools</a>
-  </div>
-</nav>
+<nav><div class="nav-inner">
+  <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+  <a class="back" href="/">← All Tools</a>
+</div></nav>
 
-<div class="container">
-  <div class="tool-header">
-    <div class="tool-icon-wrap">🔄</div>
-    <h1>Rotate PDF</h1>
-    <p>Rotate all pages of your PDF in one click</p>
-  </div>
-
-  <div class="card">
-    <div class="info-bar">🔄 Select rotation direction and all pages will be rotated</div>
-    {% if error %}<div class="error-box">⚠️ {{ error }}</div>{% endif %}
-    <form method="POST" enctype="multipart/form-data">
-      <div class="field">
-        <label>Select PDF File</label>
-        <div class="drop-area">
-          <div class="drop-icon">📄</div>
-          <h3>Click to select or drag & drop</h3>
-          <p>Select the PDF file to rotate</p>
-          <p class="file-name" id="fileName"></p>
-          <input type="file" name="pdf" accept=".pdf" required onchange="showFileName(this)">
-        </div>
-      </div>
-      <div class="field">
-        <label>Rotation Direction</label>
-        <div class="rotate-options">
-          <label class="rotate-opt selected" onclick="selectOpt(this)">
-            <input type="radio" name="rotation" value="90" checked>
-            <div class="rotate-icon">↻</div>
-            <span>90° Right</span>
-          </label>
-          <label class="rotate-opt" onclick="selectOpt(this)">
-            <input type="radio" name="rotation" value="180">
-            <div class="rotate-icon">↕</div>
-            <span>180°</span>
-          </label>
-          <label class="rotate-opt" onclick="selectOpt(this)">
-            <input type="radio" name="rotation" value="270">
-            <div class="rotate-icon">↺</div>
-            <span>90° Left</span>
-          </label>
-        </div>
-      </div>
-      <button type="submit" class="btn">🔄 Rotate PDF</button>
-    </form>
-    <div class="trust">
-      <div class="trust-item">🔒 SSL Encrypted</div>
-      <div class="trust-item">🗑️ Auto-deleted</div>
-      <div class="trust-item">📵 No signup needed</div>
-    </div>
-  </div>
-
-  <!-- HOW TO USE -->
-  <div class="guide-section">
-    <h2>📖 How to Rotate a PDF</h2>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-body">
-          <h3>Upload Your PDF File</h3>
-          <p>Click the upload area or drag and drop the PDF you want to rotate. Maximum file size is 50 MB.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <h3>Choose Rotation Direction</h3>
-          <p>Select how you want to rotate — 90° Right (clockwise), 180° (upside down), or 90° Left (anti-clockwise).</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <h3>Click "Rotate PDF"</h3>
-          <p>All pages in your PDF will be rotated in the selected direction instantly.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-body">
-          <h3>Download the Rotated PDF</h3>
-          <p>Your rotated PDF downloads automatically and is deleted from our server right after processing.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="faq-section">
-      <h2>❓ Frequently Asked Questions</h2>
-      <div class="faq-item">
-        <div class="faq-q">Will all pages be rotated?</div>
-        <div class="faq-a">Yes. This tool rotates all pages of the PDF in the direction you select. The rotation is applied to every single page.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">What is the difference between 90° Right and 90° Left?</div>
-        <div class="faq-a">90° Right rotates pages clockwise (like turning a book to the right). 90° Left rotates pages anti-clockwise (like turning a book to the left).</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Will the text and images in my PDF be affected?</div>
-        <div class="faq-a">No. Only the orientation of the pages changes. All content, text, and images remain exactly the same.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Is this tool free?</div>
-        <div class="faq-a">Yes, 100% free. No signup, no credit card required.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="other-tools">
-    <h3>Other PDF Tools</h3>
-    <div class="tools-row">
-      <a class="tool-mini" href="/unlock-pdf"><span class="tool-mini-icon">🔓</span><span>Unlock PDF</span></a>
-      <a class="tool-mini" href="/merge-pdf"><span class="tool-mini-icon">🔗</span><span>Merge PDF</span></a>
-      <a class="tool-mini" href="/delete-pages"><span class="tool-mini-icon">🗑️</span><span>Delete Pages</span></a>
-    </div>
+<div class="hero">
+  <div class="hero-doc doc1"><svg width="46" height="58" viewBox="0 0 46 58" fill="none"><rect x="1" y="1" width="44" height="56" rx="4" fill="#fff" fill-opacity=".18" stroke="#fff" stroke-opacity=".4" transform="rotate(20 23 29)"/></svg></div>
+  <div class="hero-doc doc2"><svg width="40" height="50" viewBox="0 0 40 50" fill="none"><rect x="1" y="1" width="38" height="48" rx="4" fill="#fff" fill-opacity=".14" stroke="#fff" stroke-opacity=".35"/><path d="M14 20a6 6 0 1112 0" stroke="#fff" stroke-opacity=".5" stroke-width="1.8" fill="none"/><path d="M26 20l-3-3m3 3l3-3" stroke="#fff" stroke-opacity=".5" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+  <div class="hero-doc doc3"><svg width="36" height="44" viewBox="0 0 36 44" fill="none"><rect x="1" y="1" width="34" height="42" rx="4" fill="#fff" fill-opacity=".12" stroke="#fff" stroke-opacity=".3" transform="rotate(-15 18 22)"/></svg></div>
+  <div class="hero-inner">
+    <div class="hero-badge">🔄 Fix Page Orientation</div>
+    <h1>Straighten Out Sideways PDF Pages</h1>
+    <p>Pick a direction, and every page in the PDF rotates instantly — no more turning your head to read a scan.</p>
   </div>
 </div>
 
+<div class="outer">
+  <div class="narrow tool-card-wrap">
+    <div class="card">
+      {% if error %}<div class="error-box">⚠️ {{ error }}</div>{% endif %}
+      <form method="POST" enctype="multipart/form-data">
+        <div class="field">
+          <label>Select PDF File</label>
+          <div class="drop-area" id="dropArea">
+            <div class="drop-icon">📄</div>
+            <h3>Click to select or drag & drop</h3>
+            <p>Select the PDF file to rotate</p>
+            <p class="file-name" id="fileName"></p>
+            <input type="file" name="pdf" accept=".pdf" required onchange="showFileName(this)">
+          </div>
+        </div>
+        <div class="field">
+          <label>Rotation Direction</label>
+          <div class="rotate-options">
+            <label class="rotate-opt selected" onclick="selectOpt(this)">
+              <input type="radio" name="rotation" value="90" checked>
+              <div class="rotate-icon">↻</div>
+              <span>90° Right</span>
+            </label>
+            <label class="rotate-opt" onclick="selectOpt(this)">
+              <input type="radio" name="rotation" value="180">
+              <div class="rotate-icon">↕</div>
+              <span>180°</span>
+            </label>
+            <label class="rotate-opt" onclick="selectOpt(this)">
+              <input type="radio" name="rotation" value="270">
+              <div class="rotate-icon">↺</div>
+              <span>90° Left</span>
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="btn">🔄 Rotate PDF</button>
+      </form>
+      <div class="trust">
+        <div class="trust-item">🔒 SSL Encrypted</div>
+        <div class="trust-item">🗑️ Auto-deleted</div>
+        <div class="trust-item">📵 No signup</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- USE CASES -->
+  <div class="wide section">
+    <h2>When people need to rotate a PDF</h2>
+    <p class="sub">A few common situations</p>
+    <div class="use-cases">
+      <div class="use-case"><h3>📠 Scanned pages sideways</h3><p>Fix pages that came out of a scanner rotated 90° because a document was fed in landscape.</p></div>
+      <div class="use-case"><h3>📱 Phone-photographed documents</h3><p>Correct orientation on pages photographed with a phone held the wrong way.</p></div>
+      <div class="use-case"><h3>📐 Mixed portrait/landscape files</h3><p>Straighten a landscape chart or diagram page that was merged into an otherwise portrait document.</p></div>
+      <div class="use-case"><h3>🖨️ Preparing for printing</h3><p>Correct orientation before sending a file to a printer so pages come out right-side-up.</p></div>
+    </div>
+  </div>
+
+  <!-- FEATURE GRID -->
+  <div class="wide section">
+    <h2>Why use EkZapp to rotate PDFs</h2>
+    <p class="sub">Simple, fast, and free</p>
+    <div class="feature-grid">
+      <div class="feature">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M13 12a10 10 0 1114 14" stroke="#7C3AED" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M27 8v8h-8" stroke="#7C3AED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        <h3>Rotates every page</h3><p>The whole document is fixed in one pass — no need to handle pages one by one.</p>
+      </div>
+      <div class="feature">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M20 4l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" stroke="#7C3AED" stroke-width="2" stroke-linejoin="round"/></svg>
+        <h3>Free, no limits</h3><p>Rotate as many PDFs as you like — no account, no watermark.</p>
+      </div>
+      <div class="feature">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="7" y="4" width="26" height="32" rx="3" stroke="#7C3AED" stroke-width="2"/><path d="M13 30v-4c0-3 2-4 7-4s7 1 7 4v4" stroke="#7C3AED" stroke-width="2" stroke-linecap="round"/><circle cx="20" cy="16" r="4" stroke="#7C3AED" stroke-width="2"/></svg>
+        <h3>Private by design</h3><p>Your file is deleted from our server right after processing.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHOTO + COPY -->
+  <div class="wide section">
+    <div class="photo-block">
+      <img src="{{ url_for('static', filename='images/photo-laptop-meeting.jpg') }}" alt="Reviewing a sideways scanned document">
+      <div class="photo-copy">
+        <h2>Why pages end up sideways in the first place</h2>
+        <p>A PDF page's orientation is set at the moment it's created, whether that's a scan, a phone photo, or an export from another program. A flatbed scanner fed a landscape document, or a phone held sideways while photographing a page, produces a page that renders correctly on its own device but appears rotated once viewed normally. Rotating in a PDF tool afterward simply corrects that orientation flag so the page displays right-side-up everywhere it's opened, without needing to rescan or rephotograph anything.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY / DEEP TEXT -->
+  <div class="narrow section">
+    <h2>How PDF page rotation actually works</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="text-block">
+      <p>Every page in a PDF carries a small piece of metadata describing its rotation — 0, 90, 180, or 270 degrees — alongside the actual page content. When a PDF viewer opens the file, it reads that value and displays the page accordingly. Rotating a page with a tool like this one simply updates that stored value; it doesn't redraw or re-render the underlying text and images pixel by pixel, which is why the process is close to instant even for long documents, and why image and text quality are completely unaffected by the operation.</p>
+      <p>This also explains why rotation is different from, say, resizing or compressing a PDF: those operations touch the actual visual content, while rotation only touches how that content is displayed. Two people opening the same file in different PDF viewers will always see the same corrected orientation, since the rotation value travels with the file itself rather than being a setting local to one particular app.</p>
+    </div>
+  </div>
+
+  <!-- TIPS -->
+  <div class="narrow section">
+    <h2>Tips for handling rotated pages</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="text-block">
+      <p>Before rotating, open the PDF and check whether every page has the same problem, or only some of them. A document scanned in one continuous batch usually has consistent orientation throughout, so a single rotation direction fixes everything. A document assembled from multiple sources — say, a report with an inserted landscape chart — may have only one or two pages that need separate handling.</p>
+      <p>If you're not sure whether a page needs 90° Right or 90° Left, a quick trick is to look at any text on the page: rotate in the direction that would make that text read left-to-right and upright. If the whole page is simply upside down rather than sideways, 180° is always the correct choice regardless of which way it's flipped.</p>
+      <p>Keep in mind that rotation changes how a page displays, not how it's cropped or sized — if a landscape page rotated into portrait orientation still looks odd afterward, that's usually a separate cropping or scaling issue rather than something rotation itself can fix.</p>
+    </div>
+  </div>
+
+  <!-- HOW TO -->
+  <div class="narrow section">
+    <div class="how-to">
+      <h2 style="text-align:left;font-size:1.1rem;margin-bottom:16px">📖 How to rotate a PDF</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Upload your PDF file</strong> — Click the upload area or drag and drop the PDF you want to rotate. Max size: 50 MB.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Choose the rotation direction</strong> — 90° Right (clockwise), 180° (upside down), or 90° Left (anti-clockwise).</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Click "Rotate PDF"</strong> — All pages rotate instantly in the direction you selected.</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Download the corrected PDF</strong> — It downloads automatically, ready to view or print right-side-up.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMMON ISSUES -->
+  <div class="narrow section">
+    <h2>Common problems when rotating a PDF</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="text-block">
+      <p><strong style="color:var(--ink)">Only some pages need rotating, not all.</strong> This tool applies one rotation to every page. If just a few pages in a longer document are sideways, it's usually quickest to split those specific pages out into their own file, rotate that small file, and merge it back with the rest.</p>
+      <p><strong style="color:var(--ink)">The rotation looks correct on screen but prints wrong.</strong> Some printer drivers apply their own auto-rotate setting that can conflict with a PDF's stored orientation. Checking the printer's page setup dialog for an "auto-rotate" or "fit to page" option and disabling it usually resolves this.</p>
+      <p><strong style="color:var(--ink)">You're not sure which direction to pick.</strong> If a page is rotated 90° clockwise from correct, choosing 90° Left (anti-clockwise) straightens it, and vice versa. If it's fully upside down, 180° is the one to use regardless of direction.</p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="narrow section">
+    <h2>Frequently asked questions</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="faq-list">
+      <details><summary>Will all pages be rotated, or can I choose specific ones?</summary><p>This tool rotates every page of the PDF by the same amount. To rotate only specific pages differently, split those pages into a separate file first, rotate each part separately, then merge them back together.</p></details>
+      <details><summary>What is the difference between 90° Right and 90° Left?</summary><p>90° Right rotates pages clockwise, as if turning a book to the right. 90° Left rotates pages anti-clockwise, turning it the opposite way.</p></details>
+      <details><summary>Will the text and images in my PDF be affected?</summary><p>No. Only the page orientation changes. All content, text, and images remain exactly the same, just reoriented.</p></details>
+      <details><summary>Is this tool free?</summary><p>Yes, 100% free, with no signup or credit card required.</p></details>
+      <details><summary>Why is my scanned PDF sideways in the first place?</summary><p>This usually happens when a page was fed into a scanner in landscape orientation, or a phone was held sideways while photographing a document, so the resulting page was saved exactly as captured rather than corrected.</p></details>
+      <details><summary>Does rotating change the file size much?</summary><p>No, rotation only changes an orientation flag and doesn't re-encode the page content, so file size stays essentially the same.</p></details>
+      <details><summary>What's the maximum file size?</summary><p>PDF files up to 50MB are supported.</p></details>
+    </div>
+  </div>
+
+  <!-- RELATED TOOLS -->
+  <div class="wide section">
+    <div class="related">
+      <h2>Related PDF tools</h2>
+      <div class="related-grid">
+        <a class="related-item" href="/pdf-page-reorder"><span class="ico">🔀</span><span class="name">Page Reorder</span></a>
+        <a class="related-item" href="/delete-pages"><span class="ico">🗑️</span><span class="name">Delete Pages</span></a>
+        <a class="related-item" href="/merge-pdf"><span class="ico">🔗</span><span class="name">Merge PDF</span></a>
+        <a class="related-item" href="/compress-pdf"><span class="ico">⚡</span><span class="name">Compress PDF</span></a>
+      </div>
+    </div>
+  </div>
+
+  <footer>© EkZapp — Free online utility tools</footer>
+</div>
+
 <script>
-function showFileName(input){
-  if(input.files&&input.files[0]){
-    const fn=document.getElementById('fileName');
-    fn.textContent='✓ '+input.files[0].name;
-    fn.style.display='block';
-  }
-}
-function selectOpt(el){
-  document.querySelectorAll('.rotate-opt').forEach(o=>o.classList.remove('selected'));
-  el.classList.add('selected');
-}
+function showFileName(input){if(input.files&&input.files[0]){const fn=document.getElementById('fileName');fn.textContent='✓ '+input.files[0].name;fn.style.display='block';}}
+function selectOpt(el){document.querySelectorAll('.rotate-opt').forEach(o=>o.classList.remove('selected'));el.classList.add('selected');}
+const da=document.getElementById('dropArea');
+da.addEventListener('dragover',e=>{e.preventDefault();da.classList.add('dragover')});
+da.addEventListener('dragleave',()=>da.classList.remove('dragover'));
+da.addEventListener('drop',e=>{e.preventDefault();da.classList.remove('dragover')});
 </script>
-</body>
-</html>
+</body></html>
