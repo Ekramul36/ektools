@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VW5QLMV046"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-VW5QLMV046');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Excel to PDF — EkZapp</title>
-<meta name="description" content="Convert Excel (.xlsx) files to PDF instantly. Free, no signup.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Excel to PDF Converter — Free & Instant | EkZapp</title>
+<meta name="description" content="Convert Excel (.xlsx/.xls) spreadsheets to PDF online free. No signup, formatting and formulas preserved. Files auto-deleted after conversion.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626;}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626;--green:#16A34A;--amber:#D97706;}
 body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+a{color:inherit}
 nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
 .logo{text-decoration:none;display:flex;align-items:center;gap:8px}
@@ -19,41 +19,92 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .logo-text{font-size:15px;font-weight:700;color:var(--ink)}.logo-text span{color:var(--blue)}
 .back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
 .back:hover{border-color:var(--blue);color:var(--blue)}
-.container{max-width:600px;margin:48px auto;padding:0 20px}
-.tool-header{text-align:center;margin-bottom:32px}
-.tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
-.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
-.tool-header p{color:var(--gray);font-size:14px}
-.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#065F46,#16A34A 45%,#2563EB 80%);background-size:200% 200%;animation:heroShift 12s ease-in-out infinite;padding:56px 20px 120px}
+@keyframes heroShift{0%{background-position:0% 40%}50%{background-position:100% 60%}100%{background-position:0% 40%}}
+.hero-inner{max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:12px;font-weight:600;padding:6px 14px;border-radius:999px;margin-bottom:18px;backdrop-filter:blur(4px)}
+.hero h1{color:#fff;font-size:2.3rem;font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
+.hero p{color:rgba(255,255,255,.9);font-size:15px;max-width:460px;margin:0 auto}
+.hero-doc{position:absolute;opacity:.5}
+.hero-doc svg{display:block}
+.doc1{top:24px;left:6%;animation:float1 7s ease-in-out infinite}
+.doc2{top:66px;right:8%;animation:float2 8s ease-in-out infinite}
+.doc3{bottom:30px;left:15%;animation:float1 9s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-14px) rotate(-3deg)}}
+@keyframes float2{0%,100%{transform:translateY(0) rotate(8deg)}50%{transform:translateY(-10px) rotate(4deg)}}
+.outer{max-width:960px;margin:0 auto;padding:0 20px}
+.narrow{max-width:680px;margin:0 auto}
+.wide{max-width:900px;margin:0 auto}
+.tool-card-wrap{margin-top:-84px;position:relative;z-index:3}
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 12px 32px -8px rgba(22,163,74,.25)}
 .drop-area{border:2px dashed var(--border);border-radius:10px;padding:36px 20px;text-align:center;background:var(--light);cursor:pointer;transition:all .2s;position:relative}
-.drop-area:hover,.drop-area.dragover{border-color:var(--blue);background:var(--blue-lt)}
-.drop-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer}
+.drop-area:hover,.drop-area.dragover{border-color:var(--green);background:#F0FDF4}
 .drop-icon{font-size:2.2rem;margin-bottom:10px}
 .drop-area h3{font-size:14px;font-weight:600;margin-bottom:4px}
 .drop-area p{font-size:12px;color:var(--gray)}
-.file-name{font-size:13px;font-weight:600;color:var(--blue);margin-top:8px;display:none}
-.btn{width:100%;padding:13px;background:var(--blue);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;margin-top:16px;display:block}
-.btn:hover{background:var(--blue-dk)}
-.error-box{background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:12px 16px;color:var(--red);font-size:13px;margin-bottom:16px}
+.drop-area input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer}
+.file-name{font-size:13px;font-weight:600;color:var(--green);margin-top:8px;display:none}
+.btn{width:100%;padding:13px;background:var(--green);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;margin-top:16px}
+.btn:hover{background:#15803D}
+.error-box{background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:12px 16px;color:var(--red);font-size:13px;font-weight:500;margin-bottom:16px}
 .trust{display:flex;justify-content:center;gap:20px;margin-top:16px;flex-wrap:wrap}
 .trust-item{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:4px}
-.result-box{background:var(--light);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;font-size:13px;line-height:1.7;white-space:pre-wrap;max-height:320px;overflow-y:auto}
-.copy-btn{margin-top:10px;padding:8px 18px;border:1.5px solid var(--border);border-radius:8px;background:white;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif}
-.copy-btn:hover{border-color:var(--blue);color:var(--blue)}
-.how-to{margin-top:36px;background:white;border:1px solid var(--border);border-radius:14px;padding:24px}
-.how-to h2{font-size:15px;font-weight:700;margin-bottom:16px}
+.section{margin-top:56px}
+.section h2{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:8px}
+.section .sub{text-align:center;color:var(--gray);font-size:14px;margin-bottom:28px}
+.use-cases{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.use-case{background:white;border:1px solid var(--border);border-left:4px solid var(--green);border-radius:10px;padding:18px 20px}
+.use-case h3{font-size:13.5px;font-weight:700;margin-bottom:6px}
+.use-case p{font-size:12.5px;color:var(--gray);line-height:1.5}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feature{background:white;border:1px solid var(--border);border-radius:12px;padding:22px 18px;text-align:center}
+.feature svg{margin:0 auto 12px}
+.feature h3{font-size:14px;font-weight:700;margin-bottom:6px}
+.feature p{font-size:12.5px;color:var(--gray);line-height:1.5}
+table.compare{width:100%;border-collapse:collapse;background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+table.compare th,table.compare td{padding:12px 16px;font-size:13px;text-align:left;border-bottom:1px solid var(--border)}
+table.compare th{background:#F0FDF4;color:#166534;font-weight:700}
+table.compare tr:last-child td{border-bottom:none}
+table.compare td.yes{color:var(--green);font-weight:700}
+table.compare td.no{color:var(--gray)}
+.photo-block{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.photo-block img{width:100%;height:100%;object-fit:cover;display:block;min-height:220px}
+.photo-copy{padding:24px 28px 24px 0}
+.photo-copy h2{font-size:1.2rem;font-weight:800;margin-bottom:10px;text-align:left}
+.photo-copy p{font-size:13.5px;color:var(--gray);line-height:1.6}
+.text-block p{font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px}
+.how-to{background:white;border:1px solid var(--border);border-radius:14px;padding:24px}
 .steps{display:flex;flex-direction:column;gap:12px}
 .step{display:flex;gap:12px;align-items:flex-start}
-.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue-lt);color:var(--blue);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
-.step-text{font-size:13px;color:var(--gray);line-height:1.5}
+.step-num{width:28px;height:28px;border-radius:50%;background:#F0FDF4;color:var(--green);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-text{font-size:13px;color:var(--gray);line-height:1.5;padding-top:4px}
 .step-text strong{color:var(--ink)}
-.faq{margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
-.faq h3{font-size:13px;font-weight:700;margin-bottom:6px}
-.faq p{font-size:13px;color:var(--gray);line-height:1.5}
-.field{margin-top:16px}
-.field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
-.field select,.field input[type=text],.field input[type=number]{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none}
-.field select:focus,.field input:focus{border-color:var(--blue)}
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-list details{background:white;border:1px solid var(--border);border-radius:10px;padding:14px 18px}
+.faq-list summary{font-size:13.5px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:'+';font-size:18px;color:var(--green);font-weight:400}
+.faq-list details[open] summary::after{content:'−'}
+.faq-list p{font-size:13px;color:var(--gray);line-height:1.6;margin-top:10px}
+.related{background:linear-gradient(115deg,#065F46,#16A34A,#2563EB);border-radius:16px;padding:32px 28px;color:#fff}
+.related h2{color:#fff;font-size:1.2rem;margin-bottom:18px;text-align:left}
+.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.related-item{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:14px;text-decoration:none;transition:background .15s}
+.related-item:hover{background:rgba(255,255,255,.22)}
+.related-item .ico{font-size:1.3rem;margin-bottom:6px;display:block}
+.related-item .name{font-size:12.5px;font-weight:700;color:#fff}
+footer{margin:64px 0 32px;text-align:center;font-size:12px;color:var(--gray)}
+@media(max-width:720px){
+  .use-cases{grid-template-columns:1fr}
+  .feature-grid{grid-template-columns:1fr}
+  .photo-block{grid-template-columns:1fr}
+  .photo-block img{min-height:160px}
+  .photo-copy{padding:0 20px 22px}
+  .related-grid{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:1.7rem}
+  .tool-card-wrap{margin-top:-56px}
+  .hero{padding-bottom:88px}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -67,6 +118,21 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
   "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Will my columns and formulas be preserved?","acceptedAnswer":{"@type":"Answer","text":"Column layout, cell formatting, and calculated values are preserved. The PDF shows the results of formulas, not the formulas themselves, since PDF is a fixed, non-editable format."}},
+    {"@type":"Question","name":"What happens to very wide spreadsheets?","acceptedAnswer":{"@type":"Answer","text":"Wide sheets are automatically scaled to fit the page width, or split across multiple PDF pages depending on the print area set in the original file."}},
+    {"@type":"Question","name":"Are multiple sheets in one workbook all converted?","acceptedAnswer":{"@type":"Answer","text":"Yes, every sheet in the workbook is converted, with each sheet typically starting on a new page in the resulting PDF."}},
+    {"@type":"Question","name":"Is my spreadsheet data safe?","acceptedAnswer":{"@type":"Answer","text":"Files are transferred over an encrypted connection, converted, and automatically deleted from the server afterward."}},
+    {"@type":"Question","name":"Does it work with both .xlsx and .xls?","acceptedAnswer":{"@type":"Answer","text":"Yes, both the modern .xlsx format and the older .xls format are supported."}},
+    {"@type":"Question","name":"Why does my chart or image look slightly repositioned?","acceptedAnswer":{"@type":"Answer","text":"Charts and floating images are anchored to cell positions in Excel; when the sheet is scaled to fit a printable PDF page, their position can shift slightly relative to surrounding text."}},
+    {"@type":"Question","name":"Do I need Excel installed to convert?","acceptedAnswer":{"@type":"Answer","text":"No. The conversion happens on our server, so you don't need Excel or any spreadsheet software installed on your device."}}
+  ]
+}
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -74,37 +140,191 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
   <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
   <a class="back" href="/">← All Tools</a>
 </div></nav>
-<div class="container">
-  <div class="tool-header">
-    <div class="tool-icon-wrap">📊</div>
-    <h1>Excel to PDF</h1>
-    <p>Convert Excel (.xlsx) files to PDF instantly. Free, no signup.</p>
-  </div>
-  <div class="card">
-    {% if error %}<div class="error-box">⚠️ {{ error }}</div>{% endif %}
-    <div class="drop-area" id="dropArea">
-        <div class="drop-icon">📄</div>
-        <h3>Click to select or drag & drop</h3>
-        <p>Accepted: .xlsx,.xls</p>
-        <p class="file-name" id="fileName"></p>
-        <input type="file" name="file" accept=".xlsx,.xls" required onchange="showFileName(this)">
-      </div>
-<button type="submit" class="btn" style="margin-top:16px">📊 Convert to PDF</button>
-    <div class="trust">
-      <div class="trust-item">🔒 SSL Encrypted</div>
-      <div class="trust-item">🗑️ Auto-deleted</div>
-      <div class="trust-item">📵 No signup</div>
-    </div>
-  </div>
-  <div class="how-to">
-    <h2>📖 How to Use — Excel to PDF</h2>
-    <div class="steps"><div class="step"><div class="step-num">1</div><div class="step-text"><strong>Select your Excel file</strong> — Click upload or drag & drop your .xlsx or .xls file.</div></div><div class="step"><div class="step-num">2</div><div class="step-text"><strong>Click Convert to PDF</strong> — Our server converts your spreadsheet to a clean PDF.</div></div><div class="step"><div class="step-num">3</div><div class="step-text"><strong>Download your PDF</strong> — Your PDF downloads automatically with all your data.</div></div></div><div class="faq"><h3>Will my table data be preserved?</h3><p>Yes! All rows, columns and data are converted. Colors and basic formatting are preserved.</p></div><div class="faq"><h3>Is my file safe?</h3><p>Your file is processed securely and automatically deleted. We never store your documents.</p></div>
+
+<div class="hero">
+  <div class="hero-doc doc1"><svg width="46" height="58" viewBox="0 0 46 58" fill="none"><rect x="1" y="1" width="44" height="56" rx="4" fill="#fff" fill-opacity=".18" stroke="#fff" stroke-opacity=".4"/><line x1="9" y1="14" x2="37" y2="14" stroke="#fff" stroke-opacity=".5" stroke-width="1.5"/><line x1="9" y1="21" x2="37" y2="21" stroke="#fff" stroke-opacity=".5" stroke-width="1.5"/><line x1="9" y1="28" x2="37" y2="28" stroke="#fff" stroke-opacity=".5" stroke-width="1.5"/><line x1="20" y1="9" x2="20" y2="34" stroke="#fff" stroke-opacity=".35" stroke-width="1.5"/></svg></div>
+  <div class="hero-doc doc2"><svg width="40" height="50" viewBox="0 0 40 50" fill="none"><rect x="1" y="1" width="38" height="48" rx="4" fill="#fff" fill-opacity=".14" stroke="#fff" stroke-opacity=".35"/><text x="20" y="30" font-family="Inter" font-size="11" font-weight="700" fill="#fff" fill-opacity=".55" text-anchor="middle">PDF</text></svg></div>
+  <div class="hero-doc doc3"><svg width="36" height="44" viewBox="0 0 36 44" fill="none"><rect x="1" y="1" width="34" height="42" rx="4" fill="#fff" fill-opacity=".12" stroke="#fff" stroke-opacity=".3"/></svg></div>
+  <div class="hero-inner">
+    <div class="hero-badge">📊 XLSX / XLS → PDF</div>
+    <h1>Turn Spreadsheets Into Clean, Printable PDFs</h1>
+    <p>Keep rows, columns, and formatting intact — upload an Excel file and get a print-ready PDF in seconds.</p>
   </div>
 </div>
+
+<div class="outer">
+  <div class="narrow tool-card-wrap">
+    <div class="card">
+      {% if error %}<div class="error-box">⚠️ {{ error }}</div>{% endif %}
+      <form method="POST" enctype="multipart/form-data">
+        <div class="drop-area" id="dropArea">
+          <div class="drop-icon">📄</div>
+          <h3>Click to select or drag & drop</h3>
+          <p>Accepted: .xlsx, .xls</p>
+          <p class="file-name" id="fileName"></p>
+          <input type="file" name="file" accept=".xlsx,.xls" required onchange="showFileName(this)">
+        </div>
+        <button type="submit" class="btn">📊 Convert to PDF</button>
+      </form>
+      <div class="trust">
+        <div class="trust-item">🔒 SSL Encrypted</div>
+        <div class="trust-item">🗑️ Auto-deleted</div>
+        <div class="trust-item">📵 No signup</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHOTO + COPY (first this time, order varied) -->
+  <div class="wide section">
+    <div class="photo-block">
+      <img src="{{ url_for('static', filename='images/photo-data-analysis.jpg') }}" alt="Reviewing a spreadsheet before converting to PDF">
+      <div class="photo-copy">
+        <h2>From working sheet to shareable report</h2>
+        <p>A spreadsheet is a workspace — full of formulas, helper columns, and drafts that make sense to you but weren't meant for anyone else's eyes. Before sending numbers to a client, manager, or auditor, converting to PDF strips away the working scaffolding and leaves a clean, page-formatted document that shows exactly the rows and columns you intended, with no risk of someone accidentally scrolling into a hidden formula column or resizing a cell that breaks the whole layout.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- USE CASES -->
+  <div class="wide section">
+    <h2>When people convert Excel to PDF</h2>
+    <p class="sub">A few common situations</p>
+    <div class="use-cases">
+      <div class="use-case"><h3>🧾 Invoices & quotes</h3><p>Send a finished invoice as a fixed PDF so totals and line items can't be edited after the fact.</p></div>
+      <div class="use-case"><h3>📊 Reports for stakeholders</h3><p>Share a monthly or quarterly report that looks identical whether opened on a phone or printed for a meeting.</p></div>
+      <div class="use-case"><h3>🗂️ Data for archiving</h3><p>Keep a permanent, unchangeable record of figures at a specific point in time.</p></div>
+      <div class="use-case"><h3>📥 Forms & submissions</h3><p>Submit a completed budget sheet or application form in the format a portal or reviewer expects.</p></div>
+      <div class="use-case"><h3>🖨️ Print-ready pages</h3><p>Get properly paginated output for printing, instead of a spreadsheet that spills across dozens of loose pages.</p></div>
+      <div class="use-case"><h3>📁 Client deliverables</h3><p>Hand over a polished, professional-looking file rather than a raw working spreadsheet.</p></div>
+    </div>
+  </div>
+
+  <!-- FEATURE GRID -->
+  <div class="wide section">
+    <h2>Why convert with EkZapp</h2>
+    <p class="sub">Built for people who just need a clean PDF, fast</p>
+    <div class="feature-grid">
+      <div class="feature">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="6" y="6" width="28" height="28" rx="3" stroke="#16A34A" stroke-width="2"/><line x1="6" y1="16" x2="34" y2="16" stroke="#16A34A" stroke-width="2"/><line x1="6" y1="25" x2="34" y2="25" stroke="#16A34A" stroke-width="2"/><line x1="18" y1="6" x2="18" y2="34" stroke="#16A34A" stroke-width="2"/></svg>
+        <h3>Layout preserved</h3><p>Column widths, cell shading, and number formatting carry over faithfully.</p>
+      </div>
+      <div class="feature">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M20 4l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" stroke="#16A34A" stroke-width="2" stroke-linejoin="round"/></svg>
+        <h3>Free, no limits</h3><p>Convert as many spreadsheets as you like — no account, no watermark.</p>
+      </div>
+      <div class="feature">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="7" y="4" width="26" height="32" rx="3" stroke="#16A34A" stroke-width="2"/><path d="M13 30v-4c0-3 2-4 7-4s7 1 7 4v4" stroke="#16A34A" stroke-width="2" stroke-linecap="round"/><circle cx="20" cy="16" r="4" stroke="#16A34A" stroke-width="2"/></svg>
+        <h3>Private by design</h3><p>Your file is deleted from our server right after conversion.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="wide section">
+    <h2>How this compares</h2>
+    <p class="sub">A quick, factual look at common ways to get a PDF from Excel</p>
+    <table class="compare">
+      <tr><th>Method</th><th>Cost</th><th>Account needed</th><th>Works on phone</th></tr>
+      <tr><td>EkZapp Excel to PDF</td><td class="yes">Free</td><td class="yes">No</td><td class="yes">Yes</td></tr>
+      <tr><td>Excel "Save As PDF"</td><td class="no">Requires Excel license</td><td class="no">Microsoft account</td><td class="no">Desktop app only</td></tr>
+      <tr><td>Google Sheets export</td><td class="yes">Free</td><td class="no">Google account</td><td class="yes">Yes</td></tr>
+    </table>
+  </div>
+
+  <!-- WHY CONVERT (deep text) -->
+  <div class="narrow section">
+    <h2>Why PDF is the right format for finished spreadsheets</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="text-block">
+      <p>Excel files carry more than visible data — hidden columns, unused sheets, comments, and live formulas that reference other files can all travel along with a .xlsx file without the sender realizing it. A recipient with basic spreadsheet skills can unhide a column, click into a cell to see the underlying formula, or accidentally overwrite a value while just scrolling around. None of that is possible in a PDF: it's a flattened snapshot of exactly what was visible and intended to be seen, with formulas already resolved into fixed numbers.</p>
+      <p>PDF also solves the pagination problem that makes spreadsheets awkward to share as-is. A sheet that looks fine on a wide monitor often prints across a dozen fragmented pages, with column headers repeated inconsistently or cut off mid-table. Converting to PDF applies proper page breaks, so the recipient can print or scroll through a document that reads the way it was designed to, top to bottom, left to right, without hunting for the next chunk of a table.</p>
+      <p>There's a compatibility angle too. Not everyone who needs to see a report has Excel, LibreOffice Calc, or Google Sheets installed. PDF requires nothing beyond a browser, which matters for anyone sharing figures with clients, auditors, or family members who just need to view numbers, not manipulate them.</p>
+      <p>PDF also protects against version confusion. When a spreadsheet is emailed back and forth for review, it's easy to lose track of which copy has the latest numbers, especially once multiple people have downloaded, edited, and re-sent their own versions. A PDF marks a clear point in time: this is what the figures looked like when it was generated, and it cannot silently drift from that state the way a live spreadsheet can.</p>
+    </div>
+  </div>
+
+  <!-- DATA ACCURACY -->
+  <div class="narrow section">
+    <h2>Keeping numbers accurate through the conversion</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="text-block">
+      <p>Because PDF is a snapshot rather than a live document, the values shown are whatever the formulas resolved to at the moment of conversion. If a spreadsheet pulls data from another file, a database connection, or a manual entry that hasn't been refreshed, the PDF will faithfully capture that possibly-outdated number. It's worth opening the file in Excel first, pressing recalculate (F9) if formulas depend on external data, and confirming the figures are current before converting — the tool converts exactly what it's given, so accuracy upstream matters more than anything the conversion itself can do.</p>
+      <p>Number formatting is preserved as it appears in the cell, not the raw underlying value — so a cell showing "$1,204.50" in Excel will show the same in the PDF, while a cell showing "1204.5" without currency formatting will look the same way too. Reviewing how figures are displayed in Excel before conversion is the simplest way to guarantee the PDF reads exactly as intended, rather than relying on the conversion to add formatting after the fact.</p>
+    </div>
+  </div>
+
+  <!-- HOW TO -->
+  <div class="narrow section">
+    <div class="how-to">
+      <h2 style="text-align:left;font-size:1.1rem;margin-bottom:16px">📖 How to convert Excel to PDF</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Select your Excel file</strong> — Click the upload area or drag and drop your .xlsx or .xls file.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Click "Convert to PDF"</strong> — The workbook is processed on our server and turned into a paginated PDF.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Download your PDF</strong> — The converted file downloads automatically to your device.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIPS -->
+  <div class="narrow section">
+    <h2>Tips for a cleaner Excel-to-PDF conversion</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="text-block">
+      <p>Before converting, set the print area in Excel (Page Layout > Print Area) to exactly the range you want in the PDF — otherwise the tool may include empty rows and columns that were never meant to be part of the printed output. Checking Print Preview first shows you the same page breaks that will appear in the final PDF.</p>
+      <p>For wide tables, switching the page orientation to Landscape (Page Layout > Orientation) before converting keeps more columns on a single page instead of splitting a table awkwardly down the middle. If a sheet still doesn't fit, "Fit to 1 page wide" under Scale to Fit shrinks the content proportionally rather than cutting it off.</p>
+      <p>If your workbook has multiple sheets but you only need one in the PDF, it's often cleaner to duplicate the workbook and delete the sheets you don't need before uploading — this avoids extra pages in the final document.</p>
+    </div>
+  </div>
+
+  <!-- COMMON ISSUES -->
+  <div class="narrow section">
+    <h2>Common problems when converting Excel to PDF</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="text-block">
+      <p><strong style="color:var(--ink)">Columns get cut off at the page edge.</strong> This happens when the sheet is wider than the printable page area. Switching to landscape orientation or using "Fit to page width" in Excel's print settings before converting resolves this in almost every case.</p>
+      <p><strong style="color:var(--ink)">Extra blank pages appear.</strong> Usually caused by stray formatting or data far outside the intended range — for example, a cell that was clicked once at row 500 even though the real data ends at row 40. Selecting the intended range and setting it explicitly as the print area avoids this.</p>
+      <p><strong style="color:var(--ink)">Charts look shifted or resized.</strong> Charts and images are anchored to cell positions, so when a sheet scales down to fit a page, their relative position can shift slightly. Keeping charts within the normal print area, rather than floating far to the right of the data, minimizes this.</p>
+      <p><strong style="color:var(--ink)">The file won't upload.</strong> Confirm the extension is .xlsx or .xls, not a renamed .csv or .numbers file, which use different underlying formats despite sometimes sharing an icon.</p>
+      <p><strong style="color:var(--ink)">Frozen panes or filters look different.</strong> View-only settings like frozen header rows and applied filters affect how a sheet looks on screen in Excel but don't carry the same interactive behavior into a static PDF page — the visible data is accurate, but the ability to scroll within a frozen area or toggle a filter is naturally lost once the sheet becomes a fixed document.</p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="narrow section">
+    <h2>Frequently asked questions</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="faq-list">
+      <details><summary>Will my columns and formulas be preserved?</summary><p>Column layout, cell formatting, and calculated values are preserved. The PDF shows the results of formulas, not the formulas themselves, since PDF is a fixed, non-editable format.</p></details>
+      <details><summary>What happens to very wide spreadsheets?</summary><p>Wide sheets are automatically scaled to fit the page width, or split across multiple PDF pages depending on the print area set in the original file.</p></details>
+      <details><summary>Are multiple sheets in one workbook all converted?</summary><p>Yes, every sheet in the workbook is converted, with each sheet typically starting on a new page in the resulting PDF.</p></details>
+      <details><summary>Is my spreadsheet data safe?</summary><p>Files are transferred over an encrypted connection, converted, and automatically deleted from the server afterward. Nobody manually opens or reviews uploaded files.</p></details>
+      <details><summary>Does it work with both .xlsx and .xls?</summary><p>Yes, both the modern .xlsx format and the older .xls format used by Excel 2003 and earlier are supported.</p></details>
+      <details><summary>Why does my chart or image look slightly repositioned?</summary><p>Charts and floating images are anchored to cell positions in Excel; when the sheet is scaled to fit a printable PDF page, their position can shift slightly relative to surrounding text.</p></details>
+      <details><summary>Do I need Excel installed to convert?</summary><p>No. The conversion happens on our server, so you don't need Excel or any spreadsheet software installed on your device — only a browser.</p></details>
+    </div>
+  </div>
+
+  <!-- RELATED TOOLS -->
+  <div class="wide section">
+    <div class="related">
+      <h2>Related PDF tools</h2>
+      <div class="related-grid">
+        <a class="related-item" href="/pdf-to-excel"><span class="ico">📊</span><span class="name">PDF to Excel</span></a>
+        <a class="related-item" href="/word-to-pdf"><span class="ico">📝</span><span class="name">Word to PDF</span></a>
+        <a class="related-item" href="/merge-pdf"><span class="ico">🔗</span><span class="name">Merge PDF</span></a>
+        <a class="related-item" href="/compress-pdf"><span class="ico">⚡</span><span class="name">Compress PDF</span></a>
+      </div>
+    </div>
+  </div>
+
+  <footer>© EkZapp — Free online utility tools</footer>
+</div>
+
 <script>
 function showFileName(input){if(input.files&&input.files[0]){const fn=document.getElementById('fileName');fn.textContent='✓ '+input.files[0].name;fn.style.display='block';}}
-function copyText(){const t=document.getElementById('resultBox');if(t)navigator.clipboard.writeText(t.innerText).then(()=>alert('Copied!'));}
 const da=document.getElementById('dropArea');
-if(da){da.addEventListener('dragover',e=>{e.preventDefault();da.classList.add('dragover')});da.addEventListener('dragleave',()=>da.classList.remove('dragover'));da.addEventListener('drop',e=>{e.preventDefault();da.classList.remove('dragover')});}
+da.addEventListener('dragover',e=>{e.preventDefault();da.classList.add('dragover')});
+da.addEventListener('dragleave',()=>da.classList.remove('dragover'));
+da.addEventListener('drop',e=>{e.preventDefault();da.classList.remove('dragover')});
 </script>
 </body></html>

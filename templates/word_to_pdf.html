@@ -5,13 +5,14 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VW5QLMV046"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-VW5QLMV046');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Word to PDF — EkZapp</title>
-<meta name="description" content="Convert Word DOCX files to PDF online free. No signup needed.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Word to PDF Converter — Free & Instant | EkZapp</title>
+<meta name="description" content="Convert Word DOCX/DOC files to PDF online free. No signup, no watermark, formatting preserved. Files auto-deleted after conversion.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626;--green:#16A34A;}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626;--green:#16A34A;--amber:#D97706;}
 body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+a{color:inherit}
 nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
 .logo{text-decoration:none;display:flex;align-items:center;gap:8px}
@@ -19,12 +20,30 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .logo-text{font-size:15px;font-weight:700;color:var(--ink)}.logo-text span{color:var(--blue)}
 .back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
 .back:hover{border-color:var(--blue);color:var(--blue)}
-.container{max-width:600px;margin:48px auto;padding:0 20px}
-.tool-header{text-align:center;margin-bottom:32px}
-.tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:#DBEAFE;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
-.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
-.tool-header p{color:var(--gray);font-size:14px}
-.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+
+/* ===== HERO ===== */
+.hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#1D4ED8,#2563EB 45%,#3B82F6 70%,#60A5FA);background-size:200% 200%;animation:heroShift 12s ease-in-out infinite;padding:56px 20px 120px}
+@keyframes heroShift{0%{background-position:0% 40%}50%{background-position:100% 60%}100%{background-position:0% 40%}}
+.hero-inner{max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:12px;font-weight:600;padding:6px 14px;border-radius:999px;margin-bottom:18px;backdrop-filter:blur(4px)}
+.hero h1{color:#fff;font-size:2.3rem;font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
+.hero p{color:rgba(255,255,255,.9);font-size:15px;max-width:460px;margin:0 auto}
+.hero-doc{position:absolute;opacity:.5}
+.hero-doc svg{display:block}
+.doc1{top:20px;left:6%;animation:float1 7s ease-in-out infinite}
+.doc2{top:70px;right:8%;animation:float2 8s ease-in-out infinite}
+.doc3{bottom:30px;left:14%;animation:float1 9s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-14px) rotate(-3deg)}}
+@keyframes float2{0%,100%{transform:translateY(0) rotate(8deg)}50%{transform:translateY(-10px) rotate(4deg)}}
+
+/* ===== LAYOUT WRAPPERS ===== */
+.outer{max-width:960px;margin:0 auto;padding:0 20px}
+.narrow{max-width:680px;margin:0 auto}
+.wide{max-width:900px;margin:0 auto}
+
+/* ===== TOOL CARD (pulled up into hero) ===== */
+.tool-card-wrap{margin-top:-84px;position:relative;z-index:3}
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 12px 32px -8px rgba(29,78,216,.25)}
 .drop-area{border:2px dashed var(--border);border-radius:10px;padding:36px 20px;text-align:center;background:var(--light);cursor:pointer;transition:all .2s;position:relative}
 .drop-area:hover,.drop-area.dragover{border-color:var(--blue);background:var(--blue-lt)}
 .drop-icon{font-size:2.2rem;margin-bottom:10px}
@@ -37,17 +56,77 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .error-box{background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:12px 16px;color:var(--red);font-size:13px;font-weight:500;margin-bottom:16px}
 .trust{display:flex;justify-content:center;gap:20px;margin-top:16px;flex-wrap:wrap}
 .trust-item{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:4px}
-/* HOW TO USE */
-.how-to{margin-top:36px;background:white;border:1px solid var(--border);border-radius:14px;padding:24px}
-.how-to h2{font-size:15px;font-weight:700;margin-bottom:16px}
+
+/* ===== FEATURE GRID (hand-drawn SVG icons) ===== */
+.section{margin-top:56px}
+.section h2{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:8px}
+.section .sub{text-align:center;color:var(--gray);font-size:14px;margin-bottom:28px}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feature{background:white;border:1px solid var(--border);border-radius:12px;padding:22px 18px;text-align:center}
+.feature svg{margin:0 auto 12px}
+.feature h3{font-size:14px;font-weight:700;margin-bottom:6px}
+.feature p{font-size:12.5px;color:var(--gray);line-height:1.5}
+
+/* ===== PHOTO + COPY BLOCK ===== */
+.photo-block{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.photo-block img{width:100%;height:100%;object-fit:cover;display:block;min-height:220px}
+.photo-copy{padding:24px 28px 24px 0}
+.photo-copy h2{font-size:1.2rem;font-weight:800;margin-bottom:10px;text-align:left}
+.photo-copy p{font-size:13.5px;color:var(--gray);line-height:1.6}
+
+/* ===== COMPARISON TABLE ===== */
+table.compare{width:100%;border-collapse:collapse;background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+table.compare th,table.compare td{padding:12px 16px;font-size:13px;text-align:left;border-bottom:1px solid var(--border)}
+table.compare th{background:var(--blue-lt);color:var(--blue-dk);font-weight:700}
+table.compare tr:last-child td{border-bottom:none}
+table.compare td.yes{color:var(--green);font-weight:700}
+table.compare td.no{color:var(--gray)}
+
+/* ===== USE CASES ===== */
+.use-cases{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.use-case{background:white;border:1px solid var(--border);border-left:4px solid var(--blue);border-radius:10px;padding:18px 20px}
+.use-case h3{font-size:13.5px;font-weight:700;margin-bottom:6px}
+.use-case p{font-size:12.5px;color:var(--gray);line-height:1.5}
+
+/* ===== STEPS ===== */
+.how-to{background:white;border:1px solid var(--border);border-radius:14px;padding:24px}
 .steps{display:flex;flex-direction:column;gap:12px}
 .step{display:flex;gap:12px;align-items:flex-start}
 .step-num{width:28px;height:28px;border-radius:50%;background:var(--blue-lt);color:var(--blue);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .step-text{font-size:13px;color:var(--gray);line-height:1.5;padding-top:4px}
 .step-text strong{color:var(--ink)}
-.faq{margin-top:24px}
-.faq h3{font-size:13px;font-weight:700;margin-bottom:8px}
-.faq p{font-size:13px;color:var(--gray);line-height:1.5}
+
+/* ===== FAQ ACCORDION ===== */
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-list details{background:white;border:1px solid var(--border);border-radius:10px;padding:14px 18px}
+.faq-list summary{font-size:13.5px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:'+';font-size:18px;color:var(--blue);font-weight:400}
+.faq-list details[open] summary::after{content:'−'}
+.faq-list p{font-size:13px;color:var(--gray);line-height:1.6;margin-top:10px}
+
+/* ===== RELATED TOOLS BANNER ===== */
+.related{background:linear-gradient(115deg,#1E3A8A,#2563EB,#7C3AED);border-radius:16px;padding:32px 28px;color:#fff}
+.related h2{color:#fff;font-size:1.2rem;margin-bottom:18px;text-align:left}
+.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.related-item{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:14px;text-decoration:none;transition:background .15s}
+.related-item:hover{background:rgba(255,255,255,.22)}
+.related-item .ico{font-size:1.3rem;margin-bottom:6px;display:block}
+.related-item .name{font-size:12.5px;font-weight:700;color:#fff}
+
+footer{margin:64px 0 32px;text-align:center;font-size:12px;color:var(--gray)}
+
+@media(max-width:720px){
+  .feature-grid{grid-template-columns:1fr}
+  .photo-block{grid-template-columns:1fr}
+  .photo-block img{min-height:160px}
+  .photo-copy{padding:0 20px 22px}
+  .use-cases{grid-template-columns:1fr}
+  .related-grid{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:1.7rem}
+  .tool-card-wrap{margin-top:-56px}
+  .hero{padding-bottom:88px}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -61,6 +140,19 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
   "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Will my formatting be preserved when I convert Word to PDF?","acceptedAnswer":{"@type":"Answer","text":"Yes. Text, headings, tables, images, and basic layout are preserved. Highly complex layouts with unusual fonts may shift slightly, since the PDF is generated from the document's structure."}},
+    {"@type":"Question","name":"Is it safe to upload my Word document?","acceptedAnswer":{"@type":"Answer","text":"Your file is transferred over an encrypted connection, converted, and automatically deleted from the server after processing. It is never opened by a person or stored long-term."}},
+    {"@type":"Question","name":"Does this work with both .doc and .docx files?","acceptedAnswer":{"@type":"Answer","text":"Yes, both older .doc files and modern .docx files are supported."}},
+    {"@type":"Question","name":"Is there a file size or page limit?","acceptedAnswer":{"@type":"Answer","text":"The converter comfortably handles typical resumes, reports, and letters. Very large files with hundreds of embedded images may take longer to process."}},
+    {"@type":"Question","name":"Do I need to install anything or sign up?","acceptedAnswer":{"@type":"Answer","text":"No installation and no account are required. The conversion runs entirely in your browser session."}}
+  ]
+}
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -69,48 +161,175 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
   <a class="back" href="/">← All Tools</a>
 </div></nav>
 
-<div class="container">
-  <div class="tool-header">
-    <div class="tool-icon-wrap">📝</div>
-    <h1>Word to PDF</h1>
-    <p>Convert your Word (.docx) files to PDF instantly. Free, fast, no signup.</p>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-doc doc1"><svg width="46" height="58" viewBox="0 0 46 58" fill="none"><rect x="1" y="1" width="44" height="56" rx="4" fill="#fff" fill-opacity=".18" stroke="#fff" stroke-opacity=".4"/><line x1="9" y1="16" x2="37" y2="16" stroke="#fff" stroke-opacity=".5" stroke-width="2"/><line x1="9" y1="24" x2="37" y2="24" stroke="#fff" stroke-opacity=".5" stroke-width="2"/><line x1="9" y1="32" x2="27" y2="32" stroke="#fff" stroke-opacity=".5" stroke-width="2"/></svg></div>
+  <div class="hero-doc doc2"><svg width="40" height="50" viewBox="0 0 40 50" fill="none"><rect x="1" y="1" width="38" height="48" rx="4" fill="#fff" fill-opacity=".14" stroke="#fff" stroke-opacity=".35"/><text x="20" y="30" font-family="Inter" font-size="11" font-weight="700" fill="#fff" fill-opacity=".55" text-anchor="middle">PDF</text></svg></div>
+  <div class="hero-doc doc3"><svg width="36" height="44" viewBox="0 0 36 44" fill="none"><rect x="1" y="1" width="34" height="42" rx="4" fill="#fff" fill-opacity=".12" stroke="#fff" stroke-opacity=".3"/></svg></div>
+  <div class="hero-inner">
+    <div class="hero-badge">📝 DOCX / DOC → PDF</div>
+    <h1>Turn Word Documents Into Polished PDFs</h1>
+    <p>Keep fonts, tables, and layout intact — upload a .docx or .doc file and get a ready-to-share PDF in seconds.</p>
   </div>
+</div>
 
-  <div class="card">
-    {% if error %}<div class="error-box">⚠️ {{ error }}</div>{% endif %}
-    <form method="POST" enctype="multipart/form-data">
-      <div class="drop-area" id="dropArea">
-        <div class="drop-icon">📄</div>
-        <h3>Click to select or drag & drop</h3>
-        <p>Supports .docx, .doc files</p>
-        <p class="file-name" id="fileName"></p>
-        <input type="file" name="file" accept=".docx,.doc" required onchange="showFileName(this)">
+<div class="outer">
+  <div class="narrow tool-card-wrap">
+    <div class="card">
+      {% if error %}<div class="error-box">⚠️ {{ error }}</div>{% endif %}
+      <form method="POST" enctype="multipart/form-data">
+        <div class="drop-area" id="dropArea">
+          <div class="drop-icon">📄</div>
+          <h3>Click to select or drag & drop</h3>
+          <p>Supports .docx, .doc files</p>
+          <p class="file-name" id="fileName"></p>
+          <input type="file" name="file" accept=".docx,.doc" required onchange="showFileName(this)">
+        </div>
+        <button type="submit" class="btn">📝 Convert to PDF</button>
+      </form>
+      <div class="trust">
+        <div class="trust-item">🔒 SSL Encrypted</div>
+        <div class="trust-item">🗑️ Auto-deleted</div>
+        <div class="trust-item">📵 No signup</div>
       </div>
-      <button type="submit" class="btn">📝 Convert to PDF</button>
-    </form>
-    <div class="trust">
-      <div class="trust-item">🔒 SSL Encrypted</div>
-      <div class="trust-item">🗑️ Auto-deleted</div>
-      <div class="trust-item">📵 No signup</div>
     </div>
   </div>
 
-  <div class="how-to">
-    <h2>📖 How to Use — Word to PDF</h2>
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Select your Word file</strong> — Click the upload area or drag and drop your .docx or .doc file.</div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Click "Convert to PDF"</strong> — Our server will convert your Word document to PDF format.</div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Download your PDF</strong> — Your converted PDF file will download automatically.</div></div>
-    </div>
-    <div class="faq" style="margin-top:20px">
-      <h3>❓ Will my formatting be preserved?</h3>
-      <p>Yes! Text, headings, tables, and basic formatting are preserved. Complex layouts may vary slightly.</p>
-    </div>
-    <div class="faq">
-      <h3>❓ Is my file safe?</h3>
-      <p>Your file is processed securely and automatically deleted after conversion. We never store your documents.</p>
+  <!-- FEATURE GRID -->
+  <div class="wide section">
+    <h2>Why convert with EkZapp</h2>
+    <p class="sub">Built for people who just need a clean PDF, fast</p>
+    <div class="feature-grid">
+      <div class="feature">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M8 4h16l8 8v24H8V4z" stroke="#2563EB" stroke-width="2" stroke-linejoin="round"/><path d="M24 4v8h8" stroke="#2563EB" stroke-width="2" stroke-linejoin="round"/><path d="M13 22l4 4 8-8" stroke="#16A34A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Layout preserved</h3><p>Fonts, headings, tables, and images stay exactly where you placed them.</p>
+      </div>
+      <div class="feature">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M20 4l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" stroke="#2563EB" stroke-width="2" stroke-linejoin="round"/></svg>
+        <h3>Free, no limits</h3><p>Convert as many Word files as you like — no account, no watermark.</p>
+      </div>
+      <div class="feature">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="7" y="4" width="26" height="32" rx="3" stroke="#2563EB" stroke-width="2"/><path d="M13 30v-4c0-3 2-4 7-4s7 1 7 4v4" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/><circle cx="20" cy="16" r="4" stroke="#2563EB" stroke-width="2"/></svg>
+        <h3>Private by design</h3><p>Your document is deleted from our server right after conversion.</p>
+      </div>
     </div>
   </div>
+
+  <!-- PHOTO + COPY -->
+  <div class="wide section">
+    <div class="photo-block">
+      <img src="{{ url_for('static', filename='images/photo-notebook-writing.jpg') }}" alt="Preparing a Word document for conversion">
+      <div class="photo-copy">
+        <h2>From draft to shareable document</h2>
+        <p>A resume, invoice, or report written in Word rarely looks the same on every device — fonts substitute, spacing shifts, margins move. Converting to PDF locks the layout in place, so what you see is exactly what the recipient sees, whether they open it on a phone, a laptop, or print it. This matters more than most people realize until something goes wrong: a two-page cover letter that turns into three pages on a stranger's laptop, a table that collapses because a font wasn't installed, or a signature block that jumps to a new page right before printing. PDF exists specifically to solve this class of problem, and converting at the last step, right before you send or print, is the safest way to guarantee that the document a hiring manager, client, or teacher opens is identical to the one you wrote.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY PDF SECTION -->
+  <div class="narrow section">
+    <h2>Why convert to PDF instead of just sending the Word file</h2>
+    <p class="sub">&nbsp;</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px">Word documents are editable by design — that's exactly what makes them useful while you're writing, and exactly what makes them risky once you're ready to share. A .docx file depends on the fonts, page size, and Word version installed on whichever machine opens it. Change any one of those variables and the layout can shift in ways you never intended. PDF, short for Portable Document Format, was built to remove that dependency. It embeds the fonts and freezes the page geometry, so a contract, resume, or report renders exactly the same on a phone screen, a laptop, a public library printer, or a professional print shop.</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px">There's also a trust dimension. Sending a Word file invites the recipient — intentionally or not — to make changes and send it back, which creates version confusion when multiple copies start circulating. A PDF signals "this is final." Most application portals, government forms, and invoicing systems expect PDF for exactly this reason: it behaves like paper, not like a draft still open for edits.</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px">Finally, PDF is universally viewable. The recipient doesn't need Microsoft Word, a matching version, or even a desktop computer — any modern browser or PDF reader opens it instantly. That single compatibility guarantee is why PDF remains the default hand-off format for job applications, legal paperwork, academic submissions, and business documents nearly two decades after it became an open standard.</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7">It's worth noting what conversion doesn't do: it doesn't make the document editable-by-anyone the way Word does, and it doesn't let you keep tweaking wording after the fact without going back to the original file. That's the whole point — Word is the workspace, and PDF is the finished piece you hand over. Keeping both versions, the editable .docx for your own records and the PDF for sharing, is the simplest workflow: edit in one, send the other, and never worry about which copy is the "real" one.</p>
+  </div>
+
+  <!-- USE CASES -->
+  <div class="wide section">
+    <h2>When people reach for this tool</h2>
+    <p class="sub">A few common situations</p>
+    <div class="use-cases">
+      <div class="use-case"><h3>📄 Job applications</h3><p>Send a resume or cover letter as a PDF so formatting never breaks in someone else's Word version, and recruiters can't accidentally alter your content while reviewing it.</p></div>
+      <div class="use-case"><h3>🧾 Invoices & contracts</h3><p>Lock a finished document so figures, dates, and clauses can't be accidentally edited after sending — important for anything with legal or financial weight.</p></div>
+      <div class="use-case"><h3>🎓 Assignments & reports</h3><p>Submit coursework in the format most learning management systems, printers, and professors expect, with page count and citations exactly as submitted.</p></div>
+      <div class="use-case"><h3>📇 Official forms</h3><p>Convert a filled-in application, affidavit, or template into a PDF that's ready to email, upload to a portal, or archive without further edits.</p></div>
+      <div class="use-case"><h3>📚 E-books & handouts</h3><p>Turn a Word manuscript or worksheet into a PDF that reads consistently across every e-reader, tablet, and printer.</p></div>
+      <div class="use-case"><h3>🗂️ Archiving records</h3><p>Convert meeting minutes, policies, or old correspondence to PDF for long-term storage that won't depend on having Word installed years later.</p></div>
+    </div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="wide section">
+    <h2>How this compares</h2>
+    <p class="sub">A quick, factual look at common ways to get a PDF from Word</p>
+    <table class="compare">
+      <tr><th>Method</th><th>Cost</th><th>Account needed</th><th>Works on phone</th></tr>
+      <tr><td>EkZapp Word to PDF</td><td class="yes">Free</td><td class="yes">No</td><td class="yes">Yes</td></tr>
+      <tr><td>Microsoft Word "Save As PDF"</td><td class="no">Requires Word license</td><td class="no">Microsoft account</td><td class="no">Desktop app only</td></tr>
+      <tr><td>Google Docs export</td><td class="yes">Free</td><td class="no">Google account</td><td class="yes">Yes</td></tr>
+    </table>
+  </div>
+
+  <!-- COMMON ISSUES -->
+  <div class="narrow section">
+    <h2>Common problems when converting Word to PDF</h2>
+    <p class="sub">&nbsp;</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px"><strong style="color:var(--ink)">Fonts look different in the PDF.</strong> This usually happens when the original document used a font that isn't a standard system font — a downloaded or branded typeface, for example. The Word file references the font by name, but if it isn't embedded, the conversion falls back to the closest available match. Sticking to widely available fonts like Calibri, Arial, Times New Roman, or Georgia avoids this almost entirely.</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px"><strong style="color:var(--ink)">A table or image is cut off at the page edge.</strong> Word is somewhat forgiving about content that technically overflows a page margin, since you can still scroll and edit it. PDF is not — once the page is fixed, anything past the margin is simply cropped. Before converting, it helps to switch Word to Print Layout view and check that nothing crosses the printable boundary.</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px"><strong style="color:var(--ink)">Page numbers or headers shift position.</strong> This is almost always caused by inconsistent section breaks in the original document rather than the conversion itself. If headers look correct in Word's Print Preview, they will carry over correctly to the PDF.</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7"><strong style="color:var(--ink)">The file won't upload.</strong> Double-check the extension is .docx or .doc and not a renamed file of a different type (some documents get shared as .txt or .rtf with a misleading name). Extremely large files with dozens of embedded high-resolution images can also take noticeably longer to process — that's normal, not a failure.</p>
+  </div>
+
+  <!-- TIPS -->
+  <div class="narrow section">
+    <h2>Tips for the cleanest conversion</h2>
+    <p class="sub">&nbsp;</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px">Before converting, it's worth spending thirty seconds on a final check in Word rather than fixing it after the fact in a PDF editor. Open Print Preview (or Print > Preview) and page through the document exactly as it will appear — this is the same rendering path the conversion uses, so anything that looks right there will look right in the PDF.</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px">Keep an eye on three things specifically: page breaks landing where you intend rather than mid-sentence, tables that fit within the margins rather than stretching past them, and any tracked changes or comments left in the document — these can sometimes carry over and are worth accepting or resolving first if the file has been through several rounds of editing.</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7">For documents with images, compressing very large photos in Word first (Picture Format > Compress Pictures) keeps the resulting PDF smaller and faster to open, without any visible loss in quality for typical screen or print use.</p>
+  </div>
+
+  <!-- HOW TO -->
+  <div class="narrow section">
+    <div class="how-to">
+      <h2 style="text-align:left;font-size:1.1rem;margin-bottom:16px">📖 How to convert Word to PDF</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Select your Word file</strong> — Click the upload area or drag and drop your .docx or .doc file.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Click "Convert to PDF"</strong> — The document is processed on our server and converted to PDF format.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Download your PDF</strong> — The converted file downloads automatically to your device.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="narrow section">
+    <h2>Frequently asked questions</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="faq-list">
+      <details><summary>Will my formatting be preserved?</summary><p>Yes. Text, headings, tables, images, bullet lists, and basic layout are preserved because the conversion reads the document's actual structure rather than taking a rough snapshot. Highly complex layouts — heavy use of text boxes, uncommon fonts, or nested tables — may shift slightly, since the PDF renderer has to substitute anything it can't reproduce exactly. For the vast majority of resumes, letters, reports, and forms, the output is visually identical to what you see in Word.</p></details>
+      <details><summary>Is it safe to upload my Word document?</summary><p>Your file is transferred over an encrypted (HTTPS) connection, converted on the server, and automatically deleted once the PDF has been generated and returned to you. Nobody manually opens or reviews uploaded files, and nothing is kept for longer than the conversion itself takes.</p></details>
+      <details><summary>Does this work with both .doc and .docx files?</summary><p>Yes. Both the older binary .doc format used by Word 2003 and earlier, and the modern XML-based .docx format used since Word 2007, are supported without needing to convert between them first.</p></details>
+      <details><summary>Is there a file size or page limit?</summary><p>Typical resumes, cover letters, reports, and multi-page contracts convert comfortably in a few seconds. Very large files — think hundreds of pages or dozens of high-resolution embedded images — may take longer to process simply because there's more content to render, but there's no hard page cap for ordinary documents.</p></details>
+      <details><summary>Do I need to sign up or install anything?</summary><p>No. There's no software to install and no account to create — the entire conversion runs in your browser session, and the download starts automatically once it's ready.</p></details>
+      <details><summary>Can I convert a Word file that has tracked changes or comments?</summary><p>Yes, the file will still convert, but it's worth accepting or resolving tracked changes in Word first if you want a clean final PDF — otherwise revision marks and comment balloons may appear in the output exactly as they show in Word's markup view.</p></details>
+      <details><summary>Why does the PDF look slightly different from my Word document?</summary><p>Small shifts usually come down to font substitution — if the original document used a font that isn't installed on the conversion server, the closest available match is used instead. Sticking to common fonts (Calibri, Arial, Times New Roman, Georgia) keeps the output as close to pixel-identical as possible.</p></details>
+    </div>
+  </div>
+
+  <!-- LONG TERM -->
+  <div class="narrow section">
+    <h2>PDF as a long-term format</h2>
+    <p class="sub">&nbsp;</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px">Beyond the immediate convenience of sending a document that looks the same everywhere, PDF has held up as a format specifically because it was standardized rather than owned by one company's release cycle. It became an open ISO standard (ISO 32000) in 2008, which is part of why a PDF created today will still open correctly on whatever software exists a decade from now — unlike proprietary formats that can become unreadable once the software that created them stops being supported or updated.</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7">That durability is exactly why PDF is the default choice for anything meant to be read once and kept unchanged: academic transcripts, signed contracts, government filings, and archived correspondence. Converting a working Word draft into PDF at the point you're ready to finalize it is a small step that pays off well after the original editing session is forgotten.</p>
+  </div>
+
+  <!-- RELATED TOOLS -->
+  <div class="wide section">
+    <div class="related">
+      <h2>Related PDF tools</h2>
+      <div class="related-grid">
+        <a class="related-item" href="/pdf-to-word"><span class="ico">📝</span><span class="name">PDF to Word</span></a>
+        <a class="related-item" href="/merge-pdf"><span class="ico">🔗</span><span class="name">Merge PDF</span></a>
+        <a class="related-item" href="/compress-pdf"><span class="ico">⚡</span><span class="name">Compress PDF</span></a>
+        <a class="related-item" href="/excel-to-pdf"><span class="ico">📊</span><span class="name">Excel to PDF</span></a>
+      </div>
+    </div>
+  </div>
+
+  <footer>© EkZapp — Free online utility tools</footer>
 </div>
 
 <script>
