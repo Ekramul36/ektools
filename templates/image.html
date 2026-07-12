@@ -1,45 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VW5QLMV046"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-VW5QLMV046');
-</script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Image to PDF — Convert Images to PDF Free | EkZapp</title>
-<meta name="description" content="Convert JPG, PNG, WebP images to PDF online for free. Multiple images into one PDF. No signup required.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-VW5QLMV046');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image to PDF Converter — Free & Instant | EkZapp</title>
+<meta name="description" content="Convert JPG, PNG, WebP images to PDF online for free. Combine multiple images into one PDF. No signup required.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626;--green:#16A34A;--amber:#D97706;--purple:#7C3AED}
 body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+a{color:inherit}
 nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
 .logo{text-decoration:none;display:flex;align-items:center;gap:8px}
 .logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
-.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
-.logo-text span{color:var(--blue)}
-.nav-links{display:flex;list-style:none;gap:2px;margin-left:12px;border-left:1px solid var(--border);padding-left:12px}
-.nav-links a{padding:6px 10px;border-radius:6px;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;white-space:nowrap;transition:all .15s}
-.nav-links a:hover,.nav-links a.active{background:var(--blue-lt);color:var(--blue)}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}.logo-text span{color:var(--blue)}
 .back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
 .back:hover{border-color:var(--blue);color:var(--blue)}
-.container{max-width:600px;margin:48px auto;padding:0 20px 60px}
-.tool-header{text-align:center;margin-bottom:32px}
-.tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:#EDE9FE;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
-.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
-.tool-header p{color:var(--gray);font-size:14px}
-.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.info-bar{background:var(--blue-lt);border:1px solid #BFDBFE;border-radius:8px;padding:10px 14px;margin-bottom:20px;font-size:13px;color:#1E40AF}
+.hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#4C1D95,#7C3AED 45%,#2563EB 80%);background-size:200% 200%;animation:heroShift 12s ease-in-out infinite;padding:56px 20px 120px}
+@keyframes heroShift{0%{background-position:0% 40%}50%{background-position:100% 60%}100%{background-position:0% 40%}}
+.hero-inner{max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:12px;font-weight:600;padding:6px 14px;border-radius:999px;margin-bottom:18px;backdrop-filter:blur(4px)}
+.hero h1{color:#fff;font-size:2.3rem;font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
+.hero p{color:rgba(255,255,255,.9);font-size:15px;max-width:460px;margin:0 auto}
+.hero-doc{position:absolute;opacity:.5}
+.hero-doc svg{display:block}
+.doc1{top:24px;left:6%;animation:float1 7s ease-in-out infinite}
+.doc2{top:66px;right:8%;animation:float2 8s ease-in-out infinite}
+.doc3{bottom:30px;left:15%;animation:float1 9s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-14px) rotate(-3deg)}}
+@keyframes float2{0%,100%{transform:translateY(0) rotate(8deg)}50%{transform:translateY(-10px) rotate(4deg)}}
+.outer{max-width:960px;margin:0 auto;padding:0 20px}
+.narrow{max-width:680px;margin:0 auto}
+.wide{max-width:900px;margin:0 auto}
+.tool-card-wrap{margin-top:-84px;position:relative;z-index:3}
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 12px 32px -8px rgba(124,58,237,.25)}
+.info-bar{background:#F5F3FF;border:1px solid #DDD6FE;border-radius:8px;padding:10px 14px;margin-bottom:20px;font-size:13px;color:#5B21B6}
 .field{margin-bottom:16px}
 .field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
 .drop-area{border:2px dashed var(--border);border-radius:10px;padding:36px 20px;text-align:center;background:var(--light);cursor:pointer;transition:all .2s;position:relative}
-.drop-area:hover{border-color:var(--blue);background:var(--blue-lt)}
+.drop-area:hover,.drop-area.dragover{border-color:var(--purple);background:#F5F3FF}
 .drop-icon{font-size:2.2rem;margin-bottom:10px}
 .drop-area h3{font-size:14px;font-weight:600;margin-bottom:4px}
 .drop-area p{font-size:12px;color:var(--gray)}
@@ -47,34 +49,70 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .preview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;display:none}
 .preview-item{position:relative;border-radius:6px;overflow:hidden;border:1px solid var(--border)}
 .preview-item img{width:100%;height:80px;object-fit:cover;display:block}
-.preview-count{background:var(--blue-lt);border:1px solid #BFDBFE;border-radius:6px;padding:8px 12px;font-size:12px;color:#1E40AF;margin-top:8px;font-weight:600;display:none}
+.preview-count{background:#F5F3FF;border:1px solid #DDD6FE;border-radius:6px;padding:8px 12px;font-size:12px;color:#5B21B6;margin-top:8px;font-weight:600;display:none}
 .field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none;background:white}
-.field select:focus{border-color:var(--blue)}
-.btn{width:100%;padding:13px;background:var(--blue);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s}
-.btn:hover{background:var(--blue-dk)}
+.field select:focus{border-color:var(--purple)}
+.btn{width:100%;padding:13px;background:var(--purple);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s}
+.btn:hover{background:#6D28D9}
 .error-box{background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:12px 16px;color:var(--red);font-size:13px;margin-bottom:16px}
 .trust{display:flex;justify-content:center;gap:20px;margin-top:16px;flex-wrap:wrap}
 .trust-item{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:4px}
-.guide-section{margin-top:32px;background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.guide-section h2{font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:20px}
-.steps{display:flex;flex-direction:column;gap:16px}
-.step{display:flex;gap:14px;align-items:flex-start}
-.step-num{width:32px;height:32px;border-radius:50%;background:var(--blue);color:white;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.step-body h3{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px}
-.step-body p{font-size:12.5px;color:var(--gray);line-height:1.5}
-.faq-section{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
-.faq-section h2{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:16px}
-.faq-item{border-bottom:1px solid var(--border);padding:14px 0}
-.faq-item:last-child{border-bottom:none;padding-bottom:0}
-.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
-.faq-a{font-size:12.5px;color:var(--gray);line-height:1.5}
-.other-tools{margin-top:32px}
-.other-tools h3{font-size:13px;font-weight:600;color:var(--gray);letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
-.tools-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.tool-mini{background:white;border:1px solid var(--border);border-radius:10px;padding:14px;text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px;transition:all .15s}
-.tool-mini:hover{border-color:var(--blue)}
-.tool-mini-icon{font-size:1.2rem}
-.tool-mini span{font-size:13px;font-weight:600}
+.section{margin-top:56px}
+.section h2{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:8px}
+.section .sub{text-align:center;color:var(--gray);font-size:14px;margin-bottom:28px}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feature{background:white;border:1px solid var(--border);border-radius:12px;padding:22px 18px;text-align:center}
+.feature svg{margin:0 auto 12px}
+.feature h3{font-size:14px;font-weight:700;margin-bottom:6px}
+.feature p{font-size:12.5px;color:var(--gray);line-height:1.5}
+.use-cases{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.use-case{background:white;border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:10px;padding:18px 20px}
+.use-case h3{font-size:13.5px;font-weight:700;margin-bottom:6px}
+.use-case p{font-size:12.5px;color:var(--gray);line-height:1.5}
+table.compare{width:100%;border-collapse:collapse;background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+table.compare th,table.compare td{padding:12px 16px;font-size:13px;text-align:left;border-bottom:1px solid var(--border)}
+table.compare th{background:#F5F3FF;color:#5B21B6;font-weight:700}
+table.compare tr:last-child td{border-bottom:none}
+table.compare td.yes{color:var(--green);font-weight:700}
+table.compare td.no{color:var(--gray)}
+.photo-block{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.photo-block img{width:100%;height:100%;object-fit:cover;display:block;min-height:220px}
+.photo-copy{padding:24px 28px 24px 0}
+.photo-copy h2{font-size:1.2rem;font-weight:800;margin-bottom:10px;text-align:left}
+.photo-copy p{font-size:13.5px;color:var(--gray);line-height:1.6}
+.text-block p{font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px}
+.how-to{background:white;border:1px solid var(--border);border-radius:14px;padding:24px}
+.steps{display:flex;flex-direction:column;gap:12px}
+.step{display:flex;gap:12px;align-items:flex-start}
+.step-num{width:28px;height:28px;border-radius:50%;background:#F5F3FF;color:var(--purple);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-text{font-size:13px;color:var(--gray);line-height:1.5;padding-top:4px}
+.step-text strong{color:var(--ink)}
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-list details{background:white;border:1px solid var(--border);border-radius:10px;padding:14px 18px}
+.faq-list summary{font-size:13.5px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:'+';font-size:18px;color:var(--purple);font-weight:400}
+.faq-list details[open] summary::after{content:'−'}
+.faq-list p{font-size:13px;color:var(--gray);line-height:1.6;margin-top:10px}
+.related{background:linear-gradient(115deg,#4C1D95,#7C3AED,#2563EB);border-radius:16px;padding:32px 28px;color:#fff}
+.related h2{color:#fff;font-size:1.2rem;margin-bottom:18px;text-align:left}
+.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.related-item{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:14px;text-decoration:none;transition:background .15s}
+.related-item:hover{background:rgba(255,255,255,.22)}
+.related-item .ico{font-size:1.3rem;margin-bottom:6px;display:block}
+.related-item .name{font-size:12.5px;font-weight:700;color:#fff}
+footer{margin:64px 0 32px;text-align:center;font-size:12px;color:var(--gray)}
+@media(max-width:720px){
+  .feature-grid{grid-template-columns:1fr}
+  .use-cases{grid-template-columns:1fr}
+  .photo-block{grid-template-columns:1fr}
+  .photo-block img{min-height:160px}
+  .photo-copy{padding:0 20px 22px}
+  .related-grid{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:1.7rem}
+  .tool-card-wrap{margin-top:-56px}
+  .hero{padding-bottom:88px}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -88,86 +126,235 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
   "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Which image formats are supported?","acceptedAnswer":{"@type":"Answer","text":"JPG, JPEG, PNG, BMP, GIF, and WebP formats are all supported."}},
+    {"@type":"Question","name":"Can I convert multiple images into one PDF?","acceptedAnswer":{"@type":"Answer","text":"Yes. Upload multiple images and they are combined into a single PDF, one image per page, in the order you selected them."}},
+    {"@type":"Question","name":"Is this tool free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free, with no signup needed."}},
+    {"@type":"Question","name":"Which page size should I choose?","acceptedAnswer":{"@type":"Answer","text":"A4 suits most documents meant for printing or general sharing. Choose Fit to image if you want each page sized exactly to match its photo, useful for scans or photos with unusual proportions."}},
+    {"@type":"Question","name":"Will image quality be reduced?","acceptedAnswer":{"@type":"Answer","text":"Images are placed into the PDF at their original resolution, so quality is preserved. Very large photos may result in a correspondingly larger PDF file."}},
+    {"@type":"Question","name":"Can I control the order of the images in the PDF?","acceptedAnswer":{"@type":"Answer","text":"Images are added in the order they were selected during upload, so selecting them in your intended reading order beforehand determines the final page order."}},
+    {"@type":"Question","name":"What's the maximum file size?","acceptedAnswer":{"@type":"Answer","text":"Combined uploads up to 50MB are supported, which comfortably covers dozens of typical photos."}}
+  ]
+}
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
 </head>
 <body>
-<nav>
-  <div class="nav-inner">
-    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
-    <ul class="nav-links">
-      <li><a href="/unlock-pdf">Unlock PDF</a></li>
-      <li><a href="/merge-pdf">Merge PDF</a></li>
-      <li><a href="/split-pdf">Split PDF</a></li>
-      <li><a href="/compress-pdf">Compress PDF</a></li>
-      <li><a href="/image" class="active">Image to PDF</a></li>
-    </ul>
-    <a class="back" href="/">← All Tools</a>
-  </div>
-</nav>
-<div class="container">
-  <div class="tool-header">
-    <div class="tool-icon-wrap">🖼️</div>
-    <h1>Image to PDF</h1>
-    <p>Convert JPG, PNG, WebP images to PDF instantly</p>
-  </div>
-  <div class="card">
-    <div class="info-bar">📸 You can select multiple images — they will all be added to one PDF</div>
-    {% if error %}<div class="error-box">⚠️ {{ error }}</div>{% endif %}
-    <form method="POST" enctype="multipart/form-data">
-      <div class="field">
-        <label>Select Image Files</label>
-        <div class="drop-area" id="dropArea">
-          <div class="drop-icon">🖼️</div>
-          <h3>Click to select or drag & drop</h3>
-          <p>Supports JPG, PNG, WebP, BMP, GIF</p>
-          <input type="file" name="images" accept="image/*" multiple required onchange="showPreviews(this)">
-        </div>
-        <div class="preview-count" id="previewCount"></div>
-        <div class="preview-grid" id="previewGrid"></div>
-      </div>
-      <div class="field">
-        <label>Page Size</label>
-        <select name="page_size">
-          <option value="A4" selected>A4 (Most common)</option>
-          <option value="Letter">Letter</option>
-          <option value="A3">A3</option>
-          <option value="fit">Fit to image</option>
-        </select>
-      </div>
-      <button type="submit" class="btn">🖼️ Convert to PDF</button>
-    </form>
-    <div class="trust">
-      <div class="trust-item">🔒 SSL Encrypted</div>
-      <div class="trust-item">🗑️ Auto-deleted</div>
-      <div class="trust-item">📵 No signup needed</div>
-    </div>
-  </div>
+<nav><div class="nav-inner">
+  <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+  <a class="back" href="/">← All Tools</a>
+</div></nav>
 
-  <div class="guide-section">
-    <h2>📖 How to Convert Image to PDF</h2>
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Upload Your Image(s)</h3><p>Click or drag and drop your JPG, PNG, or other image files. You can upload multiple images at once.</p></div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Choose Page Size</h3><p>Select the PDF page size — A4 is the most common standard. Choose "Fit to image" to match each page exactly to the image dimensions.</p></div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Click "Convert to PDF"</h3><p>Our server will combine your images into a single clean PDF document instantly.</p></div></div>
-      <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Download Your PDF</h3><p>Your new PDF will download automatically. All uploaded images are deleted from our server after processing.</p></div></div>
-    </div>
-    <div class="faq-section">
-      <h2>❓ Frequently Asked Questions</h2>
-      <div class="faq-item"><div class="faq-q">Which image formats are supported?</div><div class="faq-a">JPG, JPEG, PNG, BMP, GIF, and WebP formats are all supported.</div></div>
-      <div class="faq-item"><div class="faq-q">Can I convert multiple images into one PDF?</div><div class="faq-a">Yes. Upload multiple images and they will all be combined into a single PDF, one image per page, in the order you selected them.</div></div>
-      <div class="faq-item"><div class="faq-q">Is this tool free?</div><div class="faq-a">Yes, 100% free. No signup needed.</div></div>
-    </div>
-  </div>
-
-  <div class="other-tools">
-    <h3>Other PDF Tools</h3>
-    <div class="tools-row">
-      <a class="tool-mini" href="/unlock-pdf"><span class="tool-mini-icon">🔓</span><span>Unlock PDF</span></a>
-      <a class="tool-mini" href="/merge-pdf"><span class="tool-mini-icon">🔗</span><span>Merge PDF</span></a>
-      <a class="tool-mini" href="/compress-pdf"><span class="tool-mini-icon">⚡</span><span>Compress PDF</span></a>
-    </div>
+<div class="hero">
+  <div class="hero-doc doc1"><svg width="46" height="58" viewBox="0 0 46 58" fill="none"><rect x="1" y="1" width="44" height="56" rx="4" fill="#fff" fill-opacity=".18" stroke="#fff" stroke-opacity=".4"/><circle cx="15" cy="18" r="4" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="1.6"/><path d="M9 34l8-8 6 6 8-10 8 12" stroke="#fff" stroke-opacity=".5" stroke-width="1.6" fill="none"/></svg></div>
+  <div class="hero-doc doc2"><svg width="40" height="50" viewBox="0 0 40 50" fill="none"><rect x="1" y="1" width="38" height="48" rx="4" fill="#fff" fill-opacity=".14" stroke="#fff" stroke-opacity=".35"/><text x="20" y="30" font-family="Inter" font-size="10" font-weight="700" fill="#fff" fill-opacity=".55" text-anchor="middle">PDF</text></svg></div>
+  <div class="hero-doc doc3"><svg width="36" height="44" viewBox="0 0 36 44" fill="none"><rect x="1" y="1" width="34" height="42" rx="4" fill="#fff" fill-opacity=".12" stroke="#fff" stroke-opacity=".3"/></svg></div>
+  <div class="hero-inner">
+    <div class="hero-badge">🖼️ JPG / PNG / WebP → PDF</div>
+    <h1>Turn a Stack of Photos Into One PDF</h1>
+    <p>Upload multiple images and get back a single, properly ordered PDF — ready to print, email, or archive.</p>
   </div>
 </div>
+
+<div class="outer">
+  <div class="narrow tool-card-wrap">
+    <div class="card">
+      <div class="info-bar">📸 You can select multiple images — they will all be added to one PDF</div>
+      {% if error %}<div class="error-box">⚠️ {{ error }}</div>{% endif %}
+      <form method="POST" enctype="multipart/form-data">
+        <div class="field">
+          <label>Select Image Files</label>
+          <div class="drop-area" id="dropArea">
+            <div class="drop-icon">🖼️</div>
+            <h3>Click to select or drag & drop</h3>
+            <p>Supports JPG, PNG, WebP, BMP, GIF</p>
+            <input type="file" name="images" accept="image/*" multiple required onchange="showPreviews(this)">
+          </div>
+          <div class="preview-count" id="previewCount"></div>
+          <div class="preview-grid" id="previewGrid"></div>
+        </div>
+        <div class="field">
+          <label>Page Size</label>
+          <select name="page_size">
+            <option value="A4" selected>A4 (Most common)</option>
+            <option value="Letter">Letter</option>
+            <option value="A3">A3</option>
+            <option value="fit">Fit to image</option>
+          </select>
+        </div>
+        <button type="submit" class="btn">🖼️ Convert to PDF</button>
+      </form>
+      <div class="trust">
+        <div class="trust-item">🔒 SSL Encrypted</div>
+        <div class="trust-item">🗑️ Auto-deleted</div>
+        <div class="trust-item">📵 No signup</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- USE CASES -->
+  <div class="wide section">
+    <h2>When people convert images to PDF</h2>
+    <p class="sub">A few common situations</p>
+    <div class="use-cases">
+      <div class="use-case"><h3>📱 Scanning with a phone</h3><p>Turn a stack of phone photos of a multi-page document — a contract, a form, a handwritten letter — into one clean, orderly PDF instead of a scattered set of loose image files.</p></div>
+      <div class="use-case"><h3>🧾 Submitting ID or receipts</h3><p>Combine photos of receipts, ID cards, or certificates into a single file for an expense report, visa application, or reimbursement claim.</p></div>
+      <div class="use-case"><h3>🎨 Portfolio & photo sets</h3><p>Bundle a set of design mockups, artwork, or event photos into one document for easy review, sharing, or client presentation.</p></div>
+      <div class="use-case"><h3>📚 Homework & worksheets</h3><p>Merge photographed pages of handwritten notes or completed worksheets into a single submission for an online portal.</p></div>
+      <div class="use-case"><h3>🏠 Property & inspection photos</h3><p>Compile move-in, move-out, or inspection photos into one PDF report to share with a landlord, tenant, or insurance agent.</p></div>
+      <div class="use-case"><h3>🖨️ Preparing for printing</h3><p>Get properly paginated output so a batch of images prints cleanly, one per page, at a local print shop or home printer.</p></div>
+    </div>
+  </div>
+
+  <!-- ARCHIVAL CONTEXT -->
+  <div class="narrow section">
+    <h2>Turning loose photos into something you'll actually keep</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="text-block">
+      <p>Individual image files have a way of quietly scattering across devices — a photo taken on a phone, forwarded to an email, saved to a downloads folder, and eventually orphaned from whatever context it originally belonged to. A single combined PDF, by contrast, is self-contained: every page travels together, the reading order is fixed permanently, and the whole set can be filed, backed up, or shared as one coherent unit rather than a loose collection that depends on someone remembering which ten photos belong together.</p>
+      <p>This matters especially for anything meant to be looked at again later rather than just sent once — a set of receipts for a specific trip, inspection photos tied to a specific move-in date, or worksheets from a specific term. A PDF with a sensible filename becomes a searchable, self-describing record; a folder of "IMG_4821.jpg" through "IMG_4834.jpg" does not carry the same context once time has passed and the original sequence is forgotten.</p>
+      <p>The same logic applies to sharing rather than just storing. Attaching a single well-named PDF to an email reads as a finished, considered submission; attaching a dozen individually numbered image files reads as an unfinished pile the recipient has to sort through themselves. The small extra step of combining images into one document before sending it is often what separates a submission that gets reviewed promptly from one that sits unopened because it looked like more work to go through.</p>
+    </div>
+  </div>
+
+  <!-- FEATURE GRID -->
+  <div class="wide section">
+    <h2>Why convert with EkZapp</h2>
+    <p class="sub">Built for people who just need one clean file, fast</p>
+    <div class="feature-grid">
+      <div class="feature">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="5" y="8" width="14" height="14" rx="2" stroke="#7C3AED" stroke-width="2"/><rect x="21" y="8" width="14" height="14" rx="2" stroke="#7C3AED" stroke-width="2"/><rect x="5" y="24" width="14" height="8" rx="2" stroke="#7C3AED" stroke-width="2"/><path d="M25 24h10v8" stroke="#7C3AED" stroke-width="2" stroke-linecap="round"/></svg>
+        <h3>Multiple images, one file</h3><p>Combine as many photos as you like into a single ordered PDF.</p>
+      </div>
+      <div class="feature">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M20 4l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" stroke="#7C3AED" stroke-width="2" stroke-linejoin="round"/></svg>
+        <h3>Free, no limits</h3><p>Convert as many batches as you like — no account, no watermark.</p>
+      </div>
+      <div class="feature">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="7" y="4" width="26" height="32" rx="3" stroke="#7C3AED" stroke-width="2"/><path d="M13 30v-4c0-3 2-4 7-4s7 1 7 4v4" stroke="#7C3AED" stroke-width="2" stroke-linecap="round"/><circle cx="20" cy="16" r="4" stroke="#7C3AED" stroke-width="2"/></svg>
+        <h3>Private by design</h3><p>Your images are deleted from our server right after conversion.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHOTO + COPY -->
+  <div class="wide section">
+    <div class="photo-block">
+      <img src="{{ url_for('static', filename='images/photo-laptop-meeting.jpg') }}" alt="Reviewing a batch of photos before combining into a PDF">
+      <div class="photo-copy">
+        <h2>Why a folder of photos isn't the same as one document</h2>
+        <p>A phone camera roll or a downloads folder full of separate image files is easy to lose track of — files get renamed, reordered, or accidentally left out when forwarding an email. Combining everything into a single PDF fixes the page order permanently, keeps every image together as one attachment, and guarantees the recipient opens exactly what you intended, in exactly the sequence you intended, without needing to juggle a dozen separate picture files.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARISON -->
+  <div class="wide section">
+    <h2>How this compares</h2>
+    <p class="sub">A quick, factual look at common ways to combine photos into a document</p>
+    <table class="compare">
+      <tr><th>Method</th><th>Cost</th><th>Account needed</th><th>Works on phone</th></tr>
+      <tr><td>EkZapp Image to PDF</td><td class="yes">Free</td><td class="yes">No</td><td class="yes">Yes</td></tr>
+      <tr><td>Print to PDF from Photos app</td><td class="yes">Free</td><td class="yes">No</td><td class="no">One image at a time</td></tr>
+      <tr><td>Word/Google Docs insert-image</td><td class="yes">Free</td><td class="no">Account often needed</td><td class="no">Slow for many images</td></tr>
+    </table>
+  </div>
+
+  <!-- WHY / DEEP TEXT -->
+  <div class="narrow section">
+    <h2>How page size and "fit to image" actually differ</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="text-block">
+      <p>Choosing a standard page size like A4 or Letter places each image centered on a fixed-size page, which is the right choice when the PDF is meant to be printed on standard paper or viewed alongside other standard documents — a scanned form, a set of receipts, or a report cover. The image is scaled to fit within the page margins, so very wide or very tall photos may have some white space around them to keep proportions correct rather than being stretched or distorted.</p>
+      <p>"Fit to image" instead makes each PDF page exactly the same shape and size as its source photo, with no added margins or white space. This suits photo collections, screenshots, or portrait-orientation phone photos where preserving the original aspect ratio matters more than matching a standard paper size — the resulting PDF pages will vary in size from one to the next if the source images have different dimensions, which is expected behavior rather than an error.</p>
+      <p>Mixing photo orientations in one batch — some portrait, some landscape — is handled fine by either setting: with a fixed page size, each image is centered within the same page dimensions regardless of its own orientation; with "fit to image," each page simply takes on its source photo's own orientation and proportions.</p>
+      <p>For documents that will eventually be printed and bound or filed alongside other paper — reports, forms, certificates — a consistent fixed page size is usually the better default, since mismatched page sizes in a printed stack look inconsistent and can jam certain printers or binding machines that expect uniform sheets. For a purely digital photo collection meant only to be viewed on screen, "fit to image" avoids wasted space and keeps each photo displayed at its most natural proportions.</p>
+    </div>
+  </div>
+
+  <!-- HOW TO -->
+  <div class="narrow section">
+    <div class="how-to">
+      <h2 style="text-align:left;font-size:1.1rem;margin-bottom:16px">📖 How to convert images to PDF</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Select your images</strong> — Click the upload area and choose one or more JPG, PNG, or other supported files.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Choose a page size</strong> — A4 for general documents, or "Fit to image" to match each page to its photo.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Click "Convert to PDF"</strong> — All images are combined into a single PDF, one per page, in the order selected.</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Download your PDF</strong> — The file downloads automatically; your uploaded images are deleted afterward.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIPS -->
+  <div class="narrow section">
+    <h2>Tips for a cleaner result</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="text-block">
+      <p>Most file browsers and phone galleries let you select multiple images in a specific order by tapping them one at a time in the sequence you want — since that selection order becomes the page order in the final PDF, taking a moment to select deliberately (rather than "select all," which may follow filename or date order) avoids having to reorder pages afterward with a separate tool.</p>
+      <p>If your photos have inconsistent orientation (some sideways from being taken with the phone rotated), it's worth correcting that in your gallery app before uploading — a page-level PDF rotation tool afterward will still work, but starting with correctly oriented images gives a tidier result on the first pass.</p>
+      <p>For a set of photos meant to be printed at a consistent size, such as certificates or ID pages, choosing a fixed page size like A4 keeps every page uniform for printing, even if it means a small amount of white space around images with unusual proportions.</p>
+      <p>When a mix of screenshots and photos ends up in the same batch, it helps to convert them separately if their intended use differs — screenshots destined for a technical report often read better with "fit to image" so nothing is cropped or padded oddly, while photos destined for a formal printed document usually look more consistent on a standard fixed page size alongside each other.</p>
+    </div>
+  </div>
+
+  <!-- COMMON ISSUES -->
+  <div class="narrow section">
+    <h2>Common problems when converting images to PDF</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="text-block">
+      <p><strong style="color:var(--ink)">The images are in the wrong order.</strong> Page order follows selection order during upload, not filename order. Reselecting the files in the intended sequence, or renaming them with a leading number (01, 02, 03...) before selecting "select all," resolves this reliably.</p>
+      <p><strong style="color:var(--ink)">Some images look small with a lot of white space.</strong> This happens with the fixed page size options (A4, Letter, A3) when a photo's proportions don't match the page shape. Switching to "Fit to image" removes the white space entirely by matching each page to its own photo's dimensions.</p>
+      <p><strong style="color:var(--ink)">The PDF is much larger than expected.</strong> High-resolution phone photos, especially from newer cameras, can be several megabytes each. This is normal — the tool preserves original image quality rather than compressing it, so a large batch of high-resolution photos naturally produces a larger PDF. Running the result through a separate Compress PDF tool afterward can shrink it if size matters more than maximum quality.</p>
+      <p><strong style="color:var(--ink)">A photo appears rotated incorrectly in the PDF.</strong> Some phone cameras save orientation as metadata rather than physically rotating the pixels, and not every conversion pipeline reads that metadata the same way. Opening the photo in a gallery app, rotating and re-saving it there, then re-uploading, resolves this the vast majority of the time.</p>
+    </div>
+  </div>
+
+  <!-- ORGANIZING LARGE BATCHES -->
+  <div class="narrow section">
+    <h2>Working with a large batch of images</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="text-block">
+      <p>When converting dozens of photos at once — a full album, a multi-page scanned document, or a complete set of inspection photos — a little preparation goes a long way. Sorting the images into a single folder and renaming them with a consistent, zero-padded numbering scheme (01.jpg, 02.jpg, 03.jpg rather than 1.jpg, 2.jpg, 10.jpg, which sorts incorrectly as text) means "select all" in your file browser will naturally follow the numeric order you intend, without needing to click through dozens of photos one at a time.</p>
+      <p>For phone photo libraries specifically, most gallery apps let you select images and export or share them in the exact order you tapped them, which then carries through into the upload dialog when choosing files for this tool. If your gallery app instead always exports in date-taken order regardless of tap order, taking the photos in your intended final sequence in the first place (rather than out of order and correcting later) is often the path of least friction.</p>
+      <p>It's also worth checking, before uploading a very large batch, whether every image is actually needed in the final PDF — accidental duplicate photos or blurry near-duplicates are common in phone camera rolls, and trimming those out beforehand keeps the resulting document both smaller and easier for a reader to page through.</p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="narrow section">
+    <h2>Frequently asked questions</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="faq-list">
+      <details><summary>Which image formats are supported?</summary><p>JPG, JPEG, PNG, BMP, GIF, and WebP formats are all supported.</p></details>
+      <details><summary>Can I convert multiple images into one PDF?</summary><p>Yes. Upload multiple images and they are combined into a single PDF, one image per page, in the order you selected them.</p></details>
+      <details><summary>Is this tool free?</summary><p>Yes, 100% free, with no signup needed.</p></details>
+      <details><summary>Which page size should I choose?</summary><p>A4 suits most documents meant for printing or general sharing. Choose Fit to image if you want each page sized exactly to match its photo, useful for scans or photos with unusual proportions.</p></details>
+      <details><summary>Will image quality be reduced?</summary><p>Images are placed into the PDF at their original resolution, so quality is preserved. Very large photos may result in a correspondingly larger PDF file.</p></details>
+      <details><summary>Can I control the order of the images in the PDF?</summary><p>Images are added in the order they were selected during upload, so selecting them in your intended reading order beforehand determines the final page order.</p></details>
+      <details><summary>What's the maximum file size?</summary><p>Combined uploads up to 50MB are supported, which comfortably covers dozens of typical photos.</p></details>
+    </div>
+  </div>
+
+  <!-- RELATED TOOLS -->
+  <div class="wide section">
+    <div class="related">
+      <h2>Related PDF tools</h2>
+      <div class="related-grid">
+        <a class="related-item" href="/pdf-to-jpg"><span class="ico">🖼️</span><span class="name">PDF to JPG</span></a>
+        <a class="related-item" href="/merge-pdf"><span class="ico">🔗</span><span class="name">Merge PDF</span></a>
+        <a class="related-item" href="/compress-pdf"><span class="ico">⚡</span><span class="name">Compress PDF</span></a>
+        <a class="related-item" href="/pdf-page-reorder"><span class="ico">🔀</span><span class="name">Page Reorder</span></a>
+      </div>
+    </div>
+  </div>
+
+  <footer>© EkZapp — Free online utility tools</footer>
+</div>
+
 <script>
 function showPreviews(input){
   if(input.files&&input.files.length>0){
@@ -181,9 +368,12 @@ function showPreviews(input){
       reader.onload=e=>{grid.innerHTML+=`<div class="preview-item"><img src="${e.target.result}" alt="${f.name}"></div>`;};
       reader.readAsDataURL(f);
     });
-    if(input.files.length>6)grid.innerHTML+=`<div class="preview-item" style="display:flex;align-items:center;justify-content:center;height:80px;background:#F0F5FF;font-size:13px;font-weight:600;color:#2563EB">+${input.files.length-6} more</div>`;
+    if(input.files.length>6)grid.innerHTML+=`<div class="preview-item" style="display:flex;align-items:center;justify-content:center;height:80px;background:#F5F3FF;font-size:13px;font-weight:600;color:#7C3AED">+${input.files.length-6} more</div>`;
   }
 }
+const da=document.getElementById('dropArea');
+da.addEventListener('dragover',e=>{e.preventDefault();da.classList.add('dragover')});
+da.addEventListener('dragleave',()=>da.classList.remove('dragover'));
+da.addEventListener('drop',e=>{e.preventDefault();da.classList.remove('dragover')});
 </script>
-</body>
-</html>
+</body></html>

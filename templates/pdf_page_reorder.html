@@ -3,38 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PDF Page Reorder — EkZapp</title>
+<title>PDF Page Reorder — Free & Instant | EkZapp</title>
 <meta name="description" content="Rearrange the pages of your PDF in any order with drag and drop. Free online tool, no signup needed.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--cream:#F0F5FF;--green:#16A34A;--red:#DC2626}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626;--green:#16A34A;--amber:#D97706}
 body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+a{color:inherit}
 nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
 .logo{text-decoration:none;display:flex;align-items:center;gap:8px}
 .logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
-.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
-.logo-text span{color:var(--blue)}
-.nav-links{display:flex;list-style:none;gap:2px;margin-left:12px;border-left:1px solid var(--border);padding-left:12px}
-.nav-links a{padding:6px 10px;border-radius:6px;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;white-space:nowrap;transition:all .15s}
-.nav-links a:hover,.nav-links a.active{background:var(--blue-lt);color:var(--blue)}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}.logo-text span{color:var(--blue)}
 .back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
 .back:hover{border-color:var(--blue);color:var(--blue)}
-
-.container{max-width:600px;margin:48px auto;padding:0 20px 60px}
-.tool-header{text-align:center;margin-bottom:32px}
-.tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
-.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
-.tool-header p{color:var(--gray);font-size:14px}
-
-.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-
+.hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#1E3A8A,#2563EB 45%,#0EA5E9 80%);background-size:200% 200%;animation:heroShift 12s ease-in-out infinite;padding:56px 20px 120px}
+@keyframes heroShift{0%{background-position:0% 40%}50%{background-position:100% 60%}100%{background-position:0% 40%}}
+.hero-inner{max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:12px;font-weight:600;padding:6px 14px;border-radius:999px;margin-bottom:18px;backdrop-filter:blur(4px)}
+.hero h1{color:#fff;font-size:2.3rem;font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
+.hero p{color:rgba(255,255,255,.9);font-size:15px;max-width:460px;margin:0 auto}
+.hero-doc{position:absolute;opacity:.5}
+.hero-doc svg{display:block}
+.doc1{top:24px;left:6%;animation:float1 7s ease-in-out infinite}
+.doc2{top:66px;right:8%;animation:float2 8s ease-in-out infinite}
+.doc3{bottom:30px;left:15%;animation:float1 9s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-14px) rotate(-3deg)}}
+@keyframes float2{0%,100%{transform:translateY(0) rotate(8deg)}50%{transform:translateY(-10px) rotate(4deg)}}
+.outer{max-width:960px;margin:0 auto;padding:0 20px}
+.narrow{max-width:680px;margin:0 auto}
+.wide{max-width:900px;margin:0 auto}
+.tool-card-wrap{margin-top:-84px;position:relative;z-index:3}
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 12px 32px -8px rgba(37,99,235,.25)}
 .info-bar{background:var(--blue-lt);border:1px solid #BFDBFE;border-radius:8px;padding:10px 14px;margin-bottom:20px;font-size:13px;color:#1E40AF;display:flex;align-items:center;gap:8px}
-
-form{display:flex;flex-direction:column;gap:16px}
 .field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
-
 .drop-area{border:2px dashed var(--border);border-radius:10px;padding:36px 20px;text-align:center;background:var(--light);cursor:pointer;transition:all .2s;position:relative}
 .drop-area:hover,.drop-area.dragover{border-color:var(--blue);background:var(--blue-lt)}
 .drop-icon{font-size:2.2rem;margin-bottom:10px}
@@ -42,18 +45,12 @@ form{display:flex;flex-direction:column;gap:16px}
 .drop-area p{font-size:12px;color:var(--gray)}
 .drop-area input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer}
 .file-name{font-size:13px;font-weight:600;color:var(--blue);margin-top:8px;display:none}
-
 .btn{width:100%;padding:13px;background:var(--blue);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:8px}
 .btn:hover{background:var(--blue-dk)}
 .btn:disabled{background:#9CA3AF;cursor:not-allowed}
-.btn-secondary{background:white;color:var(--blue);border:1.5px solid var(--blue)}
-.btn-secondary:hover{background:var(--blue-lt)}
-
-.error-box{background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:12px 16px;color:var(--red);font-size:13px;font-weight:500;display:flex;align-items:center;gap:8px}
-
+.error-box{background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:12px 16px;color:var(--red);font-size:13px;font-weight:500;display:flex;align-items:center;gap:8px;margin-bottom:16px}
 .trust{display:flex;justify-content:center;gap:20px;margin-top:16px;flex-wrap:wrap}
 .trust-item{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:4px}
-
 #reorderSection{display:none;margin-top:20px}
 .chip-hint{font-size:12px;color:var(--gray);margin-bottom:10px}
 #chipList{display:flex;flex-wrap:wrap;gap:8px;padding:14px;background:var(--light);border:1.5px dashed var(--border);border-radius:10px;min-height:60px}
@@ -61,43 +58,59 @@ form{display:flex;flex-direction:column;gap:16px}
 .page-chip:hover{border-color:var(--blue);box-shadow:0 2px 6px rgba(37,99,235,.12)}
 .page-chip.dragging{opacity:.4}
 .page-chip .grip{color:var(--gray);font-size:11px}
-
 .quick-actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
 .quick-btn{font-size:12px;font-weight:600;color:var(--blue);background:var(--blue-lt);border:1px solid #BFDBFE;border-radius:6px;padding:6px 12px;cursor:pointer;font-family:'Inter',sans-serif}
 .quick-btn:hover{background:#DBEAFE}
-
-.guide{margin-top:24px;border:1px solid var(--border);border-radius:12px;overflow:hidden}
-.guide-header{background:var(--light);padding:14px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);user-select:none}
-.guide-header h3{margin:0;font-size:15px;color:var(--ink)}
-.guide-arrow{font-size:16px;transition:transform .2s;color:var(--gray)}
-.guide-body{display:none;padding:20px}
-.guide-body.open{display:block}
-
-.steps{list-style:none;margin:0;padding:0}
-.steps li{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px}
-.steps li:last-child{margin-bottom:0}
-.step-num{min-width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.step-text strong{display:block;font-size:14px;color:var(--ink);margin-bottom:3px}
-.step-text span{font-size:13px;color:var(--gray);line-height:1.5}
-
-.guide-tips{margin-top:16px;background:#FFF7ED;border-radius:8px;padding:14px 16px}
-.guide-tips h4{margin:0 0 8px;font-size:13px;color:#92400E}
-.guide-tips ul{margin:0;padding-left:16px}
-.guide-tips ul li{font-size:13px;color:#78350F;margin-bottom:5px;line-height:1.4}
-
-.faq{margin-top:16px}
-.faq-item{border-bottom:1px solid var(--border);padding:10px 0}
-.faq-item:last-child{border-bottom:none}
-.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px}
-.faq-a{font-size:13px;color:var(--gray);line-height:1.5}
-
-.other-tools{margin-top:28px}
-.other-tools h3{font-size:13px;font-weight:600;color:var(--gray);letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
-.tools-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.tool-mini{background:white;border:1px solid var(--border);border-radius:10px;padding:14px;text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px;transition:all .15s}
-.tool-mini:hover{border-color:var(--blue);box-shadow:0 2px 8px rgba(37,99,235,.1)}
-.tool-mini-icon{font-size:1.2rem}
-.tool-mini span{font-size:13px;font-weight:600}
+.section{margin-top:56px}
+.section h2{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:8px}
+.section .sub{text-align:center;color:var(--gray);font-size:14px;margin-bottom:28px}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feature{background:white;border:1px solid var(--border);border-radius:12px;padding:22px 18px;text-align:center}
+.feature svg{margin:0 auto 12px}
+.feature h3{font-size:14px;font-weight:700;margin-bottom:6px}
+.feature p{font-size:12.5px;color:var(--gray);line-height:1.5}
+.use-cases{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.use-case{background:white;border:1px solid var(--border);border-left:4px solid var(--blue);border-radius:10px;padding:18px 20px}
+.use-case h3{font-size:13.5px;font-weight:700;margin-bottom:6px}
+.use-case p{font-size:12.5px;color:var(--gray);line-height:1.5}
+.photo-block{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.photo-block img{width:100%;height:100%;object-fit:cover;display:block;min-height:220px}
+.photo-copy{padding:24px 28px 24px 0}
+.photo-copy h2{font-size:1.2rem;font-weight:800;margin-bottom:10px;text-align:left}
+.photo-copy p{font-size:13.5px;color:var(--gray);line-height:1.6}
+.text-block p{font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px}
+.how-to{background:white;border:1px solid var(--border);border-radius:14px;padding:24px}
+.steps{display:flex;flex-direction:column;gap:12px}
+.step{display:flex;gap:12px;align-items:flex-start}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue-lt);color:var(--blue);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-text{font-size:13px;color:var(--gray);line-height:1.5;padding-top:4px}
+.step-text strong{color:var(--ink)}
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-list details{background:white;border:1px solid var(--border);border-radius:10px;padding:14px 18px}
+.faq-list summary{font-size:13.5px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:'+';font-size:18px;color:var(--blue);font-weight:400}
+.faq-list details[open] summary::after{content:'−'}
+.faq-list p{font-size:13px;color:var(--gray);line-height:1.6;margin-top:10px}
+.related{background:linear-gradient(115deg,#1E3A8A,#2563EB,#0EA5E9);border-radius:16px;padding:32px 28px;color:#fff}
+.related h2{color:#fff;font-size:1.2rem;margin-bottom:18px;text-align:left}
+.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.related-item{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:14px;text-decoration:none;transition:background .15s}
+.related-item:hover{background:rgba(255,255,255,.22)}
+.related-item .ico{font-size:1.3rem;margin-bottom:6px;display:block}
+.related-item .name{font-size:12.5px;font-weight:700;color:#fff}
+footer{margin:64px 0 32px;text-align:center;font-size:12px;color:var(--gray)}
+@media(max-width:720px){
+  .feature-grid{grid-template-columns:1fr}
+  .use-cases{grid-template-columns:1fr}
+  .photo-block{grid-template-columns:1fr}
+  .photo-block img{min-height:160px}
+  .photo-copy{padding:0 20px 22px}
+  .related-grid{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:1.7rem}
+  .tool-card-wrap{margin-top:-56px}
+  .hero{padding-bottom:88px}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -111,144 +124,236 @@ form{display:flex;flex-direction:column;gap:16px}
   "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Is this tool free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free, with no signup, watermark, or hidden charges."}},
+    {"@type":"Question","name":"Can I remove a page while reordering?","acceptedAnswer":{"@type":"Answer","text":"This tool only reorders existing pages. To remove pages entirely, use the Delete Pages tool either before or after reordering."}},
+    {"@type":"Question","name":"Is my PDF safe?","acceptedAnswer":{"@type":"Answer","text":"Yes. Your file is processed securely over SSL and deleted automatically from the server after the download completes."}},
+    {"@type":"Question","name":"Can I undo a reorder after downloading?","acceptedAnswer":{"@type":"Answer","text":"The tool doesn't retain a history after download, so keeping a copy of the original file before reordering is the safest way to revert if needed."}},
+    {"@type":"Question","name":"Does reordering affect page content or quality?","acceptedAnswer":{"@type":"Answer","text":"No, pages are moved as complete units. Text, images, and formatting on each page are untouched — only the sequence changes."}},
+    {"@type":"Question","name":"Can I reorder a very long PDF?","acceptedAnswer":{"@type":"Answer","text":"Yes, though dragging becomes less convenient with very large page counts. Reverse Order and Reset Order help handle common bulk rearrangements quickly for longer documents."}},
+    {"@type":"Question","name":"What's the maximum file size?","acceptedAnswer":{"@type":"Answer","text":"PDF files up to 50MB are supported."}}
+  ]
+}
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
 </head>
 <body>
-<nav>
-  <div class="nav-inner">
-    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
-    <ul class="nav-links">
-      <li><a href="/merge-pdf">Merge PDF</a></li>
-      <li><a href="/delete-pages">Delete Pages</a></li>
-      <li><a href="/pdf-page-reorder" class="active">Page Reorder</a></li>
-      <li><a href="/rotate-pdf">Rotate PDF</a></li>
-    </ul>
-    <a class="back" href="/">← All Tools</a>
+<nav><div class="nav-inner">
+  <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+  <a class="back" href="/">← All Tools</a>
+</div></nav>
+
+<div class="hero">
+  <div class="hero-doc doc1"><svg width="46" height="58" viewBox="0 0 46 58" fill="none"><rect x="1" y="1" width="44" height="56" rx="4" fill="#fff" fill-opacity=".18" stroke="#fff" stroke-opacity=".4"/><path d="M14 22h18M18 30l-4-4 4-4M28 22l4 4-4 4" stroke="#fff" stroke-opacity=".55" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="hero-doc doc2"><svg width="40" height="50" viewBox="0 0 40 50" fill="none"><rect x="1" y="1" width="38" height="48" rx="4" fill="#fff" fill-opacity=".14" stroke="#fff" stroke-opacity=".35"/><text x="20" y="30" font-family="Inter" font-size="10" font-weight="700" fill="#fff" fill-opacity=".55" text-anchor="middle">PDF</text></svg></div>
+  <div class="hero-doc doc3"><svg width="36" height="44" viewBox="0 0 36 44" fill="none"><rect x="1" y="1" width="34" height="42" rx="4" fill="#fff" fill-opacity=".12" stroke="#fff" stroke-opacity=".3"/></svg></div>
+  <div class="hero-inner">
+    <div class="hero-badge">🔀 Drag & Drop Reordering</div>
+    <h1>Put Your PDF Pages in the Right Order</h1>
+    <p>Upload your file, drag the page chips into place, and download a PDF with exactly the sequence you want.</p>
   </div>
-</nav>
+</div>
 
-<div class="container">
-  <div class="tool-header">
-    <div class="tool-icon-wrap">🔀</div>
-    <h1>PDF Page Reorder</h1>
-    <p>Drag and drop to rearrange your PDF pages in any order</p>
-  </div>
+<div class="outer">
+  <div class="narrow tool-card-wrap">
+    <div class="card">
+      <div class="info-bar">🔒 Your file is encrypted and automatically deleted after processing</div>
+      {% if error %}<div class="error-box">⚠️ {{ error }}</div>{% endif %}
 
-  <div class="card">
-    <div class="info-bar">
-      🔒 Your file is encrypted and automatically deleted after processing
-    </div>
-
-    {% if error %}
-    <div class="error-box" style="margin-bottom:16px">
-      ⚠️ {{ error }}
-    </div>
-    {% endif %}
-
-    <div id="uploadStep">
-      <div class="field">
-        <label>Select PDF File</label>
-        <div class="drop-area" id="dropArea">
-          <div class="drop-icon">📄</div>
-          <h3>Click to select or drag & drop</h3>
-          <p>Supports any PDF file</p>
-          <p class="file-name" id="fileName"></p>
-          <input type="file" id="pdfInput" accept=".pdf" onchange="handleFileSelect(this)">
-        </div>
-      </div>
-    </div>
-
-    <div id="reorderSection">
-      <p class="chip-hint">Drag the page chips below into your preferred order, then click "Save New Order".</p>
-      <div id="chipList"></div>
-      <div class="quick-actions">
-        <button type="button" class="quick-btn" onclick="reverseOrder()">↩️ Reverse Order</button>
-        <button type="button" class="quick-btn" onclick="resetOrder()">🔄 Reset Order</button>
-      </div>
-      <form id="applyForm" method="POST" action="/pdf-page-reorder/apply" style="margin-top:16px">
-        <input type="hidden" name="token" id="tokenField">
-        <input type="hidden" name="order" id="orderField">
-        <button type="submit" class="btn" id="applyBtn">
-          🔀 Save New Order & Download
-        </button>
-      </form>
-    </div>
-
-    <div class="trust">
-      <div class="trust-item">🔒 SSL Encrypted</div>
-      <div class="trust-item">🗑️ Auto-deleted</div>
-      <div class="trust-item">📵 No signup needed</div>
-    </div>
-  </div>
-
-  <div class="guide">
-    <div class="guide-header" onclick="toggleGuide()">
-      <h3>📖 How to Use — Step by Step Guide</h3>
-      <span class="guide-arrow" id="guideArrow">▼</span>
-    </div>
-    <div class="guide-body" id="guideBody">
-
-      <ul class="steps">
-        <li>
-          <div class="step-num">1</div>
-          <div class="step-text">
-            <strong>Upload your PDF</strong>
-            <span>Click the upload area or drag & drop the PDF whose pages you want to rearrange.</span>
+      <div id="uploadStep">
+        <div class="field">
+          <label>Select PDF File</label>
+          <div class="drop-area" id="dropArea">
+            <div class="drop-icon">📄</div>
+            <h3>Click to select or drag & drop</h3>
+            <p>Supports any PDF file</p>
+            <p class="file-name" id="fileName"></p>
+            <input type="file" id="pdfInput" accept=".pdf" onchange="handleFileSelect(this)">
           </div>
-        </li>
-        <li>
-          <div class="step-num">2</div>
-          <div class="step-text">
-            <strong>Drag the page chips</strong>
-            <span>Each chip represents one page. Drag them left or right into your desired order.</span>
-          </div>
-        </li>
-        <li>
-          <div class="step-num">3</div>
-          <div class="step-text">
-            <strong>Click "Save New Order & Download"</strong>
-            <span>Your PDF is rebuilt in the new page order and downloaded automatically.</span>
-          </div>
-        </li>
-      </ul>
-
-      <div class="guide-tips">
-        <h4>💡 Tips</h4>
-        <ul>
-          <li>Use "Reverse Order" to instantly flip the whole document back to front</li>
-          <li>Use "Reset Order" to go back to the original page sequence</li>
-          <li>Your file is automatically deleted from our server after processing</li>
-        </ul>
-      </div>
-
-      <div class="faq">
-        <p style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:12px;">❓ Frequently Asked Questions</p>
-
-        <div class="faq-item">
-          <div class="faq-q">Is this tool free?</div>
-          <div class="faq-a">Yes, completely free! No signup, no watermark, no hidden charges.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Can I remove a page while reordering?</div>
-          <div class="faq-a">This tool only reorders pages. To remove pages, use the Delete Pages tool first.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Is my PDF safe?</div>
-          <div class="faq-a">Yes. Your file is processed securely over SSL and deleted automatically after download.</div>
         </div>
       </div>
 
+      <div id="reorderSection">
+        <p class="chip-hint">Drag the page chips below into your preferred order, then click "Save New Order".</p>
+        <div id="chipList"></div>
+        <div class="quick-actions">
+          <button type="button" class="quick-btn" onclick="reverseOrder()">↩️ Reverse Order</button>
+          <button type="button" class="quick-btn" onclick="resetOrder()">🔄 Reset Order</button>
+        </div>
+        <form id="applyForm" method="POST" action="/pdf-page-reorder/apply" style="margin-top:16px">
+          <input type="hidden" name="token" id="tokenField">
+          <input type="hidden" name="order" id="orderField">
+          <button type="submit" class="btn" id="applyBtn">🔀 Save New Order & Download</button>
+        </form>
+      </div>
+
+      <div class="trust">
+        <div class="trust-item">🔒 SSL Encrypted</div>
+        <div class="trust-item">🗑️ Auto-deleted</div>
+        <div class="trust-item">📵 No signup</div>
+      </div>
     </div>
   </div>
 
-  <div class="other-tools">
-    <h3>Other PDF Tools</h3>
-    <div class="tools-row">
-      <a class="tool-mini" href="/delete-pages"><span class="tool-mini-icon">🗑️</span><span>Delete Pages</span></a>
-      <a class="tool-mini" href="/rotate-pdf"><span class="tool-mini-icon">🔄</span><span>Rotate PDF</span></a>
-      <a class="tool-mini" href="/merge-pdf"><span class="tool-mini-icon">🔗</span><span>Merge PDF</span></a>
+  <!-- USE CASES -->
+  <div class="wide section">
+    <h2>When people reorder PDF pages</h2>
+    <p class="sub">A few common situations</p>
+    <div class="use-cases">
+      <div class="use-case"><h3>📠 Fixing a scanning mix-up</h3><p>Reorder pages that came out of a scanner or multi-function printer out of sequence, especially common with automatic document feeders.</p></div>
+      <div class="use-case"><h3>📑 Assembling a combined report</h3><p>Rearrange sections after merging several PDFs together so the final document flows in a logical, readable order.</p></div>
+      <div class="use-case"><h3>🖨️ Reversing print order</h3><p>Flip a document back-to-front so it stacks correctly when printed on certain printers that output face-up.</p></div>
+      <div class="use-case"><h3>📚 Reorganizing a manuscript</h3><p>Move chapters or sections around after a late editorial decision to restructure a document's flow.</p></div>
+      <div class="use-case"><h3>🗂️ Restoring a shuffled file</h3><p>Recover the correct order of pages in a PDF that was accidentally shuffled by another tool, a faulty scanner feed, or a file transfer process.</p></div>
+      <div class="use-case"><h3>📋 Grouping related content</h3><p>Bring related sections next to each other after combining documents from multiple contributors into a single working file.</p></div>
     </div>
   </div>
+
+  <!-- COMPARISON -->
+  <div class="wide section">
+    <h2>Ways to fix page order in a PDF</h2>
+    <p class="sub">A quick, factual look at the common options</p>
+    <table style="width:100%;border-collapse:collapse;background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden">
+      <tr><th style="padding:12px 16px;font-size:13px;text-align:left;border-bottom:1px solid var(--border);background:var(--blue-lt);color:var(--blue-dk);font-weight:700">Method</th><th style="padding:12px 16px;font-size:13px;text-align:left;border-bottom:1px solid var(--border);background:var(--blue-lt);color:var(--blue-dk);font-weight:700">Cost</th><th style="padding:12px 16px;font-size:13px;text-align:left;border-bottom:1px solid var(--border);background:var(--blue-lt);color:var(--blue-dk);font-weight:700">Precision</th></tr>
+      <tr><td style="padding:12px 16px;font-size:13px;border-bottom:1px solid var(--border)">EkZapp Page Reorder</td><td style="padding:12px 16px;font-size:13px;border-bottom:1px solid var(--border);color:var(--green);font-weight:700">Free</td><td style="padding:12px 16px;font-size:13px;border-bottom:1px solid var(--border);color:var(--green);font-weight:700">Page-by-page drag control</td></tr>
+      <tr><td style="padding:12px 16px;font-size:13px;border-bottom:1px solid var(--border)">Re-scanning in correct order</td><td style="padding:12px 16px;font-size:13px;border-bottom:1px solid var(--border);color:var(--gray)">Free but time-consuming</td><td style="padding:12px 16px;font-size:13px;border-bottom:1px solid var(--border);color:var(--gray)">Requires original paper</td></tr>
+      <tr><td style="padding:12px 16px;font-size:13px">Desktop PDF editor software</td><td style="padding:12px 16px;font-size:13px;color:var(--gray)">Often paid</td><td style="padding:12px 16px;font-size:13px;color:var(--green);font-weight:700">Similar drag control</td></tr>
+    </table>
+  </div>
+
+  <!-- FEATURE GRID -->
+  <div class="wide section">
+    <h2>Why use EkZapp to reorder PDF pages</h2>
+    <p class="sub">Visual, direct, and free</p>
+    <div class="feature-grid">
+      <div class="feature">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="6" y="14" width="10" height="12" rx="2" stroke="#2563EB" stroke-width="2"/><rect x="24" y="14" width="10" height="12" rx="2" stroke="#2563EB" stroke-width="2"/><path d="M18 20h4" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/><path d="M20 17l3 3-3 3" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        <h3>Drag-and-drop chips</h3><p>See every page as a labeled chip and drag it exactly where you want it, with instant visual feedback as you rearrange.</p>
+      </div>
+      <div class="feature">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M20 4l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" stroke="#2563EB" stroke-width="2" stroke-linejoin="round"/></svg>
+        <h3>Free, no limits</h3><p>Reorder as many PDFs as you like — no account, no watermark, no page-count cap.</p>
+      </div>
+      <div class="feature">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="7" y="4" width="26" height="32" rx="3" stroke="#2563EB" stroke-width="2"/><path d="M13 30v-4c0-3 2-4 7-4s7 1 7 4v4" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/><circle cx="20" cy="16" r="4" stroke="#2563EB" stroke-width="2"/></svg>
+        <h3>Private by design</h3><p>Your file is deleted from our server right after processing completes.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHOTO + COPY -->
+  <div class="wide section">
+    <div class="photo-block">
+      <img src="{{ url_for('static', filename='images/photo-laptop-meeting.jpg') }}" alt="Rearranging document pages before finalizing it">
+      <div class="photo-copy">
+        <h2>Fixing order without rebuilding the document</h2>
+        <p>Page order rarely comes out perfect on the first try. A double-sided document scanned on the wrong setting can come out in reverse or shuffled order. A report assembled by merging several separate files together often ends up with sections in the order the files happened to be combined, not the order that reads best. Rather than deleting and re-scanning, or re-merging from scratch, dragging the existing pages into the right sequence keeps every page's original content completely untouched and simply fixes where each one sits. This is especially valuable for documents that took real effort to create in the first place — a signed contract, a scanned original, or a carefully formatted report — where redoing the source work just to fix ordering would be far more wasteful than a thirty-second drag-and-drop pass.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY / DEEP TEXT -->
+  <div class="narrow section">
+    <h2>How drag-and-drop reordering works under the hood</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="text-block">
+      <p>When a PDF is uploaded, each page is represented as a small labeled chip showing its current position number, and the file itself is temporarily held on the server, referenced by a token rather than being repeatedly re-uploaded. Dragging chips around only rearranges this lightweight visual list in your browser — nothing about the actual PDF changes until you click "Save New Order & Download," at which point the final sequence is sent back to the server, which then reassembles the real PDF pages into exactly that order and returns the finished file.</p>
+      <p>This two-step design (arrange visually first, then apply once) means you can experiment freely with different sequences, use "Reverse Order" to flip everything at once, or "Reset Order" to return to the original arrangement, all without repeatedly re-processing the actual file — only the final confirmed order triggers real PDF reconstruction, which keeps the whole experience fast even for documents with many pages.</p>
+      <p>Because the actual PDF reconstruction only happens once, at the very end, the token-based approach also means a half-finished reordering session doesn't leave behind any partially modified file — either the whole new order gets applied cleanly when you click the save button, or nothing changes at all if you navigate away first. This all-or-nothing behavior avoids the kind of accidental partial edit that can happen with tools that save changes incrementally as you go.</p>
+      <p>This also explains why the tool needs an initial upload step before any dragging becomes possible: the server needs to know how many pages exist and hold the actual file content ready to reassemble, while your browser only needs to track a simple list of numbers representing the chosen order. Splitting the work this way — heavy lifting on the server, lightweight interaction in the browser — is what keeps the dragging itself feeling instant even on a modest phone connection, regardless of how large the underlying PDF actually is.</p>
+    </div>
+  </div>
+
+  <!-- WORKFLOW SECTION -->
+  <div class="narrow section">
+    <h2>Reordering as part of a larger cleanup</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="text-block">
+      <p>Page order problems rarely show up in isolation — a merged report that needs reordering often also has a duplicate cover page to delete, or a sideways page that needs rotating. Handling these as separate, focused steps (reorder first, then delete unwanted pages, then rotate anything sideways) tends to produce a more predictable result than trying to fix everything at once, since each tool is purpose-built for exactly one kind of change and easier to verify in isolation before moving to the next step.</p>
+      <p>This sequence also matters practically: reordering after deleting is usually easier than deleting after reordering, since the page numbers you're working with won't have shifted yet from an earlier deletion. Doing the biggest structural change (deciding what stays and in what order) before finer adjustments like rotation or watermarking keeps the whole cleanup process easier to follow from start to finish.</p>
+      <p>Treating each cleanup step as its own clearly-labeled pass also makes it much easier to spot exactly where something went wrong if the final document doesn't look right — a mistake made during the reorder step looks different from one introduced during a later rotation or watermark pass, and having downloaded an intermediate file after each step gives you a clean fallback point to restart from without redoing everything.</p>
+    </div>
+  </div>
+
+  <!-- HOW TO -->
+  <div class="narrow section">
+    <div class="how-to">
+      <h2 style="text-align:left;font-size:1.1rem;margin-bottom:16px">📖 How to reorder PDF pages</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Upload your PDF</strong> — Click the upload area or drag and drop the file you want to rearrange into its intended sequence.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Drag the page chips</strong> — Each chip represents one page; drag them left or right into your desired order until the sequence looks right.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Click "Save New Order & Download"</strong> — Your PDF is rebuilt in the new sequence and downloaded automatically to your device.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIPS -->
+  <div class="narrow section">
+    <h2>Tips for reordering longer documents</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="text-block">
+      <p>For a document where only a couple of pages are out of place among many correct ones, it's often faster to drag just those specific chips a short distance to their correct spot rather than trying to fully re-sequence the whole file from scratch. The rest of the chips stay exactly where they are unless moved, which keeps the overall effort proportional to how much is actually wrong rather than requiring a full rebuild every time.</p>
+      <p>For documents that need to be flipped entirely — for instance, a scan that came out completely back-to-front — the "Reverse Order" button handles the whole document in one click, which is far quicker and less error-prone than manually dragging every single page chip into its mirrored position, especially on a longer document where dragging dozens of chips one at a time would take real time.</p>
+      <p>If you're combining a reorder with other changes, doing the reorder step first, downloading, then feeding that result into a Delete Pages or Merge PDF tool afterward, tends to be clearer to keep track of than trying to do everything in one pass, especially for documents with more than a handful of pages.</p>
+      <p>When a document has a very consistent internal repeating structure — say, every chapter follows the same three-page pattern of a title page, content, and a summary — it can help to sketch out the intended final order on paper first (chapter 3, chapter 1, chapter 2, for example) before starting to drag chips, so the reordering session becomes a matter of executing a plan rather than improvising the sequence live while looking at unlabeled page thumbnails.</p>
+    </div>
+  </div>
+
+  <!-- COMMON ISSUES -->
+  <div class="narrow section">
+    <h2>Common problems when reordering pages</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="text-block">
+      <p><strong style="color:var(--ink)">The upload seems to hang.</strong> Larger PDFs with many pages take a little longer to generate their chip previews. Give it a few extra seconds before assuming something has gone wrong, especially on a slower connection or a document running past a hundred pages, since generating a preview thumbnail for every single page naturally takes proportionally longer as the page count grows.</p>
+      <p><strong style="color:var(--ink)">A chip ended up in the wrong spot after dragging.</strong> Drag it again — the chip list re-sorts live as you drop, so a small correction is just another short drag away rather than needing to start over from the beginning of the whole sequence.</p>
+      <p><strong style="color:var(--ink)">You want to go back to the original order.</strong> Click "Reset Order" at any point before saving — it restores the exact sequence the file was uploaded in, discarding any dragging done so far in that session.</p>
+      <p><strong style="color:var(--ink)">The download doesn't reflect your latest drag.</strong> Make sure the last drag action was fully completed (the chip visibly settled into its new spot) before clicking the save button — dropping a chip and immediately clicking save in the same motion can occasionally register before the drop finishes, so a brief pause between arranging and saving avoids this small timing issue entirely.</p>
+    </div>
+  </div>
+
+  <!-- STAYING ORGANIZED -->
+  <div class="narrow section">
+    <h2>Keeping track of order across edits</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="text-block">
+      <p>For documents that go through several rounds of reordering — a manuscript with multiple structural revisions, for instance — it helps to keep a plain-text note of the intended chapter or section sequence alongside the file itself, since the chip labels in this tool show original page numbers rather than section names. Cross-referencing "page 4 is actually chapter 2's opening" against your own notes makes a complex multi-pass reorder far less error-prone than trying to hold the whole mapping in your head while dragging chips around.</p>
+      <p>It's also worth downloading and reviewing the reordered PDF immediately after each pass, rather than making several rounds of changes back-to-back without checking — a quick scroll through the result catches a misplaced page while it's still easy to fix, rather than after several more edits have been layered on top of an unnoticed mistake. A finished, correctly ordered document also simply reads better to whoever receives it — a report that flows logically from start to finish signals a level of care that a shuffled, hastily assembled one does not.</p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="narrow section">
+    <h2>Frequently asked questions</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="faq-list">
+      <details><summary>Is this tool free?</summary><p>Yes, completely free, with no signup, watermark, or hidden charges.</p></details>
+      <details><summary>Can I remove a page while reordering?</summary><p>This tool only reorders existing pages. To remove pages entirely, use the Delete Pages tool either before or after reordering.</p></details>
+      <details><summary>Is my PDF safe?</summary><p>Yes. Your file is processed securely over SSL and deleted automatically from the server after the download completes.</p></details>
+      <details><summary>Can I undo a reorder after downloading?</summary><p>The tool doesn't retain a history after download, so keeping a copy of the original file before reordering is the safest way to revert if needed.</p></details>
+      <details><summary>Does reordering affect page content or quality?</summary><p>No, pages are moved as complete units. Text, images, and formatting on each page are untouched — only the sequence changes.</p></details>
+      <details><summary>Can I reorder a very long PDF?</summary><p>Yes, though dragging becomes less convenient with very large page counts. Reverse Order and Reset Order help handle common bulk rearrangements quickly for longer documents.</p></details>
+      <details><summary>What's the maximum file size?</summary><p>PDF files up to 50MB are supported.</p></details>
+    </div>
+  </div>
+
+  <!-- RELATED TOOLS -->
+  <div class="wide section">
+    <div class="related">
+      <h2>Related PDF tools</h2>
+      <div class="related-grid">
+        <a class="related-item" href="/delete-pages"><span class="ico">🗑️</span><span class="name">Delete Pages</span></a>
+        <a class="related-item" href="/rotate-pdf"><span class="ico">🔄</span><span class="name">Rotate PDF</span></a>
+        <a class="related-item" href="/merge-pdf"><span class="ico">🔗</span><span class="name">Merge PDF</span></a>
+        <a class="related-item" href="/split-pdf"><span class="ico">✂️</span><span class="name">Split PDF</span></a>
+      </div>
+    </div>
+  </div>
+
+  <footer>© EkZapp — Free online utility tools</footer>
 </div>
 
 <script>
@@ -354,13 +459,6 @@ document.getElementById('applyForm').addEventListener('submit', function(){
   updateOrderFromDOM();
   document.getElementById('orderField').value = currentOrder.join(',');
 });
-
-function toggleGuide(){
-  const body = document.getElementById('guideBody');
-  const arrow = document.getElementById('guideArrow');
-  body.classList.toggle('open');
-  arrow.style.transform = body.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
-}
 </script>
 </body>
 </html>

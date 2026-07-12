@@ -3,86 +3,107 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Repair Corrupted PDF — EkZapp</title>
+<title>Repair Corrupted PDF — Free & Instant | EkZapp</title>
 <meta name="description" content="Fix and recover damaged or corrupted PDF files online for free. No signup needed.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--cream:#F0F5FF;--green:#16A34A;--red:#DC2626}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626;--green:#16A34A;--amber:#D97706}
 body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+a{color:inherit}
 nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
 .logo{text-decoration:none;display:flex;align-items:center;gap:8px}
 .logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
-.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
-.logo-text span{color:var(--blue)}
-.nav-links{display:flex;list-style:none;gap:2px;margin-left:12px;border-left:1px solid var(--border);padding-left:12px}
-.nav-links a{padding:6px 10px;border-radius:6px;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;white-space:nowrap;transition:all .15s}
-.nav-links a:hover,.nav-links a.active{background:var(--blue-lt);color:var(--blue)}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}.logo-text span{color:var(--blue)}
 .back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
 .back:hover{border-color:var(--blue);color:var(--blue)}
-
-.container{max-width:600px;margin:48px auto;padding:0 20px 60px}
-.tool-header{text-align:center;margin-bottom:32px}
-.tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
-.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
-.tool-header p{color:var(--gray);font-size:14px}
-
-.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-
-.info-bar{background:var(--blue-lt);border:1px solid #BFDBFE;border-radius:8px;padding:10px 14px;margin-bottom:20px;font-size:13px;color:#1E40AF;display:flex;align-items:center;gap:8px}
-
-form{display:flex;flex-direction:column;gap:16px}
+.hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#78350F,#D97706 45%,#2563EB 80%);background-size:200% 200%;animation:heroShift 12s ease-in-out infinite;padding:56px 20px 120px}
+@keyframes heroShift{0%{background-position:0% 40%}50%{background-position:100% 60%}100%{background-position:0% 40%}}
+.hero-inner{max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:12px;font-weight:600;padding:6px 14px;border-radius:999px;margin-bottom:18px;backdrop-filter:blur(4px)}
+.hero h1{color:#fff;font-size:2.3rem;font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
+.hero p{color:rgba(255,255,255,.9);font-size:15px;max-width:460px;margin:0 auto}
+.hero-doc{position:absolute;opacity:.5}
+.hero-doc svg{display:block}
+.doc1{top:24px;left:6%;animation:float1 7s ease-in-out infinite}
+.doc2{top:66px;right:8%;animation:float2 8s ease-in-out infinite}
+.doc3{bottom:30px;left:15%;animation:float1 9s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-14px) rotate(-3deg)}}
+@keyframes float2{0%,100%{transform:translateY(0) rotate(8deg)}50%{transform:translateY(-10px) rotate(4deg)}}
+.outer{max-width:960px;margin:0 auto;padding:0 20px}
+.narrow{max-width:680px;margin:0 auto}
+.wide{max-width:900px;margin:0 auto}
+.tool-card-wrap{margin-top:-84px;position:relative;z-index:3}
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 12px 32px -8px rgba(217,119,6,.25)}
+.info-bar{background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:10px 14px;margin-bottom:20px;font-size:13px;color:#92400E;display:flex;align-items:center;gap:8px}
 .field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
-
 .drop-area{border:2px dashed var(--border);border-radius:10px;padding:36px 20px;text-align:center;background:var(--light);cursor:pointer;transition:all .2s;position:relative}
-.drop-area:hover,.drop-area.dragover{border-color:var(--blue);background:var(--blue-lt)}
+.drop-area:hover,.drop-area.dragover{border-color:var(--amber);background:#FFFBEB}
 .drop-icon{font-size:2.2rem;margin-bottom:10px}
 .drop-area h3{font-size:14px;font-weight:600;margin-bottom:4px}
 .drop-area p{font-size:12px;color:var(--gray)}
 .drop-area input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer}
-.file-name{font-size:13px;font-weight:600;color:var(--blue);margin-top:8px;display:none}
-
-.btn{width:100%;padding:13px;background:var(--blue);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:8px}
-.btn:hover{background:var(--blue-dk)}
-
-.error-box{background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:12px 16px;color:var(--red);font-size:13px;font-weight:500;display:flex;align-items:center;gap:8px}
-
+.file-name{font-size:13px;font-weight:600;color:var(--amber);margin-top:8px;display:none}
+.btn{width:100%;padding:13px;background:var(--amber);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;margin-top:16px;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn:hover{background:#B45309}
+.error-box{background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:12px 16px;color:var(--red);font-size:13px;font-weight:500;margin-bottom:16px}
 .trust{display:flex;justify-content:center;gap:20px;margin-top:16px;flex-wrap:wrap}
 .trust-item{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:4px}
-
-.guide{margin-top:24px;border:1px solid var(--border);border-radius:12px;overflow:hidden}
-.guide-header{background:var(--light);padding:14px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);user-select:none}
-.guide-header h3{margin:0;font-size:15px;color:var(--ink)}
-.guide-arrow{font-size:16px;transition:transform .2s;color:var(--gray)}
-.guide-body{display:none;padding:20px}
-.guide-body.open{display:block}
-
-.steps{list-style:none;margin:0;padding:0}
-.steps li{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px}
-.steps li:last-child{margin-bottom:0}
-.step-num{min-width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.step-text strong{display:block;font-size:14px;color:var(--ink);margin-bottom:3px}
-.step-text span{font-size:13px;color:var(--gray);line-height:1.5}
-
-.guide-tips{margin-top:16px;background:#FFF7ED;border-radius:8px;padding:14px 16px}
-.guide-tips h4{margin:0 0 8px;font-size:13px;color:#92400E}
-.guide-tips ul{margin:0;padding-left:16px}
-.guide-tips ul li{font-size:13px;color:#78350F;margin-bottom:5px;line-height:1.4}
-
-.faq{margin-top:16px}
-.faq-item{border-bottom:1px solid var(--border);padding:10px 0}
-.faq-item:last-child{border-bottom:none}
-.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px}
-.faq-a{font-size:13px;color:var(--gray);line-height:1.5}
-
-.other-tools{margin-top:28px}
-.other-tools h3{font-size:13px;font-weight:600;color:var(--gray);letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
-.tools-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.tool-mini{background:white;border:1px solid var(--border);border-radius:10px;padding:14px;text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px;transition:all .15s}
-.tool-mini:hover{border-color:var(--blue);box-shadow:0 2px 8px rgba(37,99,235,.1)}
-.tool-mini-icon{font-size:1.2rem}
-.tool-mini span{font-size:13px;font-weight:600}
+.section{margin-top:56px}
+.section h2{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:8px}
+.section .sub{text-align:center;color:var(--gray);font-size:14px;margin-bottom:28px}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feature{background:white;border:1px solid var(--border);border-radius:12px;padding:22px 18px;text-align:center}
+.feature svg{margin:0 auto 12px}
+.feature h3{font-size:14px;font-weight:700;margin-bottom:6px}
+.feature p{font-size:12.5px;color:var(--gray);line-height:1.5}
+.use-cases{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.use-case{background:white;border:1px solid var(--border);border-left:4px solid var(--amber);border-radius:10px;padding:18px 20px}
+.use-case h3{font-size:13.5px;font-weight:700;margin-bottom:6px}
+.use-case p{font-size:12.5px;color:var(--gray);line-height:1.5}
+table.compare{width:100%;border-collapse:collapse;background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+table.compare th,table.compare td{padding:12px 16px;font-size:13px;text-align:left;border-bottom:1px solid var(--border)}
+table.compare th{background:#FFFBEB;color:#92400E;font-weight:700}
+table.compare tr:last-child td{border-bottom:none}
+.photo-block{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.photo-block img{width:100%;height:100%;object-fit:cover;display:block;min-height:220px}
+.photo-copy{padding:24px 28px 24px 0}
+.photo-copy h2{font-size:1.2rem;font-weight:800;margin-bottom:10px;text-align:left}
+.photo-copy p{font-size:13.5px;color:var(--gray);line-height:1.6}
+.text-block p{font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px}
+.how-to{background:white;border:1px solid var(--border);border-radius:14px;padding:24px}
+.steps{display:flex;flex-direction:column;gap:12px}
+.step{display:flex;gap:12px;align-items:flex-start}
+.step-num{width:28px;height:28px;border-radius:50%;background:#FFFBEB;color:var(--amber);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-text{font-size:13px;color:var(--gray);line-height:1.5;padding-top:4px}
+.step-text strong{color:var(--ink)}
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-list details{background:white;border:1px solid var(--border);border-radius:10px;padding:14px 18px}
+.faq-list summary{font-size:13.5px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:'+';font-size:18px;color:var(--amber);font-weight:400}
+.faq-list details[open] summary::after{content:'−'}
+.faq-list p{font-size:13px;color:var(--gray);line-height:1.6;margin-top:10px}
+.related{background:linear-gradient(115deg,#78350F,#D97706,#2563EB);border-radius:16px;padding:32px 28px;color:#fff}
+.related h2{color:#fff;font-size:1.2rem;margin-bottom:18px;text-align:left}
+.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.related-item{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:14px;text-decoration:none;transition:background .15s}
+.related-item:hover{background:rgba(255,255,255,.22)}
+.related-item .ico{font-size:1.3rem;margin-bottom:6px;display:block}
+.related-item .name{font-size:12.5px;font-weight:700;color:#fff}
+footer{margin:64px 0 32px;text-align:center;font-size:12px;color:var(--gray)}
+@media(max-width:720px){
+  .feature-grid{grid-template-columns:1fr}
+  .use-cases{grid-template-columns:1fr}
+  .photo-block{grid-template-columns:1fr}
+  .photo-block img{min-height:160px}
+  .photo-copy{padding:0 20px 22px}
+  .related-grid{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:1.7rem}
+  .tool-card-wrap{margin-top:-56px}
+  .hero{padding-bottom:88px}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -96,158 +117,217 @@ form{display:flex;flex-direction:column;gap:16px}
   "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Is this tool free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free, with no signup, watermark, or hidden charges."}},
+    {"@type":"Question","name":"Can it repair any damaged PDF?","acceptedAnswer":{"@type":"Answer","text":"It fixes most structural corruption issues, like broken cross-reference tables and malformed objects. Severely damaged files or those with genuinely missing data may not be fully recoverable."}},
+    {"@type":"Question","name":"Will I lose any content?","acceptedAnswer":{"@type":"Answer","text":"The tool attempts to recover as much of the original content as possible. Portions that are unreadable due to corruption cannot be restored, since that data is simply gone rather than hidden."}},
+    {"@type":"Question","name":"Is my PDF safe?","acceptedAnswer":{"@type":"Answer","text":"Yes. Your file is processed securely over SSL and deleted automatically after download."}},
+    {"@type":"Question","name":"Why do PDFs become corrupted in the first place?","acceptedAnswer":{"@type":"Answer","text":"Common causes include an interrupted download or file transfer, a crash while the file was being saved, transferring over an unstable connection, or damage from a faulty storage device."}},
+    {"@type":"Question","name":"How do I know if my PDF is actually corrupted versus just password-protected?","acceptedAnswer":{"@type":"Answer","text":"A password-protected PDF shows a password prompt when opened. A corrupted PDF typically shows an error message like \"file is damaged\" or fails to open at all with no prompt."}},
+    {"@type":"Question","name":"What's the maximum file size?","acceptedAnswer":{"@type":"Answer","text":"PDF files up to 50MB are supported."}}
+  ]
+}
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
 </head>
 <body>
-<nav>
-  <div class="nav-inner">
-    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
-    <ul class="nav-links">
-      <li><a href="/unlock-pdf">Unlock PDF</a></li>
-      <li><a href="/compress-pdf">Compress PDF</a></li>
-      <li><a href="/repair-pdf" class="active">Repair PDF</a></li>
-      <li><a href="/merge-pdf">Merge PDF</a></li>
-    </ul>
-    <a class="back" href="/">← All Tools</a>
-  </div>
-</nav>
+<nav><div class="nav-inner">
+  <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+  <a class="back" href="/">← All Tools</a>
+</div></nav>
 
-<div class="container">
-  <div class="tool-header">
-    <div class="tool-icon-wrap">🛠️</div>
-    <h1>Repair Corrupted PDF</h1>
-    <p>Fix damaged or broken PDF files that won't open properly</p>
-  </div>
-
-  <div class="card">
-    <div class="info-bar">
-      🔒 Your file is encrypted and automatically deleted after processing
-    </div>
-
-    {% if error %}
-    <div class="error-box" style="margin-bottom:16px">
-      ⚠️ {{ error }}
-    </div>
-    {% endif %}
-
-    <form method="POST" enctype="multipart/form-data">
-      <div class="field">
-        <label>Select the damaged PDF</label>
-        <div class="drop-area" id="dropArea">
-          <div class="drop-icon">📄</div>
-          <h3>Click to select or drag & drop</h3>
-          <p>Works with PDFs that won't open, look corrupted, or show errors</p>
-          <p class="file-name" id="fileName"></p>
-          <input type="file" name="pdf" accept=".pdf" required onchange="showFileName(this)">
-        </div>
-      </div>
-
-      <button type="submit" class="btn">
-        🛠️ Repair PDF
-      </button>
-    </form>
-
-    <div class="trust">
-      <div class="trust-item">🔒 SSL Encrypted</div>
-      <div class="trust-item">🗑️ Auto-deleted</div>
-      <div class="trust-item">📵 No signup needed</div>
-    </div>
-  </div>
-
-  <div class="guide">
-    <div class="guide-header" onclick="toggleGuide()">
-      <h3>📖 How to Use — Step by Step Guide</h3>
-      <span class="guide-arrow" id="guideArrow">▼</span>
-    </div>
-    <div class="guide-body" id="guideBody">
-
-      <ul class="steps">
-        <li>
-          <div class="step-num">1</div>
-          <div class="step-text">
-            <strong>Upload the damaged PDF</strong>
-            <span>Click the upload area or drag & drop the PDF that won't open or shows an error.</span>
-          </div>
-        </li>
-        <li>
-          <div class="step-num">2</div>
-          <div class="step-text">
-            <strong>Click "Repair PDF"</strong>
-            <span>The tool rebuilds the PDF's internal structure and recovers as much content as possible.</span>
-          </div>
-        </li>
-        <li>
-          <div class="step-num">3</div>
-          <div class="step-text">
-            <strong>Download the repaired file</strong>
-            <span>A fixed version of your PDF downloads automatically.</span>
-          </div>
-        </li>
-      </ul>
-
-      <div class="guide-tips">
-        <h4>💡 Tips</h4>
-        <ul>
-          <li>This tool fixes structural issues (broken cross-reference tables, malformed objects) — it cannot recover pages that were never saved</li>
-          <li>If the file is only partially damaged, most or all pages can usually be recovered</li>
-          <li>Always keep a backup of the original file before repairing</li>
-          <li>Your file is automatically deleted from our server after processing</li>
-        </ul>
-      </div>
-
-      <div class="faq">
-        <p style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:12px;">❓ Frequently Asked Questions</p>
-
-        <div class="faq-item">
-          <div class="faq-q">Is this tool free?</div>
-          <div class="faq-a">Yes, completely free! No signup, no watermark, no hidden charges.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Can it repair any damaged PDF?</div>
-          <div class="faq-a">It fixes most structural corruption issues. Severely damaged files or those with missing data may not be fully recoverable.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Will I lose any content?</div>
-          <div class="faq-a">The tool attempts to recover as much of the original content as possible. Portions that are unreadable due to corruption cannot be restored.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Is my PDF safe?</div>
-          <div class="faq-a">Yes. Your file is processed securely over SSL and deleted automatically after download.</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="other-tools">
-    <h3>Other PDF Tools</h3>
-    <div class="tools-row">
-      <a class="tool-mini" href="/unlock-pdf"><span class="tool-mini-icon">🔓</span><span>Unlock PDF</span></a>
-      <a class="tool-mini" href="/compress-pdf"><span class="tool-mini-icon">⚡</span><span>Compress PDF</span></a>
-      <a class="tool-mini" href="/merge-pdf"><span class="tool-mini-icon">🔗</span><span>Merge PDF</span></a>
-    </div>
+<div class="hero">
+  <div class="hero-doc doc1"><svg width="46" height="58" viewBox="0 0 46 58" fill="none"><rect x="1" y="1" width="44" height="56" rx="4" fill="#fff" fill-opacity=".18" stroke="#fff" stroke-opacity=".4"/><path d="M15 30l6-10 5 7 5-9 6 12" stroke="#fff" stroke-opacity=".5" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="hero-doc doc2"><svg width="40" height="50" viewBox="0 0 40 50" fill="none"><rect x="1" y="1" width="38" height="48" rx="4" fill="#fff" fill-opacity=".14" stroke="#fff" stroke-opacity=".35"/><path d="M14 20a6 6 0 1112 0" stroke="#fff" stroke-opacity=".5" stroke-width="1.8" fill="none"/><path d="M17 30l3 3 6-6" stroke="#fff" stroke-opacity=".55" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+  <div class="hero-doc doc3"><svg width="36" height="44" viewBox="0 0 36 44" fill="none"><rect x="1" y="1" width="34" height="42" rx="4" fill="#fff" fill-opacity=".12" stroke="#fff" stroke-opacity=".3"/></svg></div>
+  <div class="hero-inner">
+    <div class="hero-badge">🛠️ Fix Damaged PDFs</div>
+    <h1>Bring a Broken PDF Back to Life</h1>
+    <p>Upload a PDF that won't open or shows an error, and get back a rebuilt, working version in seconds — no software to install, no technical steps to follow.</p>
   </div>
 </div>
 
+<div class="outer">
+  <div class="narrow tool-card-wrap">
+    <div class="card">
+      <div class="info-bar">🔒 Your file is encrypted and automatically deleted after processing</div>
+      {% if error %}<div class="error-box">⚠️ {{ error }}</div>{% endif %}
+      <form method="POST" enctype="multipart/form-data">
+        <div class="field">
+          <label>Select the damaged PDF</label>
+          <div class="drop-area" id="dropArea">
+            <div class="drop-icon">📄</div>
+            <h3>Click to select or drag & drop</h3>
+            <p>Works with PDFs that won't open, look corrupted, or show errors</p>
+            <p class="file-name" id="fileName"></p>
+            <input type="file" name="pdf" accept=".pdf" required onchange="showFileName(this)">
+          </div>
+        </div>
+        <button type="submit" class="btn">🛠️ Repair PDF</button>
+      </form>
+      <div class="trust">
+        <div class="trust-item">🔒 SSL Encrypted</div>
+        <div class="trust-item">🗑️ Auto-deleted</div>
+        <div class="trust-item">📵 No signup</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- USE CASES -->
+  <div class="wide section">
+    <h2>When people need to repair a PDF</h2>
+    <p class="sub">A few common situations</p>
+    <div class="use-cases">
+      <div class="use-case"><h3>📥 Interrupted downloads</h3><p>Fix a PDF that got cut off partway through downloading over a slow or unstable connection, leaving it incomplete or unopenable.</p></div>
+      <div class="use-case"><h3>💾 Damaged storage transfers</h3><p>Recover a file that was copied from a failing USB drive, a corrupted SD card, or a hard drive with developing bad sectors.</p></div>
+      <div class="use-case"><h3>📧 Broken email attachments</h3><p>Repair a PDF that arrived garbled after passing through an email server, gateway, or overly aggressive antivirus scanner.</p></div>
+      <div class="use-case"><h3>⚡ Crash during saving</h3><p>Recover a document that was being written to disk when an application, browser, or entire device crashed mid-save.</p></div>
+      <div class="use-case"><h3>☁️ Cloud sync conflicts</h3><p>Fix a file left in an inconsistent state after a cloud storage sync was interrupted or conflicted with a second device.</p></div>
+      <div class="use-case"><h3>🖨️ Faulty PDF generation</h3><p>Repair a file produced by software or a script that saved it incorrectly, timed out, or crashed while writing it to disk.</p></div>
+    </div>
+  </div>
+
+  <!-- RECOVERY CONTEXT -->
+  <div class="narrow section">
+    <h2>What "recovery" really means for a broken file</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="text-block">
+      <p>It helps to separate two very different kinds of problems that both get called "corruption." The first is a structural problem: the actual content — every page, every image, every line of text — is still physically present in the file, but the index pointing to where it all lives has been damaged or never finished being written. This is the highly recoverable case, since nothing about the underlying content needs to be reconstructed from scratch — only the map to it does.</p>
+      <p>The second is genuine data loss: bytes that made up part of the file have been overwritten, truncated, or never fully transferred in the first place. In this case, no amount of clever repair logic can bring back information that simply isn't there anymore — a repair tool can rebuild a valid, openable PDF around whatever content did survive, but it cannot invent missing pages or paragraphs out of nothing. Understanding which situation you're likely in helps set the right expectation before starting: a file that shows a generic "damaged file" error from a normal, complete download is far more likely to be the first, highly recoverable case than the second, since a full download simply completing and then failing to open points toward a structural problem rather than actual missing data.</p>
+    </div>
+  </div>
+
+  <!-- FEATURE GRID -->
+  <div class="wide section">
+    <h2>Why use EkZapp to repair PDFs</h2>
+    <p class="sub">Rebuilds structure, recovers what's recoverable</p>
+    <div class="feature-grid">
+      <div class="feature">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M13 12a10 10 0 1114 14" stroke="#D97706" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M27 8v8h-8" stroke="#D97706" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        <h3>Rebuilds file structure</h3><p>Repairs broken cross-reference tables and malformed internal objects without touching intact content.</p>
+      </div>
+      <div class="feature">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M20 4l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" stroke="#D97706" stroke-width="2" stroke-linejoin="round"/></svg>
+        <h3>Free, no limits</h3><p>Attempt repairs on as many PDFs as you like — no account, no watermark, no charge per file.</p>
+      </div>
+      <div class="feature">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="7" y="4" width="26" height="32" rx="3" stroke="#D97706" stroke-width="2"/><path d="M13 30v-4c0-3 2-4 7-4s7 1 7 4v4" stroke="#D97706" stroke-width="2" stroke-linecap="round"/><circle cx="20" cy="16" r="4" stroke="#D97706" stroke-width="2"/></svg>
+        <h3>Private by design</h3><p>Your file is deleted from our server right after processing completes.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARISON -->
+  <div class="wide section">
+    <h2>What repair can and can't fix</h2>
+    <p class="sub">Setting realistic expectations before you start</p>
+    <table class="compare">
+      <tr><th>Problem type</th><th>Recoverable?</th><th>Why</th></tr>
+      <tr><td>Broken cross-reference table</td><td>Usually yes</td><td>The actual page content is intact; only the internal index is damaged</td></tr>
+      <tr><td>Truncated / incomplete download</td><td>Partially</td><td>Pages present before the cutoff point can often be recovered; later pages cannot</td></tr>
+      <tr><td>Genuinely missing data (overwritten sectors)</td><td>No</td><td>The underlying bytes no longer exist to reconstruct from</td></tr>
+    </table>
+  </div>
+
+  <!-- PHOTO + COPY -->
+  <div class="wide section">
+    <div class="photo-block">
+      <img src="{{ url_for('static', filename='images/photo-laptop-meeting.jpg') }}" alt="Recovering a damaged document before an important deadline">
+      <div class="photo-copy">
+        <h2>What "corrupted" actually means for a PDF</h2>
+        <p>A PDF file is really a set of numbered objects (text, images, fonts, page definitions) plus an index at the end of the file telling a reader exactly where each object sits. When that index — called the cross-reference table — gets damaged or the file gets cut off before it was fully written, a PDF reader can no longer figure out where anything is, even though most of the actual content might still be sitting intact inside the file. Repair tools work by scanning through the raw file, rediscovering where every object actually lives, and rebuilding a fresh, correct index — effectively reconstructing the map without needing to touch the territory. This is why a repair can often succeed even on a file that seemed completely unusable moments before: the content was never really lost, just unreachable through the normal path a PDF reader expects to follow.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY / DEEP TEXT -->
+  <div class="narrow section">
+    <h2>Why PDFs become corrupted in the first place</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="text-block">
+      <p>The most common cause is an interrupted write: a file transfer that stops midway because of a dropped connection, a browser tab closed before a download finished, or a device losing power while an application was still saving. In every one of these cases, the file on disk ends up shorter or differently structured than the complete version was supposed to be, and the cross-reference table pointing to the end of the file no longer matches what's actually there.</p>
+      <p>A second common cause is transfer corruption — bytes getting flipped or dropped while a file moves across an unreliable network, through certain email gateways that modify attachments, or via a failing storage device like a dying USB drive or an SD card with bad sectors. Unlike a truncated file, this kind of corruption can affect data anywhere in the file, not just the end, which is part of why some repairs recover everything while others only manage to save a portion of the original content.</p>
+      <p>A third cause, less common but still real, is a bug in whatever software originally created or last modified the file — a PDF generator that crashed partway through writing, or a script that wrote objects in the wrong order. These cases often produce a PDF that's technically malformed from the very first save, rather than damaged afterward, but the repair approach is largely the same: scan, rediscover, rebuild.</p>
+      <p>A fourth, increasingly common cause in the era of cloud storage is a sync conflict: a file being actively written on one device while a cloud sync client on another device simultaneously tries to read or overwrite the same file, leaving behind a partially merged or truncated version on whichever side lost the race. This tends to produce corruption that looks structurally similar to an interrupted download, since the underlying issue — a file that stopped being written before it was actually complete — is fundamentally the same regardless of what interrupted it.</p>
+    </div>
+  </div>
+
+  <!-- HOW TO -->
+  <div class="narrow section">
+    <div class="how-to">
+      <h2 style="text-align:left;font-size:1.1rem;margin-bottom:16px">📖 How to repair a corrupted PDF</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Upload the damaged PDF</strong> — Click the upload area or drag and drop the file that won't open or shows an error.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Click "Repair PDF"</strong> — The tool scans the file, rediscovers its internal structure, and rebuilds a working version.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Download the repaired file</strong> — A fixed version downloads automatically, ready to open normally.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIPS -->
+  <div class="narrow section">
+    <h2>Tips before and after repairing</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="text-block">
+      <p>Before repairing, always keep the original damaged file rather than overwriting it — even a partially broken file sometimes contains recoverable content that a second repair attempt, or a different tool entirely, might extract better than the first attempt. Once a damaged file is deleted, that option disappears permanently, along with any chance of a better recovery result later using an improved tool or a different approach.</p>
+      <p>If the PDF came from cloud storage or an email attachment, it's worth checking whether the source still has an intact copy before spending time on repair — a fresh re-download or a request for the file to be resent is sometimes faster and more complete than any repair process, since repair can only work with whatever bytes actually made it into the damaged copy. This is especially true for files shared via a link rather than a direct attachment, where the original sender's copy is often untouched even if the version that reached you got corrupted somewhere along the way.</p>
+      <p>After repairing, page through the recovered file carefully rather than assuming it's complete — check that the expected number of pages are present and that images and tables near where the damage likely occurred look intact, since a successful "repair" sometimes means the file opens again while still missing a portion of its original content in the specific area that was affected.</p>
+      <p>For anything genuinely important — a signed contract, an academic submission, financial records — it's worth building a habit of keeping more than one copy in more than one location well before corruption ever becomes a problem. A file that exists only on a single USB drive or in a single email draft has no fallback if that one copy becomes damaged; a file also saved to cloud storage or emailed to yourself as a backup gives repair tools a much better safety net to work alongside, rather than being the only line of defense. This small habit costs almost nothing to maintain day to day, but it's the difference between a corrupted file being a minor inconvenience solved in thirty seconds and it being a genuine, unrecoverable loss.</p>
+    </div>
+  </div>
+
+  <!-- COMMON ISSUES -->
+  <div class="narrow section">
+    <h2>Common problems when repairing a PDF</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="text-block">
+      <p><strong style="color:var(--ink)">The repair completes but some pages are still missing.</strong> This usually means those specific pages were affected by data that's genuinely gone, not just an index problem — the repair recovers everything it can locate, but content that was truly overwritten or never fully saved can't be reconstructed from nothing.</p>
+      <p><strong style="color:var(--ink)">The file still won't open after repair.</strong> Very severe corruption, especially damage spread across many parts of the file rather than concentrated in one spot, may be beyond what any automated repair can fix. In these cases, checking whether the original source has an intact copy is usually more productive than repeated repair attempts on the same badly damaged file.</p>
+      <p><strong style="color:var(--ink)">The PDF isn't actually corrupted — it's just password-protected.</strong> A password-protected file shows a password prompt rather than an error, and needs the Unlock PDF tool rather than a repair — the file structure itself is perfectly fine, it's just encrypted.</p>
+      <p><strong style="color:var(--ink)">The file opens but looks visually different from what you remember.</strong> If recovery had to reconstruct object positions from partial information, minor formatting quirks — a font substitution, a slightly shifted image — can occasionally appear even when the overall content is intact. This is a byproduct of the reconstruction process rather than new damage, and it's usually limited to small cosmetic details rather than missing content.</p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="narrow section">
+    <h2>Frequently asked questions</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="faq-list">
+      <details><summary>Is this tool free?</summary><p>Yes, completely free, with no signup, watermark, or hidden charges.</p></details>
+      <details><summary>Can it repair any damaged PDF?</summary><p>It fixes most structural corruption issues, like broken cross-reference tables and malformed objects. Severely damaged files or those with genuinely missing data may not be fully recoverable, since a repair can only rebuild the index to content that physically still exists in the file.</p></details>
+      <details><summary>Will I lose any content?</summary><p>The tool attempts to recover as much of the original content as possible. Portions that are unreadable due to corruption cannot be restored, since that data is simply gone rather than hidden.</p></details>
+      <details><summary>Is my PDF safe?</summary><p>Yes. Your file is processed securely over SSL and deleted automatically after download.</p></details>
+      <details><summary>Why do PDFs become corrupted in the first place?</summary><p>Common causes include an interrupted download or file transfer, a crash while the file was being saved, transferring over an unstable connection, or damage from a faulty storage device.</p></details>
+      <details><summary>How do I know if my PDF is actually corrupted versus just password-protected?</summary><p>A password-protected PDF shows a password prompt when opened. A corrupted PDF typically shows an error message like "file is damaged" or fails to open at all with no prompt.</p></details>
+      <details><summary>What's the maximum file size?</summary><p>PDF files up to 50MB are supported.</p></details>
+    </div>
+  </div>
+
+  <!-- RELATED TOOLS -->
+  <div class="wide section">
+    <div class="related">
+      <h2>Related PDF tools</h2>
+      <div class="related-grid">
+        <a class="related-item" href="/unlock-pdf"><span class="ico">🔓</span><span class="name">Unlock PDF</span></a>
+        <a class="related-item" href="/compress-pdf"><span class="ico">⚡</span><span class="name">Compress PDF</span></a>
+        <a class="related-item" href="/merge-pdf"><span class="ico">🔗</span><span class="name">Merge PDF</span></a>
+        <a class="related-item" href="/pdf-page-reorder"><span class="ico">🔀</span><span class="name">Page Reorder</span></a>
+      </div>
+    </div>
+  </div>
+
+  <footer>© EkZapp — Free online utility tools</footer>
+</div>
+
 <script>
-function showFileName(input){
-  if(input.files&&input.files[0]){
-    const fn=document.getElementById('fileName');
-    fn.textContent='✓ '+input.files[0].name;
-    fn.style.display='block';
-  }
-}
+function showFileName(input){if(input.files&&input.files[0]){const fn=document.getElementById('fileName');fn.textContent='✓ '+input.files[0].name;fn.style.display='block';}}
 const da=document.getElementById('dropArea');
 da.addEventListener('dragover',e=>{e.preventDefault();da.classList.add('dragover')});
 da.addEventListener('dragleave',()=>da.classList.remove('dragover'));
 da.addEventListener('drop',e=>{e.preventDefault();da.classList.remove('dragover')});
-
-function toggleGuide(){
-  const body = document.getElementById('guideBody');
-  const arrow = document.getElementById('guideArrow');
-  body.classList.toggle('open');
-  arrow.style.transform = body.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
-}
 </script>
-</body>
-</html>
+</body></html>
