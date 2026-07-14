@@ -6,8 +6,10 @@ import datetime
 import uuid
 import time
 import shutil
+from app_pdf_editor_route import pdf_editor_bp
 
 app = Flask(__name__)
+app.register_blueprint(pdf_editor_bp)
 app.secret_key = os.environ.get("SECRET_KEY", "ekzapp-dev-secret-change-in-production")
 
 UPLOAD_FOLDER = "uploads"

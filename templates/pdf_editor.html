@@ -1,478 +1,2497 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VW5QLMV046"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-VW5QLMV046');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PDF Editor — EkZapp</title>
+<title>Free Online PDF Editor - Edit Text, Add Images & More | EkZapp</title>
+<meta name="description" content="Edit PDF files online for free. Add and edit text, insert images, sign documents. No signup, no watermark. 100% free.">
+<link rel="canonical" href="https://ekzapp.com/pdf-editor">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- pdf.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB}
-body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);height:100vh;display:flex;flex-direction:column;overflow:hidden}
+  :root{
+    --ekz-blue:#2563EB;
+    --ekz-blue-dark:#1D4ED8;
+    --ekz-blue-light:#EFF6FF;
+    --ekz-ink:#0F172A;
+    --ekz-gray:#64748B;
+    --ekz-gray-light:#F1F5F9;
+    --ekz-border:#E2E8F0;
+    --ekz-white:#FFFFFF;
+    --ekz-danger:#EF4444;
+    --ekz-canvas-bg:#E9EDF3;
+    --ekz-radius:10px;
+    --ekz-shadow:0 1px 2px rgba(15,23,42,.06), 0 4px 12px rgba(15,23,42,.06);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ekz-ink);
+    background:var(--ekz-white);
+  }
+  a{color:inherit;text-decoration:none;}
 
-/* NAV */
-nav{background:var(--white);border-bottom:1px solid var(--border);height:52px;flex-shrink:0;display:flex;align-items:center;padding:0 16px;gap:12px;z-index:100}
-.logo{text-decoration:none;display:flex;align-items:center;gap:7px;flex-shrink:0}
-.logo-icon{width:28px;height:28px;border-radius:7px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:800}
-.logo-text{font-size:14px;font-weight:700;color:var(--ink)}
-.logo-text span{color:var(--blue)}
-.nav-sep{width:1px;height:20px;background:var(--border)}
-.back{color:var(--gray);text-decoration:none;font-size:12px;font-weight:500;padding:5px 10px;border-radius:5px;border:1px solid var(--border);background:white}
-.back:hover{border-color:var(--blue);color:var(--blue)}
-.nav-title{font-size:13px;font-weight:600;color:var(--ink)}
-.nav-right{margin-left:auto;display:flex;align-items:center;gap:8px}
-.btn-download{background:var(--blue);color:white;border:none;padding:7px 16px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;display:flex;align-items:center;gap:5px}
-.btn-download:hover{background:var(--blue-dk)}
-.btn-download:disabled{opacity:.5;cursor:not-allowed}
+  /* ---------- Top bar ---------- */
+  .ekz-editor-topbar{
+    height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 20px;
+    border-bottom:1px solid var(--ekz-border);
+    background:var(--ekz-white);
+    position:sticky;
+    top:0;
+    z-index:50;
+  }
+  .ekz-editor-brand{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-weight:800;
+    font-size:18px;
+    color:var(--ekz-ink);
+  }
+  .ekz-editor-brand .dot{color:var(--ekz-blue);}
+  .ekz-filename{
+    font-size:13px;
+    color:var(--ekz-gray);
+    max-width:280px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    display:none;
+  }
+  .ekz-topbar-actions{display:flex;align-items:center;gap:10px;}
+  .ekz-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family:inherit;
+    font-size:14px;
+    font-weight:600;
+    padding:9px 16px;
+    border-radius:8px;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:background .15s ease, border-color .15s ease, transform .1s ease;
+    white-space:nowrap;
+  }
+  .ekz-btn:active{transform:scale(.97);}
+  .ekz-btn-primary{background:var(--ekz-blue);color:#fff;}
+  .ekz-btn-primary:hover{background:var(--ekz-blue-dark);}
+  .ekz-btn-primary:disabled{background:#94A3B8;cursor:not-allowed;transform:none;}
+  .ekz-btn-ghost{background:transparent;border-color:var(--ekz-border);color:var(--ekz-ink);}
+  .ekz-btn-ghost:hover{background:var(--ekz-gray-light);}
 
-/* TOOLBAR */
-.toolbar{background:var(--white);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;align-items:center;gap:6px;flex-shrink:0;overflow-x:auto;scrollbar-width:none}
-.toolbar::-webkit-scrollbar{display:none}
-.tool-btn{padding:6px 12px;border-radius:6px;border:1.5px solid var(--border);background:white;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;color:var(--gray);white-space:nowrap;transition:all .15s;display:flex;align-items:center;gap:5px}
-.tool-btn:hover{border-color:var(--blue);color:var(--blue)}
-.tool-btn.active{background:var(--blue);color:white;border-color:var(--blue)}
-.tool-sep{width:1px;height:24px;background:var(--border);flex-shrink:0}
-.color-btn{width:24px;height:24px;border-radius:50%;border:2px solid var(--border);cursor:pointer;flex-shrink:0}
-.color-btn.active{border-color:var(--ink);border-width:3px}
-.font-size-input{width:52px;padding:5px 8px;border:1.5px solid var(--border);border-radius:6px;font-size:12px;font-family:'Inter',sans-serif;outline:none}
-.font-size-input:focus{border-color:var(--blue)}
+  /* ---------- Toolbar ---------- */
+  .ekz-toolbar{
+    display:flex;
+    align-items:center;
+    gap:4px;
+    padding:10px 20px;
+    border-bottom:1px solid var(--ekz-border);
+    background:var(--ekz-white);
+    overflow-x:auto;
+    position:sticky;
+    top:60px;
+    z-index:40;
+  }
+  .ekz-tool{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
+    min-width:64px;
+    padding:8px 10px;
+    border-radius:8px;
+    border:1px solid transparent;
+    background:transparent;
+    cursor:pointer;
+    font-family:inherit;
+    font-size:11px;
+    font-weight:600;
+    color:var(--ekz-gray);
+    transition:background .15s ease, color .15s ease;
+  }
+  .ekz-tool:hover{background:var(--ekz-gray-light);color:var(--ekz-ink);}
+  .ekz-tool.active{background:var(--ekz-blue-light);color:var(--ekz-blue);}
+  .ekz-tool svg{width:20px;height:20px;}
+  .ekz-tool-divider{width:1px;height:32px;background:var(--ekz-border);margin:0 8px;flex-shrink:0;}
 
-/* MAIN */
-.main{flex:1;display:flex;overflow:hidden}
+  /* Contextual sub-toolbar (font size/color when text tool active) */
+  .ekz-subtoolbar{
+    display:none;
+    align-items:center;
+    gap:14px;
+    padding:10px 20px;
+    background:var(--ekz-gray-light);
+    border-bottom:1px solid var(--ekz-border);
+    font-size:13px;
+    position:sticky;
+    top:112px;
+    z-index:35;
+  }
+  .ekz-subtoolbar.visible{display:flex;}
+  .ekz-subfield{display:flex;align-items:center;gap:6px;color:var(--ekz-gray);font-weight:600;}
+  .ekz-subfield select, .ekz-subfield input[type=number]{
+    border:1px solid var(--ekz-border);
+    border-radius:6px;
+    padding:5px 8px;
+    font-family:inherit;
+    font-size:13px;
+    background:#fff;
+  }
+  .ekz-color-row{display:flex;gap:5px;}
+  .ekz-color-swatch{
+    width:20px;height:20px;border-radius:5px;cursor:pointer;
+    border:2px solid transparent;
+  }
+  .ekz-color-swatch.selected{border-color:var(--ekz-ink);}
 
-/* SIDEBAR */
-.sidebar{width:200px;background:var(--white);border-right:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
-.sidebar-title{padding:12px 14px;font-size:11px;font-weight:700;color:var(--gray);letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--border)}
-.pages-list{flex:1;overflow-y:auto;padding:8px}
-.page-thumb{border:2px solid var(--border);border-radius:6px;margin-bottom:8px;cursor:pointer;overflow:hidden;transition:all .15s}
-.page-thumb:hover,.page-thumb.active{border-color:var(--blue)}
-.page-thumb canvas{width:100%;display:block}
-.page-num{text-align:center;font-size:10px;color:var(--gray);padding:4px;background:var(--light)}
+  /* ---------- Animated gradient hero ---------- */
+  .ekz-hero{
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(120deg,#1D4ED8 0%, #2563EB 35%, #7C3AED 75%, #DB2777 100%);
+    background-size:300% 300%;
+    animation:ekzHeroShift 14s ease infinite;
+    padding:56px 20px 44px;
+    text-align:center;
+    color:#fff;
+  }
+  @keyframes ekzHeroShift{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+  }
+  .ekz-hero-blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(50px);
+    opacity:.35;
+    background:#fff;
+    animation:ekzBlobFloat 9s ease-in-out infinite;
+  }
+  .ekz-hero-blob.b1{width:220px;height:220px;top:-60px;left:-40px;animation-delay:0s;}
+  .ekz-hero-blob.b2{width:180px;height:180px;bottom:-50px;right:-30px;background:#FDE68A;animation-delay:2s;}
+  .ekz-hero-blob.b3{width:140px;height:140px;top:30%;right:12%;background:#A7F3D0;animation-delay:4s;}
+  @keyframes ekzBlobFloat{
+    0%,100%{transform:translateY(0) scale(1);}
+    50%{transform:translateY(-18px) scale(1.08);}
+  }
+  .ekz-hero-inner{position:relative;z-index:2;max-width:640px;margin:0 auto;}
+  .ekz-hero-badge{
+    display:inline-flex;align-items:center;gap:6px;
+    background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.3);
+    border-radius:999px;
+    padding:6px 14px;
+    font-size:12px;font-weight:700;letter-spacing:.03em;
+    margin-bottom:18px;
+    backdrop-filter:blur(4px);
+  }
+  .ekz-hero h1{
+    font-size:32px;
+    font-weight:800;
+    margin:0 0 10px;
+    letter-spacing:-.02em;
+    line-height:1.2;
+  }
+  .ekz-hero p.sub{
+    font-size:15.5px;
+    margin:0;
+    opacity:.92;
+    line-height:1.6;
+  }
+  @media (max-width:640px){
+    .ekz-hero{padding:40px 16px 32px;}
+    .ekz-hero h1{font-size:24px;}
+  }
 
-/* CANVAS AREA */
-.canvas-area{flex:1;overflow:auto;background:#525659;display:flex;justify-content:center;align-items:flex-start;padding:24px}
-.pdf-container{position:relative;box-shadow:0 4px 24px rgba(0,0,0,.3)}
-#pdfCanvas{display:block}
-#editCanvas{position:absolute;top:0;left:0;cursor:crosshair}
+  /* ---------- Upload zone ---------- */
+  .ekz-upload-wrap{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(180deg,#FAFBFF 0%, #F1F5FE 100%);
+    padding:44px 20px 56px;
+  }
+  .ekz-upload-card{
+    max-width:520px;
+    width:100%;
+    text-align:center;
+  }
+  .ekz-dropzone{
+    border:2px dashed #C7D2FE;
+    border-radius:16px;
+    background:#fff;
+    padding:44px 24px;
+    cursor:pointer;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .ekz-dropzone:hover, .ekz-dropzone.dragover{
+    border-color:var(--ekz-blue);
+    background:var(--ekz-blue-light);
+  }
+  .ekz-dropzone svg{width:40px;height:40px;color:var(--ekz-blue);margin-bottom:12px;}
+  .ekz-dropzone .primary-txt{font-weight:700;font-size:16px;margin-bottom:4px;}
+  .ekz-dropzone .secondary-txt{font-size:13px;color:var(--ekz-gray);}
+  .ekz-privacy-note{
+    margin-top:18px;
+    font-size:12px;
+    color:var(--ekz-gray);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+  }
 
-/* UPLOAD SCREEN */
-.upload-screen{flex:1;display:flex;align-items:center;justify-content:center;background:#525659}
-.upload-box{background:white;border-radius:16px;padding:48px 40px;text-align:center;max-width:440px;width:100%;box-shadow:0 4px 24px rgba(0,0,0,.15)}
-.upload-icon{font-size:3rem;margin-bottom:16px}
-.upload-box h2{font-size:1.4rem;font-weight:800;margin-bottom:8px}
-.upload-box p{color:var(--gray);font-size:14px;margin-bottom:24px}
-.upload-btn{background:var(--blue);color:white;border:none;padding:12px 28px;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;position:relative;overflow:hidden}
-.upload-btn input{position:absolute;inset:0;opacity:0;cursor:pointer}
-.upload-btn:hover{background:var(--blue-dk)}
+  /* ---------- Canvas area ---------- */
+  .ekz-workspace{
+    display:none;
+    background:var(--ekz-canvas-bg);
+    min-height:calc(100vh - 112px);
+    padding:32px 16px 120px;
+    overflow-x:auto;
+  }
+  .ekz-page-stack{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:28px;
+  }
+  .ekz-page{
+    position:relative;
+    background:#fff;
+    box-shadow:var(--ekz-shadow);
+    border-radius:2px;
+  }
+  .ekz-page canvas{display:block;}
+  .ekz-page-num{
+    position:absolute;
+    bottom:-24px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:12px;
+    color:var(--ekz-gray);
+    font-weight:600;
+  }
 
-/* TEXT INPUT OVERLAY */
-.text-input-overlay{position:absolute;background:transparent;border:2px dashed var(--blue);outline:none;font-family:'Inter',sans-serif;min-width:80px;min-height:24px;padding:2px 4px;resize:both;overflow:hidden;z-index:10;cursor:move}
+  /* editable text overlay */
+  .ekz-text-el{
+    position:absolute;
+    min-width:24px;
+    min-height:1.2em;
+    padding:2px 4px;
+    border:1.5px dashed transparent;
+    cursor:move;
+    outline:none;
+    white-space:pre-wrap;
+    line-height:1.2;
+    color:#000;
+    font-family:'Inter',sans-serif;
+  }
+  .ekz-text-el.replacing{
+    background:transparent;
+    padding:0;
+    line-height:1.15;
+    white-space:nowrap;
+    overflow:visible;
+  }
+  .ekz-cover-rect{
+    position:absolute;
+    pointer-events:none;
+  }
+  .ekz-text-el:hover, .ekz-text-el.selected{border-color:var(--ekz-blue);}
+  .ekz-text-el.selected{background:rgba(37,99,235,.04);}
 
-/* WHITEOUT */
-.whiteout-box{position:absolute;background:white;border:2px dashed #ccc;cursor:move;z-index:9}
-.whiteout-box.selected{border-color:var(--blue)}
-.whiteout-resize{position:absolute;bottom:-4px;right:-4px;width:10px;height:10px;background:var(--blue);border-radius:2px;cursor:se-resize}
+  /* detected native PDF text — click to edit in place, matching Sejda's own
+     approach of whiting-out the original glyphs and overlaying new text */
+  .ekz-native-textlayer{
+    position:absolute;top:0;left:0;width:100%;height:100%;
+    pointer-events:none; /* only individual spans below become clickable */
+  }
+  .ekz-existing-text-span{
+    position:absolute;
+    white-space:pre;
+    line-height:1;
+    color:transparent; /* the original glyphs are already painted by the canvas underneath */
+    cursor:text;
+    pointer-events:none;
+  }
+  .ekz-page.ekz-text-tool-active .ekz-existing-text-span{
+    pointer-events:auto;
+  }
+  .ekz-page.ekz-text-tool-active .ekz-existing-text-span:hover{
+    outline:1.5px dashed var(--ekz-blue);
+    background:rgba(37,99,235,.08);
+  }
+  .ekz-text-el .ekz-del-handle{
+    position:absolute;
+    top:-11px;right:-11px;
+    width:20px;height:20px;
+    background:var(--ekz-danger);
+    color:#fff;
+    border-radius:50%;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    font-size:13px;
+    cursor:pointer;
+    line-height:1;
+  }
+  .ekz-text-el.selected .ekz-del-handle{display:flex;}
 
-/* PAGE NAV */
-.page-nav{background:var(--white);border-top:1px solid var(--border);padding:8px 16px;display:flex;align-items:center;justify-content:center;gap:12px;flex-shrink:0}
-.page-nav-btn{padding:5px 12px;border:1.5px solid var(--border);border-radius:6px;background:white;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif}
-.page-nav-btn:hover{border-color:var(--blue)}
-.page-nav-btn:disabled{opacity:.4;cursor:not-allowed}
-.page-info{font-size:12px;color:var(--gray);font-weight:500}
+  /* image overlay */
+  .ekz-img-el{
+    position:absolute;
+    cursor:move;
+    border:1.5px dashed transparent;
+  }
+  .ekz-img-el img{width:100%;height:100%;display:block;pointer-events:none;}
+  .ekz-img-el:hover, .ekz-img-el.selected{border-color:var(--ekz-blue);}
+  .ekz-img-el .ekz-del-handle{
+    position:absolute;top:-11px;right:-11px;width:20px;height:20px;
+    background:var(--ekz-danger);color:#fff;border-radius:50%;
+    display:none;align-items:center;justify-content:center;font-size:13px;cursor:pointer;line-height:1;
+  }
+  .ekz-img-el.selected .ekz-del-handle{display:flex;}
+  .ekz-img-el .ekz-resize-handle{
+    position:absolute;bottom:-7px;right:-7px;width:14px;height:14px;
+    background:#fff;border:2px solid var(--ekz-blue);border-radius:3px;
+    cursor:nwse-resize;display:none;
+  }
+  .ekz-img-el.selected .ekz-resize-handle{display:block;}
+
+  .ekz-loading{
+    display:none;
+    align-items:center;
+    justify-content:center;
+    min-height:calc(100vh - 60px);
+    flex-direction:column;
+    gap:14px;
+    color:var(--ekz-gray);
+    font-size:14px;
+    font-weight:600;
+  }
+  .ekz-spinner{
+    width:34px;height:34px;
+    border:3px solid var(--ekz-border);
+    border-top-color:var(--ekz-blue);
+    border-radius:50%;
+    animation:ekzspin .8s linear infinite;
+  }
+  @keyframes ekzspin{to{transform:rotate(360deg);}}
+
+  input[type=file]{display:none;}
+
+  /* ---------- Modal (signature) ---------- */
+  .ekz-modal-backdrop{
+    display:none;
+    position:fixed;inset:0;background:rgba(15,23,42,.5);
+    z-index:200;align-items:center;justify-content:center;padding:20px;
+  }
+  .ekz-modal-backdrop.visible{display:flex;}
+  .ekz-modal{
+    background:#fff;border-radius:14px;max-width:520px;width:100%;
+    box-shadow:0 20px 60px rgba(0,0,0,.25);overflow:hidden;
+  }
+  .ekz-modal-head{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px 20px;border-bottom:1px solid var(--ekz-border);font-weight:700;font-size:15px;
+  }
+  .ekz-modal-close{background:none;border:none;font-size:22px;cursor:pointer;color:var(--ekz-gray);line-height:1;}
+  .ekz-modal-tabs{display:flex;border-bottom:1px solid var(--ekz-border);}
+  .ekz-modal-tab{
+    flex:1;padding:12px;border:none;background:none;font-family:inherit;font-weight:700;
+    font-size:13px;color:var(--ekz-gray);cursor:pointer;border-bottom:2px solid transparent;
+  }
+  .ekz-modal-tab.active{color:var(--ekz-blue);border-bottom-color:var(--ekz-blue);}
+  .ekz-modal-body{padding:24px;text-align:center;}
+  .ekz-sign-input{
+    width:100%;padding:10px 14px;border:1px solid var(--ekz-border);border-radius:8px;
+    font-family:inherit;font-size:15px;margin-bottom:16px;text-align:center;
+  }
+  .ekz-sign-preview{
+    min-height:70px;display:flex;align-items:center;justify-content:center;
+    font-size:34px;color:#000;border-bottom:2px solid var(--ekz-border);padding:10px;
+  }
+  #ekzSignCanvas{border:1px dashed var(--ekz-border);border-radius:8px;background:#fff;touch-action:none;cursor:crosshair;}
+  .ekz-modal-foot{display:flex;justify-content:flex-end;gap:10px;padding:16px 20px;border-top:1px solid var(--ekz-border);}
+
+  /* ---------- Whiteout & shape overlay elements ---------- */
+  .ekz-whiteout-el{position:absolute;background:#fff;cursor:move;border:1px dashed transparent;}
+  .ekz-whiteout-el:hover,.ekz-whiteout-el.selected{border-color:var(--ekz-blue);}
+  .ekz-shape-el{position:absolute;cursor:move;}
+  .ekz-shape-el svg{width:100%;height:100%;display:block;overflow:visible;}
+  .ekz-formfield-el{
+    position:absolute;background:rgba(37,99,235,.06);border:1.5px dashed var(--ekz-blue);
+    cursor:move;display:flex;align-items:center;padding:2px 6px;font-size:13px;color:#1D4ED8;
+  }
+  .ekz-formfield-el.checkbox, .ekz-formfield-el.radio{
+    background:#fff;border:1.5px solid #1D4ED8;justify-content:center;
+  }
+  .ekz-formfield-el.radio{border-radius:50%;}
+  .ekz-generic-del{
+    position:absolute;top:-11px;right:-11px;width:20px;height:20px;
+    background:var(--ekz-danger);color:#fff;border-radius:50%;
+    display:none;align-items:center;justify-content:center;font-size:13px;cursor:pointer;line-height:1;
+  }
+  .selected .ekz-generic-del{display:flex;}
+  .ekz-generic-resize{
+    position:absolute;bottom:-7px;right:-7px;width:14px;height:14px;
+    background:#fff;border:2px solid var(--ekz-blue);border-radius:3px;
+    cursor:nwse-resize;display:none;
+  }
+  .selected .ekz-generic-resize{display:block;}
+
+  @media (max-width:640px){
+    .ekz-editor-topbar{padding:0 12px;}
+    .ekz-editor-brand{font-size:16px;}
+    .ekz-btn{padding:8px 12px;font-size:13px;}
+    .ekz-toolbar{padding:8px 12px;}
+    .ekz-tool{min-width:54px;}
+    .ekz-upload-card h1{font-size:22px;}
+  }
 </style>
+</head>
+<body>
+
+<!-- ================= TOP BAR ================= -->
+<div class="ekz-editor-topbar">
+  <div style="display:flex;align-items:center;gap:16px;">
+    <a href="/" class="ekz-editor-brand">Ek<span class="dot">Zapp</span></a>
+    <span class="ekz-filename" id="ekzFilename"></span>
+  </div>
+  <div class="ekz-topbar-actions">
+    <button class="ekz-btn ekz-btn-ghost" id="ekzUndoBtn" title="Undo" style="display:none;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-15-6.7L3 13"/></svg>
+      Undo
+    </button>
+    <button class="ekz-btn ekz-btn-primary" id="ekzApplyBtn" style="display:none;">Apply changes</button>
+  </div>
+</div>
+
+<!-- ================= TOOLBAR (visible after upload) ================= -->
+<div class="ekz-toolbar" id="ekzToolbar" style="display:none;">
+  <button class="ekz-tool active" data-tool="text">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg>
+    Text
+  </button>
+  <button class="ekz-tool" data-tool="image">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+    Image
+  </button>
+  <div class="ekz-tool-divider"></div>
+  <button class="ekz-tool" data-tool="sign" title="Add signature">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17s2-1 4-1 3 2 5 2 3-2 5-2 4 1 4 1"/><path d="M7 14 17 4"/></svg>
+    Sign
+  </button>
+  <button class="ekz-tool" data-tool="whiteout" title="Cover part of the page">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
+    Whiteout
+  </button>
+  <button class="ekz-tool" data-tool="shape" title="Add rectangle, ellipse, line or arrow">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1"/><circle cx="17" cy="17" r="4"/></svg>
+    Shapes
+  </button>
+  <button class="ekz-tool" data-tool="forms" title="Add a fillable-looking field">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h6"/></svg>
+    Forms
+  </button>
+  <div class="ekz-tool-divider"></div>
+  <button class="ekz-tool" id="ekzZoomOut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3M8 11h6"/></svg>
+    Zoom −
+  </button>
+  <button class="ekz-tool" id="ekzZoomIn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+    Zoom +
+  </button>
+</div>
+
+<!-- ================= SUB-TOOLBAR (text formatting) ================= -->
+<div class="ekz-subtoolbar" id="ekzTextSubtoolbar">
+  <div class="ekz-subfield">
+    Font
+    <select id="ekzFontFamily">
+      <option value="Inter, sans-serif">Inter</option>
+      <option value="Georgia, serif">Georgia</option>
+      <option value="'Courier New', monospace">Courier</option>
+      <option value="'Times New Roman', serif">Times</option>
+    </select>
+  </div>
+  <div class="ekz-subfield">
+    Size
+    <input type="number" id="ekzFontSize" value="16" min="6" max="120" style="width:56px;">
+  </div>
+  <div class="ekz-subfield">
+    Color
+    <div class="ekz-color-row" id="ekzColorRow">
+      <div class="ekz-color-swatch selected" style="background:#000000" data-color="#000000"></div>
+      <div class="ekz-color-swatch" style="background:#DC2626" data-color="#DC2626"></div>
+      <div class="ekz-color-swatch" style="background:#2563EB" data-color="#2563EB"></div>
+      <div class="ekz-color-swatch" style="background:#16A34A" data-color="#16A34A"></div>
+      <div class="ekz-color-swatch" style="background:#EA580C" data-color="#EA580C"></div>
+    </div>
+  </div>
+  <div class="ekz-subfield" style="margin-left:auto;color:var(--ekz-gray);font-weight:500;">
+    Tip: click on the page to add text, drag to move
+  </div>
+</div>
+
+<!-- ================= SUB-TOOLBAR (shapes) ================= -->
+<div class="ekz-subtoolbar" id="ekzShapeSubtoolbar">
+  <div class="ekz-subfield">
+    Shape
+    <select id="ekzShapeType">
+      <option value="rectangle">Rectangle</option>
+      <option value="ellipse">Ellipse</option>
+      <option value="line">Line</option>
+      <option value="arrow">Arrow</option>
+    </select>
+  </div>
+  <div class="ekz-subfield">
+    Color
+    <div class="ekz-color-row" id="ekzShapeColorRow">
+      <div class="ekz-color-swatch selected" style="background:#000000" data-color="#000000"></div>
+      <div class="ekz-color-swatch" style="background:#DC2626" data-color="#DC2626"></div>
+      <div class="ekz-color-swatch" style="background:#2563EB" data-color="#2563EB"></div>
+      <div class="ekz-color-swatch" style="background:#16A34A" data-color="#16A34A"></div>
+    </div>
+  </div>
+  <div class="ekz-subfield">
+    Width
+    <input type="number" id="ekzShapeStroke" value="2" min="1" max="20" style="width:50px;">
+  </div>
+  <div class="ekz-subfield" style="margin-left:auto;color:var(--ekz-gray);font-weight:500;">
+    Tip: click and drag on the page to draw
+  </div>
+</div>
+
+<!-- ================= SUB-TOOLBAR (whiteout) ================= -->
+<div class="ekz-subtoolbar" id="ekzWhiteoutSubtoolbar">
+  <div class="ekz-subfield" style="color:var(--ekz-gray);font-weight:500;">
+    Click and drag on the page to cover an area with a white box. Not suitable for altering official or financial records.
+  </div>
+</div>
+
+<!-- ================= SUB-TOOLBAR (forms) ================= -->
+<div class="ekz-subtoolbar" id="ekzFormsSubtoolbar">
+  <div class="ekz-subfield">
+    Field
+    <select id="ekzFormFieldType">
+      <option value="text">Text field</option>
+      <option value="checkbox">Checkbox</option>
+      <option value="radio">Radio button</option>
+    </select>
+  </div>
+  <div class="ekz-subfield" style="margin-left:auto;color:var(--ekz-gray);font-weight:500;">
+    Tip: click on the page to place the field
+  </div>
+</div>
+
+<!-- ================= SIGNATURE MODAL ================= -->
+<div class="ekz-modal-backdrop" id="ekzSignModal">
+  <div class="ekz-modal">
+    <div class="ekz-modal-head">
+      <span>Create signature</span>
+      <button class="ekz-modal-close" id="ekzSignModalClose">&times;</button>
+    </div>
+    <div class="ekz-modal-tabs">
+      <button class="ekz-modal-tab active" data-signtab="type">Type</button>
+      <button class="ekz-modal-tab" data-signtab="draw">Draw</button>
+    </div>
+    <div class="ekz-modal-body">
+      <div id="ekzSignTypePane">
+        <input type="text" id="ekzSignTypeInput" placeholder="Your name" class="ekz-sign-input">
+        <div id="ekzSignTypePreview" class="ekz-sign-preview"></div>
+        <div class="ekz-color-row" id="ekzSignColorRow" style="justify-content:center;margin-top:12px;">
+          <div class="ekz-color-swatch selected" style="background:#000000" data-color="#000000"></div>
+          <div class="ekz-color-swatch" style="background:#1D4ED8" data-color="#1D4ED8"></div>
+          <div class="ekz-color-swatch" style="background:#1E293B" data-color="#1E293B"></div>
+        </div>
+      </div>
+      <div id="ekzSignDrawPane" style="display:none;">
+        <canvas id="ekzSignCanvas" width="440" height="160"></canvas>
+        <button class="ekz-btn ekz-btn-ghost" id="ekzSignClearBtn" style="margin-top:8px;">Clear</button>
+      </div>
+    </div>
+    <div class="ekz-modal-foot">
+      <button class="ekz-btn ekz-btn-ghost" id="ekzSignCancelBtn">Cancel</button>
+      <button class="ekz-btn ekz-btn-primary" id="ekzSignInsertBtn">Insert signature</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= UPLOAD SCREEN ================= -->
+<div id="ekzUploadWrap">
+
+  <!-- Animated gradient hero -->
+  <div class="ekz-hero">
+    <div class="ekz-hero-blob b1"></div>
+    <div class="ekz-hero-blob b2"></div>
+    <div class="ekz-hero-blob b3"></div>
+    <div class="ekz-hero-inner">
+      <span class="ekz-hero-badge">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+        100% Free &middot; No Watermark &middot; No Signup
+      </span>
+      <h1>Edit PDF Files Online, Free</h1>
+      <p class="sub">Add text, images and more, right in your browser. Upload a file below to get started.</p>
+    </div>
+  </div>
+
+  <div class="ekz-upload-wrap">
+  <div class="ekz-upload-card">
+    <div class="ekz-dropzone" id="ekzDropzone">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 15V3m0 0 4 4m-4-4L8 7"/><path d="M20 15v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-4"/></svg>
+      <div class="primary-txt">Click to upload or drag & drop</div>
+      <div class="secondary-txt">PDF files up to 50 MB</div>
+      <input type="file" id="ekzFileInput" accept="application/pdf">
+    </div>
+    <div class="ekz-privacy-note">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      Files processed securely and deleted automatically
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- ================= LOADING ================= -->
+<div class="ekz-loading" id="ekzLoading">
+  <div class="ekz-spinner"></div>
+  <div id="ekzLoadingText">Loading your PDF...</div>
+</div>
+
+<!-- ================= WORKSPACE (PDF pages render here) ================= -->
+<div class="ekz-workspace" id="ekzWorkspace">
+  <div class="ekz-page-stack" id="ekzPageStack"></div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+  // ---------- State ----------
+  const state = {
+    pdfDoc: null,
+    originalBytes: null,     // raw uploaded PDF bytes, kept for the Apply step
+    scale: 1.4,               // fixed render scale = 1 CSS px == (1/scale) PDF points
+    zoom: 1,                  // visual zoom only (CSS transform), does not affect coordinate math
+    activeTool: 'text',
+    selectedEl: null,
+    currentFont: { family: "Inter, sans-serif", size: 16, color: "#000000" },
+    currentShape: { type: 'rectangle', color: '#000000', stroke: 2 },
+    currentFormField: 'text',
+    pendingSignatureTarget: null // {overlay, pageIndex, x, y} set right before opening modal
+  };
+
+  // ---------- DOM refs ----------
+  const $ = (sel) => document.querySelector(sel);
+  const dropzone = $('#ekzDropzone');
+  const fileInput = $('#ekzFileInput');
+  const uploadWrap = $('#ekzUploadWrap');
+  const loadingEl = $('#ekzLoading');
+  const loadingText = $('#ekzLoadingText');
+  const workspace = $('#ekzWorkspace');
+  const pageStack = $('#ekzPageStack');
+  const toolbar = $('#ekzToolbar');
+  const textSubtoolbar = $('#ekzTextSubtoolbar');
+  const shapeSubtoolbar = $('#ekzShapeSubtoolbar');
+  const whiteoutSubtoolbar = $('#ekzWhiteoutSubtoolbar');
+  const formsSubtoolbar = $('#ekzFormsSubtoolbar');
+  const applyBtn = $('#ekzApplyBtn');
+  const undoBtn = $('#ekzUndoBtn');
+  const filenameLabel = $('#ekzFilename');
+
+  const ALL_SUBTOOLBARS = [textSubtoolbar, shapeSubtoolbar, whiteoutSubtoolbar, formsSubtoolbar];
+
+  // ================================================================
+  // Upload
+  // ================================================================
+  dropzone.addEventListener('click', () => fileInput.click());
+  ['dragenter','dragover'].forEach(evt =>
+    dropzone.addEventListener(evt, e => { e.preventDefault(); dropzone.classList.add('dragover'); })
+  );
+  ['dragleave','drop'].forEach(evt =>
+    dropzone.addEventListener(evt, e => { e.preventDefault(); dropzone.classList.remove('dragover'); })
+  );
+  dropzone.addEventListener('drop', e => {
+    const f = e.dataTransfer.files[0];
+    if (f) handleFile(f);
+  });
+  fileInput.addEventListener('change', e => {
+    const f = e.target.files[0];
+    if (f) handleFile(f);
+  });
+
+  function handleFile(file){
+    if (file.type !== 'application/pdf'){
+      alert('Please upload a PDF file.');
+      return;
+    }
+    filenameLabel.textContent = file.name;
+    filenameLabel.style.display = 'block';
+    uploadWrap.style.display = 'none';
+    loadingEl.style.display = 'flex';
+
+    const reader = new FileReader();
+    reader.onload = function(ev){
+      state.originalBytes = ev.target.result; // ArrayBuffer, kept for Apply
+      const typedArray = new Uint8Array(state.originalBytes.slice(0));
+      pdfjsLib.getDocument({ data: typedArray }).promise.then(pdf => {
+        state.pdfDoc = pdf;
+        renderAllPages(pdf);
+      }).catch(err => {
+        console.error(err);
+        loadingText.textContent = 'Could not load this PDF. Please try another file.';
+      });
+    };
+    reader.readAsArrayBuffer(file);
+  }
+
+  // ================================================================
+  // Render pages (only called once per file — zoom no longer re-renders,
+  // so edits are never lost when the user zooms in/out)
+  // ================================================================
+  function renderAllPages(pdf){
+    pageStack.innerHTML = '';
+    const renderPromises = [];
+    for (let i = 1; i <= pdf.numPages; i++){
+      renderPromises.push(renderPage(pdf, i));
+    }
+    Promise.all(renderPromises).then(() => {
+      loadingEl.style.display = 'none';
+      workspace.style.display = 'block';
+      toolbar.style.display = 'flex';
+      applyBtn.style.display = 'inline-flex';
+      setActiveTool('text');
+    });
+  }
+
+  function renderPage(pdf, pageNum){
+    return pdf.getPage(pageNum).then(page => {
+      const viewport = page.getViewport({ scale: state.scale });
+      const pageWrap = document.createElement('div');
+      pageWrap.className = 'ekz-page';
+      pageWrap.dataset.pageIndex = pageNum - 1;
+      pageWrap.style.width = viewport.width + 'px';
+      pageWrap.style.height = viewport.height + 'px';
+
+      const canvas = document.createElement('canvas');
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      pageWrap.appendChild(canvas);
+
+      const overlay = document.createElement('div');
+      overlay.className = 'ekz-overlay';
+      overlay.style.position = 'absolute';
+      overlay.style.top = 0;
+      overlay.style.left = 0;
+      overlay.style.width = '100%';
+      overlay.style.height = '100%';
+      pageWrap.appendChild(overlay);
+
+      const numLabel = document.createElement('div');
+      numLabel.className = 'ekz-page-num';
+      numLabel.textContent = 'Page ' + pageNum + ' of ' + state.pdfDoc.numPages;
+      pageWrap.appendChild(numLabel);
+
+      pageStack.appendChild(pageWrap);
+
+      attachOverlayHandlers(overlay, pageNum - 1, pageWrap);
+
+      const ctx = canvas.getContext('2d');
+      return page.render({ canvasContext: ctx, viewport: viewport }).promise.then(() => {
+        return buildNativeTextLayer(page, viewport, pageWrap, overlay, pageNum - 1, canvas);
+      });
+    });
+  }
+
+  // ================================================================
+  // Native PDF text layer — detects text already in the document
+  // (via pdf.js getTextContent) and makes each run of text clickable
+  // so it can be edited "in place", the same way Sejda's editor works:
+  // the original glyphs stay painted on the canvas underneath, and
+  // editing a span whites out that exact spot before drawing the new
+  // text over it (see the Apply step / backend for the whiteout+redraw).
+  //
+  // Limitation: only works on text-based PDFs. Scanned/image-only PDFs
+  // have no text content to detect, so this layer will simply be empty
+  // on those pages — use the plain Text tool to add new text instead.
+  // ================================================================
+
+  // Baseline-to-top offset as a fraction of the font's em-square. pdf.js
+  // itself falls back to ~0.8 when a font's real ascent metric isn't
+  // available, which is what we use here too — using the FULL font height
+  // (ratio 1.0) overshoots and makes the detected box sit visibly above
+  // the actual glyphs.
+  const TEXT_ASCENT_RATIO = 0.8;
+
+  function buildNativeTextLayer(page, viewport, pageWrap, overlay, pageIndex, canvas){
+    return page.getTextContent().then(textContent => {
+      const layer = document.createElement('div');
+      layer.className = 'ekz-native-textlayer';
+      pageWrap.appendChild(layer);
+
+      const ctx = canvas.getContext('2d');
+
+      textContent.items.forEach((item, idx) => {
+        const str = item.str;
+        if (!str || !str.trim()) return;
+
+        // Standard pdf.js positioning math: combine the item's own text
+        // matrix with the page viewport transform to get final on-canvas
+        // coordinates, then derive the rendered font size from the
+        // transformed matrix's scale component.
+        const tx = pdfjsLib.Util.transform(viewport.transform, item.transform);
+        const fontHeightPx = Math.hypot(tx[2], tx[3]);
+        const leftPx = tx[4];
+        const topPx = tx[5] - (fontHeightPx * TEXT_ASCENT_RATIO);
+        const widthPx = (item.width || 0) * state.scale;
+        const boxHeightPx = fontHeightPx * 1.3; // buffer for descenders + antialiased edges
+
+        // Coverage box is padded slightly beyond the raw text metrics so
+        // anti-aliased glyph edges don't peek out around the replacement —
+        // kept separate from left/top/width above, which stay tight for
+        // accurate click detection.
+        const coverPad = 2;
+        const coverLeft = leftPx - coverPad;
+        const coverTop = topPx - coverPad;
+        const coverWidth = Math.max(widthPx, 4) + coverPad * 2;
+        const coverHeight = boxHeightPx + coverPad * 2;
+
+        const origColor = sampleTextColor(ctx, leftPx, topPx, Math.max(widthPx, 4), boxHeightPx);
+        const bgColor = sampleBackgroundColor(ctx, leftPx, topPx, Math.max(widthPx, 4), boxHeightPx);
+
+        const span = document.createElement('span');
+        span.className = 'ekz-existing-text-span';
+        span.textContent = str;
+        span.style.left = leftPx + 'px';
+        span.style.top = topPx + 'px';
+        span.style.fontSize = fontHeightPx + 'px';
+        span.style.minWidth = Math.max(widthPx, 4) + 'px';
+        span.dataset.origText = str;
+        // Cover box — generous, used only for the whiteout patch underneath.
+        span.dataset.coverLeft = coverLeft;
+        span.dataset.coverTop = coverTop;
+        span.dataset.coverWidth = coverWidth;
+        span.dataset.coverHeight = coverHeight;
+        // Tight box — matches exactly how brand-new text is positioned
+        // (same baseline formula), used for the actual visible text so it
+        // lines up with the rest of the row instead of drifting from
+        // being centered inside the larger cover box.
+        span.dataset.textLeft = leftPx;
+        span.dataset.textTop = topPx;
+        span.dataset.textFontSize = fontHeightPx;
+        span.dataset.origColor = origColor;
+        span.dataset.bgColor = bgColor;
+
+        span.addEventListener('mousedown', (e) => {
+          if (state.activeTool !== 'text') return;
+          e.stopPropagation();
+          e.preventDefault();
+          enterInlineEditMode(span, overlay, pageIndex);
+        });
+
+        layer.appendChild(span);
+      });
+    }).catch(err => {
+      // Text content extraction failing shouldn't block the page from
+      // working — the user can still use the regular Text tool.
+      console.warn('Could not build native text layer for page', pageIndex, err);
+    });
+  }
+
+  // Estimate a text run's real color by sampling rendered canvas pixels
+  // inside its bounding box and picking the most "ink-like" one (furthest
+  // from white). getTextContent() doesn't expose color directly, so this
+  // is a practical approximation rather than an exact read of the PDF's
+  // fill color — works well for solid-colored text on a plain background.
+  function sampleTextColor(ctx, leftPx, topPx, widthPx, heightPx){
+    const canvas = ctx.canvas;
+    const x0 = Math.max(0, Math.floor(leftPx));
+    const y0 = Math.max(0, Math.floor(topPx));
+    const w = Math.max(1, Math.min(Math.ceil(widthPx), canvas.width - x0));
+    const h = Math.max(1, Math.min(Math.ceil(heightPx), canvas.height - y0));
+    if (w < 1 || h < 1) return '#000000';
+
+    let imageData;
+    try {
+      imageData = ctx.getImageData(x0, y0, w, h).data;
+    } catch (e){
+      return '#000000'; // canvas may be tainted in rare cross-origin edge cases
+    }
+
+    let best = null, bestScore = -1;
+    const step = 4 * Math.max(1, Math.floor((w * h) / 400)); // cap sample count for speed
+    for (let i = 0; i < imageData.length; i += step){
+      const r = imageData[i], g = imageData[i + 1], b = imageData[i + 2], a = imageData[i + 3];
+      if (a < 128) continue;
+      const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
+      const distFromWhite = 255 - luminance; // higher = more "ink-like"
+      if (distFromWhite > bestScore){
+        bestScore = distFromWhite;
+        best = [r, g, b];
+      }
+    }
+    if (!best || bestScore < 25) return '#000000'; // nothing dark enough found — assume plain black text
+    return '#' + best.map(v => v.toString(16).padStart(2, '0')).join('');
+  }
+
+  // Estimate the PAGE background around a text run (not the text itself) by
+  // sampling a ring of points just outside its bounding box and picking the
+  // lightest one found. Many documents use colored card/section backgrounds
+  // instead of plain white (like a cream or light-blue panel) — using a
+  // hardcoded white box to cover edited text looks like a visible patch on
+  // anything but a pure-white page, so this makes the cover blend in.
+  function sampleBackgroundColor(ctx, leftPx, topPx, widthPx, heightPx){
+    const canvas = ctx.canvas;
+    const margin = 5;
+    const candidates = [
+      [leftPx - margin, topPx - margin],                          // top-left
+      [leftPx + widthPx + margin, topPx - margin],                // top-right
+      [leftPx - margin, topPx + heightPx + margin],                // bottom-left
+      [leftPx + widthPx / 2, topPx - margin],                      // top-center
+      [leftPx + widthPx / 2, topPx + heightPx + margin]            // bottom-center
+    ];
+
+    let best = null, bestLuminance = -1;
+    for (const [cx, cy] of candidates){
+      const x = Math.round(Math.max(0, Math.min(cx, canvas.width - 1)));
+      const y = Math.round(Math.max(0, Math.min(cy, canvas.height - 1)));
+      let pixel;
+      try {
+        pixel = ctx.getImageData(x, y, 1, 1).data;
+      } catch (e){
+        continue;
+      }
+      const [r, g, b, a] = pixel;
+      if (a < 128) continue;
+      const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
+      // Prefer the lightest sample — background is almost always lighter
+      // than text ink, so this naturally avoids accidentally picking up
+      // a neighbouring character.
+      if (luminance > bestLuminance){
+        bestLuminance = luminance;
+        best = [r, g, b];
+      }
+    }
+    if (!best) return '#ffffff';
+    return '#' + best.map(v => v.toString(16).padStart(2, '0')).join('');
+  }
+
+  // ================================================================
+  // Tool switching
+  // ================================================================
+  document.querySelectorAll('.ekz-tool[data-tool]').forEach(btn => {
+    btn.addEventListener('click', () => setActiveTool(btn.dataset.tool));
+  });
+
+  function setActiveTool(tool){
+    state.activeTool = tool;
+    document.querySelectorAll('.ekz-tool[data-tool]').forEach(b =>
+      b.classList.toggle('active', b.dataset.tool === tool)
+    );
+    ALL_SUBTOOLBARS.forEach(bar => bar.classList.remove('visible'));
+    if (tool === 'text') textSubtoolbar.classList.add('visible');
+    if (tool === 'shape') shapeSubtoolbar.classList.add('visible');
+    if (tool === 'whiteout') whiteoutSubtoolbar.classList.add('visible');
+    if (tool === 'forms') formsSubtoolbar.classList.add('visible');
+    deselectAll();
+
+    document.querySelectorAll('.ekz-page').forEach(p =>
+      p.classList.toggle('ekz-text-tool-active', tool === 'text')
+    );
+
+    if (tool === 'image') promptImageUpload();
+  }
+
+
+  // ================================================================
+  // Overlay click / drag-to-draw dispatcher
+  // A single mousedown-move-up cycle on the overlay handles:
+  //  - text: click = place text box
+  //  - whiteout / shape / forms(none, click only): drag = draw rectangle-ish element
+  // ================================================================
+  // Finds the closest still-visible detected text span to a click point,
+  // within `thresholdPx` of its bounding box edge (0 if the click was
+  // already inside it). Used to forgive slightly-off clicks on small,
+  // densely-packed table text.
+  function findNearestTextSpan(pageWrap, x, y, thresholdPx){
+    const layer = pageWrap.querySelector('.ekz-native-textlayer');
+    if (!layer) return null;
+
+    let best = null, bestDist = Infinity;
+    layer.querySelectorAll('.ekz-existing-text-span').forEach(span => {
+      if (span.style.display === 'none') return; // already being edited
+      const left = parseFloat(span.style.left) || 0;
+      const top = parseFloat(span.style.top) || 0;
+      const width = parseFloat(span.style.minWidth) || span.offsetWidth || 0;
+      const height = parseFloat(span.style.fontSize) || 10;
+
+      const dx = Math.max(left - x, 0, x - (left + width));
+      const dy = Math.max(top - y, 0, y - (top + height));
+      const dist = Math.hypot(dx, dy);
+
+      if (dist < bestDist){
+        bestDist = dist;
+        best = span;
+      }
+    });
+    return bestDist <= thresholdPx ? best : null;
+  }
+
+  function attachOverlayHandlers(overlay, pageIndex, pageWrap){
+    let dragStart = null;
+    let previewEl = null;
+
+    overlay.addEventListener('mousedown', (e) => {
+      if (e.target !== overlay) return; // ignore clicks landing on existing elements
+      const rect = overlay.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / state.zoom;
+      const y = (e.clientY - rect.top) / state.zoom;
+
+      if (state.activeTool === 'text'){
+        // Dense tables often have small fonts with a tight/thin click
+        // target — if the click landed just outside a detected text run
+        // rather than dead-center on empty space, treat it as "meant to
+        // edit that text" instead of dropping a stray new text box that
+        // won't match size/position (this was the cause of mismatched
+        // font-size boxes appearing next to correctly-edited ones).
+        const nearSpan = findNearestTextSpan(pageWrap, x, y, 6);
+        if (nearSpan){
+          e.preventDefault(); // stop the browser from also placing a native caret from this same click
+          enterInlineEditMode(nearSpan, overlay, pageIndex);
+          return;
+        }
+        createTextElement(overlay, pageIndex, x, y, '');
+        return;
+      }
+      if (state.activeTool === 'forms'){
+        createFormFieldElement(overlay, pageIndex, x, y);
+        return;
+      }
+      if (state.activeTool === 'sign'){
+        openSignatureModal(overlay, pageIndex, x, y);
+        return;
+      }
+      if (state.activeTool === 'whiteout' || state.activeTool === 'shape'){
+        dragStart = { x, y };
+        previewEl = document.createElement('div');
+        previewEl.style.position = 'absolute';
+        previewEl.style.left = x + 'px';
+        previewEl.style.top = y + 'px';
+        previewEl.style.border = '1.5px dashed #2563EB';
+        previewEl.style.background = state.activeTool === 'whiteout' ? 'rgba(255,255,255,.6)' : 'rgba(37,99,235,.08)';
+        overlay.appendChild(previewEl);
+      }
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!dragStart || !previewEl) return;
+      const rect = overlay.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / state.zoom;
+      const y = (e.clientY - rect.top) / state.zoom;
+      const left = Math.min(x, dragStart.x);
+      const top = Math.min(y, dragStart.y);
+      const w = Math.abs(x - dragStart.x);
+      const h = Math.abs(y - dragStart.y);
+      previewEl.style.left = left + 'px';
+      previewEl.style.top = top + 'px';
+      previewEl.style.width = w + 'px';
+      previewEl.style.height = h + 'px';
+    });
+
+    document.addEventListener('mouseup', (e) => {
+      if (!dragStart || !previewEl) return;
+      const finalLeft = parseFloat(previewEl.style.left) || 0;
+      const finalTop = parseFloat(previewEl.style.top) || 0;
+      const finalW = parseFloat(previewEl.style.width) || 0;
+      const finalH = parseFloat(previewEl.style.height) || 0;
+      previewEl.remove();
+      previewEl = null;
+      dragStart = null;
+
+      if (finalW < 6 || finalH < 6) return; // treat as accidental click, ignore
+
+      if (state.activeTool === 'whiteout'){
+        createWhiteoutElement(overlay, pageIndex, finalLeft, finalTop, finalW, finalH);
+      } else if (state.activeTool === 'shape'){
+        createShapeElement(overlay, pageIndex, finalLeft, finalTop, finalW, finalH);
+      }
+    });
+  }
+
+  // ================================================================
+  // Generic delete / resize handle builders (shared by every element type)
+  // ================================================================
+  function addDeleteHandle(el){
+    const h = document.createElement('div');
+    h.className = 'ekz-generic-del';
+    h.innerHTML = '&times;';
+    h.addEventListener('click', (ev) => { ev.stopPropagation(); el.remove(); pushHistory(); });
+    el.appendChild(h);
+    return h;
+  }
+  function addResizeHandle(el, opts){
+    const h = document.createElement('div');
+    h.className = 'ekz-generic-resize';
+    el.appendChild(h);
+    makeResizable(el, h, opts);
+    return h;
+  }
+
+  // ================================================================
+  // TEXT TOOL
+  // ================================================================
+  function createTextElement(overlay, pageIndex, x, y, initialText, replaceBox){
+    const el = document.createElement('div');
+    el.className = 'ekz-text-el';
+    el.contentEditable = 'true';
+    el.style.left = x + 'px';
+    el.style.top = y + 'px';
+    el.style.fontFamily = state.currentFont.family;
+    el.style.fontSize = state.currentFont.size + 'px';
+    el.style.color = state.currentFont.color;
+    el.textContent = initialText || '';
+    el.dataset.pageIndex = pageIndex;
+    el.dataset.editType = 'text';
+
+    if (replaceBox){
+      // This box is replacing an existing PDF text run — mark it so the
+      // backend whites out the ORIGINAL glyph area first, then draws the
+      // new text. Position/size here matches exactly how brand-new text
+      // is placed (tight, baseline-based) so it lines up with untouched
+      // text in the same row — the actual erase/cover patch is a
+      // SEPARATE element behind this one (see enterInlineEditMode),
+      // sized more generously so it fully hides the old glyphs without
+      // dragging the visible text's alignment along with it.
+      el.dataset.editType = 'text-replace';
+      el.dataset.origLeft = replaceBox.coverLeft;
+      el.dataset.origTop = replaceBox.coverTop;
+      el.dataset.origWidth = replaceBox.coverWidth;
+      el.dataset.origHeight = replaceBox.coverHeight;
+      el.classList.add('replacing');
+      el.style.fontSize = replaceBox.fontSize + 'px';
+      el.style.color = replaceBox.color || '#000000'; // sampled from the original glyphs, not the editor's default
+      el.style.backgroundColor = 'transparent'; // the cover rect underneath handles the erase, not this element
+      el.dataset.bgColor = replaceBox.bgColor || '#ffffff';
+    }
+
+    addDeleteHandle(el);
+    overlay.appendChild(el);
+    makeDraggable(el, overlay);
+
+    let wasModified = false;
+    el.addEventListener('input', () => { wasModified = true; });
+
+    el.addEventListener('mousedown', () => selectElement(el));
+    el.addEventListener('focus', () => selectElement(el));
+    el.addEventListener('blur', () => {
+      const isReplace = el.dataset.editType === 'text-replace';
+      const isEmpty = el.textContent.trim() === '';
+
+      if (isEmpty && !isReplace){
+        el.remove(); // a brand-new empty text box — nothing to keep
+      } else if (isEmpty && isReplace && !wasModified){
+        // The user entered edit mode (maybe via the nearby-click tolerance
+        // catching a stray/whitespace text run) but never actually typed
+        // or deleted anything — treat this as an accidental trigger and
+        // fully cancel it rather than leaving an empty erased patch.
+        if (replaceBox && typeof replaceBox.onCancel === 'function'){
+          replaceBox.onCancel();
+        }
+        el.remove();
+      }
+      // Otherwise (isReplace && isEmpty && wasModified): the user
+      // deliberately cleared the text — keep the box so the original
+      // stays erased on Apply.
+      pushHistory();
+    });
+
+    selectElement(el);
+
+    function placeCaretAtEnd(){
+      const range = document.createRange();
+      range.selectNodeContents(el);
+      range.collapse(false);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+
+    if (initialText){
+      // The element didn't exist yet when the originating mousedown fired,
+      // so el.focus() below happens mid-click — the browser still has a
+      // pending mouseup for this same click, and by the time it fires,
+      // 'el' is sitting right under the cursor. Its default behavior is to
+      // drop the caret at the click's on-screen position, which overrides
+      // anything we set beforehand and is why typed characters were
+      // landing mid-word instead of at the end. Catching that ONE mouseup
+      // in the capture phase and preventing its default fixes it at the
+      // source, rather than racing it with a timer.
+      const suppressNativeCaret = (e) => {
+        e.preventDefault();
+        document.removeEventListener('mouseup', suppressNativeCaret, true);
+      };
+      document.addEventListener('mouseup', suppressNativeCaret, true);
+    }
+
+    el.focus();
+    if (initialText){
+      placeCaretAtEnd();
+      // Safety net in case the mouseup already slipped through (e.g. this
+      // box was created from something other than a live mouse click).
+      setTimeout(() => {
+        if (document.activeElement === el) placeCaretAtEnd();
+      }, 0);
+    }
+    pushHistory();
+    return el;
+  }
+
+  // Turn a detected native-text span into an editable "text-replace" box
+  // at the same position/size, pre-filled with the original text.
+  function enterInlineEditMode(span, overlay, pageIndex){
+    const coverLeft = parseFloat(span.dataset.coverLeft);
+    const coverTop = parseFloat(span.dataset.coverTop);
+    const coverWidth = parseFloat(span.dataset.coverWidth);
+    const coverHeight = parseFloat(span.dataset.coverHeight);
+    const bgColor = span.dataset.bgColor || '#ffffff';
+
+    const replaceBox = {
+      coverLeft, coverTop, coverWidth, coverHeight,
+      fontSize: parseFloat(span.dataset.textFontSize),
+      color: span.dataset.origColor || '#000000',
+      bgColor
+    };
+    const textLeft = parseFloat(span.dataset.textLeft);
+    const textTop = parseFloat(span.dataset.textTop);
+    const originalText = span.dataset.origText;
+
+    // Hide the native span so its (invisible but still selectable-by-browser)
+    // text doesn't sit underneath the new editable box.
+    span.style.display = 'none';
+
+    // The erase/cover patch — sized generously so old glyph edges never
+    // peek out, but otherwise not involved in the visible text's own
+    // position or line alignment.
+    const coverRect = document.createElement('div');
+    coverRect.className = 'ekz-cover-rect';
+    coverRect.style.left = coverLeft + 'px';
+    coverRect.style.top = coverTop + 'px';
+    coverRect.style.width = coverWidth + 'px';
+    coverRect.style.height = coverHeight + 'px';
+    coverRect.style.backgroundColor = bgColor;
+    overlay.appendChild(coverRect);
+
+    // Shared cleanup for "undo this edit" — used both by the delete (×)
+    // handle and by the auto-cancel path when a box was opened but never
+    // actually typed into (see the blur handler in createTextElement).
+    replaceBox.onCancel = () => {
+      span.style.display = '';
+      coverRect.remove();
+    };
+
+    const el = createTextElement(
+      overlay,
+      pageIndex,
+      textLeft,
+      textTop,
+      originalText,
+      replaceBox
+    );
+
+    // If the user hits the delete (×) handle on a text-replace box, treat
+    // that as "cancel this edit" — bring the original text back and
+    // remove the cover patch, rather than leaving a blank white patch
+    // with nothing on it.
+    const delHandle = el.querySelector('.ekz-generic-del');
+    if (delHandle){
+      delHandle.addEventListener('click', () => replaceBox.onCancel());
+    }
+  }
+
+  function selectElement(el){
+    deselectAll();
+    el.classList.add('selected');
+    state.selectedEl = el;
+  }
+  function deselectAll(){
+    document.querySelectorAll('.selected').forEach(e => e.classList.remove('selected'));
+    state.selectedEl = null;
+  }
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('[data-page-index], .ekz-text-el, .ekz-img-el, .ekz-shape-el, .ekz-whiteout-el, .ekz-formfield-el')){
+      deselectAll();
+    }
+  });
+
+  $('#ekzFontFamily').addEventListener('change', (e) => {
+    state.currentFont.family = e.target.value;
+    if (state.selectedEl && state.selectedEl.classList.contains('ekz-text-el')){
+      state.selectedEl.style.fontFamily = e.target.value;
+    }
+  });
+  $('#ekzFontSize').addEventListener('input', (e) => {
+    state.currentFont.size = parseInt(e.target.value || '16', 10);
+    if (state.selectedEl && state.selectedEl.classList.contains('ekz-text-el')){
+      state.selectedEl.style.fontSize = state.currentFont.size + 'px';
+    }
+  });
+  $('#ekzColorRow').addEventListener('click', (e) => {
+    const sw = e.target.closest('.ekz-color-swatch');
+    if (!sw) return;
+    $('#ekzColorRow').querySelectorAll('.ekz-color-swatch').forEach(s => s.classList.remove('selected'));
+    sw.classList.add('selected');
+    state.currentFont.color = sw.dataset.color;
+    if (state.selectedEl && state.selectedEl.classList.contains('ekz-text-el')){
+      state.selectedEl.style.color = sw.dataset.color;
+    }
+  });
+
+  // ================================================================
+  // IMAGE TOOL
+  // ================================================================
+  function promptImageUpload(){
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/png,image/jpeg,image/webp';
+    input.addEventListener('change', () => {
+      const file = input.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev) => placeImageOnFirstVisiblePage(ev.target.result);
+      reader.readAsDataURL(file);
+    });
+    input.click();
+  }
+
+  function getFirstVisiblePage(){
+    const pages = document.querySelectorAll('.ekz-page');
+    for (const p of pages){
+      const r = p.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) return p;
+    }
+    return pages[0];
+  }
+
+  function placeImageOnFirstVisiblePage(dataUrl){
+    const target = getFirstVisiblePage();
+    const overlay = target.querySelector('.ekz-overlay');
+    const pageIndex = parseInt(target.dataset.pageIndex, 10);
+    placeImageAt(overlay, pageIndex, dataUrl, 40, 40, 'image');
+  }
+
+  function placeImageAt(overlay, pageIndex, dataUrl, left, top, editType){
+    const img = new Image();
+    img.onload = () => {
+      const maxW = 180;
+      const ratio = img.naturalHeight / img.naturalWidth;
+      const w = Math.min(maxW, img.naturalWidth);
+      const h = w * ratio;
+
+      const el = document.createElement('div');
+      el.className = 'ekz-img-el';
+      el.style.left = left + 'px';
+      el.style.top = top + 'px';
+      el.style.width = w + 'px';
+      el.style.height = h + 'px';
+      el.dataset.pageIndex = pageIndex;
+      el.dataset.editType = editType || 'image';
+      el.dataset.dataUrl = dataUrl;
+
+      const imgTag = document.createElement('img');
+      imgTag.src = dataUrl;
+      el.appendChild(imgTag);
+
+      addDeleteHandle(el);
+      addResizeHandle(el, { lockAspect: true });
+
+      overlay.appendChild(el);
+      makeDraggable(el, overlay);
+      el.addEventListener('mousedown', (e) => {
+        if (e.target.classList.contains('ekz-generic-resize')) return;
+        selectElement(el);
+      });
+      selectElement(el);
+      pushHistory();
+    };
+    img.src = dataUrl;
+  }
+
+  // ================================================================
+  // WHITEOUT TOOL
+  // ================================================================
+  function createWhiteoutElement(overlay, pageIndex, left, top, w, h){
+    const el = document.createElement('div');
+    el.className = 'ekz-whiteout-el';
+    el.style.left = left + 'px';
+    el.style.top = top + 'px';
+    el.style.width = w + 'px';
+    el.style.height = h + 'px';
+    el.dataset.pageIndex = pageIndex;
+    el.dataset.editType = 'whiteout';
+
+    addDeleteHandle(el);
+    addResizeHandle(el, { lockAspect: false });
+    overlay.appendChild(el);
+    makeDraggable(el, overlay);
+    el.addEventListener('mousedown', (e) => {
+      if (e.target.classList.contains('ekz-generic-resize')) return;
+      selectElement(el);
+    });
+    selectElement(el);
+    pushHistory();
+  }
+
+  // ================================================================
+  // SHAPE TOOL
+  // ================================================================
+  $('#ekzShapeType').addEventListener('change', e => state.currentShape.type = e.target.value);
+  $('#ekzShapeStroke').addEventListener('input', e => state.currentShape.stroke = parseInt(e.target.value || '2', 10));
+  $('#ekzShapeColorRow').addEventListener('click', (e) => {
+    const sw = e.target.closest('.ekz-color-swatch');
+    if (!sw) return;
+    $('#ekzShapeColorRow').querySelectorAll('.ekz-color-swatch').forEach(s => s.classList.remove('selected'));
+    sw.classList.add('selected');
+    state.currentShape.color = sw.dataset.color;
+  });
+
+  function shapeSvgMarkup(type, w, h, color, stroke){
+    const s = stroke;
+    if (type === 'rectangle'){
+      return `<rect x="${s/2}" y="${s/2}" width="${Math.max(1,w-s)}" height="${Math.max(1,h-s)}" fill="none" stroke="${color}" stroke-width="${s}"/>`;
+    }
+    if (type === 'ellipse'){
+      return `<ellipse cx="${w/2}" cy="${h/2}" rx="${Math.max(1,w/2-s/2)}" ry="${Math.max(1,h/2-s/2)}" fill="none" stroke="${color}" stroke-width="${s}"/>`;
+    }
+    if (type === 'line'){
+      return `<line x1="0" y1="${h/2}" x2="${w}" y2="${h/2}" stroke="${color}" stroke-width="${s}"/>`;
+    }
+    if (type === 'arrow'){
+      const y = h/2;
+      return `<line x1="0" y1="${y}" x2="${w-10}" y2="${y}" stroke="${color}" stroke-width="${s}"/>
+              <path d="M${w-14} ${y-8} L${w} ${y} L${w-14} ${y+8} Z" fill="${color}"/>`;
+    }
+    return '';
+  }
+
+  function createShapeElement(overlay, pageIndex, left, top, w, h){
+    const type = state.currentShape.type;
+    const color = state.currentShape.color;
+    const stroke = state.currentShape.stroke;
+
+    const el = document.createElement('div');
+    el.className = 'ekz-shape-el';
+    el.style.left = left + 'px';
+    el.style.top = top + 'px';
+    el.style.width = w + 'px';
+    el.style.height = h + 'px';
+    el.dataset.pageIndex = pageIndex;
+    el.dataset.editType = 'shape';
+    el.dataset.shapeType = type;
+    el.dataset.shapeColor = color;
+    el.dataset.shapeStroke = stroke;
+
+    el.innerHTML = `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">${shapeSvgMarkup(type, w, h, color, stroke)}</svg>`;
+
+    addDeleteHandle(el);
+    addResizeHandle(el, { lockAspect: false, onResize: (newW, newH) => {
+      el.dataset.width = newW; el.dataset.height = newH;
+      el.querySelector('svg').setAttribute('viewBox', `0 0 ${newW} ${newH}`);
+      el.querySelector('svg').innerHTML = shapeSvgMarkup(type, newW, newH, color, stroke);
+    }});
+    overlay.appendChild(el);
+    makeDraggable(el, overlay);
+    el.addEventListener('mousedown', (e) => {
+      if (e.target.classList.contains('ekz-generic-resize')) return;
+      selectElement(el);
+    });
+    selectElement(el);
+    pushHistory();
+  }
+
+  // ================================================================
+  // FORMS TOOL (visual fields — flattened as styled text/marks on Apply;
+  // see the note in the FAQ about full interactive AcroForm fields)
+  // ================================================================
+  $('#ekzFormFieldType').addEventListener('change', e => state.currentFormField = e.target.value);
+
+  function createFormFieldElement(overlay, pageIndex, x, y){
+    const kind = state.currentFormField;
+    const el = document.createElement('div');
+    el.className = 'ekz-formfield-el ' + kind;
+    el.dataset.pageIndex = pageIndex;
+    el.dataset.editType = 'formfield';
+    el.dataset.fieldKind = kind;
+    el.style.left = x + 'px';
+    el.style.top = y + 'px';
+
+    if (kind === 'text'){
+      el.style.width = '160px';
+      el.style.height = '28px';
+      el.contentEditable = 'true';
+      el.dataset.fieldValue = '';
+      el.addEventListener('input', () => { el.dataset.fieldValue = el.textContent; });
+    } else if (kind === 'checkbox'){
+      el.style.width = '20px';
+      el.style.height = '20px';
+      el.textContent = '';
+      el.dataset.checked = 'false';
+      el.addEventListener('click', (e) => {
+        if (e.target.classList.contains('ekz-generic-del')) return;
+        const checked = el.dataset.checked === 'true';
+        el.dataset.checked = (!checked).toString();
+        el.textContent = !checked ? '✕' : '';
+      });
+    } else { // radio
+      el.style.width = '18px';
+      el.style.height = '18px';
+      el.dataset.checked = 'false';
+      el.addEventListener('click', (e) => {
+        if (e.target.classList.contains('ekz-generic-del')) return;
+        const checked = el.dataset.checked === 'true';
+        el.dataset.checked = (!checked).toString();
+        el.style.background = !checked ? '#1D4ED8' : '#fff';
+      });
+    }
+
+    addDeleteHandle(el);
+    if (kind === 'text') addResizeHandle(el, { lockAspect: false });
+    overlay.appendChild(el);
+    makeDraggable(el, overlay);
+    el.addEventListener('mousedown', (e) => {
+      if (e.target.classList.contains('ekz-generic-del') || e.target.classList.contains('ekz-generic-resize')) return;
+      selectElement(el);
+    });
+    selectElement(el);
+    pushHistory();
+  }
+
+  // ================================================================
+  // SIGNATURE TOOL (type or draw, both produce a PNG that reuses the
+  // image placement/drag/resize pipeline above)
+  // ================================================================
+  const signModal = $('#ekzSignModal');
+  const signTypeInput = $('#ekzSignTypeInput');
+  const signTypePreview = $('#ekzSignTypePreview');
+  const signCanvas = $('#ekzSignCanvas');
+  const signCtx = signCanvas.getContext('2d');
+  let signColor = '#000000';
+  let signMode = 'type';
+  let drawing = false;
+
+  function openSignatureModal(overlay, pageIndex, x, y){
+    state.pendingSignatureTarget = { overlay, pageIndex, x, y };
+    signModal.classList.add('visible');
+    signTypeInput.value = '';
+    signTypePreview.textContent = '';
+    clearSignCanvas();
+  }
+  $('#ekzSignModalClose').addEventListener('click', closeSignModal);
+  $('#ekzSignCancelBtn').addEventListener('click', closeSignModal);
+  function closeSignModal(){ signModal.classList.remove('visible'); }
+
+  document.querySelectorAll('.ekz-modal-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.ekz-modal-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      signMode = tab.dataset.signtab;
+      $('#ekzSignTypePane').style.display = signMode === 'type' ? 'block' : 'none';
+      $('#ekzSignDrawPane').style.display = signMode === 'draw' ? 'block' : 'none';
+    });
+  });
+
+  signTypeInput.addEventListener('input', () => {
+    signTypePreview.style.color = signColor;
+    signTypePreview.style.fontFamily = "'Segoe Script','Brush Script MT',cursive";
+    signTypePreview.textContent = signTypeInput.value;
+  });
+  $('#ekzSignColorRow').addEventListener('click', (e) => {
+    const sw = e.target.closest('.ekz-color-swatch');
+    if (!sw) return;
+    $('#ekzSignColorRow').querySelectorAll('.ekz-color-swatch').forEach(s => s.classList.remove('selected'));
+    sw.classList.add('selected');
+    signColor = sw.dataset.color;
+    signTypePreview.style.color = signColor;
+  });
+
+  function clearSignCanvas(){
+    signCtx.clearRect(0, 0, signCanvas.width, signCanvas.height);
+  }
+  $('#ekzSignClearBtn').addEventListener('click', clearSignCanvas);
+
+  function canvasPointerPos(e){
+    const rect = signCanvas.getBoundingClientRect();
+    const cx = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+    const cy = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
+    return { x: cx * (signCanvas.width / rect.width), y: cy * (signCanvas.height / rect.height) };
+  }
+  signCanvas.addEventListener('mousedown', (e) => {
+    drawing = true;
+    const p = canvasPointerPos(e);
+    signCtx.beginPath();
+    signCtx.moveTo(p.x, p.y);
+  });
+  signCanvas.addEventListener('mousemove', (e) => {
+    if (!drawing) return;
+    const p = canvasPointerPos(e);
+    signCtx.lineWidth = 2.5;
+    signCtx.lineCap = 'round';
+    signCtx.strokeStyle = '#000';
+    signCtx.lineTo(p.x, p.y);
+    signCtx.stroke();
+  });
+  ['mouseup','mouseleave'].forEach(evt => signCanvas.addEventListener(evt, () => drawing = false));
+
+  $('#ekzSignInsertBtn').addEventListener('click', () => {
+    const target = state.pendingSignatureTarget;
+    if (!target) { closeSignModal(); return; }
+
+    let dataUrl = null;
+    if (signMode === 'type'){
+      const name = signTypeInput.value.trim();
+      if (!name){ alert('Type your name first.'); return; }
+      dataUrl = renderTypedSignatureToImage(name, signColor);
+    } else {
+      // draw mode: check canvas isn't blank
+      const blank = document.createElement('canvas');
+      blank.width = signCanvas.width; blank.height = signCanvas.height;
+      if (signCanvas.toDataURL() === blank.toDataURL()){
+        alert('Draw your signature first.');
+        return;
+      }
+      dataUrl = signCanvas.toDataURL('image/png');
+    }
+
+    placeImageAt(target.overlay, target.pageIndex, dataUrl, target.x - 60, target.y - 20, 'signature');
+    closeSignModal();
+  });
+
+  function renderTypedSignatureToImage(name, color){
+    const c = document.createElement('canvas');
+    c.width = 440; c.height = 120;
+    const ctx = c.getContext('2d');
+    ctx.clearRect(0, 0, c.width, c.height);
+    ctx.font = "56px 'Segoe Script','Brush Script MT',cursive";
+    ctx.fillStyle = color;
+    ctx.textBaseline = 'middle';
+    ctx.fillText(name, 10, c.height / 2);
+    return c.toDataURL('image/png');
+  }
+
+  // ================================================================
+  // Shared drag / resize logic
+  // ================================================================
+  function makeDraggable(el, overlay){
+    let dragging = false, startX, startY, origLeft, origTop;
+
+    el.addEventListener('mousedown', (e) => {
+      if (e.target.classList.contains('ekz-generic-del') || e.target.classList.contains('ekz-generic-resize')) return;
+      if (el.isContentEditable && document.activeElement === el) return;
+      dragging = true;
+      startX = e.clientX; startY = e.clientY;
+      origLeft = parseFloat(el.style.left) || 0;
+      origTop = parseFloat(el.style.top) || 0;
+      e.stopPropagation();
+    });
+    document.addEventListener('mousemove', (e) => {
+      if (!dragging) return;
+      const dx = (e.clientX - startX) / state.zoom;
+      const dy = (e.clientY - startY) / state.zoom;
+      const overlayRect = overlay.getBoundingClientRect();
+      const maxLeft = (overlayRect.width / state.zoom) - 10;
+      const maxTop = (overlayRect.height / state.zoom) - 10;
+      let newLeft = Math.max(0, Math.min(origLeft + dx, maxLeft));
+      let newTop = Math.max(0, Math.min(origTop + dy, maxTop));
+      el.style.left = newLeft + 'px';
+      el.style.top = newTop + 'px';
+    });
+    document.addEventListener('mouseup', () => {
+      if (dragging){ dragging = false; pushHistory(); }
+    });
+  }
+
+  function makeResizable(el, handle, opts){
+    opts = opts || {};
+    let resizing = false, startX, startY, startW, startH;
+    handle.addEventListener('mousedown', (e) => {
+      resizing = true;
+      startX = e.clientX; startY = e.clientY;
+      startW = el.offsetWidth; startH = el.offsetHeight;
+      e.stopPropagation();
+      e.preventDefault();
+    });
+    document.addEventListener('mousemove', (e) => {
+      if (!resizing) return;
+      const dx = (e.clientX - startX) / state.zoom;
+      let newW, newH;
+      if (opts.lockAspect){
+        const ratio = startH / startW;
+        newW = Math.max(24, startW + dx);
+        newH = newW * ratio;
+      } else {
+        const dy = (e.clientY - startY) / state.zoom;
+        newW = Math.max(20, startW + dx);
+        newH = Math.max(20, startH + dy);
+      }
+      el.style.width = newW + 'px';
+      el.style.height = newH + 'px';
+      if (opts.onResize) opts.onResize(newW, newH);
+    });
+    document.addEventListener('mouseup', () => {
+      if (resizing){ resizing = false; pushHistory(); }
+    });
+  }
+
+  // ================================================================
+  // Zoom — CSS transform only, so element positions never need
+  // recalculating and no edits are lost on zoom (unlike a re-render)
+  // ================================================================
+  $('#ekzZoomIn').addEventListener('click', () => rescale(Math.min(2.4, state.zoom + 0.15)));
+  $('#ekzZoomOut').addEventListener('click', () => rescale(Math.max(0.5, state.zoom - 0.15)));
+  function rescale(newZoom){
+    state.zoom = newZoom;
+    pageStack.style.transform = 'scale(' + newZoom + ')';
+    pageStack.style.transformOrigin = 'top center';
+  }
+
+  // ================================================================
+  // History (simple undo = remove last created element on the page)
+  // ================================================================
+  function pushHistory(){
+    undoBtn.style.display = 'inline-flex';
+  }
+  undoBtn.addEventListener('click', () => {
+    const editable = document.querySelectorAll(
+      '.ekz-text-el, .ekz-img-el, .ekz-whiteout-el, .ekz-shape-el, .ekz-formfield-el'
+    );
+    if (editable.length){
+      editable[editable.length - 1].remove();
+    }
+  });
+
+  // ================================================================
+  // Collect every edit into a backend-ready payload
+  // ================================================================
+  function collectEdits(){
+    const edits = [];
+    document.querySelectorAll('.ekz-page').forEach(pageWrap => {
+      const pageIndex = parseInt(pageWrap.dataset.pageIndex, 10);
+      const overlay = pageWrap.querySelector('.ekz-overlay');
+
+      overlay.querySelectorAll('.ekz-text-el').forEach(el => {
+        const text = el.textContent.trim();
+        const isReplace = el.dataset.editType === 'text-replace';
+
+        if (isReplace){
+          // Always send this, even with empty text — the original box
+          // still needs to be whited out on the backend either way.
+          edits.push({
+            type: 'text-replace',
+            pageIndex,
+            origXPx: parseFloat(el.dataset.origLeft) || 0,
+            origYPx: parseFloat(el.dataset.origTop) || 0,
+            origWPx: parseFloat(el.dataset.origWidth) || 0,
+            origHPx: parseFloat(el.dataset.origHeight) || 0,
+            xPx: parseFloat(el.style.left) || 0,
+            yPx: parseFloat(el.style.top) || 0,
+            text,
+            fontFamily: el.style.fontFamily,
+            fontSizePx: parseFloat(el.style.fontSize) || 16,
+            color: el.style.color,
+            bgColor: el.dataset.bgColor || '#ffffff'
+          });
+          return;
+        }
+
+        if (!text) return;
+        edits.push({
+          type: 'text',
+          pageIndex,
+          xPx: parseFloat(el.style.left) || 0,
+          yPx: parseFloat(el.style.top) || 0,
+          text,
+          fontFamily: el.style.fontFamily,
+          fontSizePx: parseFloat(el.style.fontSize) || 16,
+          color: el.style.color
+        });
+      });
+
+      overlay.querySelectorAll('.ekz-img-el').forEach(el => {
+        edits.push({
+          type: el.dataset.editType === 'signature' ? 'signature' : 'image',
+          pageIndex,
+          xPx: parseFloat(el.style.left) || 0,
+          yPx: parseFloat(el.style.top) || 0,
+          wPx: el.offsetWidth,
+          hPx: el.offsetHeight,
+          dataUrl: el.dataset.dataUrl || el.querySelector('img').src
+        });
+      });
+
+      overlay.querySelectorAll('.ekz-whiteout-el').forEach(el => {
+        edits.push({
+          type: 'whiteout',
+          pageIndex,
+          xPx: parseFloat(el.style.left) || 0,
+          yPx: parseFloat(el.style.top) || 0,
+          wPx: el.offsetWidth,
+          hPx: el.offsetHeight
+        });
+      });
+
+      overlay.querySelectorAll('.ekz-shape-el').forEach(el => {
+        edits.push({
+          type: 'shape',
+          pageIndex,
+          xPx: parseFloat(el.style.left) || 0,
+          yPx: parseFloat(el.style.top) || 0,
+          wPx: el.offsetWidth,
+          hPx: el.offsetHeight,
+          shapeType: el.dataset.shapeType,
+          color: el.dataset.shapeColor,
+          stroke: parseFloat(el.dataset.shapeStroke) || 2
+        });
+      });
+
+      overlay.querySelectorAll('.ekz-formfield-el').forEach(el => {
+        edits.push({
+          type: 'formfield',
+          pageIndex,
+          xPx: parseFloat(el.style.left) || 0,
+          yPx: parseFloat(el.style.top) || 0,
+          wPx: el.offsetWidth,
+          hPx: el.offsetHeight,
+          fieldKind: el.dataset.fieldKind,
+          value: el.dataset.fieldKind === 'text' ? (el.dataset.fieldValue || '') : (el.dataset.checked === 'true')
+        });
+      });
+    });
+    return edits;
+  }
+
+  // ================================================================
+  // Apply changes — sends the original PDF + edits to the Flask
+  // backend, which uses PyMuPDF to flatten everything and returns
+  // the finished file. See app_pdf_editor_route.py for the route.
+  // ================================================================
+  applyBtn.addEventListener('click', async () => {
+    const edits = collectEdits();
+    if (edits.length === 0){
+      alert('No changes to apply yet — add some text, images, or annotations first.');
+      return;
+    }
+
+    applyBtn.disabled = true;
+    applyBtn.textContent = 'Applying...';
+
+    try {
+      const base64Pdf = arrayBufferToBase64(state.originalBytes);
+      const resp = await fetch('/api/apply-pdf-edits', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          pdfBase64: base64Pdf,
+          scale: state.scale,   // 1 CSS px == (1/scale) PDF points, used by the backend to convert coordinates
+          edits: edits
+        })
+      });
+      if (!resp.ok){
+        const errText = await resp.text();
+        throw new Error(errText || 'Server error while applying changes.');
+      }
+      const blob = await resp.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = (filenameLabel.textContent || 'edited').replace(/\.pdf$/i, '') + '-edited.pdf';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    } catch (err){
+      console.error(err);
+      alert('Could not apply changes: ' + err.message + '\n\nMake sure the /api/apply-pdf-edits route is deployed (see app_pdf_editor_route.py).');
+    } finally {
+      applyBtn.disabled = false;
+      applyBtn.textContent = 'Apply changes';
+    }
+  });
+
+  function arrayBufferToBase64(buffer){
+    let binary = '';
+    const bytes = new Uint8Array(buffer);
+    const chunk = 0x8000;
+    for (let i = 0; i < bytes.length; i += chunk){
+      binary += String.fromCharCode.apply(null, bytes.subarray(i, i + chunk));
+    }
+    return btoa(binary);
+  }
+
+})();
+</script>
+
+<!-- ================================================================= -->
+<!-- ============  BELOW-THE-TOOL CONTENT (Tier 1 design system)  ==== -->
+<!-- ================================================================= -->
+<style>
+  .ekz-content-zone{background:#fff;}
+  .ekz-outer{max-width:960px;margin:0 auto;padding:0 20px;}
+  .ekz-narrow{max-width:680px;margin:0 auto;}
+  .ekz-wide{max-width:900px;margin:0 auto;}
+
+  .ekz-section{padding:64px 0;}
+  .ekz-section-alt{background:#F8FAFC;}
+  .ekz-eyebrow{
+    font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ekz-blue);margin-bottom:10px;
+  }
+  .ekz-h2{font-size:26px;font-weight:800;letter-spacing:-.01em;margin:0 0 14px;color:var(--ekz-ink);}
+  .ekz-lead{font-size:16px;line-height:1.7;color:#334155;margin:0 0 8px;}
+
+  /* Guide steps */
+  .ekz-steps{counter-reset:ekzstep;display:flex;flex-direction:column;gap:26px;margin-top:32px;}
+  .ekz-step{display:flex;gap:18px;align-items:flex-start;}
+  .ekz-step-num{
+    counter-increment:ekzstep;
+    flex-shrink:0;width:36px;height:36px;border-radius:10px;
+    background:var(--ekz-blue-light);color:var(--ekz-blue);
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;
+  }
+  .ekz-step-num::before{content:counter(ekzstep);}
+  .ekz-step h3{margin:2px 0 6px;font-size:16px;font-weight:700;}
+  .ekz-step p{margin:0;font-size:14.5px;line-height:1.65;color:#475569;}
+
+  /* Feature grid with hand-drawn style SVG icons */
+  .ekz-feature-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:32px;
+  }
+  .ekz-feature-card{
+    border:1px solid var(--ekz-border);border-radius:14px;padding:22px;
+    background:#fff;transition:box-shadow .15s ease, transform .15s ease;
+  }
+  .ekz-feature-card:hover{box-shadow:var(--ekz-shadow);transform:translateY(-2px);}
+  .ekz-feature-icon{
+    width:44px;height:44px;border-radius:12px;background:var(--ekz-blue-light);
+    display:flex;align-items:center;justify-content:center;margin-bottom:14px;color:var(--ekz-blue);
+  }
+  .ekz-feature-card h3{margin:0 0 6px;font-size:15px;font-weight:700;}
+  .ekz-feature-card p{margin:0;font-size:13.5px;line-height:1.6;color:#64748B;}
+
+  /* Photo scenario cards */
+  .ekz-scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px;}
+  .ekz-scenario-card{
+    border-radius:14px;overflow:hidden;border:1px solid var(--ekz-border);background:#fff;
+  }
+  .ekz-scenario-card img{width:100%;height:150px;object-fit:cover;display:block;}
+  .ekz-scenario-body{padding:18px;}
+  .ekz-scenario-body h3{margin:0 0 6px;font-size:15px;font-weight:700;}
+  .ekz-scenario-body p{margin:0;font-size:13.5px;line-height:1.6;color:#64748B;}
+
+  /* Comparison table */
+  .ekz-compare-table{width:100%;border-collapse:collapse;margin-top:28px;font-size:13.5px;}
+  .ekz-compare-table th, .ekz-compare-table td{
+    border:1px solid var(--ekz-border);padding:12px 14px;text-align:left;
+  }
+  .ekz-compare-table thead th{background:#F1F5F9;font-weight:700;color:var(--ekz-ink);}
+  .ekz-compare-table td.yes{color:#16A34A;font-weight:700;}
+  .ekz-compare-table td.no{color:#94A3B8;}
+  .ekz-compare-table tbody tr:nth-child(even){background:#FAFBFC;}
+
+  /* FAQ accordion */
+  .ekz-faq{margin-top:28px;}
+  .ekz-faq details{
+    border:1px solid var(--ekz-border);border-radius:10px;padding:14px 18px;margin-bottom:10px;
+    background:#fff;
+  }
+  .ekz-faq summary{
+    font-weight:700;font-size:14.5px;cursor:pointer;list-style:none;color:var(--ekz-ink);
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .ekz-faq summary::-webkit-details-marker{display:none;}
+  .ekz-faq summary::after{content:'+';font-size:20px;color:var(--ekz-blue);font-weight:400;}
+  .ekz-faq details[open] summary::after{content:'−';}
+  .ekz-faq p{margin:10px 0 0;font-size:13.5px;line-height:1.65;color:#475569;}
+
+  /* Related tools gradient banner */
+  .ekz-related{
+    border-radius:18px;padding:36px 28px;margin-top:0;
+    background:linear-gradient(135deg,#2563EB 0%, #7C3AED 100%);
+    color:#fff;text-align:center;
+  }
+  .ekz-related h2{font-size:22px;font-weight:800;margin:0 0 8px;color:#fff;}
+  .ekz-related p{margin:0 0 22px;opacity:.9;font-size:14.5px;}
+  .ekz-related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+  .ekz-related-link{
+    background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);
+    border-radius:10px;padding:14px 10px;font-size:13px;font-weight:700;color:#fff;
+    transition:background .15s ease;
+  }
+  .ekz-related-link:hover{background:rgba(255,255,255,.24);}
+
+  @media (max-width:720px){
+    .ekz-feature-grid{grid-template-columns:1fr;}
+    .ekz-scenario-grid{grid-template-columns:1fr;}
+    .ekz-related-grid{grid-template-columns:1fr 1fr;}
+    .ekz-section{padding:44px 0;}
+  }
+</style>
+
+<div class="ekz-content-zone">
+
+  <!-- ============ INTRO ============ -->
+  <section class="ekz-section" style="padding-bottom:0;">
+    <div class="ekz-outer ekz-narrow">
+      <div class="ekz-eyebrow">About this tool</div>
+      <h2 class="ekz-h2">A PDF editor that doesn't get in your way</h2>
+      <p class="ekz-lead">Most people don't need a full desktop suite just to fix a date, drop in a signature, or paste a logo onto a document. They need something they can open in a browser tab, use for two minutes, and close. That's what the EkZapp PDF Editor is built for.</p>
+      <p class="ekz-lead">There's no install, no plugin, and no account wall between you and your file. Upload a PDF, add whatever text or image it's missing, and download the result — the same document you started with, just with the missing pieces filled in. Nothing about the rest of the file changes: fonts, layout, and formatting stay exactly as they were in the original.</p>
+      <p class="ekz-lead">It's built for the everyday edit, not the redesign — the kind of quick fix that would otherwise mean re-exporting a whole document from Word or Google Docs just to change one line.</p>
+    </div>
+  </section>
+
+  <!-- ============ HOW-TO GUIDE ============ -->
+  <section class="ekz-section">
+    <div class="ekz-outer ekz-narrow">
+      <div class="ekz-eyebrow">Step-by-step guide</div>
+      <h2 class="ekz-h2">How to edit a PDF online for free</h2>
+      <p class="ekz-lead">No installs, no watermark, no account. Everything above runs right in your browser — here's exactly what each step does and why it works that way.</p>
+
+      <div class="ekz-steps">
+        <div class="ekz-step">
+          <div class="ekz-step-num"></div>
+          <div>
+            <h3>Upload your PDF</h3>
+            <p>Drag a file into the upload box above, or click it to browse your computer. The moment the file loads, EkZapp renders every page directly in your browser using the same rendering engine that powers most PDF viewers — so what you see matches what will print. Your file is processed securely and never shared with anyone; nothing is stored longer than needed to complete your edit, and the working copy is deleted automatically once you're done.</p>
+          </div>
+        </div>
+        <div class="ekz-step">
+          <div class="ekz-step-num"></div>
+          <div>
+            <h3>Pick a tool from the toolbar</h3>
+            <p>Use <strong>Text</strong> to click anywhere on the page and start typing — a text box appears exactly where you clicked, ready to type into immediately. Use <strong>Image</strong> to drop in a logo, photo, or scanned stamp; it lands near the middle of the visible page and you drag it into position from there. Every element you place, whether text or image, can be dragged to reposition and resized once it's on the page, so getting the exact spot right doesn't require starting over.</p>
+          </div>
+        </div>
+        <div class="ekz-step">
+          <div class="ekz-step-num"></div>
+          <div>
+            <h3>Format as you go</h3>
+            <p>With the Text tool active, the formatting bar above the page lets you change font family, size, and color for whatever's currently selected. You can set these before you start typing a new box, or select an existing one afterward and adjust it — both work the same way, so there's no wrong order to do things in.</p>
+          </div>
+        </div>
+        <div class="ekz-step">
+          <div class="ekz-step-num"></div>
+          <div>
+            <h3>Apply changes and download</h3>
+            <p>Once your edits look right, click <strong>Apply changes</strong>. EkZapp flattens every addition — text, images, and anything else you placed — directly into the PDF's page content and hands you a clean file to download. There's no watermark stamped across it and no login wall between you and the finished document; it's simply your original file with the new content baked in.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHO IT'S FOR ============ -->
+  <section class="ekz-section ekz-section-alt">
+    <div class="ekz-outer ekz-narrow">
+      <div class="ekz-eyebrow">Who this is for</div>
+      <h2 class="ekz-h2">Built for the PDF you already have, not the one you wish you had</h2>
+      <p class="ekz-lead">A lot of the PDFs people need to edit weren't made to be editable in the first place — a scanned form from a government office, a contract a client emailed over as a flattened export, a certificate template with no fillable fields. Going back to the original source file usually isn't an option, because there isn't one on hand.</p>
+      <p class="ekz-lead">That's the specific gap this tool covers: adding what's missing directly onto the page you already have, without needing the original design file, the right fonts installed locally, or design software at all. Students annotating lecture slides, freelancers correcting a client's contract before signing, small business owners branding an invoice template, and anyone filling in a form that has no digital fields — this tool is built around that exact kind of task.</p>
+    </div>
+  </section>
+
+  <!-- ============ FEATURE GRID ============ -->
+  <section class="ekz-section">
+    <div class="ekz-outer ekz-wide">
+      <div class="ekz-eyebrow" style="text-align:center;">Why EkZapp</div>
+      <h2 class="ekz-h2" style="text-align:center;">Built for quick, everyday PDF edits</h2>
+
+      <div class="ekz-feature-grid">
+        <div class="ekz-feature-card">
+          <div class="ekz-feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h3>Files stay private</h3>
+          <p>Your document is never shared with third parties, never used to train anything, and is removed automatically after your edit is complete.</p>
+        </div>
+        <div class="ekz-feature-card">
+          <div class="ekz-feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 7v6c0 5 4 9 9 9s9-4 9-9V7l-9-5Z"/></svg>
+          </div>
+          <h3>No watermark, ever</h3>
+          <p>Every export is clean — nothing added to your document, no branding stamped across your pages, no "trial version" banner to remove later.</p>
+        </div>
+        <div class="ekz-feature-card">
+          <div class="ekz-feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h8l-1 8 10-12h-8l1-8Z"/></svg>
+          </div>
+          <h3>No account needed</h3>
+          <p>Skip the signup form and the email verification step. Upload, edit, and download — the whole flow takes under a minute from start to finish.</p>
+        </div>
+        <div class="ekz-feature-card">
+          <div class="ekz-feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg>
+          </div>
+          <h3>Real text editing</h3>
+          <p>Add new text anywhere on the page with full control over font family, size, and color, and adjust any of it again later before you apply changes.</p>
+        </div>
+        <div class="ekz-feature-card">
+          <div class="ekz-feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          </div>
+          <h3>Drop in images</h3>
+          <p>Place a logo, photo, or scanned stamp anywhere on the page, then drag its corner handle to resize it proportionally to fit.</p>
+        </div>
+        <div class="ekz-feature-card">
+          <div class="ekz-feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          </div>
+          <h3>Works on any device</h3>
+          <p>Runs entirely in the browser on desktop, tablet, or phone — nothing to install and nothing that needs updating later.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SCENARIO CARDS (photo) ============ -->
+  <section class="ekz-section ekz-section-alt">
+    <div class="ekz-outer ekz-wide">
+      <div class="ekz-eyebrow">Common use cases</div>
+      <h2 class="ekz-h2">Where people use the PDF editor</h2>
+      <p class="ekz-lead" style="max-width:680px;">The tool gets reached for in a handful of recurring situations — here are the ones people run into most.</p>
+
+      <div class="ekz-scenario-grid">
+        <div class="ekz-scenario-card">
+          <img src="/static/images/photo-signing-documents.jpg" alt="Signing and filling a document" loading="lazy">
+          <div class="ekz-scenario-body">
+            <h3>Filling out forms</h3>
+            <p>Add typed answers directly onto scanned application forms, agreements, or government PDFs that don't have fillable fields built in, so you're not left printing, writing by hand, and re-scanning.</p>
+          </div>
+        </div>
+        <div class="ekz-scenario-card">
+          <img src="/static/images/photo-laptop-meeting.jpg" alt="Reviewing a document before sending" loading="lazy">
+          <div class="ekz-scenario-body">
+            <h3>Quick corrections</h3>
+            <p>Fix a typo, update a date, or add a missing line before sending a contract or report to a client, without going back to whoever originally designed the document.</p>
+          </div>
+        </div>
+        <div class="ekz-scenario-card">
+          <img src="/static/images/photo-notebook-writing.jpg" alt="Adding notes to a document" loading="lazy">
+          <div class="ekz-scenario-body">
+            <h3>Annotating study material</h3>
+            <p>Drop in extra notes, worked examples, or reference images onto lecture slides and reading material that was exported as a PDF and has no editable source file.</p>
+          </div>
+        </div>
+        <div class="ekz-scenario-card">
+          <img src="/static/images/photo-data-analysis.jpg" alt="Preparing a business document" loading="lazy">
+          <div class="ekz-scenario-body">
+            <h3>Branding documents</h3>
+            <p>Place a company logo, letterhead image, or watermark onto invoices, proposals, and reports before they go out, keeping a consistent look across every file you send.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TIPS ============ -->
+  <section class="ekz-section">
+    <div class="ekz-outer ekz-narrow">
+      <div class="ekz-eyebrow">A few tips</div>
+      <h2 class="ekz-h2">Getting a cleaner result</h2>
+
+      <div class="ekz-steps">
+        <div class="ekz-step">
+          <div class="ekz-step-num"></div>
+          <div>
+            <h3>Zoom in before placing small text</h3>
+            <p>Use the Zoom + button in the toolbar to get a closer view of the exact spot you're editing — it makes lining text up with existing content on the page noticeably easier than working at the default size.</p>
+          </div>
+        </div>
+        <div class="ekz-step">
+          <div class="ekz-step-num"></div>
+          <div>
+            <h3>Match the existing font where it matters</h3>
+            <p>For anything formal — contracts, certificates, official forms — picking a font close to what's already on the page keeps your addition from standing out as an obvious edit.</p>
+          </div>
+        </div>
+        <div class="ekz-step">
+          <div class="ekz-step-num"></div>
+          <div>
+            <h3>Use a transparent PNG for logos</h3>
+            <p>A logo exported with a transparent background sits naturally on the page; a logo with a white background box will visibly cover whatever's underneath it.</p>
+          </div>
+        </div>
+        <div class="ekz-step">
+          <div class="ekz-step-num"></div>
+          <div>
+            <h3>Double-check before applying</h3>
+            <p>Once you click Apply changes, the edits are flattened permanently into the file. Take a moment to review placement and spelling on every page first — it's the one step worth not rushing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LIMITATIONS ============ -->
+  <section class="ekz-section ekz-section-alt">
+    <div class="ekz-outer ekz-narrow">
+      <div class="ekz-eyebrow">Good to know</div>
+      <h2 class="ekz-h2">What this version doesn't do yet</h2>
+      <p class="ekz-lead">Being upfront about scope saves you a wasted upload. With the Text tool active, clicking on text that's already in the PDF lets you edit it in place — the original is erased and your new text takes its exact spot, matched to the detected size and position. This only works on text-based PDFs; a scanned or image-only page has no underlying text to detect, so on those pages you can still add new text on top, just not edit what's baked into the scan.</p>
+      <p class="ekz-lead">Font matching is a best-effort guess, not a perfect read of the original file's embedded font — the size and position lock on accurately, but you may want to double check the font family looks right before applying, especially on documents using an unusual typeface.</p>
+      <p class="ekz-lead">If your document is a scanned image rather than a text-based PDF, adding new text on top still works fine — you're placing a new layer on the page, not modifying the scan itself. What won't work is selecting and changing text that's part of the scanned image, since there's no underlying text to select in the first place.</p>
+    </div>
+  </section>
+
+  <!-- ============ COMPARISON TABLE ============ -->
+  <section class="ekz-section ekz-section-alt">
+    <div class="ekz-outer ekz-wide">
+      <div class="ekz-eyebrow">How it compares</div>
+      <h2 class="ekz-h2">EkZapp PDF Editor vs. typical online editors</h2>
+      <p class="ekz-lead" style="max-width:680px;">Most free online PDF editors hold something back for the paid tier — a watermark, a file size cap, a login requirement. Here's where EkZapp's free tier stands next to what's typical elsewhere.</p>
+
+      <table class="ekz-compare-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>EkZapp</th>
+            <th>Most free tools</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Account required</td>
+            <td class="yes">Not required</td>
+            <td class="no">Often required</td>
+          </tr>
+          <tr>
+            <td>Watermark on export</td>
+            <td class="yes">None</td>
+            <td class="no">Common on free tier</td>
+          </tr>
+          <tr>
+            <td>File size limit (free)</td>
+            <td class="yes">50 MB</td>
+            <td class="no">Often 10–25 MB</td>
+          </tr>
+          <tr>
+            <td>Add text with font/color control</td>
+            <td class="yes">Yes</td>
+            <td class="yes">Yes</td>
+          </tr>
+          <tr>
+            <td>Files auto-deleted after use</td>
+            <td class="yes">Yes</td>
+            <td class="no">Varies by provider</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:12px;color:#94A3B8;margin-top:10px;">Comparison reflects EkZapp's current free-tier limits and general patterns among free online PDF editors as of 2026.</p>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="ekz-section">
+    <div class="ekz-outer ekz-narrow">
+      <div class="ekz-eyebrow">Frequently asked questions</div>
+      <h2 class="ekz-h2">PDF Editor FAQ</h2>
+
+      <div class="ekz-faq" id="ekzFaqAccordion">
+        <details>
+          <summary>Is the EkZapp PDF editor really free?</summary>
+          <p>Yes. Uploading, editing, and downloading your PDF is free, with no watermark added to your file. Free-tier limits apply to file size and how many tasks you can run per hour.</p>
+        </details>
+        <details>
+          <summary>Can I edit text that already exists in the PDF?</summary>
+          <p>Yes — with the Text tool selected, click directly on any existing text and it becomes editable in place. The original is erased and your edit is drawn in the same spot at a matching size. This only works on text-based PDFs; scanned pages have no underlying text to detect.</p>
+        </details>
+        <details>
+          <summary>Will my file be shared with anyone?</summary>
+          <p>No. Your PDF is only used to generate your edited download and is not shared with third parties or used for any other purpose.</p>
+        </details>
+        <details>
+          <summary>Does this work on mobile?</summary>
+          <p>Yes, the editor is fully responsive and works in any modern mobile browser, though for detailed editing a larger screen is easier to work with.</p>
+        </details>
+        <details>
+          <summary>What file types can I upload?</summary>
+          <p>Currently only PDF files. If you need to add an image to a PDF, use the Image tool inside the editor rather than uploading the image directly.</p>
+        </details>
+        <details>
+          <summary>Is there a limit on how many pages I can edit?</summary>
+          <p>You can add text and images across every page of your document within the free tier's file size limit — there's no separate page cap for editing.</p>
+        </details>
+        <details>
+          <summary>Can I undo a change after adding it?</summary>
+          <p>Yes, use the Undo button in the top bar to remove the most recent element you placed, or click the delete icon that appears on a selected text box or image to remove it directly.</p>
+        </details>
+        <details>
+          <summary>Do I lose quality when I download the edited PDF?</summary>
+          <p>No. Applying changes only adds your new text and images to the page — it doesn't recompress or re-render the rest of the document, so the original content stays at its original quality.</p>
+        </details>
+        <details>
+          <summary>Can I edit a password-protected PDF?</summary>
+          <p>Not directly — you'll need to remove the password first using a PDF unlock tool, then upload the unlocked file here. This keeps the editor from ever needing to store or process your document's password.</p>
+        </details>
+        <details>
+          <summary>Why does my text look different after I click Apply changes?</summary>
+          <p>The formatting bar preview and the flattened output use the same font rendering, so text should look consistent. If a font you selected isn't available in the final render, the editor falls back to the closest built-in match — sticking to the default font options avoids this entirely.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLOSING ============ -->
+  <section class="ekz-section">
+    <div class="ekz-outer ekz-narrow">
+      <div class="ekz-eyebrow">Before you go</div>
+      <h2 class="ekz-h2">One tab, one file, one fix</h2>
+      <p class="ekz-lead">The goal with this editor isn't to replace a full design suite — it's to handle the small, specific edit that would otherwise mean tracking down the original source file, opening heavier software, or printing and re-scanning a page by hand. Upload the PDF you already have, add what's missing, and get back to whatever you were doing before the document needed fixing.</p>
+      <p class="ekz-lead">If a bigger job comes up along the way — merging a few PDFs into one, compressing a file before emailing it, converting a document to Word for a deeper edit — the related tools below cover the rest of the workflow, all under the same free, no-signup approach.</p>
+    </div>
+  </section>
+
+  <!-- ============ RELATED TOOLS ============ -->
+  <section class="ekz-section">
+    <div class="ekz-outer ekz-wide">
+      <div class="ekz-related">
+        <h2>Explore more PDF tools</h2>
+        <p>Everything free, no watermark, no signup.</p>
+        <div class="ekz-related-grid">
+          <a href="/merge-pdf" class="ekz-related-link">Merge PDF</a>
+          <a href="/split-pdf" class="ekz-related-link">Split PDF</a>
+          <a href="/compress-pdf" class="ekz-related-link">Compress PDF</a>
+          <a href="/sign-pdf" class="ekz-related-link">Sign PDF</a>
+          <a href="/pdf-to-word" class="ekz-related-link">PDF to Word</a>
+          <a href="/watermark-pdf" class="ekz-related-link">Add Watermark</a>
+          <a href="/protect-pdf" class="ekz-related-link">Protect PDF</a>
+          <a href="/image-to-pdf" class="ekz-related-link">Image to PDF</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- FAQPage structured data for rich results -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is the EkZapp PDF editor really free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Uploading, editing, and downloading your PDF is free, with no watermark added to your file. Free-tier limits apply to file size and how many tasks you can run per hour."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I edit text that already exists in the PDF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — with the Text tool selected, click any existing text to edit it in place. The original is erased and the edit is drawn at a matching size and position. This works on text-based PDFs; scanned pages have no underlying text to detect."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will my file be shared with anyone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Your PDF is only used to generate your edited download and is not shared with third parties or used for any other purpose."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this work on mobile?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, the editor is fully responsive and works in any modern mobile browser, though for detailed editing a larger screen is easier to work with."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What file types can I upload?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Currently only PDF files. To add an image to a PDF, use the Image tool inside the editor rather than uploading the image directly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a limit on how many pages I can edit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can add text and images across every page of your document within the free tier's file size limit — there's no separate page cap for editing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I undo a change after adding it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, use the Undo button in the top bar to remove the most recent element you placed, or click the delete icon on a selected element to remove it directly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I lose quality when I download the edited PDF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Applying changes only adds your new text and images to the page and doesn't recompress or re-render the rest of the document, so original content stays at its original quality."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I edit a password-protected PDF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not directly — remove the password first using a PDF unlock tool, then upload the unlocked file to the editor."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does my text look different after I click Apply changes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The formatting bar preview and the flattened output use the same font rendering. If a selected font isn't available in the final render, the editor falls back to the closest built-in match."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- WebApplication structured data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "PDF Editor",
+  "name": "EkZapp PDF Editor",
   "url": "https://ekzapp.com/pdf-editor",
-  "description": "Edit PDF files online for free. Add text, images, and annotations to your PDF documents easily.",
-  "applicationCategory": "UtilityApplication",
-  "operatingSystem": "Web",
-  "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
-}
-</script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
-</head>
-<body>
-
-<!-- NAV -->
-<nav>
-  <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
-  <div class="nav-sep"></div>
-  <a class="back" href="/">← All Tools</a>
-  <span class="nav-title">PDF Editor</span>
-  <div class="nav-right">
-    <button class="btn-download" id="downloadBtn" onclick="downloadPDF()" disabled>⬇ Download PDF</button>
-  </div>
-</nav>
-
-<!-- TOOLBAR -->
-<div class="toolbar" id="toolbar" style="display:none">
-  <button class="tool-btn active" id="btn-text" onclick="setTool('text')">📝 Text</button>
-  <button class="tool-btn" id="btn-whiteout" onclick="setTool('whiteout')">⬜ Whiteout</button>
-  <button class="tool-btn" id="btn-highlight" onclick="setTool('highlight')">🖊 Highlight</button>
-  <button class="tool-btn" id="btn-draw" onclick="setTool('draw')">✏️ Draw</button>
-  <div class="tool-sep"></div>
-  <input class="font-size-input" type="number" id="fontSize" value="14" min="8" max="72" title="Font size">
-  <div class="tool-sep"></div>
-  <div class="color-btn active" style="background:#000000" onclick="setColor('#000000',this)" title="Black"></div>
-  <div class="color-btn" style="background:#DC2626" onclick="setColor('#DC2626',this)" title="Red"></div>
-  <div class="color-btn" style="background:#2563EB" onclick="setColor('#2563EB',this)" title="Blue"></div>
-  <div class="color-btn" style="background:#16A34A" onclick="setColor('#16A34A',this)" title="Green"></div>
-  <div class="color-btn" style="background:#FFFFFF;border-color:#999" onclick="setColor('#FFFFFF',this)" title="White (Whiteout)"></div>
-  <div class="tool-sep"></div>
-  <button class="tool-btn" onclick="undoLast()">↩ Undo</button>
-  <button class="tool-btn" onclick="clearAll()">🗑 Clear All</button>
-</div>
-
-<!-- MAIN -->
-<div class="main" id="main">
-  <!-- UPLOAD -->
-  <div class="upload-screen" id="uploadScreen">
-    <div class="upload-box">
-      <div class="upload-icon">📄</div>
-      <h2>Open PDF to Edit</h2>
-      <p>Upload your PDF file to start editing. Add text, whiteout, highlight and draw on any PDF.</p>
-      <button class="upload-btn">
-        📂 Choose PDF File
-        <input type="file" accept=".pdf" onchange="loadPDF(this)">
-      </button>
-    </div>
-  </div>
-
-  <!-- EDITOR (hidden until PDF loaded) -->
-  <div id="editorScreen" style="display:none;flex:1;display:none;overflow:hidden">
-    <div style="display:flex;flex:1;overflow:hidden;height:100%">
-      <!-- SIDEBAR -->
-      <div class="sidebar">
-        <div class="sidebar-title">Pages</div>
-        <div class="pages-list" id="pagesList"></div>
-      </div>
-      <!-- CANVAS -->
-      <div class="canvas-area" id="canvasArea">
-        <div class="pdf-container" id="pdfContainer">
-          <canvas id="pdfCanvas"></canvas>
-          <canvas id="editCanvas"></canvas>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- PAGE NAV -->
-<div class="page-nav" id="pageNav" style="display:none">
-  <button class="page-nav-btn" id="prevBtn" onclick="changePage(-1)" disabled>← Prev</button>
-  <span class="page-info" id="pageInfo">Page 1 of 1</span>
-  <button class="page-nav-btn" id="nextBtn" onclick="changePage(1)" disabled>Next →</button>
-</div>
-
-<script>
-pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-
-let pdfDoc=null,currentPage=1,totalPages=0;
-let currentTool='text',currentColor='#000000';
-let isDrawing=false,drawCtx=null,lastX=0,lastY=0;
-let annotations=[]; // {type,page,data}
-let pdfBytes=null;
-let scale=1.5;
-
-async function loadPDF(input){
-  const file=input.files[0];
-  if(!file)return;
-  const reader=new FileReader();
-  reader.onload=async e=>{
-    pdfBytes=e.target.result;
-    const data=new Uint8Array(pdfBytes);
-    pdfDoc=await pdfjsLib.getDocument({data}).promise;
-    totalPages=pdfDoc.numPages;
-    currentPage=1;
-    annotations=[];
-    document.getElementById('uploadScreen').style.display='none';
-    const es=document.getElementById('editorScreen');
-    es.style.display='flex';
-    es.style.flex='1';
-    es.style.overflow='hidden';
-    document.getElementById('toolbar').style.display='flex';
-    document.getElementById('pageNav').style.display='flex';
-    document.getElementById('downloadBtn').disabled=false;
-    await buildThumbs();
-    await renderPage(currentPage);
-  };
-  reader.readAsArrayBuffer(file);
-}
-
-async function buildThumbs(){
-  const list=document.getElementById('pagesList');
-  list.innerHTML='';
-  for(let i=1;i<=totalPages;i++){
-    const page=await pdfDoc.getPage(i);
-    const vp=page.getViewport({scale:.3});
-    const c=document.createElement('canvas');
-    c.width=vp.width;c.height=vp.height;
-    await page.render({canvasContext:c.getContext('2d'),viewport:vp}).promise;
-    const wrap=document.createElement('div');
-    wrap.className='page-thumb'+(i===1?' active':'');
-    wrap.id='thumb-'+i;
-    wrap.onclick=()=>renderPage(i);
-    wrap.appendChild(c);
-    const num=document.createElement('div');
-    num.className='page-num';
-    num.textContent=i;
-    wrap.appendChild(num);
-    list.appendChild(wrap);
-  }
-}
-
-async function renderPage(pageNum){
-  currentPage=pageNum;
-  document.querySelectorAll('.page-thumb').forEach(t=>t.classList.remove('active'));
-  const th=document.getElementById('thumb-'+pageNum);
-  if(th){th.classList.add('active');th.scrollIntoView({block:'nearest'});}
-  document.getElementById('pageInfo').textContent=`Page ${pageNum} of ${totalPages}`;
-  document.getElementById('prevBtn').disabled=pageNum<=1;
-  document.getElementById('nextBtn').disabled=pageNum>=totalPages;
-
-  const page=await pdfDoc.getPage(pageNum);
-  const vp=page.getViewport({scale});
-  const pdfCanvas=document.getElementById('pdfCanvas');
-  const editCanvas=document.getElementById('editCanvas');
-  pdfCanvas.width=vp.width;pdfCanvas.height=vp.height;
-  editCanvas.width=vp.width;editCanvas.height=vp.height;
-
-  await page.render({canvasContext:pdfCanvas.getContext('2d'),viewport:vp}).promise;
-
-  drawCtx=editCanvas.getContext('2d');
-  drawCtx.clearRect(0,0,editCanvas.width,editCanvas.height);
-  redrawAnnotations();
-  setupEditCanvas();
-}
-
-function redrawAnnotations(){
-  if(!drawCtx)return;
-  annotations.filter(a=>a.page===currentPage).forEach(a=>{
-    if(a.type==='draw'){
-      drawCtx.beginPath();
-      drawCtx.strokeStyle=a.color;
-      drawCtx.lineWidth=a.width||2;
-      drawCtx.lineCap='round';
-      if(a.points&&a.points.length>1){
-        drawCtx.moveTo(a.points[0].x,a.points[0].y);
-        a.points.forEach(p=>drawCtx.lineTo(p.x,p.y));
-        drawCtx.stroke();
-      }
-    } else if(a.type==='highlight'){
-      drawCtx.fillStyle=a.color;
-      drawCtx.fillRect(a.x,a.y,a.w,a.h);
-    } else if(a.type==='whiteout'){
-      drawCtx.fillStyle='#ffffff';
-      drawCtx.fillRect(a.x,a.y,a.w,a.h);
-    } else if(a.type==='text'){
-      drawCtx.font=`${a.size||14}px Inter,sans-serif`;
-      drawCtx.fillStyle=a.color||'#000';
-      drawCtx.fillText(a.text,a.x,a.y);
-    }
-  });
-}
-
-let drawPoints=[],isHighlighting=false,hlStart={};
-
-function setupEditCanvas(){
-  const ec=document.getElementById('editCanvas');
-  ec.onmousedown=e=>{
-    const r=ec.getBoundingClientRect();
-    const x=e.clientX-r.left,y=e.clientY-r.top;
-    if(currentTool==='text'){
-      addTextInput(x,y);
-    } else if(currentTool==='draw'){
-      isDrawing=true;drawPoints=[{x,y}];lastX=x;lastY=y;
-    } else if(currentTool==='highlight'||currentTool==='whiteout'){
-      isHighlighting=true;hlStart={x,y};
-    }
-  };
-  ec.onmousemove=e=>{
-    const r=ec.getBoundingClientRect();
-    const x=e.clientX-r.left,y=e.clientY-r.top;
-    if(currentTool==='draw'&&isDrawing){
-      drawCtx.beginPath();
-      drawCtx.strokeStyle=currentColor;
-      drawCtx.lineWidth=2;drawCtx.lineCap='round';
-      drawCtx.moveTo(lastX,lastY);drawCtx.lineTo(x,y);drawCtx.stroke();
-      drawPoints.push({x,y});lastX=x;lastY=y;
-    }
-  };
-  ec.onmouseup=e=>{
-    const r=ec.getBoundingClientRect();
-    const x=e.clientX-r.left,y=e.clientY-r.top;
-    if(currentTool==='draw'&&isDrawing){
-      isDrawing=false;
-      if(drawPoints.length>1){
-        annotations.push({type:'draw',page:currentPage,color:currentColor,width:2,points:[...drawPoints]});
-      }
-      drawPoints=[];
-    } else if((currentTool==='highlight'||currentTool==='whiteout')&&isHighlighting){
-      isHighlighting=false;
-      const w=x-hlStart.x,h=y-hlStart.y;
-      if(Math.abs(w)>5&&Math.abs(h)>5){
-        if(currentTool==='highlight'){
-          const color=currentColor==='#000000'?'rgba(255,220,0,0.4)':'rgba(255,220,0,0.4)';
-          drawCtx.fillStyle=color;
-          drawCtx.fillRect(hlStart.x,hlStart.y,w,h);
-          annotations.push({type:'highlight',page:currentPage,color,x:hlStart.x,y:hlStart.y,w,h});
-        } else {
-          drawCtx.fillStyle='#ffffff';
-          drawCtx.fillRect(hlStart.x,hlStart.y,w,h);
-          annotations.push({type:'whiteout',page:currentPage,x:hlStart.x,y:hlStart.y,w,h});
-        }
-      }
-    }
-  };
-  ec.onmouseleave=()=>{isDrawing=false;isHighlighting=false;};
-}
-
-function addTextInput(x,y){
-  const ec=document.getElementById('editCanvas');
-  const container=document.getElementById('pdfContainer');
-  const inp=document.createElement('div');
-  inp.contentEditable=true;
-  inp.className='text-input-overlay';
-  inp.style.left=x+'px';
-  inp.style.top=(y-parseInt(document.getElementById('fontSize').value))+'px';
-  inp.style.fontSize=document.getElementById('fontSize').value+'px';
-  inp.style.color=currentColor;
-  inp.style.fontFamily='Inter,sans-serif';
-  container.appendChild(inp);
-  inp.focus();
-
-  // drag
-  let dragging=false,dx=0,dy=0;
-  inp.onmousedown=ev=>{
-    if(ev.target!==inp)return;
-    dragging=true;
-    dx=ev.clientX-inp.offsetLeft;
-    dy=ev.clientY-inp.offsetTop;
-    ev.stopPropagation();
-  };
-  document.onmousemove=ev=>{
-    if(dragging){inp.style.left=(ev.clientX-dx)+'px';inp.style.top=(ev.clientY-dy)+'px';}
-  };
-  document.onmouseup=()=>dragging=false;
-
-  inp.onblur=()=>{
-    const text=inp.innerText.trim();
-    if(text){
-      const tx=parseInt(inp.style.left);
-      const ty=parseInt(inp.style.top)+parseInt(inp.style.fontSize);
-      annotations.push({type:'text',page:currentPage,text,x:tx,y:ty,size:parseInt(inp.style.fontSize),color:currentColor});
-      drawCtx.font=`${inp.style.fontSize} Inter,sans-serif`;
-      drawCtx.fillStyle=currentColor;
-      drawCtx.fillText(text,tx,ty);
-    }
-    inp.remove();
-  };
-}
-
-function setTool(t){
-  currentTool=t;
-  document.querySelectorAll('.tool-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('btn-'+t).classList.add('active');
-  const ec=document.getElementById('editCanvas');
-  ec.style.cursor=t==='text'?'text':t==='draw'?'crosshair':'crosshair';
-}
-
-function setColor(c,el){
-  currentColor=c;
-  document.querySelectorAll('.color-btn').forEach(b=>b.classList.remove('active'));
-  el.classList.add('active');
-}
-
-function undoLast(){
-  const idx=annotations.map((a,i)=>a.page===currentPage?i:-1).filter(i=>i>=0);
-  if(idx.length>0){
-    annotations.splice(idx[idx.length-1],1);
-    drawCtx.clearRect(0,0,document.getElementById('editCanvas').width,document.getElementById('editCanvas').height);
-    redrawAnnotations();
-    // remove any text inputs
-    document.querySelectorAll('.text-input-overlay').forEach(el=>el.remove());
-  }
-}
-
-function clearAll(){
-  if(!confirm('Clear all edits on this page?'))return;
-  annotations=annotations.filter(a=>a.page!==currentPage);
-  drawCtx.clearRect(0,0,document.getElementById('editCanvas').width,document.getElementById('editCanvas').height);
-  document.querySelectorAll('.text-input-overlay').forEach(el=>el.remove());
-}
-
-async function downloadPDF(){
-  // Commit any open text inputs first
-  document.querySelectorAll('.text-input-overlay').forEach(el=>el.blur());
-
-  const {jsPDF}=window.jspdf;
-  let firstPage=true;
-  let doc=null;
-
-  for(let p=1;p<=totalPages;p++){
-    const page=await pdfDoc.getPage(p);
-    const vp=page.getViewport({scale:2});
-    const c=document.createElement('canvas');
-    c.width=vp.width;c.height=vp.height;
-    const ctx=c.getContext('2d');
-    await page.render({canvasContext:ctx,viewport:vp}).promise;
-
-    // Draw annotations for this page
-    annotations.filter(a=>a.page===p).forEach(a=>{
-      if(a.type==='draw'){
-        ctx.beginPath();ctx.strokeStyle=a.color;ctx.lineWidth=(a.width||2)*2;ctx.lineCap='round';
-        if(a.points&&a.points.length>1){
-          ctx.moveTo(a.points[0].x*(2/scale),a.points[0].y*(2/scale));
-          a.points.forEach(pt=>ctx.lineTo(pt.x*(2/scale),pt.y*(2/scale)));
-          ctx.stroke();
-        }
-      } else if(a.type==='highlight'){
-        ctx.fillStyle=a.color;ctx.fillRect(a.x*(2/scale),a.y*(2/scale),a.w*(2/scale),a.h*(2/scale));
-      } else if(a.type==='whiteout'){
-        ctx.fillStyle='#ffffff';ctx.fillRect(a.x*(2/scale),a.y*(2/scale),a.w*(2/scale),a.h*(2/scale));
-      } else if(a.type==='text'){
-        ctx.font=`${(a.size||14)*(2/scale)}px Inter,sans-serif`;
-        ctx.fillStyle=a.color||'#000';
-        ctx.fillText(a.text,a.x*(2/scale),a.y*(2/scale));
-      }
-    });
-
-    const imgData=c.toDataURL('image/jpeg',0.92);
-    const pw=vp.width/2,ph=vp.height/2;
-    const mmW=pw*0.264583,mmH=ph*0.264583;
-
-    if(firstPage){
-      doc=new jsPDF({orientation:mmW>mmH?'l':'p',unit:'mm',format:[mmW,mmH]});
-      firstPage=false;
-    } else {
-      doc.addPage([mmW,mmH],mmW>mmH?'l':'p');
-    }
-    doc.addImage(imgData,'JPEG',0,0,mmW,mmH);
-  }
-  doc.save('EkZapp_Edited.pdf');
-}
-
-function changePage(dir){
-  const np=currentPage+dir;
-  if(np>=1&&np<=totalPages){
-    // commit text inputs
-    document.querySelectorAll('.text-input-overlay').forEach(el=>el.blur());
-    renderPage(np);
+  "applicationCategory": "Utility",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
 }
 </script>
+
 </body>
 </html>
