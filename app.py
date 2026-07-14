@@ -94,6 +94,7 @@ LASTMOD_OVERRIDES = {
     '/blog/how-to-make-a-meme-online-free': '2026-07-06',
     '/blog/exam-photo-signature-size-guide-2026': '2026-07-08',
     '/blog/split-pdf-crop-pdf-guide': '2026-07-12',
+    '/blog/unlock-pdf-remove-password-online-free': '2026-07-15',
 }
 
 
@@ -172,6 +173,7 @@ def sitemap():
         ('/blog/how-to-make-a-meme-online-free', '0.7', 'monthly'),
         ('/blog/exam-photo-signature-size-guide-2026', '0.7', 'monthly'),
         ('/blog/split-pdf-crop-pdf-guide', '0.7', 'monthly'),
+        ('/blog/unlock-pdf-remove-password-online-free', '0.7', 'monthly'),
     ]
     xml = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
@@ -1903,6 +1905,13 @@ BLOG_POSTS = [
     "category": "PDF Tools",
     "date": "July 12, 2026"
     },
+    {
+    "slug": "unlock-pdf-remove-password-online-free",
+    "title": "Unlock PDF Online Free: How to Remove Password from a PDF",
+    "excerpt": "Remove open and permission passwords from a PDF for free, no software. Learn the difference between password types and what to do if you've forgotten it.",
+    "category": "PDF Tools",
+    "date": "July 15, 2026"
+    }
     # Add more posts here as dicts, e.g.:
     # {
     #     "slug": "compress-pdf-guide",
@@ -1948,6 +1957,10 @@ def blog_exam_photo_signature_size_guide():
 @app.route("/blog/split-pdf-crop-pdf-guide")
 def blog_split_crop_pdf_guide():
     return render_template("blog_post_split_crop_pdf_guide.html")
+
+@app.route("/blog/unlock-pdf-remove-password-online-free")
+def blog_unlock_pdf():
+    return render_template("blog_post_unlock_pdf_guide.html")
 
 # NOTE: as you add more blog posts, add a matching @app.route("/blog/<slug>")
 # function for each new HTML file, the same way as blog_merge_pdf() above.
