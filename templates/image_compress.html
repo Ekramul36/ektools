@@ -23,6 +23,9 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
 .logo-text{font-size:15px;font-weight:700;color:var(--ink)}
 .logo-text span{color:var(--blue)}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:12px;border-left:1px solid var(--border);padding-left:12px}
+.nav-links a{padding:6px 10px;border-radius:6px;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;white-space:nowrap;transition:all .15s}
+.nav-links a:hover,.nav-links a.active{background:var(--blue-lt);color:var(--blue)}
 .back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
 .back:hover{border-color:var(--blue);color:var(--blue)}
 .container{max-width:960px;margin:48px auto;padding:0 20px 60px}
@@ -108,6 +111,18 @@ input[type="range"]{width:100%;accent-color:var(--blue)}
 .compare-yes{color:var(--green);font-weight:700}
 .compare-no{color:#D1D5DB;font-weight:700}
 .compare-table th.highlight{color:var(--teal)}
+.usecase-section{background:white;border:1px solid var(--border);border-radius:14px;padding:32px 24px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.usecase-section h2{font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:18px}
+.usecase-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.usecase-card{background:var(--light);border:1px solid var(--border);border-radius:10px;padding:16px}
+.usecase-card .em{font-size:1.4rem;display:block;margin-bottom:8px}
+.usecase-card h4{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.usecase-card p{font-size:12px;color:var(--gray);line-height:1.5}
+@media (max-width:720px){.usecase-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:420px){.usecase-grid{grid-template-columns:1fr}}
+.depth-section{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.depth-section h2{font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:10px}
+.depth-section p{font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:10px}
 .guide{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:white}
 .guide-header{background:var(--light);padding:14px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);user-select:none}
 .guide-header h3{margin:0;font-size:15px;color:var(--ink)}
@@ -170,7 +185,9 @@ input[type="range"]{width:100%;accent-color:var(--blue)}
     {"@type":"Question","name":"Is this tool free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free. No signup is required."}},
     {"@type":"Question","name":"Will compressing reduce the visual quality of my photo?","acceptedAnswer":{"@type":"Answer","text":"A quality slider lets you control the tradeoff. At around 80 percent quality, most images look nearly identical to the original while being significantly smaller."}},
     {"@type":"Question","name":"Why do I need to compress an image before uploading it?","acceptedAnswer":{"@type":"Answer","text":"Many websites, forms, and portals set a maximum upload size, and large photos from modern phone cameras often exceed it. Compressing brings the file within limit."}},
-    {"@type":"Question","name":"Is my uploaded image stored anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. The image is processed and returned to you, then automatically removed, it is not stored or shared."}}
+    {"@type":"Question","name":"Is my uploaded image stored anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. The image is processed and returned to you, then automatically removed, it is not stored or shared."}},
+    {"@type":"Question","name":"What quality setting should I use?","acceptedAnswer":{"@type":"Answer","text":"Around 80 percent works well for most everyday photos, giving a large size reduction with almost no visible difference. Drop it lower only when targeting a specific, strict KB limit."}},
+    {"@type":"Question","name":"Does this resize the image dimensions too?","acceptedAnswer":{"@type":"Answer","text":"No, only the file size changes, width and height stay exactly as uploaded. Use the Resize Image tool for changing pixel dimensions."}}
   ]
 }
 </script>
@@ -180,6 +197,12 @@ input[type="range"]{width:100%;accent-color:var(--blue)}
 <nav>
   <div class="nav-inner">
     <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <ul class="nav-links">
+      <li><a href="/compress-image" class="active">Compress Image</a></li>
+      <li><a href="/image-size-reducer">Size Reducer</a></li>
+      <li><a href="/resize-image">Resize Image</a></li>
+      <li><a href="/convert-image">Convert Image</a></li>
+    </ul>
     <a class="back" href="/">← All Tools</a>
   </div>
 </nav>
@@ -280,6 +303,9 @@ input[type="range"]{width:100%;accent-color:var(--blue)}
       uploads and can exceed limits on websites and forms. Compression shrinks 
       the file while keeping the picture looking sharp.
     </p>
+    <p>
+      This matters more than it might seem at first glance. A single uncompressed photo dragging down a webpage's load time can cost visitors and search ranking; a batch of oversized product photos can make an online store slow and frustrating to browse; and a phone camera photo that's technically the wrong file size, even by a small margin, can bounce an entire government or exam application back for resubmission. Compression solves all three with the same basic tool, just tuned to a different target each time.
+    </p>
     <div class="reason-grid">
       <div class="reason-card">
         <span class="reason-icon">🚀</span>
@@ -309,6 +335,45 @@ input[type="range"]{width:100%;accent-color:var(--blue)}
         visa, and government portals — without losing visible quality.
       </p>
     </div>
+    <p style="margin-top:18px">Modern phone cameras routinely produce 12- to 48-megapixel photos that land somewhere between 3 and 15 megabytes each as JPEGs — far more detail than most screens, forms, or web pages actually need. That extra weight doesn't buy you a visibly sharper photo in most everyday contexts; it mostly slows down whatever you're trying to do with it, whether that's attaching it to an email, uploading it to a listing, or loading it on a website visitor's phone over a patchy connection.</p>
+    <p>This tool lets you choose exactly how much of that trade-off to make. Pulling the quality slider down trades a small, usually invisible amount of fine detail for a meaningfully smaller file — and because the before/after comparison shows the exact KB numbers immediately, you can see precisely how much you're saving before committing to a download, rather than guessing and re-uploading if the result turns out too large or too degraded.</p>
+  </div>
+  </div>
+
+  <div class="section-wrap">
+  <div class="depth-section">
+    <h2>Common mistakes that lead to a bad result</h2>
+    <p>Compressing an image that's already been compressed once is the most frequent issue — a photo forwarded through WhatsApp, saved from a social media post, or previously run through another compressor has already lost some quality, and compressing it again stacks losses on top of losses. Whenever possible, start from the original, uncompressed photo straight off the camera or phone rather than a copy that's already been through another app.</p>
+    <p>Another common mistake is pushing the quality slider too low in one go rather than checking the preview along the way. Since the before/after comparison updates as soon as you compress, it's worth compressing once at a moderate setting, checking whether the result is small enough and still looks right, and only lowering further if genuinely needed — rather than jumping straight to the lowest setting and accepting whatever quality comes out.</p>
+    <p>Finally, people sometimes reach for a general compressor when what they actually need is an exact KB target for a specific form. If a portal states a precise number like "under 50KB," it's faster and more reliable to use the Image Size Reducer tool, which searches for the right settings automatically instead of manual slider adjustment and re-checking.</p>
+  </div>
+  </div>
+
+  <div class="section-wrap-wide">
+  <div class="usecase-section">
+    <h2>Who Compresses Images Every Day</h2>
+    <div class="usecase-grid">
+      <div class="usecase-card">
+        <span class="em">🌐</span>
+        <h4>Website Owners</h4>
+        <p>Faster-loading pages improve visitor experience and search rankings.</p>
+      </div>
+      <div class="usecase-card">
+        <span class="em">🛍️</span>
+        <h4>Online Sellers</h4>
+        <p>Upload multiple product photos quickly without hitting listing limits.</p>
+      </div>
+      <div class="usecase-card">
+        <span class="em">📋</span>
+        <h4>Form Applicants</h4>
+        <p>Meet strict KB limits on exam, job, and government upload portals.</p>
+      </div>
+      <div class="usecase-card">
+        <span class="em">📱</span>
+        <h4>Everyday Phone Users</h4>
+        <p>Free up phone or cloud storage without deleting the photos themselves.</p>
+      </div>
+    </div>
   </div>
   </div>
 
@@ -337,6 +402,34 @@ input[type="range"]{width:100%;accent-color:var(--blue)}
         <p>Images are processed and removed — never stored.</p>
       </div>
     </div>
+  </div>
+  </div>
+
+  <div class="section-wrap">
+  <div class="depth-section">
+    <h2>How the quality slider actually changes the file</h2>
+    <p>Moving the slider doesn't resize your photo's pixel dimensions at all — width and height stay exactly the same. What changes is how much fine detail the compression algorithm is allowed to discard while encoding the image. At 100% quality, almost nothing is discarded and the file stays close to its original size. Lower the slider and the algorithm starts simplifying subtle texture and color transitions that the human eye is least likely to notice, which is why a drop from 100% to around 80% often barely looks different at normal viewing size, even though the file itself gets noticeably smaller.</p>
+    <p>Push the slider much lower and the savings start to show visually — blocky edges around sharp detail, banding in smooth gradients like skies, and softer text. That's why 70-85% is usually the sweet spot for everyday photos: enough compression to meaningfully shrink the file, without crossing into visibly lower quality. For a photo destined for a strict KB-limited form rather than a website, the Image Size Reducer tool takes a different approach — working backwards from an exact KB target instead of a quality percentage.</p>
+  </div>
+  </div>
+
+  <div class="section-wrap">
+  <div class="depth-section">
+    <h2>JPG, PNG, and WebP compress differently</h2>
+    <p>Not every image format responds to compression the same way, which is part of why this tool accepts all three of the common ones rather than forcing a conversion. JPG is built for photographs — it was designed specifically around the kind of smooth color gradients and fine detail a camera produces, which is why it's usually the format that shrinks the most for the least visible quality loss when you move the slider down.</p>
+    <p>PNG behaves differently because it was designed for graphics with flat colors, sharp edges, and transparency — think logos, screenshots, or icons rather than photos. Compressing a PNG photo still helps, but the size reduction per quality point tends to be smaller than the same photo saved as JPG, because PNG's compression method is built to preserve exact pixel values rather than approximate them the way JPG does.</p>
+    <p>WebP sits in between and, for most photos, produces the smallest file of the three at a comparable visual quality, since it's a newer format built specifically to outperform both JPG and PNG at typical web use cases. The trade-off is that a small number of very old devices or applications don't support WebP, so JPG remains the safer default when you're not sure where the image will end up being viewed or uploaded.</p>
+    <p>In practice, this tool keeps your original format rather than silently converting it, so a PNG stays a PNG and a JPG stays a JPG after compression — if you specifically want to switch formats to take advantage of WebP's smaller file sizes, the Convert Image tool handles that conversion directly.</p>
+  </div>
+  </div>
+
+  <div class="section-wrap">
+  <div class="depth-section">
+    <h2>Choosing a quality setting for your specific use</h2>
+    <p>For a photo going onto a personal blog, portfolio, or general website page, 75-85% quality is a sensible default — visitors won't notice the difference from the original, but page load times improve meaningfully, which also tends to help search engine rankings since site speed is a known ranking factor.</p>
+    <p>For a photo headed to a strict-limit upload portal — an exam form, a visa application, a government KYC form — the priority flips: hitting the required KB ceiling matters more than preserving maximum quality, so it's fine to push the slider lower until the resulting size comfortably clears the limit. If you already know the exact KB number your form requires, the dedicated Image Size Reducer tool automates that search for you instead of manual trial and error with the slider.</p>
+    <p>For an image you're archiving or storing long-term where quality matters more than size, keep the slider high, around 90-95%, since the space savings at that end of the range are modest anyway and not worth risking a visible quality drop on a photo you want to keep looking its best.</p>
+    <p>Whichever setting you land on, it's worth glancing at the before/after preview rather than committing to a number blindly — the right quality level genuinely varies by photo, since a busy, highly-detailed image tolerates more compression before looking rough than a photo with large smooth areas like sky or skin, where compression artifacts show up first.</p>
   </div>
   </div>
 
@@ -382,6 +475,8 @@ input[type="range"]{width:100%;accent-color:var(--blue)}
         <details><summary>Will compressing reduce the visual quality of my photo?</summary><div class="faq-a">The quality slider lets you control the tradeoff. Around 80% quality, most images look nearly identical to the original while being significantly smaller.</div></details>
         <details><summary>Why do I need to compress an image before uploading it?</summary><div class="faq-a">Many websites, forms, and portals set a maximum upload size, and large photos from phone cameras often exceed it. Compressing brings the file within limit.</div></details>
         <details><summary>Is my uploaded image stored anywhere?</summary><div class="faq-a">No. The image is processed and returned to you, then automatically removed — it is not stored or shared.</div></details>
+        <details><summary>What quality setting should I use?</summary><div class="faq-a">Around 80% works well for most everyday photos — a large size reduction with almost no visible difference. Drop it lower only if you're targeting a specific, strict KB limit.</div></details>
+        <details><summary>Does this resize the image dimensions too?</summary><div class="faq-a">No, only the file size changes — width and height stay exactly as uploaded. Use the Resize Image tool if you also need to change the pixel dimensions.</div></details>
       </div>
     </div>
   </div>

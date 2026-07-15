@@ -1,132 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Passport Photo Maker Online Free — India, USA, UK, Schengen | EkZapp</title>
-    <meta name="description" content="Create passport and visa size photos online for free. Choose size, background, and copies, preview before download.">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <style>
-        *,*::before,*::after{box-sizing:border-box}
-        body { font-family: 'Segoe UI', sans-serif; background: #F9FAFB; margin: 0; }
-        .page-wrap{max-width:960px;margin:0 auto;padding:0 20px 64px}
-        .narrow{max-width:680px;margin:0 auto}
-        .wide{max-width:900px;margin:0 auto}
-        .back-link { display:inline-block; margin:20px 0 0; color:#2563EB; font-size:14px; text-decoration:none; }
-        .back-link:hover { text-decoration:underline; }
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VW5QLMV046"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-VW5QLMV046');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Passport Photo Maker Online Free — India, USA, UK, Schengen | EkZapp</title>
+<meta name="description" content="Create passport and visa size photos online for free. Choose size, background color, and copies, preview an A4 print-ready sheet before download.">
+<link rel="canonical" href="https://ekzapp.com/passport-photo">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626;--green:#16A34A;--violet:#7C3AED;--violet-dk:#6D28D9;}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+a{color:inherit}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}.logo-text span{color:var(--blue)}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:12px;border-left:1px solid var(--border);padding-left:12px}
+.nav-links a{padding:6px 10px;border-radius:6px;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;white-space:nowrap;transition:all .15s}
+.nav-links a:hover,.nav-links a.active{background:#F5F3FF;color:var(--violet)}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.back:hover{border-color:var(--violet);color:var(--violet)}
 
-        .pp-hero{position:relative;overflow:hidden;border-radius:20px;padding:44px 34px;margin:24px 0 28px;background:linear-gradient(135deg,#6d28d9 0%,#7c3aed 45%,#a78bfa 100%);background-size:200% 200%;animation:ppGrad 12s ease infinite}
-        @keyframes ppGrad{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-        @media (prefers-reduced-motion:reduce){.pp-hero{animation:none}}
-        .pp-hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:.78rem;padding:5px 13px;border-radius:999px;margin-bottom:14px}
-        .pp-hero h1{color:#fff;font-size:1.85rem;line-height:1.25;max-width:560px;margin:0 0 10px}
-        .pp-hero p{color:#ede9fe;font-size:1rem;max-width:520px;margin:0}
+/* ===== HERO ===== */
+.hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#4C1D95,#7C3AED 45%,#8B5CF6 70%,#A78BFA);background-size:200% 200%;animation:heroShift 12s ease-in-out infinite;padding:56px 20px 120px}
+@keyframes heroShift{0%{background-position:0% 40%}50%{background-position:100% 60%}100%{background-position:0% 40%}}
+.hero-inner{max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:12px;font-weight:600;padding:6px 14px;border-radius:999px;margin-bottom:18px;backdrop-filter:blur(4px)}
+.hero h1{color:#fff;font-size:2.2rem;font-weight:900;letter-spacing:-.03em;line-height:1.18;margin-bottom:12px}
+.hero p{color:rgba(255,255,255,.9);font-size:15px;max-width:480px;margin:0 auto}
+.hero-doc{position:absolute;opacity:.5}
+.hero-doc svg{display:block}
+.doc1{top:22px;left:7%;animation:float1 7s ease-in-out infinite}
+.doc2{top:68px;right:8%;animation:float2 8s ease-in-out infinite}
+.doc3{bottom:26px;left:15%;animation:float1 9s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-14px) rotate(-3deg)}}
+@keyframes float2{0%,100%{transform:translateY(0) rotate(8deg)}50%{transform:translateY(-10px) rotate(4deg)}}
 
-        .card { background:#fff; border-radius:16px; box-shadow:0 4px 24px rgba(0,0,0,0.08); padding:36px; margin-bottom:28px; }
-        .subtitle { color:#6B7280; font-size:14px; margin-bottom:28px; }
-        .upload-area { border:2px dashed #D1D5DB; border-radius:12px; padding:40px 20px; text-align:center; cursor:pointer; transition:all .2s; background:#F9FAFB; }
-        .upload-area:hover { border-color:#2563EB; background:#EFF6FF; }
-        .upload-area .icon { font-size:38px; margin-bottom:8px; }
-        .upload-area p { color:#6B7280; font-size:14px; margin:4px 0; }
-        .upload-area strong { color:#2563EB; }
-        input[type="file"] { display:none; }
-        .file-name { margin-top:10px; font-size:13px; color:#374151; font-weight:500; min-height:18px; }
-        .thumb-wrap { margin-top:14px; text-align:center; display:none; }
-        .thumb-wrap img { max-width:120px; max-height:120px; border-radius:8px; border:2px solid #E5E7EB; object-fit:cover; }
-        .options-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:22px; }
-        .opt { display:flex; flex-direction:column; gap:6px; }
-        .opt label { font-size:13px; font-weight:600; color:#374151; }
-        .opt select { padding:10px 12px; border:1px solid #D1D5DB; border-radius:8px; font-size:14px; background:white; cursor:pointer; }
-        .copies-row { margin-top:20px; }
-        .copies-row label { font-size:13px; font-weight:600; color:#374151; display:block; margin-bottom:8px; }
-        .copies-options { display:flex; gap:10px; flex-wrap:wrap; }
-        .copy-btn { padding:8px 20px; border:2px solid #E5E7EB; border-radius:8px; background:white; font-size:14px; font-weight:600; cursor:pointer; color:#374151; transition:all .15s; }
-        .copy-btn:hover { border-color:#2563EB; color:#2563EB; }
-        .copy-btn.active { border-color:#2563EB; background:#EFF6FF; color:#2563EB; }
-        .bg-row { margin-top:20px; }
-        .bg-row label { font-size:13px; font-weight:600; color:#374151; display:block; margin-bottom:8px; }
-        .bg-presets { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
-        .bg-swatch { width:34px; height:34px; border-radius:50%; border:2px solid #E5E7EB; cursor:pointer; transition:transform .15s; }
-        .bg-swatch:hover { transform:scale(1.15); }
-        .bg-swatch.active { border-color:#2563EB; border-width:3px; box-shadow:0 0 0 2px #BFDBFE; }
-        .bg-custom { display:flex; align-items:center; gap:8px; margin-top:10px; }
-        .bg-custom input[type="color"] { width:44px; height:34px; border-radius:8px; border:1px solid #D1D5DB; cursor:pointer; padding:2px; }
-        .bg-custom span { font-size:13px; color:#6B7280; }
-        .btn-generate { display:block; width:100%; padding:14px; background:linear-gradient(135deg,#2563EB,#1D4ED8); color:white; border:none; border-radius:10px; font-size:16px; font-weight:600; cursor:pointer; margin-top:26px; transition:opacity .2s; }
-        .btn-generate:hover { opacity:.9; }
-        .btn-generate:disabled { opacity:.6; cursor:not-allowed; }
-        .alert-error { background:#FEF2F2; color:#B91C1C; border:1px solid #FECACA; border-radius:10px; padding:14px 18px; margin-bottom:20px; font-size:14px; }
-        .preview-section { margin-top:32px; border-top:2px solid #E5E7EB; padding-top:28px; text-align:center; }
-        .preview-section h2 { font-size:20px; color:#111827; margin:0 0 6px; }
-        .preview-section p { font-size:14px; color:#6B7280; margin:0 0 20px; }
-        .preview-img-wrap img { max-width:100%; border-radius:12px; border:1px solid #E5E7EB; box-shadow:0 4px 16px rgba(0,0,0,0.1); }
-        .btn-download { display:inline-block; margin-top:22px; padding:14px 40px; background:linear-gradient(135deg,#059669,#047857); color:white; border-radius:10px; font-size:16px; font-weight:600; text-decoration:none; transition:opacity .2s; }
-        .btn-download:hover { opacity:.9; }
-        .btn-new { display:inline-block; margin-top:14px; color:#2563EB; font-size:14px; cursor:pointer; text-decoration:underline; background:none; border:none; }
-        .info-box { background:#EFF6FF; border-radius:10px; padding:16px 20px; margin-top:24px; }
-        .info-box h3 { font-size:13px; color:#1D4ED8; margin:0 0 8px; }
-        .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
-        .info-item { font-size:12px; color:#1E40AF; }
-        @media(max-width:500px) { .options-grid { grid-template-columns:1fr; } }
+/* ===== LAYOUT WRAPPERS ===== */
+.outer{max-width:960px;margin:0 auto;padding:0 20px}
+.narrow{max-width:680px;margin:0 auto}
+.wide{max-width:900px;margin:0 auto}
 
-        .pp-photo-card{display:flex;gap:20px;align-items:center;background:#F5F3FF;border-radius:16px;padding:20px;margin:28px 0;flex-wrap:wrap}
-        .pp-photo-card img{width:220px;height:150px;object-fit:cover;border-radius:10px;flex-shrink:0}
-        .pp-photo-card .pp-photo-text{flex:1;min-width:220px}
-        .pp-photo-card h3{font-size:1rem;margin:0 0 6px}
-        .pp-photo-card p{font-size:.9rem;color:#6B7280;margin:0;line-height:1.5}
+/* ===== TOOL CARD ===== */
+.tool-card-wrap{margin-top:-84px;position:relative;z-index:3}
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 12px 32px -8px rgba(124,58,237,.25)}
+.info-bar{background:#F5F3FF;border:1px solid #DDD6FE;border-radius:8px;padding:10px 14px;margin-bottom:20px;font-size:13px;color:#5B21B6;display:flex;align-items:center;gap:8px}
+form{display:flex;flex-direction:column;gap:16px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.upload-area{border:2px dashed var(--border);border-radius:10px;padding:36px 20px;text-align:center;cursor:pointer;transition:all .2s;background:var(--light);position:relative}
+.upload-area:hover{border-color:var(--violet);background:#F5F3FF}
+.upload-area .icon{font-size:2.2rem;margin-bottom:8px}
+.upload-area p{color:var(--gray);font-size:12px;margin:2px 0}
+.upload-area strong{color:var(--violet)}
+input[type="file"]{display:none}
+.file-name{margin-top:8px;font-size:13px;color:var(--ink);font-weight:600;min-height:16px}
+.thumb-wrap{margin-top:12px;text-align:center;display:none}
+.thumb-wrap img{max-width:110px;max-height:110px;border-radius:8px;border:2px solid var(--border);object-fit:cover}
+.options-grid{display:grid;grid-template-columns:1fr;gap:16px}
+.opt select{padding:10px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:white;cursor:pointer;width:100%;font-family:'Inter',sans-serif}
+.copies-row label,.bg-row label{font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:8px}
+.copies-options{display:flex;gap:10px;flex-wrap:wrap}
+.copy-btn{padding:8px 18px;border:2px solid var(--border);border-radius:8px;background:white;font-size:13px;font-weight:600;cursor:pointer;color:var(--ink);transition:all .15s;font-family:'Inter',sans-serif}
+.copy-btn:hover{border-color:var(--violet);color:var(--violet)}
+.copy-btn.active{border-color:var(--violet);background:#F5F3FF;color:var(--violet)}
+.bg-presets{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.bg-swatch{width:32px;height:32px;border-radius:50%;border:2px solid var(--border);cursor:pointer;transition:transform .15s}
+.bg-swatch:hover{transform:scale(1.15)}
+.bg-swatch.active{border-color:var(--violet);border-width:3px;box-shadow:0 0 0 2px #DDD6FE}
+.bg-custom{display:flex;align-items:center;gap:8px;margin-top:10px}
+.bg-custom input[type="color"]{width:40px;height:32px;border-radius:8px;border:1px solid var(--border);cursor:pointer;padding:2px}
+.bg-custom span{font-size:12px;color:var(--gray)}
+.btn{width:100%;padding:13px;background:var(--violet);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn:hover{background:var(--violet-dk)}
+.btn:disabled{opacity:.6;cursor:not-allowed}
+.error-box{background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:12px 16px;color:var(--red);font-size:13px;font-weight:500;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.trust{display:flex;justify-content:center;gap:20px;margin-top:16px;flex-wrap:wrap}
+.trust-item{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:4px}
+.preview-section{text-align:center}
+.preview-section h2{font-size:16px;color:var(--ink);margin:0 0 6px}
+.preview-section p{font-size:13px;color:var(--gray);margin:0 0 16px}
+.preview-img-wrap img{max-width:100%;border-radius:12px;border:1px solid var(--border);box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.download-btn{display:inline-block;margin-top:18px;padding:13px 32px;background:var(--green);color:white;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none;transition:all .15s}
+.download-btn:hover{background:#15803D}
+.btn-new{display:block;margin-top:12px;color:var(--violet);font-size:13px;cursor:pointer;text-decoration:underline;background:none;border:none;font-family:'Inter',sans-serif}
+.info-box{background:#F5F3FF;border-radius:10px;padding:14px 16px;margin-top:20px}
+.info-box h3{font-size:12.5px;color:var(--violet-dk);margin:0 0 8px}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.info-item{font-size:11.5px;color:#5B21B6}
 
-        .pp-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:28px 0}
-        .pp-card{border:1px solid #E5E7EB;border-radius:14px;padding:20px;background:white}
-        .pp-card svg{width:32px;height:32px;margin-bottom:10px}
-        .pp-card h3{font-size:.95rem;margin:0 0 6px}
-        .pp-card p{font-size:.85rem;color:#6B7280;margin:0;line-height:1.45}
+/* ===== FEATURE GRID ===== */
+.section{margin-top:56px}
+.section h2{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:8px}
+.section .sub{text-align:center;color:var(--gray);font-size:14px;margin-bottom:28px}
+.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.feature{background:white;border:1px solid var(--border);border-radius:12px;padding:20px 16px;text-align:center}
+.feature svg{margin:0 auto 12px}
+.feature h3{font-size:13.5px;font-weight:700;margin-bottom:6px}
+.feature p{font-size:12px;color:var(--gray);line-height:1.5}
 
-        .pp-table-wrap{overflow-x:auto;margin:24px 0}
-        table.pp-table{width:100%;border-collapse:collapse;font-size:.88rem}
-        table.pp-table th,table.pp-table td{padding:10px 12px;border-bottom:1px solid #E5E7EB;text-align:left}
-        table.pp-table th{background:#F9FAFB;font-weight:600}
+/* ===== ILLUSTRATION + COPY ===== */
+.photo-block{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.photo-block img{width:100%;height:100%;object-fit:cover;display:block;min-height:220px}
+.photo-copy{padding:24px 28px 24px 0}
+.photo-copy h2{font-size:1.2rem;font-weight:800;margin-bottom:10px;text-align:left}
+.photo-copy p{font-size:13.5px;color:var(--gray);line-height:1.6}
 
-        .pp-related{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:28px 0}
-        .pp-related a{display:block;padding:18px;border-radius:14px;color:#fff;text-decoration:none;font-weight:600}
-        .pp-related a small{display:block;font-weight:400;opacity:.9;font-size:.78rem;margin-top:4px}
-        .pp-related a.rt1{background:linear-gradient(135deg,#7c3aed,#5b21b6)}
-        .pp-related a.rt2{background:linear-gradient(135deg,#2563EB,#1e40af)}
-        .pp-related a.rt3{background:linear-gradient(135deg,#0d9488,#0f766e)}
+/* ===== TABLE ===== */
+table.spec{width:100%;border-collapse:collapse;background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden;font-size:13px}
+table.spec th,table.spec td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--border)}
+table.spec th{background:#F5F3FF;color:var(--violet-dk);font-weight:700}
+table.spec tr:last-child td{border-bottom:none}
 
-        .section-title{font-size:1.25rem;font-weight:800;letter-spacing:-.01em;margin:0 0 6px;color:#111827}
-        .section-sub{color:#6B7280;font-size:.9rem;margin-bottom:18px}
+/* ===== USE CASES ===== */
+.use-cases{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.use-case{background:white;border:1px solid var(--border);border-left:4px solid var(--violet);border-radius:10px;padding:18px 20px}
+.use-case h3{font-size:13.5px;font-weight:700;margin-bottom:6px}
+.use-case p{font-size:12.5px;color:var(--gray);line-height:1.5}
 
-        /* User Guide */
-        .guide { border-radius:12px; border:1px solid #E5E7EB; overflow:hidden; }
-        .guide-header { background:#F9FAFB; padding:14px 20px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #E5E7EB; }
-        .guide-header h3 { margin:0; font-size:15px; color:#111827; }
-        .guide-header span { font-size:18px; transition:transform .2s; }
-        .guide-header.open span { transform:rotate(180deg); }
-        .guide-body { display:none; padding:20px; }
-        .guide-body.open { display:block; }
-        .steps { list-style:none; margin:0; padding:0; counter-reset:step; }
-        .steps li { counter-increment:step; display:flex; gap:14px; align-items:flex-start; margin-bottom:16px; }
-        .steps li:last-child { margin-bottom:0; }
-        .step-num { min-width:30px; height:30px; border-radius:50%; background:#2563EB; color:white; font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-        .step-text strong { display:block; font-size:14px; color:#111827; margin-bottom:3px; }
-        .step-text span { font-size:13px; color:#6B7280; line-height:1.5; }
-        .guide-tips { margin-top:16px; background:#FFF7ED; border-radius:8px; padding:14px 16px; }
-        .guide-tips h4 { margin:0 0 8px; font-size:13px; color:#92400E; }
-        .guide-tips ul { margin:0; padding-left:16px; }
-        .guide-tips ul li { font-size:13px; color:#78350F; margin-bottom:5px; line-height:1.4; }
-        .faq { margin-top:14px; }
-        .faq-item { border-bottom:1px solid #F3F4F6; padding:10px 0; }
-        .faq-item:last-child { border-bottom:none; }
-        .faq-q { font-size:13px; font-weight:600; color:#374151; margin-bottom:4px; }
-        .faq-a { font-size:13px; color:#6B7280; line-height:1.5; }
-    </style>
-    <script type="application/ld+json">
+/* ===== STEPS ===== */
+.how-to{background:white;border:1px solid var(--border);border-radius:14px;padding:24px}
+.steps-list{display:flex;flex-direction:column;gap:12px}
+.step{display:flex;gap:12px;align-items:flex-start}
+.step-num{width:28px;height:28px;border-radius:50%;background:#F5F3FF;color:var(--violet);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-text{font-size:13px;color:var(--gray);line-height:1.5;padding-top:4px}
+.step-text strong{color:var(--ink)}
+.guide-tips{margin-top:16px;background:#FFF7ED;border-radius:8px;padding:14px 16px}
+.guide-tips h4{margin:0 0 8px;font-size:13px;color:#92400E}
+.guide-tips ul{margin:0;padding-left:16px}
+.guide-tips ul li{font-size:12.5px;color:#78350F;margin-bottom:5px;line-height:1.4}
+
+/* ===== FAQ ===== */
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-list details{background:white;border:1px solid var(--border);border-radius:10px;padding:14px 18px}
+.faq-list summary{font-size:13.5px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:'+';font-size:18px;color:var(--violet);font-weight:400}
+.faq-list details[open] summary::after{content:'−'}
+.faq-list p{font-size:13px;color:var(--gray);line-height:1.6;margin-top:10px}
+
+/* ===== RELATED ===== */
+.related{background:linear-gradient(115deg,#4C1D95,#7C3AED,#C4B5FD);border-radius:16px;padding:32px 28px;color:#fff}
+.related h2{color:#fff;font-size:1.2rem;margin-bottom:18px;text-align:left}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.related-item{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:14px;text-decoration:none;transition:background .15s}
+.related-item:hover{background:rgba(255,255,255,.22)}
+.related-item .ico{font-size:1.3rem;margin-bottom:6px;display:block}
+.related-item .name{font-size:12.5px;font-weight:700;color:#fff}
+
+footer{margin:64px 0 32px;text-align:center;font-size:12px;color:var(--gray)}
+
+@media(max-width:720px){
+  .feature-grid{grid-template-columns:repeat(2,1fr)}
+  .photo-block{grid-template-columns:1fr}
+  .photo-block img{min-height:160px}
+  .photo-copy{padding:0 20px 22px}
+  .use-cases{grid-template-columns:1fr}
+  .related-grid{grid-template-columns:1fr}
+  .hero h1{font-size:1.6rem}
+  .tool-card-wrap{margin-top:-56px}
+  .hero{padding-bottom:88px}
+  .info-grid{grid-template-columns:1fr}
+}
+</style>
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Passport Photo Maker",
   "url": "https://ekzapp.com/passport-photo",
-  "description": "Create passport size photos online for free. Resize and format your photo to meet passport requirements.",
+  "description": "Create passport and visa size photos online for free. Resize and format a photo to meet passport requirements and print a full A4 sheet of copies.",
   "applicationCategory": "UtilityApplication",
   "operatingSystem": "Web",
   "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
@@ -137,287 +183,302 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question","name": "Is this tool free?","acceptedAnswer": {"@type": "Answer","text": "Yes, completely free. No signup, no watermark, no hidden charges."}},
-    {"@type": "Question","name": "Will my photo be saved on the server?","acceptedAnswer": {"@type": "Answer","text": "Your photo is processed temporarily and deleted automatically. It is not stored or shared."}},
-    {"@type": "Question","name": "What if my background is not white?","acceptedAnswer": {"@type": "Answer","text": "This tool does not automatically remove backgrounds. For best results, take the photo in front of a plain wall, or use the Remove Background tool first and come back here."}},
-    {"@type": "Question","name": "Can I use this for Indian passport, Aadhaar, or visa applications?","acceptedAnswer": {"@type": "Answer","text": "Yes. Select India 35x45mm for Indian passport, Aadhaar, PAN, and most Indian government documents. Select the USA 51x51mm option for US visa applications."}},
-    {"@type": "Question","name": "How do I print correctly?","acceptedAnswer": {"@type": "Answer","text": "Open the downloaded JPEG and print at A4 size with Actual Size or 100% scale selected, using glossy photo paper at a photo studio for best results."}}
+    {"@type":"Question","name":"Is this tool free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free. No signup, no watermark, no hidden charges."}},
+    {"@type":"Question","name":"Will my photo be saved on the server?","acceptedAnswer":{"@type":"Answer","text":"Your photo is processed temporarily and deleted automatically. It is not stored or shared."}},
+    {"@type":"Question","name":"What if my background is not white?","acceptedAnswer":{"@type":"Answer","text":"This tool does not automatically remove backgrounds. For best results, take the photo in front of a plain wall, or use the Remove Background tool first and come back here."}},
+    {"@type":"Question","name":"Can I use this for Indian passport, Aadhaar, or visa applications?","acceptedAnswer":{"@type":"Answer","text":"Yes. Select India 35x45mm for Indian passport, Aadhaar, PAN, and most Indian government documents. Select the USA 51x51mm option for US visa applications."}},
+    {"@type":"Question","name":"How do I print correctly?","acceptedAnswer":{"@type":"Answer","text":"Open the downloaded JPEG and print at A4 size with Actual Size or 100% scale selected, using glossy photo paper at a photo studio for best results."}},
+    {"@type":"Question","name":"Why does the head size matter, not just the photo dimensions?","acceptedAnswer":{"@type":"Answer","text":"Most passport rules specify how much of the frame the face should fill, not just the outer paper size, so a correctly sized photo where the face is too small or too large relative to the frame can still be rejected. Keep the face centered and reasonably close-up before uploading."}},
+    {"@type":"Question","name":"Can I use the same photo for multiple document types?","acceptedAnswer":{"@type":"Answer","text":"Yes. Upload the same source photo and generate a separate sheet for each size you need, such as a passport photo and an Aadhaar-size photo, without retaking the picture."}}
   ]
 }
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
 </head>
 <body>
-{% include 'navbar.html' ignore missing %}
-<div class="page-wrap">
-    <a href="/" class="back-link">← Back to Tools</a>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <ul class="nav-links">
+      <li><a href="/passport-photo" class="active">Passport Photo</a></li>
+      <li><a href="/remove-background">Background Remover</a></li>
+      <li><a href="/compress-image">Compress Image</a></li>
+      <li><a href="/image-protect">Image Protect</a></li>
+    </ul>
+    <a class="back" href="/">← All Tools</a>
+  </div>
+</nav>
 
-    <div class="narrow">
-      <div class="pp-hero">
-        <span class="pp-hero-badge">Print-ready A4 sheet</span>
-        <h1>Passport and visa photos, sized and arranged automatically</h1>
-        <p>Upload one photo, pick your country's size, and get a full A4 sheet of copies ready to print at any studio.</p>
-      </div>
-      <p class="subtitle" style="margin-top:-8px">Create professional passport & visa photos — choose size, copies & background. Preview before download!</p>
-    </div>
-
-    <div class="narrow">
-      <div class="card">
-        {% if error %}
-        <div class="alert-error">⚠️ {{ error }}</div>
-        {% endif %}
-
-        {% if preview_image and download_ready %}
-        <div class="preview-section">
-            <h2>✅ Your Passport Photo is Ready!</h2>
-            <p>{{ copies }} photo(s) arranged on A4 sheet — check preview below</p>
-            <div class="preview-img-wrap">
-                <img src="data:image/jpeg;base64,{{ preview_image }}" alt="Passport Photo Preview">
-            </div>
-            <br>
-            <a href="/passport-photo/download" class="btn-download">⬇️ Download JPEG</a>
-            <br>
-            <button class="btn-new" onclick="window.location.href='/passport-photo'">🔄 Make Another</button>
-        </div>
-
-        {% else %}
-        <form method="POST" enctype="multipart/form-data" id="passportForm">
-            <div class="upload-area" id="dropZone" onclick="document.getElementById('imageInput').click()">
-                <div class="icon">🤳</div>
-                <p><strong>Click to upload</strong> or drag & drop your photo</p>
-                <p>JPG, PNG, WEBP — Max 10MB</p>
-            </div>
-            <input type="file" id="imageInput" name="image" accept="image/*" onchange="previewThumb(this)">
-            <div class="file-name" id="fileName"></div>
-            <div class="thumb-wrap" id="thumbWrap"><img id="thumbImg" src="" alt="Preview"></div>
-
-            <div class="options-grid">
-                <div class="opt">
-                    <label>📐 Photo Size</label>
-                    <select name="size">
-                        <option value="35x45">🇮🇳 India — 35×45 mm</option>
-                        <option value="51x51">🇺🇸 USA — 51×51 mm (2×2")</option>
-                        <option value="35x35">🇬🇧 UK — 35×35 mm</option>
-                        <option value="40x60">🇪🇺 Schengen — 40×60 mm</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="copies-row">
-                <label>🔢 Number of Copies on A4 Sheet</label>
-                <div class="copies-options">
-                    <button type="button" class="copy-btn" onclick="setCopies(4,this)">4 copies</button>
-                    <button type="button" class="copy-btn active" onclick="setCopies(8,this)">8 copies</button>
-                    <button type="button" class="copy-btn" onclick="setCopies(12,this)">12 copies</button>
-                    <button type="button" class="copy-btn" onclick="setCopies(16,this)">16 copies</button>
-                </div>
-                <input type="hidden" name="copies" id="copiesInput" value="8">
-            </div>
-
-            <div class="bg-row">
-                <label>🎨 Background Color</label>
-                <div class="bg-presets">
-                    <div class="bg-swatch active" style="background:#ffffff;" title="White" onclick="setBg(this,'#ffffff')"></div>
-                    <div class="bg-swatch" style="background:#6B96D5;" title="Light Blue" onclick="setBg(this,'#6B96D5')"></div>
-                    <div class="bg-swatch" style="background:#F0F0F0;" title="Light Gray" onclick="setBg(this,'#F0F0F0')"></div>
-                    <div class="bg-swatch" style="background:#FFF9F0;" title="Cream" onclick="setBg(this,'#FFF9F0')"></div>
-                    <div class="bg-swatch" style="background:#C8E6C9;" title="Light Green" onclick="setBg(this,'#C8E6C9')"></div>
-                </div>
-                <div class="bg-custom">
-                    <input type="color" id="bgPicker" value="#ffffff" onchange="updateBgFromPicker(this.value)">
-                    <span>Or pick custom color</span>
-                </div>
-                <input type="hidden" name="bg_color" id="bgColorInput" value="#ffffff">
-            </div>
-
-            <button type="submit" class="btn-generate" id="submitBtn">📸 Generate & Preview</button>
-        </form>
-        {% endif %}
-
-        <div class="info-box">
-            <h3>📋 Standard Sizes Reference</h3>
-            <div class="info-grid">
-                <div class="info-item">🇮🇳 India — 35×45 mm</div>
-                <div class="info-item">🇺🇸 USA — 51×51 mm</div>
-                <div class="info-item">🇬🇧 UK — 35×35 mm</div>
-                <div class="info-item">🇪🇺 Schengen — 40×60 mm</div>
-            </div>
-            <p style="font-size:12px;color:#3B82F6;margin:10px 0 0;">Output: A4 sheet @ 300 DPI — print-ready!</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="wide">
-      <div class="pp-photo-card">
-        <img src="/static/images/photo-laptop-meeting.jpg" alt="Preparing documents for an application" onerror="this.style.display='none'">
-        <div class="pp-photo-text">
-          <h3>One good photo, every size you need</h3>
-          <p>Take one clear, well-lit photo against a plain wall, then run it through here for each document that needs it — passport, visa, ID card — instead of visiting a studio separately for every application.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="wide">
-      <div class="section-title">Why generate your own sheet</div>
-      <div class="section-sub">A studio visit isn't always necessary once the photo itself is right.</div>
-      <div class="pp-cards">
-        <div class="pp-card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="8" y="8" width="8" height="8"/></svg>
-          <h3>Exact size, every time</h3>
-          <p>Each country's dimensions are built in — no measuring or guessing at millimeters yourself.</p>
-        </div>
-        <div class="pp-card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.6"><path d="M4 6h16M4 12h10M4 18h16"/></svg>
-          <h3>Multiple copies, one sheet</h3>
-          <p>4 to 16 copies arranged on a single A4 page, ready for a photo studio to print at actual size.</p>
-        </div>
-        <div class="pp-card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
-          <h3>Preview before printing</h3>
-          <p>See the arranged sheet on screen first, so there's no surprise once it comes back from the printer.</p>
-        </div>
-        <div class="pp-card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.6"><path d="M12 3v12M8 11l4 4 4-4"/><path d="M4 17v3h16v-3"/></svg>
-          <h3>300 DPI output</h3>
-          <p>High enough resolution for clean, sharp prints at any standard photo studio.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="wide">
-      <div class="section-title">Size reference by document type</div>
-      <div class="pp-table-wrap">
-        <table class="pp-table">
-          <thead><tr><th>Country / document</th><th>Size</th><th>Typical use</th></tr></thead>
-          <tbody>
-            <tr><td>🇮🇳 India</td><td>35 × 45 mm</td><td>Passport, Aadhaar, PAN, most govt forms</td></tr>
-            <tr><td>🇺🇸 USA</td><td>51 × 51 mm (2×2")</td><td>US passport and visa applications</td></tr>
-            <tr><td>🇬🇧 UK</td><td>35 × 35 mm</td><td>UK passport and visa applications</td></tr>
-            <tr><td>🇪🇺 Schengen</td><td>40 × 60 mm</td><td>Schengen visa applications</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p style="color:#6B7280;font-size:13.5px;line-height:1.6">Always double-check the exact requirement on your specific application form — some embassies specify slightly different rules for background color or head size within the frame.</p>
-    </div>
-
-    <div class="narrow">
-        <!-- ─── USER GUIDE ─── -->
-        <div class="guide">
-            <div class="guide-header" id="guideToggle" onclick="toggleGuide()">
-                <h3>📖 How to Use — Step by Step Guide</h3>
-                <span id="guideArrow">▼</span>
-            </div>
-            <div class="guide-body" id="guideBody">
-
-                <ul class="steps">
-                    <li>
-                        <div class="step-num">1</div>
-                        <div class="step-text">
-                            <strong>Upload Your Photo</strong>
-                            <span>Click the upload area or drag & drop your photo. Use a clear, front-facing photo with good lighting. Accepted formats: JPG, PNG, WEBP (max 10MB).</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="step-num">2</div>
-                        <div class="step-text">
-                            <strong>Select Photo Size</strong>
-                            <span>Choose the country/visa type from the dropdown. India passport needs 35×45 mm, US passport needs 2×2 inch (51×51 mm), and so on.</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="step-num">3</div>
-                        <div class="step-text">
-                            <strong>Choose Number of Copies</strong>
-                            <span>Select how many photos you want on the A4 sheet — 4, 8, 12, or 16. More copies = better value when printing at a photo studio.</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="step-num">4</div>
-                        <div class="step-text">
-                            <strong>Pick Background Color</strong>
-                            <span>Most countries require a plain white background. Some (like USA) allow off-white. Click a preset swatch or use the color picker for custom colors.</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="step-num">5</div>
-                        <div class="step-text">
-                            <strong>Generate & Preview</strong>
-                            <span>Click "Generate & Preview" — your A4 photo sheet will appear on screen. Check if it looks good before downloading.</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="step-num">6</div>
-                        <div class="step-text">
-                            <strong>Download & Print</strong>
-                            <span>Click "Download JPEG" to save the file. Then print it at any photo studio or print shop at actual size (A4, 300 DPI) — do NOT resize while printing!</span>
-                        </div>
-                    </li>
-                </ul>
-
-                <div class="guide-tips">
-                    <h4>💡 Tips for a Perfect Passport Photo</h4>
-                    <ul>
-                        <li>Use a <strong>plain background</strong> while taking the photo — white wall or light-coloured wall works best</li>
-                        <li>Face the camera <strong>directly</strong> — no tilting, no sunglasses, no hat</li>
-                        <li>Make sure your <strong>full face</strong> is visible with neutral expression (slight smile is usually okay)</li>
-                        <li>Use <strong>natural lighting</strong> — avoid harsh shadows on the face</li>
-                        <li>Photo should be taken <strong>recently</strong> (within last 6 months for most countries)</li>
-                        <li>When printing, tell the studio to print at <strong>actual size / 100% scale</strong> on A4 glossy photo paper</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="wide">
-      <div class="section-title">Frequently asked questions</div>
-      <div class="faq">
-        <div class="faq-item">
-            <div class="faq-q">Is this tool free?</div>
-            <div class="faq-a">Yes, completely free! No signup, no watermark, no hidden charges.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q">Will my photo be saved on the server?</div>
-            <div class="faq-a">Your photo is processed temporarily and deleted automatically. We do not store or share your photos.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q">What if my background is not white?</div>
-            <div class="faq-a">This tool does not automatically remove backgrounds. For best results, take a photo in front of a plain wall. Or use our <a href="/remove-background" style="color:#2563EB;">Remove Background</a> tool first, then come back here.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q">Can I use this for Indian passport / Aadhaar / visa?</div>
-            <div class="faq-a">Yes! Select "India — 35×45 mm" for Indian passport, Aadhaar card, PAN card, and most Indian government documents. For US visa select the USA 51×51 mm option.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q">How do I print correctly?</div>
-            <div class="faq-a">Open the downloaded JPEG and print at A4 size with "Actual Size" or "100%" scale selected. Use glossy photo paper at a photo studio for best results.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q">Why does the head size matter, not just the photo dimensions?</div>
-            <div class="faq-a">Most passport rules specify how much of the frame your face should fill, not just the outer paper size — a correctly sized photo where the face is too small or too large relative to the frame can still be rejected, so keep your face centered and reasonably close-up before uploading.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="wide">
-      <div class="section-title">Related tools</div>
-      <div class="pp-related">
-        <a class="rt1" href="/remove-background">Remove Background<small>Clean up the background first</small></a>
-        <a class="rt2" href="/image-size-reducer">Image Size Reducer<small>Hit an exact KB target for online forms</small></a>
-        <a class="rt3" href="/compress-image">Compress Image<small>General-purpose image compression</small></a>
-      </div>
-    </div>
-
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-doc doc1"><svg width="42" height="52" viewBox="0 0 42 52" fill="none"><rect x="1" y="1" width="40" height="50" rx="4" fill="#fff" fill-opacity=".18" stroke="#fff" stroke-opacity=".4"/><circle cx="21" cy="20" r="8" fill="#fff" fill-opacity=".3"/><path d="M9 42 Q9 30 21 30 Q33 30 33 42" stroke="#fff" stroke-opacity=".3" stroke-width="2" fill="none"/></svg></div>
+  <div class="hero-doc doc2"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="15" fill="none" stroke="#fff" stroke-opacity=".3" stroke-width="2" stroke-dasharray="4 4"/></svg></div>
+  <div class="hero-doc doc3"><svg width="30" height="38" viewBox="0 0 30 38" fill="none"><rect x="1" y="1" width="28" height="36" rx="3" fill="#fff" fill-opacity=".12" stroke="#fff" stroke-opacity=".3"/></svg></div>
+  <div class="hero-inner">
+    <div class="hero-badge">📸 Print-Ready A4 Sheet</div>
+    <h1>Passport &amp; Visa Photos, Sized and Arranged Automatically</h1>
+    <p>Upload one photo, pick your country's size, and get a full A4 sheet of copies ready to print at any studio — free, instant, no signup.</p>
+  </div>
 </div>
+
+<div class="outer">
+  <div class="narrow tool-card-wrap">
+    <div class="card">
+      <div class="info-bar">
+        🔒 Your photo is processed securely and automatically deleted after processing
+      </div>
+
+      {% if error %}
+      <div class="error-box">⚠️ {{ error }}</div>
+      {% endif %}
+
+      {% if preview_image and download_ready %}
+      <div class="preview-section">
+        <h2>✅ Your Passport Photo is Ready!</h2>
+        <p>{{ copies }} photo(s) arranged on an A4 sheet — check the preview below</p>
+        <div class="preview-img-wrap">
+          <img src="data:image/jpeg;base64,{{ preview_image }}" alt="Passport Photo Preview">
+        </div>
+        <a href="/passport-photo/download" class="download-btn">⬇️ Download JPEG</a>
+        <button class="btn-new" onclick="window.location.href='/passport-photo'">🔄 Make Another</button>
+      </div>
+      {% else %}
+      <form method="POST" enctype="multipart/form-data" id="passportForm">
+        <div class="field">
+          <label>Upload Your Photo</label>
+          <div class="upload-area" id="dropZone" onclick="document.getElementById('imageInput').click()">
+            <div class="icon">🤳</div>
+            <p><strong>Click to upload</strong> or drag &amp; drop your photo</p>
+            <p>JPG, PNG, WEBP — Max 10MB</p>
+          </div>
+          <input type="file" id="imageInput" name="image" accept="image/*" onchange="previewThumb(this)">
+          <div class="file-name" id="fileName"></div>
+          <div class="thumb-wrap" id="thumbWrap"><img id="thumbImg" src="" alt="Preview"></div>
+        </div>
+
+        <div class="field">
+          <label>📐 Photo Size</label>
+          <div class="options-grid">
+            <div class="opt">
+              <select name="size">
+                <option value="35x45">🇮🇳 India — 35×45 mm</option>
+                <option value="51x51">🇺🇸 USA — 51×51 mm (2×2")</option>
+                <option value="35x35">🇬🇧 UK — 35×35 mm</option>
+                <option value="40x60">🇪🇺 Schengen — 40×60 mm</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="copies-row field">
+          <label>🔢 Number of Copies on A4 Sheet</label>
+          <div class="copies-options">
+            <button type="button" class="copy-btn" onclick="setCopies(4,this)">4 copies</button>
+            <button type="button" class="copy-btn active" onclick="setCopies(8,this)">8 copies</button>
+            <button type="button" class="copy-btn" onclick="setCopies(12,this)">12 copies</button>
+            <button type="button" class="copy-btn" onclick="setCopies(16,this)">16 copies</button>
+          </div>
+          <input type="hidden" name="copies" id="copiesInput" value="8">
+        </div>
+
+        <div class="bg-row field">
+          <label>🎨 Background Color</label>
+          <div class="bg-presets">
+            <div class="bg-swatch active" style="background:#ffffff;" title="White" onclick="setBg(this,'#ffffff')"></div>
+            <div class="bg-swatch" style="background:#6B96D5;" title="Light Blue" onclick="setBg(this,'#6B96D5')"></div>
+            <div class="bg-swatch" style="background:#F0F0F0;" title="Light Gray" onclick="setBg(this,'#F0F0F0')"></div>
+            <div class="bg-swatch" style="background:#FFF9F0;" title="Cream" onclick="setBg(this,'#FFF9F0')"></div>
+            <div class="bg-swatch" style="background:#C8E6C9;" title="Light Green" onclick="setBg(this,'#C8E6C9')"></div>
+          </div>
+          <div class="bg-custom">
+            <input type="color" id="bgPicker" value="#ffffff" onchange="updateBgFromPicker(this.value)">
+            <span>Or pick a custom color</span>
+          </div>
+          <input type="hidden" name="bg_color" id="bgColorInput" value="#ffffff">
+        </div>
+
+        <button type="submit" class="btn" id="submitBtn">📸 Generate &amp; Preview</button>
+      </form>
+
+      <div class="info-box">
+        <h3>📋 Standard Sizes Reference</h3>
+        <div class="info-grid">
+          <div class="info-item">🇮🇳 India — 35×45 mm</div>
+          <div class="info-item">🇺🇸 USA — 51×51 mm</div>
+          <div class="info-item">🇬🇧 UK — 35×35 mm</div>
+          <div class="info-item">🇪🇺 Schengen — 40×60 mm</div>
+        </div>
+        <p style="font-size:11px;color:#5B21B6;margin:10px 0 0">Output: A4 sheet @ 300 DPI — print-ready</p>
+      </div>
+      {% endif %}
+
+      <div class="trust">
+        <div class="trust-item">🔒 SSL Encrypted</div>
+        <div class="trust-item">🗑️ Auto-deleted</div>
+        <div class="trust-item">📵 No signup needed</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURE GRID -->
+  <div class="wide section">
+    <h2>Why generate your own sheet</h2>
+    <p class="sub">A studio visit isn't always necessary once the photo itself is right</p>
+    <div class="feature-grid">
+      <div class="feature">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="6" y="6" width="24" height="24" rx="3" stroke="#7C3AED" stroke-width="2"/><rect x="12" y="12" width="12" height="12" stroke="#7C3AED" stroke-width="2"/></svg>
+        <h3>Exact size, every time</h3><p>Each country's dimensions are built in — no measuring or guessing at millimeters.</p>
+      </div>
+      <div class="feature">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M6 9h24M6 18h15M6 27h24" stroke="#7C3AED" stroke-width="2" stroke-linecap="round"/></svg>
+        <h3>Multiple copies, one sheet</h3><p>4 to 16 copies arranged on a single A4 page, ready to print at actual size.</p>
+      </div>
+      <div class="feature">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="13" stroke="#7C3AED" stroke-width="2"/><path d="M12 18l4 4 8-9" stroke="#7C3AED" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        <h3>Preview before printing</h3><p>See the arranged sheet on screen first, so there's no surprise from the printer.</p>
+      </div>
+      <div class="feature">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M18 4v18M12 16l6 6 6-6" stroke="#7C3AED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M6 25v5h24v-5" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+        <h3>300 DPI output</h3><p>High enough resolution for clean, sharp prints at any photo studio.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ILLUSTRATION + COPY -->
+  <div class="wide section">
+    <div class="photo-block">
+      <img src="{{ url_for('static', filename='images/photo-laptop-meeting.jpg') }}" alt="Preparing documents and photos for an application">
+      <div class="photo-copy">
+        <h2>One good photo, every size you need</h2>
+        <p>Most people don't need one passport photo — they need three or four slightly different versions across a passport application, a visa form, an Aadhaar update, and a job application, each with its own exact dimensions. A photo studio will happily print each one separately, but that means multiple visits, multiple charges, and multiple chances for a slightly inconsistent crop between versions. This tool flips that around: take one clear, well-lit photo against a plain wall, upload it once, and generate a correctly-sized, correctly-cropped sheet for each document that needs it. Switch the size dropdown, regenerate, and you have a new print-ready A4 sheet from the exact same source photo in seconds, rather than booking another studio appointment.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY SPECS MATTER -->
+  <div class="narrow section">
+    <h2>Why passport photo specifications are so strict</h2>
+    <p class="sub">&nbsp;</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px">Passport and visa photo rules can feel unnecessarily fussy until you consider what they're actually built for. Immigration and government systems around the world increasingly rely on automated facial recognition to match a photo against a person and against other records on file, and that matching software performs best when every photo follows the same predictable layout — face centered, consistent proportions, plain background, even lighting. A photo that's technically a good likeness but doesn't follow the size and framing rules can still fail an automated check, which is why applications get rejected for reasons that seem purely cosmetic, like "head too small in frame" or "background not plain white."</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7">This tool handles the framing half of that problem directly: it takes your uploaded photo, scales and center-crops it to the exact pixel dimensions your selected country requires, and places it against a solid, evenly colored background at 300 DPI, which is the resolution most government photo requirements specify for a sharp, artifact-free print. What it can't do is take the photo for you — the source image still needs to be well-lit, front-facing, and ideally already shot against a plain wall, since the tool resizes and crops rather than replacing the background behind you.</p>
+  </div>
+
+  <!-- SIZE TABLE -->
+  <div class="wide section">
+    <h2>Size reference by document type</h2>
+    <p class="sub">Always double-check the exact requirement on your specific form</p>
+    <table class="spec">
+      <tr><th>Country / document</th><th>Size</th><th>Typical use</th></tr>
+      <tr><td>🇮🇳 India</td><td>35 × 45 mm</td><td>Passport, Aadhaar, PAN, most govt. forms</td></tr>
+      <tr><td>🇺🇸 USA</td><td>51 × 51 mm (2×2")</td><td>US passport and visa applications</td></tr>
+      <tr><td>🇬🇧 UK</td><td>35 × 35 mm</td><td>UK passport and visa applications</td></tr>
+      <tr><td>🇪🇺 Schengen</td><td>40 × 60 mm</td><td>Schengen visa applications</td></tr>
+    </table>
+  </div>
+
+  <!-- USE CASES -->
+  <div class="wide section">
+    <h2>Who uses this tool</h2>
+    <p class="sub">A few common situations</p>
+    <div class="use-cases">
+      <div class="use-case"><h3>🛂 First-time passport applicants</h3><p>Get a compliant photo without visiting a studio, especially useful when applying from a smaller town.</p></div>
+      <div class="use-case"><h3>🪪 Aadhaar & PAN updates</h3><p>Generate an India 35×45mm sheet for government ID updates and re-verifications.</p></div>
+      <div class="use-case"><h3>✈️ Visa applicants</h3><p>Switch between US, UK, and Schengen sizes from the same source photo for multi-country travel plans.</p></div>
+      <div class="use-case"><h3>💼 Job & exam applications</h3><p>Many portals request a passport-style photo alongside the main application form.</p></div>
+      <div class="use-case"><h3>👨‍👩‍👧 Family passport renewals</h3><p>Generate correctly sized sheets for multiple family members from separate photos in one sitting.</p></div>
+      <div class="use-case"><h3>🎓 University & scholarship forms</h3><p>Admission portals commonly require a passport-style photo alongside academic documents.</p></div>
+    </div>
+  </div>
+
+  <!-- COMPARISON -->
+  <div class="wide section">
+    <h2>This tool vs. a photo studio</h2>
+    <p class="sub">&nbsp;</p>
+    <table class="spec">
+      <tr><th>Aspect</th><th>This tool</th><th>Photo studio visit</th></tr>
+      <tr><td>Cost per size</td><td>Free</td><td>Studio charge per sheet</td></tr>
+      <tr><td>Time needed</td><td>Under a minute</td><td>Travel plus wait time</td></tr>
+      <tr><td>Switching document sizes</td><td>Instant — change the dropdown</td><td>New sitting or re-edit needed</td></tr>
+      <tr><td>Preview before printing</td><td>Yes, on screen</td><td>Usually not until printed</td></tr>
+      <tr><td>Printing itself</td><td>Still needs a studio or home printer</td><td>Included</td></tr>
+    </table>
+  </div>
+
+  <!-- COMMON REJECTIONS -->
+  <div class="narrow section">
+    <h2>Common reasons passport photos get rejected</h2>
+    <p class="sub">&nbsp;</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px">Beyond wrong dimensions, a few recurring issues cause otherwise fine photos to bounce back from application portals. A background that looks white on screen but has a faint shadow or gradient behind the shoulders is one of the most common — it happens when the original photo is taken close to a wall with a single light source, and the tool's background-fill step can only replace the area around your subject, not remove uneven lighting baked into the source photo itself. Taking the original a step or two further from the wall, with light spread evenly across it, avoids this.</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px">Another frequent issue is an outdated photo — most government forms specify a maximum photo age, commonly six months, and reviewers can often tell when a submitted photo doesn't match a person's current appearance. A third is accessories: glasses with glare, hats, or headphones showing in the frame are grounds for rejection on most portals, even though they're easy to miss when you're focused on getting the background and framing right.</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7">None of these are things this tool can fix after the fact, since they come from how the original photo was taken rather than how it's resized — which is exactly why the step-by-step guide above leads with photo-taking tips before getting into the size and copy settings.</p>
+  </div>
+
+  <!-- TIPS / GUIDE -->
+  <div class="narrow section">
+    <div class="how-to">
+      <h2 style="text-align:left;font-size:1.1rem;margin-bottom:16px">📖 How to use — step by step</h2>
+      <div class="steps-list">
+        <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Upload your photo</strong> — Click the upload area or drag and drop. Use a clear, front-facing photo with good lighting (JPG, PNG, WEBP, max 10MB).</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Select photo size</strong> — Choose the country or document type. India needs 35×45mm, USA needs 51×51mm, and so on.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Choose number of copies</strong> — Pick 4, 8, 12, or 16 copies for the A4 sheet — more copies means better value when printing.</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Pick a background color</strong> — Most countries require plain white; some, like the USA, allow off-white. Use a preset or the custom color picker.</div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Generate and preview</strong> — Your A4 sheet appears on screen. Check it looks right before downloading.</div></div>
+        <div class="step"><div class="step-num">6</div><div class="step-text"><strong>Download and print</strong> — Save the JPEG, then print at any studio at actual size (A4, 300 DPI) — do not resize while printing.</div></div>
+      </div>
+      <div class="guide-tips">
+        <h4>💡 Tips for a perfect passport photo</h4>
+        <ul>
+          <li>Use a <strong>plain background</strong> while taking the photo — a white or light-colored wall works best</li>
+          <li>Face the camera <strong>directly</strong> — no tilting, no sunglasses, no hat</li>
+          <li>Keep your <strong>full face</strong> visible with a neutral expression (a slight smile is usually fine)</li>
+          <li>Use <strong>natural lighting</strong> and avoid harsh shadows on the face</li>
+          <li>Use a <strong>recent</strong> photo — most countries require one taken within the last 6 months</li>
+          <li>When printing, ask the studio for <strong>actual size / 100% scale</strong> on A4 glossy photo paper</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="narrow section">
+    <h2>Frequently asked questions</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="faq-list">
+      <details><summary>Is this tool free?</summary><p>Yes, completely free. No signup, no watermark, no hidden charges.</p></details>
+      <details><summary>Will my photo be saved on the server?</summary><p>Your photo is processed temporarily and deleted automatically. It is not stored or shared.</p></details>
+      <details><summary>What if my background is not white?</summary><p>This tool does not automatically remove backgrounds. For best results, take the photo in front of a plain wall, or use the <a href="/remove-background" style="color:var(--violet);font-weight:600">Remove Background</a> tool first and come back here.</p></details>
+      <details><summary>Can I use this for Indian passport, Aadhaar, or visa applications?</summary><p>Yes. Select India 35x45mm for Indian passport, Aadhaar, PAN, and most Indian government documents. Select the USA 51x51mm option for US visa applications.</p></details>
+      <details><summary>How do I print correctly?</summary><p>Open the downloaded JPEG and print at A4 size with Actual Size or 100% scale selected, using glossy photo paper at a photo studio for best results.</p></details>
+      <details><summary>Why does the head size matter, not just the photo dimensions?</summary><p>Most passport rules specify how much of the frame the face should fill, not just the outer paper size, so a correctly sized photo where the face is too small or too large relative to the frame can still be rejected. Keep the face centered and reasonably close-up before uploading.</p></details>
+      <details><summary>Can I use the same photo for multiple document types?</summary><p>Yes. Upload the same source photo and generate a separate sheet for each size you need, such as a passport photo and an Aadhaar-size photo, without retaking the picture.</p></details>
+    </div>
+  </div>
+
+  <!-- DEPTH -->
+  <div class="narrow section">
+    <h2>How the sheet is arranged and cropped</h2>
+    <p class="sub">&nbsp;</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px">Behind the scenes, the tool first works out the target pixel dimensions for the size you selected, then scales your uploaded photo so it fully covers that target area, and crops it centered around the middle of the frame. This center-crop approach generally keeps the face well positioned as long as the subject is roughly centered in the original photo, which is why the step-by-step guide recommends taking the source photo facing the camera directly with the face in the middle rather than off to one side.</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px">Once each individual photo is sized correctly, the tool tiles as many copies as you selected onto a single A4 canvas at 300 DPI, leaving consistent margins and small gaps between each copy so a photo studio's paper cutter has a clean line to trim along. The result is a single JPEG file that, when printed at true 100% scale, produces copies at exactly the millimeter dimensions your document requires — no manual measuring, no separate studio visit, no guessing whether the crop is centered correctly.</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7">300 DPI specifically matters because it's the resolution threshold at which a printed photo stops showing visible pixelation to the naked eye at close viewing distance — well below that, edges around the face and clothing start to look soft or blocky once printed at actual size, which is a common reason a photo that looked sharp on a phone screen comes back from the printer looking noticeably worse. Because the sheet is generated at 300 DPI from the start, this issue doesn't come up as long as the original uploaded photo itself was reasonably high-resolution.</p>
+  </div>
+
+  <!-- RELATED -->
+  <div class="wide section">
+    <div class="related">
+      <h2>Related tools</h2>
+      <div class="related-grid">
+        <a class="related-item" href="/remove-background"><span class="ico">✂️</span><span class="name">Background Remover</span></a>
+        <a class="related-item" href="/image-size-reducer"><span class="ico">📉</span><span class="name">Image Size Reducer</span></a>
+        <a class="related-item" href="/compress-image"><span class="ico">🗜️</span><span class="name">Compress Image</span></a>
+      </div>
+    </div>
+  </div>
+
+  <footer>© EkZapp — Free online utility tools</footer>
+</div>
+
 <script>
-function toggleGuide() {
-    const body = document.getElementById('guideBody');
-    const header = document.getElementById('guideToggle');
-    const arrow = document.getElementById('guideArrow');
-    body.classList.toggle('open');
-    header.classList.toggle('open');
-    arrow.textContent = body.classList.contains('open') ? '▲' : '▼';
-}
 function previewThumb(input) {
     const file = input.files[0]; if (!file) return;
     document.getElementById('fileName').textContent = '📎 ' + file.name;
@@ -442,8 +503,8 @@ function updateBgFromPicker(color) {
 }
 const dz = document.getElementById('dropZone');
 if (dz) {
-    dz.addEventListener('dragover', e => { e.preventDefault(); dz.style.borderColor='#2563EB'; dz.style.background='#EFF6FF'; });
-    dz.addEventListener('dragleave', () => { dz.style.borderColor='#D1D5DB'; dz.style.background='#F9FAFB'; });
+    dz.addEventListener('dragover', e => { e.preventDefault(); dz.style.borderColor='#7C3AED'; dz.style.background='#F5F3FF'; });
+    dz.addEventListener('dragleave', () => { dz.style.borderColor='#E5E7EB'; dz.style.background='#F9FAFB'; });
     dz.addEventListener('drop', e => { e.preventDefault(); const inp=document.getElementById('imageInput'); inp.files=e.dataTransfer.files; previewThumb(inp); });
 }
 const form = document.getElementById('passportForm');
