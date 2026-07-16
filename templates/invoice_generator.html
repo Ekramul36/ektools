@@ -5,13 +5,15 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VW5QLMV046"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-VW5QLMV046');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invoice Generator — EkZapp</title>
-<meta name="description" content="Create professional GST invoices online free. Download as PDF instantly.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Invoice Generator — Create GST Invoices Free | EkZapp</title>
+<meta name="description" content="Create professional GST invoices online free. Add items, auto-calculate GST, and download as PDF instantly. No signup required.">
+<link rel="canonical" href="https://ekzapp.com/invoice-generator">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626;--green:#16A34A;}
 body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+a{color:inherit}
 nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
 .logo{text-decoration:none;display:flex;align-items:center;gap:8px}
@@ -19,17 +21,32 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .logo-text{font-size:15px;font-weight:700;color:var(--ink)}.logo-text span{color:var(--blue)}
 .back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
 .back:hover{border-color:var(--blue);color:var(--blue)}
-.container{max-width:700px;margin:36px auto;padding:0 20px}
-.tool-header{text-align:center;margin-bottom:28px}
-.tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
-.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
-.tool-header p{color:var(--gray);font-size:14px}
-.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:16px}
-.card h2{font-size:13px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px}
+
+.hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#1E3A8A,#2563EB 45%,#3B82F6 70%,#93C5FD);background-size:200% 200%;animation:heroShift 12s ease-in-out infinite;padding:56px 20px 120px}
+@keyframes heroShift{0%{background-position:0% 40%}50%{background-position:100% 60%}100%{background-position:0% 40%}}
+.hero-inner{max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:12px;font-weight:600;padding:6px 14px;border-radius:999px;margin-bottom:18px;backdrop-filter:blur(4px)}
+.hero h1{color:#fff;font-size:2.3rem;font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
+.hero p{color:rgba(255,255,255,.9);font-size:15px;max-width:460px;margin:0 auto}
+.hero-doc{position:absolute;opacity:.5}
+.hero-doc svg{display:block}
+.doc1{top:20px;left:6%;animation:float1 7s ease-in-out infinite}
+.doc2{top:70px;right:8%;animation:float2 8s ease-in-out infinite}
+.doc3{bottom:30px;left:14%;animation:float1 9s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-14px) rotate(-3deg)}}
+@keyframes float2{0%,100%{transform:translateY(0) rotate(8deg)}50%{transform:translateY(-10px) rotate(4deg)}}
+
+.outer{max-width:960px;margin:0 auto;padding:0 20px}
+.narrow{max-width:680px;margin:0 auto}
+.wide{max-width:900px;margin:0 auto}
+
+.tool-card-wrap{margin-top:-84px;position:relative;z-index:3}
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 12px 32px -8px rgba(29,78,216,.25)}
+.card h2.card-h{font-size:12px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.field{margin-bottom:12px}
+.field{margin-bottom:14px}
 .field label{display:block;font-size:12px;font-weight:600;color:var(--gray);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em}
-.field input,.field select,.field textarea{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:'Inter',sans-serif;outline:none;transition:border .15s}
+.field input,.field select,.field textarea{width:100%;padding:10px 13px;border:1.5px solid var(--border);border-radius:8px;font-size:13.5px;font-family:'Inter',sans-serif;outline:none;transition:border .15s}
 .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue)}
 .field textarea{resize:vertical;min-height:60px}
 .items-table{width:100%;border-collapse:collapse;margin-bottom:12px}
@@ -42,18 +59,79 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .del-btn{background:none;border:none;cursor:pointer;color:var(--red);font-size:16px;padding:0 4px}
 .btn{width:100%;padding:13px;background:var(--blue);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s}
 .btn:hover{background:var(--blue-dk)}
-.error-box{background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:12px 16px;color:var(--red);font-size:13px;margin-bottom:16px}
-.how-to{background:white;border:1px solid var(--border);border-radius:14px;padding:24px;margin-top:16px}
-.how-to h2{font-size:15px;font-weight:700;margin-bottom:16px}
+.error-box{background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:12px 16px;color:var(--red);font-size:13px;font-weight:500;margin-bottom:16px}
+.trust{display:flex;justify-content:center;gap:20px;margin-top:16px;flex-wrap:wrap}
+.trust-item{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:4px}
+@media(max-width:560px){.grid2{grid-template-columns:1fr}}
+
+.section{margin-top:56px}
+.section h2{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:8px}
+.section .sub{text-align:center;color:var(--gray);font-size:14px;margin-bottom:28px}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feature{background:white;border:1px solid var(--border);border-radius:12px;padding:22px 18px;text-align:center}
+.feature svg{margin:0 auto 12px}
+.feature h3{font-size:14px;font-weight:700;margin-bottom:6px}
+.feature p{font-size:12.5px;color:var(--gray);line-height:1.5}
+
+.photo-block{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.photo-block img{width:100%;height:100%;object-fit:cover;display:block;min-height:220px}
+.photo-copy{padding:24px 28px 24px 0}
+.photo-copy h2{font-size:1.2rem;font-weight:800;margin-bottom:10px;text-align:left}
+.photo-copy p{font-size:13.5px;color:var(--gray);line-height:1.6}
+
+table.compare{width:100%;border-collapse:collapse;background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+table.compare th,table.compare td{padding:12px 16px;font-size:13px;text-align:left;border-bottom:1px solid var(--border)}
+table.compare th{background:var(--blue-lt);color:var(--blue-dk);font-weight:700}
+table.compare tr:last-child td{border-bottom:none}
+table.compare td.yes{color:var(--green);font-weight:700}
+table.compare td.no{color:var(--gray)}
+
+.use-cases{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.use-case{background:white;border:1px solid var(--border);border-left:4px solid var(--blue);border-radius:10px;padding:18px 20px}
+.use-case h3{font-size:13.5px;font-weight:700;margin-bottom:6px}
+.use-case p{font-size:12.5px;color:var(--gray);line-height:1.5}
+
+.how-to{background:white;border:1px solid var(--border);border-radius:14px;padding:24px}
 .steps{display:flex;flex-direction:column;gap:12px}
 .step{display:flex;gap:12px;align-items:flex-start}
-.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue-lt);color:var(--blue);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
-.step-text{font-size:13px;color:var(--gray);line-height:1.5}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue-lt);color:var(--blue);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-text{font-size:13px;color:var(--gray);line-height:1.5;padding-top:4px}
 .step-text strong{color:var(--ink)}
-.faq{margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
-.faq h3{font-size:13px;font-weight:700;margin-bottom:6px}
-.faq p{font-size:13px;color:var(--gray);line-height:1.5}
-@media(max-width:560px){.grid2{grid-template-columns:1fr}}
+
+table.ratetbl{width:100%;border-collapse:collapse;background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden;font-size:12.5px}
+table.ratetbl th,table.ratetbl td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border)}
+table.ratetbl th{background:var(--light);font-weight:700;color:var(--ink)}
+table.ratetbl tr:last-child td{border-bottom:none}
+
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-list details{background:white;border:1px solid var(--border);border-radius:10px;padding:14px 18px}
+.faq-list summary{font-size:13.5px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:'+';font-size:18px;color:var(--blue);font-weight:400}
+.faq-list details[open] summary::after{content:'−'}
+.faq-list p{font-size:13px;color:var(--gray);line-height:1.6;margin-top:10px}
+
+.related{background:linear-gradient(115deg,#1E3A8A,#2563EB,#7C3AED);border-radius:16px;padding:32px 28px;color:#fff}
+.related h2{color:#fff;font-size:1.2rem;margin-bottom:18px;text-align:left}
+.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.related-item{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:14px;text-decoration:none;transition:background .15s}
+.related-item:hover{background:rgba(255,255,255,.22)}
+.related-item .ico{font-size:1.3rem;margin-bottom:6px;display:block}
+.related-item .name{font-size:12.5px;font-weight:700;color:#fff}
+
+footer{margin:64px 0 32px;text-align:center;font-size:12px;color:var(--gray)}
+
+@media(max-width:720px){
+  .feature-grid{grid-template-columns:1fr}
+  .photo-block{grid-template-columns:1fr}
+  .photo-block img{min-height:160px}
+  .photo-copy{padding:0 20px 22px}
+  .use-cases{grid-template-columns:1fr}
+  .related-grid{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:1.7rem}
+  .tool-card-wrap{margin-top:-56px}
+  .hero{padding-bottom:88px}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -61,103 +139,257 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
   "@type": "WebApplication",
   "name": "Invoice Generator",
   "url": "https://ekzapp.com/invoice-generator",
-  "description": "Create and download professional invoices online for free. Easy-to-use invoice generator tool.",
+  "description": "Create and download professional GST invoices online for free. Auto-calculates GST, subtotal, and total.",
   "applicationCategory": "UtilityApplication",
   "operatingSystem": "Web",
   "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Is GST calculated automatically on the invoice?","acceptedAnswer":{"@type":"Answer","text":"Yes. Select a GST rate and the tool automatically works out the subtotal, the GST amount, and the final total before generating the PDF."}},
+    {"@type":"Question","name":"Is my invoice data saved on your servers?","acceptedAnswer":{"@type":"Answer","text":"No. The details you enter are used only to generate the PDF at that moment and are never stored afterward."}},
+    {"@type":"Question","name":"Can I add my GST number to the invoice?","acceptedAnswer":{"@type":"Answer","text":"Yes, there's an optional GST number field under your business details, which appears on the generated PDF if filled in."}},
+    {"@type":"Question","name":"How many line items can I add?","acceptedAnswer":{"@type":"Answer","text":"There's no fixed limit — use the \"+ Add Item\" button to add as many services or products as the invoice needs."}},
+    {"@type":"Question","name":"Can I use this for a non-GST invoice?","acceptedAnswer":{"@type":"Answer","text":"Yes. Select the 0% GST option and the tool generates a plain invoice with a subtotal and total but no tax line."}}
+  ]
+}
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
 </head>
 <body>
-<nav><div class="nav-inner">
-  <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
-  <a class="back" href="/">← All Tools</a>
-</div></nav>
-
-<div class="container">
-  <div class="tool-header">
-    <div class="tool-icon-wrap">🧾</div>
-    <h1>Invoice Generator</h1>
-    <p>Create professional GST invoices and download as PDF instantly. Free, no signup.</p>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <a class="back" href="/">← All Tools</a>
   </div>
+</nav>
 
-  {% if error %}<div class="error-box">⚠️ {{ error }}</div>{% endif %}
+<div class="hero">
+  <div class="hero-doc doc1"><svg width="46" height="58" viewBox="0 0 46 58" fill="none"><rect x="4" y="8" width="38" height="30" rx="4" fill="#fff" fill-opacity=".18" stroke="#fff" stroke-opacity=".4"/><rect x="12" y="40" width="22" height="16" rx="3" fill="#fff" fill-opacity=".28" stroke="#fff" stroke-opacity=".45"/></svg></div>
+  <div class="hero-doc doc2"><svg width="40" height="50" viewBox="0 0 40 50" fill="none"><rect x="1" y="1" width="38" height="48" rx="4" fill="#fff" fill-opacity=".14" stroke="#fff" stroke-opacity=".35"/><text x="20" y="30" font-family="Inter" font-size="9" font-weight="700" fill="#fff" fill-opacity=".55" text-anchor="middle">₹18%</text></svg></div>
+  <div class="hero-doc doc3"><svg width="36" height="44" viewBox="0 0 36 44" fill="none"><rect x="1" y="1" width="34" height="42" rx="4" fill="#fff" fill-opacity=".12" stroke="#fff" stroke-opacity=".3"/></svg></div>
+  <div class="hero-inner">
+    <div class="hero-badge">🧾 GST-Ready Invoicing</div>
+    <h1>Create a Professional GST Invoice in Under a Minute</h1>
+    <p>Add your business and client details, list out items, and let the tool work out GST and totals automatically — then download a print-ready PDF.</p>
+  </div>
+</div>
 
-  <form method="POST">
-
+<div class="outer">
+  <div class="narrow tool-card-wrap">
     <div class="card">
-      <h2>From (Your Business)</h2>
-      <div class="field"><label>Business Name</label><input type="text" name="from_name" placeholder="Your Company Name" required></div>
-      <div class="field"><label>Address</label><textarea name="from_address" placeholder="123 Street, City, State - 400001"></textarea></div>
-      <div class="field"><label>GST Number (optional)</label><input type="text" name="from_gst" placeholder="22AAAAA0000A1Z5"></div>
-    </div>
+      {% if error %}<div class="error-box">⚠️ {{ error }}</div>{% endif %}
+      <form method="POST">
 
-    <div class="card">
-      <h2>Bill To (Client)</h2>
-      <div class="field"><label>Client Name</label><input type="text" name="to_name" placeholder="Client Name" required></div>
-      <div class="field"><label>Client Address</label><textarea name="to_address" placeholder="Client address..."></textarea></div>
-    </div>
+        <h2 class="card-h">From (Your Business)</h2>
+        <div class="field"><label>Business Name</label><input type="text" name="from_name" placeholder="Your Company Name" required></div>
+        <div class="field"><label>Address</label><textarea name="from_address" placeholder="123 Street, City, State - 400001"></textarea></div>
+        <div class="field"><label>GST Number (optional)</label><input type="text" name="from_gst" placeholder="22AAAAA0000A1Z5"></div>
 
-    <div class="card">
-      <h2>Invoice Details</h2>
-      <div class="grid2">
-        <div class="field"><label>Invoice Number</label><input type="text" name="invoice_no" value="INV-001" required></div>
-        <div class="field"><label>Invoice Date</label><input type="text" name="invoice_date" id="invDate"></div>
-        <div class="field"><label>Due Date (optional)</label><input type="text" name="due_date" placeholder="DD/MM/YYYY"></div>
-        <div class="field"><label>GST Rate (%)</label>
-          <select name="gst_rate">
-            <option value="0">0% — No GST</option>
-            <option value="5">5%</option>
-            <option value="12">12%</option>
-            <option value="18" selected>18%</option>
-            <option value="28">28%</option>
-          </select>
+        <h2 class="card-h" style="margin-top:6px">Bill To (Client)</h2>
+        <div class="field"><label>Client Name</label><input type="text" name="to_name" placeholder="Client Name" required></div>
+        <div class="field"><label>Client Address</label><textarea name="to_address" placeholder="Client address..."></textarea></div>
+
+        <h2 class="card-h" style="margin-top:6px">Invoice Details</h2>
+        <div class="grid2">
+          <div class="field"><label>Invoice Number</label><input type="text" name="invoice_no" value="INV-001" required></div>
+          <div class="field"><label>Invoice Date</label><input type="text" name="invoice_date" id="invDate"></div>
+          <div class="field"><label>Due Date (optional)</label><input type="text" name="due_date" placeholder="DD/MM/YYYY"></div>
+          <div class="field"><label>GST Rate (%)</label>
+            <select name="gst_rate">
+              <option value="0">0% — No GST</option>
+              <option value="5">5%</option>
+              <option value="12">12%</option>
+              <option value="18" selected>18%</option>
+              <option value="28">28%</option>
+            </select>
+          </div>
         </div>
+
+        <h2 class="card-h" style="margin-top:6px">Items / Services</h2>
+        <table class="items-table">
+          <thead><tr><th>Description</th><th>Qty</th><th>Rate (₹)</th><th></th></tr></thead>
+          <tbody id="itemsBody">
+            <tr>
+              <td><input type="text" name="item_desc[]" placeholder="Service or product description" required></td>
+              <td><input type="number" name="item_qty[]" placeholder="1" value="1" min="1" style="width:60px"></td>
+              <td><input type="number" name="item_rate[]" placeholder="0.00" step="0.01" min="0"></td>
+              <td><button type="button" class="del-btn" onclick="delRow(this)" title="Remove">✕</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <button type="button" class="add-row-btn" onclick="addRow()">+ Add Item</button>
+
+        <h2 class="card-h" style="margin-top:16px">Notes</h2>
+        <div class="field"><label>Notes / Terms</label><textarea name="notes" placeholder="Thank you for your business!">Thank you for your business!</textarea></div>
+
+        <button type="submit" class="btn" style="margin-top:6px">🧾 Generate Invoice PDF</button>
+      </form>
+      <div class="trust">
+        <div class="trust-item">🔒 SSL Encrypted</div>
+        <div class="trust-item">🗑️ Data never stored</div>
+        <div class="trust-item">📵 No signup needed</div>
       </div>
     </div>
+  </div>
 
-    <div class="card">
-      <h2>Items / Services</h2>
-      <table class="items-table">
-        <thead><tr><th>Description</th><th>Qty</th><th>Rate (₹)</th><th></th></tr></thead>
-        <tbody id="itemsBody">
-          <tr>
-            <td><input type="text" name="item_desc[]" placeholder="Service or product description" required></td>
-            <td><input type="number" name="item_qty[]" placeholder="1" value="1" min="1" style="width:60px"></td>
-            <td><input type="number" name="item_rate[]" placeholder="0.00" step="0.01" min="0"></td>
-            <td><button type="button" class="del-btn" onclick="delRow(this)" title="Remove">✕</button></td>
-          </tr>
-        </tbody>
-      </table>
-      <button type="button" class="add-row-btn" onclick="addRow()">+ Add Item</button>
-    </div>
-
-    <div class="card">
-      <h2>Notes</h2>
-      <div class="field"><label>Notes / Terms</label><textarea name="notes" placeholder="Thank you for your business!">Thank you for your business!</textarea></div>
-    </div>
-
-    <button type="submit" class="btn">🧾 Generate Invoice PDF</button>
-  </form>
-
-  <div class="how-to">
-    <h2>📖 How to Use — Invoice Generator</h2>
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Fill your business details</strong> — Enter your business name, address and GST number.</div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Add client details</strong> — Enter your client's name and address.</div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Add items</strong> — Add services or products with quantity and rate. GST is calculated automatically.</div></div>
-      <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Generate PDF</strong> — Click the button to download a professional invoice PDF.</div></div>
-    </div>
-    <div class="faq">
-      <h3>❓ Is GST calculated automatically?</h3>
-      <p>Yes! Select your GST rate and the tool automatically calculates subtotal, GST amount, and total.</p>
-    </div>
-    <div class="faq">
-      <h3>❓ Is my data saved?</h3>
-      <p>No. Your invoice data is only used to generate the PDF and is never saved on our servers.</p>
+  <!-- FEATURE GRID -->
+  <div class="wide section">
+    <h2>Built for freelancers and small businesses, not accountants</h2>
+    <p class="sub">No software to install, no template to fight with</p>
+    <div class="feature-grid">
+      <div class="feature">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="7" y="4" width="26" height="32" rx="3" stroke="#2563EB" stroke-width="2"/><path d="M13 14h14M13 20h14M13 26h8" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/></svg>
+        <h3>Auto-calculated GST</h3><p>Pick a rate — 5%, 12%, 18%, or 28% — and the subtotal, tax, and total are computed for you.</p>
+      </div>
+      <div class="feature">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M20 4l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" stroke="#2563EB" stroke-width="2" stroke-linejoin="round"/></svg>
+        <h3>Unlimited free invoices</h3><p>Generate as many invoices as your business needs — no account, no monthly limit.</p>
+      </div>
+      <div class="feature">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="7" y="4" width="26" height="32" rx="3" stroke="#2563EB" stroke-width="2"/><path d="M13 30v-4c0-3 2-4 7-4s7 1 7 4v4" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/><circle cx="20" cy="16" r="4" stroke="#2563EB" stroke-width="2"/></svg>
+        <h3>Nothing kept on our servers</h3><p>Your business and client details exist only long enough to build the PDF, then they're gone.</p>
+      </div>
     </div>
   </div>
+
+  <!-- PHOTO + COPY -->
+  <div class="wide section">
+    <div class="photo-block">
+      <img src="{{ url_for('static', filename='images/photo-signing-documents.jpg') }}" alt="Reviewing and finalizing a business invoice before sending it to a client">
+      <div class="photo-copy">
+        <h2>An invoice is more than a bill — it's a paper trail</h2>
+        <p>For a freelancer or a small business owner, every invoice sent is also a record: proof of what was agreed, when it was billed, and how much tax was collected on it. A scribbled note in a notebook or a plain-text email doesn't hold up well when a client disputes an amount, or when it's time to file GST returns and reconcile exactly how much output tax was charged across a quarter. A properly structured invoice — with a unique invoice number, a clear date, itemized services, and the tax rate spelled out — solves both problems at once. It gives the client something professional and unambiguous to pay against, and it gives the business owner a clean paper trail that's actually usable at tax time, instead of a stack of inconsistent notes that need to be reconstructed from memory later.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEPTH: GST -->
+  <div class="narrow section">
+    <h2>How GST actually gets added to an invoice</h2>
+    <p class="sub">&nbsp;</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px">Goods and Services Tax in India is calculated on the subtotal of an invoice — the sum of every line item's quantity multiplied by its rate — before anything else is added. If the applicable rate is 18%, the tax amount is simply 18% of that subtotal, and the total the client owes is the subtotal plus that tax amount. This tool automates exactly that calculation: as soon as items and a GST rate are entered, the subtotal, the GST amount, and the grand total are worked out and printed clearly on the generated PDF, so there's no manual arithmetic and no risk of a rounding mistake creeping into a client-facing document.</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7">Which GST rate actually applies depends on what's being sold — goods and services in India are grouped into rate slabs, commonly 5%, 12%, 18%, and 28%, along with a 0% or exempt category for specific items. Most professional services (consulting, design, freelance development work) fall under the 18% slab, which is why it's selected by default here, but it's worth confirming the correct slab for a specific good or service against current GST council notifications rather than assuming — misclassifying a rate on an invoice can create reconciliation headaches later even though the invoice itself looks correct.</p>
+  </div>
+
+  <!-- USE CASES -->
+  <div class="wide section">
+    <h2>Who this invoice generator is built for</h2>
+    <p class="sub">A few common situations</p>
+    <div class="use-cases">
+      <div class="use-case"><h3>💻 Freelancers & consultants</h3><p>Bill a client for a project or a month of work with a clean, numbered invoice instead of an ad-hoc email.</p></div>
+      <div class="use-case"><h3>🏪 Small shop owners</h3><p>Generate a GST-compliant bill for a bulk or B2B sale without needing full accounting software.</p></div>
+      <div class="use-case"><h3>🛠️ Service providers</h3><p>List out multiple services rendered — repairs, installations, sessions — with individual rates and quantities.</p></div>
+      <div class="use-case"><h3>🧑‍🎨 Agencies & studios</h3><p>Send a professional itemized invoice for a retainer, campaign, or one-off deliverable.</p></div>
+      <div class="use-case"><h3>📦 Online sellers</h3><p>Produce a PDF invoice to accompany a shipment or attach to a payment reminder.</p></div>
+      <div class="use-case"><h3>🧾 One-off transactions</h3><p>Create a single, non-recurring invoice for a one-time sale or service without setting up an account anywhere.</p></div>
+    </div>
+  </div>
+
+  <!-- GST RATE REFERENCE -->
+  <div class="wide section">
+    <h2>Common GST rate slabs</h2>
+    <p class="sub">A general guide — always confirm the exact slab for your specific goods or services</p>
+    <table class="ratetbl">
+      <tr><th>Rate</th><th>Typically applies to</th></tr>
+      <tr><td>0% / Exempt</td><td>Certain essential goods and specifically exempted services</td></tr>
+      <tr><td>5%</td><td>Household necessities, some food items, transport services</td></tr>
+      <tr><td>12%</td><td>Processed foods, some business services, computers</td></tr>
+      <tr><td>18%</td><td>Most professional and IT services, consulting, standard goods</td></tr>
+      <tr><td>28%</td><td>Luxury items and select goods in the highest slab</td></tr>
+    </table>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="wide section">
+    <h2>How this compares to the alternatives</h2>
+    <p class="sub">A quick, factual look at ways to produce an invoice</p>
+    <table class="compare">
+      <tr><th>Method</th><th>Auto GST calculation</th><th>Professional PDF</th><th>Free</th></tr>
+      <tr><td>EkZapp Invoice Generator</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+      <tr><td>Manually typed Word/Excel invoice</td><td class="no">Manual math</td><td class="no">Depends on template</td><td class="yes">Yes</td></tr>
+      <tr><td>Full accounting software</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="no">Usually paid</td></tr>
+    </table>
+  </div>
+
+  <!-- COMMON PROBLEMS -->
+  <div class="narrow section">
+    <h2>Common problems people run into</h2>
+    <p class="sub">&nbsp;</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px"><strong style="color:var(--ink)">The client is disputing the total on the invoice.</strong> Because the subtotal, GST amount, and total are all itemized separately on the PDF, it's easy to point to exactly which line the disagreement is about rather than arguing over one lump figure. Double-check that quantities and rates were entered correctly for each item — a single wrong quantity is the most common cause of an unexpected total.</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px"><strong style="color:var(--ink)">Not sure which GST rate to select.</strong> The rate depends on the specific HSN or SAC classification of the goods or service being billed, not on the business type in general. When in doubt, check the classification against current GST notifications or ask an accountant — using the wrong slab on a real invoice can cause compliance issues even though the PDF itself generates fine either way.</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7"><strong style="color:var(--ink)">Need to reuse the same invoice number by mistake.</strong> Invoice numbers should be unique and sequential for proper bookkeeping — a simple system like INV-001, INV-002 and so on, incremented manually each time, avoids duplicate numbers showing up in your records.</p>
+  </div>
+
+  <!-- INDIA CONTEXT -->
+  <div class="narrow section">
+    <h2>What makes an invoice usable in India</h2>
+    <p class="sub">&nbsp;</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px">A functional Indian business invoice generally needs a few things to be genuinely useful, beyond just looking professional: a unique invoice number for tracking, the date of issue, clear seller and buyer details, an itemized breakdown of what's being billed, and — if GST is applicable — the GST number of the seller along with the tax rate and amount charged. Missing the GST number isn't necessarily a problem for a small, unregistered business below the GST threshold, which is why that field is optional here rather than required; but for anyone registered under GST, including it on every invoice is what allows a client to claim input tax credit on their end, which is often the actual reason a client is asking for a "proper" invoice in the first place rather than a casual bill.</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7">Keeping a consistent invoice numbering pattern and dating every invoice accurately also matters more than it might seem at first, particularly at GST filing time — return periods are based on invoice dates, and a business reconciling its output tax liability for a quarter needs every invoice from that period accounted for cleanly. A habit of generating and saving a PDF copy of every invoice as it's issued, rather than trying to reconstruct records later from memory or scattered messages, saves considerable time when filing comes around.</p>
+  </div>
+
+  <!-- TIPS -->
+  <div class="narrow section">
+    <h2>Tips for getting paid on time</h2>
+    <p class="sub">&nbsp;</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px">A due date on an invoice matters more than it seems — an invoice with no due date implicitly reads as "whenever," and clients, even well-meaning ones, tend to deprioritize open-ended requests behind anything with an explicit deadline. Setting a due date 7, 15, or 30 days out (whatever terms were agreed) gives both sides a concrete reference point, and it's the single easiest change that tends to speed up payment without any awkward follow-up conversation.</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7">Writing a short, specific note in the notes field — the payment method, a UPI ID or bank reference, or simply "thank you for your business" — also reduces friction, since a client shouldn't have to email back asking how to pay. Keeping descriptions in the items table specific rather than vague ("Website homepage redesign — 3 revisions" instead of just "Design work") also heads off disputes before they start, since there's no ambiguity about what was actually delivered for the amount charged.</p>
+  </div>
+
+  <!-- HOW TO -->
+  <div class="narrow section">
+    <div class="how-to">
+      <h2 style="text-align:left;font-size:1.1rem;margin-bottom:16px">📖 How to create an invoice</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Fill your business details</strong> — Enter your business name, address, and GST number if applicable.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Add client details</strong> — Enter your client's name and billing address.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Set the invoice number, dates, and GST rate</strong> — Today's date fills in automatically; adjust it or the due date if needed.</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Add items</strong> — List each service or product with quantity and rate; use "+ Add Item" for more rows.</div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Generate the PDF</strong> — Click the button to download a professional, GST-calculated invoice instantly.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="narrow section">
+    <h2>Frequently asked questions</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="faq-list">
+      <details><summary>Is GST calculated automatically on the invoice?</summary><p>Yes. Select a GST rate and the tool automatically works out the subtotal, the GST amount, and the final total before generating the PDF.</p></details>
+      <details><summary>Is my invoice data saved on your servers?</summary><p>No. The details you enter are used only to generate the PDF at that moment and are never stored afterward.</p></details>
+      <details><summary>Can I add my GST number to the invoice?</summary><p>Yes, there's an optional GST number field under your business details, which appears on the generated PDF if filled in.</p></details>
+      <details><summary>How many line items can I add?</summary><p>There's no fixed limit — use the "+ Add Item" button to add as many services or products as the invoice needs.</p></details>
+      <details><summary>Can I use this for a non-GST invoice?</summary><p>Yes. Select the 0% GST option and the tool generates a plain invoice with a subtotal and total but no tax line.</p></details>
+      <details><summary>What file format does the invoice download as?</summary><p>A PDF, ready to email directly to a client or print, with no extra formatting needed on your end.</p></details>
+    </div>
+  </div>
+
+  <!-- RECAP -->
+  <div class="narrow section">
+    <h2>Quick recap</h2>
+    <p class="sub">&nbsp;</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7">A good invoice does two jobs at once — it tells a client exactly what they owe and why, and it gives the issuing business a clean, dated record for its own books. Filling in business and client details, listing items with quantity and rate, and picking the correct GST slab is all this tool needs to generate both a client-ready PDF and an accurate tax breakdown in one step. Nothing entered here is stored afterward, so it's worth saving the downloaded PDF somewhere organized — by client, by month, or by invoice number — since that record is what actually gets used later, whether that's chasing a late payment or filing a GST return.</p>
+  </div>
+
+  <!-- RELATED TOOLS -->
+  <div class="wide section">
+    <div class="related">
+      <h2>Related business tools</h2>
+      <div class="related-grid">
+        <a class="related-item" href="/signature-generator"><span class="ico">🖋️</span><span class="name">Signature Generator</span></a>
+        <a class="related-item" href="/qr-generator"><span class="ico">📱</span><span class="name">QR Code Generator</span></a>
+        <a class="related-item" href="/currency-converter"><span class="ico">💱</span><span class="name">Currency Converter</span></a>
+        <a class="related-item" href="/resume-builder"><span class="ico">📄</span><span class="name">Resume Builder</span></a>
+      </div>
+    </div>
+  </div>
+
+  <footer>© EkZapp — Free online utility tools</footer>
 </div>
 
 <script>
