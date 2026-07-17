@@ -95,6 +95,7 @@ LASTMOD_OVERRIDES = {
     '/blog/exam-photo-signature-size-guide-2026': '2026-07-08',
     '/blog/split-pdf-crop-pdf-guide': '2026-07-12',
     '/blog/unlock-pdf-remove-password-online-free': '2026-07-15',
+    '/blog/itr-filing-2026-last-date-old-vs-new-tax-regime': '2026-07-17',
 }
 
 
@@ -174,6 +175,8 @@ def sitemap():
         ('/blog/exam-photo-signature-size-guide-2026', '0.7', 'monthly'),
         ('/blog/split-pdf-crop-pdf-guide', '0.7', 'monthly'),
         ('/blog/unlock-pdf-remove-password-online-free', '0.7', 'monthly'),
+        ('/blog/itr-filing-2026-last-date-old-vs-new-tax-regime', '0.7', 'monthly'),
+        ('/author/ekramul-hoque', '0.5', 'monthly'),
     ]
     xml = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
@@ -1911,6 +1914,13 @@ BLOG_POSTS = [
     "excerpt": "Remove open and permission passwords from a PDF for free, no software. Learn the difference between password types and what to do if you've forgotten it.",
     "category": "PDF Tools",
     "date": "July 15, 2026"
+    },
+    {
+    "slug": "itr-filing-2026-last-date-old-vs-new-tax-regime",
+    "title": "ITR Filing 2026: Last Date, Which Form to File & Old vs New Tax Regime",
+    "excerpt": "ITR filing last date is July 31, 2026 for salaried taxpayers. Which ITR form to choose, old vs new regime compared, and what happens if you miss the deadline.",
+    "category": "Calculators",
+    "date": "July 17, 2026"
     }
     # Add more posts here as dicts, e.g.:
     # {
@@ -1961,6 +1971,14 @@ def blog_split_crop_pdf_guide():
 @app.route("/blog/unlock-pdf-remove-password-online-free")
 def blog_unlock_pdf():
     return render_template("blog_post_unlock_pdf_guide.html")
+
+@app.route("/blog/itr-filing-2026-last-date-old-vs-new-tax-regime")
+def blog_itr_filing_2026():
+    return render_template("blog_post_itr_filing_2026.html")
+
+@app.route("/author/ekramul-hoque")
+def author_ekramul_hoque():
+    return render_template("author_ekramul_hoque.html", posts=BLOG_POSTS)
 
 # NOTE: as you add more blog posts, add a matching @app.route("/blog/<slug>")
 # function for each new HTML file, the same way as blog_merge_pdf() above.

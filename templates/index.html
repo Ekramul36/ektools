@@ -102,29 +102,9 @@ nav{background:var(--white);border-bottom:1px solid var(--border);position:stick
 .ib-purple{background:#EDE9FE}.ib-orange{background:#FFEDD5}.ib-teal{background:#CCFBF1}
 .ib-yellow{background:#FEF9C3}.ib-pink{background:#FCE7F3}.ib-indigo{background:#E0E7FF}
 .ib-cyan{background:#CFFAFE}.ib-rose{background:#FFE4E6}.ib-lime{background:#ECFCCB}
-.pricing-section{background:var(--white);padding:56px 20px;border-top:1px solid var(--border)}
-.pricing-inner{max-width:1100px;margin:0 auto}
 .sec-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
 .sec-title{font-size:clamp(1.5rem,3vw,2rem);font-weight:800;letter-spacing:-.03em;margin-bottom:6px}
 .sec-sub{color:var(--gray);margin-bottom:36px}
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:860px}
-.pc{border:1.5px solid var(--border);border-radius:12px;padding:26px 22px;position:relative;background:var(--white)}
-.pc.hot{background:var(--blue);border-color:var(--blue)}
-.pc-plan{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:14px}
-.pc.hot .pc-plan{color:rgba(255,255,255,.8)}
-.pc-price{font-size:2.2rem;font-weight:800;letter-spacing:-.04em;color:var(--ink);line-height:1}
-.pc.hot .pc-price{color:white}
-.pc-per{font-size:12px;color:var(--gray);margin-top:3px;margin-bottom:18px}
-.pc.hot .pc-per{color:rgba(255,255,255,.8)}
-.pc-feats{list-style:none;margin-bottom:22px}
-.pc-feats li{padding:7px 0;border-bottom:1px solid var(--border);font-size:12.5px;color:var(--gray);display:flex;align-items:center;gap:8px;}
-.pc.hot .pc-feats li{border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.9)}
-.pc-feats li::before{content:'✓';color:var(--blue);font-weight:700;font-size:12px}
-.pc.hot .pc-feats li::before{color:rgba(255,255,255,.9)}
-.pc-btn{width:100%;padding:11px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;border:1.5px solid var(--border);background:var(--white);color:var(--ink);}
-.pc-btn:hover{border-color:var(--blue);color:var(--blue)}
-.pc.hot .pc-btn{background:white;color:var(--blue);border-color:white}
-.pop-tag{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--orange);color:white;font-size:10px;font-weight:700;padding:3px 12px;border-radius:100px;white-space:nowrap;letter-spacing:.04em;text-transform:uppercase;}
 footer{background:#1F2937;padding:36px 20px 20px}
 .footer-inner{max-width:1100px;margin:0 auto}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:28px}
@@ -150,9 +130,25 @@ footer{background:#1F2937;padding:36px 20px 20px}
 .blog-card h3{font-size:14px;font-weight:700;margin-bottom:6px;line-height:1.4}
 .blog-card p{font-size:12px;color:var(--gray);line-height:1.5}
 .blog-readmore{margin-top:12px;font-size:12px;font-weight:600;color:var(--blue)}
+.why-section{background:var(--cream);padding:56px 20px;border-top:1px solid var(--border)}
+.why-inner{max-width:900px;margin:0 auto}
+.why-block{margin-bottom:32px}
+.why-block h3{font-size:1.1rem;font-weight:800;margin-bottom:10px;color:var(--ink)}
+.why-block p{font-size:13.5px;color:var(--gray);line-height:1.75;margin-bottom:12px}
+.why-block ul{padding-left:20px;margin-bottom:12px}
+.why-block li{font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:6px}
+.why-block li strong{color:var(--ink)}
+.faq-section{background:var(--white);padding:56px 20px;border-top:1px solid var(--border)}
+.faq-inner{max-width:800px;margin:0 auto}
+.faq-list{display:flex;flex-direction:column;gap:10px;margin-top:24px}
+.faq-list details{background:var(--light);border:1px solid var(--border);border-radius:10px;padding:16px 20px}
+.faq-list summary{font-size:14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--ink)}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:'+';font-size:20px;color:var(--blue);font-weight:400}
+.faq-list details[open] summary::after{content:'−'}
+.faq-list p{font-size:13px;color:var(--gray);line-height:1.65;margin-top:12px}
 @media(max-width:900px){
   .cat-grid,.search-grid{grid-template-columns:repeat(2,1fr)}
-  .pricing-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
   .nav-menu{display:none}
   .nav-menu.show{display:flex;flex-direction:column;position:absolute;top:54px;left:0;right:0;background:white;border-bottom:1px solid var(--border);padding:8px;z-index:300}
@@ -179,6 +175,26 @@ footer{background:#1F2937;padding:36px 20px 20px}
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Are the tools on EkZapp really free?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every tool on EkZapp — PDF, image, calculator, and business tools — is completely free to use, with no hidden premium tier or paywalled feature."}},
+    {"@type": "Question", "name": "Do you store my uploaded files?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. Uploaded files are processed for your specific task and then cleaned up shortly after — they are not stored long-term, browsed, or used for anything beyond generating your download."}},
+    {"@type": "Question", "name": "Is signup required to use the tools?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No signup or account creation is required for any tool on EkZapp. You can use every tool directly without providing an email address."}},
+    {"@type": "Question", "name": "Are my PDF and image files secure?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Files are transferred over an encrypted (HTTPS) connection and processed only for the task you requested. Files are not shared with third parties and are deleted from the server after processing."}},
+    {"@type": "Question", "name": "How long are files kept on the server?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Uploaded and processed files are automatically deleted shortly after your download completes — typically within a couple of hours, and never kept indefinitely."}},
+    {"@type": "Question", "name": "Who built EkZapp?",
+     "acceptedAnswer": {"@type": "Answer", "text": "EkZapp is built and maintained by Ekramul Hoque, a solo developer based in India, as a side project alongside a full-time day job."}}
+  ]
+}
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -199,7 +215,7 @@ footer{background:#1F2937;padding:36px 20px 20px}
       <li><a href="/about">About</a></li>
     </ul>
     <div class="nav-right">
-      <a class="nav-link" href="#pricing">Pricing</a>
+      <a class="nav-link" href="#why-title">Why EkZapp</a>
       <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
     </div>
   </div>
@@ -207,8 +223,8 @@ footer{background:#1F2937;padding:36px 20px 20px}
 
 <header class="hero">
   <div class="hero-content">
-    <h1>We help with all your file tasks</h1>
-    <p class="hero-sub">Every tool you need, all in one place</p>
+    <h1>Free PDF, Image, Calculator & Business Tools Online</h1>
+    <p class="hero-sub">100+ free tools to merge PDFs, remove image backgrounds, calculate taxes, generate invoices and more. No signup required.</p>
     <div class="search-wrap">
       <span class="search-icon" aria-hidden="true">🔍</span>
       <input type="text" class="search-input" id="searchInput" placeholder="Search tools... e.g. Word to PDF, Background Remover" autocomplete="off" aria-label="Search tools">
@@ -588,6 +604,12 @@ footer{background:#1F2937;padding:36px 20px 20px}
     <h2 class="sec-title" id="blog-title">Latest from our blog</h2>
     <p class="sec-sub">Guides and tips to get the most out of our free tools</p>
     <div class="blog-grid">
+      <a class="blog-card" href="/blog/itr-filing-2026-last-date-old-vs-new-tax-regime">
+        <span class="blog-tag">Calculators</span>
+        <h3>ITR Filing 2026: Last Date, Which Form to File & Old vs New Tax Regime</h3>
+        <p>ITR filing last date is July 31, 2026 for salaried taxpayers. Which ITR form to choose, old vs new regime compared, and what happens if you miss the deadline.</p>
+        <span class="blog-readmore">Read more →</span>
+      </a>
       <a class="blog-card" href="/blog/unlock-pdf-remove-password-online-free">
         <span class="blog-tag">PDF Tools</span>
         <h3>Unlock PDF Online Free: How to Remove Password from a PDF</h3>
@@ -646,51 +668,95 @@ footer{background:#1F2937;padding:36px 20px 20px}
   </div>
 </section>
 
-<!-- PRICING -->
-<section class="pricing-section" id="pricing" aria-labelledby="pricing-title">
-  <div class="pricing-inner">
-    <div class="sec-label">Pricing</div>
-    <h2 class="sec-title" id="pricing-title">Simple, honest pricing</h2>
-    <p class="sec-sub">Start free. Upgrade when you need more.</p>
-    <div class="pricing-grid">
-      <div class="pc">
-        <div class="pc-plan">Free</div>
-        <div class="pc-price">₹0</div>
-        <div class="pc-per">forever free</div>
-        <ul class="pc-feats">
-          <li>All tools included</li>
-          <li>3 tasks per hour</li>
-          <li>Up to 50 MB per file</li>
-          <li>Files deleted in 2 hours</li>
-        </ul>
-        <button class="pc-btn">Get Started Free</button>
-      </div>
-      <div class="pc hot">
-        <div class="pop-tag">Most Popular</div>
-        <div class="pc-plan">Pro</div>
-        <div class="pc-price">₹99</div>
-        <div class="pc-per">per month</div>
-        <ul class="pc-feats">
-          <li>Unlimited tasks</li>
-          <li>Up to 500 MB per file</li>
-          <li>Priority speed</li>
-          <li>Batch processing</li>
-          <li>No ads</li>
-        </ul>
-        <button class="pc-btn">Start Pro →</button>
-      </div>
-      <div class="pc">
-        <div class="pc-plan">Business</div>
-        <div class="pc-price">₹299</div>
-        <div class="pc-per">per month</div>
-        <ul class="pc-feats">
-          <li>Everything in Pro</li>
-          <li>5 team members</li>
-          <li>API access</li>
-          <li>Priority support</li>
-        </ul>
-        <button class="pc-btn">Get Business</button>
-      </div>
+
+<!-- WHY CHOOSE EKZAPP -->
+<section class="why-section" aria-labelledby="why-title">
+  <div class="why-inner">
+    <div class="sec-label">About EkZapp</div>
+    <h2 class="sec-title" id="why-title">Why Choose EkZapp?</h2>
+    <p class="sec-sub">What EkZapp is, how it works, and who's behind it</p>
+
+    <div class="why-block">
+      <h3>What is EkZapp?</h3>
+      <p>EkZapp is a free online utility tools platform offering 100+ tools across PDF, image, calculator, business, and text categories. Instead of installing separate software for every small file or number task — merging a couple of PDFs, converting a cheque amount into words, checking your income tax under both regimes — EkZapp puts all of it in the browser, ready to use in seconds. The site launched in mid-2026 and has grown from a handful of PDF utilities into a full set of tools covering document editing, image processing, Indian financial calculators, and everyday business needs like invoices and QR codes.</p>
+      <p>Every tool is built around one idea: a task that should take ten seconds shouldn't require an account, a download, or a subscription to complete. That principle shapes almost every decision on the site, from the interface down to how files are handled behind the scenes.</p>
+    </div>
+
+    <div class="why-block">
+      <h3>How the tools work</h3>
+      <p>Most PDF and image tools on EkZapp run on the server — you upload a file, the tool processes it using the same libraries professional software relies on (PyMuPDF and pypdf for PDFs, Pillow for images), and you download the result. Calculators and converters that don't need file processing, like the Income Tax Calculator or the Amount in Words converter, run entirely as JavaScript in your browser instead, so the numbers you type are calculated instantly without ever being sent anywhere.</p>
+      <ul>
+        <li><strong>Upload or enter your input</strong> — a file, an image, or a set of numbers, depending on the tool.</li>
+        <li><strong>The tool processes it immediately</strong> — no queue, no waiting for a batch job, no email confirmation step.</li>
+        <li><strong>Download or read your result</strong> — directly from the same page, with nothing further to install or configure.</li>
+      </ul>
+      <p>This server-plus-browser split keeps things fast for calculators while still allowing file-heavy operations like merging PDFs or removing image backgrounds, which genuinely need server-side processing to work reliably across devices.</p>
+    </div>
+
+    <div class="why-block">
+      <h3>Privacy & security</h3>
+      <p>Files uploaded to EkZapp are transferred over an encrypted (HTTPS) connection and processed only for the specific task requested — they are not scanned for unrelated data, shared with third parties, or used to build any kind of profile. Once your download is ready, uploaded and generated files are automatically cleaned up from the server rather than kept indefinitely, so nothing lingers longer than it needs to.</p>
+      <p>For tools that don't require server processing at all — calculators, the amount-in-words converter, and similar utilities — your input never leaves your browser in the first place, which is the strongest privacy guarantee any online tool can offer: there's simply nothing to intercept or store, because nothing is transmitted.</p>
+    </div>
+
+    <div class="why-block">
+      <h3>Why no signup is needed</h3>
+      <p>A lot of free tool sites ask for an email address or account creation before letting you use even a basic feature — often just to build a marketing list, not because the tool actually needs it. EkZapp skips that step entirely. None of the 100+ tools require registration, a password, or a confirmed email, because a one-off task like compressing a PDF or checking a percentage shouldn't come with the overhead of managing yet another account.</p>
+      <p>The tradeoff is that there's no saved history or account dashboard — each visit is self-contained. For the kind of quick, specific tasks EkZapp is built for, that tradeoff generally favors speed and privacy over convenience features most people wouldn't use anyway.</p>
+    </div>
+
+    <div class="why-block">
+      <h3>What tool categories does EkZapp cover?</h3>
+      <ul>
+        <li><strong>PDF Tools (20+)</strong> — merge, split, compress, unlock, protect, sign, edit, and convert PDFs to and from Word, Excel, PowerPoint, and images.</li>
+        <li><strong>Image Tools</strong> — resize, compress to an exact KB target, convert formats, remove backgrounds, generate favicons, and prepare passport or exam photos to exact official specifications.</li>
+        <li><strong>Calculators</strong> — income tax (old vs new regime), GST, EMI, SIP, BMI, age, date, percentage, tip, calorie, and amount-in-words, built around real Indian financial and everyday use cases.</li>
+        <li><strong>Business Tools</strong> — invoice generator, QR code generator, password generator, currency converter, unit converter, signature generator, and resume builder.</li>
+        <li><strong>Text & developer tools</strong> — word counter, case converter, JSON formatter, Base64/URL encoder, and more, aimed at quick one-off tasks rather than a full development environment.</li>
+      </ul>
+      <p>New tools are generally added after the same specific, narrow requirement shows up repeatedly — an exam board's exact photo size rule, a bank's cheque-writing convention, a tax regime comparison people keep asking about — rather than copying whatever a competitor already offers.</p>
+    </div>
+
+    <div class="why-block">
+      <h3>What makes EkZapp different from other free tool sites</h3>
+      <p>Plenty of sites offer a single free PDF or image tool, but usually with a catch — a watermark on the output, a hard file-size cap that pushes you toward a paid plan, or a signup wall before the actual conversion happens. EkZapp doesn't add watermarks, doesn't gate results behind an account, and keeps free-tier limits generous enough for real everyday tasks rather than deliberately too small to be useful. Ads support the site instead of a subscription model, which is also why the tools stay free rather than shifting to a paywall over time.</p>
+    </div>
+      <p>EkZapp is built and maintained by <a href="/author/ekramul-hoque" style="color:var(--blue);text-decoration:underline">Ekramul Hoque</a>, a solo developer based in India, as a side project alongside a full-time day job. There's no team or support desk behind the site — the code, the tool design, and every bug report are handled by one person, which is also why new tools and content are added gradually rather than all at once. Read more about the story behind EkZapp and the people who use it on the <a href="/about" style="color:var(--blue);text-decoration:underline">About page</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" aria-labelledby="faq-title">
+  <div class="faq-inner">
+    <div class="sec-label">FAQ</div>
+    <h2 class="sec-title" id="faq-title">Frequently Asked Questions</h2>
+    <p class="sec-sub">Common questions about using EkZapp</p>
+    <div class="faq-list">
+      <details>
+        <summary>Are the tools on EkZapp really free?</summary>
+        <p>Yes. Every tool on EkZapp — PDF, image, calculator, and business tools — is completely free to use, with no hidden premium tier or paywalled feature.</p>
+      </details>
+      <details>
+        <summary>Do you store my uploaded files?</summary>
+        <p>No. Uploaded files are processed for your specific task and then cleaned up shortly after — they are not stored long-term, browsed, or used for anything beyond generating your download.</p>
+      </details>
+      <details>
+        <summary>Is signup required to use the tools?</summary>
+        <p>No signup or account creation is required for any tool on EkZapp. You can use every tool directly without providing an email address.</p>
+      </details>
+      <details>
+        <summary>Are my PDF and image files secure?</summary>
+        <p>Files are transferred over an encrypted (HTTPS) connection and processed only for the task you requested. Files are not shared with third parties and are deleted from the server after processing.</p>
+      </details>
+      <details>
+        <summary>How long are files kept on the server?</summary>
+        <p>Uploaded and processed files are automatically deleted shortly after your download completes — typically within a couple of hours, and never kept indefinitely.</p>
+      </details>
+      <details>
+        <summary>Who built EkZapp?</summary>
+        <p>EkZapp is built and maintained by Ekramul Hoque, a solo developer based in India, as a side project alongside a full-time day job. Read more on the <a href="/author/ekramul-hoque" style="color:var(--blue)">author page</a>.</p>
+      </details>
     </div>
   </div>
 </section>
