@@ -3,129 +3,280 @@
 <head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VW5QLMV046"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-VW5QLMV046');
-</script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Date Calculator — Calculate Days Between Dates Free | EkZapp</title>
-<meta name="description" content="Calculate the difference between two dates or add/subtract days online for free. No signup required.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-VW5QLMV046');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Date Calculator — Days Between Dates & Add/Subtract Days | EkZapp</title>
+<meta name="description" content="Calculate the difference between two dates or add and subtract days from a date online for free. No signup required.">
+<link rel="canonical" href="https://ekzapp.com/date-calculator">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB}
+:root{--blue:#7C3AED;--blue-dk:#6D28D9;--blue-lt:#F5F3FF;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626;--green:#16A34A;}
 body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+a{color:inherit}
 nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
 .logo{text-decoration:none;display:flex;align-items:center;gap:8px}
 .logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
-.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
-.logo-text span{color:var(--blue)}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}.logo-text span{color:var(--blue)}
 .back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
-.container{max-width:560px;margin:48px auto;padding:0 20px 60px}
-.tool-header{text-align:center;margin-bottom:32px}
-.tool-icon-wrap{width:64px;height:64px;border-radius:16px;background:#EDE9FE;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
-.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
-.tool-header p{color:var(--gray);font-size:14px}
-.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:16px}
+.back:hover{border-color:var(--blue);color:var(--blue)}
+.hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#4C1D95,#7C3AED 45%,#A78BFA 70%,#DDD6FE);background-size:200% 200%;animation:heroShift 12s ease-in-out infinite;padding:56px 20px 120px}
+@keyframes heroShift{0%{background-position:0% 40%}50%{background-position:100% 60%}100%{background-position:0% 40%}}
+.hero-inner{max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:12px;font-weight:600;padding:6px 14px;border-radius:999px;margin-bottom:18px;backdrop-filter:blur(4px)}
+.hero h1{color:#fff;font-size:2.3rem;font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
+.hero p{color:rgba(255,255,255,.9);font-size:15px;max-width:460px;margin:0 auto}
+.hero-doc{position:absolute;opacity:.5}
+.hero-doc svg{display:block}
+.doc1{top:20px;left:6%;animation:float1 7s ease-in-out infinite}
+.doc2{top:70px;right:8%;animation:float2 8s ease-in-out infinite}
+.doc3{bottom:30px;left:14%;animation:float1 9s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-14px) rotate(-3deg)}}
+@keyframes float2{0%,100%{transform:translateY(0) rotate(8deg)}50%{transform:translateY(-10px) rotate(4deg)}}
+.outer{max-width:960px;margin:0 auto;padding:0 20px}
+.narrow{max-width:680px;margin:0 auto}
+.wide{max-width:900px;margin:0 auto}
+.tool-card-wrap{margin-top:-84px;position:relative;z-index:3}
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:0 12px 32px -8px rgba(109,40,217,.25);margin-bottom:14px}
 .card h3{font-size:14px;font-weight:700;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)}
 .field{margin-bottom:14px}
 .field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
 .field input{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none}
 .field input:focus{border-color:var(--blue)}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.btn{width:100%;padding:12px;background:var(--blue);color:white;border:none;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;margin-bottom:12px}
+.btn{width:100%;padding:12px;background:var(--blue);color:white;border:none;border-radius:9px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;margin-bottom:4px}
 .btn:hover{background:var(--blue-dk)}
-.result-box{background:var(--blue-lt);border:1px solid #BFDBFE;border-radius:8px;padding:14px;display:none}
+.result-box{background:var(--blue-lt);border:1px solid #DDD6FE;border-radius:8px;padding:14px;display:none;margin-top:12px}
 .result-box.show{display:block}
-.result-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #BFDBFE;font-size:13px}
+.result-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #DDD6FE;font-size:13px}
 .result-row:last-child{border:none;font-weight:700;color:var(--blue)}
-.guide-section{background:white;border:1px solid var(--border);border-radius:12px;padding:24px}
-.guide-section h2{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:16px}
-.steps{display:flex;flex-direction:column;gap:14px}
+.trust{display:flex;justify-content:center;gap:20px;margin-top:6px;flex-wrap:wrap}
+.trust-item{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:4px}
+.section{margin-top:56px}
+.section h2{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:8px}
+.section .sub{text-align:center;color:var(--gray);font-size:14px;margin-bottom:28px}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feature{background:white;border:1px solid var(--border);border-radius:12px;padding:22px 18px;text-align:center}
+.feature svg{margin:0 auto 12px}
+.feature h3{font-size:14px;font-weight:700;margin-bottom:6px}
+.feature p{font-size:12.5px;color:var(--gray);line-height:1.5}
+.photo-block{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.photo-block img{width:100%;height:100%;object-fit:cover;display:block;min-height:220px}
+.photo-copy{padding:24px 28px 24px 0}
+.photo-copy h2{font-size:1.2rem;font-weight:800;margin-bottom:10px;text-align:left}
+.photo-copy p{font-size:13.5px;color:var(--gray);line-height:1.6}
+.use-cases{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.use-case{background:white;border:1px solid var(--border);border-left:4px solid var(--blue);border-radius:10px;padding:18px 20px}
+.use-case h3{font-size:13.5px;font-weight:700;margin-bottom:6px}
+.use-case p{font-size:12.5px;color:var(--gray);line-height:1.5}
+.how-to{background:white;border:1px solid var(--border);border-radius:14px;padding:24px}
+.steps{display:flex;flex-direction:column;gap:12px}
 .step{display:flex;gap:12px;align-items:flex-start}
-.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.step-body h3{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px}
-.step-body p{font-size:12px;color:var(--gray);line-height:1.5}
-.faq-section{margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
-.faq-section h2{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:12px}
-.faq-item{border-bottom:1px solid var(--border);padding:12px 0}
-.faq-item:last-child{border-bottom:none;padding-bottom:0}
-.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px}
-.faq-a{font-size:12px;color:var(--gray);line-height:1.5}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue-lt);color:var(--blue);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-text{font-size:13px;color:var(--gray);line-height:1.5;padding-top:4px}
+.step-text strong{color:var(--ink)}
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-list details{background:white;border:1px solid var(--border);border-radius:10px;padding:14px 18px}
+.faq-list summary{font-size:13.5px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:'+';font-size:18px;color:var(--blue);font-weight:400}
+.faq-list details[open] summary::after{content:'−'}
+.faq-list p{font-size:13px;color:var(--gray);line-height:1.6;margin-top:10px}
+.related{background:linear-gradient(115deg,#4C1D95,#7C3AED,#2563EB);border-radius:16px;padding:32px 28px;color:#fff}
+.related h2{color:#fff;font-size:1.2rem;margin-bottom:18px;text-align:left}
+.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.related-item{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:14px;text-decoration:none;transition:background .15s}
+.related-item:hover{background:rgba(255,255,255,.22)}
+.related-item .ico{font-size:1.3rem;margin-bottom:6px;display:block}
+.related-item .name{font-size:12.5px;font-weight:700;color:#fff}
+footer{margin:64px 0 32px;text-align:center;font-size:12px;color:var(--gray)}
+@media(max-width:720px){.feature-grid{grid-template-columns:1fr}.photo-block{grid-template-columns:1fr}.photo-block img{min-height:160px}.photo-copy{padding:0 20px 22px}.use-cases{grid-template-columns:1fr}.related-grid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:1.7rem}.tool-card-wrap{margin-top:-56px}.hero{padding-bottom:88px}.field-row{grid-template-columns:1fr}}
 </style>
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Date Calculator",
-  "url": "https://ekzapp.com/date-calculator",
-  "description": "Calculate the difference between two dates or add and subtract days from a date online for free.",
-  "applicationCategory": "UtilityApplication",
-  "operatingSystem": "Web",
-  "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
-}
+{"@context":"https://schema.org","@type":"WebApplication","name":"Date Calculator","url":"https://ekzapp.com/date-calculator","description":"Calculate the difference between two dates or add and subtract days from a date online for free.","applicationCategory":"UtilityApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Can I calculate days between any two dates?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can calculate the difference between any two dates — past, present, or future — in either order."}},
+{"@type":"Question","name":"How do I find a date 90 days from today?","acceptedAnswer":{"@type":"Answer","text":"Use the Add/Subtract Days section. Set today as the start date and enter 90 in the days field."}},
+{"@type":"Question","name":"Can I subtract days to find a past date?","acceptedAnswer":{"@type":"Answer","text":"Yes, enter a negative number (e.g. -30) in the days field to move backward from the start date instead of forward."}},
+{"@type":"Question","name":"Why do the month and year figures say \"approx\"?","acceptedAnswer":{"@type":"Answer","text":"Months and years vary in length (28-31 days, 365-366 days), so converting an exact day count into months or years is necessarily an approximation using average lengths."}},
+{"@type":"Question","name":"Is this tool free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free with no signup required."}}
+]}
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
 </head>
 <body>
-<nav>
-  <div class="nav-inner">
-    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
-    <a class="back" href="/">← All Tools</a>
+<nav><div class="nav-inner"><a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a><a class="back" href="/">← All Tools</a></div></nav>
+
+<div class="hero">
+  <div class="hero-doc doc1"><svg width="46" height="46" viewBox="0 0 46 46" fill="none"><rect x="6" y="10" width="34" height="30" rx="4" stroke="#fff" stroke-opacity=".4" stroke-width="2"/><path d="M6 20h34M14 6v8M32 6v8" stroke="#fff" stroke-opacity=".45" stroke-width="2" stroke-linecap="round"/></svg></div>
+  <div class="hero-doc doc2"><svg width="40" height="50" viewBox="0 0 40 50" fill="none"><rect x="1" y="1" width="38" height="48" rx="4" fill="#fff" fill-opacity=".14" stroke="#fff" stroke-opacity=".35"/></svg></div>
+  <div class="hero-doc doc3"><svg width="36" height="44" viewBox="0 0 36 44" fill="none"><rect x="1" y="1" width="34" height="42" rx="4" fill="#fff" fill-opacity=".12" stroke="#fff" stroke-opacity=".3"/></svg></div>
+  <div class="hero-inner">
+    <div class="hero-badge">📅 Two Calculators in One</div>
+    <h1>Find the Gap Between Dates, or Add and Subtract Days Instantly</h1>
+    <p>Calculate exactly how many days, weeks, months, and years sit between two dates — or find what date lands a given number of days forward or backward from any starting point, all calculated instantly from real calendar dates.</p>
   </div>
-</nav>
-<div class="container">
-  <div class="tool-header">
-    <div class="tool-icon-wrap">📅</div>
-    <h1>Date Calculator</h1>
-    <p>Calculate difference between dates or add/subtract days</p>
-  </div>
-  <div class="card">
-    <h3>📅 Date Difference</h3>
-    <div class="field-row">
-      <div class="field"><label>Start Date</label><input type="date" id="d1"></div>
-      <div class="field"><label>End Date</label><input type="date" id="d2"></div>
+</div>
+
+<div class="outer">
+  <div class="narrow tool-card-wrap">
+    <div class="card">
+      <h3>📅 Date Difference</h3>
+      <div class="field-row">
+        <div class="field"><label>Start Date</label><input type="date" id="d1"></div>
+        <div class="field"><label>End Date</label><input type="date" id="d2"></div>
+      </div>
+      <button class="btn" onclick="calcDiff()">Calculate Difference</button>
+      <div class="result-box" id="diffResult">
+        <div class="result-row"><span>Days</span><span id="rDays"></span></div>
+        <div class="result-row"><span>Weeks</span><span id="rWeeks"></span></div>
+        <div class="result-row"><span>Months (approx)</span><span id="rMonths"></span></div>
+        <div class="result-row"><span>Years (approx)</span><span id="rYears"></span></div>
+      </div>
     </div>
-    <button class="btn" onclick="calcDiff()">Calculate Difference</button>
-    <div class="result-box" id="diffResult">
-      <div class="result-row"><span>Days</span><span id="rDays"></span></div>
-      <div class="result-row"><span>Weeks</span><span id="rWeeks"></span></div>
-      <div class="result-row"><span>Months (approx)</span><span id="rMonths"></span></div>
-      <div class="result-row"><span>Years (approx)</span><span id="rYears"></span></div>
+    <div class="card">
+      <h3>➕ Add/Subtract Days</h3>
+      <div class="field"><label>Start Date</label><input type="date" id="addDate"></div>
+      <div class="field-row">
+        <div class="field"><label>Days to Add/Subtract</label><input type="number" id="addDays" placeholder="e.g. 30 or -30"></div>
+        <div class="field" style="display:flex;align-items:flex-end"><button class="btn" style="margin-bottom:0" onclick="calcAdd()">Calculate</button></div>
+      </div>
+      <div class="result-box" id="addResult">
+        <div class="result-row"><span>Result Date</span><span id="rDate"></span></div>
+        <div class="result-row"><span>Day of Week</span><span id="rDay"></span></div>
+      </div>
     </div>
-  </div>
-  <div class="card">
-    <h3>➕ Add/Subtract Days</h3>
-    <div class="field"><label>Start Date</label><input type="date" id="addDate"></div>
-    <div class="field-row">
-      <div class="field"><label>Days to Add/Subtract</label><input type="number" id="addDays" placeholder="e.g. 30 or -30"></div>
-      <div class="field" style="display:flex;align-items:flex-end"><button class="btn" style="margin-bottom:0" onclick="calcAdd()">Calculate</button></div>
-    </div>
-    <div class="result-box" id="addResult">
-      <div class="result-row"><span>Result Date</span><span id="rDate"></span></div>
-      <div class="result-row"><span>Day of Week</span><span id="rDay"></span></div>
+    <div class="trust">
+      <div class="trust-item">⚡ Instant results</div>
+      <div class="trust-item">🗑️ No data saved</div>
+      <div class="trust-item">📵 No signup needed</div>
     </div>
   </div>
 
-  <div class="guide-section">
-    <h2>📖 How to Use the Date Calculator</h2>
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Choose Calculation Type</h3><p>Use "Date Difference" to find the gap between two dates, or "Add/Subtract Days" to find a future or past date.</p></div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Enter Your Dates</h3><p>Select the start and end dates using the date pickers.</p></div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Click "Calculate"</h3><p>Results in days, weeks, months, and years appear instantly.</p></div></div>
-    </div>
-    <div class="faq-section">
-      <h2>❓ Frequently Asked Questions</h2>
-      <div class="faq-item"><div class="faq-q">Can I calculate days between any two dates?</div><div class="faq-a">Yes. You can calculate the difference between any two dates — past, present, or future.</div></div>
-      <div class="faq-item"><div class="faq-q">How do I find a date 90 days from today?</div><div class="faq-a">Use the "Add/Subtract Days" section. Set today as the start date and enter 90 in the days field.</div></div>
-      <div class="faq-item"><div class="faq-q">Is this tool free?</div><div class="faq-a">Yes, completely free. No signup required.</div></div>
+  <div class="wide section">
+    <h2>Two date calculations, in one tool</h2>
+    <p class="sub">Find a gap between dates, or find a date a set number of days away</p>
+    <div class="feature-grid">
+      <div class="feature"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="6" y="8" width="28" height="24" rx="3" stroke="#7C3AED" stroke-width="2"/><path d="M6 16h28" stroke="#7C3AED" stroke-width="2"/></svg><h3>Date difference</h3><p>See the exact gap between two dates in days, weeks, months, and years — useful for anything requiring a precise duration.</p></div>
+      <div class="feature"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M20 4l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" stroke="#7C3AED" stroke-width="2" stroke-linejoin="round"/></svg><h3>Add or subtract days</h3><p>Find exactly what date lands a set number of days forward or backward from any start date, correctly handling month and year rollovers.</p></div>
+      <div class="feature"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="15" stroke="#7C3AED" stroke-width="2"/><path d="M20 12v8l6 4" stroke="#7C3AED" stroke-width="2" stroke-linecap="round"/></svg><h3>Instant, in your browser</h3><p>Both calculations run entirely client-side — no waiting, nothing sent to or stored on a server.</p></div>
     </div>
   </div>
+
+  <div class="wide section">
+    <div class="photo-block">
+      <img src="{{ url_for('static', filename='images/photo-notebook-writing.jpg') }}" alt="Planning a schedule and tracking dates for a deadline or event">
+      <div class="photo-copy">
+        <h2>Calendar math is trickier than it looks</h2>
+        <p>Working out "how many days until X" or "what date is 45 days from now" by hand means correctly tracking that months have different lengths — 28, 29, 30, or 31 days — and that leap years add an extra day roughly every four years. It's easy to be off by a day or two counting on a physical calendar, especially crossing a month boundary or a leap year, and a one-day error can matter more than it seems when it's a visa validity period, a legal notice period, or a warranty deadline being calculated.</p>
+        <p style="margin-top:12px">This gets even trickier when the calculation spans multiple months of varying length, or when a deadline falls on the last day of February in a leap year — cases that are individually simple but easy to get wrong when chained together manually. A calculator that works from actual calendar dates rather than a rough day-count approximation removes this entire category of error, and it handles a multi-decade span just as reliably as a two-week one.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="narrow section">
+    <h2>How the calculations work</h2>
+    <p class="sub">&nbsp;</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px">The date difference calculation converts both dates into a single day count from a fixed reference point, then subtracts one from the other — the same underlying method computers use to compare any two dates, which automatically and correctly accounts for varying month lengths and leap years without needing any special-case logic. Weeks is simply days divided by 7; months and years are approximated using average month and year lengths (roughly 30.44 and 365.25 days respectively), since months and years don't have a single fixed length the way weeks and days do.</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7">The add/subtract calculation works in reverse: starting from a chosen date, it adds (or subtracts, for a negative number) the specified number of days, letting the calendar naturally roll over month and year boundaries correctly. This is more reliable than counting forward on a physical calendar by hand, especially for longer spans, because it's not susceptible to miscounting a month's actual day total partway through.</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-top:14px">Both calculations use the same underlying date arithmetic, just applied in different directions — one finds the gap between two known dates, the other finds an unknown date given a known date and a gap. Recognizing which of the two you actually need is usually the easy part; the value of a dedicated tool is in never having to manually verify a month's day count or a leap year while doing it.</p>
+  </div>
+
+  <div class="wide section">
+    <h2>When people reach for a date calculator</h2>
+    <p class="sub">A few common situations</p>
+    <div class="use-cases">
+      <div class="use-case"><h3>✈️ Visa & travel validity</h3><p>Work out exact stay durations or visa validity windows that hinge on precise date counts.</p></div>
+      <div class="use-case"><h3>📄 Legal & notice periods</h3><p>Calculate a deadline that falls a fixed number of days after a notice or filing date.</p></div>
+      <div class="use-case"><h3>🎉 Event & deadline countdowns</h3><p>Find exactly how many days remain until a wedding, exam, or project deadline.</p></div>
+      <div class="use-case"><h3>🛡️ Warranty & subscription tracking</h3><p>Find the exact expiry date of a warranty or subscription that runs a set number of days.</p></div>
+      <div class="use-case"><h3>🤰 Pregnancy & medical date tracking</h3><p>Calculate date ranges tied to a specific number of days from a reference date.</p></div>
+      <div class="use-case"><h3>💼 Project & billing cycles</h3><p>Work out billing periods or project timelines spanning a specific day count.</p></div>
+      <div class="use-case"><h3>📋 Contract & lease terms</h3><p>Verify the exact end date of a lease or contract running a specific number of days or months from its signing date.</p></div>
+      <div class="use-case"><h3>🏦 Interest & loan period checks</h3><p>Cross-check the exact day count a bank or lender uses for interest accrual calculations, since even a one-day discrepancy can shift the accrued interest slightly.</p></div>
+    </div>
+  </div>
+
+  <div class="narrow section">
+    <h2>Calendar days vs. business days</h2>
+    <p class="sub">&nbsp;</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7">This calculator counts calendar days — every day on the calendar, including weekends and public holidays. Many legal, contractual, and administrative deadlines instead specify "business days" or "working days," which exclude weekends and sometimes public holidays as well. A "10 business day" deadline can span 14 or more calendar days depending on how many weekends and holidays fall within that window, so it's worth checking whether a given deadline is stated in calendar days or business days before relying on this tool's day count directly, since using the wrong interpretation can shift a deadline by several days.</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-top:14px">If you need a business-day count specifically, you can still use this tool's calendar-day result as a starting point — take the calendar day gap, subtract roughly two days for every full week in the range to approximate weekends, then adjust further for any public holidays that fall within the window. For an exact business-day count, especially across a range with irregular holidays, a specialized business-day calculator that accounts for a specific country's holiday calendar is more reliable, since public holidays vary by country, region, and even by industry sector in some cases.</p>
+  </div>
+
+  <div class="wide section">
+    <h2>Days, weeks, months — how the conversions work</h2>
+    <table style="width:100%;border-collapse:collapse;font-size:13.5px">
+      <tr style="background:#F1F5F9"><th style="padding:10px;text-align:left;border:1px solid #E2E8F0">Unit</th><th style="padding:10px;text-align:left;border:1px solid #E2E8F0">Exact or approximate?</th><th style="padding:10px;text-align:left;border:1px solid #E2E8F0">Why</th></tr>
+      <tr><td style="padding:10px;border:1px solid #E2E8F0">Total days</td><td style="padding:10px;border:1px solid #E2E8F0">Exact</td><td style="padding:10px;border:1px solid #E2E8F0">Direct calendar subtraction, no rounding involved</td></tr>
+      <tr><td style="padding:10px;border:1px solid #E2E8F0">Total weeks</td><td style="padding:10px;border:1px solid #E2E8F0">Exact</td><td style="padding:10px;border:1px solid #E2E8F0">Total days simply divided by 7</td></tr>
+      <tr><td style="padding:10px;border:1px solid #E2E8F0">Months</td><td style="padding:10px;border:1px solid #E2E8F0">Approximate</td><td style="padding:10px;border:1px solid #E2E8F0">Months vary from 28 to 31 days, so a day count doesn't divide evenly</td></tr>
+      <tr><td style="padding:10px;border:1px solid #E2E8F0">Years</td><td style="padding:10px;border:1px solid #E2E8F0">Approximate</td><td style="padding:10px;border:1px solid #E2E8F0">Leap years mean not every year is exactly 365 days</td></tr>
+    </table>
+    <p style="font-size:13px;color:var(--gray);line-height:1.6;margin-top:14px">If your use case needs an exact figure — a legal deadline, for instance — always use the total days figure rather than the approximate months or years conversion, since only the days count is a precise calendar calculation with no averaging involved.</p>
+  </div>
+
+  <div class="narrow section">
+    <h2>Common date calculation mistakes</h2>
+    <p class="sub">&nbsp;</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7">A frequent error when counting days manually is forgetting whether to include the start date, end date, both, or neither — "from March 1 to March 10" can mean 9 days or 10 days depending on whether both endpoints are counted, and different contracts, exams, or legal notices define this differently. This tool calculates the calendar difference (end date minus start date), so always check the specific wording of whatever deadline or rule you're working against to see if it expects an inclusive or exclusive count, and adjust by a day if needed — this is a genuinely common source of off-by-one errors even among people who are otherwise careful with dates. When the stakes are high, it's worth re-reading the exact wording of the relevant rule or notice twice before finalizing a date calculated this way.</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-top:14px">Another common slip is forgetting a leap year when manually adding a large number of days — mentally adding "365 days" to a date that spans a leap year produces a date one day off from the correct answer. Using an exact date-based calculator like this one avoids that entirely, since it works from real calendar dates rather than a fixed 365-day assumption.</p>
+  </div>
+
+  <div class="narrow section">
+    <h2>Quick recap</h2>
+    <p class="sub">&nbsp;</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:12px">Calendar math looks simple but has real edge cases — varying month lengths, leap years, and inclusive-vs-exclusive counting conventions — that make manual counting error-prone for anything beyond a few days. Whether you need the gap between two known dates or an unknown date a set number of days from a known one, working from actual calendar arithmetic rather than rough estimation is what keeps the answer exact, which matters most when the number feeds into a legal, financial, or travel deadline. Bookmarking this tool for the next time a date-math question comes up saves re-deriving the leap-year and month-length logic by hand each time.</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7">Date math looks simple but hides real complexity in varying month lengths and leap years, which is exactly where manual calendar counting tends to introduce small errors. Both calculations here — finding the gap between two dates, and finding a date a set number of days away — use a proper calendar-based method rather than a rough approximation, so the day count is always exact even though month and year figures are necessarily approximate averages. Whether you're checking a legal deadline, a visa window, or simply counting down to an event, this tool handles the underlying calendar arithmetic correctly every time, without the risk of a manual off-by-one or leap-year mistake.</p>
+  </div>
+
+  <div class="narrow section">
+    <div class="how-to">
+      <h2 style="text-align:left;font-size:1.1rem;margin-bottom:16px">📖 How to use the date calculator</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Choose your calculation</strong> — Use "Date Difference" to find the gap between two dates, or "Add/Subtract Days" to find a future or past date.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Enter your dates</strong> — Select the start and end dates, or a start date and number of days.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Click "Calculate"</strong> — Results in days, weeks, months, and years — or the resulting date — appear instantly.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="narrow section">
+    <h2>Frequently asked questions</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="faq-list">
+      <details><summary>Can I calculate days between any two dates?</summary><p>Yes. You can calculate the difference between any two dates — past, present, or future — in either order, and the result is always shown as a positive count.</p></details>
+      <details><summary>How do I find a date 90 days from today?</summary><p>Use the Add/Subtract Days section. Set today as the start date and enter 90 in the days field to see the exact resulting date.</p></details>
+      <details><summary>Can I subtract days to find a past date?</summary><p>Yes, enter a negative number (e.g. -30) in the days field to move backward from the start date instead of forward.</p></details>
+      <details><summary>Why do the month and year figures say "approx"?</summary><p>Months and years vary in length (28-31 days, 365-366 days), so converting an exact day count into months or years is necessarily an approximation using average lengths, unlike the exact days and weeks figures.</p></details>
+      <details><summary>Is this tool free?</summary><p>Yes, completely free with no signup required.</p></details>
+      <details><summary>Does this calculator account for leap years?</summary><p>Yes, both the date difference and add/subtract calculations use real calendar dates, so leap years are automatically handled correctly without any manual adjustment.</p></details>
+      <details><summary>Should I count the start date, end date, both, or neither?</summary><p>This depends on the specific rule or deadline you're working against — this tool calculates the calendar gap between two dates, so check whether your specific context (a legal notice, an exam eligibility window) expects an inclusive or exclusive count and adjust by a day if needed.</p></details>
+      <details><summary>Can I calculate a date far in the past or future?</summary><p>Yes, there's no meaningful limit on how far apart the two dates can be — the calculation works the same way for a 10-day gap or a 50-year gap.</p></details>
+      <details><summary>Is my date data stored anywhere?</summary><p>No, all calculations run entirely in your browser and no dates you enter are sent to or stored on a server.</p></details>
+      <details><summary>Does this calculate business days or calendar days?</summary><p>This tool counts calendar days, including weekends and holidays. If you need a business-day count, subtract weekends and any relevant public holidays from the calendar-day figure this tool provides.</p></details>
+      <details><summary>Can I use negative numbers to subtract days?</summary><p>Yes, entering a negative number in the Add/Subtract Days field moves the calculation backward from the start date instead of forward, giving you a past date rather than a future one.</p></details>
+    </div>
+  </div>
+
+  <div class="wide section">
+    <div class="related">
+      <h2>Related calculators</h2>
+      <div class="related-grid">
+        <a class="related-item" href="/age-calculator"><span class="ico">🎂</span><span class="name">Age Calculator</span></a>
+        <a class="related-item" href="/percentage-calculator"><span class="ico">💯</span><span class="name">Percentage Calculator</span></a>
+        <a class="related-item" href="/emi-calculator"><span class="ico">🏦</span><span class="name">EMI Calculator</span></a>
+        <a class="related-item" href="/unit-converter"><span class="ico">📏</span><span class="name">Unit Converter</span></a>
+      </div>
+    </div>
+  </div>
+
+  <footer>© EkZapp — Free online utility tools</footer>
 </div>
+
 <script>
 const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 document.getElementById('d1').value=new Date().toISOString().split('T')[0];
