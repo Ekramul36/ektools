@@ -96,6 +96,7 @@ LASTMOD_OVERRIDES = {
     '/blog/split-pdf-crop-pdf-guide': '2026-07-12',
     '/blog/unlock-pdf-remove-password-online-free': '2026-07-15',
     '/blog/itr-filing-2026-last-date-old-vs-new-tax-regime': '2026-07-17',
+    '/blog/home-loan-emi-calculation-explained': '2026-07-19',
 }
 
 
@@ -176,6 +177,7 @@ def sitemap():
         ('/blog/split-pdf-crop-pdf-guide', '0.7', 'monthly'),
         ('/blog/unlock-pdf-remove-password-online-free', '0.7', 'monthly'),
         ('/blog/itr-filing-2026-last-date-old-vs-new-tax-regime', '0.7', 'monthly'),
+        ('/blog/home-loan-emi-calculation-explained', '0.7', 'monthly'),
         ('/author/ekramul-hoque', '0.5', 'monthly'),
     ]
     xml = ['<?xml version="1.0" encoding="UTF-8"?>',
@@ -1921,6 +1923,13 @@ BLOG_POSTS = [
     "excerpt": "ITR filing last date is July 31, 2026 for salaried taxpayers. Which ITR form to choose, old vs new regime compared, and what happens if you miss the deadline.",
     "category": "Calculators",
     "date": "July 17, 2026"
+    },
+    {
+    "slug": "home-loan-emi-calculation-explained",
+    "title": "Home Loan EMI Calculation Explained (With a Real Example) — 2026 Guide",
+    "excerpt": "The EMI formula explained with a real ₹40 lakh example, current 2026 interest rates, tax benefits under Section 24(b)/80C, and RBI's prepayment rules.",
+    "category": "Calculators",
+    "date": "July 19, 2026"
     }
     # Add more posts here as dicts, e.g.:
     # {
@@ -1979,6 +1988,10 @@ def blog_itr_filing_2026():
 @app.route("/author/ekramul-hoque")
 def author_ekramul_hoque():
     return render_template("author_ekramul_hoque.html", posts=BLOG_POSTS)
+
+@app.route("/blog/home-loan-emi-calculation-explained")
+def blog_home_loan_emi():
+    return render_template("blog_post_home_loan_emi.html")
 
 # NOTE: as you add more blog posts, add a matching @app.route("/blog/<slug>")
 # function for each new HTML file, the same way as blog_merge_pdf() above.
