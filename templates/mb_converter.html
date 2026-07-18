@@ -11,12 +11,16 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MB GB Converter — File Size Converter Free | EkZapp</title>
-<meta name="description" content="Convert between Bytes, KB, MB, GB, TB online for free. Instant file size conversion. No signup required.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>MB to GB Converter — File Size Converter Free | EkZapp</title>
+<meta name="description" content="Convert between Bytes, KB, MB, GB and TB online for free. Instant file and storage size conversion. No signup required.">
+<meta property="og:title" content="MB to GB Converter — File Size Converter Free | EkZapp">
+<meta property="og:description" content="Convert Bytes, KB, MB, GB and TB instantly with EkZapp's free file size converter. No signup needed.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://ekzapp.com/mb-converter">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--blue:#2563EB;--blue-dk:#1D4ED8;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--cream:#F0F5FF}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--cream:#F0F5FF;--teal:#0D9488;--amber:#D97706}
 body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
 nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center}
@@ -25,36 +29,107 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .logo-text{font-size:15px;font-weight:700;color:var(--ink)}
 .logo-text span{color:var(--blue)}
 .back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
-.container{max-width:560px;margin:40px auto;padding:0 20px 60px}
-.tool-header{text-align:center;margin-bottom:32px}
-.tool-icon{font-size:2.5rem;margin-bottom:12px}
-.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
-.tool-header p{color:var(--gray);font-size:14px}
-.card{background:white;border:1px solid var(--border);border-radius:12px;padding:28px}
+.back:hover{border-color:var(--blue);color:var(--blue)}
+
+.wrap-outer{max-width:960px;margin:0 auto;padding:0 20px}
+.wrap-narrow{max-width:680px;margin:0 auto}
+.wrap-wide{max-width:900px;margin:0 auto}
+
+.hero{position:relative;overflow:hidden;padding:52px 20px 60px;text-align:center;
+  background:linear-gradient(125deg,#0F172A,#D97706 55%,#2563EB);
+  background-size:200% 200%;animation:heroShift 15s ease infinite;color:white}
+@keyframes heroShift{0%{background-position:0% 30%}50%{background-position:100% 70%}100%{background-position:0% 30%}}
+.hero::before{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle at 12% 20%,rgba(255,255,255,.09) 0,transparent 42%),
+                    radial-gradient(circle at 88% 80%,rgba(255,255,255,.09) 0,transparent 42%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.25);padding:6px 14px;border-radius:999px;font-size:12px;
+  font-weight:600;margin-bottom:18px;backdrop-filter:blur(4px)}
+.hero h1{font-family:'JetBrains Mono',monospace;font-size:1.9rem;line-height:1.35;margin-bottom:14px;text-shadow:0 2px 14px rgba(0,0,0,.2)}
+.hero p{max-width:520px;margin:0 auto;font-size:15px;line-height:1.65;color:rgba(255,255,255,.85)}
+.hero-stats{display:flex;justify-content:center;gap:28px;margin-top:26px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat b{display:block;font-size:1.4rem;font-weight:800}
+.hero-stat span{font-size:11px;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.03em}
+
+.container{padding:0 20px 60px}
+.tool-section{margin-top:-30px;position:relative;z-index:2}
+.intro-copy{padding:32px 4px 0;color:var(--gray);font-size:13.5px;line-height:1.75;text-align:left;margin-bottom:16px}
+.intro-copy strong{color:var(--ink)}
+
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 10px 30px -12px rgba(17,24,39,.15)}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
 .field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
 .field input,.field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none;transition:border .15s;background:white}
-.field input:focus{border-color:var(--blue)}
-.btn{width:100%;padding:12px;background:var(--blue);color:white;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;margin-bottom:16px}
-.btn:hover{background:var(--blue-dk)}
-.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;display:none}
+.field input:focus,.field select:focus{border-color:var(--amber)}
+.btn{width:100%;padding:12px;background:var(--amber);color:white;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;margin-bottom:16px}
+.btn:hover{background:#B45309}
+.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;display:none}
 .result-grid.show{display:grid}
-.result-item{background:var(--cream);border:1px solid #BFDBFE;border-radius:8px;padding:14px;text-align:center}
-.result-item strong{display:block;font-size:1.2rem;font-weight:700;color:var(--blue);word-break:break-all}
+.result-item{background:#FEF3E2;border:1px solid #FDE1B0;border-radius:8px;padding:14px;text-align:center}
+.result-item strong{display:block;font-size:1.1rem;font-weight:700;color:var(--amber);word-break:break-all}
 .result-item span{font-size:12px;color:var(--gray)}
-.guide-section{margin-top:24px;background:white;border:1px solid var(--border);border-radius:12px;padding:24px}
-.guide-section h2{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:16px}
-.steps{display:flex;flex-direction:column;gap:14px}
-.step{display:flex;gap:12px;align-items:flex-start}
-.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.step-body h3{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px}
-.step-body p{font-size:12px;color:var(--gray);line-height:1.5}
-.faq-section{margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
-.faq-section h2{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:12px}
-.faq-item{border-bottom:1px solid var(--border);padding:12px 0}
-.faq-item:last-child{border-bottom:none;padding-bottom:0}
-.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px}
-.faq-a{font-size:12px;color:var(--gray);line-height:1.5}
+
+.sec-head{text-align:center;margin:56px 0 28px}
+.sec-eyebrow{font-size:11px;font-weight:700;color:var(--teal);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.sec-head h2{font-size:1.5rem;font-weight:800;letter-spacing:-.01em}
+.sec-head p{color:var(--gray);font-size:13.5px;margin-top:8px;max-width:520px;margin-left:auto;margin-right:auto}
+
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feature-card{background:white;border:1px solid var(--border);border-radius:14px;padding:22px 18px;text-align:left}
+.feature-card svg{width:34px;height:34px;margin-bottom:12px;stroke:var(--teal)}
+.feature-card h3{font-size:14px;font-weight:700;margin-bottom:6px}
+.feature-card p{font-size:12.5px;color:var(--gray);line-height:1.6}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.scenario-card{background:linear-gradient(155deg,#fff,#FAFAFB);border:1px solid var(--border);border-radius:14px;padding:20px}
+.scenario-emoji{font-size:1.6rem;margin-bottom:10px;display:block}
+.scenario-card h3{font-size:13.5px;font-weight:700;margin-bottom:5px}
+.scenario-card p{font-size:12.5px;color:var(--gray);line-height:1.6}
+
+.compare-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:14px;background:white}
+table.compare{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
+table.compare th,table.compare td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--border)}
+table.compare th{font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--gray);background:var(--light)}
+table.compare th.hl{color:var(--teal)}
+table.compare td.hl{font-weight:700;color:var(--teal)}
+table.compare tr:last-child td{border-bottom:none}
+.tick{color:#059669;font-weight:800}
+.cross{color:#DC2626;font-weight:800}
+.mono{font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--light);padding:2px 6px;border-radius:4px}
+
+.guide-section{margin-top:56px}
+.steps{display:flex;flex-direction:column;gap:16px}
+.step{display:flex;gap:14px;align-items:flex-start;background:white;border:1px solid var(--border);border-radius:12px;padding:16px}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--teal);color:white;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-body h3{font-size:13px;font-weight:600;margin-bottom:3px}
+.step-body p{font-size:12.5px;color:var(--gray);line-height:1.5}
+
+.faq-section{margin-top:56px}
+details.faq-item{background:white;border:1px solid var(--border);border-radius:12px;padding:4px 18px;margin-bottom:10px}
+details.faq-item summary{list-style:none;cursor:pointer;padding:14px 0;font-size:13.5px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:10px}
+details.faq-item summary::-webkit-details-marker{display:none}
+details.faq-item summary::after{content:"+";font-size:18px;color:var(--teal);font-weight:700;flex-shrink:0}
+details.faq-item[open] summary::after{content:"–"}
+details.faq-item .faq-a{font-size:12.5px;color:var(--gray);line-height:1.6;padding-bottom:16px}
+
+.related-banner{margin-top:56px;border-radius:18px;padding:30px 26px;
+  background:linear-gradient(120deg,#0F172A,#D97706 60%,#2563EB);color:white}
+.related-banner h3{font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:16px}
+.tools-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tool-mini{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:14px;text-decoration:none;color:white;display:flex;align-items:center;gap:10px;transition:background .15s}
+.tool-mini:hover{background:rgba(255,255,255,.16)}
+.tool-mini span{font-size:13px;font-weight:600}
+
+@media(max-width:680px){
+  .hero h1{font-size:1.5rem}
+  .field-row{grid-template-columns:1fr}
+  .result-grid{grid-template-columns:1fr 1fr}
+  .feature-grid{grid-template-columns:1fr}
+  .scenario-grid{grid-template-columns:1fr}
+  .tools-row{grid-template-columns:1fr}
+  .hero-stats{gap:18px}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -68,6 +143,26 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
   "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How many MB is 1 GB?","acceptedAnswer":{"@type":"Answer","text":"1 GB equals 1024 MB. This converter uses binary (1024-based) conversion, which is the standard used by operating systems and storage devices."}},
+    {"@type":"Question","name":"How many GB is 1 TB?","acceptedAnswer":{"@type":"Answer","text":"1 TB equals 1024 GB using the same binary conversion standard applied throughout this tool."}},
+    {"@type":"Question","name":"Is this tool free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free. No signup required, and there's no limit on how many conversions you can run."}},
+    {"@type":"Question","name":"Why do file managers sometimes show a different GB value than storage labels?","acceptedAnswer":{"@type":"Answer","text":"Storage manufacturers typically label capacity using decimal (1000-based) units, while operating systems display it using binary (1024-based) units — this converter uses the binary standard, matching what your computer's file manager shows."}},
+    {"@type":"Question","name":"Can I convert Bytes directly to TB?","acceptedAnswer":{"@type":"Answer","text":"Yes, select Bytes as the starting unit and the result grid will show the equivalent value in KB, MB, GB, and TB all at once."}},
+    {"@type":"Question","name":"Does it handle decimal values?","acceptedAnswer":{"@type":"Answer","text":"Yes, you can enter decimal values like 2.5 and the converter will calculate the equivalent across all units accurately."}},
+    {"@type":"Question","name":"Is my data uploaded when I use this converter?","acceptedAnswer":{"@type":"Answer","text":"No. This is a unit calculator, not a file converter — you only enter a number, and the calculation runs entirely in your browser."}},
+    {"@type":"Question","name":"What's the difference between MB and Mb?","acceptedAnswer":{"@type":"Answer","text":"MB (capital B) means megabytes, used for file and storage size; Mb (lowercase b) means megabits, commonly used for internet speed — this converter works in bytes, not bits."}},
+    {"@type":"Question","name":"How do I convert internet speed (Mbps) using this tool?","acceptedAnswer":{"@type":"Answer","text":"This converter works in bytes (B, KB, MB, GB, TB), not bits, so for Mbps to MB/s you'd first divide the Mbps value by 8 to get megabytes per second, then use this tool for any further unit conversion."}},
+    {"@type":"Question","name":"Why does the Bytes result show such long decimal numbers?","acceptedAnswer":{"@type":"Answer","text":"Smaller units like KB and MB carry many decimal places when converted from a large GB or TB value, since each step divides by 1024 — the extra precision is shown so the exact figure is available if needed."}},
+    {"@type":"Question","name":"Can I use this to check if a file will fit on a USB drive or SD card?","acceptedAnswer":{"@type":"Answer","text":"Yes, convert the file size and the drive's labeled capacity to the same unit to compare them directly, keeping in mind manufacturers usually label capacity in decimal GB."}},
+    {"@type":"Question","name":"Does this tool round the results?","acceptedAnswer":{"@type":"Answer","text":"Smaller units are shown with more decimal places and larger units with fewer, so each result stays accurate to a meaningful number of digits for its scale."}}
+  ]
+}
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -77,39 +172,251 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
     <a class="back" href="/">← All Tools</a>
   </div>
 </nav>
+
+<header class="hero">
+  <div class="wrap-outer">
+    <div class="hero-badge">💾 Free · Instant · No Signup</div>
+    <h1>Bytes, KB, MB, GB, TB — all at once.</h1>
+    <p>Enter a value in any unit and see the equivalent in every other unit instantly — no upload, nothing sent to a server.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><b>5</b><span>Units at Once</span></div>
+      <div class="hero-stat"><b>1024</b><span>Binary Base</span></div>
+      <div class="hero-stat"><b>1-tap</b><span>Convert</span></div>
+      <div class="hero-stat"><b>0</b><span>Signup</span></div>
+    </div>
+  </div>
+</header>
+
 <div class="container">
-  <div class="tool-header">
-    <div class="tool-icon">💾</div>
-    <h1>MB / GB Converter</h1>
-    <p>Convert between Bytes, KB, MB, GB and TB</p>
-  </div>
-  <div class="card">
-    <div class="field-row">
-      <div class="field"><label>Value</label><input type="number" id="val" placeholder="Enter value" min="0"></div>
-      <div class="field"><label>From Unit</label><select id="unit"><option value="B">Bytes (B)</option><option value="KB">Kilobytes (KB)</option><option value="MB" selected>Megabytes (MB)</option><option value="GB">Gigabytes (GB)</option><option value="TB">Terabytes (TB)</option></select></div>
+  <div class="wrap-outer">
+
+    <div class="tool-section wrap-narrow">
+      <p class="intro-copy">
+        EkZapp's free MB/GB Converter turns any storage or file size value into every other common unit — Bytes, Kilobytes, Megabytes, Gigabytes, and Terabytes — in one click. Enter a number, pick the unit you're starting from, and see all five equivalents laid out side by side, instantly. It's built for anyone who needs a quick, reliable answer without doing binary math by hand or hunting through an operating system's file properties dialog.
+      </p>
+      <p class="intro-copy">
+        A common situation this solves: you're checking whether a video file, backup, or download will fit on a drive, in an email attachment limit, or within a cloud storage plan, and the two numbers you're comparing happen to be in different units — one in MB, one in GB. Rather than converting by hand and risking a mistake, you enter the value here and instantly see it in every unit, so the comparison is exact.
+      </p>
+      <p class="intro-copy">
+        The conversion uses the <strong>binary standard</strong> — 1 KB = 1024 Bytes, 1 MB = 1024 KB, 1 GB = 1024 MB, and 1 TB = 1024 GB — which is the same standard your computer's operating system uses when it reports file and drive sizes. This differs slightly from the decimal (1000-based) units that storage manufacturers often print on packaging, which is explained further below.
+      </p>
+      <p class="intro-copy">
+        Everything happens instantly in your browser using plain JavaScript. <strong>No file is uploaded and no data leaves your device</strong> — you're only entering a number, so there's nothing to process on a server and no reason for any delay, regardless of how large or small the value is.
+      </p>
     </div>
-    <button class="btn" onclick="convert()">Convert</button>
-    <div class="result-grid" id="result">
-      <div class="result-item"><strong id="rB"></strong><span>Bytes</span></div>
-      <div class="result-item"><strong id="rKB"></strong><span>Kilobytes (KB)</span></div>
-      <div class="result-item"><strong id="rMB"></strong><span>Megabytes (MB)</span></div>
-      <div class="result-item"><strong id="rGB"></strong><span>Gigabytes (GB)</span></div>
-      <div class="result-item"><strong id="rTB"></strong><span>Terabytes (TB)</span></div>
+
+    <div class="wrap-narrow">
+      <div class="card">
+        <div class="field-row">
+          <div class="field"><label>Value</label><input type="number" id="val" placeholder="Enter value" min="0"></div>
+          <div class="field"><label>From Unit</label><select id="unit"><option value="B">Bytes (B)</option><option value="KB">Kilobytes (KB)</option><option value="MB" selected>Megabytes (MB)</option><option value="GB">Gigabytes (GB)</option><option value="TB">Terabytes (TB)</option></select></div>
+        </div>
+        <button class="btn" onclick="convert()">Convert</button>
+        <div class="result-grid" id="result">
+          <div class="result-item"><strong id="rB"></strong><span>Bytes</span></div>
+          <div class="result-item"><strong id="rKB"></strong><span>Kilobytes (KB)</span></div>
+          <div class="result-item"><strong id="rMB"></strong><span>Megabytes (MB)</span></div>
+          <div class="result-item"><strong id="rGB"></strong><span>Gigabytes (GB)</span></div>
+          <div class="result-item"><strong id="rTB"></strong><span>Terabytes (TB)</span></div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="guide-section">
-    <h2>📖 How to Use the MB/GB Converter</h2>
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Enter the Value</h3><p>Type the number you want to convert in the value field.</p></div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Select the Unit</h3><p>Choose the starting unit — Bytes, KB, MB, GB, or TB.</p></div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Click "Convert"</h3><p>The equivalent values in all units (Bytes, KB, MB, GB, TB) will be shown instantly.</p></div></div>
+
+    <!-- Feature grid -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Why this one</div>
+        <h2>Built for accuracy and speed</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v6M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg>
+          <h3>All Five Units at Once</h3>
+          <p>See Bytes, KB, MB, GB and TB side by side after one conversion — no need to convert step by step manually.</p>
+        </div>
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+          <h3>Instant Calculation</h3>
+          <p>Runs locally in your browser the moment you click Convert — no loading, no server round-trip.</p>
+        </div>
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 10h.01M15 10h.01M8 15c1.5 1.5 6.5 1.5 8 0"/></svg>
+          <h3>Free, No Signup</h3>
+          <p>No account, no ads blocking the tool, no cap on how many conversions you run — completely free every time.</p>
+        </div>
+      </div>
     </div>
-    <div class="faq-section">
-      <h2>❓ Frequently Asked Questions</h2>
-      <div class="faq-item"><div class="faq-q">How many MB is 1 GB?</div><div class="faq-a">1 GB = 1024 MB. This calculator uses binary (1024-based) conversion which is the standard for storage devices.</div></div>
-      <div class="faq-item"><div class="faq-q">How many GB is 1 TB?</div><div class="faq-a">1 TB = 1024 GB.</div></div>
-      <div class="faq-item"><div class="faq-q">Is this tool free?</div><div class="faq-a">Yes, 100% free. No signup required.</div></div>
+
+    <!-- Scenario cards -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Made for</div>
+        <h2>Wherever file size math comes up</h2>
+      </div>
+      <div class="scenario-grid">
+        <div class="scenario-card">
+          <span class="scenario-emoji">📧</span>
+          <h3>Email Attachments</h3>
+          <p>Check whether a file fits within an email provider's attachment limit, often stated in MB.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">☁️</span>
+          <h3>Cloud Storage Plans</h3>
+          <p>Compare a file or folder's size against a cloud storage plan's remaining GB before uploading.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">💽</span>
+          <h3>USB Drives & SD Cards</h3>
+          <p>Check if a video, backup, or photo collection will fit on a drive labeled in GB.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🎬</span>
+          <h3>Video Editors</h3>
+          <p>Estimate export file sizes or convert render output between MB and GB for storage planning.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">💻</span>
+          <h3>IT & System Admins</h3>
+          <p>Quickly convert disk, RAM, or backup sizes between units when planning storage or capacity.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">📱</span>
+          <h3>Mobile Data Plans</h3>
+          <p>Understand how a data plan measured in GB translates to how many MB-sized downloads it covers.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🎮</span>
+          <h3>Gamers</h3>
+          <p>Check whether a game install, listed in GB, will fit in the storage remaining on a console or PC.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">📦</span>
+          <h3>Backup Planning</h3>
+          <p>Convert a folder's byte count into GB or TB to plan how many backup drives or cloud slots you'll need.</p>
+        </div>
+      </div>
     </div>
+
+    <!-- Comparison -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Comparison</div>
+        <h2>EkZapp vs. converting by hand</h2>
+      </div>
+      <div class="compare-wrap">
+        <table class="compare">
+          <tr><th>Task</th><th class="hl">EkZapp MB/GB Converter</th><th>Manual calculation</th></tr>
+          <tr><td>Time for one conversion</td><td class="hl"><span class="tick">✓ Under 2 seconds</span></td><td>A minute or more with a calculator</td></tr>
+          <tr><td>All units shown at once</td><td class="hl"><span class="tick">✓ Yes, all 5</span></td><td>One pair at a time</td></tr>
+          <tr><td>Risk of a division error</td><td class="hl"><span class="tick">✓ None</span></td><td><span class="cross">✕ Common with 1024 math</span></td></tr>
+          <tr><td>Decimal precision</td><td class="hl"><span class="tick">✓ Consistent</span></td><td>Depends on rounding by hand</td></tr>
+          <tr><td>Cost</td><td class="hl"><span class="tick">✓ Free</span></td><td>Your time</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Guide -->
+    <div class="wrap-narrow guide-section">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">Guide</div>
+        <h2>How to use the MB/GB converter</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Enter the Value</h3><p>Type the number you want to convert into the value field.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Select the Starting Unit</h3><p>Choose the unit your value is currently in — Bytes, KB, MB, GB, or TB.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Click "Convert"</h3><p>The equivalent values in all five units appear instantly in the result grid.</p></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Compare or Reuse</h3><p>Read off whichever unit you need, or change the value and convert again as many times as you like.</p></div></div>
+      </div>
+    </div>
+
+    <!-- Binary vs decimal -->
+    <div class="wrap-narrow">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">Good to know</div>
+        <h2>Binary vs. decimal storage units</h2>
+      </div>
+      <p class="intro-copy" style="padding-top:0">
+        There are actually two competing conventions for what "1 GB" means, and mixing them up is the single most common source of confusion in storage math. Operating systems like Windows and macOS use the <strong>binary standard</strong>, where each unit is 1024 times the one before it — this converter follows that standard, since it matches what you'll see in a file manager or disk properties window.
+      </p>
+      <p class="intro-copy">
+        Storage device manufacturers, on the other hand, typically label capacity using the <strong>decimal standard</strong>, where 1 GB is exactly 1,000,000,000 bytes and each unit is 1000 times the one before it. This is why a drive labeled "1TB" often shows up as roughly 931 GB when you plug it in and check its properties — the drive genuinely holds 1 trillion bytes, but your operating system is reporting that same byte count using 1024-based units.
+      </p>
+      <p class="intro-copy">
+        Neither convention is "wrong" — they're just answering slightly different questions. If you're comparing a file size shown by your computer against another file size shown by your computer, the binary standard used here will match exactly. If you're comparing against a number printed on packaging or a marketing spec sheet, keep in mind it's likely using the decimal definition instead, and expect a small gap between the two.
+      </p>
+    </div>
+
+    <!-- Typical file sizes -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Reference</div>
+        <h2>Roughly how big are common files?</h2>
+        <p>Useful ballpark figures when you're estimating whether something will fit before you've actually created it.</p>
+      </div>
+      <div class="compare-wrap">
+        <table class="compare">
+          <tr><th>File type</th><th class="hl">Typical size</th><th>Notes</th></tr>
+          <tr><td>A text document (few pages)</td><td class="hl">20–200 KB</td><td>Plain text or simple Word doc</td></tr>
+          <tr><td>A smartphone photo</td><td class="hl">2–8 MB</td><td>Depends on resolution and camera</td></tr>
+          <tr><td>An MP3 song (3–4 min)</td><td class="hl">3–6 MB</td><td>At typical streaming bitrates</td></tr>
+          <tr><td>A PDF with images</td><td class="hl">1–20 MB</td><td>Scanned pages are larger than text-only</td></tr>
+          <tr><td>A 10-minute 1080p video</td><td class="hl">150 MB – 1 GB</td><td>Varies heavily with compression</td></tr>
+          <tr><td>A modern video game install</td><td class="hl">20–150 GB</td><td>AAA titles trend toward the higher end</td></tr>
+          <tr><td>A full phone or laptop backup</td><td class="hl">50–500 GB</td><td>Depends on stored photos and videos</td></tr>
+        </table>
+      </div>
+      <p class="intro-copy" style="padding-top:20px">
+        These figures vary widely based on compression, resolution, and format, so treat them as a rough starting point rather than an exact answer — when you know the precise byte count of a file, converting it above will always be more accurate than these general ranges.
+      </p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="wrap-narrow faq-section">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">FAQ</div>
+        <h2>Frequently asked questions</h2>
+      </div>
+      <details class="faq-item"><summary>How many MB is 1 GB?</summary><div class="faq-a">1 GB equals 1024 MB. This converter uses binary (1024-based) conversion, which is the standard used by operating systems and storage devices.</div></details>
+      <details class="faq-item"><summary>How many GB is 1 TB?</summary><div class="faq-a">1 TB equals 1024 GB using the same binary conversion standard applied throughout this tool.</div></details>
+      <details class="faq-item"><summary>Is this tool free?</summary><div class="faq-a">Yes, 100% free. No signup required, and there's no limit on how many conversions you can run.</div></details>
+      <details class="faq-item"><summary>Why do file managers sometimes show a different GB value than storage labels?</summary><div class="faq-a">Storage manufacturers typically label capacity using decimal (1000-based) units, while operating systems display it using binary (1024-based) units — this converter uses the binary standard, matching what your computer's file manager shows.</div></details>
+      <details class="faq-item"><summary>Can I convert Bytes directly to TB?</summary><div class="faq-a">Yes, select Bytes as the starting unit and the result grid will show the equivalent value in KB, MB, GB, and TB all at once.</div></details>
+      <details class="faq-item"><summary>Does it handle decimal values?</summary><div class="faq-a">Yes, you can enter decimal values like 2.5 and the converter will calculate the equivalent across all units accurately.</div></details>
+      <details class="faq-item"><summary>Is my data uploaded when I use this converter?</summary><div class="faq-a">No. This is a unit calculator, not a file converter — you only enter a number, and the calculation runs entirely in your browser.</div></details>
+      <details class="faq-item"><summary>What's the difference between MB and Mb?</summary><div class="faq-a">MB (capital B) means megabytes, used for file and storage size; Mb (lowercase b) means megabits, commonly used for internet speed — this converter works in bytes, not bits.</div></details>
+      <details class="faq-item"><summary>How do I convert internet speed (Mbps) using this tool?</summary><div class="faq-a">This converter works in bytes (B, KB, MB, GB, TB), not bits, so for Mbps to MB/s you'd first divide the Mbps value by 8 to get megabytes per second, then use this tool for any further unit conversion.</div></details>
+      <details class="faq-item"><summary>Why does the Bytes result show such long decimal numbers?</summary><div class="faq-a">Smaller units like KB and MB carry many decimal places when converted from a large GB or TB value, since each step divides by 1024 — the extra precision is shown so the exact figure is available if needed.</div></details>
+      <details class="faq-item"><summary>Can I use this to check if a file will fit on a USB drive or SD card?</summary><div class="faq-a">Yes, convert the file size and the drive's labeled capacity to the same unit to compare them directly, keeping in mind manufacturers usually label capacity in decimal GB.</div></details>
+      <details class="faq-item"><summary>Does this tool round the results?</summary><div class="faq-a">Smaller units are shown with more decimal places and larger units with fewer, so each result stays accurate to a meaningful number of digits for its scale.</div></details>
+    </div>
+
+    <!-- Why free -->
+    <div class="wrap-narrow">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">About this tool</div>
+        <h2>Why it's free, and how it stays that way</h2>
+      </div>
+      <p class="intro-copy" style="padding-top:0">
+        The MB/GB Converter is one of more than fifty free tools on EkZapp, sitting alongside a Word Counter, Case Converter, and other lightweight utilities. Because the entire calculation runs as plain JavaScript in your browser, there's no server processing cost involved — the page loads once, and every conversion afterward is essentially free to run, which is exactly why the tool carries no usage limit or paywall.
+      </p>
+      <p class="intro-copy">
+        This kind of utility tends to get reached for briefly — a quick check in the middle of moving a file, buying storage, or comparing drives — rather than used continuously. That usage pattern is part of why the tool is kept to a single page with no extra steps: enter a value, click Convert, read the numbers, and get back to whatever you were doing.
+      </p>
+      <p class="intro-copy">
+        It also means there's very little that can go wrong. There's no account to lose access to, no file ever leaves your device, and no settings menu to configure before the tool does what you need. Every visit starts from the same blank state, which keeps the tool predictable whether you use it once a year or several times a week.
+      </p>
+    </div>
+
+    <!-- Related tools -->
+    <div class="related-banner">
+      <h3>Other utility tools</h3>
+      <div class="tools-row">
+        <a class="tool-mini" href="/word-counter"><span>🔢 Word Counter</span></a>
+        <a class="tool-mini" href="/case-converter"><span>🔡 Case Converter</span></a>
+        <a class="tool-mini" href="/lorem-ipsum"><span>📋 Lorem Ipsum</span></a>
+      </div>
+    </div>
+
   </div>
 </div>
 <script>

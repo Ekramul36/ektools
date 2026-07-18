@@ -11,45 +11,121 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Word Counter — Count Words Characters Sentences Free | EkZapp</title>
-<meta name="description" content="Count words, characters and sentences online for free. Instant live word counter. No signup required.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Word Counter — Count Words, Characters & Sentences Free | EkZapp</title>
+<meta name="description" content="Free online word counter. Count words, characters, characters without spaces, and sentences live as you type. No signup, no limit.">
+<meta property="og:title" content="Word Counter — Count Words, Characters & Sentences Free | EkZapp">
+<meta property="og:description" content="Count words, characters and sentences instantly with EkZapp's free word counter. No signup, no limit.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://ekzapp.com/word-counter">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--blue:#2563EB;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--cream:#F0F5FF}
-body{font-family:"Inter",sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--cream:#F0F5FF;--teal:#0D9488}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
 nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center}
 .logo{text-decoration:none;display:flex;align-items:center;gap:8px}
 .logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
-.logo-text{font-size:15px;font-weight:700;color:var(--ink)}.logo-text span{color:var(--blue)}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
+.logo-text span{color:var(--blue)}
 .back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
-.container{max-width:720px;margin:40px auto;padding:0 20px 60px}
-.tool-header{text-align:center;margin-bottom:32px}
-.tool-icon{font-size:2.5rem;margin-bottom:12px}
-.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
-.tool-header p{color:var(--gray);font-size:14px}
-.card{background:white;border:1px solid var(--border);border-radius:12px;padding:24px}
-textarea{width:100%;height:220px;padding:14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:"Inter",sans-serif;resize:vertical;outline:none;transition:border .15s;margin-bottom:16px}
+.back:hover{border-color:var(--blue);color:var(--blue)}
+
+.wrap-outer{max-width:960px;margin:0 auto;padding:0 20px}
+.wrap-narrow{max-width:680px;margin:0 auto}
+.wrap-wide{max-width:900px;margin:0 auto}
+
+.hero{position:relative;overflow:hidden;padding:52px 20px 60px;text-align:center;
+  background:linear-gradient(125deg,#0F172A,#2563EB 55%,#0D9488);
+  background-size:200% 200%;animation:heroShift 15s ease infinite;color:white}
+@keyframes heroShift{0%{background-position:0% 30%}50%{background-position:100% 70%}100%{background-position:0% 30%}}
+.hero::before{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle at 12% 20%,rgba(255,255,255,.09) 0,transparent 42%),
+                    radial-gradient(circle at 88% 80%,rgba(255,255,255,.09) 0,transparent 42%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.25);padding:6px 14px;border-radius:999px;font-size:12px;
+  font-weight:600;margin-bottom:18px;backdrop-filter:blur(4px)}
+.hero h1{font-family:'JetBrains Mono',monospace;font-size:1.9rem;line-height:1.35;margin-bottom:14px;text-shadow:0 2px 14px rgba(0,0,0,.2)}
+.hero p{max-width:520px;margin:0 auto;font-size:15px;line-height:1.65;color:rgba(255,255,255,.85)}
+.hero-stats{display:flex;justify-content:center;gap:28px;margin-top:26px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat b{display:block;font-size:1.4rem;font-weight:800}
+.hero-stat span{font-size:11px;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.03em}
+
+.container{padding:0 20px 60px}
+.tool-section{margin-top:-30px;position:relative;z-index:2}
+.intro-copy{padding:32px 4px 0;color:var(--gray);font-size:13.5px;line-height:1.75;text-align:left;margin-bottom:16px}
+.intro-copy strong{color:var(--ink)}
+
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 10px 30px -12px rgba(17,24,39,.15)}
+textarea{width:100%;height:220px;padding:14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;resize:vertical;outline:none;transition:border .15s;margin-bottom:16px}
 textarea:focus{border-color:var(--blue)}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .stat-box{background:var(--cream);border:1px solid #BFDBFE;border-radius:8px;padding:14px;text-align:center}
 .stat-box strong{display:block;font-size:1.5rem;font-weight:800;color:var(--blue)}
 .stat-box span{font-size:11px;color:var(--gray);font-weight:500}
-.clear-btn{margin-top:12px;padding:8px 20px;background:var(--light);border:1px solid var(--border);border-radius:6px;font-size:13px;cursor:pointer;font-family:"Inter",sans-serif}
-.guide-section{margin-top:24px;background:white;border:1px solid var(--border);border-radius:12px;padding:24px}
-.guide-section h2{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:16px}
-.steps{display:flex;flex-direction:column;gap:14px}
-.step{display:flex;gap:12px;align-items:flex-start}
-.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.step-body h3{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px}
-.step-body p{font-size:12px;color:var(--gray);line-height:1.5}
-.faq-section{margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
-.faq-section h2{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:12px}
-.faq-item{border-bottom:1px solid var(--border);padding:12px 0}
-.faq-item:last-child{border-bottom:none;padding-bottom:0}
-.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px}
-.faq-a{font-size:12px;color:var(--gray);line-height:1.5}
+.clear-btn{margin-top:14px;padding:8px 20px;background:var(--light);border:1px solid var(--border);border-radius:6px;font-size:13px;cursor:pointer;font-family:'Inter',sans-serif}
+.clear-btn:hover{border-color:var(--blue);color:var(--blue)}
+
+.sec-head{text-align:center;margin:56px 0 28px}
+.sec-eyebrow{font-size:11px;font-weight:700;color:var(--teal);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.sec-head h2{font-size:1.5rem;font-weight:800;letter-spacing:-.01em}
+.sec-head p{color:var(--gray);font-size:13.5px;margin-top:8px;max-width:520px;margin-left:auto;margin-right:auto}
+
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feature-card{background:white;border:1px solid var(--border);border-radius:14px;padding:22px 18px;text-align:left}
+.feature-card svg{width:34px;height:34px;margin-bottom:12px;stroke:var(--teal)}
+.feature-card h3{font-size:14px;font-weight:700;margin-bottom:6px}
+.feature-card p{font-size:12.5px;color:var(--gray);line-height:1.6}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.scenario-card{background:linear-gradient(155deg,#fff,#FAFAFB);border:1px solid var(--border);border-radius:14px;padding:20px}
+.scenario-emoji{font-size:1.6rem;margin-bottom:10px;display:block}
+.scenario-card h3{font-size:13.5px;font-weight:700;margin-bottom:5px}
+.scenario-card p{font-size:12.5px;color:var(--gray);line-height:1.6}
+
+.compare-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:14px;background:white}
+table.compare{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
+table.compare th,table.compare td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--border)}
+table.compare th{font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--gray);background:var(--light)}
+table.compare th.hl{color:var(--teal)}
+table.compare td.hl{font-weight:700;color:var(--teal)}
+table.compare tr:last-child td{border-bottom:none}
+.tick{color:#059669;font-weight:800}
+.cross{color:#DC2626;font-weight:800}
+.mono{font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--light);padding:2px 6px;border-radius:4px}
+
+.guide-section{margin-top:56px}
+.steps{display:flex;flex-direction:column;gap:16px}
+.step{display:flex;gap:14px;align-items:flex-start;background:white;border:1px solid var(--border);border-radius:12px;padding:16px}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--teal);color:white;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-body h3{font-size:13px;font-weight:600;margin-bottom:3px}
+.step-body p{font-size:12.5px;color:var(--gray);line-height:1.5}
+
+.faq-section{margin-top:56px}
+details.faq-item{background:white;border:1px solid var(--border);border-radius:12px;padding:4px 18px;margin-bottom:10px}
+details.faq-item summary{list-style:none;cursor:pointer;padding:14px 0;font-size:13.5px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:10px}
+details.faq-item summary::-webkit-details-marker{display:none}
+details.faq-item summary::after{content:"+";font-size:18px;color:var(--teal);font-weight:700;flex-shrink:0}
+details.faq-item[open] summary::after{content:"–"}
+details.faq-item .faq-a{font-size:12.5px;color:var(--gray);line-height:1.6;padding-bottom:16px}
+
+.related-banner{margin-top:56px;border-radius:18px;padding:30px 26px;
+  background:linear-gradient(120deg,#0F172A,#2563EB 60%,#0D9488);color:white}
+.related-banner h3{font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:16px}
+.tools-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tool-mini{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:14px;text-decoration:none;color:white;display:flex;align-items:center;gap:10px;transition:background .15s}
+.tool-mini:hover{background:rgba(255,255,255,.16)}
+.tool-mini span{font-size:13px;font-weight:600}
+
+@media(max-width:680px){
+  .hero h1{font-size:1.5rem}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .feature-grid{grid-template-columns:1fr}
+  .scenario-grid{grid-template-columns:1fr}
+  .tools-row{grid-template-columns:1fr}
+  .hero-stats{gap:18px}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -63,35 +139,306 @@ textarea:focus{border-color:var(--blue)}
   "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Does it count characters with or without spaces?","acceptedAnswer":{"@type":"Answer","text":"Both are shown at once — the Characters box includes spaces, and the No Spaces box shows the count with all whitespace removed."}},
+    {"@type":"Question","name":"Is there a word limit?","acceptedAnswer":{"@type":"Answer","text":"No limit. You can paste and count words in any length of text, from a single sentence to an entire manuscript."}},
+    {"@type":"Question","name":"Is this tool free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free. No signup required, and there's no cap on how many times you can use it."}},
+    {"@type":"Question","name":"How is the sentence count calculated?","acceptedAnswer":{"@type":"Answer","text":"Sentences are detected by splitting the text on periods, question marks, and exclamation points, then counting the non-empty segments."}},
+    {"@type":"Question","name":"Does it work for essays and assignments with word limits?","acceptedAnswer":{"@type":"Answer","text":"Yes, it's commonly used to check whether an essay, application, or assignment fits within a required word count before submitting."}},
+    {"@type":"Question","name":"Is my text saved or sent anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Counting happens entirely in your browser using JavaScript — nothing you type or paste is sent to a server or stored."}},
+    {"@type":"Question","name":"Can I use it for social media character limits?","acceptedAnswer":{"@type":"Answer","text":"Yes, the live character count updates as you type, which makes it useful for checking against platform limits like X's 280 characters."}},
+    {"@type":"Question","name":"Does pasting formatted text (from Word) affect the count?","acceptedAnswer":{"@type":"Answer","text":"Only the plain text content is counted; formatting like bold or italics doesn't add to or change the word, character, or sentence counts."}},
+    {"@type":"Question","name":"Why does my sentence count seem off for abbreviations?","acceptedAnswer":{"@type":"Answer","text":"Because sentence detection splits on periods, abbreviations like 'Mr.' or 'e.g.' can be counted as sentence breaks, slightly inflating the sentence count on text with many abbreviations."}},
+    {"@type":"Question","name":"Does it count numbers and punctuation as words?","acceptedAnswer":{"@type":"Answer","text":"Word count is based on whitespace-separated chunks, so a standalone number or a hyphenated term counts as one word, similar to how most word processors count it."}},
+    {"@type":"Question","name":"Can I count words in a different language?","acceptedAnswer":{"@type":"Answer","text":"Word and character counts work for any language using whitespace between words; character counting works for all Unicode text including non-Latin scripts."}},
+    {"@type":"Question","name":"Is there a way to clear the text quickly?","acceptedAnswer":{"@type":"Answer","text":"Yes, click Clear Text to instantly empty the box and reset all four counters to zero."}}
+  ]
+}
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
 </head>
 <body>
-<nav><div class="nav-inner"><a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a><a class="back" href="/">← All Tools</a></div></nav>
-<div class="container">
-  <div class="tool-header"><div class="tool-icon">🔢</div><h1>Word Counter</h1><p>Count words, characters and sentences instantly</p></div>
-  <div class="card">
-    <textarea id="txt" placeholder="Type or paste your text here..." oninput="count()"></textarea>
-    <div class="stats">
-      <div class="stat-box"><strong id="words">0</strong><span>Words</span></div>
-      <div class="stat-box"><strong id="chars">0</strong><span>Characters</span></div>
-      <div class="stat-box"><strong id="charsNs">0</strong><span>No Spaces</span></div>
-      <div class="stat-box"><strong id="sentences">0</strong><span>Sentences</span></div>
-    </div>
-    <button class="clear-btn" onclick="document.getElementById('txt').value='';count()">Clear Text</button>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <a class="back" href="/">← All Tools</a>
   </div>
-  <div class="guide-section">
-    <h2>📖 How to Use the Word Counter</h2>
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Paste or Type Your Text</h3><p>Click the text area and type or paste the text you want to analyze.</p></div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-body"><h3>See Live Results</h3><p>Word count, character count, characters without spaces, and sentence count update automatically as you type.</p></div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Clear When Done</h3><p>Click the Clear Text button to reset the text area and start fresh.</p></div></div>
+</nav>
+
+<header class="hero">
+  <div class="wrap-outer">
+    <div class="hero-badge">🔢 Free · Instant · No Signup</div>
+    <h1>Words. Characters. Sentences. Counted live.</h1>
+    <p>Type or paste your text and watch every count update as you go — no button to press, nothing sent to a server.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><b>4</b><span>Live Metrics</span></div>
+      <div class="hero-stat"><b>∞</b><span>Text Length</span></div>
+      <div class="hero-stat"><b>Real-time</b><span>Updates</span></div>
+      <div class="hero-stat"><b>0</b><span>Signup</span></div>
     </div>
-    <div class="faq-section">
-      <h2>❓ Frequently Asked Questions</h2>
-      <div class="faq-item"><div class="faq-q">Does it count characters with or without spaces?</div><div class="faq-a">Both are shown — "Characters" includes spaces, and "No Spaces" shows characters without spaces.</div></div>
-      <div class="faq-item"><div class="faq-q">Is there a word limit?</div><div class="faq-a">No limit. You can count words in any length of text.</div></div>
-      <div class="faq-item"><div class="faq-q">Is this tool free?</div><div class="faq-a">Yes, completely free. No signup required.</div></div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="wrap-outer">
+
+    <div class="tool-section wrap-narrow">
+      <p class="intro-copy">
+        EkZapp's free Word Counter gives you a live word count, character count, character count without spaces, and sentence count the moment you start typing or pasting text — no button to click, no page reload, and no limit on how much text you paste in. It's built for anyone who needs to check text length quickly: students checking an assignment against a word limit, writers tracking progress toward a target, or anyone pasting a caption into a box with a strict character cap.
+      </p>
+      <p class="intro-copy">
+        A common situation this solves: an application form, essay, or job posting says "under 500 words" or "150 characters or less," and you need to know exactly where your draft stands before submitting. Instead of copying your text into a word processor and checking a status bar, you paste it here and the four numbers update as you type, letting you trim or expand in real time until you're within range.
+      </p>
+      <p class="intro-copy">
+        Everything runs client-side using plain JavaScript. <strong>Nothing you paste is sent to a server</strong> — the counting logic executes locally in your browser the instant you type a character, which is why there's no lag, no loading spinner, and no risk of your draft being logged or stored anywhere.
+      </p>
+      <p class="intro-copy">
+        The four metrics shown cover the situations people actually check most often. Word count matters for essays and articles; total character count matters for SMS and meta descriptions; character count without spaces is occasionally required by academic or publishing style guides; and sentence count gives a rough sense of writing density and readability at a glance.
+      </p>
     </div>
+
+    <div class="wrap-narrow">
+      <div class="card">
+        <textarea id="txt" placeholder="Type or paste your text here..." oninput="count()"></textarea>
+        <div class="stats">
+          <div class="stat-box"><strong id="words">0</strong><span>Words</span></div>
+          <div class="stat-box"><strong id="chars">0</strong><span>Characters</span></div>
+          <div class="stat-box"><strong id="charsNs">0</strong><span>No Spaces</span></div>
+          <div class="stat-box"><strong id="sentences">0</strong><span>Sentences</span></div>
+        </div>
+        <button class="clear-btn" onclick="document.getElementById('txt').value='';count()">Clear Text</button>
+      </div>
+    </div>
+
+    <!-- Feature grid -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Why this one</div>
+        <h2>Built for speed and privacy</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+          <h3>Live, No Button Needed</h3>
+          <p>All four counts update instantly as you type or paste — there's nothing to click and nothing to wait for.</p>
+        </div>
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+          <h3>No Length Limit</h3>
+          <p>Paste a single sentence or an entire chapter — there's no character cap on what you can drop into the box.</p>
+        </div>
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 10h.01M15 10h.01M8 15c1.5 1.5 6.5 1.5 8 0"/></svg>
+          <h3>Free, Private, No Signup</h3>
+          <p>Runs entirely in your browser — your text is never uploaded, logged, or stored on any server.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scenario cards -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Made for</div>
+        <h2>Wherever text length matters</h2>
+      </div>
+      <div class="scenario-grid">
+        <div class="scenario-card">
+          <span class="scenario-emoji">🎓</span>
+          <h3>Students</h3>
+          <p>Check an essay or assignment against a required word count before submitting, without opening a separate word processor.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">✍️</span>
+          <h3>Writers & Bloggers</h3>
+          <p>Track how a draft is shaping up against a target word count for an article, chapter, or guest post.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">📱</span>
+          <h3>Social Media</h3>
+          <p>Check a caption or post against a platform's character limit before publishing, so nothing gets cut off.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">💼</span>
+          <h3>Job Applications</h3>
+          <p>Fit a cover letter or personal statement within a strict word or character limit set by the application form.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🔎</span>
+          <h3>SEO Writers</h3>
+          <p>Check meta description or title tag length in characters before publishing, since search engines truncate long ones.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">📧</span>
+          <h3>Email & Outreach</h3>
+          <p>Keep a subject line or short outreach message within a length that reads well without scrolling or truncation.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">📖</span>
+          <h3>Editors & Proofreaders</h3>
+          <p>Get a quick sentence count to gauge writing density and flag paragraphs that may need to be broken up.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">📝</span>
+          <h3>Translators</h3>
+          <p>Compare source and translated text length side by side to estimate how much a translation has expanded or shrunk.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comparison -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Comparison</div>
+        <h2>EkZapp vs. a word processor's status bar</h2>
+      </div>
+      <div class="compare-wrap">
+        <table class="compare">
+          <tr><th>Task</th><th class="hl">EkZapp Word Counter</th><th>Word processor</th></tr>
+          <tr><td>Time to first count</td><td class="hl"><span class="tick">✓ Instant, no file needed</span></td><td>Open app, then paste</td></tr>
+          <tr><td>Characters without spaces</td><td class="hl"><span class="tick">✓ Shown by default</span></td><td>Usually hidden in menus</td></tr>
+          <tr><td>Sentence count</td><td class="hl"><span class="tick">✓ Shown by default</span></td><td>Often not shown at all</td></tr>
+          <tr><td>Account or install needed</td><td class="hl"><span class="tick">✓ None</span></td><td>Software install or login</td></tr>
+          <tr><td>Cost</td><td class="hl"><span class="tick">✓ Free</span></td><td>Often paid or subscription</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Guide -->
+    <div class="wrap-narrow guide-section">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">Guide</div>
+        <h2>How to use the word counter</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Paste or Type Your Text</h3><p>Click the text area and type or paste the text you want to analyze — any length works.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><h3>See Live Results</h3><p>Word count, character count, characters without spaces, and sentence count update automatically as you type.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Adjust as Needed</h3><p>Trim or expand your text and watch the counts change instantly, until you're within whatever limit you're working against.</p></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Clear When Done</h3><p>Click Clear Text to reset the text area and all four counters back to zero.</p></div></div>
+      </div>
+    </div>
+
+    <!-- Metrics explained -->
+    <div class="wrap-narrow">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">Reference</div>
+        <h2>What each metric means</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">A</div>
+          <div class="step-body"><h3>Words</h3><p>Counted as chunks of text separated by whitespace — the standard method most word processors and style guides use.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">B</div>
+          <div class="step-body"><h3>Characters</h3><p>Every character in the box, including letters, numbers, punctuation, and spaces — the number most platforms use for character limits.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">C</div>
+          <div class="step-body"><h3>Characters (No Spaces)</h3><p>The same count with all whitespace removed — useful when a style guide or form specifically excludes spaces from its limit.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">D</div>
+          <div class="step-body"><h3>Sentences</h3><p>Estimated by splitting text on periods, question marks, and exclamation points — a quick proxy for writing density, not a strict grammatical count.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Typical length guide -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Reference</div>
+        <h2>Typical word and character limits</h2>
+        <p>Common formats have their own conventional length — here's roughly where most of them land.</p>
+      </div>
+      <div class="compare-wrap">
+        <table class="compare">
+          <tr><th>Format</th><th class="hl">Typical limit</th><th>What it's measured in</th></tr>
+          <tr><td>X (Twitter) post</td><td class="hl">280</td><td>Characters</td></tr>
+          <tr><td>Google meta description</td><td class="hl">~155–160</td><td>Characters</td></tr>
+          <tr><td>SEO title tag</td><td class="hl">~55–60</td><td>Characters</td></tr>
+          <tr><td>College application essay</td><td class="hl">250–650</td><td>Words</td></tr>
+          <tr><td>Cover letter</td><td class="hl">250–400</td><td>Words</td></tr>
+          <tr><td>Instagram caption (visible before "more")</td><td class="hl">~125</td><td>Characters</td></tr>
+          <tr><td>Blog post (SEO-focused)</td><td class="hl">1,000–2,000+</td><td>Words</td></tr>
+          <tr><td>Resume summary/objective</td><td class="hl">50–100</td><td>Words</td></tr>
+        </table>
+      </div>
+      <p class="intro-copy" style="padding-top:20px">
+        These are general conventions rather than fixed rules — a job posting, university, or platform may specify its own exact limit, and that stated limit always takes priority over the rough guidelines above. When a form doesn't specify whether it's counting words or characters, assume the stricter interpretation and check both numbers here before submitting.
+      </p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="wrap-narrow faq-section">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">FAQ</div>
+        <h2>Frequently asked questions</h2>
+      </div>
+      <details class="faq-item"><summary>Does it count characters with or without spaces?</summary><div class="faq-a">Both are shown at once — the "Characters" box includes spaces, and the "No Spaces" box shows the count with all whitespace removed.</div></details>
+      <details class="faq-item"><summary>Is there a word limit?</summary><div class="faq-a">No limit. You can paste and count words in any length of text, from a single sentence to an entire manuscript.</div></details>
+      <details class="faq-item"><summary>Is this tool free?</summary><div class="faq-a">Yes, completely free. No signup required, and there's no cap on how many times you can use it.</div></details>
+      <details class="faq-item"><summary>How is the sentence count calculated?</summary><div class="faq-a">Sentences are detected by splitting the text on periods, question marks, and exclamation points, then counting the non-empty segments.</div></details>
+      <details class="faq-item"><summary>Does it work for essays and assignments with word limits?</summary><div class="faq-a">Yes, it's commonly used to check whether an essay, application, or assignment fits within a required word count before submitting.</div></details>
+      <details class="faq-item"><summary>Is my text saved or sent anywhere?</summary><div class="faq-a">No. Counting happens entirely in your browser using JavaScript — nothing you type or paste is sent to a server or stored.</div></details>
+      <details class="faq-item"><summary>Can I use it for social media character limits?</summary><div class="faq-a">Yes, the live character count updates as you type, which makes it useful for checking against platform limits like X's 280 characters.</div></details>
+      <details class="faq-item"><summary>Does pasting formatted text (from Word) affect the count?</summary><div class="faq-a">Only the plain text content is counted; formatting like bold or italics doesn't add to or change the word, character, or sentence counts.</div></details>
+      <details class="faq-item"><summary>Why does my sentence count seem off for abbreviations?</summary><div class="faq-a">Because sentence detection splits on periods, abbreviations like "Mr." or "e.g." can be counted as sentence breaks, slightly inflating the sentence count on text with many abbreviations.</div></details>
+      <details class="faq-item"><summary>Does it count numbers and punctuation as words?</summary><div class="faq-a">Word count is based on whitespace-separated chunks, so a standalone number or a hyphenated term counts as one word, similar to how most word processors count it.</div></details>
+      <details class="faq-item"><summary>Can I count words in a different language?</summary><div class="faq-a">Word and character counts work for any language using whitespace between words; character counting works for all Unicode text including non-Latin scripts.</div></details>
+      <details class="faq-item"><summary>Is there a way to clear the text quickly?</summary><div class="faq-a">Yes, click "Clear Text" to instantly empty the box and reset all four counters to zero.</div></details>
+    </div>
+
+    <!-- Why counts differ -->
+    <div class="wrap-narrow">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">Good to know</div>
+        <h2>Why word counts can differ between tools</h2>
+      </div>
+      <p class="intro-copy" style="padding-top:0">
+        If you've ever pasted the same paragraph into two different word counters and gotten two slightly different numbers, that's normal rather than a bug in either tool. Word counting isn't governed by one universal standard — different tools make small, reasonable choices about what counts as a "word" that can shift the total by a few percent.
+      </p>
+      <p class="intro-copy">
+        The most common source of disagreement is hyphenated compounds and numbers with punctuation. Some counters treat "twenty-one" or "well-known" as one word because there's no space in the middle; others split on hyphens and count it as two. Similarly, a number like "3,500" or a decimal like "9.5" is unambiguous to a human reader but can be parsed differently depending on how a tool's splitting logic handles punctuation inside a token.
+      </p>
+      <p class="intro-copy">
+        Sentence counting sees even more variation, since it depends on correctly identifying where one sentence ends and another begins. Abbreviations, decimal numbers, ellipses, and quotation marks around a full sentence can all confuse a simple punctuation-based splitter — which is also true of the sentence count shown on this page, and why it's presented as a helpful estimate rather than a strict grammatical count.
+      </p>
+      <p class="intro-copy">
+        In practice, these differences rarely matter for everyday use — a word count that's off by one or two words either way won't affect whether an essay meets a 500-word minimum. Where it does matter, such as a strict competition or legal filing with an exact word cap, it's worth checking the specific counting method the requesting body uses, since "word count" isn't always defined identically across contexts.
+      </p>
+    </div>
+
+    <!-- Why free -->
+    <div class="wrap-narrow">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">About this tool</div>
+        <h2>Why it's free, and how it stays that way</h2>
+      </div>
+      <p class="intro-copy" style="padding-top:0">
+        The Word Counter is one of more than fifty free tools on EkZapp, sitting alongside a Case Converter, Lorem Ipsum generator, and other lightweight text utilities. Because counting runs as plain JavaScript directly in your browser, there's no server processing cost involved — the page loads once, and every keystroke afterward is essentially free to handle, which is exactly why the tool has no usage limit or paywall.
+      </p>
+      <p class="intro-copy">
+        Tools like this one tend to get opened for a quick check in the middle of writing something else — a paragraph pasted in, a number glanced at, then back to the document. That usage pattern is part of why the page is kept to a single screen with no extra steps: paste, glance at the numbers, and get back to what you were actually working on.
+      </p>
+      <p class="intro-copy">
+        It also means there's very little that can go wrong. There's no account to lose access to, no saved history to manage, and no settings menu to configure before the tool does what you need. Every visit starts from a blank text area, which keeps the tool predictable whether you use it once a year or several times a day.
+      </p>
+    </div>
+
+    <!-- Related tools -->
+    <div class="related-banner">
+      <h3>Other text tools</h3>
+      <div class="tools-row">
+        <a class="tool-mini" href="/case-converter"><span>🔡 Case Converter</span></a>
+        <a class="tool-mini" href="/lorem-ipsum"><span>📋 Lorem Ipsum</span></a>
+        <a class="tool-mini" href="/mb-converter"><span>💾 MB/GB Converter</span></a>
+      </div>
+    </div>
+
   </div>
 </div>
 <script>

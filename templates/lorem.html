@@ -12,11 +12,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lorem Ipsum Generator — Free Placeholder Text | EkZapp</title>
-<meta name="description" content="Generate Lorem Ipsum dummy placeholder text online for free. Choose words, sentences or paragraphs. No signup required.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="description" content="Generate Lorem Ipsum dummy placeholder text online for free. Choose the number of paragraphs and copy instantly. No signup required.">
+<meta property="og:title" content="Lorem Ipsum Generator — Free Placeholder Text | EkZapp">
+<meta property="og:description" content="Generate Lorem Ipsum placeholder text instantly with EkZapp's free generator. No signup needed.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://ekzapp.com/lorem-ipsum">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--blue:#2563EB;--blue-dk:#1D4ED8;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--cream:#F0F5FF}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--cream:#F0F5FF;--teal:#0D9488;--violet:#7C3AED}
 body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
 nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center}
@@ -25,46 +29,137 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
 .logo-text{font-size:15px;font-weight:700;color:var(--ink)}
 .logo-text span{color:var(--blue)}
 .back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
-.container{max-width:720px;margin:40px auto;padding:0 20px 60px}
-.tool-header{text-align:center;margin-bottom:32px}
-.tool-icon{font-size:2.5rem;margin-bottom:12px}
-.tool-header h1{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
-.tool-header p{color:var(--gray);font-size:14px}
-.card{background:white;border:1px solid var(--border);border-radius:12px;padding:24px}
+.back:hover{border-color:var(--blue);color:var(--blue)}
+
+.wrap-outer{max-width:960px;margin:0 auto;padding:0 20px}
+.wrap-narrow{max-width:680px;margin:0 auto}
+.wrap-wide{max-width:900px;margin:0 auto}
+
+.hero{position:relative;overflow:hidden;padding:52px 20px 60px;text-align:center;
+  background:linear-gradient(125deg,#0F172A,#7C3AED 55%,#2563EB);
+  background-size:200% 200%;animation:heroShift 15s ease infinite;color:white}
+@keyframes heroShift{0%{background-position:0% 30%}50%{background-position:100% 70%}100%{background-position:0% 30%}}
+.hero::before{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle at 12% 20%,rgba(255,255,255,.09) 0,transparent 42%),
+                    radial-gradient(circle at 88% 80%,rgba(255,255,255,.09) 0,transparent 42%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.25);padding:6px 14px;border-radius:999px;font-size:12px;
+  font-weight:600;margin-bottom:18px;backdrop-filter:blur(4px)}
+.hero h1{font-family:'JetBrains Mono',monospace;font-size:1.9rem;line-height:1.35;margin-bottom:14px;text-shadow:0 2px 14px rgba(0,0,0,.2)}
+.hero p{max-width:520px;margin:0 auto;font-size:15px;line-height:1.65;color:rgba(255,255,255,.85)}
+.hero-stats{display:flex;justify-content:center;gap:28px;margin-top:26px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat b{display:block;font-size:1.4rem;font-weight:800}
+.hero-stat span{font-size:11px;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.03em}
+
+.container{padding:0 20px 60px}
+.tool-section{margin-top:-30px;position:relative;z-index:2}
+.intro-copy{padding:32px 4px 0;color:var(--gray);font-size:13.5px;line-height:1.75;text-align:left;margin-bottom:16px}
+.intro-copy strong{color:var(--ink)}
+
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 10px 30px -12px rgba(17,24,39,.15)}
 .controls{display:flex;gap:12px;align-items:flex-end;margin-bottom:16px;flex-wrap:wrap}
-.field{flex:1;min-width:120px}
+.field{flex:1;min-width:140px}
 .field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
-.field input,.field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none;background:white}
-.btn{padding:10px 24px;background:var(--blue);color:white;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap}
-.btn:hover{background:var(--blue-dk)}
-.result{background:var(--cream);border:1px solid #BFDBFE;border-radius:8px;padding:16px;min-height:120px;font-size:13.5px;line-height:1.7;white-space:pre-wrap;display:none}
+.field input,.field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none;background:white;transition:border .15s}
+.field input:focus,.field select:focus{border-color:var(--violet)}
+.btn{padding:10px 24px;background:var(--violet);color:white;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap}
+.btn:hover{background:#6D28D9}
+.result{background:#F5F0FF;border:1px solid #DDD1FA;border-radius:8px;padding:16px;min-height:120px;font-size:13.5px;line-height:1.7;white-space:pre-wrap;display:none}
 .result.show{display:block}
-.copy-btn{margin-top:12px;padding:8px 20px;background:var(--blue);color:white;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;display:none}
+.copy-btn{margin-top:12px;padding:8px 20px;background:var(--violet);color:white;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;display:none}
 .copy-btn.show{display:inline-block}
-.guide-section{margin-top:24px;background:white;border:1px solid var(--border);border-radius:12px;padding:24px}
-.guide-section h2{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:16px}
-.steps{display:flex;flex-direction:column;gap:14px}
-.step{display:flex;gap:12px;align-items:flex-start}
-.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.step-body h3{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px}
-.step-body p{font-size:12px;color:var(--gray);line-height:1.5}
-.faq-section{margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
-.faq-section h2{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:12px}
-.faq-item{border-bottom:1px solid var(--border);padding:12px 0}
-.faq-item:last-child{border-bottom:none;padding-bottom:0}
-.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px}
-.faq-a{font-size:12px;color:var(--gray);line-height:1.5}
+
+.sec-head{text-align:center;margin:56px 0 28px}
+.sec-eyebrow{font-size:11px;font-weight:700;color:var(--teal);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.sec-head h2{font-size:1.5rem;font-weight:800;letter-spacing:-.01em}
+.sec-head p{color:var(--gray);font-size:13.5px;margin-top:8px;max-width:520px;margin-left:auto;margin-right:auto}
+
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feature-card{background:white;border:1px solid var(--border);border-radius:14px;padding:22px 18px;text-align:left}
+.feature-card svg{width:34px;height:34px;margin-bottom:12px;stroke:var(--teal)}
+.feature-card h3{font-size:14px;font-weight:700;margin-bottom:6px}
+.feature-card p{font-size:12.5px;color:var(--gray);line-height:1.6}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.scenario-card{background:linear-gradient(155deg,#fff,#FAFAFB);border:1px solid var(--border);border-radius:14px;padding:20px}
+.scenario-emoji{font-size:1.6rem;margin-bottom:10px;display:block}
+.scenario-card h3{font-size:13.5px;font-weight:700;margin-bottom:5px}
+.scenario-card p{font-size:12.5px;color:var(--gray);line-height:1.6}
+
+.compare-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:14px;background:white}
+table.compare{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
+table.compare th,table.compare td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--border)}
+table.compare th{font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--gray);background:var(--light)}
+table.compare th.hl{color:var(--teal)}
+table.compare td.hl{font-weight:700;color:var(--teal)}
+table.compare tr:last-child td{border-bottom:none}
+.tick{color:#059669;font-weight:800}
+.cross{color:#DC2626;font-weight:800}
+.mono{font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--light);padding:2px 6px;border-radius:4px}
+
+.guide-section{margin-top:56px}
+.steps{display:flex;flex-direction:column;gap:16px}
+.step{display:flex;gap:14px;align-items:flex-start;background:white;border:1px solid var(--border);border-radius:12px;padding:16px}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--teal);color:white;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-body h3{font-size:13px;font-weight:600;margin-bottom:3px}
+.step-body p{font-size:12.5px;color:var(--gray);line-height:1.5}
+
+.faq-section{margin-top:56px}
+details.faq-item{background:white;border:1px solid var(--border);border-radius:12px;padding:4px 18px;margin-bottom:10px}
+details.faq-item summary{list-style:none;cursor:pointer;padding:14px 0;font-size:13.5px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:10px}
+details.faq-item summary::-webkit-details-marker{display:none}
+details.faq-item summary::after{content:"+";font-size:18px;color:var(--teal);font-weight:700;flex-shrink:0}
+details.faq-item[open] summary::after{content:"–"}
+details.faq-item .faq-a{font-size:12.5px;color:var(--gray);line-height:1.6;padding-bottom:16px}
+
+.related-banner{margin-top:56px;border-radius:18px;padding:30px 26px;
+  background:linear-gradient(120deg,#0F172A,#7C3AED 60%,#2563EB);color:white}
+.related-banner h3{font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:16px}
+.tools-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tool-mini{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:14px;text-decoration:none;color:white;display:flex;align-items:center;gap:10px;transition:background .15s}
+.tool-mini:hover{background:rgba(255,255,255,.16)}
+.tool-mini span{font-size:13px;font-weight:600}
+
+@media(max-width:680px){
+  .hero h1{font-size:1.5rem}
+  .controls{flex-direction:column;align-items:stretch}
+  .feature-grid{grid-template-columns:1fr}
+  .scenario-grid{grid-template-columns:1fr}
+  .tools-row{grid-template-columns:1fr}
+  .hero-stats{gap:18px}
+}
 </style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Lorem Ipsum Generator",
-  "url": "https://ekzapp.com/lorem-generator",
-  "description": "Generate Lorem Ipsum placeholder text online for free. Choose words, sentences, or paragraphs instantly.",
+  "url": "https://ekzapp.com/lorem-ipsum",
+  "description": "Generate Lorem Ipsum placeholder text online for free. Choose paragraph count and copy instantly.",
   "applicationCategory": "UtilityApplication",
   "operatingSystem": "Web",
   "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What is Lorem Ipsum used for?","acceptedAnswer":{"@type":"Answer","text":"Lorem Ipsum is dummy text used by designers and developers as placeholder content when the real text isn't ready yet, so a layout can be reviewed without waiting on final copy."}},
+    {"@type":"Question","name":"Is Lorem Ipsum real Latin?","acceptedAnswer":{"@type":"Answer","text":"It's derived from a Latin text by Cicero written around 45 BC, but the words have been scrambled and altered so it no longer reads as meaningful Latin."}},
+    {"@type":"Question","name":"Is this tool free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free. No signup required, and there's no limit on how many times you can generate text."}},
+    {"@type":"Question","name":"Why use placeholder text instead of just writing something random?","acceptedAnswer":{"@type":"Answer","text":"Lorem Ipsum has a natural distribution of letter frequency and word length that mimics real prose, so it fills a layout more realistically than repeated words like 'text text text' would."}},
+    {"@type":"Question","name":"How many paragraphs can I generate at once?","acceptedAnswer":{"@type":"Answer","text":"You can generate up to 20 paragraphs in a single click, which covers most page mockups, articles, and design templates."}},
+    {"@type":"Question","name":"What does the 'Start with Lorem Ipsum' option do?","acceptedAnswer":{"@type":"Answer","text":"Choosing Yes begins the first paragraph with the traditional opening line; choosing No starts every paragraph with a randomly selected sentence instead."}},
+    {"@type":"Question","name":"Can I copy all the generated text at once?","acceptedAnswer":{"@type":"Answer","text":"Yes, click Copy to Clipboard after generating and every paragraph is copied together, ready to paste wherever you need it."}},
+    {"@type":"Question","name":"Will the text be different every time I generate it?","acceptedAnswer":{"@type":"Answer","text":"Yes, sentences are selected randomly from a pool each time (aside from the optional fixed opening line), so repeated generations produce varied text."}},
+    {"@type":"Question","name":"Can I use this text in a real, published website or document?","acceptedAnswer":{"@type":"Answer","text":"Placeholder text is meant to be temporary — it's best practice to replace it with real content before a design or document goes live, since Lorem Ipsum has no actual meaning to a reader."}},
+    {"@type":"Question","name":"Does this tool store or track the text I generate?","acceptedAnswer":{"@type":"Answer","text":"No. Generation happens entirely in your browser using JavaScript — nothing is sent to or stored on a server."}},
+    {"@type":"Question","name":"Why is Lorem Ipsum still used when AI can write realistic filler text?","acceptedAnswer":{"@type":"Answer","text":"Lorem Ipsum is deliberately meaningless, which keeps a reviewer's attention on layout, spacing, and typography rather than getting distracted evaluating the content itself — that's precisely the opposite of what realistic AI-written filler would do."}},
+    {"@type":"Question","name":"Can I control how long each paragraph is?","acceptedAnswer":{"@type":"Answer","text":"Paragraph length varies naturally within a modest range to mimic real prose; there isn't currently a separate control for exact sentence count per paragraph."}}
+  ]
 }
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
@@ -76,35 +171,248 @@ nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;po
     <a class="back" href="/">← All Tools</a>
   </div>
 </nav>
+
+<header class="hero">
+  <div class="wrap-outer">
+    <div class="hero-badge">📋 Free · Instant · No Signup</div>
+    <h1>Placeholder text, ready in one click.</h1>
+    <p>Generate as many paragraphs of classic Lorem Ipsum as you need and copy it straight into your design or draft.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><b>1–20</b><span>Paragraphs</span></div>
+      <div class="hero-stat"><b>1-tap</b><span>Copy</span></div>
+      <div class="hero-stat"><b>2000+</b><span>Years Old Root Text</span></div>
+      <div class="hero-stat"><b>0</b><span>Signup</span></div>
+    </div>
+  </div>
+</header>
+
 <div class="container">
-  <div class="tool-header">
-    <div class="tool-icon">📋</div>
-    <h1>Lorem Ipsum Generator</h1>
-    <p>Generate dummy placeholder text instantly</p>
-  </div>
-  <div class="card">
-    <div class="controls">
-      <div class="field"><label>Number of Paragraphs</label><input type="number" id="num" value="3" min="1" max="20"></div>
-      <div class="field"><label>Start with Lorem Ipsum?</label><select id="startLorem"><option value="yes">Yes</option><option value="no">No (Random)</option></select></div>
-      <button class="btn" onclick="generate()">Generate</button>
+  <div class="wrap-outer">
+
+    <div class="tool-section wrap-narrow">
+      <p class="intro-copy">
+        EkZapp's free Lorem Ipsum Generator produces ready-to-paste placeholder text in seconds — pick how many paragraphs you need, choose whether to start with the classic opening line, and click Generate. It's built for designers mocking up a layout, developers testing how a template handles longer content, and writers who need filler text to hold a spot before the real copy is ready.
+      </p>
+      <p class="intro-copy">
+        A common situation this solves: you're building a webpage, brochure, or app screen and need to see how it looks with actual paragraphs of text in it — not just an empty box — before the final copywriting is done. Rather than typing out nonsense sentences by hand, you generate a few paragraphs of standard, recognizable placeholder text that any designer or developer will immediately recognize as a stand-in.
+      </p>
+      <p class="intro-copy">
+        Lorem Ipsum has been the industry standard placeholder text for decades precisely because it's <strong>deliberately meaningless</strong> — it has the rhythm and letter distribution of real prose without any actual message, which keeps a design review focused on layout, spacing, and typography instead of on the content itself.
+      </p>
+      <p class="intro-copy">
+        Everything generates instantly using plain JavaScript running in your browser. <strong>Nothing is sent to a server</strong> — the moment you click Generate, sentences are assembled locally and displayed immediately, with a one-click Copy to Clipboard button so you can paste the result straight into your design tool, CMS, or code editor.
+      </p>
     </div>
-    <div class="result" id="result"></div>
-    <button class="copy-btn" id="copyBtn" onclick="copyText()">Copy to Clipboard</button>
-  </div>
-  <div class="guide-section">
-    <h2>📖 How to Use the Lorem Ipsum Generator</h2>
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Choose Number of Paragraphs</h3><p>Enter how many paragraphs of placeholder text you need.</p></div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Choose Start Option</h3><p>Select "Yes" to start with the classic "Lorem ipsum..." opening, or "No" for random text.</p></div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Click "Generate"</h3><p>Your Lorem Ipsum placeholder text will be generated instantly.</p></div></div>
-      <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Copy the Text</h3><p>Click "Copy to Clipboard" to copy all the generated text for use in your designs or projects.</p></div></div>
+
+    <div class="wrap-narrow">
+      <div class="card">
+        <div class="controls">
+          <div class="field"><label>Number of Paragraphs</label><input type="number" id="num" value="3" min="1" max="20"></div>
+          <div class="field"><label>Start with Lorem Ipsum?</label><select id="startLorem"><option value="yes">Yes</option><option value="no">No (Random)</option></select></div>
+          <button class="btn" onclick="generate()">Generate</button>
+        </div>
+        <div class="result" id="result"></div>
+        <button class="copy-btn" id="copyBtn" onclick="copyText()">Copy to Clipboard</button>
+      </div>
     </div>
-    <div class="faq-section">
-      <h2>❓ Frequently Asked Questions</h2>
-      <div class="faq-item"><div class="faq-q">What is Lorem Ipsum used for?</div><div class="faq-a">Lorem Ipsum is dummy text used by designers and developers as placeholder content when the real text is not yet available.</div></div>
-      <div class="faq-item"><div class="faq-q">Is Lorem Ipsum real Latin?</div><div class="faq-a">It is derived from a Latin text by Cicero from 45 BC but has been scrambled so it is not meaningful Latin anymore.</div></div>
-      <div class="faq-item"><div class="faq-q">Is this tool free?</div><div class="faq-a">Yes, completely free. No signup required.</div></div>
+
+    <!-- Feature grid -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Why this one</div>
+        <h2>Built for design and dev workflows</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+          <h3>Instant Generation</h3>
+          <p>Text appears the moment you click Generate — no waiting, no page reload, no server round-trip.</p>
+        </div>
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/></svg>
+          <h3>Up to 20 Paragraphs</h3>
+          <p>Generate exactly as much placeholder text as your mockup or template needs, from one paragraph to twenty.</p>
+        </div>
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 10h.01M15 10h.01M8 15c1.5 1.5 6.5 1.5 8 0"/></svg>
+          <h3>Free, No Signup</h3>
+          <p>No account, no limit on how many times you generate — completely free, every time you need filler text.</p>
+        </div>
+      </div>
     </div>
+
+    <!-- Scenario cards -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Made for</div>
+        <h2>Wherever a layout needs filler text</h2>
+      </div>
+      <div class="scenario-grid">
+        <div class="scenario-card">
+          <span class="scenario-emoji">🎨</span>
+          <h3>UI/UX Designers</h3>
+          <p>Fill a mockup or wireframe with realistic-looking paragraphs to see how a layout handles real body text.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">💻</span>
+          <h3>Developers</h3>
+          <p>Test how a template, CMS theme, or component handles varying amounts of text before real content is added.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">📄</span>
+          <h3>Print Designers</h3>
+          <p>Preview a brochure, flyer, or magazine layout with body copy before the final text is written.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🏗️</span>
+          <h3>Prototyping</h3>
+          <p>Quickly populate a clickable prototype with paragraph content so stakeholders can review the flow, not blank boxes.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">📚</span>
+          <h3>Presentations</h3>
+          <p>Drop placeholder paragraphs into a slide deck template while the actual talking points are still being written.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🖨️</span>
+          <h3>Typography Testing</h3>
+          <p>Check how a font, line height, or column width looks across several paragraphs of realistic-length text.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">📧</span>
+          <h3>Email Template Design</h3>
+          <p>See how an email layout renders with body paragraphs before swapping in the actual campaign copy.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🧪</span>
+          <h3>QA & Testing</h3>
+          <p>Check how a form field, card, or content block behaves when filled with a realistic block of text.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comparison -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Comparison</div>
+        <h2>EkZapp vs. writing filler text by hand</h2>
+      </div>
+      <div class="compare-wrap">
+        <table class="compare">
+          <tr><th>Task</th><th class="hl">EkZapp Lorem Ipsum Generator</th><th>Typing filler by hand</th></tr>
+          <tr><td>Time for 5 paragraphs</td><td class="hl"><span class="tick">✓ Under 2 seconds</span></td><td>Several minutes</td></tr>
+          <tr><td>Reads like natural prose</td><td class="hl"><span class="tick">✓ Yes, standard Lorem Ipsum</span></td><td>Depends on effort put in</td></tr>
+          <tr><td>Instantly recognizable as placeholder</td><td class="hl"><span class="tick">✓ Yes, industry standard</span></td><td>May be mistaken for real content</td></tr>
+          <tr><td>Copy to clipboard</td><td class="hl"><span class="tick">✓ One click</span></td><td>Manual select and copy</td></tr>
+          <tr><td>Cost</td><td class="hl"><span class="tick">✓ Free</span></td><td>Your time</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Guide -->
+    <div class="wrap-narrow guide-section">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">Guide</div>
+        <h2>How to use the Lorem Ipsum generator</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Choose Number of Paragraphs</h3><p>Enter how many paragraphs of placeholder text you need, from 1 to 20.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Choose the Start Option</h3><p>Select "Yes" to begin with the classic "Lorem ipsum..." opening, or "No" for fully random text.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Click "Generate"</h3><p>Your placeholder text appears instantly in the result box below.</p></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Copy and Paste</h3><p>Click "Copy to Clipboard" to copy every paragraph at once, ready to paste into your design or document.</p></div></div>
+      </div>
+    </div>
+
+    <!-- History -->
+    <div class="wrap-narrow">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">Background</div>
+        <h2>Where Lorem Ipsum actually comes from</h2>
+      </div>
+      <p class="intro-copy" style="padding-top:0">
+        Lorem Ipsum's origin traces back to a passage from Cicero's "De Finibus Bonorum et Malorum," a Latin philosophical text written around 45 BC. Sometime in the 20th century, a printer scrambled sections of it — removing some words, altering others, and adding a few Latin-sounding filler words — to create text that looked like natural language typesetting without carrying any actual meaning a reader might get distracted by.
+      </p>
+      <p class="intro-copy">
+        It gained widespread adoption in the desktop publishing era of the 1980s and 90s, when software like Aldus PageMaker and later web design tools bundled it as the default placeholder for text boxes. Because it became so standard, it turned into a shared visual language — any designer, developer, or client instantly recognizes "Lorem ipsum dolor sit amet..." as a stand-in, not a mistake or a bug.
+      </p>
+      <p class="intro-copy">
+        That recognizability is actually the whole point. Using obviously nonsensical placeholder text signals clearly to everyone reviewing a draft that the copy isn't final, which avoids the confusion that can happen when more "realistic" AI-generated filler text gets mistaken for an actual first draft of real content.
+      </p>
+    </div>
+
+    <!-- Best practices -->
+    <div class="wrap-narrow">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">Tips</div>
+        <h2>Getting the most out of placeholder text</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body"><h3>Match the length to the real content</h3><p>Generate roughly as many paragraphs as the final copy will actually have — too little placeholder text hides layout problems that only appear with a fuller page.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body"><h3>Vary paragraph count across sections</h3><p>Real content is rarely uniform — generating different amounts for different sections gives a more honest preview of how the layout handles varying text lengths.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body"><h3>Swap it out before launch</h3><p>Always replace Lorem Ipsum with the final copy before a design goes live — leaving placeholder text in a shipped product is a common and easily avoidable mistake.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body"><h3>Use it for typography checks too</h3><p>Beyond layout, generated paragraphs are useful for checking line height, letter spacing, and how a font renders across several lines of running text.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="wrap-narrow faq-section">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">FAQ</div>
+        <h2>Frequently asked questions</h2>
+      </div>
+      <details class="faq-item"><summary>What is Lorem Ipsum used for?</summary><div class="faq-a">Lorem Ipsum is dummy text used by designers and developers as placeholder content when the real text isn't ready yet, so a layout can be reviewed without waiting on final copy.</div></details>
+      <details class="faq-item"><summary>Is Lorem Ipsum real Latin?</summary><div class="faq-a">It's derived from a Latin text by Cicero written around 45 BC, but the words have been scrambled and altered so it no longer reads as meaningful Latin.</div></details>
+      <details class="faq-item"><summary>Is this tool free?</summary><div class="faq-a">Yes, completely free. No signup required, and there's no limit on how many times you can generate text.</div></details>
+      <details class="faq-item"><summary>Why use placeholder text instead of just writing something random?</summary><div class="faq-a">Lorem Ipsum has a natural distribution of letter frequency and word length that mimics real prose, so it fills a layout more realistically than repeated words like "text text text" would.</div></details>
+      <details class="faq-item"><summary>How many paragraphs can I generate at once?</summary><div class="faq-a">You can generate up to 20 paragraphs in a single click, which covers most page mockups, articles, and design templates.</div></details>
+      <details class="faq-item"><summary>What does the "Start with Lorem Ipsum" option do?</summary><div class="faq-a">Choosing Yes begins the first paragraph with the traditional opening line; choosing No starts every paragraph with a randomly selected sentence instead.</div></details>
+      <details class="faq-item"><summary>Can I copy all the generated text at once?</summary><div class="faq-a">Yes, click "Copy to Clipboard" after generating and every paragraph is copied together, ready to paste wherever you need it.</div></details>
+      <details class="faq-item"><summary>Will the text be different every time I generate it?</summary><div class="faq-a">Yes, sentences are selected randomly from a pool each time (aside from the optional fixed opening line), so repeated generations produce varied text.</div></details>
+      <details class="faq-item"><summary>Can I use this text in a real, published website or document?</summary><div class="faq-a">Placeholder text is meant to be temporary — it's best practice to replace it with real content before a design or document goes live, since Lorem Ipsum has no actual meaning to a reader.</div></details>
+      <details class="faq-item"><summary>Does this tool store or track the text I generate?</summary><div class="faq-a">No. Generation happens entirely in your browser using JavaScript — nothing is sent to or stored on a server.</div></details>
+      <details class="faq-item"><summary>Why is Lorem Ipsum still used when AI can write realistic filler text?</summary><div class="faq-a">Lorem Ipsum is deliberately meaningless, which keeps a reviewer's attention on layout, spacing, and typography rather than getting distracted evaluating the content itself — that's precisely the opposite of what realistic AI-written filler would do.</div></details>
+      <details class="faq-item"><summary>Can I control how long each paragraph is?</summary><div class="faq-a">Paragraph length varies naturally within a modest range to mimic real prose; there isn't currently a separate control for exact sentence count per paragraph.</div></details>
+    </div>
+
+    <!-- Why free -->
+    <div class="wrap-narrow">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">About this tool</div>
+        <h2>Why it's free, and how it stays that way</h2>
+      </div>
+      <p class="intro-copy" style="padding-top:0">
+        The Lorem Ipsum Generator is one of more than fifty free tools on EkZapp, sitting alongside a Word Counter, Case Converter, and other lightweight utilities. Because generation runs as plain JavaScript directly in your browser, there's no server processing cost involved — the page loads once, and every generation afterward is essentially free to run, which is exactly why the tool carries no usage limit or paywall.
+      </p>
+      <p class="intro-copy">
+        This kind of utility tends to get opened briefly, in the middle of building something else — a quick paste into a mockup, a template, or a slide, then straight back to the real work. That usage pattern is part of why the tool is kept to a single page with no extra steps: pick a paragraph count, generate, copy, and move on.
+      </p>
+      <p class="intro-copy">
+        It also means there's very little that can go wrong. There's no account to lose access to, no history of past generations to manage, and no settings to configure before the tool does what you need. Every visit starts from the same default state, which keeps the tool predictable whether you use it once a year or several times a day.
+      </p>
+    </div>
+
+    <!-- Related tools -->
+    <div class="related-banner">
+      <h3>Other text tools</h3>
+      <div class="tools-row">
+        <a class="tool-mini" href="/word-counter"><span>🔢 Word Counter</span></a>
+        <a class="tool-mini" href="/case-converter"><span>🔡 Case Converter</span></a>
+        <a class="tool-mini" href="/mb-converter"><span>💾 MB/GB Converter</span></a>
+      </div>
+    </div>
+
   </div>
 </div>
 <script>
