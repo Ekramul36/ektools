@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VW5QLMV046"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VW5QLMV046');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>YouTube Thumbnail Downloader — Download HD Thumbnails Free | EkZapp</title>
 <meta name="description" content="Download YouTube video thumbnails in HD, Full HD and SD quality for free. Just paste the YouTube URL and download the thumbnail instantly. No signup required.">
 <meta name="keywords" content="youtube thumbnail downloader, download youtube thumbnail, youtube thumbnail hd, youtube thumbnail grabber">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="YouTube Thumbnail Downloader — Download HD Thumbnails Free">
+<meta property="og:title" content="YouTube Thumbnail Downloader — Download HD Thumbnails Free | EkZapp">
 <meta property="og:description" content="Download YouTube video thumbnails in HD, Full HD and SD quality for free. Just paste the YouTube URL and download instantly.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ekzapp.com/youtube-thumbnail">
@@ -16,8 +24,131 @@
 <meta name="twitter:title" content="YouTube Thumbnail Downloader — EkZapp">
 <meta name="twitter:description" content="Download YouTube thumbnails in HD for free. No signup required.">
 <link rel="canonical" href="https://ekzapp.com/youtube-thumbnail">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--cream:#F0F5FF;--teal:#0D9488;--red:#FF0000;--red-dk:#CC0000}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
+.logo-text span{color:var(--blue)}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.back:hover{border-color:var(--blue);color:var(--blue)}
+
+.wrap-outer{max-width:960px;margin:0 auto;padding:0 20px}
+.wrap-narrow{max-width:680px;margin:0 auto}
+.wrap-wide{max-width:900px;margin:0 auto}
+
+.hero{position:relative;overflow:hidden;padding:52px 20px 60px;text-align:center;
+  background:linear-gradient(125deg,#0F172A,#CC0000 55%,#7C2D12);
+  background-size:200% 200%;animation:heroShift 15s ease infinite;color:white}
+@keyframes heroShift{0%{background-position:0% 30%}50%{background-position:100% 70%}100%{background-position:0% 30%}}
+.hero::before{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle at 12% 20%,rgba(255,255,255,.09) 0,transparent 42%),
+                    radial-gradient(circle at 88% 80%,rgba(255,255,255,.09) 0,transparent 42%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.25);padding:6px 14px;border-radius:999px;font-size:12px;
+  font-weight:600;margin-bottom:18px;backdrop-filter:blur(4px)}
+.hero h1{font-family:'JetBrains Mono',monospace;font-size:1.85rem;line-height:1.35;margin-bottom:14px;text-shadow:0 2px 14px rgba(0,0,0,.2)}
+.hero p{max-width:520px;margin:0 auto;font-size:15px;line-height:1.65;color:rgba(255,255,255,.85)}
+.hero-stats{display:flex;justify-content:center;gap:28px;margin-top:26px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat b{display:block;font-size:1.4rem;font-weight:800}
+.hero-stat span{font-size:11px;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.03em}
+
+.container{padding:0 20px 60px}
+.tool-section{margin-top:-30px;position:relative;z-index:2}
+.intro-copy{padding:32px 4px 0;color:var(--gray);font-size:13.5px;line-height:1.75;text-align:left;margin-bottom:16px}
+.intro-copy strong{color:var(--ink)}
+
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 10px 30px -12px rgba(17,24,39,.15);margin-bottom:20px}
+.input-label{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:8px;display:block}
+.input-wrap{display:flex;gap:10px}
+.url-input{flex:1;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;color:var(--ink);outline:none;transition:border .2s}
+.url-input:focus{border-color:var(--red)}
+.url-input::placeholder{color:#9CA3AF}
+.btn-get{padding:12px 20px;background:var(--red);color:white;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;transition:background .15s}
+.btn-get:hover{background:var(--red-dk)}
+.error-msg{background:#FEF2F2;border:1px solid #FECACA;color:#DC2626;padding:12px 16px;border-radius:8px;font-size:13px;margin-top:14px;display:none}
+.video-info{background:var(--light);border-radius:10px;padding:14px 16px;margin-top:16px;display:none}
+.video-id-label{font-size:11px;color:var(--gray);font-weight:500;margin-bottom:4px}
+.video-id-val{font-size:13px;font-weight:600;color:var(--ink);word-break:break-all;font-family:'JetBrains Mono',monospace}
+.results{display:none;margin-top:20px}
+.results-title{font-size:12px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}
+.thumb-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.thumb-item{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--light)}
+.thumb-img-wrap{position:relative;background:#000;aspect-ratio:16/9;overflow:hidden}
+.thumb-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb-quality{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.7);color:white;font-size:10px;font-weight:700;padding:3px 8px;border-radius:100px;text-transform:uppercase}
+.thumb-info{padding:10px 12px}
+.thumb-size{font-size:11px;color:var(--gray);font-weight:500;margin-bottom:8px}
+.btn-download{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:9px;background:var(--blue);color:white;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;transition:background .15s}
+.btn-download:hover{background:var(--blue-dk)}
+
+.sec-head{text-align:center;margin:56px 0 28px}
+.sec-eyebrow{font-size:11px;font-weight:700;color:var(--teal);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.sec-head h2{font-size:1.5rem;font-weight:800;letter-spacing:-.01em}
+.sec-head p{color:var(--gray);font-size:13.5px;margin-top:8px;max-width:520px;margin-left:auto;margin-right:auto}
+
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feature-card{background:white;border:1px solid var(--border);border-radius:14px;padding:22px 18px;text-align:left}
+.feature-card svg{width:34px;height:34px;margin-bottom:12px;stroke:var(--teal)}
+.feature-card h3{font-size:14px;font-weight:700;margin-bottom:6px}
+.feature-card p{font-size:12.5px;color:var(--gray);line-height:1.6}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.scenario-card{background:linear-gradient(155deg,#fff,#FAFAFB);border:1px solid var(--border);border-radius:14px;padding:20px}
+.scenario-emoji{font-size:1.6rem;margin-bottom:10px;display:block}
+.scenario-card h3{font-size:13.5px;font-weight:700;margin-bottom:5px}
+.scenario-card p{font-size:12.5px;color:var(--gray);line-height:1.6}
+
+.compare-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:14px;background:white}
+table.compare{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
+table.compare th,table.compare td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--border)}
+table.compare th{font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--gray);background:var(--light)}
+table.compare th.hl{color:var(--teal)}
+table.compare td.hl{font-weight:700;color:var(--teal)}
+table.compare tr:last-child td{border-bottom:none}
+.tick{color:#059669;font-weight:800}
+.cross{color:#DC2626;font-weight:800}
+.mono{font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--light);padding:2px 6px;border-radius:4px}
+
+.guide-section{margin-top:56px}
+.steps{display:flex;flex-direction:column;gap:16px}
+.step{display:flex;gap:14px;align-items:flex-start;background:white;border:1px solid var(--border);border-radius:12px;padding:16px}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--teal);color:white;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-body h3{font-size:13px;font-weight:600;margin-bottom:3px}
+.step-body p{font-size:12.5px;color:var(--gray);line-height:1.5}
+
+.faq-section{margin-top:56px}
+details.faq-item{background:white;border:1px solid var(--border);border-radius:12px;padding:4px 18px;margin-bottom:10px}
+details.faq-item summary{list-style:none;cursor:pointer;padding:14px 0;font-size:13.5px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:10px}
+details.faq-item summary::-webkit-details-marker{display:none}
+details.faq-item summary::after{content:"+";font-size:18px;color:var(--teal);font-weight:700;flex-shrink:0}
+details.faq-item[open] summary::after{content:"–"}
+details.faq-item .faq-a{font-size:12.5px;color:var(--gray);line-height:1.6;padding-bottom:16px}
+
+.related-banner{margin-top:56px;border-radius:18px;padding:30px 26px;
+  background:linear-gradient(120deg,#0F172A,#CC0000 60%,#7C2D12);color:white}
+.related-banner h3{font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:16px}
+.tools-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tool-mini{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:14px;text-decoration:none;color:white;display:flex;align-items:center;gap:10px;transition:background .15s}
+.tool-mini:hover{background:rgba(255,255,255,.16)}
+.tool-mini span{font-size:13px;font-weight:600}
+
+@media(max-width:680px){
+  .hero h1{font-size:1.4rem}
+  .input-wrap{flex-direction:column}
+  .thumb-grid{grid-template-columns:1fr}
+  .feature-grid{grid-template-columns:1fr}
+  .scenario-grid{grid-template-columns:1fr}
+  .tools-row{grid-template-columns:1fr}
+  .hero-stats{gap:18px}
+}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -30,160 +161,302 @@
   "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
 }
 </script>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;
-  --ink:#111827;--gray:#4B5563;--light:#F9FAFB;--border:#E5E7EB;
-  --white:#fff;--cream:#F0F5FF;--green:#16A34A;--green-lt:#F0FDF4;
-  --red:#DC2626;--r:10px;
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Is this tool free?","acceptedAnswer":{"@type":"Answer","text":"Yes, EkZapp's YouTube Thumbnail Downloader is completely free with no signup required and no limit on how many times you use it."}},
+    {"@type":"Question","name":"What thumbnail qualities are available?","acceptedAnswer":{"@type":"Answer","text":"Four qualities are provided: Maximum Resolution (1280×720), High Quality (480×360), Medium Quality (320×180), and Standard Quality (120×90)."}},
+    {"@type":"Question","name":"What YouTube URL formats are supported?","acceptedAnswer":{"@type":"Answer","text":"All standard YouTube URL formats are supported, including youtube.com/watch?v=..., youtu.be/..., youtube.com/embed/..., and youtube.com/shorts/..."}},
+    {"@type":"Question","name":"Can I download thumbnails from YouTube Shorts?","acceptedAnswer":{"@type":"Answer","text":"Yes, YouTube Shorts URLs are fully supported — paste the Shorts link the same way you would a regular video URL."}},
+    {"@type":"Question","name":"Is there any limit on downloads?","acceptedAnswer":{"@type":"Answer","text":"No limit at all. You can download as many thumbnails as you need, from as many videos as you like, for free."}},
+    {"@type":"Question","name":"Why does the Maximum Resolution thumbnail sometimes not load?","acceptedAnswer":{"@type":"Answer","text":"Not every video has a 1280×720 maxresdefault thumbnail generated by YouTube — for videos without one, the tool automatically falls back to the next best available quality."}},
+    {"@type":"Question","name":"Does downloading a thumbnail violate YouTube's terms?","acceptedAnswer":{"@type":"Answer","text":"Thumbnails are publicly accessible images hosted by YouTube; downloading one for personal reference, backup, or fair-use commentary is generally fine, but reusing someone else's thumbnail artwork commercially without permission can raise copyright concerns."}},
+    {"@type":"Question","name":"Can I use a downloaded thumbnail for my own video?","acceptedAnswer":{"@type":"Answer","text":"You should only reuse a thumbnail image if you own the rights to it or have permission — thumbnails are typically the channel owner's copyrighted artwork, even though they're publicly viewable."}},
+    {"@type":"Question","name":"Does this tool work for private or unlisted videos?","acceptedAnswer":{"@type":"Answer","text":"Thumbnails are fetched from YouTube's public image CDN, so this works for any video with a public thumbnail URL; fully private videos may not return a usable thumbnail."}},
+    {"@type":"Question","name":"Is my data or search history saved anywhere?","acceptedAnswer":{"@type":"Answer","text":"No, the tool only extracts the video ID from the URL you paste locally in your browser and requests the thumbnail image directly — nothing is logged or stored on a server."}},
+    {"@type":"Question","name":"Can I paste just the video ID instead of the full URL?","acceptedAnswer":{"@type":"Answer","text":"Yes, pasting the 11-character video ID alone also works, in addition to any full YouTube URL format."}},
+    {"@type":"Question","name":"What format are the downloaded thumbnails in?","acceptedAnswer":{"@type":"Answer","text":"All YouTube thumbnails are served as JPG images, and the download link preserves that format automatically."}}
+  ]
 }
-body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--white);font-size:14px;-webkit-font-smoothing:antialiased;}
-nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;height:54px;}
-.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px;}
-.logo{text-decoration:none;display:flex;align-items:center;gap:8px;}
-.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800;}
-.logo-text{font-size:15px;font-weight:700;color:var(--ink)}.logo-text span{color:var(--blue)}
-.nav-back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;display:flex;align-items:center;gap:4px;}
-.nav-back:hover{color:var(--ink)}
-.hero{background:linear-gradient(135deg,#FF0000 0%,#CC0000 100%);padding:48px 20px 40px;text-align:center;}
-.hero h1{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;color:white;margin-bottom:10px;letter-spacing:-.02em;}
-.hero p{color:rgba(255,255,255,.85);font-size:15px;max-width:500px;margin:0 auto;}
-.main{max-width:700px;margin:0 auto;padding:36px 20px 60px;}
-.card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.06);margin-bottom:24px;}
-.input-label{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:8px;display:block;}
-.input-wrap{display:flex;gap:10px;}
-.url-input{flex:1;padding:12px 16px;border:2px solid var(--border);border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;color:var(--ink);outline:none;transition:border .2s;}
-.url-input:focus{border-color:var(--blue);}
-.url-input::placeholder{color:#9CA3AF}
-.btn-get{padding:12px 20px;background:#FF0000;color:white;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;transition:background .15s;}
-.btn-get:hover{background:#CC0000}
-.error-msg{background:#FEF2F2;border:1px solid #FECACA;color:var(--red);padding:12px 16px;border-radius:8px;font-size:13px;margin-top:14px;display:none;}
-.results{display:none;}
-.results-title{font-size:13px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px;}
-.thumb-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-.thumb-item{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--light);}
-.thumb-img-wrap{position:relative;background:#000;aspect-ratio:16/9;overflow:hidden;}
-.thumb-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
-.thumb-quality{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.7);color:white;font-size:10px;font-weight:700;padding:3px 8px;border-radius:100px;text-transform:uppercase;}
-.thumb-info{padding:10px 12px;}
-.thumb-size{font-size:11px;color:var(--gray);font-weight:500;margin-bottom:8px;}
-.btn-download{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:9px;background:var(--blue);color:white;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;transition:background .15s;}
-.btn-download:hover{background:var(--blue-dk)}
-.video-info{background:var(--light);border-radius:10px;padding:14px 16px;margin-bottom:20px;display:none;}
-.video-id-label{font-size:11px;color:var(--gray);font-weight:500;margin-bottom:4px;}
-.video-id-val{font-size:13px;font-weight:600;color:var(--ink);word-break:break-all;}
-.how-section{background:var(--cream);border-radius:16px;padding:24px;margin-bottom:24px;}
-.how-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:16px;}
-.how-steps{display:flex;flex-direction:column;gap:12px;}
-.how-step{display:flex;gap:12px;align-items:flex-start;}
-.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.step-text{font-size:13px;color:var(--gray);padding-top:5px;line-height:1.5;}
-.faq-section{margin-top:8px;}
-.faq-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:14px;}
-.faq-item{border-bottom:1px solid var(--border);padding:14px 0;}
-.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px;}
-.faq-a{font-size:13px;color:var(--gray);line-height:1.6;}
-footer{background:#1F2937;padding:24px 20px;text-align:center;}
-.f-bottom{color:rgba(255,255,255,.4);font-size:12px;}
-.f-bottom a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 8px;}
-.f-bottom a:hover{color:white}
-@media(max-width:560px){
-  .input-wrap{flex-direction:column;}
-  .thumb-grid{grid-template-columns:1fr;}
-}
-</style>
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
 </head>
 <body>
-
 <nav>
   <div class="nav-inner">
     <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
-    <a class="nav-back" href="/">← All Tools</a>
+    <a class="back" href="/">← All Tools</a>
   </div>
 </nav>
 
 <header class="hero">
-  <h1>📥 YouTube Thumbnail Downloader</h1>
-  <p>Download YouTube video thumbnails in HD, Full HD & SD quality — free & instant</p>
+  <div class="wrap-outer">
+    <div class="hero-badge">📥 Free · Instant · No Signup</div>
+    <h1>Every YouTube thumbnail, every quality, one paste.</h1>
+    <p>Paste a video URL and download its thumbnail in Max Resolution, High, Medium, or Standard quality instantly.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><b>4</b><span>Quality Options</span></div>
+      <div class="hero-stat"><b>1280×720</b><span>Max Resolution</span></div>
+      <div class="hero-stat"><b>1-tap</b><span>Download</span></div>
+      <div class="hero-stat"><b>0</b><span>Signup</span></div>
+    </div>
+  </div>
 </header>
 
-<main class="main">
+<div class="container">
+  <div class="wrap-outer">
 
-  <div class="card">
-    <label class="input-label" for="urlInput">Paste YouTube Video URL</label>
-    <div class="input-wrap">
-      <input type="text" class="url-input" id="urlInput" placeholder="https://www.youtube.com/watch?v=..." autocomplete="off">
-      <button class="btn-get" onclick="getThumbnail()">Get Thumbnails</button>
+    <div class="tool-section wrap-narrow">
+      <p class="intro-copy">
+        EkZapp's free YouTube Thumbnail Downloader fetches every available quality of a video's thumbnail the moment you paste its URL — Maximum Resolution, High, Medium, and Standard — with a one-click download button under each. It works with any standard YouTube link, including Shorts, and needs nothing more than the URL itself.
+      </p>
+      <p class="intro-copy">
+        A common situation this solves: you want to reference, archive, or study a video's thumbnail — maybe to analyze what makes a thumbnail perform well, save a copy before a video is edited or removed, or grab an image for a blog post discussing the video. Instead of taking a screenshot and cropping it manually, you paste the URL here and get the actual full-resolution source image YouTube serves.
+      </p>
+      <p class="intro-copy">
+        The tool works by extracting the 11-character video ID from whatever URL format you paste, then requesting the thumbnail directly from YouTube's public image server at each of the four standard quality levels. <strong>Nothing about the video or your search is logged</strong> — the ID extraction happens locally in your browser, and the images are fetched straight from YouTube's own CDN.
+      </p>
+      <p class="intro-copy">
+        If a video doesn't have a Maximum Resolution thumbnail generated (which happens for some older or lower-resolution uploads), the tool automatically falls back to the next best available quality so you're never left with a broken image.
+      </p>
     </div>
-    <div class="error-msg" id="errorMsg"></div>
-  </div>
 
-  <div class="video-info" id="videoInfo">
-    <div class="video-id-label">Video ID detected:</div>
-    <div class="video-id-val" id="videoIdVal"></div>
-  </div>
+    <div class="wrap-narrow">
+      <div class="card">
+        <label class="input-label" for="urlInput">Paste YouTube Video URL</label>
+        <div class="input-wrap">
+          <input type="text" class="url-input" id="urlInput" placeholder="https://www.youtube.com/watch?v=..." autocomplete="off">
+          <button class="btn-get" onclick="getThumbnail()">Get Thumbnails</button>
+        </div>
+        <div class="error-msg" id="errorMsg"></div>
 
-  <div class="results" id="results">
-    <div class="results-title">Choose quality & download</div>
-    <div class="thumb-grid" id="thumbGrid"></div>
-  </div>
+        <div class="video-info" id="videoInfo">
+          <div class="video-id-label">Video ID detected:</div>
+          <div class="video-id-val" id="videoIdVal"></div>
+        </div>
 
-  <!-- HOW TO USE -->
-  <div class="how-section">
-    <div class="how-title">How to Use</div>
-    <div class="how-steps">
-      <div class="how-step">
-        <div class="step-num">1</div>
-        <div class="step-text">Copy the YouTube video URL from your browser or the Share button.</div>
+        <div class="results" id="results">
+          <div class="results-title">Choose quality & download</div>
+          <div class="thumb-grid" id="thumbGrid"></div>
+        </div>
       </div>
-      <div class="how-step">
-        <div class="step-num">2</div>
-        <div class="step-text">Paste the URL in the box above and click <strong>Get Thumbnails</strong>.</div>
+    </div>
+
+    <!-- Feature grid -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Why this one</div>
+        <h2>Built for speed and quality</h2>
       </div>
-      <div class="how-step">
-        <div class="step-num">3</div>
-        <div class="step-text">Choose your preferred quality — HD, Full HD or SD — and click Download.</div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+          <h3>All Qualities at Once</h3>
+          <p>See Max Resolution, High, Medium, and Standard thumbnails side by side after a single paste — no repeated searches.</p>
+        </div>
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12m0 0 4-4m-4 4-4-4M4 20h16"/></svg>
+          <h3>Direct from YouTube's CDN</h3>
+          <p>Thumbnails are fetched straight from YouTube's own image servers — the same file the platform itself serves.</p>
+        </div>
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 10h.01M15 10h.01M8 15c1.5 1.5 6.5 1.5 8 0"/></svg>
+          <h3>Free, No Signup</h3>
+          <p>No account, no limit on how many videos or thumbnails you download — completely free every time.</p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- FAQ -->
-  <div class="card faq-section">
-    <div class="faq-title">Frequently Asked Questions</div>
-    <div class="faq-item">
-      <div class="faq-q">Is this tool free?</div>
-      <div class="faq-a">Yes, EkZapp YouTube Thumbnail Downloader is completely free with no signup required.</div>
+    <!-- Scenario cards -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Made for</div>
+        <h2>Wherever a thumbnail is worth saving</h2>
+      </div>
+      <div class="scenario-grid">
+        <div class="scenario-card">
+          <span class="scenario-emoji">📊</span>
+          <h3>YouTube Creators</h3>
+          <p>Study competitors' thumbnail design and composition to inform your own channel's thumbnail strategy.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">✍️</span>
+          <h3>Bloggers & Journalists</h3>
+          <p>Grab a high-resolution thumbnail to accompany an article discussing or embedding a specific video.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">📱</span>
+          <h3>Social Media Managers</h3>
+          <p>Reuse a video's thumbnail as a preview image when sharing a link across other platforms.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🎓</span>
+          <h3>Students & Researchers</h3>
+          <p>Save a thumbnail as a reference image while citing or analyzing video content for a project.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">📦</span>
+          <h3>Archiving</h3>
+          <p>Keep a copy of a video's thumbnail before a channel updates or removes the original upload.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🎨</span>
+          <h3>Design Inspiration</h3>
+          <p>Build a swipe file of effective thumbnail designs across different niches for creative reference.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">📋</span>
+          <h3>Content Calendars</h3>
+          <p>Pull thumbnail images into a planning doc or spreadsheet while organizing which videos to feature or link.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🔍</span>
+          <h3>Thumbnail A/B Testing</h3>
+          <p>Download old thumbnail versions for comparison when analyzing how a thumbnail change affected performance.</p>
+        </div>
+      </div>
     </div>
-    <div class="faq-item">
-      <div class="faq-q">What thumbnail qualities are available?</div>
-      <div class="faq-a">We provide Maximum Resolution (1280×720), High Quality (480×360), Medium Quality (320×180), and Standard Quality (120×90).</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">What YouTube URL formats are supported?</div>
-      <div class="faq-a">All standard YouTube URLs are supported: youtube.com/watch?v=..., youtu.be/..., youtube.com/shorts/... and more.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Can I download thumbnails from YouTube Shorts?</div>
-      <div class="faq-a">Yes! YouTube Shorts URLs are fully supported. Just paste the Shorts URL and download the thumbnail.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Is there any limit on downloads?</div>
-      <div class="faq-a">No limit at all. You can download as many thumbnails as you need for free.</div>
-    </div>
-  </div>
 
-</main>
+    <!-- Comparison -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Comparison</div>
+        <h2>EkZapp vs. taking a screenshot</h2>
+      </div>
+      <div class="compare-wrap">
+        <table class="compare">
+          <tr><th>Task</th><th class="hl">EkZapp Thumbnail Downloader</th><th>Manual screenshot</th></tr>
+          <tr><td>Image quality</td><td class="hl"><span class="tick">✓ Original, up to 1280×720</span></td><td>Limited by screen resolution</td></tr>
+          <tr><td>Time per thumbnail</td><td class="hl"><span class="tick">✓ Under 2 seconds</span></td><td>Screenshot + crop + save</td></tr>
+          <tr><td>Cropping needed</td><td class="hl"><span class="tick">✓ None</span></td><td><span class="cross">✕ Manual cropping required</span></td></tr>
+          <tr><td>Multiple qualities at once</td><td class="hl"><span class="tick">✓ All 4 shown together</span></td><td>One screenshot at a time</td></tr>
+          <tr><td>Cost</td><td class="hl"><span class="tick">✓ Free</span></td><td>Your time</td></tr>
+        </table>
+      </div>
+    </div>
 
-<footer>
-  <div class="f-bottom">
-    <span>© 2026 EkZapp.com</span>
-    <a href="/privacy">Privacy</a>
-    <a href="/terms">Terms</a>
-    <a href="/contact">Contact</a>
+    <!-- Guide -->
+    <div class="wrap-narrow guide-section">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">Guide</div>
+        <h2>How to use the thumbnail downloader</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Copy the Video URL</h3><p>Copy the YouTube video URL from your browser's address bar or the Share button — regular videos and Shorts both work.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Paste and Click "Get Thumbnails"</h3><p>Paste the URL in the box above and click the button, or press Enter.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Review the Detected Video ID</h3><p>Confirm the extracted video ID matches the video you intended, shown just below the input.</p></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Choose a Quality and Download</h3><p>Pick from Max Resolution, High, Medium, or Standard and click Download on the one you need.</p></div></div>
+      </div>
+    </div>
+
+    <!-- Quality reference -->
+    <div class="wrap-narrow">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">Reference</div>
+        <h2>What each quality level means</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">A</div>
+          <div class="step-body"><h3>Maximum Resolution (1280×720)</h3><p>The largest thumbnail YouTube generates — best for print, design reference, or any use needing the sharpest detail.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">B</div>
+          <div class="step-body"><h3>High Quality (480×360)</h3><p>A solid middle-ground size, good for blog posts or previews where a huge file isn't necessary.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">C</div>
+          <div class="step-body"><h3>Medium Quality (320×180)</h3><p>A smaller size suited to thumbnails within thumbnails, like a video grid or content calendar mockup.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">D</div>
+          <div class="step-body"><h3>Standard Quality (120×90)</h3><p>The smallest option, useful for tiny previews or quick visual reference without downloading a larger file.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Why thumbnails matter -->
+    <div class="wrap-narrow">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">Background</div>
+        <h2>Why thumbnails matter so much on YouTube</h2>
+      </div>
+      <p class="intro-copy" style="padding-top:0">
+        A thumbnail is often the single biggest factor in whether someone clicks a video at all — it's the first (and sometimes only) piece of information a viewer sees while scrolling through a feed of dozens of options, well before the title, channel name, or view count register. That's why studying successful thumbnails, whether from your own channel's past uploads or from creators in a similar niche, is a common part of planning a video release.
+      </p>
+      <p class="intro-copy">
+        Because thumbnails carry so much weight, larger channels frequently run A/B tests between two or three thumbnail variants to see which one earns a better click-through rate on otherwise identical content. Having quick access to a high-resolution copy of any thumbnail — your own past versions included — makes that kind of comparison and analysis far easier than relying on a compressed feed preview.
+      </p>
+      <p class="intro-copy">
+        For viewers and researchers rather than creators, thumbnails are also useful as a compact visual index — a way to reference or catalog a video without embedding the full player, which can matter for slower connections, printed materials, or any context where an image alone communicates what's needed.
+      </p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="wrap-narrow faq-section">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">FAQ</div>
+        <h2>Frequently asked questions</h2>
+      </div>
+      <details class="faq-item"><summary>Is this tool free?</summary><div class="faq-a">Yes, EkZapp's YouTube Thumbnail Downloader is completely free with no signup required and no limit on how many times you use it.</div></details>
+      <details class="faq-item"><summary>What thumbnail qualities are available?</summary><div class="faq-a">Four qualities are provided: Maximum Resolution (1280×720), High Quality (480×360), Medium Quality (320×180), and Standard Quality (120×90).</div></details>
+      <details class="faq-item"><summary>What YouTube URL formats are supported?</summary><div class="faq-a">All standard YouTube URL formats are supported, including youtube.com/watch?v=..., youtu.be/..., youtube.com/embed/..., and youtube.com/shorts/...</div></details>
+      <details class="faq-item"><summary>Can I download thumbnails from YouTube Shorts?</summary><div class="faq-a">Yes, YouTube Shorts URLs are fully supported — paste the Shorts link the same way you would a regular video URL.</div></details>
+      <details class="faq-item"><summary>Is there any limit on downloads?</summary><div class="faq-a">No limit at all. You can download as many thumbnails as you need, from as many videos as you like, for free.</div></details>
+      <details class="faq-item"><summary>Why does the Maximum Resolution thumbnail sometimes not load?</summary><div class="faq-a">Not every video has a 1280×720 maxresdefault thumbnail generated by YouTube — for videos without one, the tool automatically falls back to the next best available quality.</div></details>
+      <details class="faq-item"><summary>Does downloading a thumbnail violate YouTube's terms?</summary><div class="faq-a">Thumbnails are publicly accessible images hosted by YouTube; downloading one for personal reference, backup, or fair-use commentary is generally fine, but reusing someone else's thumbnail artwork commercially without permission can raise copyright concerns.</div></details>
+      <details class="faq-item"><summary>Can I use a downloaded thumbnail for my own video?</summary><div class="faq-a">You should only reuse a thumbnail image if you own the rights to it or have permission — thumbnails are typically the channel owner's copyrighted artwork, even though they're publicly viewable.</div></details>
+      <details class="faq-item"><summary>Does this tool work for private or unlisted videos?</summary><div class="faq-a">Thumbnails are fetched from YouTube's public image CDN, so this works for any video with a public thumbnail URL; fully private videos may not return a usable thumbnail.</div></details>
+      <details class="faq-item"><summary>Is my data or search history saved anywhere?</summary><div class="faq-a">No, the tool only extracts the video ID from the URL you paste locally in your browser and requests the thumbnail image directly — nothing is logged or stored on a server.</div></details>
+      <details class="faq-item"><summary>Can I paste just the video ID instead of the full URL?</summary><div class="faq-a">Yes, pasting the 11-character video ID alone also works, in addition to any full YouTube URL format.</div></details>
+      <details class="faq-item"><summary>What format are the downloaded thumbnails in?</summary><div class="faq-a">All YouTube thumbnails are served as JPG images, and the download link preserves that format automatically.</div></details>
+    </div>
+
+    <!-- Copyright note -->
+    <div class="wrap-narrow">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">Good to know</div>
+        <h2>A note on thumbnail ownership</h2>
+      </div>
+      <p class="intro-copy" style="padding-top:0">
+        A YouTube thumbnail is a publicly viewable image, but that doesn't automatically make it free to reuse however you like — it's still the channel owner's copyrighted artwork in most cases, whether they uploaded a custom design or YouTube auto-generated it from a video frame. Downloading a thumbnail to study its composition, reference it in personal notes, or discuss it in commentary or criticism generally falls within accepted fair use.
+      </p>
+      <p class="intro-copy">
+        Where it gets riskier is reusing someone else's thumbnail as your own — for a competing video, a promotional graphic, or any commercial use — without the original creator's permission. If you plan to publish something built from a downloaded thumbnail rather than just referencing it privately, it's worth reaching out to the channel or sticking to your own original artwork instead.
+      </p>
+    </div>
+
+    <!-- Why free -->
+    <div class="wrap-narrow">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">About this tool</div>
+        <h2>Why it's free, and how it stays that way</h2>
+      </div>
+      <p class="intro-copy" style="padding-top:0">
+        The YouTube Thumbnail Downloader is one of more than fifty free tools on EkZapp, sitting alongside a Meme Generator and other quick utilities. Because it only extracts a video ID locally and links directly to YouTube's own publicly hosted image files, there's essentially no processing cost involved on EkZapp's end — the page loads once, and every thumbnail lookup afterward is nearly free to serve.
+      </p>
+      <p class="intro-copy">
+        This kind of tool tends to get used briefly — a link pasted, a thumbnail grabbed, then back to whatever you were working on. That's part of why it stays a single simple screen: paste a URL, pick a quality, download, done.
+      </p>
+      <p class="intro-copy">
+        It also means there's very little that can go wrong. There's no account to lose access to, no history of searched videos saved anywhere, and no settings to configure before the tool does what you need. Every visit starts from a blank input, which keeps it predictable whether you use it once a year or several times a week.
+      </p>
+    </div>
+
+    <!-- Related tools -->
+    <div class="related-banner">
+      <h3>Other fun & media tools</h3>
+      <div class="tools-row">
+        <a class="tool-mini" href="/meme-generator"><span>😂 Meme Generator</span></a>
+        <a class="tool-mini" href="/image-to-pdf"><span>🖼️ Image to PDF</span></a>
+        <a class="tool-mini" href="/qr-code-generator"><span>📱 QR Code Generator</span></a>
+      </div>
+    </div>
+
   </div>
-</footer>
+</div>
 
 <script>
 function extractVideoId(url) {
