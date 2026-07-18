@@ -1,19 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VW5QLMV046"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VW5QLMV046');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JSON Formatter & Beautifier — Free Online JSON Tool | EkZapp</title>
-<meta name="description" content="Format, beautify, validate and minify JSON online for free. Instant JSON formatter with syntax highlighting and error detection. No signup required.">
+<meta name="description" content="Format, beautify, validate and minify JSON online for free. Instant JSON formatter with error detection and stats. No signup required.">
 <meta name="keywords" content="json formatter, json beautifier, json validator, json minifier, format json online, json pretty print">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://ekzapp.com/json-formatter">
-<meta property="og:title" content="JSON Formatter & Beautifier — EkZapp">
+<meta property="og:title" content="JSON Formatter & Beautifier — Free Online JSON Tool | EkZapp">
 <meta property="og:description" content="Format, validate and minify JSON online for free. Instant results with error detection.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ekzapp.com/json-formatter">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--cream:#F0F5FF;--teal:#0D9488;--green:#16A34A;--green-lt:#F0FDF4;--red:#DC2626}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
+.logo-text span{color:var(--blue)}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.back:hover{border-color:var(--blue);color:var(--blue)}
+
+.wrap-outer{max-width:1080px;margin:0 auto;padding:0 20px}
+.wrap-narrow{max-width:680px;margin:0 auto}
+.wrap-wide{max-width:1000px;margin:0 auto}
+
+.hero{position:relative;overflow:hidden;padding:52px 20px 60px;text-align:center;
+  background:linear-gradient(125deg,#0F172A,#059669 55%,#2563EB);
+  background-size:200% 200%;animation:heroShift 15s ease infinite;color:white}
+@keyframes heroShift{0%{background-position:0% 30%}50%{background-position:100% 70%}100%{background-position:0% 30%}}
+.hero::before{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle at 12% 20%,rgba(255,255,255,.09) 0,transparent 42%),
+                    radial-gradient(circle at 88% 80%,rgba(255,255,255,.09) 0,transparent 42%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.25);padding:6px 14px;border-radius:999px;font-size:12px;
+  font-weight:600;margin-bottom:18px;backdrop-filter:blur(4px)}
+.hero h1{font-family:'JetBrains Mono',monospace;font-size:1.85rem;line-height:1.35;margin-bottom:14px;text-shadow:0 2px 14px rgba(0,0,0,.2)}
+.hero p{max-width:540px;margin:0 auto;font-size:15px;line-height:1.65;color:rgba(255,255,255,.85)}
+.hero-stats{display:flex;justify-content:center;gap:28px;margin-top:26px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat b{display:block;font-size:1.4rem;font-weight:800}
+.hero-stat span{font-size:11px;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.03em}
+
+.container{padding:0 20px 60px}
+.tool-section{margin-top:-30px;position:relative;z-index:2}
+.intro-copy{padding:32px 4px 0;color:var(--gray);font-size:13.5px;line-height:1.75;text-align:left;margin-bottom:16px}
+.intro-copy strong{color:var(--ink)}
+
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 10px 30px -12px rgba(17,24,39,.15)}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.btn{padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;border:1.5px solid var(--border);background:var(--white);color:var(--ink);transition:all .15s}
+.btn:hover{border-color:var(--green);color:var(--green)}
+.btn-primary{background:var(--green);color:white;border-color:var(--green)}
+.btn-primary:hover{background:#15803D;color:white}
+.btn-blue{background:var(--blue);color:white;border-color:var(--blue)}
+.btn-blue:hover{background:var(--blue-dk);color:white}
+.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.editor-box{display:flex;flex-direction:column}
+.editor-label{font-size:12px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.editor-label-right{display:flex;gap:6px}
+.copy-btn{padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--white);color:var(--gray);font-family:'Inter',sans-serif}
+.copy-btn:hover{border-color:var(--green);color:var(--green)}
+textarea{width:100%;height:340px;padding:16px;border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--ink);resize:vertical;outline:none;line-height:1.6;background:var(--light);transition:border .15s}
+textarea:focus{border-color:var(--green);background:white}
+.output-area{width:100%;height:340px;padding:16px;border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--ink);overflow:auto;background:var(--light);white-space:pre;line-height:1.6}
+.status-bar{margin-top:10px;padding:10px 14px;border-radius:8px;font-size:13px;font-weight:500;display:none}
+.status-ok{background:var(--green-lt);border:1px solid #86EFAC;color:#166534}
+.status-err{background:#FEF2F2;border:1px solid #FECACA;color:#991B1B}
+.stats-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.stat-item{background:#EFF6FF;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;color:var(--blue)}
+
+.sec-head{text-align:center;margin:56px 0 28px}
+.sec-eyebrow{font-size:11px;font-weight:700;color:var(--teal);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.sec-head h2{font-size:1.5rem;font-weight:800;letter-spacing:-.01em}
+.sec-head p{color:var(--gray);font-size:13.5px;margin-top:8px;max-width:520px;margin-left:auto;margin-right:auto}
+
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feature-card{background:white;border:1px solid var(--border);border-radius:14px;padding:22px 18px;text-align:left}
+.feature-card svg{width:34px;height:34px;margin-bottom:12px;stroke:var(--teal)}
+.feature-card h3{font-size:14px;font-weight:700;margin-bottom:6px}
+.feature-card p{font-size:12.5px;color:var(--gray);line-height:1.6}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.scenario-card{background:linear-gradient(155deg,#fff,#FAFAFB);border:1px solid var(--border);border-radius:14px;padding:20px}
+.scenario-emoji{font-size:1.6rem;margin-bottom:10px;display:block}
+.scenario-card h3{font-size:13.5px;font-weight:700;margin-bottom:5px}
+.scenario-card p{font-size:12.5px;color:var(--gray);line-height:1.6}
+
+.compare-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:14px;background:white}
+table.compare{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
+table.compare th,table.compare td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--border)}
+table.compare th{font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--gray);background:var(--light)}
+table.compare th.hl{color:var(--teal)}
+table.compare td.hl{font-weight:700;color:var(--teal)}
+table.compare tr:last-child td{border-bottom:none}
+.tick{color:#059669;font-weight:800}
+.cross{color:#DC2626;font-weight:800}
+.mono{font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--light);padding:2px 6px;border-radius:4px}
+
+.guide-section{margin-top:56px}
+.steps{display:flex;flex-direction:column;gap:16px}
+.step{display:flex;gap:14px;align-items:flex-start;background:white;border:1px solid var(--border);border-radius:12px;padding:16px}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--teal);color:white;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-body h3{font-size:13px;font-weight:600;margin-bottom:3px}
+.step-body p{font-size:12.5px;color:var(--gray);line-height:1.5}
+
+.faq-section{margin-top:56px}
+details.faq-item{background:white;border:1px solid var(--border);border-radius:12px;padding:4px 18px;margin-bottom:10px}
+details.faq-item summary{list-style:none;cursor:pointer;padding:14px 0;font-size:13.5px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:10px}
+details.faq-item summary::-webkit-details-marker{display:none}
+details.faq-item summary::after{content:"+";font-size:18px;color:var(--teal);font-weight:700;flex-shrink:0}
+details.faq-item[open] summary::after{content:"–"}
+details.faq-item .faq-a{font-size:12.5px;color:var(--gray);line-height:1.6;padding-bottom:16px}
+
+.related-banner{margin-top:56px;border-radius:18px;padding:30px 26px;
+  background:linear-gradient(120deg,#0F172A,#059669 60%,#2563EB);color:white}
+.related-banner h3{font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:16px}
+.tools-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tool-mini{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:14px;text-decoration:none;color:white;display:flex;align-items:center;gap:10px;transition:background .15s}
+.tool-mini:hover{background:rgba(255,255,255,.16)}
+.tool-mini span{font-size:13px;font-weight:600}
+
+@media(max-width:680px){
+  .hero h1{font-size:1.4rem}
+  .editor-grid{grid-template-columns:1fr}
+  .feature-grid{grid-template-columns:1fr}
+  .scenario-grid{grid-template-columns:1fr}
+  .tools-row{grid-template-columns:1fr}
+  .hero-stats{gap:18px}
+}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -21,161 +150,310 @@
   "name": "JSON Formatter & Beautifier",
   "url": "https://ekzapp.com/json-formatter",
   "description": "Format, beautify, validate and minify JSON online for free. No signup required.",
-  "applicationCategory": "UtilityApplication",
+  "applicationCategory": "DeveloperApplication",
   "operatingSystem": "Web",
   "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
 }
 </script>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;
-  --ink:#111827;--gray:#4B5563;--light:#F9FAFB;--border:#E5E7EB;
-  --white:#fff;--cream:#F0F5FF;--green:#16A34A;--green-lt:#F0FDF4;
-  --red:#DC2626;--r:10px;
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What is JSON formatting?","acceptedAnswer":{"@type":"Answer","text":"JSON formatting, or beautifying, adds proper indentation and line breaks so nested JSON data becomes readable at a glance instead of appearing as one dense line."}},
+    {"@type":"Question","name":"Is my JSON data safe?","acceptedAnswer":{"@type":"Answer","text":"Yes. All parsing, formatting, and minifying happens locally in your browser using JavaScript — your JSON is never sent to any server."}},
+    {"@type":"Question","name":"What is JSON validation?","acceptedAnswer":{"@type":"Answer","text":"JSON validation checks whether your text follows correct JSON syntax. Common errors include missing quotes around keys, trailing commas, or unclosed brackets."}},
+    {"@type":"Question","name":"Can I format large JSON files?","acceptedAnswer":{"@type":"Answer","text":"Yes, the formatter handles large JSON payloads efficiently in your browser, with no file size upload limit since nothing is uploaded at all."}},
+    {"@type":"Question","name":"What does minifying JSON do?","acceptedAnswer":{"@type":"Answer","text":"Minifying strips all unnecessary whitespace and line breaks, compressing JSON to a single dense line — useful for reducing payload size before sending data over a network."}},
+    {"@type":"Question","name":"Why does my JSON show a syntax error?","acceptedAnswer":{"@type":"Answer","text":"The most common causes are trailing commas after the last item, single quotes instead of double quotes around strings, or an unclosed bracket or brace somewhere in the structure."}},
+    {"@type":"Question","name":"Does the tool tell me exactly where the error is?","acceptedAnswer":{"@type":"Answer","text":"Yes, the error message includes the position reported by the browser's built-in JSON parser, which usually points close to the problematic character."}},
+    {"@type":"Question","name":"What do the stats (Keys, Size, Type) mean?","acceptedAnswer":{"@type":"Answer","text":"Keys counts the number of key-value pairs detected, Size shows the byte size of the JSON, and Type indicates whether the top-level structure is an Object or an Array."}},
+    {"@type":"Question","name":"Can I download the formatted JSON as a file?","acceptedAnswer":{"@type":"Answer","text":"Yes, click Download after formatting to save the output as a .json file directly to your device."}},
+    {"@type":"Question","name":"Does this support JSON5 or JSONC (JSON with comments)?","acceptedAnswer":{"@type":"Answer","text":"No, this tool validates and formats strict standard JSON; JSON5 or JSONC syntax with comments or trailing commas will be flagged as invalid."}},
+    {"@type":"Question","name":"Is there a keyboard shortcut to format quickly?","acceptedAnswer":{"@type":"Answer","text":"Yes, press Ctrl+Enter while focused in the input box to trigger Format/Beautify without clicking the button."}},
+    {"@type":"Question","name":"Can I paste JSON directly from the clipboard?","acceptedAnswer":{"@type":"Answer","text":"Yes, click the Paste button to insert clipboard content directly into the input box, provided your browser grants clipboard read permission."}}
+  ]
 }
-body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--white);font-size:14px;-webkit-font-smoothing:antialiased;}
-nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;height:54px;}
-.nav-inner{max-width:1200px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px;}
-.logo{text-decoration:none;display:flex;align-items:center;gap:8px;}
-.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800;}
-.logo-text{font-size:15px;font-weight:700;color:var(--ink)}.logo-text span{color:var(--blue)}
-.nav-back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;}
-.nav-back:hover{color:var(--ink)}
-.hero{background:linear-gradient(135deg,#064E3B 0%,#065F46 100%);padding:48px 20px 40px;text-align:center;}
-.hero h1{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;color:white;margin-bottom:10px;}
-.hero p{color:rgba(255,255,255,.85);font-size:15px;}
-.main{max-width:1200px;margin:0 auto;padding:24px 20px 60px;}
-.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
-.btn{padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;border:1.5px solid var(--border);background:var(--white);color:var(--ink);transition:all .15s;}
-.btn:hover{border-color:var(--blue);color:var(--blue)}
-.btn-primary{background:var(--blue);color:white;border-color:var(--blue);}
-.btn-primary:hover{background:var(--blue-dk);color:white;border-color:var(--blue-dk)}
-.btn-green{background:var(--green);color:white;border-color:var(--green);}
-.btn-green:hover{background:#15803D;color:white}
-.btn-red{background:#DC2626;color:white;border-color:#DC2626;}
-.btn-red:hover{background:#B91C1C;color:white}
-.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.editor-box{display:flex;flex-direction:column;}
-.editor-label{font-size:12px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;}
-.editor-label-right{display:flex;gap:6px;}
-.copy-btn{padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--white);color:var(--gray);font-family:'Inter',sans-serif;}
-.copy-btn:hover{border-color:var(--blue);color:var(--blue)}
-textarea{width:100%;height:420px;padding:16px;border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-family:'Courier New',Courier,monospace;color:var(--ink);resize:vertical;outline:none;line-height:1.6;background:var(--light);}
-textarea:focus{border-color:var(--blue);background:white;}
-.output-area{width:100%;height:420px;padding:16px;border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-family:'Courier New',Courier,monospace;color:var(--ink);overflow:auto;background:var(--light);white-space:pre;line-height:1.6;}
-.status-bar{margin-top:10px;padding:10px 14px;border-radius:8px;font-size:13px;font-weight:500;display:none;}
-.status-ok{background:var(--green-lt);border:1px solid #86EFAC;color:#166534;}
-.status-err{background:#FEF2F2;border:1px solid #FECACA;color:#991B1B;}
-.stats-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;}
-.stat-item{background:var(--blue-lt);border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;color:var(--blue);}
-.how-section{background:var(--cream);border-radius:16px;padding:24px;margin-top:24px;margin-bottom:24px;}
-.how-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:12px;}
-.card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.06);margin-top:24px;}
-.faq-item{border-bottom:1px solid var(--border);padding:14px 0;}
-.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px;}
-.faq-a{font-size:13px;color:var(--gray);line-height:1.6;}
-footer{background:#1F2937;padding:24px 20px;text-align:center;margin-top:40px;}
-.f-bottom{color:rgba(255,255,255,.4);font-size:12px;}
-.f-bottom a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 8px;}
-.f-bottom a:hover{color:white}
-@media(max-width:768px){
-  .editor-grid{grid-template-columns:1fr;}
-  textarea,.output-area{height:280px;}
-}
-</style>
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
 </head>
 <body>
 <nav>
   <div class="nav-inner">
     <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
-    <a class="nav-back" href="/">← All Tools</a>
+    <a class="back" href="/">← All Tools</a>
   </div>
 </nav>
 
 <header class="hero">
-  <h1>🔧 JSON Formatter & Beautifier</h1>
-  <p>Format, validate, minify and beautify JSON instantly — free & online</p>
+  <div class="wrap-outer">
+    <div class="hero-badge">🔧 Free · Instant · No Signup</div>
+    <h1>Format. Validate. Minify. All in one place.</h1>
+    <p>Paste your JSON, beautify it with proper indentation, catch syntax errors, or compress it to one line — all locally in your browser.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><b>3</b><span>Core Actions</span></div>
+      <div class="hero-stat"><b>∞</b><span>File Size</span></div>
+      <div class="hero-stat"><b>0</b><span>Upload</span></div>
+      <div class="hero-stat"><b>0</b><span>Signup</span></div>
+    </div>
+  </div>
 </header>
 
-<main class="main">
+<div class="container">
+  <div class="wrap-outer">
 
-  <div class="toolbar">
-    <button class="btn btn-primary" onclick="formatJSON()">✨ Format / Beautify</button>
-    <button class="btn btn-green" onclick="validateJSON()">✅ Validate</button>
-    <button class="btn" onclick="minifyJSON()">🗜️ Minify</button>
-    <button class="btn" onclick="clearAll()">🗑️ Clear</button>
-    <button class="btn" onclick="loadSample()">📋 Load Sample</button>
-  </div>
+    <div class="tool-section wrap-narrow">
+      <p class="intro-copy">
+        EkZapp's free JSON Formatter & Beautifier turns messy, unreadable JSON into clean, properly indented output in one click — and can just as easily validate it, minify it back down, or show quick stats about its structure. Paste your JSON on the left, pick an action, and the result appears instantly on the right, with no signup and no limit on how large your JSON payload is.
+      </p>
+      <p class="intro-copy">
+        A common situation this solves: an API response, a config file, or a log entry arrives as one dense unreadable line, and you need to actually read its structure to debug something. Instead of manually adding line breaks, you paste it here and click <strong>Format / Beautify</strong> to see the nested structure clearly, with proper indentation at every level.
+      </p>
+      <p class="intro-copy">
+        Everything runs client-side using your browser's own JSON parser. <strong>Nothing you paste is uploaded to a server</strong> — the parsing, formatting, and minifying all happen locally the instant you click a button, which means there's no file size limit imposed by an upload restriction and no delay waiting on a network round-trip.
+      </p>
+      <p class="intro-copy">
+        Alongside formatting, the tool also validates syntax and reports the exact parser error when something's wrong, shows quick stats (key count, byte size, and whether the top level is an object or array), and lets you copy or download the result directly — covering the handful of JSON tasks developers reach for most often in one page.
+      </p>
+    </div>
 
-  <div class="editor-grid">
-    <div class="editor-box">
-      <div class="editor-label">
-        Input JSON
-        <div class="editor-label-right">
-          <button class="copy-btn" onclick="pasteFromClipboard()">📋 Paste</button>
-          <button class="copy-btn" onclick="clearInput()">✕ Clear</button>
+    <div class="wrap-narrow">
+      <div class="card">
+        <div class="toolbar">
+          <button class="btn btn-primary" onclick="formatJSON()">✨ Format / Beautify</button>
+          <button class="btn btn-blue" onclick="validateJSON()">✅ Validate</button>
+          <button class="btn" onclick="minifyJSON()">🗜️ Minify</button>
+          <button class="btn" onclick="clearAll()">🗑️ Clear</button>
+          <button class="btn" onclick="loadSample()">📋 Load Sample</button>
+        </div>
+
+        <div class="editor-grid">
+          <div class="editor-box">
+            <div class="editor-label">
+              Input JSON
+              <div class="editor-label-right">
+                <button class="copy-btn" onclick="pasteFromClipboard()">📋 Paste</button>
+                <button class="copy-btn" onclick="clearInput()">✕ Clear</button>
+              </div>
+            </div>
+            <textarea id="inputJSON" placeholder='Paste your JSON here...&#10;&#10;Example:&#10;{"name":"EkZapp","tools":["PDF","Image","Calculator"],"free":true}'></textarea>
+            <div class="status-bar" id="statusBar"></div>
+          </div>
+
+          <div class="editor-box">
+            <div class="editor-label">
+              Output
+              <div class="editor-label-right">
+                <button class="copy-btn" onclick="copyOutput()">📋 Copy</button>
+                <button class="copy-btn" onclick="downloadOutput()">⬇️ Download</button>
+              </div>
+            </div>
+            <div class="output-area" id="outputJSON"></div>
+            <div class="stats-row" id="statsRow"></div>
+          </div>
         </div>
       </div>
-      <textarea id="inputJSON" placeholder='Paste your JSON here...&#10;&#10;Example:&#10;{"name":"EkZapp","tools":["PDF","Image","Calculator"],"free":true}'></textarea>
-      <div class="status-bar" id="statusBar"></div>
     </div>
 
-    <div class="editor-box">
-      <div class="editor-label">
-        Output
-        <div class="editor-label-right">
-          <button class="copy-btn" onclick="copyOutput()">📋 Copy</button>
-          <button class="copy-btn" onclick="downloadOutput()">⬇️ Download</button>
+    <!-- Feature grid -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Why this one</div>
+        <h2>Built for speed and privacy</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+          <h3>Instant, No Upload</h3>
+          <p>Formatting, validation, and minifying all run locally in your browser — nothing is ever sent to a server.</p>
+        </div>
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg>
+          <h3>Clear Error Detection</h3>
+          <p>Invalid JSON shows the exact parser error message so you can pinpoint the mistake quickly.</p>
+        </div>
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+          <h3>Quick Structure Stats</h3>
+          <p>See key count, byte size, and whether the JSON is an object or array without writing any code.</p>
         </div>
       </div>
-      <div class="output-area" id="outputJSON"></div>
-      <div class="stats-row" id="statsRow"></div>
     </div>
-  </div>
 
-  <div class="how-section">
-    <div class="how-title">How to Use</div>
-    <p style="font-size:13px;color:var(--gray);line-height:1.8;">
-      1. Paste your JSON in the left box<br>
-      2. Click <strong>Format / Beautify</strong> to pretty-print with indentation<br>
-      3. Click <strong>Validate</strong> to check if JSON is valid<br>
-      4. Click <strong>Minify</strong> to compress JSON to one line<br>
-      5. Copy or Download the output
-    </p>
-  </div>
+    <!-- Scenario cards -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Made for</div>
+        <h2>Wherever JSON needs a second look</h2>
+      </div>
+      <div class="scenario-grid">
+        <div class="scenario-card">
+          <span class="scenario-emoji">💻</span>
+          <h3>Backend Developers</h3>
+          <p>Beautify an API response to debug why a field is missing or nested deeper than expected.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🌐</span>
+          <h3>Frontend Developers</h3>
+          <p>Check a config file or API payload structure before wiring it up to a component or fetch call.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🧪</span>
+          <h3>QA & Testers</h3>
+          <p>Validate that a test fixture or mock response is syntactically correct JSON before running a test suite.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">📡</span>
+          <h3>API Integration</h3>
+          <p>Paste a webhook payload or third-party API response to quickly understand its shape before writing parsing code.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🗜️</span>
+          <h3>Minifying for Production</h3>
+          <p>Compress a config or data file to a single line before shipping it, shaving unnecessary bytes off the payload.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">📚</span>
+          <h3>Students Learning JSON</h3>
+          <p>See how indentation reveals nested objects and arrays while learning JSON structure for the first time.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🔍</span>
+          <h3>Debugging Logs</h3>
+          <p>Paste a raw JSON log line to expand it into a readable, indented structure for faster troubleshooting.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">⚙️</span>
+          <h3>Config File Editing</h3>
+          <p>Reformat a hand-edited or minified config file so it's readable again before making further changes.</p>
+        </div>
+      </div>
+    </div>
 
-  <div class="card">
-    <div style="font-size:14px;font-weight:700;color:var(--ink);margin-bottom:14px;">❓ Frequently Asked Questions</div>
-    <div class="faq-item">
-      <div class="faq-q">What is JSON formatting?</div>
-      <div class="faq-a">JSON formatting (beautifying) adds proper indentation and line breaks to make JSON data readable. Minifying removes all whitespace to reduce file size.</div>
+    <!-- Comparison -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Comparison</div>
+        <h2>EkZapp vs. a code editor extension</h2>
+      </div>
+      <div class="compare-wrap">
+        <table class="compare">
+          <tr><th>Task</th><th class="hl">EkZapp JSON Formatter</th><th>Editor extension</th></tr>
+          <tr><td>Setup required</td><td class="hl"><span class="tick">✓ None, just open a browser</span></td><td>Install and configure an extension</td></tr>
+          <tr><td>Works on any device</td><td class="hl"><span class="tick">✓ Any browser</span></td><td>Tied to one editor/machine</td></tr>
+          <tr><td>Shows quick stats (keys, size, type)</td><td class="hl"><span class="tick">✓ Built in</span></td><td>Usually not included</td></tr>
+          <tr><td>Data leaves your machine</td><td class="hl"><span class="tick">✓ Never</span></td><td>Depends on the extension</td></tr>
+          <tr><td>Cost</td><td class="hl"><span class="tick">✓ Free</span></td><td>Often free, sometimes paid tiers</td></tr>
+        </table>
+      </div>
     </div>
-    <div class="faq-item">
-      <div class="faq-q">Is my JSON data safe?</div>
-      <div class="faq-a">Yes! All processing happens in your browser. Your JSON data is never sent to any server.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">What is JSON validation?</div>
-      <div class="faq-a">JSON validation checks if your JSON follows the correct syntax. Common errors include missing quotes, extra commas, or unclosed brackets.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Can I format large JSON files?</div>
-      <div class="faq-a">Yes, EkZapp JSON Formatter handles large JSON files efficiently in your browser without any upload limits.</div>
-    </div>
-  </div>
 
-</main>
+    <!-- Guide -->
+    <div class="wrap-narrow guide-section">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">Guide</div>
+        <h2>How to use the JSON formatter</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Paste Your JSON</h3><p>Paste your JSON into the left input box, or click Load Sample to try it with example data.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Format, Validate, or Minify</h3><p>Click Format/Beautify to pretty-print with indentation, Validate to check syntax only, or Minify to compress to one line.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Check the Result</h3><p>The output appears on the right along with a status message and quick stats about keys, size, and type.</p></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Copy or Download</h3><p>Click Copy to copy the output to your clipboard, or Download to save it as a .json file.</p></div></div>
+      </div>
+    </div>
 
-<footer>
-  <div class="f-bottom">
-    <span>© 2026 EkZapp.com</span>
-    <a href="/privacy">Privacy</a>
-    <a href="/terms">Terms</a>
-    <a href="/contact">Contact</a>
+    <!-- Common errors -->
+    <div class="wrap-narrow">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">Reference</div>
+        <h2>Common JSON syntax errors</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">A</div>
+          <div class="step-body"><h3>Trailing Commas</h3><p>A comma after the last item in an object or array, like <span class="mono">{"a":1,}</span>, is invalid in standard JSON and will fail validation.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">B</div>
+          <div class="step-body"><h3>Single Quotes</h3><p>JSON requires double quotes around strings and keys — <span class="mono">{'a':'b'}</span> must be written as <span class="mono">{"a":"b"}</span>.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">C</div>
+          <div class="step-body"><h3>Unclosed Brackets or Braces</h3><p>Every <span class="mono">{</span> or <span class="mono">[</span> needs a matching closing character — a missing one is one of the most common causes of a parse error.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">D</div>
+          <div class="step-body"><h3>Unquoted Keys</h3><p>Object keys must be wrapped in double quotes — <span class="mono">{name:"EkZapp"}</span> is invalid; it must be <span class="mono">{"name":"EkZapp"}</span>.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Why JSON -->
+    <div class="wrap-narrow">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">Good to know</div>
+        <h2>Why JSON became the default data format</h2>
+      </div>
+      <p class="intro-copy" style="padding-top:0">
+        JSON (JavaScript Object Notation) grew out of JavaScript's native object syntax, which is part of why it reads so naturally to anyone who's written JavaScript — an object with key-value pairs, arrays in square brackets, and a small set of primitive types (strings, numbers, booleans, and null). That simplicity, combined with the fact that virtually every programming language now has a built-in or widely-used JSON parser, is why it replaced older formats like XML as the default for APIs, config files, and data interchange.
+      </p>
+      <p class="intro-copy">
+        Compared to XML, JSON is noticeably more compact — there's no closing tag to repeat for every element, and the structure maps directly onto common data structures like dictionaries and lists that most languages already support natively. That makes converting JSON into a usable object in code a one-line operation in most languages, rather than requiring a dedicated parsing library.
+      </p>
+      <p class="intro-copy">
+        The tradeoff is that JSON is stricter and less flexible than some alternatives — it has no native comment syntax, no schema built in, and demands exact syntax like double-quoted keys and no trailing commas. Those constraints are actually a feature for machine-to-machine communication: strict, unambiguous syntax means a JSON parser either succeeds or fails clearly, with no room for the kind of loose interpretation that would make automated systems unpredictable.
+      </p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="wrap-narrow faq-section">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">FAQ</div>
+        <h2>Frequently asked questions</h2>
+      </div>
+      <details class="faq-item"><summary>What is JSON formatting?</summary><div class="faq-a">JSON formatting, or beautifying, adds proper indentation and line breaks so nested JSON data becomes readable at a glance instead of appearing as one dense line.</div></details>
+      <details class="faq-item"><summary>Is my JSON data safe?</summary><div class="faq-a">Yes. All parsing, formatting, and minifying happens locally in your browser using JavaScript — your JSON is never sent to any server.</div></details>
+      <details class="faq-item"><summary>What is JSON validation?</summary><div class="faq-a">JSON validation checks whether your text follows correct JSON syntax. Common errors include missing quotes around keys, trailing commas, or unclosed brackets.</div></details>
+      <details class="faq-item"><summary>Can I format large JSON files?</summary><div class="faq-a">Yes, the formatter handles large JSON payloads efficiently in your browser, with no file size upload limit since nothing is uploaded at all.</div></details>
+      <details class="faq-item"><summary>What does minifying JSON do?</summary><div class="faq-a">Minifying strips all unnecessary whitespace and line breaks, compressing JSON to a single dense line — useful for reducing payload size before sending data over a network.</div></details>
+      <details class="faq-item"><summary>Why does my JSON show a syntax error?</summary><div class="faq-a">The most common causes are trailing commas after the last item, single quotes instead of double quotes around strings, or an unclosed bracket or brace somewhere in the structure.</div></details>
+      <details class="faq-item"><summary>Does the tool tell me exactly where the error is?</summary><div class="faq-a">Yes, the error message includes the position reported by the browser's built-in JSON parser, which usually points close to the problematic character.</div></details>
+      <details class="faq-item"><summary>What do the stats (Keys, Size, Type) mean?</summary><div class="faq-a">Keys counts the number of key-value pairs detected, Size shows the byte size of the JSON, and Type indicates whether the top-level structure is an Object or an Array.</div></details>
+      <details class="faq-item"><summary>Can I download the formatted JSON as a file?</summary><div class="faq-a">Yes, click Download after formatting to save the output as a .json file directly to your device.</div></details>
+      <details class="faq-item"><summary>Does this support JSON5 or JSONC (JSON with comments)?</summary><div class="faq-a">No, this tool validates and formats strict standard JSON; JSON5 or JSONC syntax with comments or trailing commas will be flagged as invalid.</div></details>
+      <details class="faq-item"><summary>Is there a keyboard shortcut to format quickly?</summary><div class="faq-a">Yes, press Ctrl+Enter while focused in the input box to trigger Format/Beautify without clicking the button.</div></details>
+      <details class="faq-item"><summary>Can I paste JSON directly from the clipboard?</summary><div class="faq-a">Yes, click the Paste button to insert clipboard content directly into the input box, provided your browser grants clipboard read permission.</div></details>
+    </div>
+
+    <!-- Why free -->
+    <div class="wrap-narrow">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">About this tool</div>
+        <h2>Why it's free, and how it stays that way</h2>
+      </div>
+      <p class="intro-copy" style="padding-top:0">
+        The JSON Formatter is one of more than fifty free tools on EkZapp, sitting alongside a Base64/URL Encoder, Color Picker, and other developer utilities. Because parsing and formatting run entirely as JavaScript in your browser using the built-in JSON engine, there's no server processing cost involved — the page loads once, and every format, validate, or minify action afterward is essentially free to run.
+      </p>
+      <p class="intro-copy">
+        Tools like this tend to get opened for a quick check in the middle of debugging something else — an API response pasted in, a structure glanced at, an error message read, then back to the actual code. That's part of why the page stays a single screen with no extra steps: paste, click an action, read the result, and move on.
+      </p>
+      <p class="intro-copy">
+        It also means there's very little that can go wrong. There's no account to lose access to, no history of past JSON payloads saved anywhere, and no settings to configure before the tool does what you need. Every visit starts from a blank input, which keeps the tool predictable whether you use it once a year or several times a day.
+      </p>
+    </div>
+
+    <!-- Related tools -->
+    <div class="related-banner">
+      <h3>Other developer tools</h3>
+      <div class="tools-row">
+        <a class="tool-mini" href="/base64-url-encoder"><span>🔐 Base64 & URL Encoder</span></a>
+        <a class="tool-mini" href="/color-picker"><span>🎨 Color Picker</span></a>
+        <a class="tool-mini" href="/word-counter"><span>🔢 Word Counter</span></a>
+      </div>
+    </div>
+
   </div>
-</footer>
+</div>
 
 <script>
 function getInput() { return document.getElementById('inputJSON').value.trim(); }

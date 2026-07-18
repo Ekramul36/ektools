@@ -1,27 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VW5QLMV046"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VW5QLMV046');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Base64 & URL Encoder Decoder Online Free | EkZapp</title>
 <meta name="description" content="Encode or decode Base64 strings and URLs instantly online. Free, fast, and works entirely in your browser — no data uploaded.">
 <link rel="canonical" href="https://ekzapp.com/base64-url-encoder">
-<meta property="og:title" content="Base64 & URL Encoder Decoder - Free Online Tool">
+<meta property="og:title" content="Base64 & URL Encoder Decoder — Free Online Tool | EkZapp">
 <meta property="og:description" content="Encode or decode Base64 and URL strings instantly, free and private.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ekzapp.com/base64-url-encoder">
-<link rel="icon" href="/static/favicon.ico">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--cream:#F0F5FF;--teal:#0D9488}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
+.logo-text span{color:var(--blue)}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.back:hover{border-color:var(--blue);color:var(--blue)}
 
+.wrap-outer{max-width:960px;margin:0 auto;padding:0 20px}
+.wrap-narrow{max-width:680px;margin:0 auto}
+.wrap-wide{max-width:900px;margin:0 auto}
+
+.hero{position:relative;overflow:hidden;padding:52px 20px 60px;text-align:center;
+  background:linear-gradient(125deg,#0F172A,#2563EB 55%,#0D9488);
+  background-size:200% 200%;animation:heroShift 15s ease infinite;color:white}
+@keyframes heroShift{0%{background-position:0% 30%}50%{background-position:100% 70%}100%{background-position:0% 30%}}
+.hero::before{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle at 12% 20%,rgba(255,255,255,.09) 0,transparent 42%),
+                    radial-gradient(circle at 88% 80%,rgba(255,255,255,.09) 0,transparent 42%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.25);padding:6px 14px;border-radius:999px;font-size:12px;
+  font-weight:600;margin-bottom:18px;backdrop-filter:blur(4px)}
+.hero h1{font-family:'JetBrains Mono',monospace;font-size:1.85rem;line-height:1.35;margin-bottom:14px;text-shadow:0 2px 14px rgba(0,0,0,.2)}
+.hero p{max-width:520px;margin:0 auto;font-size:15px;line-height:1.65;color:rgba(255,255,255,.85)}
+.hero-stats{display:flex;justify-content:center;gap:28px;margin-top:26px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat b{display:block;font-size:1.4rem;font-weight:800}
+.hero-stat span{font-size:11px;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.03em}
+
+.container{padding:0 20px 60px}
+.tool-section{margin-top:-30px;position:relative;z-index:2}
+.intro-copy{padding:32px 4px 0;color:var(--gray);font-size:13.5px;line-height:1.75;text-align:left;margin-bottom:16px}
+.intro-copy strong{color:var(--ink)}
+
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 10px 30px -12px rgba(17,24,39,.15)}
+.tabs{display:flex;gap:8px;margin-bottom:20px;background:var(--light);padding:4px;border-radius:10px;width:fit-content}
+.tabs button{border:none;background:transparent;padding:8px 18px;border-radius:8px;font-weight:600;font-size:13px;cursor:pointer;color:var(--gray);font-family:'Inter',sans-serif}
+.tabs button.active{background:var(--blue);color:#fff}
+.mode-toggle{display:flex;gap:10px;margin-bottom:16px}
+.mode-toggle button{flex:1;padding:10px;border:2px solid var(--border);background:#fff;border-radius:10px;font-weight:600;cursor:pointer;color:var(--gray);font-family:'Inter',sans-serif;font-size:13px}
+.mode-toggle button.active{border-color:var(--blue);color:var(--blue);background:var(--cream)}
+textarea{width:100%;min-height:140px;padding:16px;font-size:14px;font-family:'JetBrains Mono',monospace;border:1.5px solid var(--border);border-radius:10px;outline:none;resize:vertical;transition:border .15s;background:var(--light)}
+textarea:focus{border-color:var(--blue);background:white}
+.label{font-weight:700;font-size:11px;color:var(--gray);margin-bottom:6px;display:block;text-transform:uppercase;letter-spacing:.06em}
+.btn-row{display:flex;gap:10px;margin:16px 0;flex-wrap:wrap}
+.btn{background:var(--blue);color:#fff;border:none;padding:10px 20px;border-radius:8px;font-weight:600;cursor:pointer;font-size:13px;font-family:'Inter',sans-serif}
+.btn:hover{background:var(--blue-dk)}
+.btn.secondary{background:var(--light);color:var(--ink);border:1.5px solid var(--border)}
+.btn.secondary:hover{border-color:var(--blue);color:var(--blue)}
+.error-msg{color:#DC2626;font-size:13px;margin-top:8px;font-weight:500}
+
+.sec-head{text-align:center;margin:56px 0 28px}
+.sec-eyebrow{font-size:11px;font-weight:700;color:var(--teal);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.sec-head h2{font-size:1.5rem;font-weight:800;letter-spacing:-.01em}
+.sec-head p{color:var(--gray);font-size:13.5px;margin-top:8px;max-width:520px;margin-left:auto;margin-right:auto}
+
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feature-card{background:white;border:1px solid var(--border);border-radius:14px;padding:22px 18px;text-align:left}
+.feature-card svg{width:34px;height:34px;margin-bottom:12px;stroke:var(--teal)}
+.feature-card h3{font-size:14px;font-weight:700;margin-bottom:6px}
+.feature-card p{font-size:12.5px;color:var(--gray);line-height:1.6}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.scenario-card{background:linear-gradient(155deg,#fff,#FAFAFB);border:1px solid var(--border);border-radius:14px;padding:20px}
+.scenario-emoji{font-size:1.6rem;margin-bottom:10px;display:block}
+.scenario-card h3{font-size:13.5px;font-weight:700;margin-bottom:5px}
+.scenario-card p{font-size:12.5px;color:var(--gray);line-height:1.6}
+
+.compare-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:14px;background:white}
+table.compare{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
+table.compare th,table.compare td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--border)}
+table.compare th{font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--gray);background:var(--light)}
+table.compare th.hl{color:var(--teal)}
+table.compare td.hl{font-weight:700;color:var(--teal)}
+table.compare tr:last-child td{border-bottom:none}
+.tick{color:#059669;font-weight:800}
+.cross{color:#DC2626;font-weight:800}
+.mono{font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--light);padding:2px 6px;border-radius:4px}
+
+.guide-section{margin-top:56px}
+.steps{display:flex;flex-direction:column;gap:16px}
+.step{display:flex;gap:14px;align-items:flex-start;background:white;border:1px solid var(--border);border-radius:12px;padding:16px}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--teal);color:white;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-body h3{font-size:13px;font-weight:600;margin-bottom:3px}
+.step-body p{font-size:12.5px;color:var(--gray);line-height:1.5}
+
+.faq-section{margin-top:56px}
+details.faq-item{background:white;border:1px solid var(--border);border-radius:12px;padding:4px 18px;margin-bottom:10px}
+details.faq-item summary{list-style:none;cursor:pointer;padding:14px 0;font-size:13.5px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:10px}
+details.faq-item summary::-webkit-details-marker{display:none}
+details.faq-item summary::after{content:"+";font-size:18px;color:var(--teal);font-weight:700;flex-shrink:0}
+details.faq-item[open] summary::after{content:"–"}
+details.faq-item .faq-a{font-size:12.5px;color:var(--gray);line-height:1.6;padding-bottom:16px}
+
+.related-banner{margin-top:56px;border-radius:18px;padding:30px 26px;
+  background:linear-gradient(120deg,#0F172A,#2563EB 60%,#0D9488);color:white}
+.related-banner h3{font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:16px}
+.tools-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tool-mini{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:14px;text-decoration:none;color:white;display:flex;align-items:center;gap:10px;transition:background .15s}
+.tool-mini:hover{background:rgba(255,255,255,.16)}
+.tool-mini span{font-size:13px;font-weight:600}
+
+@media(max-width:680px){
+  .hero h1{font-size:1.4rem}
+  .feature-grid{grid-template-columns:1fr}
+  .scenario-grid{grid-template-columns:1fr}
+  .tools-row{grid-template-columns:1fr}
+  .hero-stats{gap:18px}
+}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Base64 & URL Encoder Decoder",
   "url": "https://ekzapp.com/base64-url-encoder",
+  "description": "Encode or decode Base64 strings and URLs instantly online. Free, fast, and private.",
   "applicationCategory": "DeveloperApplication",
-  "operatingSystem": "Any",
+  "operatingSystem": "Web",
   "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
 }
 </script>
@@ -30,193 +151,289 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question", "name": "What is Base64 encoding used for?",
-     "acceptedAnswer": {"@type": "Answer", "text": "Base64 encoding converts binary data or text into ASCII characters, commonly used to embed images in HTML/CSS, send data in JSON/XML, or transmit data safely over text-based protocols like email."}},
-    {"@type": "Question", "name": "Why do I need to URL encode a string?",
-     "acceptedAnswer": {"@type": "Answer", "text": "URL encoding converts special characters like spaces and symbols into a format that can be safely transmitted in a URL query string, preventing errors when a link is opened."}},
-    {"@type": "Question", "name": "Is this tool safe to use with sensitive data?",
-     "acceptedAnswer": {"@type": "Answer", "text": "Yes. All encoding and decoding happens locally in your browser using JavaScript. Nothing is uploaded to a server."}}
+    {"@type":"Question","name":"What is Base64 encoding used for?","acceptedAnswer":{"@type":"Answer","text":"Base64 encoding converts binary data or text into ASCII characters, commonly used to embed images in HTML/CSS, send data in JSON/XML APIs, or safely transmit data over text-based protocols like email."}},
+    {"@type":"Question","name":"Why do I need to URL encode a string?","acceptedAnswer":{"@type":"Answer","text":"URL encoding (percent-encoding) converts special characters like spaces, &, and ? into a safe format for URLs, preventing broken links and query string errors."}},
+    {"@type":"Question","name":"Is my data safe using this tool?","acceptedAnswer":{"@type":"Answer","text":"Yes, all encoding and decoding happens locally in your browser using JavaScript — nothing is ever uploaded to a server."}},
+    {"@type":"Question","name":"What happens if I try to decode invalid Base64?","acceptedAnswer":{"@type":"Answer","text":"The tool shows an error message letting you know the input isn't valid Base64, so you can double-check your text before converting."}},
+    {"@type":"Question","name":"Is Base64 the same as encryption?","acceptedAnswer":{"@type":"Answer","text":"No. Base64 is an encoding scheme, not encryption — anyone can decode it back to the original text instantly, so it should never be used to protect sensitive information."}},
+    {"@type":"Question","name":"Why does Base64 output look longer than the original text?","acceptedAnswer":{"@type":"Answer","text":"Base64 represents every 3 bytes of input as 4 output characters, which increases the size by roughly 33% — a necessary tradeoff for safely representing binary data as plain text."}},
+    {"@type":"Question","name":"What's the difference between URL encoding and Base64 encoding?","acceptedAnswer":{"@type":"Answer","text":"URL encoding replaces specific unsafe characters with percent-escaped codes while leaving most text unchanged; Base64 re-encodes the entire input into a completely different character set, regardless of what the original characters were."}},
+    {"@type":"Question","name":"Can I use this tool to encode emojis or non-English text?","acceptedAnswer":{"@type":"Answer","text":"Yes, both Base64 and URL encoding here handle Unicode text correctly, including emojis and non-Latin scripts, thanks to the UTF-8 conversion step built into the encoding process."}},
+    {"@type":"Question","name":"What does the 'Swap Result to Input' button do?","acceptedAnswer":{"@type":"Answer","text":"It moves the current output into the input box and switches the mode (encode to decode, or decode to encode), which is a quick way to verify a round-trip conversion gives back the original text."}},
+    {"@type":"Question","name":"Why would I URL encode something that's going into JSON, not a URL?","acceptedAnswer":{"@type":"Answer","text":"You generally wouldn't — URL encoding is specifically for characters unsafe in a URL; JSON has its own string escaping rules, so this tool's URL mode is intended for query strings and URL parameters, not JSON payloads."}},
+    {"@type":"Question","name":"Does this tool work offline?","acceptedAnswer":{"@type":"Answer","text":"Once the page has loaded, encoding and decoding run entirely in your browser's JavaScript engine, so the tool continues to function even without an active internet connection."}},
+    {"@type":"Question","name":"Is this tool free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free. No signup required, and there's no limit on how many times you can use it."}}
   ]
 }
 </script>
-
-<style>
-  :root{
-    --blue:#2563EB;
-    --blue-dark:#1d4ed8;
-    --bg:#f4f8fd;
-    --card:#ffffff;
-    --text:#1e293b;
-    --muted:#64748b;
-    --border:#e2e8f0;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{
-    font-family:'Inter',sans-serif;
-    background:linear-gradient(180deg,#eef5ff 0%,#f7fbff 100%);
-    color:var(--text);
-    min-height:100vh;
-  }
-  header{
-    background:var(--card);
-    border-bottom:1px solid var(--border);
-    padding:16px 24px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-  }
-  header a.logo{font-weight:800;font-size:22px;color:var(--blue);text-decoration:none;}
-  header nav a{color:var(--muted);text-decoration:none;margin-left:20px;font-weight:500;font-size:14px;}
-  .container{max-width:880px;margin:0 auto;padding:40px 20px 80px;}
-  .hero{text-align:center;margin-bottom:32px;}
-  .hero h1{font-size:32px;font-weight:800;margin-bottom:10px;}
-  .hero p{color:var(--muted);font-size:16px;}
-  .card{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:16px;
-    padding:32px;
-    box-shadow:0 4px 20px rgba(37,99,235,0.06);
-    margin-bottom:24px;
-  }
-  .tabs{display:flex;gap:8px;margin-bottom:24px;background:#eef2f7;padding:4px;border-radius:10px;width:fit-content;}
-  .tabs button{border:none;background:transparent;padding:8px 18px;border-radius:8px;font-weight:600;font-size:14px;cursor:pointer;color:var(--muted);}
-  .tabs button.active{background:var(--blue);color:#fff;}
-  .mode-toggle{display:flex;gap:10px;margin-bottom:16px;}
-  .mode-toggle button{
-    flex:1;
-    padding:10px;
-    border:2px solid var(--border);
-    background:#fff;
-    border-radius:10px;
-    font-weight:600;
-    cursor:pointer;
-    color:var(--muted);
-  }
-  .mode-toggle button.active{border-color:var(--blue);color:var(--blue);background:#f0f7ff;}
-  textarea{
-    width:100%;
-    min-height:140px;
-    padding:16px;
-    font-size:15px;
-    font-family:'Inter',monospace;
-    border:2px solid var(--border);
-    border-radius:12px;
-    outline:none;
-    resize:vertical;
-    transition:.2s;
-  }
-  textarea:focus{border-color:var(--blue);}
-  .label{font-weight:600;font-size:13px;color:var(--muted);margin-bottom:6px;display:block;text-transform:uppercase;letter-spacing:.03em;}
-  .btn-row{display:flex;gap:10px;margin:16px 0;}
-  .btn{
-    background:var(--blue);
-    color:#fff;
-    border:none;
-    padding:10px 20px;
-    border-radius:8px;
-    font-weight:600;
-    cursor:pointer;
-    font-size:14px;
-  }
-  .btn:hover{background:var(--blue-dark);}
-  .btn.secondary{background:#eef2f7;color:var(--text);}
-  .btn.secondary:hover{background:#dde7f5;}
-  .error-msg{color:#dc2626;font-size:13px;margin-top:8px;font-weight:500;}
-  .accordion{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:10px;background:var(--card);}
-  .accordion summary{padding:16px 20px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;}
-  .accordion summary::-webkit-details-marker{display:none;}
-  .accordion[open] summary{border-bottom:1px solid var(--border);}
-  .accordion p{padding:16px 20px;color:var(--muted);font-size:14px;line-height:1.6;}
-  section.faq h2{font-size:22px;margin-bottom:16px;}
-  footer{text-align:center;padding:24px;color:var(--muted);font-size:13px;}
-  footer a{color:var(--blue);text-decoration:none;}
-</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
 </head>
 <body>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <a class="back" href="/">← All Tools</a>
+  </div>
+</nav>
 
-<header>
-  <a href="/" class="logo">EkZapp</a>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/blog">Blog</a>
-    <a href="https://twitter.com/ekzapp" target="_blank">Twitter</a>
-  </nav>
+<header class="hero">
+  <div class="wrap-outer">
+    <div class="hero-badge">🔐 Free · Instant · No Signup</div>
+    <h1>Encode. Decode. Nothing leaves your browser.</h1>
+    <p>Convert text to and from Base64 or URL-safe format instantly — private by design, since nothing is ever uploaded.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><b>2</b><span>Modes: B64 & URL</span></div>
+      <div class="hero-stat"><b>2</b><span>Directions: En/Decode</span></div>
+      <div class="hero-stat"><b>Live</b><span>Auto-Convert</span></div>
+      <div class="hero-stat"><b>0</b><span>Signup</span></div>
+    </div>
+  </div>
 </header>
 
 <div class="container">
-  <div class="hero">
-    <h1>Base64 &amp; URL Encoder / Decoder</h1>
-    <p>Encode or decode text instantly — free, fast, and 100% private in your browser.</p>
-  </div>
+  <div class="wrap-outer">
 
-  <div class="card">
-    <div class="tabs">
-      <button id="tabBase64" class="active" onclick="switchTab('base64')">Base64</button>
-      <button id="tabUrl" onclick="switchTab('url')">URL</button>
-    </div>
-
-    <div class="mode-toggle">
-      <button id="modeEncode" class="active" onclick="setMode('encode')">Encode</button>
-      <button id="modeDecode" onclick="setMode('decode')">Decode</button>
-    </div>
-
-    <label class="label">Input</label>
-    <textarea id="inputText" placeholder="Type or paste text here..."></textarea>
-
-    <div class="btn-row">
-      <button class="btn" onclick="process()">⚡ Convert</button>
-      <button class="btn secondary" onclick="swapAndCopy()">🔁 Swap Result to Input</button>
-      <button class="btn secondary" onclick="clearAll()">🗑️ Clear</button>
-    </div>
-    <div id="errorMsg" class="error-msg"></div>
-
-    <label class="label">Output</label>
-    <textarea id="outputText" placeholder="Result will appear here..." readonly></textarea>
-
-    <div class="btn-row">
-      <button class="btn secondary" onclick="copyOutput()">📋 Copy Output</button>
-    </div>
-  </div>
-
-  <section class="faq">
-    <h2>How to Use This Tool</h2>
-    <details class="accordion" open>
-      <summary>Step-by-step guide <span>+</span></summary>
-      <p>
-        1. Choose the <strong>Base64</strong> or <strong>URL</strong> tab depending on what you want to convert.<br>
-        2. Select <strong>Encode</strong> or <strong>Decode</strong> mode.<br>
-        3. Type or paste your text into the Input box — the Output updates automatically.<br>
-        4. Click <strong>Copy Output</strong> to copy the result to your clipboard.<br>
-        5. Use <strong>Swap Result to Input</strong> to instantly reverse the conversion (e.g. check that decoding gives back your original text).
+    <div class="tool-section wrap-narrow">
+      <p class="intro-copy">
+        EkZapp's free Base64 & URL Encoder/Decoder converts text between plain form and Base64 or URL-encoded format instantly as you type — no signup, and nothing you enter ever leaves your browser. Choose the Base64 or URL tab, pick Encode or Decode, and start typing; the output updates live with every keystroke.
       </p>
-    </details>
-  </section>
+      <p class="intro-copy">
+        A common situation this solves: an API returns a Base64-encoded string, a JWT token, or an image data URI, and you need to see what it actually contains. Rather than writing a script or opening a code console, you paste it here, switch to Decode mode, and read the plain result instantly — or go the other direction, encoding a string before embedding it in a config file or URL parameter.
+      </p>
+      <p class="intro-copy">
+        Everything runs client-side using your browser's built-in <span class="mono">btoa</span>/<span class="mono">atob</span> and <span class="mono">encodeURIComponent</span>/<span class="mono">decodeURIComponent</span> functions. <strong>Nothing you type is uploaded to a server</strong> — conversion happens the instant you stop typing, with no delay and no risk of sensitive strings being logged anywhere.
+      </p>
+      <p class="intro-copy">
+        The <strong>Swap Result to Input</strong> button is built specifically for verification — after encoding something, click it to instantly move the result back into the input box with the mode flipped to Decode, confirming the round trip gives back exactly what you started with.
+      </p>
+    </div>
 
-  <section class="faq">
-    <h2>Frequently Asked Questions</h2>
-    <details class="accordion" open>
-      <summary>What is Base64 encoding used for? <span>+</span></summary>
-      <p>Base64 encoding converts binary data or text into ASCII characters. It's commonly used to embed images directly in HTML/CSS, send data in JSON/XML APIs, or safely transmit data over text-based protocols like email.</p>
-    </details>
-    <details class="accordion">
-      <summary>Why do I need to URL encode a string?</summary>
-      <p>URL encoding (also called percent-encoding) converts special characters like spaces, &amp;, and ? into a safe format for URLs, preventing broken links and query string errors.</p>
-    </details>
-    <details class="accordion">
-      <summary>Is my data safe using this tool?</summary>
-      <p>Yes — all encoding and decoding happens locally in your browser using JavaScript. Nothing is ever uploaded to our servers.</p>
-    </details>
-    <details class="accordion">
-      <summary>What happens if I try to decode invalid Base64?</summary>
-      <p>The tool will show an error message letting you know the input isn't valid Base64, so you can double-check your text before converting.</p>
-    </details>
-  </section>
+    <div class="wrap-narrow">
+      <div class="card">
+        <div class="tabs">
+          <button id="tabBase64" class="active" onclick="switchTab('base64')">Base64</button>
+          <button id="tabUrl" onclick="switchTab('url')">URL</button>
+        </div>
+
+        <div class="mode-toggle">
+          <button id="modeEncode" class="active" onclick="setMode('encode')">Encode</button>
+          <button id="modeDecode" onclick="setMode('decode')">Decode</button>
+        </div>
+
+        <label class="label">Input</label>
+        <textarea id="inputText" placeholder="Type or paste text here..."></textarea>
+
+        <div class="btn-row">
+          <button class="btn" onclick="process()">⚡ Convert</button>
+          <button class="btn secondary" onclick="swapAndCopy()">🔁 Swap Result to Input</button>
+          <button class="btn secondary" onclick="clearAll()">🗑️ Clear</button>
+        </div>
+        <div id="errorMsg" class="error-msg"></div>
+
+        <label class="label">Output</label>
+        <textarea id="outputText" placeholder="Result will appear here..." readonly></textarea>
+
+        <div class="btn-row">
+          <button class="btn secondary" onclick="copyOutput()">📋 Copy Output</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature grid -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Why this one</div>
+        <h2>Built for speed and privacy</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+          <h3>Live Auto-Convert</h3>
+          <p>The output updates as you type — no button required for the conversion itself, though one's there if you prefer it.</p>
+        </div>
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4z"/></svg>
+          <h3>Nothing Ever Uploaded</h3>
+          <p>Encoding and decoding both run using your browser's own JavaScript engine — no network request is made at all.</p>
+        </div>
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 8-8M20 12a8 8 0 0 1-8 8"/><path d="m8 4-4 0 0 4M16 20l4 0 0-4"/></svg>
+          <h3>One-Click Round-Trip Check</h3>
+          <p>Swap Result to Input flips the mode and reloads the output, so you can instantly verify a decode matches the original.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scenario cards -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Made for</div>
+        <h2>Wherever encoding comes up</h2>
+      </div>
+      <div class="scenario-grid">
+        <div class="scenario-card">
+          <span class="scenario-emoji">💻</span>
+          <h3>API Developers</h3>
+          <p>Decode a Base64 payload, JWT segment, or auth token to inspect its actual content while debugging.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🌐</span>
+          <h3>Web Developers</h3>
+          <p>URL-encode query parameters containing spaces or special characters before building a link.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🖼️</span>
+          <h3>Embedding Images</h3>
+          <p>Convert a small image or icon into a Base64 data URI to embed directly in CSS or HTML without a separate file request.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">📧</span>
+          <h3>Email & Attachment Systems</h3>
+          <p>Inspect Base64-encoded attachment content that some email protocols use to transmit binary data as text.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🔧</span>
+          <h3>Config & Env Variables</h3>
+          <p>Encode a secret or config value into Base64 before storing it in an environment variable or CI/CD pipeline.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🧪</span>
+          <h3>QA & Debugging</h3>
+          <p>Quickly decode an encoded string found in logs or network requests to understand what data is actually being sent.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">📚</span>
+          <h3>Students Learning Encoding</h3>
+          <p>Experiment with encoding and decoding to understand the difference between Base64 and URL encoding hands-on.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🔗</span>
+          <h3>Sharing Links</h3>
+          <p>URL-encode text containing symbols or non-English characters before appending it as a query parameter in a shared link.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comparison -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Comparison</div>
+        <h2>EkZapp vs. a browser console script</h2>
+      </div>
+      <div class="compare-wrap">
+        <table class="compare">
+          <tr><th>Task</th><th class="hl">EkZapp Encoder/Decoder</th><th>Browser dev console</th></tr>
+          <tr><td>Setup required</td><td class="hl"><span class="tick">✓ None</span></td><td>Open dev tools, type a command</td></tr>
+          <tr><td>Handles Unicode/emoji safely</td><td class="hl"><span class="tick">✓ Built in</span></td><td>Requires extra encodeURIComponent wrapping</td></tr>
+          <tr><td>Round-trip verification</td><td class="hl"><span class="tick">✓ One click (Swap)</span></td><td>Manual, type it again</td></tr>
+          <tr><td>Works on mobile</td><td class="hl"><span class="tick">✓ Yes</span></td><td>Dev console rarely available</td></tr>
+          <tr><td>Cost</td><td class="hl"><span class="tick">✓ Free</span></td><td>Free, but requires dev familiarity</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Guide -->
+    <div class="wrap-narrow guide-section">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">Guide</div>
+        <h2>How to use the encoder/decoder</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Choose Base64 or URL</h3><p>Pick the tab depending on what you want to convert — Base64 for binary/text encoding, URL for query-string-safe text.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Select Encode or Decode</h3><p>Choose whether you're converting plain text into the encoded format, or an encoded string back to plain text.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Type or Paste Your Text</h3><p>The Output box updates automatically as you type — no need to click Convert unless you prefer to trigger it manually.</p></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Copy or Verify</h3><p>Click Copy Output to copy the result, or Swap Result to Input to instantly check that decoding gives back your original text.</p></div></div>
+      </div>
+    </div>
+
+    <!-- Base64 vs URL encoding explained -->
+    <div class="wrap-narrow">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">Reference</div>
+        <h2>Base64 vs. URL encoding</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">A</div>
+          <div class="step-body"><h3>Base64</h3><p>Re-encodes the entire input into a set of 64 safe ASCII characters (A-Z, a-z, 0-9, +, /) — commonly used for embedding binary data like images or files as text.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">B</div>
+          <div class="step-body"><h3>URL Encoding</h3><p>Leaves most characters unchanged and replaces only unsafe ones (spaces, &, ?, #, etc.) with a percent sign followed by a hex code — used for safely including text in a URL.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">C</div>
+          <div class="step-body"><h3>When to Use Which</h3><p>Use URL encoding for anything going into a link or query parameter; use Base64 for binary data, tokens, or when a system specifically expects Base64 input.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Security caution -->
+    <div class="wrap-narrow">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">Good to know</div>
+        <h2>Encoding is not encryption</h2>
+      </div>
+      <p class="intro-copy" style="padding-top:0">
+        It's a common misconception that Base64 hides or protects data — it doesn't. Base64 is a reversible, publicly documented encoding scheme with no key or password involved; anyone who copies a Base64 string can decode it back to the original text in seconds using any of thousands of free tools, including this one. If you've ever seen a password or API key "obfuscated" as a Base64 string in a config file, that's worth flagging — it provides no real protection at all.
+      </p>
+      <p class="intro-copy">
+        The actual purpose of Base64 is representation, not protection: it exists to safely carry binary data (like an image file or a cryptographic signature) through systems that only handle plain text, such as email, JSON, or XML. It solves a compatibility problem, not a security problem — the data is exactly as visible after encoding as before, just represented using a different, text-safe character set.
+      </p>
+      <p class="intro-copy">
+        For anything that actually needs to stay confidential — passwords, API secrets, personal data — proper encryption (with a real key that only authorized parties hold) is the correct tool, not Base64 or URL encoding. This tool is well suited for its intended purpose of format conversion and inspection, but it should never be treated as a way to secure sensitive information.
+      </p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="wrap-narrow faq-section">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">FAQ</div>
+        <h2>Frequently asked questions</h2>
+      </div>
+      <details class="faq-item"><summary>What is Base64 encoding used for?</summary><div class="faq-a">Base64 encoding converts binary data or text into ASCII characters, commonly used to embed images in HTML/CSS, send data in JSON/XML APIs, or safely transmit data over text-based protocols like email.</div></details>
+      <details class="faq-item"><summary>Why do I need to URL encode a string?</summary><div class="faq-a">URL encoding (percent-encoding) converts special characters like spaces, &, and ? into a safe format for URLs, preventing broken links and query string errors.</div></details>
+      <details class="faq-item"><summary>Is my data safe using this tool?</summary><div class="faq-a">Yes, all encoding and decoding happens locally in your browser using JavaScript — nothing is ever uploaded to a server.</div></details>
+      <details class="faq-item"><summary>What happens if I try to decode invalid Base64?</summary><div class="faq-a">The tool shows an error message letting you know the input isn't valid Base64, so you can double-check your text before converting.</div></details>
+      <details class="faq-item"><summary>Is Base64 the same as encryption?</summary><div class="faq-a">No. Base64 is an encoding scheme, not encryption — anyone can decode it back to the original text instantly, so it should never be used to protect sensitive information.</div></details>
+      <details class="faq-item"><summary>Why does Base64 output look longer than the original text?</summary><div class="faq-a">Base64 represents every 3 bytes of input as 4 output characters, which increases the size by roughly 33% — a necessary tradeoff for safely representing binary data as plain text.</div></details>
+      <details class="faq-item"><summary>What's the difference between URL encoding and Base64 encoding?</summary><div class="faq-a">URL encoding replaces specific unsafe characters with percent-escaped codes while leaving most text unchanged; Base64 re-encodes the entire input into a completely different character set, regardless of what the original characters were.</div></details>
+      <details class="faq-item"><summary>Can I use this tool to encode emojis or non-English text?</summary><div class="faq-a">Yes, both Base64 and URL encoding here handle Unicode text correctly, including emojis and non-Latin scripts, thanks to the UTF-8 conversion step built into the encoding process.</div></details>
+      <details class="faq-item"><summary>What does the "Swap Result to Input" button do?</summary><div class="faq-a">It moves the current output into the input box and switches the mode (encode to decode, or decode to encode), which is a quick way to verify a round-trip conversion gives back the original text.</div></details>
+      <details class="faq-item"><summary>Why would I URL encode something that's going into JSON, not a URL?</summary><div class="faq-a">You generally wouldn't — URL encoding is specifically for characters unsafe in a URL; JSON has its own string escaping rules, so this tool's URL mode is intended for query strings and URL parameters, not JSON payloads.</div></details>
+      <details class="faq-item"><summary>Does this tool work offline?</summary><div class="faq-a">Once the page has loaded, encoding and decoding run entirely in your browser's JavaScript engine, so the tool continues to function even without an active internet connection.</div></details>
+      <details class="faq-item"><summary>Is this tool free?</summary><div class="faq-a">Yes, completely free. No signup required, and there's no limit on how many times you can use it.</div></details>
+    </div>
+
+    <!-- Why free -->
+    <div class="wrap-narrow">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">About this tool</div>
+        <h2>Why it's free, and how it stays that way</h2>
+      </div>
+      <p class="intro-copy" style="padding-top:0">
+        The Base64 & URL Encoder is one of more than fifty free tools on EkZapp, sitting alongside a JSON Formatter, Color Picker, and other developer utilities. Because encoding and decoding run entirely as JavaScript in your browser using built-in functions, there's no server processing cost involved — the page loads once, and every conversion afterward is essentially free to run, which is exactly why the tool carries no usage limit or paywall.
+      </p>
+      <p class="intro-copy">
+        This kind of utility tends to get opened for a quick check in the middle of debugging something else — a token decoded, a string encoded, then straight back to the actual code. That's part of why the page stays a single screen with no extra steps: pick a tab and mode, type or paste, and read the result.
+      </p>
+      <p class="intro-copy">
+        It also means there's very little that can go wrong. There's no account to lose access to, no history of past conversions saved anywhere, and no settings menu to configure before the tool does what you need. Every visit starts from the same default state, which keeps the tool predictable whether you use it once a year or several times a day.
+      </p>
+    </div>
+
+    <!-- Related tools -->
+    <div class="related-banner">
+      <h3>Other developer tools</h3>
+      <div class="tools-row">
+        <a class="tool-mini" href="/json-formatter"><span>🔧 JSON Formatter</span></a>
+        <a class="tool-mini" href="/color-picker"><span>🎨 Color Picker</span></a>
+        <a class="tool-mini" href="/word-counter"><span>🔢 Word Counter</span></a>
+      </div>
+    </div>
+
+  </div>
 </div>
-
-<footer>
-  © 2026 EkZapp. All rights reserved. | <a href="/">More free tools</a>
-</footer>
 
 <script>
 let currentTab = 'base64';
@@ -293,6 +510,5 @@ function copyOutput(){
 
 document.getElementById('inputText').addEventListener('input', process);
 </script>
-
 </body>
 </html>

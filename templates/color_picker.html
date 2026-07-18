@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VW5QLMV046"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VW5QLMV046');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Color Picker — HEX to RGB, RGB to HEX Converter Free | EkZapp</title>
@@ -8,12 +16,146 @@
 <meta name="keywords" content="color picker, hex to rgb, rgb to hex, color converter, hex color code, color code picker online">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://ekzapp.com/color-picker">
-<meta property="og:title" content="Color Picker — HEX to RGB Converter — EkZapp">
-<meta property="og:description" content="Free online color picker. Convert HEX to RGB, RGB to HEX instantly.">
+<meta property="og:title" content="Color Picker — HEX to RGB Converter | EkZapp">
+<meta property="og:description" content="Free online color picker. Convert HEX to RGB, RGB to HEX, HSL instantly.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ekzapp.com/color-picker">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2563EB;--blue-dk:#1D4ED8;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--cream:#F0F5FF;--teal:#0D9488;--violet:#7C3AED}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
+.logo-text span{color:var(--blue)}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.back:hover{border-color:var(--blue);color:var(--blue)}
+
+.wrap-outer{max-width:960px;margin:0 auto;padding:0 20px}
+.wrap-narrow{max-width:680px;margin:0 auto}
+.wrap-wide{max-width:900px;margin:0 auto}
+
+.hero{position:relative;overflow:hidden;padding:52px 20px 60px;text-align:center;
+  background:linear-gradient(125deg,#0F172A,#7C3AED 55%,#DB2777);
+  background-size:200% 200%;animation:heroShift 15s ease infinite;color:white}
+@keyframes heroShift{0%{background-position:0% 30%}50%{background-position:100% 70%}100%{background-position:0% 30%}}
+.hero::before{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle at 12% 20%,rgba(255,255,255,.09) 0,transparent 42%),
+                    radial-gradient(circle at 88% 80%,rgba(255,255,255,.09) 0,transparent 42%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.25);padding:6px 14px;border-radius:999px;font-size:12px;
+  font-weight:600;margin-bottom:18px;backdrop-filter:blur(4px)}
+.hero h1{font-family:'JetBrains Mono',monospace;font-size:1.85rem;line-height:1.35;margin-bottom:14px;text-shadow:0 2px 14px rgba(0,0,0,.2)}
+.hero p{max-width:520px;margin:0 auto;font-size:15px;line-height:1.65;color:rgba(255,255,255,.85)}
+.hero-stats{display:flex;justify-content:center;gap:28px;margin-top:26px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat b{display:block;font-size:1.4rem;font-weight:800}
+.hero-stat span{font-size:11px;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.03em}
+
+.container{padding:0 20px 60px}
+.tool-section{margin-top:-30px;position:relative;z-index:2}
+.intro-copy{padding:32px 4px 0;color:var(--gray);font-size:13.5px;line-height:1.75;text-align:left;margin-bottom:16px}
+.intro-copy strong{color:var(--ink)}
+
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 10px 30px -12px rgba(17,24,39,.15);margin-bottom:20px}
+.card-title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:20px}
+.color-preview{width:100%;height:150px;border-radius:12px;margin-bottom:20px;transition:background .2s;border:1px solid var(--border)}
+.color-picker-wrap{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.native-picker{width:64px;height:64px;border:none;border-radius:10px;cursor:pointer;padding:0;background:none}
+.picker-label{font-size:13px;color:var(--gray)}
+
+.code-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+.code-box{background:var(--light);border:1.5px solid var(--border);border-radius:10px;padding:14px 16px}
+.code-label{font-size:10px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.code-val{font-size:15px;font-weight:700;color:var(--ink);font-family:'JetBrains Mono',monospace;margin-bottom:8px;word-break:break-all}
+.copy-btn{padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--white);color:var(--gray);font-family:'Inter',sans-serif;transition:all .15s}
+.copy-btn:hover{border-color:var(--violet);color:var(--violet)}
+.copy-btn.copied{background:var(--violet);color:white;border-color:var(--violet)}
+
+.input-section{margin-top:4px}
+.input-tabs{display:flex;gap:6px;margin-bottom:14px}
+.itab{padding:7px 14px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;border:1.5px solid var(--border);background:var(--white);color:var(--gray);font-family:'Inter',sans-serif}
+.itab.active{border-color:var(--violet);background:#F5F0FF;color:var(--violet)}
+.input-row{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
+.inp-group{flex:1;min-width:90px}
+.inp-label{font-size:11px;font-weight:600;color:var(--gray);margin-bottom:5px;display:block;text-transform:uppercase}
+.inp{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;color:var(--ink);outline:none;transition:border .15s}
+.inp:focus{border-color:var(--violet)}
+.btn-convert{padding:10px 18px;background:var(--violet);color:white;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap}
+.btn-convert:hover{background:#6D28D9}
+
+.palette-title{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:12px}
+.palette-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.palette-item{cursor:pointer;border-radius:8px;overflow:hidden;border:2px solid transparent;transition:all .15s}
+.palette-item:hover{border-color:var(--violet);transform:scale(1.05)}
+.palette-color{height:40px}
+.palette-hex{font-size:9px;font-weight:600;color:var(--gray);text-align:center;padding:3px 0;background:var(--light)}
+
+.sec-head{text-align:center;margin:56px 0 28px}
+.sec-eyebrow{font-size:11px;font-weight:700;color:var(--teal);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.sec-head h2{font-size:1.5rem;font-weight:800;letter-spacing:-.01em}
+.sec-head p{color:var(--gray);font-size:13.5px;margin-top:8px;max-width:520px;margin-left:auto;margin-right:auto}
+
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feature-card{background:white;border:1px solid var(--border);border-radius:14px;padding:22px 18px;text-align:left}
+.feature-card svg{width:34px;height:34px;margin-bottom:12px;stroke:var(--teal)}
+.feature-card h3{font-size:14px;font-weight:700;margin-bottom:6px}
+.feature-card p{font-size:12.5px;color:var(--gray);line-height:1.6}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.scenario-card{background:linear-gradient(155deg,#fff,#FAFAFB);border:1px solid var(--border);border-radius:14px;padding:20px}
+.scenario-emoji{font-size:1.6rem;margin-bottom:10px;display:block}
+.scenario-card h3{font-size:13.5px;font-weight:700;margin-bottom:5px}
+.scenario-card p{font-size:12.5px;color:var(--gray);line-height:1.6}
+
+.compare-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:14px;background:white}
+table.compare{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
+table.compare th,table.compare td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--border)}
+table.compare th{font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--gray);background:var(--light)}
+table.compare th.hl{color:var(--teal)}
+table.compare td.hl{font-weight:700;color:var(--teal)}
+table.compare tr:last-child td{border-bottom:none}
+.tick{color:#059669;font-weight:800}
+.cross{color:#DC2626;font-weight:800}
+.mono{font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--light);padding:2px 6px;border-radius:4px}
+
+.guide-section{margin-top:56px}
+.steps{display:flex;flex-direction:column;gap:16px}
+.step{display:flex;gap:14px;align-items:flex-start;background:white;border:1px solid var(--border);border-radius:12px;padding:16px}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--teal);color:white;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-body h3{font-size:13px;font-weight:600;margin-bottom:3px}
+.step-body p{font-size:12.5px;color:var(--gray);line-height:1.5}
+
+.faq-section{margin-top:56px}
+details.faq-item{background:white;border:1px solid var(--border);border-radius:12px;padding:4px 18px;margin-bottom:10px}
+details.faq-item summary{list-style:none;cursor:pointer;padding:14px 0;font-size:13.5px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:10px}
+details.faq-item summary::-webkit-details-marker{display:none}
+details.faq-item summary::after{content:"+";font-size:18px;color:var(--teal);font-weight:700;flex-shrink:0}
+details.faq-item[open] summary::after{content:"–"}
+details.faq-item .faq-a{font-size:12.5px;color:var(--gray);line-height:1.6;padding-bottom:16px}
+
+.related-banner{margin-top:56px;border-radius:18px;padding:30px 26px;
+  background:linear-gradient(120deg,#0F172A,#7C3AED 60%,#DB2777);color:white}
+.related-banner h3{font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:16px}
+.tools-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tool-mini{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:14px;text-decoration:none;color:white;display:flex;align-items:center;gap:10px;transition:background .15s}
+.tool-mini:hover{background:rgba(255,255,255,.16)}
+.tool-mini span{font-size:13px;font-weight:600}
+
+@media(max-width:680px){
+  .hero h1{font-size:1.4rem}
+  .code-grid{grid-template-columns:1fr}
+  .palette-grid{grid-template-columns:repeat(4,1fr)}
+  .input-row{flex-direction:column;align-items:stretch}
+  .feature-grid{grid-template-columns:1fr}
+  .scenario-grid{grid-template-columns:1fr}
+  .tools-row{grid-template-columns:1fr}
+  .hero-stats{gap:18px}
+}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -21,205 +163,335 @@
   "name": "Color Picker — HEX to RGB Converter",
   "url": "https://ekzapp.com/color-picker",
   "description": "Free online color picker. Convert HEX to RGB, RGB to HEX, HSL instantly.",
-  "applicationCategory": "UtilityApplication",
+  "applicationCategory": "DeveloperApplication",
   "operatingSystem": "Web",
   "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
 }
 </script>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --blue:#2563EB;--blue-dk:#1D4ED8;--blue-lt:#EFF6FF;
-  --ink:#111827;--gray:#4B5563;--light:#F9FAFB;--border:#E5E7EB;
-  --white:#fff;--cream:#F0F5FF;--r:10px;
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What is a HEX color code?","acceptedAnswer":{"@type":"Answer","text":"HEX color codes are 6-digit codes starting with # that represent colors using base-16 values for red, green, and blue — for example, #2563EB is a shade of blue."}},
+    {"@type":"Question","name":"What is RGB color?","acceptedAnswer":{"@type":"Answer","text":"RGB stands for Red, Green, Blue. Each value ranges from 0-255 and represents the intensity of that color channel — rgb(37, 99, 235) is the same blue as #2563EB."}},
+    {"@type":"Question","name":"What is HSL color?","acceptedAnswer":{"@type":"Answer","text":"HSL stands for Hue, Saturation, and Lightness. It's often more intuitive for designers since brightness and saturation can be adjusted independently of the base hue."}},
+    {"@type":"Question","name":"Which color format should I use in CSS?","acceptedAnswer":{"@type":"Answer","text":"All three formats work in CSS. HEX is the most commonly used for static colors, RGB (or RGBA) is useful when you need transparency, and HSL is convenient for programmatically adjusting lightness or saturation."}},
+    {"@type":"Question","name":"Is my color data sent anywhere?","acceptedAnswer":{"@type":"Answer","text":"No, all color conversion happens locally in your browser using JavaScript — nothing is sent to a server, since there's no actual data to upload beyond a color value."}},
+    {"@type":"Question","name":"Can I convert a color I already have as RGB values?","acceptedAnswer":{"@type":"Answer","text":"Yes, switch to the RGB Input tab, enter the R, G, and B values (0-255 each), and click Convert to see the matching HEX, HSL, and CSS variable output."}},
+    {"@type":"Question","name":"What does the CSS Variable box give me?","acceptedAnswer":{"@type":"Answer","text":"It formats the current color as a ready-to-paste CSS custom property declaration, like --color: #2563EB;, for use in a stylesheet's :root block."}},
+    {"@type":"Question","name":"Why does my HEX code need exactly 6 digits?","acceptedAnswer":{"@type":"Answer","text":"Standard HEX codes use two digits each for red, green, and blue (6 digits total); a 3-digit shorthand like #FFF is also valid CSS shorthand but this tool expects the full 6-digit form for manual input."}},
+    {"@type":"Question","name":"Can I pick a color visually instead of typing a code?","acceptedAnswer":{"@type":"Answer","text":"Yes, click the color swatch to open your browser or operating system's native color picker and choose any color visually — all codes update instantly."}},
+    {"@type":"Question","name":"What are the popular web colors shown below the picker?","acceptedAnswer":{"@type":"Answer","text":"They're a curated palette of commonly used web design colors — click any swatch to instantly load that color and see its HEX, RGB, HSL, and CSS variable codes."}},
+    {"@type":"Question","name":"Does this tool check color contrast or accessibility?","acceptedAnswer":{"@type":"Answer","text":"Not currently — this tool focuses on converting between color formats; checking contrast ratios against WCAG guidelines would require a separate dedicated contrast checker."}},
+    {"@type":"Question","name":"Is this tool free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free. No signup required, and there's no limit on how many colors you can convert."}}
+  ]
 }
-body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--white);font-size:14px;-webkit-font-smoothing:antialiased;}
-nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;height:54px;}
-.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px;}
-.logo{text-decoration:none;display:flex;align-items:center;gap:8px;}
-.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800;}
-.logo-text{font-size:15px;font-weight:700;color:var(--ink)}.logo-text span{color:var(--blue)}
-.nav-back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;}
-.nav-back:hover{color:var(--ink)}
-.hero{background:linear-gradient(135deg,#7C3AED 0%,#9333EA 100%);padding:48px 20px 40px;text-align:center;}
-.hero h1{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;color:white;margin-bottom:10px;}
-.hero p{color:rgba(255,255,255,.85);font-size:15px;}
-.main{max-width:800px;margin:0 auto;padding:36px 20px 60px;}
-.card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.06);margin-bottom:24px;}
-.card-title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:20px;}
-
-/* Color Preview */
-.color-preview{width:100%;height:160px;border-radius:12px;margin-bottom:20px;transition:background .2s;border:1px solid var(--border);}
-.color-picker-wrap{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
-.native-picker{width:64px;height:64px;border:none;border-radius:10px;cursor:pointer;padding:0;background:none;}
-.picker-label{font-size:13px;color:var(--gray);}
-
-/* Code boxes */
-.code-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;}
-.code-box{background:var(--light);border:1.5px solid var(--border);border-radius:10px;padding:14px 16px;}
-.code-label{font-size:10px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;}
-.code-val{font-size:16px;font-weight:700;color:var(--ink);font-family:'Courier New',monospace;margin-bottom:8px;}
-.copy-btn{padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--white);color:var(--gray);font-family:'Inter',sans-serif;transition:all .15s;}
-.copy-btn:hover{border-color:var(--blue);color:var(--blue)}
-.copy-btn.copied{background:var(--blue);color:white;border-color:var(--blue)}
-
-/* Manual input */
-.input-section{margin-top:4px;}
-.input-tabs{display:flex;gap:6px;margin-bottom:14px;}
-.itab{padding:7px 14px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;border:1.5px solid var(--border);background:var(--white);color:var(--gray);font-family:'Inter',sans-serif;}
-.itab.active{border-color:var(--blue);background:var(--blue-lt);color:var(--blue);}
-.input-row{display:flex;gap:10px;align-items:flex-end;}
-.inp-group{flex:1;}
-.inp-label{font-size:11px;font-weight:600;color:var(--gray);margin-bottom:5px;display:block;text-transform:uppercase;}
-.inp{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;color:var(--ink);outline:none;}
-.inp:focus{border-color:var(--blue);}
-.btn-convert{padding:10px 18px;background:var(--blue);color:white;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;}
-.btn-convert:hover{background:var(--blue-dk)}
-
-/* Palette */
-.palette-title{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:12px;}
-.palette-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;}
-.palette-item{cursor:pointer;border-radius:8px;overflow:hidden;border:2px solid transparent;transition:all .15s;}
-.palette-item:hover{border-color:var(--blue);transform:scale(1.05);}
-.palette-color{height:40px;}
-.palette-hex{font-size:9px;font-weight:600;color:var(--gray);text-align:center;padding:3px 0;background:var(--light);}
-
-.how-section{background:var(--cream);border-radius:16px;padding:24px;margin-bottom:24px;}
-.how-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:12px;}
-.faq-item{border-bottom:1px solid var(--border);padding:14px 0;}
-.faq-q{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px;}
-.faq-a{font-size:13px;color:var(--gray);line-height:1.6;}
-footer{background:#1F2937;padding:24px 20px;text-align:center;}
-.f-bottom{color:rgba(255,255,255,.4);font-size:12px;}
-.f-bottom a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 8px;}
-.f-bottom a:hover{color:white}
-@media(max-width:560px){
-  .code-grid{grid-template-columns:1fr;}
-  .palette-grid{grid-template-columns:repeat(4,1fr);}
-  .input-row{flex-direction:column;}
-}
-</style>
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
 </head>
 <body>
 <nav>
   <div class="nav-inner">
     <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
-    <a class="nav-back" href="/">← All Tools</a>
+    <a class="back" href="/">← All Tools</a>
   </div>
 </nav>
 
 <header class="hero">
-  <h1>🎨 Color Picker</h1>
-  <p>HEX ↔ RGB ↔ HSL Color Converter — Free Online Tool</p>
+  <div class="wrap-outer">
+    <div class="hero-badge">🎨 Free · Instant · No Signup</div>
+    <h1>HEX. RGB. HSL. One color, every format.</h1>
+    <p>Pick a color or type a code and get HEX, RGB, HSL, and a ready-to-paste CSS variable, all at once.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><b>4</b><span>Formats at Once</span></div>
+      <div class="hero-stat"><b>24</b><span>Preset Colors</span></div>
+      <div class="hero-stat"><b>1-tap</b><span>Copy</span></div>
+      <div class="hero-stat"><b>0</b><span>Signup</span></div>
+    </div>
+  </div>
 </header>
 
-<main class="main">
+<div class="container">
+  <div class="wrap-outer">
 
-  <div class="card">
-    <div class="card-title">Pick a Color</div>
-
-    <div class="color-preview" id="colorPreview" style="background:#2563EB;"></div>
-
-    <div class="color-picker-wrap">
-      <input type="color" class="native-picker" id="nativePicker" value="#2563EB" oninput="onPickerChange(this.value)">
-      <div class="picker-label">Click the color box to open the color picker 👈</div>
+    <div class="tool-section wrap-narrow">
+      <p class="intro-copy">
+        EkZapp's free Color Picker converts any color between HEX, RGB, HSL, and a ready-to-use CSS variable, all updating together instantly. Click the color swatch to open your browser's native color picker, type a HEX code or RGB values directly, or click any swatch from a curated palette of popular web colors — every format updates the moment you change the color.
+      </p>
+      <p class="intro-copy">
+        A common situation this solves: a designer hands you a color as a HEX code, but the codebase you're working in expects RGBA for transparency, or a design tool wants HSL for easy lightness adjustments. Rather than doing the math by hand or searching for a converter formula, you paste the code here and instantly see it translated into every format you might need.
+      </p>
+      <p class="intro-copy">
+        Everything runs client-side using plain JavaScript. <strong>Nothing about the color you pick is sent anywhere</strong> — the conversion math (HEX to RGB, RGB to HSL, and back) happens locally the instant you interact with the tool, which is why every value updates in real time with no lag.
+      </p>
+      <p class="intro-copy">
+        Beyond one-off conversions, the tool includes a palette of commonly used web design colors you can click to load instantly, plus a formatted CSS custom property you can paste directly into a stylesheet's <span class="mono">:root</span> block — covering both the exploratory "what does this color look like in other formats" use case and the practical "I need this in my CSS right now" use case.
+      </p>
     </div>
 
-    <div class="code-grid">
-      <div class="code-box">
-        <div class="code-label">HEX</div>
-        <div class="code-val" id="hexVal">#2563EB</div>
-        <button class="copy-btn" onclick="copyCode('hexVal', this)">Copy HEX</button>
-      </div>
-      <div class="code-box">
-        <div class="code-label">RGB</div>
-        <div class="code-val" id="rgbVal">rgb(37, 99, 235)</div>
-        <button class="copy-btn" onclick="copyCode('rgbVal', this)">Copy RGB</button>
-      </div>
-      <div class="code-box">
-        <div class="code-label">HSL</div>
-        <div class="code-val" id="hslVal">hsl(221, 83%, 53%)</div>
-        <button class="copy-btn" onclick="copyCode('hslVal', this)">Copy HSL</button>
-      </div>
-      <div class="code-box">
-        <div class="code-label">CSS Variable</div>
-        <div class="code-val" id="cssVal">--color: #2563EB;</div>
-        <button class="copy-btn" onclick="copyCode('cssVal', this)">Copy CSS</button>
-      </div>
-    </div>
+    <div class="wrap-narrow">
+      <div class="card">
+        <div class="card-title">Pick a Color</div>
 
-    <!-- Manual Convert -->
-    <div class="input-section">
-      <div class="input-tabs">
-        <button class="itab active" onclick="setInputMode('hex')" id="iTabHex">HEX Input</button>
-        <button class="itab" onclick="setInputMode('rgb')" id="iTabRgb">RGB Input</button>
-      </div>
+        <div class="color-preview" id="colorPreview" style="background:#2563EB;"></div>
 
-      <div id="hexInputWrap" class="input-row">
-        <div class="inp-group">
-          <label class="inp-label">HEX Color Code</label>
-          <input class="inp" id="hexInput" placeholder="#2563EB" maxlength="7">
+        <div class="color-picker-wrap">
+          <input type="color" class="native-picker" id="nativePicker" value="#2563EB" oninput="onPickerChange(this.value)">
+          <div class="picker-label">Click the color box to open the color picker 👈</div>
         </div>
-        <button class="btn-convert" onclick="convertHex()">Convert →</button>
+
+        <div class="code-grid">
+          <div class="code-box">
+            <div class="code-label">HEX</div>
+            <div class="code-val" id="hexVal">#2563EB</div>
+            <button class="copy-btn" onclick="copyCode('hexVal', this)">Copy HEX</button>
+          </div>
+          <div class="code-box">
+            <div class="code-label">RGB</div>
+            <div class="code-val" id="rgbVal">rgb(37, 99, 235)</div>
+            <button class="copy-btn" onclick="copyCode('rgbVal', this)">Copy RGB</button>
+          </div>
+          <div class="code-box">
+            <div class="code-label">HSL</div>
+            <div class="code-val" id="hslVal">hsl(221, 83%, 53%)</div>
+            <button class="copy-btn" onclick="copyCode('hslVal', this)">Copy HSL</button>
+          </div>
+          <div class="code-box">
+            <div class="code-label">CSS Variable</div>
+            <div class="code-val" id="cssVal">--color: #2563EB;</div>
+            <button class="copy-btn" onclick="copyCode('cssVal', this)">Copy CSS</button>
+          </div>
+        </div>
+
+        <div class="input-section">
+          <div class="input-tabs">
+            <button class="itab active" onclick="setInputMode('hex')" id="iTabHex">HEX Input</button>
+            <button class="itab" onclick="setInputMode('rgb')" id="iTabRgb">RGB Input</button>
+          </div>
+
+          <div id="hexInputWrap" class="input-row">
+            <div class="inp-group">
+              <label class="inp-label">HEX Color Code</label>
+              <input class="inp" id="hexInput" placeholder="#2563EB" maxlength="7">
+            </div>
+            <button class="btn-convert" onclick="convertHex()">Convert →</button>
+          </div>
+
+          <div id="rgbInputWrap" class="input-row" style="display:none;">
+            <div class="inp-group"><label class="inp-label">R (0-255)</label><input class="inp" id="rInput" type="number" min="0" max="255" placeholder="37"></div>
+            <div class="inp-group"><label class="inp-label">G (0-255)</label><input class="inp" id="gInput" type="number" min="0" max="255" placeholder="99"></div>
+            <div class="inp-group"><label class="inp-label">B (0-255)</label><input class="inp" id="bInput" type="number" min="0" max="255" placeholder="235"></div>
+            <button class="btn-convert" onclick="convertRGB()">Convert →</button>
+          </div>
+        </div>
       </div>
 
-      <div id="rgbInputWrap" class="input-row" style="display:none;">
-        <div class="inp-group"><label class="inp-label">R (0-255)</label><input class="inp" id="rInput" type="number" min="0" max="255" placeholder="37"></div>
-        <div class="inp-group"><label class="inp-label">G (0-255)</label><input class="inp" id="gInput" type="number" min="0" max="255" placeholder="99"></div>
-        <div class="inp-group"><label class="inp-label">B (0-255)</label><input class="inp" id="bInput" type="number" min="0" max="255" placeholder="235"></div>
-        <button class="btn-convert" onclick="convertRGB()">Convert →</button>
+      <div class="card" style="margin-bottom:0">
+        <div class="palette-title">🎨 Popular Web Colors</div>
+        <div class="palette-grid" id="paletteGrid"></div>
       </div>
     </div>
-  </div>
 
-  <!-- Popular Colors -->
-  <div class="card">
-    <div class="palette-title">🎨 Popular Web Colors</div>
-    <div class="palette-grid" id="paletteGrid"></div>
-  </div>
-
-  <div class="how-section">
-    <div class="how-title">How to Use</div>
-    <p style="font-size:13px;color:var(--gray);line-height:1.8;">
-      1. Click the color box to open the native color picker<br>
-      2. Choose any color — HEX, RGB, HSL codes update instantly<br>
-      3. Or type a HEX code / RGB values to convert<br>
-      4. Click any color in the palette to load it<br>
-      5. Copy any color code with one click
-    </p>
-  </div>
-
-  <div class="card">
-    <div style="font-size:14px;font-weight:700;color:var(--ink);margin-bottom:14px;">❓ Frequently Asked Questions</div>
-    <div class="faq-item">
-      <div class="faq-q">What is HEX color code?</div>
-      <div class="faq-a">HEX color codes are 6-digit codes starting with # that represent colors in web design. Example: #2563EB is a shade of blue used in EkZapp.</div>
+    <!-- Feature grid -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Why this one</div>
+        <h2>Built for design and dev workflows</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+          <h3>All Formats at Once</h3>
+          <p>See HEX, RGB, HSL, and a CSS variable together, so you never need to convert twice for two different formats.</p>
+        </div>
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 10h.01M15 10h.01M8 15c1.5 1.5 6.5 1.5 8 0"/></svg>
+          <h3>Free, No Signup</h3>
+          <p>No account, no limit on conversions — pick and convert as many colors as your project needs.</p>
+        </div>
+        <div class="feature-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          <h3>Built-in Popular Palette</h3>
+          <p>A curated set of commonly used web colors sits right below the picker — click one to load it instantly.</p>
+        </div>
+      </div>
     </div>
-    <div class="faq-item">
-      <div class="faq-q">What is RGB color?</div>
-      <div class="faq-a">RGB stands for Red, Green, Blue. Each value ranges from 0-255. Example: rgb(37, 99, 235) is the same blue as #2563EB.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">What is HSL color?</div>
-      <div class="faq-a">HSL stands for Hue, Saturation, Lightness. It's more intuitive for designers as you can easily adjust brightness and saturation separately.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Which color format should I use in CSS?</div>
-      <div class="faq-a">All three formats work in CSS. HEX is most commonly used. RGB is useful when you need transparency (rgba). HSL is great for programmatic color manipulation.</div>
-    </div>
-  </div>
 
-</main>
+    <!-- Scenario cards -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Made for</div>
+        <h2>Wherever color codes need converting</h2>
+      </div>
+      <div class="scenario-grid">
+        <div class="scenario-card">
+          <span class="scenario-emoji">🌐</span>
+          <h3>Web Developers</h3>
+          <p>Convert a designer-provided HEX code into RGBA when you need to add transparency in CSS.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🎨</span>
+          <h3>UI/UX Designers</h3>
+          <p>Explore a color in HSL to adjust lightness or saturation while keeping the same base hue.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🖌️</span>
+          <h3>Graphic Designers</h3>
+          <p>Match a brand color across different software tools that may expect the code in different formats.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">💻</span>
+          <h3>Frontend Engineers</h3>
+          <p>Generate a ready-to-paste CSS custom property for a color used throughout a design system.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">📱</span>
+          <h3>App Developers</h3>
+          <p>Convert a HEX brand color into RGB values needed by a mobile framework's color constructor.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🎮</span>
+          <h3>Game Developers</h3>
+          <p>Get RGB values for a color to use in a game engine's material or lighting color properties.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">📊</span>
+          <h3>Data Visualization</h3>
+          <p>Pick a consistent, accessible color palette for a chart or dashboard and get exact codes for each shade.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-emoji">🖼️</span>
+          <h3>Digital Artists</h3>
+          <p>Sample a mood-board color and grab its exact code to reuse consistently across a project.</p>
+        </div>
+      </div>
+    </div>
 
-<footer>
-  <div class="f-bottom">
-    <span>© 2026 EkZapp.com</span>
-    <a href="/privacy">Privacy</a>
-    <a href="/terms">Terms</a>
-    <a href="/contact">Contact</a>
+    <!-- Comparison -->
+    <div class="wrap-wide">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Comparison</div>
+        <h2>EkZapp vs. converting color codes by hand</h2>
+      </div>
+      <div class="compare-wrap">
+        <table class="compare">
+          <tr><th>Task</th><th class="hl">EkZapp Color Picker</th><th>Manual conversion</th></tr>
+          <tr><td>Time for one conversion</td><td class="hl"><span class="tick">✓ Instant</span></td><td>A minute or more with a formula</td></tr>
+          <tr><td>Formats shown at once</td><td class="hl"><span class="tick">✓ 4 (HEX, RGB, HSL, CSS)</span></td><td>One at a time</td></tr>
+          <tr><td>Visual color picker</td><td class="hl"><span class="tick">✓ Built in</span></td><td>Not available</td></tr>
+          <tr><td>Risk of calculation error</td><td class="hl"><span class="tick">✓ None</span></td><td><span class="cross">✕ Common with HSL math</span></td></tr>
+          <tr><td>Cost</td><td class="hl"><span class="tick">✓ Free</span></td><td>Your time</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Guide -->
+    <div class="wrap-narrow guide-section">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">Guide</div>
+        <h2>How to use the color picker</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Open the Color Picker</h3><p>Click the color preview box to open your browser's native color picker and choose any color visually.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Or Type a Code Directly</h3><p>Switch to HEX Input or RGB Input, type your values, and click Convert to load that exact color.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Read All Four Formats</h3><p>HEX, RGB, HSL, and a CSS variable all update together the moment the color changes.</p></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Copy What You Need</h3><p>Click Copy under any format to copy just that code to your clipboard, ready to paste into your project.</p></div></div>
+      </div>
+    </div>
+
+    <!-- Formats explained -->
+    <div class="wrap-narrow">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">Reference</div>
+        <h2>What each color format means</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">A</div>
+          <div class="step-body"><h3>HEX</h3><p>A 6-digit base-16 code like <span class="mono">#2563EB</span> — the two digits at each position represent red, green, and blue intensity from 00 to FF.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">B</div>
+          <div class="step-body"><h3>RGB</h3><p>Three numbers from 0-255 like <span class="mono">rgb(37, 99, 235)</span> representing red, green, and blue channel intensity — the same color as the HEX example above.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">C</div>
+          <div class="step-body"><h3>HSL</h3><p>Hue (0-360°), Saturation (0-100%), and Lightness (0-100%) like <span class="mono">hsl(221, 83%, 53%)</span> — easier to reason about when adjusting a shade's brightness.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">D</div>
+          <div class="step-body"><h3>CSS Variable</h3><p>A ready-to-paste custom property declaration like <span class="mono">--color: #2563EB;</span> for reuse throughout a stylesheet.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color theory context -->
+    <div class="wrap-narrow">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">Good to know</div>
+        <h2>Why designers switch between color formats</h2>
+      </div>
+      <p class="intro-copy" style="padding-top:0">
+        HEX and RGB describe exactly the same underlying color information — they're just two different notations for the same red, green, and blue channel values. HEX packs each channel into a two-digit hexadecimal number, which is compact and easy to copy-paste as a single string; RGB spells the same three numbers out in base-10, which some tools and libraries expect as separate parameters instead of one combined string.
+      </p>
+      <p class="intro-copy">
+        HSL describes color differently — instead of mixing red, green, and blue, it starts from a position on a color wheel (hue), how vivid or muted that color is (saturation), and how light or dark it is (lightness). That structure makes certain design tasks much easier: to create a lighter or darker version of a brand color, you can just change the lightness percentage and keep the same hue and saturation, something that's far less intuitive to do directly in RGB or HEX.
+      </p>
+      <p class="intro-copy">
+        In practice, most projects settle on HEX for storing and communicating brand colors since it's compact and universally recognized, switch to RGBA when transparency is needed, and reach for HSL specifically when programmatically generating color variations like hover states, shades, or tints. Having all three (plus a ready CSS variable) available side by side means you're not stuck manually recalculating whichever format the situation calls for.
+      </p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="wrap-narrow faq-section">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">FAQ</div>
+        <h2>Frequently asked questions</h2>
+      </div>
+      <details class="faq-item"><summary>What is a HEX color code?</summary><div class="faq-a">HEX color codes are 6-digit codes starting with # that represent colors using base-16 values for red, green, and blue — for example, #2563EB is a shade of blue.</div></details>
+      <details class="faq-item"><summary>What is RGB color?</summary><div class="faq-a">RGB stands for Red, Green, Blue. Each value ranges from 0-255 and represents the intensity of that color channel — rgb(37, 99, 235) is the same blue as #2563EB.</div></details>
+      <details class="faq-item"><summary>What is HSL color?</summary><div class="faq-a">HSL stands for Hue, Saturation, and Lightness. It's often more intuitive for designers since brightness and saturation can be adjusted independently of the base hue.</div></details>
+      <details class="faq-item"><summary>Which color format should I use in CSS?</summary><div class="faq-a">All three formats work in CSS. HEX is the most commonly used for static colors, RGB (or RGBA) is useful when you need transparency, and HSL is convenient for programmatically adjusting lightness or saturation.</div></details>
+      <details class="faq-item"><summary>Is my color data sent anywhere?</summary><div class="faq-a">No, all color conversion happens locally in your browser using JavaScript — nothing is sent to a server, since there's no actual data to upload beyond a color value.</div></details>
+      <details class="faq-item"><summary>Can I convert a color I already have as RGB values?</summary><div class="faq-a">Yes, switch to the RGB Input tab, enter the R, G, and B values (0-255 each), and click Convert to see the matching HEX, HSL, and CSS variable output.</div></details>
+      <details class="faq-item"><summary>What does the CSS Variable box give me?</summary><div class="faq-a">It formats the current color as a ready-to-paste CSS custom property declaration, like --color: #2563EB;, for use in a stylesheet's :root block.</div></details>
+      <details class="faq-item"><summary>Why does my HEX code need exactly 6 digits?</summary><div class="faq-a">Standard HEX codes use two digits each for red, green, and blue (6 digits total); a 3-digit shorthand like #FFF is also valid CSS shorthand but this tool expects the full 6-digit form for manual input.</div></details>
+      <details class="faq-item"><summary>Can I pick a color visually instead of typing a code?</summary><div class="faq-a">Yes, click the color swatch to open your browser or operating system's native color picker and choose any color visually — all codes update instantly.</div></details>
+      <details class="faq-item"><summary>What are the popular web colors shown below the picker?</summary><div class="faq-a">They're a curated palette of commonly used web design colors — click any swatch to instantly load that color and see its HEX, RGB, HSL, and CSS variable codes.</div></details>
+      <details class="faq-item"><summary>Does this tool check color contrast or accessibility?</summary><div class="faq-a">Not currently — this tool focuses on converting between color formats; checking contrast ratios against WCAG guidelines would require a separate dedicated contrast checker.</div></details>
+      <details class="faq-item"><summary>Is this tool free?</summary><div class="faq-a">Yes, completely free. No signup required, and there's no limit on how many colors you can convert.</div></details>
+    </div>
+
+    <!-- Why free -->
+    <div class="wrap-narrow">
+      <div class="sec-head" style="margin-top:0">
+        <div class="sec-eyebrow">About this tool</div>
+        <h2>Why it's free, and how it stays that way</h2>
+      </div>
+      <p class="intro-copy" style="padding-top:0">
+        The Color Picker is one of more than fifty free tools on EkZapp, sitting alongside a JSON Formatter, Base64/URL Encoder, and other developer utilities. Because all the color math runs as plain JavaScript in your browser, there's no server processing cost involved — the page loads once, and every conversion afterward is essentially free to run, which is exactly why the tool has no usage limit or paywall.
+      </p>
+      <p class="intro-copy">
+        This kind of tool tends to get opened briefly — a quick check of a brand color's RGB equivalent, then straight back to a design file or codebase. That usage pattern is part of why the page stays a single screen with no extra steps: pick or type a color, read off whichever format you need, and copy it.
+      </p>
+      <p class="intro-copy">
+        It also means there's very little that can go wrong. There's no account to lose access to, no history of past colors saved anywhere, and no settings menu to configure before the tool does what you need. Every visit starts from the same default blue, which keeps the tool predictable whether you use it once a year or several times a day.
+      </p>
+    </div>
+
+    <!-- Related tools -->
+    <div class="related-banner">
+      <h3>Other developer tools</h3>
+      <div class="tools-row">
+        <a class="tool-mini" href="/json-formatter"><span>🔧 JSON Formatter</span></a>
+        <a class="tool-mini" href="/base64-url-encoder"><span>🔐 Base64 & URL Encoder</span></a>
+        <a class="tool-mini" href="/word-counter"><span>🔢 Word Counter</span></a>
+      </div>
+    </div>
+
   </div>
-</footer>
+</div>
 
 <script>
 const palette = [
