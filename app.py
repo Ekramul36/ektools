@@ -99,6 +99,7 @@ LASTMOD_OVERRIDES = {
     '/blog/home-loan-emi-calculation-explained': '2026-07-19',
     '/cft-calculator': '2026-07-19',
     '/sand-calculator': '2026-07-19',
+    '/blog/cement-sand-ratio-material-estimation-guide': '2026-07-20',
 }
 
 
@@ -182,6 +183,7 @@ def sitemap():
         ('/blog/unlock-pdf-remove-password-online-free', '0.7', 'monthly'),
         ('/blog/itr-filing-2026-last-date-old-vs-new-tax-regime', '0.7', 'monthly'),
         ('/blog/home-loan-emi-calculation-explained', '0.7', 'monthly'),
+        ('/blog/cement-sand-ratio-material-estimation-guide', '0.7', 'monthly'),
         ('/author/ekramul-hoque', '0.5', 'monthly'),
     ]
     xml = ['<?xml version="1.0" encoding="UTF-8"?>',
@@ -1942,6 +1944,13 @@ BLOG_POSTS = [
     "excerpt": "The EMI formula explained with a real ₹40 lakh example, current 2026 interest rates, tax benefits under Section 24(b)/80C, and RBI's prepayment rules.",
     "category": "Calculators",
     "date": "July 19, 2026"
+    },
+    {
+    "slug": "cement-sand-ratio-material-estimation-guide",
+    "title": "Cement Sand Ratio Chart (1:4, 1:5, 1:6) + Material Calculator",
+    "excerpt": "Standard cement-sand ratios for plastering, brickwork, and concrete, the dry volume factor everyone forgets, and a free calculator for exact bag-and-CFT quantities.",
+    "category": "Calculators",
+    "date": "July 19, 2026"
     }
     # Add more posts here as dicts, e.g.:
     # {
@@ -2004,6 +2013,10 @@ def author_ekramul_hoque():
 @app.route("/blog/home-loan-emi-calculation-explained")
 def blog_home_loan_emi():
     return render_template("blog_post_home_loan_emi.html")
+
+@app.route("/blog/cement-sand-ratio-material-estimation-guide")
+def blog_cement_sand_ratio_guide():
+    return render_template("blog_post_cement_sand_ratio_guide.html")
 
 # NOTE: as you add more blog posts, add a matching @app.route("/blog/<slug>")
 # function for each new HTML file, the same way as blog_merge_pdf() above.
