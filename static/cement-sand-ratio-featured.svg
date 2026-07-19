@@ -1,0 +1,73 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="55%" stop-color="#1D4ED8"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="bagFront" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+    <radialGradient id="sandGrad" cx="50%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1080" cy="90" r="220" fill="#ffffff" opacity="0.04"/>
+  <circle cx="90" cy="560" r="160" fill="#ffffff" opacity="0.05"/>
+
+  <!-- Brand badge -->
+  <g transform="translate(60,50)">
+    <rect width="150" height="42" rx="10" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.35)"/>
+    <text x="75" y="28" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800" fill="#ffffff" text-anchor="middle">EkZapp</text>
+  </g>
+
+  <!-- Cement bag -->
+  <g transform="translate(120,190)">
+    <path d="M10 40 Q0 20 30 12 L170 12 Q200 20 190 40 L205 300 Q205 320 185 320 L15 320 Q-5 320 -5 300 Z" fill="url(#bagFront)" stroke="#94A3B8" stroke-width="2"/>
+    <path d="M10 40 Q0 20 30 12 L170 12 Q200 20 190 40 L186 70 L14 70 Z" fill="#CBD5E1"/>
+    <rect x="20" y="95" width="160" height="90" rx="6" fill="#1D4ED8"/>
+    <text x="100" y="130" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="800" fill="#ffffff" text-anchor="middle">CEMENT</text>
+    <text x="100" y="163" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="600" fill="#DBEAFE" text-anchor="middle">50 KG</text>
+    <line x1="20" y1="210" x2="180" y2="210" stroke="#94A3B8" stroke-width="1.5"/>
+    <line x1="20" y1="230" x2="180" y2="230" stroke="#94A3B8" stroke-width="1.5"/>
+    <line x1="20" y1="250" x2="180" y2="250" stroke="#94A3B8" stroke-width="1.5"/>
+  </g>
+
+  <!-- Sand pile -->
+  <g transform="translate(370,310)">
+    <path d="M0 190 Q10 60 130 40 Q250 60 260 190 Z" fill="url(#sandGrad)"/>
+    <path d="M0 190 Q10 60 130 40 Q250 60 260 190" fill="none" stroke="#92400E" stroke-width="2" opacity="0.3"/>
+    <ellipse cx="130" cy="190" rx="130" ry="14" fill="#92400E" opacity="0.25"/>
+    <circle cx="70" cy="140" r="4" fill="#92400E" opacity="0.4"/>
+    <circle cx="150" cy="110" r="3" fill="#92400E" opacity="0.4"/>
+    <circle cx="190" cy="150" r="4" fill="#92400E" opacity="0.4"/>
+    <circle cx="100" cy="170" r="3" fill="#92400E" opacity="0.4"/>
+  </g>
+
+  <!-- Ratio badges -->
+  <g transform="translate(700,150)">
+    <rect x="0" y="0" width="150" height="72" rx="14" fill="rgba(255,255,255,0.95)"/>
+    <text x="75" y="30" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600" fill="#64748B" text-anchor="middle">PLASTER</text>
+    <text x="75" y="56" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="800" fill="#1D4ED8" text-anchor="middle">1 : 6</text>
+  </g>
+  <g transform="translate(870,240)">
+    <rect x="0" y="0" width="150" height="72" rx="14" fill="rgba(255,255,255,0.95)"/>
+    <text x="75" y="30" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600" fill="#64748B" text-anchor="middle">BRICKWORK</text>
+    <text x="75" y="56" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="800" fill="#1D4ED8" text-anchor="middle">1 : 4</text>
+  </g>
+  <g transform="translate(700,330)">
+    <rect x="0" y="0" width="150" height="72" rx="14" fill="rgba(255,255,255,0.95)"/>
+    <text x="75" y="30" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600" fill="#64748B" text-anchor="middle">M20 CONCRETE</text>
+    <text x="75" y="56" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800" fill="#1D4ED8" text-anchor="middle">1:1.5:3</text>
+  </g>
+
+  <!-- Title text -->
+  <g transform="translate(60,470)">
+    <text x="0" y="0" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="800" fill="#ffffff">Cement-Sand Ratio Guide</text>
+    <text x="0" y="42" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="500" fill="#DBEAFE">Plastering · Brickwork · Concrete — with a material calculator</text>
+  </g>
+</svg>
