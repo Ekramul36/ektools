@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VW5QLMV046"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-VW5QLMV046');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cubic Feet Calculator — Feet, Inches, Yards, Meters & CFT for Timber/Stone | EkZapp</title>
+<meta name="description" content="Calculate cubic feet (CFT) from feet, inches, yards, meters or cm. Also supports timber and stone trade calculations with rate and cost. Free online cubic feet calculator.">
+<link rel="canonical" href="https://ekzapp.com/cft-calculator">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cubic Feet Calculator — Feet, Inches, Yards, Meters & CFT for Timber/Stone">
+<meta property="og:description" content="Calculate cubic feet (CFT) from feet, inches, yards, meters or cm. Also supports timber and stone trade calculations with rate and cost.">
+<meta property="og:url" content="https://ekzapp.com/cft-calculator">
+<meta property="og:image" content="https://ekzapp.com/static/images/photo-data-analysis.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cubic Feet Calculator — EkZapp">
+<meta name="twitter:description" content="Calculate CFT from feet, inches, yards, meters or cm — plus timber/stone trade pricing. Free, no signup.">
+<meta name="twitter:image" content="https://ekzapp.com/static/images/photo-data-analysis.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#C2410C;--blue-dk:#9A3412;--blue-lt:#FFF7ED;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626;--green:#16A34A;}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+a{color:inherit}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:#2563EB;display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}.logo-text span{color:#2563EB}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.back:hover{border-color:var(--blue);color:var(--blue)}
+.hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#7C2D12,#C2410C 45%,#EA580C 70%,#FDBA74);background-size:200% 200%;animation:heroShift 12s ease-in-out infinite;padding:56px 20px 120px}
+@keyframes heroShift{0%{background-position:0% 40%}50%{background-position:100% 60%}100%{background-position:0% 40%}}
+.hero-inner{max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:12px;font-weight:600;padding:6px 14px;border-radius:999px;margin-bottom:18px;backdrop-filter:blur(4px)}
+.hero h1{color:#fff;font-size:2.2rem;font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
+.hero p{color:rgba(255,255,255,.9);font-size:15px;max-width:480px;margin:0 auto}
+.hero-doc{position:absolute;opacity:.5}
+.hero-doc svg{display:block}
+.doc1{top:20px;left:6%;animation:float1 7s ease-in-out infinite}
+.doc2{top:70px;right:8%;animation:float2 8s ease-in-out infinite}
+.doc3{bottom:30px;left:14%;animation:float1 9s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-14px) rotate(-3deg)}}
+@keyframes float2{0%,100%{transform:translateY(0) rotate(8deg)}50%{transform:translateY(-10px) rotate(4deg)}}
+.outer{max-width:960px;margin:0 auto;padding:0 20px}
+.narrow{max-width:680px;margin:0 auto}
+.wide{max-width:900px;margin:0 auto}
+.tool-card-wrap{margin-top:-84px;position:relative;z-index:3}
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 12px 32px -8px rgba(194,65,12,.25)}
+.unit-switch{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.unit-switch button{flex:1;min-width:60px;padding:9px 6px;border:1.5px solid var(--border);background:white;border-radius:8px;font-size:12.5px;font-weight:600;color:var(--gray);cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s}
+.unit-switch button.active{background:var(--blue);border-color:var(--blue);color:white}
+.mode-tabs{display:flex;gap:8px;margin-bottom:20px;background:var(--light);padding:4px;border-radius:10px}
+.mode-tab{flex:1;border:none;background:transparent;padding:9px 6px;border-radius:8px;font-weight:700;font-size:12.5px;cursor:pointer;color:var(--gray);font-family:'Inter',sans-serif}
+.mode-tab.active{background:var(--blue);color:#fff}
+.copy-btn{width:100%;margin-top:14px;padding:9px;background:white;border:1.5px solid var(--blue);color:var(--blue);border-radius:8px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif}
+.copy-btn:hover{background:var(--blue-lt)}
+.copy-btn.copied{background:var(--green);border-color:var(--green);color:white}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.field-with-unit{position:relative}
+.field input,.field select{width:100%;padding:11px 55px 11px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none;background:white}
+.field input:focus,.field select:focus{border-color:var(--blue)}
+.unit-tag{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:12px;font-weight:700;color:var(--gray);pointer-events:none}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.optional-toggle{font-size:12.5px;color:var(--blue);cursor:pointer;font-weight:600;margin-bottom:14px;display:inline-block;text-decoration:underline}
+.optional-fields{display:none;margin-bottom:6px}
+.optional-fields.show{display:block}
+.btn{width:100%;padding:13px;background:var(--blue);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;margin-top:4px}
+.btn:hover{background:var(--blue-dk)}
+.result{background:var(--blue-lt);border:1px solid #FED7AA;border-radius:10px;padding:18px;display:none;margin-top:16px}
+.result.show{display:block}
+.result-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #FED7AA;font-size:14px}
+.result-row:last-child{border:none;font-weight:700;font-size:15px;color:var(--blue)}
+.result-row span:last-child{font-weight:600}
+.trust{display:flex;justify-content:center;gap:20px;margin-top:16px;flex-wrap:wrap}
+.trust-item{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:4px}
+.section{margin-top:56px}
+.section h2{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:8px}
+.section .sub{text-align:center;color:var(--gray);font-size:14px;margin-bottom:28px}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feature{background:white;border:1px solid var(--border);border-radius:12px;padding:22px 18px;text-align:center}
+.feature svg{margin:0 auto 12px}
+.feature h3{font-size:14px;font-weight:700;margin-bottom:6px}
+.feature p{font-size:12.5px;color:var(--gray);line-height:1.5}
+.photo-block{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.photo-block img{width:100%;height:100%;object-fit:cover;display:block;min-height:220px}
+.photo-copy{padding:24px 28px 24px 0}
+.photo-copy h2{font-size:1.2rem;font-weight:800;margin-bottom:10px;text-align:left}
+.photo-copy p{font-size:13.5px;color:var(--gray);line-height:1.6}
+table.ratetbl{width:100%;border-collapse:collapse;background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden;font-size:12.5px}
+table.ratetbl th,table.ratetbl td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border)}
+table.ratetbl th{background:var(--light);font-weight:700;color:var(--ink)}
+table.ratetbl tr:last-child td{border-bottom:none}
+.use-cases{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.use-case{background:white;border:1px solid var(--border);border-left:4px solid var(--blue);border-radius:10px;padding:18px 20px}
+.use-case h3{font-size:13.5px;font-weight:700;margin-bottom:6px}
+.use-case p{font-size:12.5px;color:var(--gray);line-height:1.5}
+.how-to{background:white;border:1px solid var(--border);border-radius:14px;padding:24px}
+.steps{display:flex;flex-direction:column;gap:12px}
+.step{display:flex;gap:12px;align-items:flex-start}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--blue-lt);color:var(--blue);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-text{font-size:13px;color:var(--gray);line-height:1.5;padding-top:4px}
+.step-text strong{color:var(--ink)}
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-list details{background:white;border:1px solid var(--border);border-radius:10px;padding:14px 18px}
+.faq-list summary{font-size:13.5px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:'+';font-size:18px;color:var(--blue);font-weight:400}
+.faq-list details[open] summary::after{content:'−'}
+.faq-list p{font-size:13px;color:var(--gray);line-height:1.6;margin-top:10px}
+.related{background:linear-gradient(115deg,#7C2D12,#C2410C,#B45309);border-radius:16px;padding:32px 28px;color:#fff}
+.related h2{color:#fff;font-size:1.2rem;margin-bottom:18px;text-align:left}
+.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.related-item{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:14px;text-decoration:none;transition:background .15s}
+.related-item:hover{background:rgba(255,255,255,.22)}
+.related-item .ico{font-size:1.3rem;margin-bottom:6px;display:block}
+.related-item .name{font-size:12.5px;font-weight:700;color:#fff}
+footer{margin:64px 0 32px;text-align:center;font-size:12px;color:var(--gray)}
+.example-card{background:var(--light);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin-bottom:14px}
+.example-card h3{font-size:13.5px;font-weight:700;margin-bottom:8px}
+.example-card p{font-size:12.5px;color:var(--gray);line-height:1.65;margin-bottom:6px}
+.example-card .calc-line{font-family:'Inter',sans-serif;background:white;border:1px solid var(--border);border-radius:6px;padding:6px 10px;display:inline-block;font-size:12px;font-weight:600;color:var(--blue-dk);margin-top:4px}
+@media(max-width:720px){.feature-grid{grid-template-columns:1fr}.photo-block{grid-template-columns:1fr}.photo-block img{min-height:160px}.photo-copy{padding:0 20px 22px}.use-cases{grid-template-columns:1fr}.related-grid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:1.6rem}.tool-card-wrap{margin-top:-56px}.hero{padding-bottom:88px}.field-row{grid-template-columns:1fr}.unit-switch button{min-width:45%}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Cubic Feet Calculator","url":"https://ekzapp.com/cft-calculator","description":"Calculate cubic feet from feet, inches, yards, meters or centimeters. Also supports timber and stone trade CFT calculations with cost.","applicationCategory":"UtilityApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I calculate cubic feet?","acceptedAnswer":{"@type":"Answer","text":"Measure the length, width and height of the item or space in feet, then multiply the three numbers together: Length × Width × Height = Cubic Feet."}},
+{"@type":"Question","name":"How do I calculate cubic feet from inches?","acceptedAnswer":{"@type":"Answer","text":"Multiply length, width and height in inches together, then divide the result by 1,728 (since there are 1,728 cubic inches in one cubic foot)."}},
+{"@type":"Question","name":"How do I calculate cubic feet from meters or centimeters?","acceptedAnswer":{"@type":"Answer","text":"Multiply length, width and height in meters together, then multiply by 35.3147 to convert cubic meters to cubic feet. For centimeters, multiply the three measurements together and divide by 28,316.85."}},
+{"@type":"Question","name":"What is CFT used for in the timber and stone trade?","acceptedAnswer":{"@type":"Answer","text":"CFT (Cubic Feet) is the standard unit for pricing timber, wood, marble and granite in India, typically measured as length and width in feet with thickness in inches."}},
+{"@type":"Question","name":"Is this tool free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free with no signup required."}},
+{"@type":"Question","name":"Is there a separate mode for timber and stone trade calculations?","acceptedAnswer":{"@type":"Answer","text":"Yes, switch to Timber/Stone (ft + inch) mode at the top of the calculator to enter length and width in feet with thickness in inches directly, matching how the trade measures these materials."}},
+{"@type":"Question","name":"Can I share my calculation result with someone else?","acceptedAnswer":{"@type":"Answer","text":"Yes, once you calculate a result, the page URL updates automatically with your inputs — copy that link and share it, and it will reopen with the same values and result pre-filled."}}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Home","item":"https://ekzapp.com/"},
+{"@type":"ListItem","position":2,"name":"Cubic Feet Calculator","item":"https://ekzapp.com/cft-calculator"}
+]}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav><div class="nav-inner"><a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a><a class="back" href="/">← All Tools</a></div></nav>
+<div style="max-width:960px;margin:0 auto;padding:10px 20px 0;font-size:12px;color:var(--gray)">
+  <a href="/" style="color:var(--gray);text-decoration:none">Home</a> → Cubic Feet Calculator
+</div>
+
+<div class="hero">
+  <div class="hero-doc doc1"><svg width="46" height="46" viewBox="0 0 46 46" fill="none"><rect x="6" y="6" width="34" height="34" rx="4" stroke="#fff" stroke-opacity=".4" stroke-width="2"/><path d="M6 20h34M20 6v34" stroke="#fff" stroke-opacity=".3" stroke-width="1.5"/></svg></div>
+  <div class="hero-doc doc2"><svg width="40" height="50" viewBox="0 0 40 50" fill="none"><rect x="1" y="1" width="38" height="48" rx="4" fill="#fff" fill-opacity=".14" stroke="#fff" stroke-opacity=".35"/><text x="20" y="30" font-family="Inter" font-size="9" font-weight="700" fill="#fff" fill-opacity=".55" text-anchor="middle">CFT</text></svg></div>
+  <div class="hero-doc doc3"><svg width="36" height="44" viewBox="0 0 36 44" fill="none"><rect x="1" y="1" width="34" height="42" rx="4" fill="#fff" fill-opacity=".12" stroke="#fff" stroke-opacity=".3"/></svg></div>
+  <div class="hero-inner">
+    <div class="hero-badge">📐 Feet · Inches · Yards · Meters · cm</div>
+    <h1>Cubic Feet Calculator — Any Unit, Any Use Case</h1>
+    <p>Measure in whatever unit you have — feet, inches, yards, meters or cm — and get the cubic feet instantly, plus CFT pricing for timber and stone.</p>
+  </div>
+</div>
+
+<div class="outer">
+  <div class="narrow" style="margin-top:24px" id="toc">
+    <div style="background:white;border:1px solid var(--border);border-radius:12px;padding:18px 22px">
+      <strong style="font-size:13px;display:block;margin-bottom:10px">Contents</strong>
+      <div style="display:flex;flex-wrap:wrap;gap:8px 18px;font-size:12.5px">
+        <a href="#how-to-calculate" style="color:var(--blue);text-decoration:none">How to Calculate</a>
+        <a href="#examples" style="color:var(--blue);text-decoration:none">Examples</a>
+        <a href="#timber-stone" style="color:var(--blue);text-decoration:none">Timber/Stone CFT</a>
+        <a href="#quick-answers" style="color:var(--blue);text-decoration:none">Quick Answers</a>
+        <a href="#conversion-table" style="color:var(--blue);text-decoration:none">Conversion Table</a>
+        <a href="#faq" style="color:var(--blue);text-decoration:none">FAQ</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="narrow tool-card-wrap" style="margin-top:20px">
+    <div class="card">
+      <div class="mode-tabs" id="modeTabs">
+        <button type="button" class="mode-tab active" data-mode="general">General (Any Unit)</button>
+        <button type="button" class="mode-tab" data-mode="timber">Timber/Stone (ft + inch)</button>
+      </div>
+
+      <!-- GENERAL MODE -->
+      <div id="generalMode">
+        <div class="unit-switch" id="unitSwitch">
+          <button type="button" class="active" data-unit="ft">Feet</button>
+          <button type="button" data-unit="in">Inches</button>
+          <button type="button" data-unit="yd">Yards</button>
+          <button type="button" data-unit="m">Meters</button>
+          <button type="button" data-unit="cm">Centimeters</button>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Length</label>
+            <div class="field-with-unit"><input type="number" id="lenVal" placeholder="0" min="0" step="any"><span class="unit-tag" id="unitTagLen">ft</span></div>
+          </div>
+          <div class="field">
+            <label>Width</label>
+            <div class="field-with-unit"><input type="number" id="widVal" placeholder="0" min="0" step="any"><span class="unit-tag" id="unitTagWid">ft</span></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Height</label>
+          <div class="field-with-unit"><input type="number" id="heightVal" placeholder="0" min="0" step="any"><span class="unit-tag" id="unitTagHeight">ft</span></div>
+        </div>
+
+        <span class="optional-toggle" id="optionalToggle">+ Add quantity &amp; rate for pricing (optional)</span>
+        <div class="optional-fields" id="optionalFields">
+          <div class="field-row">
+            <div class="field"><label>Quantity (pieces)</label><input type="number" id="qty" placeholder="1" min="1" value="1"></div>
+            <div class="field"><label>Rate per CFT (₹)</label><input type="number" id="rate" placeholder="e.g. 1500" min="0"></div>
+          </div>
+        </div>
+
+        <button class="btn" onclick="calcCubicFeet()">📐 Calculate Cubic Feet</button>
+      </div>
+
+      <!-- TIMBER/STONE MODE -->
+      <div id="timberMode" style="display:none">
+        <p style="font-size:12.5px;color:var(--gray);margin-bottom:16px">Trade-standard formula for wood, marble &amp; granite: Length (ft) × Width (ft) × Thickness (in) ÷ 12</p>
+        <div class="field-row">
+          <div class="field"><label>Length (feet)</label><input type="number" id="tLen" placeholder="e.g. 10" min="0" step="any"></div>
+          <div class="field"><label>Width (feet)</label><input type="number" id="tWid" placeholder="e.g. 1" min="0" step="any"></div>
+        </div>
+        <div class="field"><label>Thickness (inches)</label><input type="number" id="tThick" placeholder="e.g. 2" min="0" step="any"></div>
+        <div class="field-row">
+          <div class="field"><label>Quantity (pieces)</label><input type="number" id="tQty" placeholder="1" min="1" value="1"></div>
+          <div class="field"><label>Rate per CFT (₹)</label><input type="number" id="tRate" placeholder="e.g. 1500" min="0"></div>
+        </div>
+        <button class="btn" onclick="calcTimberCft()">🪵 Calculate Timber/Stone CFT</button>
+      </div>
+
+      <div class="result" id="result">
+        <div class="result-row"><span>Cubic Feet (CFT)</span><span id="rCft"></span></div>
+        <div class="result-row" id="rowCbm"><span>Cubic Meters (CBM)</span><span id="rCbm"></span></div>
+        <div class="result-row" id="rowYd"><span>Cubic Yards</span><span id="rYd"></span></div>
+        <div class="result-row"><span id="rCostLabel">Total Cost</span><span id="rCost"></span></div>
+        <button class="copy-btn" id="copyBtn" onclick="copyResult()">📋 Copy Result</button>
+      </div>
+      <div class="trust">
+        <div class="trust-item">⚡ Instant results</div>
+        <div class="trust-item">🗑️ No data saved</div>
+        <div class="trust-item">📵 No signup needed</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wide section">
+    <h2>Why this one</h2>
+    <p class="sub">One calculator, every unit you're likely to have</p>
+    <div class="feature-grid">
+      <div class="feature"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M8 20h24M24 12l8 8-8 8M16 12l-8 8 8 8" stroke="#C2410C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>Five unit options</h3><p>Enter measurements in feet, inches, yards, meters or centimeters — no manual conversion needed first.</p></div>
+      <div class="feature"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="7" y="10" width="26" height="20" rx="2" stroke="#C2410C" stroke-width="2"/><path d="M7 16h26" stroke="#C2410C" stroke-width="2"/></svg><h3>Three results at once</h3><p>Get cubic feet, cubic meters, and cubic yards together — useful when comparing specs across regions.</p></div>
+      <div class="feature"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="7" y="4" width="26" height="32" rx="3" stroke="#C2410C" stroke-width="2"/><path d="M13 30v-4c0-3 2-4 7-4s7 1 7 4v4" stroke="#C2410C" stroke-width="2" stroke-linecap="round"/><circle cx="20" cy="16" r="4" stroke="#C2410C" stroke-width="2"/></svg><h3>Nothing kept on our servers</h3><p>Every number you enter is calculated instantly in your browser and is never logged, transmitted, or stored anywhere.</p></div>
+    </div>
+  </div>
+
+  <div class="wide section">
+    <div class="photo-block">
+      <img src="{{ url_for('static', filename='images/photo-data-analysis.jpg') }}" alt="Measuring an item to calculate its cubic feet volume">
+      <div class="photo-copy">
+        <h2>One formula, whichever unit you start with</h2>
+        <p style="font-size:13.5px;color:var(--gray);line-height:1.7">At its core, cubic feet is always Length × Width × Height — the only thing that changes based on your starting unit is a conversion step applied before or after that multiplication. Working in feet needs no conversion at all; inches needs a division by 1,728; meters needs a multiplication by roughly 35.31; and centimeters needs a division by roughly 28,317. This calculator handles that conversion automatically based on the unit you pick, so you never need to remember which factor applies where.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="narrow section" id="how-to-calculate">
+    <h2>How to calculate cubic feet from any unit</h2>
+    <p class="sub">&nbsp;</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px"><strong>From feet:</strong> multiply length × width × height directly — the result is already in cubic feet.</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px"><strong>From inches:</strong> multiply the three measurements together to get cubic inches, then divide by 1,728 (the number of cubic inches in one cubic foot).</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px"><strong>From yards:</strong> multiply the three measurements together to get cubic yards, then multiply by 27 (the number of cubic feet in one cubic yard).</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px"><strong>From meters:</strong> multiply the three measurements together to get cubic meters, then multiply by roughly 35.3147.</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7"><strong>From centimeters:</strong> multiply the three measurements together to get cubic centimeters, then divide by roughly 28,316.85.</p>
+  </div>
+
+  <div class="narrow section" id="examples">
+    <h2>Real-world examples</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="example-card">
+      <h3>📦 Choosing between two storage bins</h3>
+      <p>A rectangular bin measures 24 inches long, 18 inches wide, and 15 inches deep — is it bigger than a bin advertised as 2 ft × 1.3 ft × 1 ft?</p>
+      <p>Bin A (inches): 24 × 18 × 15 = 6,480 in³ ÷ 1,728 = <span class="calc-line">3.75 CFT</span></p>
+      <p>Bin B (feet): 2 × 1.3 × 1 = <span class="calc-line">2.6 CFT</span></p>
+      <p>Bin A holds noticeably more, even though its dimensions in inches look like smaller numbers at first glance — converting both to the same unit before comparing avoids that kind of mix-up.</p>
+    </div>
+    <div class="example-card">
+      <h3>🚚 Estimating moving truck space</h3>
+      <p>A moving truck's cargo area measures 3 meters long, 1.8 meters wide, and 1.9 meters high. How much is that in cubic feet, for comparing against a packing list quoted in CFT?</p>
+      <p>3 × 1.8 × 1.9 = 10.26 m³ × 35.3147 = <span class="calc-line">~362.3 CFT</span></p>
+      <p>That figure can then be compared directly against a moving company's packed-volume estimate, which is often quoted in cubic feet rather than cubic meters.</p>
+    </div>
+  </div>
+
+  <div class="wide section">
+    <h2>When people reach for a cubic feet calculator</h2>
+    <p class="sub">A few common situations</p>
+    <div class="use-cases">
+      <div class="use-case"><h3>📦 Shipping & storage</h3><p>Check whether a box or container fits within a courier's or storage unit's volume limit.</p></div>
+      <div class="use-case"><h3>🧊 Appliance capacity</h3><p>Compare the interior capacity of refrigerators, freezers, or ovens listed in cubic feet.</p></div>
+      <div class="use-case"><h3>🪵 Timber & stone trade</h3><p>Calculate CFT for wood, marble, or granite priced per cubic foot, with quantity and cost.</p></div>
+      <div class="use-case"><h3>🚚 Moving & logistics</h3><p>Estimate truck or container space needed for a move or shipment.</p></div>
+      <div class="use-case"><h3>🏗️ Construction estimation</h3><p>Work out material or excavation volume for a project in whichever unit your plans use.</p></div>
+      <div class="use-case"><h3>🛍️ Online shopping</h3><p>Compare product dimensions listed in different units before buying.</p></div>
+      <div class="use-case"><h3>🎓 Learning volume math</h3><p>See exactly how a volume calculation changes when the starting unit changes.</p></div>
+      <div class="use-case"><h3>📐 Irregular spaces</h3><p>Break an irregular shape into regular rectangular sections, calculate each separately, then add them together.</p></div>
+    </div>
+  </div>
+
+  <div class="narrow section">
+    <h2>Calculating irregular shapes</h2>
+    <p class="sub">&nbsp;</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7">If the space you're measuring isn't a simple rectangular box — an L-shaped storage area, for instance — split it mentally into two or more regular rectangular sections, calculate the cubic feet of each section separately using this calculator, and add the results together for the total volume. This works because volume is additive: the total space is exactly the sum of its individual rectangular parts, regardless of how they're arranged.</p>
+  </div>
+
+  <div class="wide section" id="timber-stone">
+    <h2>CFT for timber and stone — the trade-specific case</h2>
+    <p style="font-size:13px;color:var(--gray);line-height:1.6;margin-top:14px">In India's timber and natural stone trade, CFT is calculated slightly differently in practice: length and width are measured in feet, but thickness is measured in inches, since it's a much smaller dimension. The formula is Length (ft) × Width (ft) × Thickness (in) ÷ 12. Switch to <strong>"Timber/Stone (ft + inch)"</strong> mode at the top of the calculator above to enter measurements exactly this way, without converting thickness to feet yourself first.</p>
+    <table class="ratetbl" style="margin-top:16px">
+      <tr><th>Material</th><th>Typical thickness</th><th>Common use</th></tr>
+      <tr><td>Timber (furniture-grade)</td><td>1" – 2"</td><td>Furniture, cabinetry, doors</td></tr>
+      <tr><td>Marble slab</td><td>0.75" – 1"</td><td>Flooring, wall cladding</td></tr>
+      <tr><td>Granite slab</td><td>0.75" – 1.25"</td><td>Countertops, flooring</td></tr>
+    </table>
+  </div>
+
+  <div class="wide section" id="quick-answers">
+    <h2>Quick answers for common CFT questions</h2>
+    <p class="sub">Illustrative figures at typical rates — always confirm current local pricing before ordering</p>
+    <table class="ratetbl">
+      <tr><th>Question</th><th>Typical answer (illustrative)</th></tr>
+      <tr><td>100 CFT of teak wood cost?</td><td>Roughly ₹1,50,000–₹2,50,000 at ₹1,500–₹2,500/CFT (varies by grade &amp; region)</td></tr>
+      <tr><td>100 CFT of river sand cost?</td><td>Roughly ₹4,000–₹5,500 at ₹40–₹55/CFT (varies by region &amp; sand type)</td></tr>
+      <tr><td>100 CFT of granite slab cost?</td><td>Roughly ₹35,000–₹60,000 depending on color &amp; finish grade</td></tr>
+      <tr><td>How many CFT in a standard tractor trolley?</td><td>Roughly 55–100 CFT depending on trolley size (see our Sand Calculator)</td></tr>
+      <tr><td>100 CFT equals how many CBM?</td><td>≈ 2.83 CBM (100 × 0.0283168)</td></tr>
+    </table>
+    <p style="font-size:12.5px;color:var(--gray);line-height:1.6;margin-top:14px">These figures are meant as a rough starting point for budgeting, not a quote — actual prices vary significantly by region, supplier, material grade, and current market rates. Use the calculator above with your supplier's actual quoted rate per CFT for an accurate cost.</p>
+  </div>
+
+  <div class="wide section" id="conversion-table">
+    <h2>Conversion factors at a glance</h2>
+    <p style="font-size:13px;color:var(--gray);line-height:1.6;margin-top:14px">A quick reference for the multiplier or divisor this calculator applies for each starting unit.</p>
+    <table class="ratetbl">
+      <tr><th>Starting unit</th><th>Operation</th><th>Factor</th></tr>
+      <tr><td>Feet</td><td>None needed</td><td>1</td></tr>
+      <tr><td>Inches</td><td>Divide by</td><td>1,728</td></tr>
+      <tr><td>Yards</td><td>Multiply by</td><td>27</td></tr>
+      <tr><td>Meters</td><td>Multiply by</td><td>35.3147</td></tr>
+      <tr><td>Centimeters</td><td>Divide by</td><td>28,316.85</td></tr>
+    </table>
+  </div>
+
+  <div class="narrow section">
+    <h2>Quick recap</h2>
+    <p class="sub">&nbsp;</p>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.7">Cubic feet is always Length × Width × Height once all three measurements are in the same unit. Feet need no conversion; inches divide by 1,728; yards multiply by 27; meters multiply by roughly 35.31; centimeters divide by roughly 28,317. This calculator applies the right conversion automatically based on the unit you select, and shows the result in cubic feet, cubic meters, and cubic yards together, with an optional cost calculation for timber and stone buyers.</p>
+  </div>
+
+  <div class="narrow section">
+    <div class="how-to">
+      <h2 style="text-align:left;font-size:1.1rem;margin-bottom:16px">📖 How to use this calculator</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Choose your unit</strong> — feet, inches, yards, meters, or centimeters, whichever matches your measurements.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Enter length, width and height</strong> — all three in the same selected unit.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Add quantity and rate (optional)</strong> — for timber or stone pricing, enter how many pieces and the price per CFT.</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-text"><strong>See the results</strong> — cubic feet, cubic meters, cubic yards, and total cost appear instantly.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="narrow section" id="faq">
+    <h2>Frequently asked questions</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="faq-list">
+      <details><summary>How do I calculate cubic feet?</summary><p>Measure the length, width and height of the item or space in feet, then multiply the three numbers together: Length × Width × Height = Cubic Feet.</p></details>
+      <details><summary>How do I calculate cubic feet from inches?</summary><p>Multiply length, width and height in inches together, then divide the result by 1,728 (since there are 1,728 cubic inches in one cubic foot).</p></details>
+      <details><summary>How do I calculate cubic feet from meters or centimeters?</summary><p>Multiply length, width and height in meters together, then multiply by 35.3147 to convert cubic meters to cubic feet. For centimeters, multiply the three measurements together and divide by 28,316.85.</p></details>
+      <details><summary>What is CFT used for in the timber and stone trade?</summary><p>CFT (Cubic Feet) is the standard unit for pricing timber, wood, marble and granite in India, typically measured as length and width in feet with thickness in inches.</p></details>
+      <details><summary>Is this tool free?</summary><p>Yes, completely free with no signup required.</p></details>
+      <details><summary>Can I calculate an irregular shape with this tool?</summary><p>Split the shape into regular rectangular sections, calculate each one separately, and add the results together for the total cubic feet.</p></details>
+      <details><summary>What's the difference between cubic feet and square feet?</summary><p>Square feet measures a flat area (length × width only); cubic feet measures volume, adding a third dimension — height or depth — to the calculation.</p></details>
+      <details><summary>Does this account for the wall thickness of a container?</summary><p>No, enter the internal (usable) dimensions of a box or container directly for an accurate result, since outer dimensions include material thickness that isn't available for storage.</p></details>
+      <details><summary>Why do I need cubic yards as well as cubic feet?</summary><p>Certain materials like concrete, mulch, and soil are commonly sold by the cubic yard rather than cubic foot, so having both figures available saves a separate conversion step.</p></details>
+      <details><summary>Can I use decimal values for my measurements?</summary><p>Yes, all fields accept decimal values like 2.5 or 10.75 for precise measurements.</p></details>
+      <details><summary>Is there a separate mode for timber and stone trade calculations?</summary><p>Yes, switch to "Timber/Stone (ft + inch)" mode at the top of the calculator to enter length and width in feet with thickness in inches directly, matching how the trade measures these materials.</p></details>
+      <details><summary>Can I share my calculation result with someone else?</summary><p>Yes, once you calculate a result, the page URL updates automatically with your inputs — copy that link and share it, and it will reopen with the same values and result pre-filled.</p></details>
+    </div>
+  </div>
+
+  <div class="wide section">
+    <div class="related">
+      <h2>Related calculators</h2>
+      <div class="related-grid">
+        <a class="related-item" href="/sand-calculator"><span class="ico">🏖️</span><span class="name">Sand Calculator</span></a>
+        <a class="related-item" href="/gst-calculator"><span class="ico">💰</span><span class="name">GST Calculator</span></a>
+        <a class="related-item" href="/unit-converter"><span class="ico">📏</span><span class="name">Unit Converter</span></a>
+        <a class="related-item" href="/percentage-calculator"><span class="ico">💯</span><span class="name">Percentage Calculator</span></a>
+      </div>
+    </div>
+  </div>
+
+  <footer>© EkZapp — Free online utility tools</footer>
+</div>
+
+<script>
+let currentUnit = 'ft';
+let currentMode = 'general';
+const unitLabels = { ft:'ft', in:'in', yd:'yd', m:'m', cm:'cm' };
+let lastResultText = '';
+
+document.getElementById('unitSwitch').addEventListener('click', function(e){
+  const btn = e.target.closest('button');
+  if(!btn) return;
+  document.querySelectorAll('#unitSwitch button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  currentUnit = btn.getAttribute('data-unit');
+  const label = unitLabels[currentUnit];
+  document.getElementById('unitTagLen').textContent = label;
+  document.getElementById('unitTagWid').textContent = label;
+  document.getElementById('unitTagHeight').textContent = label;
+});
+
+document.getElementById('optionalToggle').addEventListener('click', function(){
+  const el = document.getElementById('optionalFields');
+  el.classList.toggle('show');
+  this.textContent = el.classList.contains('show')
+    ? '– Hide quantity & rate fields'
+    : '+ Add quantity & rate for pricing (optional)';
+});
+
+document.getElementById('modeTabs').addEventListener('click', function(e){
+  const btn = e.target.closest('.mode-tab');
+  if(!btn) return;
+  document.querySelectorAll('.mode-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  currentMode = btn.getAttribute('data-mode');
+  document.getElementById('generalMode').style.display = currentMode === 'general' ? 'block' : 'none';
+  document.getElementById('timberMode').style.display = currentMode === 'timber' ? 'block' : 'none';
+  document.getElementById('result').classList.remove('show');
+  document.getElementById('rowCbm').style.display = currentMode === 'general' ? 'flex' : 'none';
+  document.getElementById('rowYd').style.display = currentMode === 'general' ? 'flex' : 'none';
+});
+
+function calcCubicFeet(updateUrl){
+  const l = parseFloat(document.getElementById('lenVal').value);
+  const w = parseFloat(document.getElementById('widVal').value);
+  const h = parseFloat(document.getElementById('heightVal').value);
+  const qty = parseFloat(document.getElementById('qty').value) || 1;
+  const rate = parseFloat(document.getElementById('rate').value) || 0;
+
+  if(!l || !w || !h){ alert('Please enter length, width and height'); return; }
+
+  const rawVolume = l * w * h;
+  let cft;
+  switch(currentUnit){
+    case 'ft': cft = rawVolume; break;
+    case 'in': cft = rawVolume / 1728; break;
+    case 'yd': cft = rawVolume * 27; break;
+    case 'm':  cft = rawVolume * 35.3147; break;
+    case 'cm': cft = rawVolume / 28316.8466; break;
+    default: cft = rawVolume;
+  }
+
+  const totalCft = cft * qty;
+  const cbm = totalCft * 0.0283168;
+  const cy = totalCft / 27;
+  const cost = totalCft * rate;
+
+  document.getElementById('rCft').textContent = totalCft.toFixed(3) + ' CFT';
+  document.getElementById('rCbm').textContent = cbm.toFixed(4) + ' m³';
+  document.getElementById('rYd').textContent = cy.toFixed(4) + ' yd³';
+  document.getElementById('rCostLabel').textContent = rate > 0 ? 'Total Cost' : 'Total Cost (enter rate)';
+  document.getElementById('rCost').textContent = rate > 0 ? '₹' + cost.toFixed(2) : '—';
+  document.getElementById('result').classList.add('show');
+
+  lastResultText = `Cubic Feet: ${totalCft.toFixed(3)} CFT | CBM: ${cbm.toFixed(4)} m³ | Cubic Yards: ${cy.toFixed(4)} yd³` + (rate > 0 ? ` | Total Cost: ₹${cost.toFixed(2)}` : '');
+
+  if(updateUrl !== false){
+    const params = new URLSearchParams({ mode:'general', unit:currentUnit, l, w, h, qty, rate });
+    history.replaceState(null, '', '?' + params.toString());
+  }
+}
+
+function calcTimberCft(updateUrl){
+  const l = parseFloat(document.getElementById('tLen').value);
+  const w = parseFloat(document.getElementById('tWid').value);
+  const t = parseFloat(document.getElementById('tThick').value);
+  const qty = parseFloat(document.getElementById('tQty').value) || 1;
+  const rate = parseFloat(document.getElementById('tRate').value) || 0;
+
+  if(!l || !w || !t){ alert('Please enter length, width and thickness'); return; }
+
+  const perPiece = l * w * (t / 12);
+  const totalCft = perPiece * qty;
+  const cost = totalCft * rate;
+
+  document.getElementById('rCft').textContent = totalCft.toFixed(3) + ' CFT';
+  document.getElementById('rCostLabel').textContent = rate > 0 ? 'Total Cost' : 'Total Cost (enter rate)';
+  document.getElementById('rCost').textContent = rate > 0 ? '₹' + cost.toFixed(2) : '—';
+  document.getElementById('result').classList.add('show');
+
+  lastResultText = `Cubic Feet: ${totalCft.toFixed(3)} CFT (Timber/Stone mode)` + (rate > 0 ? ` | Total Cost: ₹${cost.toFixed(2)}` : '');
+
+  if(updateUrl !== false){
+    const params = new URLSearchParams({ mode:'timber', l, w, t, qty, rate });
+    history.replaceState(null, '', '?' + params.toString());
+  }
+}
+
+function copyResult(){
+  if(!lastResultText) return;
+  navigator.clipboard.writeText(lastResultText).then(()=>{
+    const btn = document.getElementById('copyBtn');
+    const old = btn.textContent;
+    btn.textContent = '✅ Copied!';
+    btn.classList.add('copied');
+    setTimeout(()=>{ btn.textContent = old; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+// Prefill from URL query parameters, so results can be shared via link
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  if(!params.has('l')) return;
+
+  if(params.get('mode') === 'timber'){
+    document.querySelectorAll('.mode-tab').forEach(b=>b.classList.remove('active'));
+    document.querySelector('.mode-tab[data-mode="timber"]').classList.add('active');
+    currentMode = 'timber';
+    document.getElementById('generalMode').style.display = 'none';
+    document.getElementById('timberMode').style.display = 'block';
+    document.getElementById('rowCbm').style.display = 'none';
+    document.getElementById('rowYd').style.display = 'none';
+
+    if(params.has('l')) document.getElementById('tLen').value = params.get('l');
+    if(params.has('w')) document.getElementById('tWid').value = params.get('w');
+    if(params.has('t')) document.getElementById('tThick').value = params.get('t');
+    if(params.has('qty')) document.getElementById('tQty').value = params.get('qty');
+    if(params.has('rate')) document.getElementById('tRate').value = params.get('rate');
+    calcTimberCft(false);
+  } else {
+    const unit = params.get('unit') || 'ft';
+    const unitBtn = document.querySelector(`#unitSwitch button[data-unit="${unit}"]`);
+    if(unitBtn){
+      document.querySelectorAll('#unitSwitch button').forEach(b=>b.classList.remove('active'));
+      unitBtn.classList.add('active');
+      currentUnit = unit;
+      document.getElementById('unitTagLen').textContent = unitLabels[unit];
+      document.getElementById('unitTagWid').textContent = unitLabels[unit];
+      document.getElementById('unitTagHeight').textContent = unitLabels[unit];
+    }
+    if(params.has('l')) document.getElementById('lenVal').value = params.get('l');
+    if(params.has('w')) document.getElementById('widVal').value = params.get('w');
+    if(params.has('h')) document.getElementById('heightVal').value = params.get('h');
+    if(params.has('qty') && params.get('qty') !== '1') {
+      document.getElementById('qty').value = params.get('qty');
+      document.getElementById('optionalFields').classList.add('show');
+      document.getElementById('optionalToggle').textContent = '– Hide quantity & rate fields';
+    }
+    if(params.has('rate') && params.get('rate') !== '0'){
+      document.getElementById('rate').value = params.get('rate');
+      document.getElementById('optionalFields').classList.add('show');
+      document.getElementById('optionalToggle').textContent = '– Hide quantity & rate fields';
+    }
+    calcCubicFeet(false);
+  }
+})();
+</script>
+</body>
+</html>

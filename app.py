@@ -97,6 +97,8 @@ LASTMOD_OVERRIDES = {
     '/blog/unlock-pdf-remove-password-online-free': '2026-07-15',
     '/blog/itr-filing-2026-last-date-old-vs-new-tax-regime': '2026-07-17',
     '/blog/home-loan-emi-calculation-explained': '2026-07-19',
+    '/cft-calculator': '2026-07-19',
+    '/sand-calculator': '2026-07-19',
 }
 
 
@@ -154,6 +156,8 @@ def sitemap():
         ('/password-generator', '0.9', 'weekly'),
         ('/currency-converter', '0.9', 'weekly'),
         ('/unit-converter', '0.9', 'weekly'),
+        ('/cft-calculator', '0.9', 'weekly'),
+        ('/sand-calculator', '0.9', 'weekly'),
         ('/invoice-generator', '0.9', 'weekly'),
         ('/youtube-thumbnail', '0.9', 'weekly'),
         ('/income-tax-calculator', '0.9', 'weekly'),
@@ -1563,6 +1567,14 @@ def unit_converter():
 @app.route("/tools/unit-converter")
 def unit_converter_old():
     return redirect("/unit-converter", code=301)
+
+@app.route("/cft-calculator")
+def cft_calculator():
+    return render_template("cft_calculator.html")
+
+@app.route("/sand-calculator")
+def sand_calculator():
+    return render_template("sand_calculator.html")
 
 
 # ──────────────────────────────────────────
