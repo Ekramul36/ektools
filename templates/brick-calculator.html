@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VW5QLMV046"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VW5QLMV046');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brick Calculator — Bricks, Cement, Sand & Cost Estimate | EkZapp</title>
+<meta name="description" content="Free brick calculator with door/window deduction, cement & sand estimate, cost calculator, and Katha/Bigha/Decimal/Cent area converter. Estimate exact bricks needed for any wall.">
+<meta name="keywords" content="brick calculator, how many bricks for a wall, brick estimation calculator, cement sand calculator, katha to sq ft, bigha to sq ft, brick cost calculator">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#2563EB">
+<meta property="og:title" content="Brick Calculator — Bricks, Cement, Sand & Cost | EkZapp">
+<meta property="og:description" content="Estimate bricks, cement, sand and cost for any wall — with door/window deduction and Indian land unit converter.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ekzapp.com/brick-calculator">
+<link rel="canonical" href="https://ekzapp.com/brick-calculator">
+<link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#2563EB;--ink:#111827;--gray:#4B5563;--light:#F9FAFB;--border:#E5E7EB;--white:#fff;
+  --accent:#EA580C;--accent-dk:#C2410C;--accent-lt:#FFF7ED;--r:10px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;font-size:14px}
+nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;height:54px;}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px;}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px;flex-shrink:0}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800;}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}.logo-text span{color:var(--blue)}
+.nav-sep{width:1px;height:20px;background:var(--border);flex-shrink:0}
+.nav-menu{display:flex;list-style:none;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1}
+.nav-menu::-webkit-scrollbar{display:none}
+.nav-menu a{padding:6px 10px;border-radius:6px;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;white-space:nowrap;}
+.nav-menu a:hover{background:#F3F4F6;color:var(--ink)}
+.hamburger{display:none;background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--ink);padding:4px;}
+.breadcrumb{max-width:900px;margin:16px auto 0;padding:0 20px;font-size:12px;color:var(--gray)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.hero{background:linear-gradient(135deg,#FFF7ED 0%,#FFEDD5 50%,#FFF7ED 100%);padding:36px 20px 32px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(234,88,12,.08) 1px,transparent 1px);background-size:22px 22px;}
+.hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;text-align:center}
+.eyebrow{display:inline-block;background:var(--white);border:1px solid rgba(234,88,12,.25);color:var(--accent-dk);font-size:11px;font-weight:700;padding:5px 14px;border-radius:100px;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.6rem,4vw,2.3rem);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:10px;}
+.hero p{color:var(--gray);font-size:14.5px;max-width:640px;margin:0 auto}
+.tool-wrap{max-width:900px;margin:-10px auto 0;padding:0 20px 40px;position:relative;z-index:2;}
+.tool-card{background:var(--white);border:1px solid var(--border);border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.07);padding:24px;}
+.mode-tabs{display:flex;gap:6px;background:var(--light);padding:4px;border-radius:10px;margin-bottom:20px;}
+.mode-tab{flex:1;padding:9px;text-align:center;border-radius:8px;font-size:13px;font-weight:600;color:var(--gray);cursor:pointer;border:none;background:none;}
+.mode-tab.active{background:var(--white);color:var(--accent-dk);box-shadow:0 1px 4px rgba(0,0,0,.1);}
+.mode-panel{display:none}.mode-panel.active{display:block}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:12px;font-weight:600;color:var(--gray)}
+.field input,.field select{padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;color:var(--ink);outline:none;}
+.field input:focus,.field select:focus{border-color:var(--accent)}
+.preset-row{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.preset-btn{padding:7px 14px;border:1.5px solid var(--border);background:var(--white);border-radius:8px;font-size:12.5px;font-weight:600;color:var(--gray);cursor:pointer}
+.preset-btn:hover{border-color:var(--accent);color:var(--accent-dk)}
+.subhead{font-size:12px;font-weight:700;color:var(--accent-dk);text-transform:uppercase;letter-spacing:.05em;margin:18px 0 8px;display:flex;align-items:center;justify-content:space-between}
+.opening-row{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;margin-bottom:8px;align-items:end}
+.opening-row .field{margin-bottom:0}
+.remove-btn{width:38px;height:38px;border-radius:8px;border:1px solid var(--border);background:var(--white);cursor:pointer;color:#DC2626;font-size:14px}
+.add-btn{padding:7px 14px;border:1.5px dashed var(--border);background:var(--white);border-radius:8px;font-size:12.5px;font-weight:600;color:var(--accent-dk);cursor:pointer}
+.add-btn:hover{background:var(--accent-lt)}
+.calc-btn{width:100%;padding:12px;background:var(--accent);color:white;border:none;border-radius:10px;font-size:14.5px;font-weight:700;cursor:pointer;margin-top:4px}
+.calc-btn:hover{background:var(--accent-dk)}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.result-box{background:var(--accent-lt);border:1px solid rgba(234,88,12,.25);border-radius:12px;padding:16px;text-align:center;}
+.result-value{font-size:1.4rem;font-weight:800;color:var(--accent-dk);letter-spacing:-.01em;}
+.result-label{font-size:11.5px;color:var(--gray);margin-top:3px;}
+.result-box.wide{grid-column:1/-1}
+.swap-btn{width:38px;height:38px;border-radius:8px;border:1px solid var(--border);background:var(--white);cursor:pointer;font-size:16px;color:var(--accent);align-self:center;margin-top:18px;}
+.form-row{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:end;margin-bottom:16px;}
+table.chart{width:100%;border-collapse:collapse;margin-top:8px;font-size:13px;}
+table.chart th{background:var(--light);text-align:left;padding:9px 12px;font-weight:700;color:var(--ink);border-bottom:2px solid var(--border);}
+table.chart td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--gray)}
+table.chart tr:last-child td{border-bottom:none}
+.content-narrow{max-width:680px;margin:0 auto;padding:8px 20px 8px;}
+.content-wide{max-width:900px;margin:0 auto;padding:8px 20px 8px;}
+.section{padding:36px 0}
+.section-alt{background:var(--light)}
+.sec-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-dk);margin-bottom:8px}
+.sec-title{font-size:clamp(1.3rem,2.6vw,1.7rem);font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
+.section p{color:var(--gray);line-height:1.75;font-size:14px;margin-bottom:14px}
+.section h3{font-size:1.05rem;font-weight:700;margin:20px 0 8px}
+.section ul{padding-left:20px;margin-bottom:14px}
+.section li{color:var(--gray);line-height:1.7;font-size:14px;margin-bottom:6px}
+.faq-list{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.faq-list details{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:16px 20px}
+.faq-list summary{font-size:14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:'+';font-size:20px;color:var(--accent);font-weight:400}
+.faq-list details[open] summary::after{content:'−'}
+.faq-list p{font-size:13px;color:var(--gray);line-height:1.65;margin-top:12px}
+.related-banner{background:linear-gradient(120deg,#EA580C,#DC2626);border-radius:16px;padding:26px 24px;color:white;margin:0 auto;max-width:900px;}
+.related-banner h3{font-size:1.15rem;margin-bottom:6px}
+.related-banner p{color:rgba(255,255,255,.85);font-size:13px;margin-bottom:14px}
+.related-links{display:flex;gap:10px;flex-wrap:wrap}
+.related-links a{background:rgba(255,255,255,.15);color:white;text-decoration:none;font-size:12.5px;font-weight:600;padding:8px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.25);}
+.related-links a:hover{background:rgba(255,255,255,.25)}
+footer{background:#1F2937;padding:28px 20px 18px;margin-top:20px}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:rgba(255,255,255,.5);font-size:11px;align-items:center}
+.footer-inner a{color:rgba(255,255,255,.7);text-decoration:none;margin-left:14px}
+@media(max-width:640px){.nav-menu{display:none}.hamburger{display:block}.grid2,.grid3{grid-template-columns:1fr}.result-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.swap-btn{justify-self:center;margin-top:0}.opening-row{grid-template-columns:1fr 1fr;grid-template-areas:"w h" "rm rm"}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Brick Calculator","url":"https://ekzapp.com/brick-calculator","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Home","item":"https://ekzapp.com/"},
+{"@type":"ListItem","position":2,"name":"Calculators","item":"https://ekzapp.com/#cat-calc"},
+{"@type":"ListItem","position":3,"name":"Brick Calculator","item":"https://ekzapp.com/brick-calculator"}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How many bricks are needed for 100 square feet of wall?","acceptedAnswer":{"@type":"Answer","text":"For a standard 9-inch (full brick) wall using standard Indian bricks with a 10mm mortar joint, roughly 950 to 1,000 bricks are typically needed per 100 sq ft, including a small wastage allowance. The exact figure depends on brick size and joint thickness."}},
+{"@type":"Question","name":"How many bricks are needed for a 1000 sq ft house?","acceptedAnswer":{"@type":"Answer","text":"A very rough rule of thumb used in early estimation is about 8 to 10 bricks per square foot of built-up area for a full house (walls, not just one wall), meaning a 1000 sq ft house might need approximately 8,000 to 10,000 bricks — but this varies widely with wall height, number of floors, and wall thickness, so a detailed calculation is more reliable."}},
+{"@type":"Question","name":"What is the standard size of an Indian brick?","acceptedAnswer":{"@type":"Answer","text":"The traditional Indian brick size is about 9 x 4.5 x 3 inches, while the modular brick standardized by the Bureau of Indian Standards is 19 x 9 x 9 cm."}},
+{"@type":"Question","name":"How much wastage should I add to a brick estimate?","acceptedAnswer":{"@type":"Answer","text":"A wastage allowance of 5% to 10% is standard practice to account for breakage during transport, cutting at corners and openings, and site handling losses."}},
+{"@type":"Question","name":"Does the brick calculator account for doors and windows?","acceptedAnswer":{"@type":"Answer","text":"Yes — this calculator lets you add multiple door and window openings with their width and height, and automatically subtracts that area from the gross wall area for a more accurate brick count."}},
+{"@type":"Question","name":"What cement-sand ratio is used for brickwork mortar?","acceptedAnswer":{"@type":"Answer","text":"A 1:6 cement-to-sand ratio is the most common for general brickwork mortar in residential construction, though a richer 1:4 ratio is sometimes used for load-bearing or exposed brickwork."}}
+]}
+</script>
+</head>
+<body>
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <div class="nav-sep"></div>
+    <ul class="nav-menu">
+      <li><a href="/">Home</a></li>
+      <li><a href="/cft-calculator">CFT Calculator</a></li>
+      <li><a href="/sand-calculator">Sand Calculator</a></li>
+      <li><a href="/land-area-converter">Land Area Converter</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Open menu">☰</button>
+  </div>
+</nav>
+
+<div class="breadcrumb"><a href="/">Home</a> / <a href="/#cat-calc">Calculators</a> / Brick Calculator</div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">🧱 Construction</span>
+    <h1>Brick Calculator — Bricks, Cement, Sand & Cost</h1>
+    <p>Estimate bricks, cement, sand and total cost for any wall — with door and window deduction, common wall size presets, and a Katha/Bigha/Decimal/Cent area converter.</p>
+  </div>
+</header>
+
+<div class="tool-wrap">
+  <div class="tool-card">
+    <div class="mode-tabs">
+      <button class="mode-tab active" data-mode="brick" onclick="switchMode('brick')">Brick Calculator</button>
+      <button class="mode-tab" data-mode="area" onclick="switchMode('area')">Area Converter</button>
+    </div>
+
+    <div class="mode-panel active" id="panel-brick">
+      <div class="preset-row">
+        <button class="preset-btn" onclick="applyPreset(10,10)">10 × 10 ft</button>
+        <button class="preset-btn" onclick="applyPreset(20,10)">20 × 10 ft</button>
+        <button class="preset-btn" onclick="applyPreset(30,10)">30 × 10 ft</button>
+      </div>
+
+      <div class="grid3">
+        <div class="field"><label for="wallLen">Wall Length (ft)</label><input type="number" id="wallLen" value="10" min="0" step="any" oninput="calcBrick()"></div>
+        <div class="field"><label for="wallHt">Wall Height (ft)</label><input type="number" id="wallHt" value="10" min="0" step="any" oninput="calcBrick()"></div>
+        <div class="field">
+          <label for="wallThick">Wall Thickness</label>
+          <select id="wallThick" onchange="calcBrick()">
+            <option value="4.5">4.5 in (Half Brick)</option>
+            <option value="9" selected>9 in (Full Brick)</option>
+            <option value="13.5">13.5 in (1.5 Brick)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="subhead"><span>Doors & Windows (subtracted from wall area)</span></div>
+      <div id="openingsList"></div>
+      <button class="add-btn" onclick="addOpening()">+ Add Door/Window Opening</button>
+
+      <div class="subhead" style="margin-top:20px">Brick & Mortar Settings</div>
+      <div class="grid3">
+        <div class="field">
+          <label for="brickType">Brick Size</label>
+          <select id="brickType" onchange="calcBrick()">
+            <option value="standard">Standard Indian (9×4.5×3 in)</option>
+            <option value="modular">Modular (19×9×9 cm)</option>
+          </select>
+        </div>
+        <div class="field"><label for="mortarThick">Mortar Joint (mm)</label><input type="number" id="mortarThick" value="10" min="0" step="1" oninput="calcBrick()"></div>
+        <div class="field"><label for="wastage">Wastage (%)</label><input type="number" id="wastage" value="5" min="0" step="1" oninput="calcBrick()"></div>
+      </div>
+      <div class="grid2">
+        <div class="field">
+          <label for="mixRatio">Mortar Mix Ratio (Cement : Sand)</label>
+          <select id="mixRatio" onchange="calcBrick()">
+            <option value="6">1 : 6 (Standard Brickwork)</option>
+            <option value="4">1 : 4 (Richer Mix)</option>
+          </select>
+        </div>
+        <div class="field"><label for="pricePerBrick">Price per Brick (₹, optional)</label><input type="number" id="pricePerBrick" placeholder="e.g. 10" min="0" step="0.5" oninput="calcBrick()"></div>
+      </div>
+
+      <div class="result-grid">
+        <div class="result-box"><div class="result-value" id="brickWallArea">100 sq ft</div><div class="result-label">Net Wall Area</div></div>
+        <div class="result-box"><div class="result-value" id="brickCount">~957 bricks</div><div class="result-label">Bricks Needed (with wastage)</div></div>
+        <div class="result-box"><div class="result-value" id="cementBags">6 bags</div><div class="result-label">Cement Needed</div></div>
+        <div class="result-box"><div class="result-value" id="sandCft">35 CFT</div><div class="result-label">Sand Needed</div></div>
+        <div class="result-box wide" id="costBox" style="display:none"><div class="result-value" id="totalCost">₹0</div><div class="result-label">Estimated Brick Cost</div></div>
+      </div>
+    </div>
+
+    <div class="mode-panel" id="panel-area">
+      <div class="form-row">
+        <div class="field">
+          <label for="areaFromVal">From</label>
+          <input type="number" id="areaFromVal" value="100" min="0" step="any" oninput="calcArea()">
+          <select id="areaFromUnit" onchange="calcArea()">
+            <option value="sqft">Square Feet</option>
+            <option value="sqm">Square Meter</option>
+            <option value="sqyd">Square Yard</option>
+            <option value="acre">Acre</option>
+            <option value="katha">Katha (Bengal std.)</option>
+            <option value="bigha">Bigha (Bengal std.)</option>
+            <option value="decimal">Decimal</option>
+            <option value="cent">Cent</option>
+          </select>
+        </div>
+        <button class="swap-btn" onclick="swapArea()" title="Swap">⇄</button>
+        <div class="field">
+          <label for="areaToUnit">To</label>
+          <input type="text" id="areaToVal" readonly style="background:var(--light);font-weight:700">
+          <select id="areaToUnit" onchange="calcArea()">
+            <option value="sqm">Square Meter</option>
+            <option value="sqft">Square Feet</option>
+            <option value="sqyd">Square Yard</option>
+            <option value="acre">Acre</option>
+            <option value="katha">Katha (Bengal std.)</option>
+            <option value="bigha">Bigha (Bengal std.)</option>
+            <option value="decimal">Decimal</option>
+            <option value="cent">Cent</option>
+          </select>
+        </div>
+      </div>
+      <div class="result-box">
+        <div class="result-value" id="areaResult">9.29 Square Meter</div>
+        <div class="result-label">100 Square Feet = 9.29 Square Meter</div>
+      </div>
+      <p style="font-size:12px;color:var(--gray);margin-top:10px">Katha/Bigha shown here use the common West Bengal & Bangladesh standard (1 Bigha = 14,400 sq ft = 20 Katha). Bigha varies by state — for Bihar, UP, Rajasthan and other regions, use the <a href="/land-area-converter" style="color:var(--accent-dk)">Land Area Converter</a> instead. Decimal and Cent are the same unit (1/100 Acre) used under different regional names — Decimal in Bihar/Odisha/West Bengal, Cent in Kerala/Tamil Nadu.</p>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="content-wide">
+    <div class="sec-label">Popular Examples</div>
+    <h2 class="sec-title">How Many Bricks for Common Wall Sizes?</h2>
+    <table class="chart">
+      <tr><th>Scenario</th><th>Wall Area</th><th>Approx. Bricks (9-in wall, standard brick, 5% wastage)</th></tr>
+      <tr><td>100 sq ft wall</td><td>100 sq ft</td><td>~957 bricks</td></tr>
+      <tr><td>500 sq ft wall</td><td>500 sq ft</td><td>~4,785 bricks</td></tr>
+      <tr><td>1,000 sq ft house (all walls)</td><td>~1,000 sq ft equiv.</td><td>~8,000–10,000 bricks*</td></tr>
+      <tr><td>9-inch wall, per sq ft</td><td>1 sq ft</td><td>~9.6 bricks</td></tr>
+      <tr><td>4.5-inch (half brick) wall, per sq ft</td><td>1 sq ft</td><td>~5.0 bricks</td></tr>
+    </table>
+    <p style="margin-top:12px;font-size:12px;color:var(--gray)">*Whole-house estimates vary widely with number of floors, wall height, and openings — use the calculator above with your actual wall dimensions for an accurate figure.</p>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="content-narrow">
+    <div class="sec-label">How It Works</div>
+    <h2 class="sec-title">How Brick, Cement & Sand Quantity Is Calculated</h2>
+    <p>Estimating bricks for a wall comes down to comparing two volumes: the total volume of the wall you're building (after subtracting doors and windows), and the volume that a single brick occupies once you account for the mortar joint around it. Divide the first by the second, and you get the number of bricks required before wastage.</p>
+    <h3>The brick formula</h3>
+    <p>Net wall area = Gross area (Length × Height) − total door/window opening area. Wall volume = Net area × Thickness. Brick-with-mortar volume = (brick length + joint) × (brick width + joint) × (brick height + joint). Number of bricks = Wall volume ÷ Brick-with-mortar volume, increased by the wastage percentage.</p>
+    <h3>Why subtracting doors and windows matters</h3>
+    <p>A wall with even a single standard door (about 21 sq ft) and one window (about 12 sq ft) can have 15-20% less actual brick area than its gross dimensions suggest. Skipping this deduction is one of the most common reasons site estimates overshoot — ordering bricks for openings that will never be filled.</p>
+    <h3>From bricks to mortar: cement and sand</h3>
+    <p>Once the brick count is known, the difference between the total wall volume and the volume actually occupied by bricks (without their surrounding mortar) gives the wet mortar volume. This is inflated by a standard 1.33 dry-volume factor to account for the volume lost when dry cement and sand are mixed with water, then split according to the mix ratio — commonly 1:6 (cement:sand) for general brickwork, or a richer 1:4 for load-bearing walls. Cement volume is converted to bags using the standard figure of 1.226 cubic feet per 50kg bag.</p>
+    <h3>Standard vs modular brick</h3>
+    <p>Traditional Indian bricks (9 × 4.5 × 3 inches) remain common in many regions, while the Bureau of Indian Standards modular brick (19 × 9 × 9 cm) aligns brickwork to a consistent metric grid. Modular bricks are typically smaller, so more are needed to fill the same wall area.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="content-narrow">
+    <div class="sec-label">Choosing Thickness</div>
+    <h2 class="sec-title">Which Wall Thickness Should You Use?</h2>
+    <p>Wall thickness isn't just a cost decision — it affects structural load-bearing capacity, sound insulation, and how much usable floor area a room loses to its walls. Choosing the right thickness for each wall type avoids both over-building (wasted material and cost) and under-building (a wall that can't safely carry the load placed on it).</p>
+    <h3>4.5-inch (half brick) walls</h3>
+    <p>Used almost exclusively for internal partition walls that don't carry structural load — separating rooms within a floor. They use roughly half the bricks of a full 9-inch wall for the same area, but should never be used for external or load-bearing walls.</p>
+    <h3>9-inch (full brick) walls</h3>
+    <p>The standard choice for external walls and load-bearing internal walls in most residential construction across India. It offers a reasonable balance of structural strength, thermal insulation, and material cost, and is what most contractors default to unless a structural engineer specifies otherwise.</p>
+    <h3>13.5-inch (one-and-a-half brick) walls</h3>
+    <p>Used where extra load-bearing capacity is needed — typically ground-floor walls in multi-storey buildings, boundary walls exposed to significant lateral pressure, or in regions with stricter thermal or acoustic requirements. It roughly triples the brick and mortar requirement compared to a half-brick wall for the same area.</p>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="content-narrow">
+    <div class="sec-label">Site Tips</div>
+    <h2 class="sec-title">Reducing Brick Wastage on Site</h2>
+    <p>The 5-10% wastage this calculator applies is an estimate, not a guarantee — actual wastage on a real construction site depends heavily on handling practices, and a few common-sense steps can bring it down toward the lower end of that range.</p>
+    <ul>
+      <li><strong>Order in bulk from a single batch</strong> where possible — bricks from different production batches can vary slightly in size, causing uneven coursing and more cutting.</li>
+      <li><strong>Stack bricks properly on a level, dry surface</strong> away from heavy foot traffic, since bricks stacked carelessly or in wet ground crack and chip more easily.</li>
+      <li><strong>Plan door and window openings before laying begins</strong> so masons can work around them with whole bricks rather than cutting after the fact.</li>
+      <li><strong>Train or brief masons on handling</strong> — a large share of on-site breakage comes from bricks being thrown or dropped during transport from the stack to the wall, rather than from the bricks themselves being defective.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="content-narrow">
+    <div class="sec-label">Cost Planning</div>
+    <h2 class="sec-title">Estimating Brick Cost Accurately</h2>
+    <p>Brick prices vary significantly by region, brick type, and whether they're sourced locally or transported — so the cost estimate this calculator produces is only as accurate as the per-brick price you enter. A few things to keep in mind when budgeting a real project.</p>
+    <h3>Get a delivered price, not a factory price</h3>
+    <p>Transport cost from the brick kiln or supplier to your site can add a meaningful amount per brick, especially for large quantities or longer distances — always ask for a price that includes delivery to compare suppliers fairly.</p>
+    <h3>Cost isn't just bricks</h3>
+    <p>This calculator's cost estimate covers bricks alone. A full brickwork budget should also account for cement and sand (shown separately above), mason labour charges — typically quoted per thousand bricks laid or per square foot — and any scaffolding needed for taller walls.</p>
+    <h3>Fly ash bricks and AAC blocks as alternatives</h3>
+    <p>Fly ash bricks and Autoclaved Aerated Concrete (AAC) blocks are increasingly used as alternatives to traditional clay bricks in Indian construction, often at a comparable or lower delivered cost per square foot of wall once labour and mortar savings are factored in, since larger AAC blocks need less mortar and fewer units per wall. This calculator's brick-size logic is built around standard and modular clay brick dimensions; for AAC blocks, the much larger unit size means a different set of calculations would apply.</p>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="content-narrow">
+    <div class="sec-label">Common Mistakes</div>
+    <h2 class="sec-title">Mistakes That Skew a Brick Estimate</h2>
+    <ul>
+      <li><strong>Forgetting openings entirely</strong> — using gross wall area without subtracting doors and windows is the single biggest source of over-ordering.</li>
+      <li><strong>Mixing up brick sizes</strong> — assuming standard Indian brick dimensions when the supplier is actually providing modular bricks (or vice versa) throws off both the brick count and the cement/sand estimate.</li>
+      <li><strong>Ignoring mortar joint thickness</strong> — a joint significantly thicker or thinner than the assumed 10mm changes both the brick count and mortar quantity meaningfully at scale.</li>
+      <li><strong>Applying no wastage buffer at all</strong> — ordering exactly the calculated number with zero allowance almost always results in a mid-project shortage and an urgent, often pricier, top-up order.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="content-narrow">
+    <div class="sec-label">Planning Ahead</div>
+    <h2 class="sec-title">Using This Calculator Room by Room</h2>
+    <p>For a full house rather than a single wall, the most reliable approach is to run this calculator separately for each wall — entering that wall's own length, height, thickness, and openings — rather than trying to estimate the whole house from one combined number. Room-by-room estimation naturally accounts for the fact that different walls often have different thicknesses (external load-bearing walls at 9 inches, internal partitions at 4.5 inches) and very different numbers of doors and windows.</p>
+    <p>Once each wall's brick, cement, and sand figures are calculated, simply add up the totals across all walls for the whole-house material list. This also makes it easier to catch a design change later — if one wall's dimensions shift, only that wall's numbers need to be recalculated rather than the entire house estimate.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="content-narrow">
+    <div class="sec-label">Land Units</div>
+    <h2 class="sec-title">Katha, Bigha, Decimal & Cent Explained</h2>
+    <p>Construction estimates often start from a plot size quoted in a traditional unit rather than square feet, especially in eastern India and Bangladesh. This calculator's Area Converter tab includes these alongside the standard metric and imperial units.</p>
+    <h3>Katha and Bigha</h3>
+    <p>In West Bengal and Bangladesh, 1 Bigha is commonly 14,400 sq ft, divided into 20 Katha of 720 sq ft each. These values shift meaningfully in other states — Bihar and Uttar Pradesh use a much larger Bigha of roughly 27,000+ sq ft — so always confirm the regional value for legal or transaction purposes using the dedicated <a href="/land-area-converter" style="color:var(--accent-dk)">Land Area Converter</a>.</p>
+    <h3>Decimal and Cent</h3>
+    <p>Decimal and Cent both refer to the same unit — one-hundredth of an Acre, or 435.6 sq ft — just under different regional names. "Decimal" is the common term in Bihar, Odisha, Jharkhand and parts of West Bengal, while "Cent" is used in Kerala, Tamil Nadu and other southern states for the identical measurement.</p>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="content-narrow">
+    <div class="sec-label">FAQ</div>
+    <h2 class="sec-title">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <details><summary>How many bricks are needed for 100 square feet of wall?</summary><p>For a standard 9-inch (full brick) wall using standard Indian bricks with a 10mm mortar joint, roughly 950 to 1,000 bricks are typically needed per 100 sq ft, including a small wastage allowance.</p></details>
+      <details><summary>How many bricks are needed for a 1000 sq ft house?</summary><p>A rough early-estimation rule is 8 to 10 bricks per square foot of built-up area, so a 1000 sq ft house might need approximately 8,000 to 10,000 bricks — but this varies with wall height, floors, and openings, so a detailed calculation is more reliable.</p></details>
+      <details><summary>What is the standard size of an Indian brick?</summary><p>The traditional Indian brick size is about 9 × 4.5 × 3 inches, while the BIS modular brick is 19 × 9 × 9 cm.</p></details>
+      <details><summary>How much wastage should I add to a brick estimate?</summary><p>A wastage allowance of 5% to 10% is standard practice to cover breakage during transport, cutting at corners and openings, and site handling losses.</p></details>
+      <details><summary>Does the calculator account for doors and windows?</summary><p>Yes — add each door or window opening with its width and height, and the calculator automatically subtracts that area from the gross wall area for an accurate brick count.</p></details>
+      <details><summary>What cement-sand ratio is used for brickwork mortar?</summary><p>1:6 (cement:sand) is the most common ratio for general brickwork mortar in residential construction; a richer 1:4 mix is sometimes used for load-bearing or exposed brickwork.</p></details>
+      <details><summary>Is Decimal the same as Cent?</summary><p>Yes — both equal 1/100th of an Acre (435.6 sq ft). "Decimal" is the common term in Bihar, Odisha and West Bengal, while "Cent" is used in Kerala and Tamil Nadu for the identical measurement.</p></details>
+      <details><summary>Should I use fly ash bricks or AAC blocks instead of clay bricks?</summary><p>Both are common alternatives worth comparing for cost and speed of construction. AAC blocks in particular need far fewer units per wall due to their larger size, which can reduce labour and mortar costs even if the material's per-unit price looks higher at first glance.</p></details>
+      <details><summary>Why did my actual brick usage differ from the calculator's estimate?</summary><p>Small differences usually come from real-world variables the calculator can't see directly — actual brick size varying slightly from the nominal dimensions you selected, a mason using a different mortar joint thickness than entered, or on-site breakage exceeding the wastage percentage you applied.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="related-banner">
+    <h3>Related Construction Tools</h3>
+    <p>More free tools for construction and material planning.</p>
+    <div class="related-links">
+      <a href="/cft-calculator">CFT Calculator</a>
+      <a href="/sand-calculator">Sand Calculator</a>
+      <a href="/land-area-converter">Land Area Converter</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 EkZapp.com — All rights reserved</span>
+    <div><a href="/about">About</a><a href="/privacy">Privacy</a><a href="/contact">Contact</a></div>
+  </div>
+</footer>
+
+<script>
+let openingCount=0;
+function addOpening(){
+  openingCount++;
+  const id=openingCount;
+  const div=document.createElement('div');
+  div.className='opening-row';
+  div.id='opening-'+id;
+  div.innerHTML=`
+    <div class="field"><label>Width (ft)</label><input type="number" class="opening-w" value="3" min="0" step="any" oninput="calcBrick()"></div>
+    <div class="field"><label>Height (ft)</label><input type="number" class="opening-h" value="7" min="0" step="any" oninput="calcBrick()"></div>
+    <button class="remove-btn" onclick="removeOpening(${id})" title="Remove">✕</button>
+  `;
+  document.getElementById('openingsList').appendChild(div);
+  calcBrick();
+}
+function removeOpening(id){
+  const el=document.getElementById('opening-'+id);
+  if(el) el.remove();
+  calcBrick();
+}
+function totalOpeningArea(){
+  const rows=document.querySelectorAll('#openingsList .opening-row');
+  let total=0;
+  rows.forEach(row=>{
+    const w=parseFloat(row.querySelector('.opening-w').value)||0;
+    const h=parseFloat(row.querySelector('.opening-h').value)||0;
+    total+=w*h;
+  });
+  return total;
+}
+
+function applyPreset(len,ht){
+  document.getElementById('wallLen').value=len;
+  document.getElementById('wallHt').value=ht;
+  calcBrick();
+}
+
+function calcBrick(){
+  const len=parseFloat(document.getElementById('wallLen').value)||0;
+  const ht=parseFloat(document.getElementById('wallHt').value)||0;
+  const thickIn=parseFloat(document.getElementById('wallThick').value)||9;
+  const mortarMm=parseFloat(document.getElementById('mortarThick').value)||10;
+  const wastage=parseFloat(document.getElementById('wastage').value)||0;
+  const type=document.getElementById('brickType').value;
+  const mixSandParts=parseFloat(document.getElementById('mixRatio').value)||6;
+  const pricePerBrick=parseFloat(document.getElementById('pricePerBrick').value)||0;
+
+  const grossArea=len*ht;
+  const openingArea=totalOpeningArea();
+  const netArea=Math.max(0, grossArea-openingArea);
+
+  const mortarIn = mortarMm/25.4;
+  let bL,bW,bH;
+  if(type==='standard'){ bL=9; bW=4.5; bH=3; } else { bL=19/2.54; bW=9/2.54; bH=9/2.54; }
+
+  const wallVolIn3 = netArea * 144 * thickIn;
+  const brickWithMortarVolIn3 = (bL+mortarIn)*(bW+mortarIn)*(bH+mortarIn);
+  const brickActualVolIn3 = bL*bW*bH;
+
+  const bricksNoWastage = wallVolIn3 / brickWithMortarVolIn3;
+  const bricksFinal = bricksNoWastage * (1+wastage/100);
+
+  const brickVolTotalIn3 = bricksNoWastage * brickActualVolIn3;
+  const mortarVolIn3 = Math.max(0, wallVolIn3 - brickVolTotalIn3);
+  const mortarVolCuFt = mortarVolIn3/1728;
+  const dryMortarCuFt = mortarVolCuFt * 1.33;
+
+  const totalParts = 1+mixSandParts;
+  const cementVolCuFt = dryMortarCuFt * (1/totalParts);
+  const sandVolCuFt = dryMortarCuFt * (mixSandParts/totalParts);
+  const cementBags = cementVolCuFt / 1.226;
+
+  document.getElementById('brickWallArea').textContent = netArea.toLocaleString('en-IN',{maximumFractionDigits:1})+' sq ft';
+  document.getElementById('brickCount').textContent = '~'+Math.round(bricksFinal).toLocaleString('en-IN')+' bricks';
+  document.getElementById('cementBags').textContent = Math.round(cementBags*10)/10+' bags';
+  document.getElementById('sandCft').textContent = Math.round(sandVolCuFt*10)/10+' CFT';
+
+  const costBox=document.getElementById('costBox');
+  if(pricePerBrick>0){
+    costBox.style.display='block';
+    document.getElementById('totalCost').textContent='₹'+Math.round(bricksFinal*pricePerBrick).toLocaleString('en-IN');
+  } else {
+    costBox.style.display='none';
+  }
+}
+
+const toSqft={sqft:1,sqm:10.7639,sqyd:9,acre:43560,katha:720,bigha:14400,decimal:435.6,cent:435.6};
+const unitNames={sqft:'Square Feet',sqm:'Square Meter',sqyd:'Square Yard',acre:'Acre',katha:'Katha',bigha:'Bigha',decimal:'Decimal',cent:'Cent'};
+function calcArea(){
+  const from=document.getElementById('areaFromUnit').value;
+  const to=document.getElementById('areaToUnit').value;
+  const val=parseFloat(document.getElementById('areaFromVal').value)||0;
+  const sqft=val*toSqft[from];
+  const result=sqft/toSqft[to];
+  const resStr=result.toLocaleString('en-IN',{maximumFractionDigits:4});
+  document.getElementById('areaToVal').value=resStr+' '+unitNames[to];
+  document.getElementById('areaResult').textContent=resStr+' '+unitNames[to];
+  document.querySelector('#panel-area .result-label').textContent = val+' '+unitNames[from]+' = '+resStr+' '+unitNames[to];
+}
+function swapArea(){
+  const f=document.getElementById('areaFromUnit'),t=document.getElementById('areaToUnit');
+  const tmp=f.value; f.value=t.value; t.value=tmp;
+  calcArea();
+}
+function switchMode(mode){
+  document.querySelectorAll('.mode-tab').forEach(b=>b.classList.toggle('active', b.dataset.mode===mode));
+  document.getElementById('panel-brick').classList.toggle('active', mode==='brick');
+  document.getElementById('panel-area').classList.toggle('active', mode==='area');
+}
+addOpening();
+calcBrick();
+calcArea();
+</script>
+</body>
+</html>

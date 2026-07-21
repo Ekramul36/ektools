@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VW5QLMV046"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VW5QLMV046');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timestamp / Epoch Converter — Unix Time to Date Online | EkZapp</title>
+<meta name="description" content="Free Unix timestamp converter. Convert epoch time to human-readable date, a date to Unix timestamp, or plain text like 'tomorrow' or 'next Monday' — with relative time and live current timestamp.">
+<meta name="keywords" content="unix timestamp converter, epoch converter, timestamp to date, current unix time, epoch time now, relative time calculator">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#2563EB">
+<meta property="og:title" content="Timestamp / Epoch Converter | EkZapp">
+<meta property="og:description" content="Convert Unix timestamp to date and back, instantly.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ekzapp.com/timestamp-converter">
+<link rel="canonical" href="https://ekzapp.com/timestamp-converter">
+<link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#2563EB;--ink:#111827;--gray:#4B5563;--light:#F9FAFB;--border:#E5E7EB;--white:#fff;
+  --accent:#0891B2;--accent-dk:#0E7490;--accent-lt:#ECFEFF;--r:10px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;font-size:14px}
+nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;height:54px;}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px;}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px;flex-shrink:0}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800;}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}.logo-text span{color:var(--blue)}
+.nav-sep{width:1px;height:20px;background:var(--border);flex-shrink:0}
+.nav-menu{display:flex;list-style:none;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1}
+.nav-menu::-webkit-scrollbar{display:none}
+.nav-menu a{padding:6px 10px;border-radius:6px;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;white-space:nowrap;}
+.nav-menu a:hover{background:#F3F4F6;color:var(--ink)}
+.hamburger{display:none;background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--ink);padding:4px;}
+.breadcrumb{max-width:900px;margin:16px auto 0;padding:0 20px;font-size:12px;color:var(--gray)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.hero{background:linear-gradient(135deg,#ECFEFF 0%,#CFFAFE 50%,#ECFEFF 100%);padding:36px 20px 32px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(8,145,178,.08) 1px,transparent 1px);background-size:22px 22px;}
+.hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;text-align:center}
+.eyebrow{display:inline-block;background:var(--white);border:1px solid rgba(8,145,178,.25);color:var(--accent-dk);font-size:11px;font-weight:700;padding:5px 14px;border-radius:100px;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.6rem,4vw,2.3rem);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:10px;}
+.hero p{color:var(--gray);font-size:14.5px;max-width:600px;margin:0 auto}
+.tool-wrap{max-width:900px;margin:-10px auto 0;padding:0 20px 40px;position:relative;z-index:2;}
+.current-card{background:linear-gradient(120deg,#0891B2,#0E7490);border-radius:16px;padding:20px 24px;color:white;text-align:center;margin-bottom:16px;box-shadow:0 8px 30px rgba(8,145,178,.25)}
+.current-card .big{font-size:1.9rem;font-weight:800;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.current-card .small{font-size:12.5px;color:rgba(255,255,255,.85);margin-top:4px}
+.tool-card{background:var(--white);border:1px solid var(--border);border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.07);padding:24px;}
+.mode-tabs{display:flex;gap:6px;background:var(--light);padding:4px;border-radius:10px;margin-bottom:20px;}
+.mode-tab{flex:1;padding:9px 6px;text-align:center;border-radius:8px;font-size:12.5px;font-weight:600;color:var(--gray);cursor:pointer;border:none;background:none;}
+.mode-tab.active{background:var(--white);color:var(--accent-dk);box-shadow:0 1px 4px rgba(0,0,0,.1);}
+.mode-panel{display:none}.mode-panel.active{display:block}
+.field{display:flex;flex-direction:column;gap:5px;margin-bottom:14px}
+.field label{font-size:12px;font-weight:600;color:var(--gray)}
+.field input,.field select{padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;color:var(--ink);outline:none;}
+.field input:focus,.field select:focus{border-color:var(--accent)}
+.row2{display:grid;grid-template-columns:2fr 1fr;gap:10px}
+.result-box{background:var(--accent-lt);border:1px solid rgba(8,145,178,.25);border-radius:12px;padding:14px 16px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.result-box .txt{min-width:0}
+.result-box .label{font-size:11.5px;color:var(--gray);margin-bottom:4px}
+.result-box .val{font-size:1.05rem;font-weight:700;color:var(--accent-dk);font-variant-numeric:tabular-nums;word-break:break-word}
+.copy-btn{flex-shrink:0;padding:6px 10px;border:1px solid var(--border);background:var(--white);border-radius:6px;font-size:11.5px;cursor:pointer;color:var(--accent-dk);font-weight:600;white-space:nowrap}
+.copy-btn:hover{background:var(--accent-lt)}
+.copy-btn.copied{color:#15803D;border-color:#15803D}
+.relative-badge{display:inline-block;background:#0E7490;color:white;font-size:12px;font-weight:700;padding:4px 12px;border-radius:100px;margin-top:2px}
+.content-narrow{max-width:680px;margin:0 auto;padding:8px 20px 8px;}
+.content-wide{max-width:900px;margin:0 auto;padding:8px 20px 8px;}
+.section{padding:36px 0}
+.section-alt{background:var(--light)}
+.sec-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-dk);margin-bottom:8px}
+.sec-title{font-size:clamp(1.3rem,2.6vw,1.7rem);font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
+.section p{color:var(--gray);line-height:1.75;font-size:14px;margin-bottom:14px}
+.section h3{font-size:1.05rem;font-weight:700;margin:20px 0 8px}
+.section ul{padding-left:20px;margin-bottom:14px}
+.section li{color:var(--gray);line-height:1.7;font-size:14px;margin-bottom:6px}
+table.chart{width:100%;border-collapse:collapse;margin-top:8px;font-size:13px;}
+table.chart th{background:var(--light);text-align:left;padding:9px 12px;font-weight:700;color:var(--ink);border-bottom:2px solid var(--border);}
+table.chart td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--gray)}
+table.chart tr:last-child td{border-bottom:none}
+table.chart tr.clickable{cursor:pointer}
+table.chart tr.clickable:hover td{background:var(--accent-lt)}
+.faq-list{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.faq-list details{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:16px 20px}
+.faq-list summary{font-size:14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:'+';font-size:20px;color:var(--accent);font-weight:400}
+.faq-list details[open] summary::after{content:'−'}
+.faq-list p{font-size:13px;color:var(--gray);line-height:1.65;margin-top:12px}
+.related-banner{background:linear-gradient(120deg,#0891B2,#164E63);border-radius:16px;padding:26px 24px;color:white;margin:0 auto;max-width:900px;}
+.related-banner h3{font-size:1.15rem;margin-bottom:6px}
+.related-banner p{color:rgba(255,255,255,.85);font-size:13px;margin-bottom:14px}
+.related-links{display:flex;gap:10px;flex-wrap:wrap}
+.related-links a{background:rgba(255,255,255,.15);color:white;text-decoration:none;font-size:12.5px;font-weight:600;padding:8px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.25);}
+.related-links a:hover{background:rgba(255,255,255,.25)}
+.related-links .soon{opacity:.55;cursor:default}
+.related-links .soon:hover{background:rgba(255,255,255,.15)}
+footer{background:#1F2937;padding:28px 20px 18px;margin-top:20px}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:rgba(255,255,255,.5);font-size:11px;align-items:center}
+.footer-inner a{color:rgba(255,255,255,.7);text-decoration:none;margin-left:14px}
+@media(max-width:640px){.nav-menu{display:none}.hamburger{display:block}.row2{grid-template-columns:1fr}.mode-tabs{flex-wrap:wrap}.mode-tab{flex:1 1 45%}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Timestamp Converter","url":"https://ekzapp.com/timestamp-converter","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Home","item":"https://ekzapp.com/"},
+{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://ekzapp.com/#cat-dev"},
+{"@type":"ListItem","position":3,"name":"Timestamp Converter","item":"https://ekzapp.com/timestamp-converter"}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is a Unix timestamp?","acceptedAnswer":{"@type":"Answer","text":"A Unix timestamp (or epoch time) is the number of seconds that have elapsed since midnight UTC on January 1, 1970, ignoring leap seconds. It's a compact, timezone-independent way for computers to store and compare points in time."}},
+{"@type":"Question","name":"What is the current Unix timestamp?","acceptedAnswer":{"@type":"Answer","text":"The current Unix timestamp updates every second and is shown live at the top of this page, in both seconds and milliseconds."}},
+{"@type":"Question","name":"Why do some systems use milliseconds instead of seconds?","acceptedAnswer":{"@type":"Answer","text":"Unix time is traditionally measured in seconds, but JavaScript's Date object and many web APIs use milliseconds for finer precision. This tool supports both — just toggle the unit before converting."}},
+{"@type":"Question","name":"Does this converter account for time zones?","acceptedAnswer":{"@type":"Answer","text":"A Unix timestamp itself has no timezone — it's an absolute point in time. This tool displays the equivalent date in both UTC and your browser's local time zone so you can read it either way."}},
+{"@type":"Question","name":"What happens to Unix time in 2038?","acceptedAnswer":{"@type":"Answer","text":"Systems that store Unix time as a signed 32-bit integer will overflow on 19 January 2038, a limitation known as the Year 2038 problem. Modern 64-bit systems are unaffected and can represent dates far beyond that."}}
+]}
+</script>
+</head>
+<body>
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <div class="nav-sep"></div>
+    <ul class="nav-menu">
+      <li><a href="/">Home</a></li>
+      <li><a href="/json-formatter">JSON Formatter</a></li>
+      <li><a href="/color-picker">Color Picker</a></li>
+      <li><a href="/base64-url-encoder">Base64 & URL Encoder</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Open menu">☰</button>
+  </div>
+</nav>
+
+<div class="breadcrumb"><a href="/">Home</a> / <a href="/#cat-dev">Developer Tools</a> / Timestamp Converter</div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">💻 Developer Tool</span>
+    <h1>Timestamp / Epoch Converter</h1>
+    <p>Convert Unix timestamp to a human-readable date, a date to Unix time, or plain text like "tomorrow" or "next Monday" — with relative time, copyable results, and a live current-timestamp display.</p>
+  </div>
+</header>
+
+<div class="tool-wrap">
+  <div class="current-card">
+    <div class="big" id="liveTimestamp">0</div>
+    <div class="small">Current Unix Timestamp (seconds) · <span id="liveMs">0</span> ms</div>
+  </div>
+
+  <div class="tool-card">
+    <div class="mode-tabs">
+      <button class="mode-tab active" data-mode="ts2date" onclick="switchMode('ts2date')">Timestamp → Date</button>
+      <button class="mode-tab" data-mode="date2ts" onclick="switchMode('date2ts')">Date → Timestamp</button>
+      <button class="mode-tab" data-mode="text2ts" onclick="switchMode('text2ts')">Text → Timestamp</button>
+    </div>
+
+    <div class="mode-panel active" id="panel-ts2date">
+      <div class="row2">
+        <div class="field"><label for="tsInput">Unix Timestamp</label><input type="number" id="tsInput" placeholder="e.g. 1753142400" oninput="convertTsToDate()"></div>
+        <div class="field">
+          <label for="tsUnit">Unit</label>
+          <select id="tsUnit" onchange="convertTsToDate()">
+            <option value="s">Seconds</option>
+            <option value="ms">Milliseconds</option>
+          </select>
+        </div>
+      </div>
+      <div style="text-align:center;margin-bottom:12px"><span class="relative-badge" id="resRelative">—</span></div>
+      <div class="result-box"><div class="txt"><div class="label">UTC Date & Time</div><div class="val" id="resUtc">—</div></div><button class="copy-btn" onclick="copyText('resUtc',this)">📋 Copy</button></div>
+      <div class="result-box"><div class="txt"><div class="label">Your Local Date & Time</div><div class="val" id="resLocal">—</div></div><button class="copy-btn" onclick="copyText('resLocal',this)">📋 Copy</button></div>
+      <div class="result-box"><div class="txt"><div class="label">ISO 8601</div><div class="val" id="resIso">—</div></div><button class="copy-btn" onclick="copyText('resIso',this)">📋 Copy</button></div>
+    </div>
+
+    <div class="mode-panel" id="panel-date2ts">
+      <div class="field"><label for="dateInput">Date & Time (your local time zone)</label><input type="datetime-local" id="dateInput" oninput="convertDateToTs()"></div>
+      <div class="result-box"><div class="txt"><div class="label">Unix Timestamp (seconds)</div><div class="val" id="resTsSec">—</div></div><button class="copy-btn" onclick="copyText('resTsSec',this)">📋 Copy</button></div>
+      <div class="result-box"><div class="txt"><div class="label">Unix Timestamp (milliseconds)</div><div class="val" id="resTsMs">—</div></div><button class="copy-btn" onclick="copyText('resTsMs',this)">📋 Copy</button></div>
+    </div>
+
+    <div class="mode-panel" id="panel-text2ts">
+      <div class="field">
+        <label for="textInput">Type a date in plain English</label>
+        <input type="text" id="textInput" placeholder="e.g. tomorrow, next Monday, July 22 2026, in 3 days" oninput="convertTextToTs()">
+      </div>
+      <div class="result-box"><div class="txt"><div class="label">Parsed Date</div><div class="val" id="resTextDate">—</div></div><button class="copy-btn" onclick="copyText('resTextDate',this)">📋 Copy</button></div>
+      <div class="result-box"><div class="txt"><div class="label">Unix Timestamp (seconds)</div><div class="val" id="resTextTs">—</div></div><button class="copy-btn" onclick="copyText('resTextTs',this)">📋 Copy</button></div>
+      <p style="font-size:12px;color:var(--gray)">Supports: today, tomorrow, yesterday, "next Monday" / "last Friday", "in 3 days" / "in 2 weeks" / "in 5 hours", "3 days ago", and standard dates like "July 22, 2026" or "2026-07-22".</p>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="content-wide">
+    <div class="sec-label">Quick Reference</div>
+    <h2 class="sec-title">Popular Timestamps</h2>
+    <table class="chart" id="popularTable">
+      <tr><th>Human Date</th><th>Unix Timestamp</th><th></th></tr>
+    </table>
+    <p style="margin-top:12px;font-size:12px;color:var(--gray)">Click any row to load it into the converter above.</p>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="content-narrow">
+    <div class="sec-label">What It Means</div>
+    <h2 class="sec-title">What Is a Unix Timestamp?</h2>
+    <p>A Unix timestamp — also called epoch time — counts the number of seconds that have elapsed since midnight UTC on January 1, 1970 (the "Unix epoch"). Instead of storing a date as a string like "22 July 2026," computers often store it as a single number, such as 1753142400, which is compact, unambiguous, and easy to compare or sort.</p>
+    <p>The choice of January 1, 1970 as the reference point wasn't arbitrary significance — it was simply a convenient round date chosen by early Unix developers when the system was being designed in the early 1970s, and it stuck as the de facto standard across virtually every operating system, programming language, and database that followed.</p>
+    <h3>Why developers use it</h3>
+    <p>Because a Unix timestamp is timezone-independent, it avoids the classic bugs that come from storing dates as local time strings. Two servers in different countries can agree on exactly the same instant just by comparing the same number — no timezone conversion needed until it's time to display the date to a user.</p>
+    <h3>Seconds vs milliseconds</h3>
+    <p>The original Unix standard uses seconds, which is still common in most backend systems, log files, and APIs. JavaScript's built-in <code>Date.now()</code> and many modern web frameworks use milliseconds instead, for sub-second precision. Mixing up the two is one of the most common timestamp bugs — a millisecond value fed into a seconds-based system lands you somewhere in the year 48000, or, going the other way, in 1970.</p>
+    <h3>The Year 2038 problem</h3>
+    <p>Systems that store Unix time as a signed 32-bit integer will overflow on 19 January 2038, wrapping back to 1901 — a limitation known as the Year 2038 problem. Most modern 64-bit systems have already moved past this limit, but some embedded and legacy systems remain at risk.</p>
+    <h3>Common use cases</h3>
+    <ul>
+      <li><strong>Debugging API responses</strong> that return timestamps instead of readable dates.</li>
+      <li><strong>Setting cache expiry or token expiration</strong> values in seconds since epoch.</li>
+      <li><strong>Reading database records</strong> like <code>created_at</code> or <code>updated_at</code> fields stored as epoch integers.</li>
+      <li><strong>Scheduling and cron jobs</strong> that compare "now" against a stored future timestamp.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="content-narrow">
+    <div class="sec-label">Code Reference</div>
+    <h2 class="sec-title">Getting the Current Timestamp in Different Languages</h2>
+    <p>Every major programming language and database offers a built-in way to read the current Unix time, though the exact unit (seconds vs milliseconds) and function name differ. This is a common source of off-by-1000 bugs when code moves between languages or between frontend and backend, so it helps to know the default for each.</p>
+    <h3>JavaScript</h3>
+    <p><code>Date.now()</code> returns the current time in milliseconds since epoch. To get seconds, divide by 1000 and round down: <code>Math.floor(Date.now() / 1000)</code>. The older <code>new Date().getTime()</code> does the same thing as <code>Date.now()</code>, just less directly.</p>
+    <h3>Python</h3>
+    <p><code>time.time()</code> from the built-in <code>time</code> module returns seconds since epoch as a float, including sub-second precision. <code>int(time.time())</code> rounds it down to a whole-second integer, matching the classic Unix format used by most APIs and log files.</p>
+    <h3>PHP</h3>
+    <p><code>time()</code> returns the current Unix timestamp in seconds as an integer — this has been PHP's default since its earliest versions and hasn't changed. For millisecond precision, PHP uses <code>microtime(true)</code> instead, which returns a float.</p>
+    <h3>MySQL / SQL databases</h3>
+    <p><code>UNIX_TIMESTAMP()</code> in MySQL returns the current time in seconds since epoch, and the same function can convert a stored <code>DATETIME</code> column into its Unix equivalent. PostgreSQL uses <code>EXTRACT(EPOCH FROM NOW())</code> for the same purpose.</p>
+    <h3>Excel and Google Sheets</h3>
+    <p>Spreadsheets don't store dates as Unix time natively — they use a serial day count from a different reference date. To convert a spreadsheet date to a Unix timestamp, the common formula is <code>=(A1-DATE(1970,1,1))*86400</code>, which measures the difference in days from the Unix epoch and multiplies by the number of seconds in a day.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="content-narrow">
+    <div class="sec-label">Formats Compared</div>
+    <h2 class="sec-title">Unix Timestamp vs ISO 8601 vs RFC 2822</h2>
+    <p>Unix time isn't the only standard way to represent a moment in time — it's just the most compact. Depending on the system you're working with, you may encounter one of a few common alternatives, each suited to a different purpose.</p>
+    <h3>ISO 8601</h3>
+    <p>The format this tool shows as "ISO 8601" (e.g. <code>2026-07-22T10:30:00.000Z</code>) is a human-readable, sortable string standard widely used in JSON APIs, log files, and international data exchange. Unlike a raw Unix timestamp, it's readable at a glance and unambiguous about which calendar date and time zone it refers to.</p>
+    <h3>RFC 2822</h3>
+    <p>Older systems, particularly email headers, use RFC 2822 format (e.g. <code>Wed, 22 Jul 2026 10:30:00 GMT</code>). It's more verbose than ISO 8601 but still widely supported by date-parsing libraries across most languages.</p>
+    <h3>Why Unix timestamp still wins for storage</h3>
+    <p>Even though ISO 8601 is easier to read, Unix timestamps remain the preferred internal storage format for most systems because comparing two integers is faster and simpler than parsing and comparing two date strings — especially at scale, across millions of database rows.</p>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="content-narrow">
+    <div class="sec-label">Edge Cases</div>
+    <h2 class="sec-title">Negative Timestamps and Time Zone Offsets</h2>
+    <h3>Dates before 1970</h3>
+    <p>Unix timestamps can be negative — this simply represents a moment before the epoch. For example, a timestamp of <code>-86400</code> corresponds to December 31, 1969. Most modern libraries handle negative Unix time correctly, but some older or embedded systems that use unsigned integers cannot represent dates before 1970 at all.</p>
+    <h3>India Standard Time (IST) and UTC</h3>
+    <p>India Standard Time is a fixed offset of UTC+5:30, with no daylight saving adjustments throughout the year. This means converting a Unix timestamp (always UTC-based internally) to IST is a simple, constant addition of 5 hours 30 minutes — unlike countries that observe daylight saving, where the same timestamp can map to different local times depending on the season. This tool automatically shows your browser's local time zone alongside UTC, so if you're in India it will display the IST-equivalent time directly.</p>
+    <h3>Leap seconds</h3>
+    <p>Unix time officially ignores leap seconds — the occasional extra second added to UTC to keep it aligned with Earth's rotation. In practice, this means Unix timestamps are not a perfectly uniform count of physical seconds since 1970, though for almost all everyday and application purposes this discrepancy (currently under a minute total) is irrelevant.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="content-narrow">
+    <div class="sec-label">FAQ</div>
+    <h2 class="sec-title">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <details><summary>What is a Unix timestamp?</summary><p>It's the number of seconds elapsed since midnight UTC on January 1, 1970, ignoring leap seconds — a compact, timezone-independent way for computers to record a point in time.</p></details>
+      <details><summary>What is the current Unix timestamp?</summary><p>It updates every second and is shown live at the top of this page, in both seconds and milliseconds.</p></details>
+      <details><summary>Why do some systems use milliseconds instead of seconds?</summary><p>The Unix standard uses seconds, but JavaScript's Date object and many web APIs use milliseconds for finer precision. This tool supports both — just toggle the unit before converting.</p></details>
+      <details><summary>Does this converter account for time zones?</summary><p>A Unix timestamp itself has no timezone — it's an absolute point in time. This tool shows the equivalent date in both UTC and your browser's local time zone.</p></details>
+      <details><summary>What happens to Unix time in 2038?</summary><p>Systems storing Unix time as a signed 32-bit integer will overflow on 19 January 2038 — the Year 2038 problem. Modern 64-bit systems are unaffected.</p></details>
+      <details><summary>How do I get the current Unix timestamp in Python or JavaScript?</summary><p>In Python, use <code>int(time.time())</code>. In JavaScript, use <code>Math.floor(Date.now() / 1000)</code>. Both return the current time in whole seconds since the Unix epoch.</p></details>
+      <details><summary>Can a Unix timestamp be negative?</summary><p>Yes — a negative value simply represents a date before January 1, 1970. Most modern systems handle this correctly, though some older or embedded systems using unsigned integers cannot.</p></details>
+      <details><summary>What is the IST offset from UTC?</summary><p>India Standard Time is a constant UTC+5:30 year-round, with no daylight saving changes, making conversion from a UTC-based Unix timestamp to IST a simple fixed addition.</p></details>
+      <details><summary>Why does my timestamp show the wrong date by one day?</summary><p>This almost always means a time zone mismatch — the timestamp was generated in one time zone (often UTC) and displayed as if it were local time, or vice versa. Always check whether the source system stores UTC or local time before converting.</p></details>
+      <details><summary>Is Unix time the same as GMT?</summary><p>Unix time is based on UTC, which is very close to GMT for practical purposes (GMT is technically a time zone, UTC a time standard). The two are interchangeable in almost all everyday contexts, including this converter.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="content-narrow">
+    <div class="sec-label">Troubleshooting</div>
+    <h2 class="sec-title">Common Timestamp Bugs and How to Spot Them</h2>
+    <p>Timestamp-related bugs are among the most frequent — and most confusing — issues developers run into, largely because a wrong value still looks like a valid date, just the wrong one. A few patterns show up again and again.</p>
+    <h3>The 1970 bug</h3>
+    <p>If a date converter suddenly shows "January 1, 1970" or a date very close to it, the most likely cause is that a value of <code>0</code>, <code>null</code>, or an empty string was accidentally passed in as the timestamp instead of a real value — this is often the first sign of a missing or failed database field.</p>
+    <h3>The far-future bug</h3>
+    <p>A date that jumps to the year 48000 or similar is almost always a units mismatch — a millisecond value was fed into a function expecting seconds, so it was multiplied by 1000 more than it should have been. Multiplying (or dividing) by exactly 1000 is the fix in most cases.</p>
+    <h3>The off-by-one-day bug</h3>
+    <p>When a date is consistently one day earlier or later than expected, especially right around midnight, the cause is nearly always a time zone conversion issue — a UTC timestamp was displayed using local formatting rules without converting the underlying time zone first, or the reverse.</p>
+    <h3>Using this converter to debug</h3>
+    <p>Whenever a date looks suspicious in an API response, log file, or database record, pasting the raw timestamp into a converter like this one — checking both the UTC and local readings — is usually the fastest way to confirm whether the value itself is wrong or whether it's just being displayed incorrectly.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="content-narrow">
+    <div class="sec-label">Who Uses This</div>
+    <h2 class="sec-title">Who Relies on Timestamp Conversion Day to Day</h2>
+    <p>While this tool is built for developers, the underlying need — turning a raw number into a date people understand, or the reverse — comes up across several kinds of work.</p>
+    <h3>Backend and API developers</h3>
+    <p>Reading through request logs, database exports, or third-party API payloads that return epoch time instead of formatted dates is a near-daily task for anyone working on server-side code, especially when debugging why a record was created or updated at an unexpected time.</p>
+    <h3>QA and support teams</h3>
+    <p>When investigating a bug report tied to "something that happened around 3pm yesterday," support and QA staff often need to convert a human description of time into a timestamp to search logs, or convert a log's raw timestamp back into something they can describe to a user.</p>
+    <h3>Data analysts</h3>
+    <p>Spreadsheets, exported CSVs, and analytics dashboards frequently store event times as epoch integers for compactness. Analysts converting these into readable dates for reports, or the other way around when filtering a dataset to a specific time window, benefit from a quick, reliable converter rather than writing one-off script code for each check.</p>
+    <h3>IoT and embedded systems engineers</h3>
+    <p>Devices with limited storage and processing power commonly log events as raw Unix timestamps to save space, making a converter essential when reviewing device logs pulled from sensors, cameras, or industrial equipment during troubleshooting.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="related-banner">
+    <h3>Related Developer Tools</h3>
+    <p>More free tools for quick developer tasks.</p>
+    <div class="related-links">
+      <a href="/json-formatter">JSON Formatter</a>
+      <a href="/color-picker">Color Picker</a>
+      <a href="/base64-url-encoder">Base64 & URL Encoder</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 EkZapp.com — All rights reserved</span>
+    <div><a href="/about">About</a><a href="/privacy">Privacy</a><a href="/contact">Contact</a></div>
+  </div>
+</footer>
+
+<script>
+function pad(n){return n.toString().padStart(2,'0')}
+function fmtDate(d, utc){
+  if(utc){
+    return d.getUTCFullYear()+'-'+pad(d.getUTCMonth()+1)+'-'+pad(d.getUTCDate())+' '+pad(d.getUTCHours())+':'+pad(d.getUTCMinutes())+':'+pad(d.getUTCSeconds())+' UTC';
+  }
+  return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())+' '+pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds())+' (Local)';
+}
+
+function relativeTime(d){
+  const now=Date.now();
+  let diffMs = d.getTime()-now;
+  const future = diffMs>=0;
+  diffMs=Math.abs(diffMs);
+  const sec=Math.floor(diffMs/1000);
+  const units=[['year',31536000],['month',2592000],['week',604800],['day',86400],['hour',3600],['minute',60],['second',1]];
+  for(const [name,secs] of units){
+    const val=Math.floor(sec/secs);
+    if(val>=1){
+      const plural = val===1? name : name+'s';
+      return future ? `in ${val} ${plural}` : `${val} ${plural} ago`;
+    }
+  }
+  return 'just now';
+}
+
+function tick(){
+  const now=Date.now();
+  document.getElementById('liveTimestamp').textContent=Math.floor(now/1000).toLocaleString('en-US',{useGrouping:false});
+  document.getElementById('liveMs').textContent=now.toLocaleString('en-US',{useGrouping:false});
+}
+setInterval(tick,1000); tick();
+
+function convertTsToDate(){
+  const raw=document.getElementById('tsInput').value;
+  const unit=document.getElementById('tsUnit').value;
+  if(raw===''){ document.getElementById('resUtc').textContent='—'; document.getElementById('resLocal').textContent='—'; document.getElementById('resIso').textContent='—'; document.getElementById('resRelative').textContent='—'; return; }
+  let ms=parseFloat(raw);
+  if(unit==='s') ms=ms*1000;
+  const d=new Date(ms);
+  if(isNaN(d.getTime())){ document.getElementById('resUtc').textContent='Invalid timestamp'; return; }
+  document.getElementById('resUtc').textContent=fmtDate(d,true);
+  document.getElementById('resLocal').textContent=fmtDate(d,false);
+  document.getElementById('resIso').textContent=d.toISOString();
+  document.getElementById('resRelative').textContent=relativeTime(d);
+}
+
+function convertDateToTs(){
+  const raw=document.getElementById('dateInput').value;
+  if(!raw){ document.getElementById('resTsSec').textContent='—'; document.getElementById('resTsMs').textContent='—'; return; }
+  const d=new Date(raw);
+  if(isNaN(d.getTime())){ document.getElementById('resTsSec').textContent='Invalid date'; return; }
+  document.getElementById('resTsSec').textContent=Math.floor(d.getTime()/1000).toLocaleString('en-US',{useGrouping:false});
+  document.getElementById('resTsMs').textContent=d.getTime().toLocaleString('en-US',{useGrouping:false});
+}
+
+const weekdays=['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+function parseHumanText(text){
+  const t=text.trim().toLowerCase();
+  const now=new Date();
+  if(t==='') return null;
+  if(t==='today') return now;
+  if(t==='tomorrow'){ const d=new Date(now); d.setDate(d.getDate()+1); return d; }
+  if(t==='yesterday'){ const d=new Date(now); d.setDate(d.getDate()-1); return d; }
+
+  let m=t.match(/^next (\w+)$/);
+  if(m && weekdays.includes(m[1])){
+    const target=weekdays.indexOf(m[1]);
+    const d=new Date(now);
+    let add=(target - d.getDay()+7)%7; if(add===0) add=7;
+    d.setDate(d.getDate()+add);
+    return d;
+  }
+  m=t.match(/^last (\w+)$/);
+  if(m && weekdays.includes(m[1])){
+    const target=weekdays.indexOf(m[1]);
+    const d=new Date(now);
+    let sub=(d.getDay()-target+7)%7; if(sub===0) sub=7;
+    d.setDate(d.getDate()-sub);
+    return d;
+  }
+  m=t.match(/^in (\d+) (second|minute|hour|day|week|month|year)s?$/);
+  if(m){
+    const n=parseInt(m[1]); const unit=m[2]; const d=new Date(now);
+    applyUnit(d,unit,n);
+    return d;
+  }
+  m=t.match(/^(\d+) (second|minute|hour|day|week|month|year)s? ago$/);
+  if(m){
+    const n=parseInt(m[1]); const unit=m[2]; const d=new Date(now);
+    applyUnit(d,unit,-n);
+    return d;
+  }
+  const parsed=new Date(text);
+  if(!isNaN(parsed.getTime())) return parsed;
+  return null;
+}
+function applyUnit(d,unit,n){
+  switch(unit){
+    case 'second': d.setSeconds(d.getSeconds()+n); break;
+    case 'minute': d.setMinutes(d.getMinutes()+n); break;
+    case 'hour': d.setHours(d.getHours()+n); break;
+    case 'day': d.setDate(d.getDate()+n); break;
+    case 'week': d.setDate(d.getDate()+n*7); break;
+    case 'month': d.setMonth(d.getMonth()+n); break;
+    case 'year': d.setFullYear(d.getFullYear()+n); break;
+  }
+}
+function convertTextToTs(){
+  const raw=document.getElementById('textInput').value;
+  const d=parseHumanText(raw);
+  if(!d){ document.getElementById('resTextDate').textContent= raw? 'Could not parse this text' : '—'; document.getElementById('resTextTs').textContent='—'; return; }
+  document.getElementById('resTextDate').textContent=fmtDate(d,false);
+  document.getElementById('resTextTs').textContent=Math.floor(d.getTime()/1000).toLocaleString('en-US',{useGrouping:false});
+}
+
+function copyText(id,btn){
+  const val=document.getElementById(id).textContent;
+  navigator.clipboard.writeText(val).then(()=>{
+    const orig=btn.textContent;
+    btn.textContent='✓ Copied';
+    btn.classList.add('copied');
+    setTimeout(()=>{ btn.textContent=orig; btn.classList.remove('copied'); },1500);
+  });
+}
+
+function switchMode(mode){
+  document.querySelectorAll('.mode-tab').forEach(b=>b.classList.toggle('active', b.dataset.mode===mode));
+  document.getElementById('panel-ts2date').classList.toggle('active', mode==='ts2date');
+  document.getElementById('panel-date2ts').classList.toggle('active', mode==='date2ts');
+  document.getElementById('panel-text2ts').classList.toggle('active', mode==='text2ts');
+}
+
+function loadTimestamp(ts){
+  switchMode('ts2date');
+  document.getElementById('tsUnit').value='s';
+  document.getElementById('tsInput').value=ts;
+  convertTsToDate();
+  window.scrollTo({top:document.querySelector('.tool-card').offsetTop-70,behavior:'smooth'});
+}
+
+function buildPopularTable(){
+  const rows=[
+    ['Unix Epoch (Jan 1 1970)',0],
+    ['Jan 1 2000',946684800],
+    ['Jan 1 2020',1577836800],
+    ['Jan 1 2025',1735689600],
+    ['Jan 1 2026',1767225600],
+    ['Jan 1 2030',1893456000],
+    ['Y2038 Problem (Jan 19 2038)',2147483647]
+  ];
+  const table=document.getElementById('popularTable');
+  rows.forEach(([label,ts])=>{
+    const tr=document.createElement('tr');
+    tr.className='clickable';
+    tr.onclick=()=>loadTimestamp(ts);
+    tr.innerHTML=`<td>${label}</td><td>${ts.toLocaleString('en-US',{useGrouping:false})}</td><td style="color:var(--accent-dk);font-weight:600">Load →</td>`;
+    table.appendChild(tr);
+  });
+}
+buildPopularTable();
+
+document.getElementById('tsInput').value=Math.floor(Date.now()/1000);
+convertTsToDate();
+</script>
+</body>
+</html>

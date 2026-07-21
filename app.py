@@ -100,6 +100,11 @@ LASTMOD_OVERRIDES = {
     '/cft-calculator': '2026-07-19',
     '/sand-calculator': '2026-07-19',
     '/blog/cement-sand-ratio-material-estimation-guide': '2026-07-20',
+    '/land-area-converter': '2026-07-22',
+    '/brick-calculator': '2026-07-22',
+    '/in-hand-salary-calculator': '2026-07-22',
+    '/hra-exemption-calculator': '2026-07-22',
+    '/timestamp-converter': '2026-07-22',
 }
 
 
@@ -171,6 +176,11 @@ def sitemap():
         ('/amount-in-words', '0.9', 'weekly'),
         ('/base64-url-encoder', '0.9', 'weekly'),
         ('/favicon-generator', '0.9', 'weekly'),
+        ('/land-area-converter', '0.9', 'weekly'),
+        ('/brick-calculator', '0.9', 'weekly'),
+        ('/in-hand-salary-calculator', '0.9', 'weekly'),
+        ('/hra-exemption-calculator', '0.9', 'weekly'),
+        ('/timestamp-converter', '0.9', 'weekly'),
         ('/blog', '0.8', 'weekly'),
         ('/blog/merge-pdf-files-online', '0.7', 'monthly'),
         ('/blog/reduce-image-size-to-kb', '0.7', 'monthly'),
@@ -1500,6 +1510,31 @@ def tip_calculator_old():
 @app.route("/amount-in-words")
 def amount_in_words_page():
     return render_template("amount_in_words.html")
+
+
+# ──────────────────────────────────────────
+# NEW CALCULATORS — Land Area, Brick, Salary, HRA, Timestamp
+# ──────────────────────────────────────────
+
+@app.route("/land-area-converter")
+def land_area_converter():
+    return render_template("land_area_converter.html")
+
+@app.route("/brick-calculator")
+def brick_calculator():
+    return render_template("brick_calculator.html")
+
+@app.route("/in-hand-salary-calculator")
+def in_hand_salary_calculator():
+    return render_template("in_hand_salary_calculator.html")
+
+@app.route("/hra-exemption-calculator")
+def hra_exemption_calculator():
+    return render_template("hra_exemption_calculator.html")
+
+@app.route("/timestamp-converter")
+def timestamp_converter():
+    return render_template("timestamp_converter.html")
 
 
 # ──────────────────────────────────────────
