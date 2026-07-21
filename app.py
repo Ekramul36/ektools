@@ -7,9 +7,13 @@ import uuid
 import time
 import shutil
 from app_pdf_editor_route import pdf_editor_bp
+from app_pdf_to_html_route import pdf_to_html_bp
+from app_heic_to_jpg_route import heic_to_jpg_bp
 
 app = Flask(__name__)
 app.register_blueprint(pdf_editor_bp)
+app.register_blueprint(pdf_to_html_bp)
+app.register_blueprint(heic_to_jpg_bp)
 app.secret_key = os.environ.get("SECRET_KEY", "ekzapp-dev-secret-change-in-production")
 
 UPLOAD_FOLDER = "uploads"
@@ -105,6 +109,8 @@ LASTMOD_OVERRIDES = {
     '/in-hand-salary-calculator': '2026-07-22',
     '/hra-exemption-calculator': '2026-07-22',
     '/timestamp-converter': '2026-07-22',
+    '/pdf-to-html': '2026-07-22',
+    '/heic-to-jpg': '2026-07-22',
 }
 
 
@@ -181,6 +187,8 @@ def sitemap():
         ('/in-hand-salary-calculator', '0.9', 'weekly'),
         ('/hra-exemption-calculator', '0.9', 'weekly'),
         ('/timestamp-converter', '0.9', 'weekly'),
+        ('/pdf-to-html', '0.9', 'weekly'),
+        ('/heic-to-jpg', '0.9', 'weekly'),
         ('/blog', '0.8', 'weekly'),
         ('/blog/merge-pdf-files-online', '0.7', 'monthly'),
         ('/blog/reduce-image-size-to-kb', '0.7', 'monthly'),

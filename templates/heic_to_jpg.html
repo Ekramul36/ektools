@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HEIC to JPG Converter Online Free (No Signup) | EkZapp</title>
+<meta name="description" content="Convert iPhone HEIC/HEIF photos to JPG online, free. Batch convert up to 20 files at once. No signup, no watermark.">
+<link rel="canonical" href="https://ekzapp.com/heic-to-jpg">
+<meta property="og:title" content="HEIC to JPG Converter Online Free (No Signup)">
+<meta property="og:description" content="Convert iPhone HEIC photos to JPG online, free — batch convert up to 20 files at once.">
+<meta property="og:url" content="https://ekzapp.com/heic-to-jpg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EkZapp">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--acc:#F97316;--acc-dk:#C2410C;--acc-lt:#FFF7ED;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--cream:#FFF7ED;--green:#16A34A;--red:#DC2626}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--acc);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}
+.logo-text span{color:var(--acc)}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:12px;border-left:1px solid var(--border);padding-left:12px}
+.nav-links a{padding:6px 10px;border-radius:6px;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;white-space:nowrap;transition:all .15s}
+.nav-links a:hover,.nav-links a.active{background:var(--acc-lt);color:var(--acc-dk)}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.back:hover{border-color:var(--acc);color:var(--acc-dk)}
+
+.page-wrap{max-width:960px;margin:0 auto;padding:0 20px 64px}
+.narrow{max-width:650px;margin:0 auto}
+.wide{max-width:900px;margin:0 auto}
+
+.ph-breadcrumb{max-width:900px;margin:0 auto;padding:14px 20px 0;font-size:13px;color:var(--gray)}
+.ph-breadcrumb a{color:var(--gray);text-decoration:none}
+.ph-breadcrumb a:hover{color:var(--acc-dk);text-decoration:underline}
+.ph-breadcrumb span.sep{margin:0 6px}
+.ph-breadcrumb span.current{color:var(--ink);font-weight:500}
+
+.ph-hero{position:relative;overflow:hidden;border-radius:20px;padding:48px 36px;margin:20px 0 32px;background:linear-gradient(135deg,#9A3412 0%,#F97316 45%,#FDBA74 100%);background-size:200% 200%;animation:phGrad 12s ease infinite}
+@keyframes phGrad{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@media (prefers-reduced-motion:reduce){.ph-hero{animation:none}}
+.ph-hero-badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:.78rem;padding:5px 13px;border-radius:999px;margin-bottom:14px}
+.ph-hero h1{color:#fff;font-size:1.9rem;line-height:1.25;max-width:560px;margin:0 0 10px}
+.ph-hero p{color:#fff7ed;font-size:1rem;max-width:520px;margin:0 0 4px}
+.ph-hero .ph-batch{color:#ffedd5;font-size:.85rem;font-weight:600;margin-top:10px}
+
+.card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:28px}
+.info-bar{background:var(--acc-lt);border:1px solid #FED7AA;border-radius:8px;padding:10px 14px;margin-bottom:20px;font-size:13px;color:#9A3412;display:flex;align-items:center;gap:8px}
+
+.drop-area{border:2px dashed var(--border);border-radius:10px;padding:36px 20px;text-align:center;background:var(--light);cursor:pointer;transition:all .2s;position:relative}
+.drop-area:hover,.drop-area.dragover{border-color:var(--acc);background:var(--acc-lt)}
+.drop-icon{font-size:2.2rem;margin-bottom:10px}
+.drop-area h3{font-size:14px;font-weight:600;margin-bottom:4px}
+.drop-area p{font-size:12px;color:var(--gray)}
+.drop-area input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer}
+
+.file-list{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+.file-item{display:flex;align-items:center;justify-content:space-between;background:var(--light);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:13px}
+.file-item .fname{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:65%}
+.file-item .fmeta{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.file-item .fsize{color:var(--gray);font-size:12px}
+.file-item .remove{color:var(--red);cursor:pointer;font-weight:500}
+
+.quality-row{margin-top:20px;background:var(--light);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+.quality-row label{font-size:13px;font-weight:600;display:block;margin-bottom:8px}
+.quality-slider-wrap{display:flex;align-items:center;gap:12px}
+.quality-slider-wrap input[type=range]{flex:1;accent-color:var(--acc)}
+.quality-val{font-size:13px;color:var(--gray);min-width:42px;text-align:right}
+
+.btn{width:100%;padding:13px;background:var(--acc);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:18px}
+.btn:hover{background:var(--acc-dk)}
+.btn:disabled{background:#FDBA74;cursor:not-allowed}
+
+.error-box{background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:12px 16px;color:var(--red);font-size:13px;font-weight:500;display:flex;align-items:center;gap:8px;margin-top:14px}
+.success-box{background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;padding:12px 16px;color:var(--green);font-size:13px;font-weight:500;display:flex;align-items:center;gap:8px;margin-top:14px}
+
+.trust{display:flex;justify-content:center;gap:20px;margin-top:16px;flex-wrap:wrap}
+.trust-item{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:4px}
+
+.ph-photo-card{display:flex;gap:20px;align-items:center;background:var(--cream);border-radius:16px;padding:20px;margin:28px 0;flex-wrap:wrap}
+.ph-photo-card img{width:220px;height:150px;object-fit:cover;border-radius:10px;flex-shrink:0}
+.ph-photo-card .ph-photo-text{flex:1;min-width:220px}
+.ph-photo-card h3{font-size:1rem;margin:0 0 6px}
+.ph-photo-card p{font-size:.9rem;color:var(--gray);margin:0;line-height:1.5}
+
+.ph-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:28px 0}
+.ph-card{border:1px solid var(--border);border-radius:14px;padding:20px;background:white}
+.ph-card svg{width:32px;height:32px;margin-bottom:10px}
+.ph-card h3{font-size:.95rem;margin:0 0 6px}
+.ph-card p{font-size:.85rem;color:var(--gray);margin:0;line-height:1.45}
+
+.ph-table-wrap{overflow-x:auto;margin:24px 0}
+table.ph-table{width:100%;border-collapse:collapse;font-size:.88rem}
+table.ph-table th,table.ph-table td{padding:10px 12px;border-bottom:1px solid var(--border);text-align:left}
+table.ph-table th{background:var(--light);font-weight:600}
+table.ph-table td.yes{color:#15803D;font-weight:600}
+table.ph-table td.no{color:#B91C1C}
+
+.ph-example{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:16px}
+.ph-example-box{flex:1;min-width:200px;background:white;border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center}
+.ph-example-box .fmt{font-size:12px;font-weight:700;color:var(--acc-dk);letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px}
+.ph-example-box .sz{font-size:1.4rem;font-weight:800}
+.ph-example-arrow{font-size:1.4rem;color:var(--gray)}
+
+.ph-faq details{border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;background:white}
+.ph-faq summary{cursor:pointer;font-weight:600;font-size:.92rem;list-style:none}
+.ph-faq summary::-webkit-details-marker{display:none}
+.ph-faq p{margin:10px 0 0;color:var(--gray);font-size:.87rem;line-height:1.5}
+
+.ph-related{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:28px 0}
+.ph-related a{display:block;padding:18px;border-radius:14px;color:#fff;text-decoration:none;font-weight:600}
+.ph-related a small{display:block;font-weight:400;opacity:.9;font-size:.78rem;margin-top:4px}
+.ph-related a.rt1{background:linear-gradient(135deg,#F97316,#9A3412)}
+.ph-related a.rt2{background:linear-gradient(135deg,#0ea5e9,#0369a1)}
+.ph-related a.rt3{background:linear-gradient(135deg,#7c3aed,#4c1d95)}
+
+.section-title{font-size:1.25rem;font-weight:800;letter-spacing:-.01em;margin:0 0 6px}
+.section-sub{color:var(--gray);font-size:.9rem;margin-bottom:18px}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "HEIC to JPG Converter",
+  "url": "https://ekzapp.com/heic-to-jpg",
+  "description": "Convert iPhone HEIC/HEIF photos to JPG online, free. Batch convert up to 20 files at once.",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ekzapp.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Image Tools", "item": "https://ekzapp.com/#image-tools" },
+    { "@type": "ListItem", "position": 3, "name": "HEIC to JPG Converter", "item": "https://ekzapp.com/heic-to-jpg" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Is this HEIC to JPG converter free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free with no signup and no watermark, up to the 20-file batch and 25MB-per-file limits shown above."}},
+    {"@type":"Question","name":"Are my photos uploaded or stored anywhere?","acceptedAnswer":{"@type":"Answer","text":"Files are converted in memory on the server and never written to disk — nothing is stored after conversion."}},
+    {"@type":"Question","name":"Why do iPhone photos come as HEIC?","acceptedAnswer":{"@type":"Answer","text":"HEIC is Apple's default photo format since iOS 11 — it's smaller than JPG but isn't universally supported outside Apple devices."}},
+    {"@type":"Question","name":"Will my photo quality drop after converting?","acceptedAnswer":{"@type":"Answer","text":"Some quality loss is expected any time you convert between compressed formats, but at the default 90% quality setting the difference is generally not visible to the eye. The quality slider lets you trade file size against sharpness."}},
+    {"@type":"Question","name":"Can I convert multiple HEIC files at once?","acceptedAnswer":{"@type":"Answer","text":"Yes — select or drag in up to 20 HEIC/HEIF files at a time. A single file downloads as a JPG; multiple files download together as a ZIP."}},
+    {"@type":"Question","name":"Why does my converted photo look rotated?","acceptedAnswer":{"@type":"Answer","text":"This shouldn't happen here — the converter reads the original orientation data from your iPhone photo and applies it automatically, so portrait shots stay upright."}}
+  ]
+}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+    <ul class="nav-links">
+      <li><a href="/heic-to-jpg" class="active">HEIC to JPG</a></li>
+      <li><a href="/compress-image">Compress Image</a></li>
+      <li><a href="/resize-image">Resize Image</a></li>
+      <li><a href="/convert-image">Convert Image</a></li>
+    </ul>
+    <a class="back" href="/">← All Tools</a>
+  </div>
+</nav>
+
+<div class="ph-breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Home</a><span class="sep">›</span><a href="/#image-tools">Image Tools</a><span class="sep">›</span><span class="current">HEIC to JPG Converter</span>
+</div>
+
+<div class="page-wrap">
+
+  <div class="narrow">
+    <div class="ph-hero">
+      <span class="ph-hero-badge">No signup needed</span>
+      <h1>Convert iPhone HEIC photos to JPG in seconds</h1>
+      <p>Drop in your HEIC or HEIF photos and get back JPGs that open anywhere — no app, no printer-style conversion, no lost sharpness.</p>
+      <div class="ph-batch">📦 Convert up to 20 HEIC files at once</div>
+    </div>
+  </div>
+
+  <div class="narrow">
+    <p style="color:var(--gray);font-size:14.5px;line-height:1.7;margin-bottom:16px">Every photo an iPhone takes since iOS 11 is saved as HEIC by default — a format that's smaller and more efficient than JPG, but that plenty of older devices, websites, and Windows PCs still can't open properly. The result is a familiar moment of friction: you AirDrop or email a photo, and it either won't open or shows up as a generic file icon instead of the picture itself.</p>
+    <p style="color:var(--gray);font-size:14.5px;line-height:1.7;margin-bottom:16px">This tool converts HEIC and HEIF photos to standard JPG right in the browser, with orientation preserved so portrait shots don't come out sideways. Convert one photo or up to 20 at once, adjust the output quality if you need smaller files, and download instantly — no app to install, no account required.</p>
+  </div>
+
+  <div class="narrow">
+    <div class="card">
+      <div class="info-bar">
+        🔒 Photos are converted in memory and never saved to disk
+      </div>
+
+      <div class="drop-area" id="dropArea">
+        <div class="drop-icon">🖼️</div>
+        <h3>Click to select or drag & drop</h3>
+        <p>HEIC or HEIF files, up to 20 at once, 25MB each</p>
+        <input type="file" id="fileInput" accept=".heic,.heif" multiple>
+      </div>
+
+      <div class="file-list" id="fileList"></div>
+
+      <div class="quality-row">
+        <label for="qualitySlider">JPG Quality</label>
+        <div class="quality-slider-wrap">
+          <input type="range" id="qualitySlider" min="10" max="100" value="90">
+          <span class="quality-val" id="qualityVal">90%</span>
+        </div>
+      </div>
+
+      <div id="statusBox"></div>
+
+      <button class="btn" id="convertBtn" disabled>⇄ Convert to JPG</button>
+
+      <div class="trust">
+        <div class="trust-item">🔒 In-memory processing</div>
+        <div class="trust-item">🗑️ Nothing stored</div>
+        <div class="trust-item">📵 No signup needed</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wide">
+    <div class="ph-photo-card">
+      <img src="/static/images/photo-data-analysis.jpg" alt="Browsing photos on a phone and laptop" onerror="this.style.display='none'">
+      <div class="ph-photo-text">
+        <h3>Photos that open everywhere, not just on Apple devices</h3>
+        <p>A JPG opens on every phone, PC, website, and photo app without exception — which is exactly why it's still the safest format to convert to before sharing a photo outside the Apple ecosystem.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wide">
+    <div class="section-title">What is a HEIC file?</div>
+    <div class="section-sub">The format behind every photo your iPhone takes, and why it doesn't always travel well.</div>
+    <p style="color:var(--gray);font-size:14.5px;line-height:1.7;margin-bottom:14px">HEIC (High Efficiency Image Container) is the photo format Apple made the default on iPhones starting with iOS 11 in 2017. It's built on the same underlying compression technology as HEIF video, and it does a genuinely better job than JPG at squeezing a smaller file out of the same image quality — often close to half the file size for a similar-looking photo. That's a real win for storage space and iCloud backups.</p>
+    <p style="color:var(--gray);font-size:14.5px;line-height:1.7">The catch is compatibility. HEIC support has to be built into whatever app or device is opening the file, and a lot of software still doesn't include it — older Android phones, many Windows photo viewers, some web upload forms, and plenty of older editing tools. JPG, by contrast, has been a universal standard since the 1990s and opens without question basically anywhere. Converting HEIC to JPG trades a bit of that storage efficiency for near-universal compatibility.</p>
+    <p style="color:var(--gray);font-size:14.5px;line-height:1.7;margin-top:14px">Windows 10 and 11 can technically view HEIC files after installing an extension from the Microsoft Store, and recent Android versions have gradually added partial support — but "technically supported" and "opens instantly without a second thought" are different things. A JPG never requires that extra step for the person receiving it, which is the whole reason the format mismatch still causes friction nearly a decade after HEIC was introduced.</p>
+  </div>
+
+  <div class="wide">
+    <div class="section-title">Why convert HEIC to JPG</div>
+    <div class="section-sub">A few concrete situations where the format mismatch actually causes a problem.</div>
+    <div class="ph-cards">
+      <div class="ph-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.6"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 16l5-5 4 4 5-6 4 5"/></svg>
+        <h3>Opens on any device</h3>
+        <p>JPG works on every phone, PC, and website without exception — no compatibility gamble when sharing outside Apple devices.</p>
+      </div>
+      <div class="ph-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.6"><path d="M12 4v16M4 12h16"/></svg>
+        <h3>Uploads to any form</h3>
+        <p>Plenty of websites and upload forms still reject HEIC outright — converting first avoids the "unsupported file type" error entirely.</p>
+      </div>
+      <div class="ph-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.6"><path d="M4 6h16M4 12h10M4 18h16"/></svg>
+        <h3>Works with older software</h3>
+        <p>Older photo editors, printers, and design tools were built before HEIC existed — JPG guarantees they'll open the file without a plugin.</p>
+      </div>
+      <div class="ph-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+        <h3>Safe to assume it'll just work</h3>
+        <p>Sending a JPG means never having to explain to the person on the other end why their phone can't open your photo.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wide">
+    <div class="section-title">Who ends up converting HEIC to JPG</div>
+    <div class="section-sub">A few situations where the format mismatch shows up more than people expect.</div>
+    <div class="ph-cards">
+      <div class="ph-card">
+        <h3>iPhone users sharing with Android friends</h3>
+        <p>A photo sent over WhatsApp or email that opens fine on one phone and shows up as a broken file icon on another — almost always a HEIC file meeting a device or app that doesn't support it.</p>
+      </div>
+      <div class="ph-card">
+        <h3>Freelancers and small businesses</h3>
+        <p>Uploading product or portfolio photos taken on an iPhone to a website builder or marketplace that only accepts JPG or PNG uploads.</p>
+      </div>
+      <div class="ph-card">
+        <h3>Students and job applicants</h3>
+        <p>Attaching a photo to an online form or application portal that rejects HEIC outright with an "unsupported file type" error.</p>
+      </div>
+      <div class="ph-card">
+        <h3>Photographers and editors</h3>
+        <p>Bringing iPhone shots into older editing software or a client's workflow that was never updated to read Apple's newer format.</p>
+      </div>
+      <div class="ph-card">
+        <h3>Anyone printing photos</h3>
+        <p>Many photo kiosks, printing shops, and older printer software still expect JPG and won't recognize a HEIC file at all.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wide">
+    <div class="section-title">Common issues and how to avoid them</div>
+    <div class="section-sub">A few things worth knowing before converting a batch of photos.</div>
+    <div class="ph-cards">
+      <div class="ph-card">
+        <h3>"Unsupported file type" on upload</h3>
+        <p>This is the exact problem HEIC to JPG conversion solves — convert first, then upload the resulting JPG to whatever form or platform rejected the original.</p>
+      </div>
+      <div class="ph-card">
+        <h3>Batch of photos looks huge in total</h3>
+        <p>JPGs run somewhat larger than the source HEIC files. If total size matters for email or storage, lower the quality slider before converting — 75-80% still looks sharp for most everyday photos.</p>
+      </div>
+      <div class="ph-card">
+        <h3>Live Photos only convert the still frame</h3>
+        <p>An iPhone Live Photo is technically a HEIC image plus a short video clip. This tool converts the still image; the motion portion isn't part of a HEIC to JPG conversion by definition.</p>
+      </div>
+      <div class="ph-card">
+        <h3>Accidentally selecting the wrong files</h3>
+        <p>The file list shows every selected photo with its size before converting, so it's easy to spot and remove one that doesn't belong before hitting convert.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wide">
+    <div class="section-title">How to Convert HEIC to JPG</div>
+    <div class="section-sub">Three steps, no software to install.</div>
+    <ol style="color:var(--gray);font-size:14.5px;line-height:1.8;padding-left:20px">
+      <li style="margin-bottom:10px"><strong style="color:var(--ink)">Upload your HEIC photos.</strong> Drag and drop them into the box above, or click it to browse your device. Up to 20 files, 25MB each.</li>
+      <li style="margin-bottom:10px"><strong style="color:var(--ink)">Adjust quality if needed.</strong> The default 90% keeps photos looking sharp; lower it for smaller file sizes if you're converting a large batch.</li>
+      <li style="margin-bottom:10px"><strong style="color:var(--ink)">Click Convert to JPG.</strong> One photo downloads directly as a JPG; multiple photos download together as a ZIP, ready to share anywhere.</li>
+    </ol>
+  </div>
+
+  <div class="wide">
+    <div class="section-title">HEIC vs JPG, side by side</div>
+    <div class="section-sub">Why iPhones default to one and the rest of the world still runs on the other.</div>
+    <div class="ph-table-wrap">
+      <table class="ph-table">
+        <thead><tr><th>Aspect</th><th>HEIC</th><th>JPG</th></tr></thead>
+        <tbody>
+          <tr><td>File size for similar quality</td><td class="yes">Smaller</td><td class="no">Larger</td></tr>
+          <tr><td>Compatibility</td><td class="no">Apple devices and recent software only</td><td class="yes">Opens almost everywhere</td></tr>
+          <tr><td>Editing software support</td><td class="no">Limited outside Apple's own apps</td><td class="yes">Supported by virtually every editor</td></tr>
+          <tr><td>Website upload support</td><td class="no">Often rejected</td><td class="yes">Universally accepted</td></tr>
+          <tr><td>Age of format</td><td class="no">Introduced 2017</td><td class="yes">Standard since the 1990s</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="color:var(--gray);font-size:13.5px;line-height:1.6">HEIC is the better choice for storing photos on your own iPhone — it saves real space. JPG is the better choice the moment that photo needs to leave the Apple ecosystem, whether that's a website upload, an email to someone on Android, or an older printer.</p>
+  </div>
+
+  <div class="wide">
+    <div class="section-title">What to expect from the conversion</div>
+    <div class="section-sub">A typical example, not a guarantee — actual numbers depend on the photo itself and the quality setting chosen.</div>
+    <div class="ph-example">
+      <div class="ph-example-box">
+        <div class="fmt">Before — HEIC</div>
+        <div class="sz">~4.5 MB</div>
+      </div>
+      <div class="ph-example-arrow">→</div>
+      <div class="ph-example-box">
+        <div class="fmt">After — JPG (90% quality)</div>
+        <div class="sz">~3.8 MB</div>
+      </div>
+    </div>
+    <p style="color:var(--gray);font-size:13.5px;line-height:1.6;margin-top:14px">JPG files typically end up somewhat larger than the original HEIC for the same visual quality, since HEIC's compression is more efficient to begin with — that trade-off is the price of universal compatibility. Lowering the quality slider brings the JPG size down further if storage or upload limits matter more than maximum sharpness.</p>
+  </div>
+
+  <div class="wide" style="margin-top:40px">
+    <div class="section-title">Frequently asked questions</div>
+    <div class="ph-faq">
+      <details open>
+        <summary>Is this HEIC to JPG converter free?</summary>
+        <p>Yes, completely free with no signup and no watermark, up to the 20-file batch and 25MB-per-file limits shown above.</p>
+      </details>
+      <details>
+        <summary>Are my photos uploaded or stored anywhere?</summary>
+        <p>Files are converted in memory on the server and never written to disk — nothing is stored after conversion.</p>
+      </details>
+      <details>
+        <summary>Why do iPhone photos come as HEIC?</summary>
+        <p>HEIC is Apple's default photo format since iOS 11 — it's smaller than JPG but isn't universally supported outside Apple devices.</p>
+      </details>
+      <details>
+        <summary>Will my photo quality drop after converting?</summary>
+        <p>Some quality loss is expected any time you convert between compressed formats, but at the default 90% setting the difference is generally not visible to the eye. The quality slider lets you trade file size against sharpness.</p>
+      </details>
+      <details>
+        <summary>Can I convert multiple HEIC files at once?</summary>
+        <p>Yes — select or drag in up to 20 HEIC/HEIF files at a time. A single file downloads as a JPG; multiple files download together as a ZIP.</p>
+      </details>
+      <details>
+        <summary>Why does my converted photo look rotated?</summary>
+        <p>This shouldn't happen here — the converter reads the original orientation data from your iPhone photo and applies it automatically, so portrait shots stay upright.</p>
+      </details>
+      <details>
+        <summary>Can I upload the same photo twice by mistake?</summary>
+        <p>The uploader checks each new file's name and size against what's already selected, so adding the same photo twice is blocked automatically.</p>
+      </details>
+      <details>
+        <summary>What's the difference between HEIC and HEIF?</summary>
+        <p>HEIF is the broader container format; HEIC is the specific image variant of it that iPhones use for photos. In practice the two terms are used almost interchangeably for still images, and this tool accepts both extensions.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="wide">
+    <div class="section-title">Getting the best results</div>
+    <div class="section-sub">A few small choices that affect how the converted photos turn out.</div>
+    <div class="ph-cards">
+      <div class="ph-card">
+        <h3>Match quality to the destination</h3>
+        <p>Printing or archiving calls for a higher quality setting; sharing quickly over messaging apps can usually drop lower without anyone noticing the difference.</p>
+      </div>
+      <div class="ph-card">
+        <h3>Batch similar photos together</h3>
+        <p>Converting a set of photos meant for the same purpose — all going into one album, all for one upload — at the same quality setting keeps the results consistent.</p>
+      </div>
+      <div class="ph-card">
+        <h3>Keep the originals until you're sure</h3>
+        <p>The HEIC originals stay on your device even after conversion, so there's no harm in double-checking the JPGs look right before deleting anything.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="narrow" style="margin-top:36px">
+    <p style="font-weight:700;font-size:1.05rem;margin-bottom:10px">A quick habit worth building</p>
+    <p style="color:var(--gray);font-size:14.5px;line-height:1.7;margin-bottom:14px">If you regularly send iPhone photos to people on Android or Windows, it's worth converting a whole camera roll export in one batch rather than converting photos one at a time as the need comes up — it's the same total work either way, but doing it in one pass means you're never caught scrambling to convert a single photo right before sending it.</p>
+    <p style="color:var(--gray);font-size:14.5px;line-height:1.7;margin-bottom:14px">It also helps to settle on a quality setting you're happy with once, rather than second-guessing the slider on every batch. For most everyday photos — shared over messaging apps, uploaded to a website, printed at a standard size — 85-90% quality is indistinguishable from the original to the eye while still keeping file sizes reasonable. Save the lower settings for situations where storage or upload limits are the actual constraint.</p>
+    <p style="color:var(--gray);font-size:14.5px;line-height:1.7">None of this takes long. Upload, adjust quality if needed, convert, download — for a handful of photos, the whole thing is done in well under a minute.</p>
+  </div>
+
+  <div class="wide">
+    <div class="section-title">Related tools</div>
+    <div class="ph-related">
+      <a class="rt1" href="/compress-image">Compress Image<small>Shrink JPG/PNG file size further</small></a>
+      <a class="rt2" href="/resize-image">Resize Image<small>Change photo dimensions</small></a>
+      <a class="rt3" href="/convert-image">Convert Image<small>Switch between JPG, PNG, WebP and more</small></a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  const dropArea = document.getElementById('dropArea');
+  const fileInput = document.getElementById('fileInput');
+  const fileList = document.getElementById('fileList');
+  const convertBtn = document.getElementById('convertBtn');
+  const statusBox = document.getElementById('statusBox');
+  const qualitySlider = document.getElementById('qualitySlider');
+  const qualityVal = document.getElementById('qualityVal');
+
+  const MAX_FILES = 20;
+  const MAX_SIZE_MB = 25;
+  const MAX_SIZE_BYTES = MAX_SIZE_MB * 1024 * 1024;
+
+  let selectedFiles = [];
+
+  qualitySlider.addEventListener('input', () => { qualityVal.textContent = qualitySlider.value + '%'; });
+
+  dropArea.addEventListener('click', () => fileInput.click());
+  dropArea.addEventListener('dragover', e => { e.preventDefault(); dropArea.classList.add('dragover'); });
+  dropArea.addEventListener('dragleave', () => dropArea.classList.remove('dragover'));
+  dropArea.addEventListener('drop', e => {
+    e.preventDefault();
+    dropArea.classList.remove('dragover');
+    addFiles(e.dataTransfer.files);
+  });
+  fileInput.addEventListener('change', e => { addFiles(e.target.files); fileInput.value = ''; });
+
+  function addFiles(files){
+    statusBox.innerHTML = '';
+    let skippedDupe = false;
+    let skippedType = false;
+
+    for(const f of files){
+      const ext = f.name.split('.').pop().toLowerCase();
+      if(ext !== 'heic' && ext !== 'heif'){
+        skippedType = true;
+        continue;
+      }
+
+      // File limit validation
+      if(selectedFiles.length >= MAX_FILES){
+        showError(`Maximum ${MAX_FILES} files allowed per batch.`);
+        break;
+      }
+
+      // File size validation
+      if(f.size > MAX_SIZE_BYTES){
+        showError(`${f.name} exceeds the ${MAX_SIZE_MB}MB limit and was skipped.`);
+        continue;
+      }
+
+      // Duplicate file prevention — same name and size already selected
+      const isDuplicate = selectedFiles.some(x => x.name === f.name && x.size === f.size);
+      if(isDuplicate){
+        skippedDupe = true;
+        continue;
+      }
+
+      selectedFiles.push(f);
+    }
+
+    if(skippedDupe && !statusBox.innerHTML){
+      showError('One or more duplicate files were skipped.');
+    }
+    if(skippedType && !statusBox.innerHTML){
+      showError('Only HEIC/HEIF files are accepted.');
+    }
+
+    renderFileList();
+  }
+
+  function removeFile(index){
+    selectedFiles.splice(index, 1);
+    renderFileList();
+  }
+
+  function renderFileList(){
+    fileList.innerHTML = '';
+    selectedFiles.forEach((f, i) => {
+      const item = document.createElement('div');
+      item.className = 'file-item';
+      item.innerHTML = `
+        <span class="fname">${f.name}</span>
+        <span class="fmeta">
+          <span class="fsize">${(f.size/1024/1024).toFixed(1)} MB</span>
+          <span class="remove" data-index="${i}">Remove</span>
+        </span>`;
+      fileList.appendChild(item);
+    });
+    fileList.querySelectorAll('.remove').forEach(el => {
+      el.addEventListener('click', () => removeFile(parseInt(el.dataset.index)));
+    });
+    convertBtn.disabled = selectedFiles.length === 0;
+  }
+
+  function showError(msg){
+    statusBox.innerHTML = `<div class="error-box">⚠️ ${msg}</div>`;
+  }
+  function showSuccess(msg){
+    statusBox.innerHTML = `<div class="success-box">✅ ${msg}</div>`;
+  }
+
+  convertBtn.addEventListener('click', async () => {
+    if(selectedFiles.length === 0) return;
+    convertBtn.disabled = true;
+    convertBtn.textContent = 'Converting...';
+    statusBox.innerHTML = '';
+
+    const formData = new FormData();
+    selectedFiles.forEach(f => formData.append('files', f));
+    formData.append('quality', qualitySlider.value);
+
+    try{
+      const response = await fetch('/heic-to-jpg/convert', { method:'POST', body: formData });
+      if(!response.ok){
+        const err = await response.json().catch(() => ({error:'Conversion failed'}));
+        throw new Error(err.error || 'Conversion failed');
+      }
+      const blob = await response.blob();
+      const disposition = response.headers.get('Content-Disposition') || '';
+      const match = disposition.match(/filename="?([^"]+)"?/);
+      const filename = match ? match[1] : 'converted.jpg';
+
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = filename;
+      document.body.appendChild(a); a.click(); a.remove();
+      window.URL.revokeObjectURL(url);
+
+      showSuccess('Done — download started.');
+    }catch(e){
+      showError(e.message);
+    }finally{
+      convertBtn.disabled = false;
+      convertBtn.textContent = '⇄ Convert to JPG';
+    }
+  });
+})();
+</script>
+</body>
+</html>
