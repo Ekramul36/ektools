@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CFT Calculator: How to Calculate Cubic Feet for Wood, Sand & Stone | EkZapp</title>
+<meta name="description" content="Learn how to calculate CFT (cubic feet) for timber, sand, stone and construction material with simple formulas, worked examples and a free online CFT calculator.">
+<link rel="canonical" href="https://ekzapp.com/blog/cft-calculator-guide">
+<meta property="og:title" content="CFT Calculator: How to Calculate Cubic Feet for Wood, Sand & Stone">
+<meta property="og:description" content="Step-by-step CFT formulas for timber, round logs, sand and stone slabs, plus common mistakes to avoid and a free calculator.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ekzapp.com/blog/cft-calculator-guide">
+<meta property="og:image" content="https://ekzapp.com/static/blog/cft-guide-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "CFT Calculator: How to Calculate Cubic Feet for Wood, Sand & Stone",
+  "description": "Learn how to calculate CFT (cubic feet) for timber, sand, stone and construction material with simple formulas, worked examples and a free online CFT calculator.",
+  "image": "https://ekzapp.com/static/blog/cft-guide-cover.jpg",
+  "author": { "@type": "Person", "name": "Ekramul Haque", "url": "https://ekzapp.com/author/ekramul-hoque" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "EkZapp",
+    "logo": { "@type": "ImageObject", "url": "https://ekzapp.com/static/logo.png" }
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://ekzapp.com/blog/cft-calculator-guide" },
+  "datePublished": "2026-07-22",
+  "dateModified": "2026-07-22"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ekzapp.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://ekzapp.com/blog" },
+    { "@type": "ListItem", "position": 3, "name": "CFT Calculator Guide", "item": "https://ekzapp.com/blog/cft-calculator-guide" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What does CFT mean in construction?", "acceptedAnswer": { "@type": "Answer", "text": "CFT stands for Cubic Feet, a unit of volume used across India to measure timber, sand, stone, granite, marble and other bulk construction materials. One CFT equals a cube of material measuring 1 foot on every side." } },
+    { "@type": "Question", "name": "What is the formula to calculate CFT?", "acceptedAnswer": { "@type": "Answer", "text": "For a rectangular piece, CFT = Length (ft) x Width (ft) x Height (ft). If any dimension is in inches, divide it by 12 first to convert it to feet before multiplying." } },
+    { "@type": "Question", "name": "How do you calculate CFT for a round log or timber trunk?", "acceptedAnswer": { "@type": "Answer", "text": "Round logs use the girth method: CFT = (Girth in inches / 4)^2 x Length in feet / 144, since a squared cross-section is estimated from the tree's circumference rather than a direct diameter measurement." } },
+    { "@type": "Question", "name": "How many CFT are there in a cubic meter?", "acceptedAnswer": { "@type": "Answer", "text": "1 cubic meter equals approximately 35.3147 CFT, and 1 CFT equals approximately 0.0283168 cubic meters." } },
+    { "@type": "Question", "name": "Why do my manual CFT calculations not match the timber merchant's bill?", "acceptedAnswer": { "@type": "Answer", "text": "The most common reason is mixing units, using inches in one dimension and feet in another, or forgetting that round logs need the girth formula instead of the straight length x width x height formula used for sawn planks." } },
+    { "@type": "Question", "name": "100 CFT sand is equal to how many cubic meters?", "acceptedAnswer": { "@type": "Answer", "text": "100 CFT of sand equals approximately 2.83 cubic meters, using the conversion 1 CFT = 0.0283168 cubic meters." } },
+    { "@type": "Question", "name": "1 CFT of sand is equal to how many kg?", "acceptedAnswer": { "@type": "Answer", "text": "1 CFT of dry sand weighs approximately 40 to 45 kg on average, though the exact weight depends on the sand's moisture content and density, so suppliers usually quote an approximate range rather than a fixed figure." } },
+    { "@type": "Question", "name": "How is timber price per CFT calculated?", "acceptedAnswer": { "@type": "Answer", "text": "Timber price per CFT is calculated by multiplying the calculated CFT volume of the wood by the market rate per CFT for that specific wood species, with the rate varying by species, grade and region." } },
+    { "@type": "Question", "name": "How many CFT of sand does one truck carry?", "acceptedAnswer": { "@type": "Answer", "text": "A standard small truck typically carries around 100 CFT of sand, while larger trucks can carry 200 to 400 CFT or more, so it is always worth confirming the truck's rated capacity with the supplier before delivery rather than assuming a standard figure." } },
+    { "@type": "Question", "name": "What is the difference between CFT and square feet?", "acceptedAnswer": { "@type": "Answer", "text": "Square feet measures a flat area using only length and width, while CFT (cubic feet) measures volume using length, width and height together, so the two units are not interchangeable and apply to different kinds of measurement." } },
+    { "@type": "Question", "name": "Does CFT change based on the type of wood?", "acceptedAnswer": { "@type": "Answer", "text": "The CFT calculation itself, based on dimensions, stays the same regardless of wood species. What changes by species is the price per CFT and the weight per CFT, not the volume formula." } },
+    { "@type": "Question", "name": "Does the CFT formula change for plywood or board?", "acceptedAnswer": { "@type": "Answer", "text": "No, plywood and boards are sold in standard sheet sizes and are usually priced per sheet or per square foot rather than per CFT, so the rectangular CFT formula is mainly used for solid sawn timber, logs and stone rather than manufactured board products." } },
+    { "@type": "Question", "name": "How can I verify a timber merchant's CFT calculation on site?", "acceptedAnswer": { "@type": "Answer", "text": "Re-measure the length, width and height (or girth, for round logs) yourself with a tape, convert every dimension to feet before multiplying, and recalculate independently rather than accepting a verbal figure, since a small measurement or unit-conversion error can noticeably change the final CFT on a large order." } }
+  ]
+}
+</script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: #1E293B; line-height: 1.7; background: #FFFFFF; }
+  a { color: #2563EB; text-decoration: none; }
+  .ekz-container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+
+  .ekz-nav { border-bottom: 1px solid #E2E8F0; padding: 16px 0; }
+  .ekz-nav-inner { max-width: 800px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+  .ekz-logo { font-weight: 800; font-size: 20px; color: #2563EB; }
+  .ekz-nav-links a { margin-left: 20px; font-weight: 500; font-size: 14px; color: #475569; }
+
+  .ekz-breadcrumb { padding: 14px 0; font-size: 13px; color: #64748B; }
+  .ekz-breadcrumb a { color: #64748B; }
+  .ekz-breadcrumb a:hover { color: #2563EB; }
+  .ekz-breadcrumb span.sep { margin: 0 6px; color: #CBD5E1; }
+  .ekz-breadcrumb span.current { color: #1E293B; font-weight: 600; }
+
+  .ekz-hero { background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 60%, #1E3A8A 100%); color: #fff; padding: 56px 0; overflow: hidden; }
+  .ekz-hero-inner { display: flex; align-items: center; gap: 32px; }
+  .ekz-hero-text { flex: 1 1 auto; min-width: 0; }
+  .ekz-hero-eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #BFDBFE; margin-bottom: 14px; }
+  .ekz-hero h1 { font-size: 36px; font-weight: 800; line-height: 1.25; margin-bottom: 16px; }
+  .ekz-hero p { font-size: 17px; color: #DBEAFE; max-width: 560px; }
+  .ekz-hero-meta { margin-top: 24px; font-size: 13px; color: #BFDBFE; }
+  .ekz-hero-graphic { flex: 0 0 180px; display: block; }
+
+  article { padding: 40px 0 64px; }
+  h2 { font-size: 26px; font-weight: 700; margin: 40px 0 16px; color: #0F172A; scroll-margin-top: 20px; }
+  h3 { font-size: 19px; font-weight: 700; margin: 28px 0 10px; color: #1E293B; }
+  p { font-size: 16px; margin-bottom: 16px; color: #334155; }
+  ul, ol { margin: 0 0 16px 22px; color: #334155; }
+  li { margin-bottom: 8px; font-size: 16px; }
+  figure { margin: 24px 0; text-align: center; }
+  figure figcaption { font-size: 13px; color: #64748B; margin-top: 8px; }
+
+  .ekz-toc { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 22px 24px; margin: 8px 0 32px; }
+  .ekz-toc h2 { margin: 0 0 12px; font-size: 18px; }
+  .ekz-toc ol { margin: 0 0 0 20px; }
+  .ekz-toc li { margin-bottom: 6px; font-size: 15px; }
+  .ekz-toc a { color: #334155; font-weight: 500; }
+  .ekz-toc a:hover { color: #2563EB; }
+
+  .ekz-formula-box { background: #EFF6FF; border-left: 4px solid #2563EB; padding: 18px 22px; border-radius: 8px; margin: 20px 0; font-size: 16px; position: relative; }
+  .ekz-formula-box code { font-family: 'Courier New', monospace; font-weight: 700; color: #1D4ED8; padding-right: 76px; display: inline-block; }
+  .ekz-copy-btn { position: absolute; right: 14px; top: 14px; background: #fff; border: 1px solid #BFDBFE; color: #2563EB; font-size: 12px; font-weight: 600; padding: 5px 10px; border-radius: 6px; cursor: pointer; }
+  .ekz-copy-btn:hover { background: #EFF6FF; }
+
+  .ekz-example-box { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 20px 22px; margin: 20px 0; }
+  .ekz-example-box .ekz-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #2563EB; margin-bottom: 10px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 15px; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid #E2E8F0; }
+  th { background: #F1F5F9; font-weight: 700; color: #0F172A; }
+
+  .ekz-warning { background: #FEF2F2; border-left: 4px solid #EF4444; padding: 16px 20px; border-radius: 8px; margin: 20px 0; color: #7F1D1D; font-size: 15px; }
+
+  .ekz-cta { background: linear-gradient(135deg, #2563EB, #1E3A8A); border-radius: 16px; padding: 36px; text-align: center; margin: 44px 0; color: #fff; }
+  .ekz-cta h3 { color: #fff; font-size: 22px; margin-bottom: 10px; }
+  .ekz-cta p { color: #DBEAFE; margin-bottom: 20px; }
+  .ekz-cta-btn { display: inline-block; background: #fff; color: #1D4ED8; font-weight: 700; padding: 13px 28px; border-radius: 8px; font-size: 15px; }
+
+  .ekz-faq { margin-top: 12px; }
+  .ekz-faq-item { border-bottom: 1px solid #E2E8F0; padding: 18px 0; }
+  .ekz-faq-item h3 { margin: 0 0 8px; font-size: 17px; }
+  .ekz-faq-item p { margin: 0; color: #475569; }
+
+  .ekz-related { background: #F8FAFC; border-radius: 12px; padding: 22px; margin-top: 24px; }
+  .ekz-related h3 { margin-top: 0; }
+  .ekz-related ul { margin-bottom: 0; }
+
+  .ekz-author { display: flex; align-items: center; gap: 14px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 18px 20px; margin-top: 40px; }
+  .ekz-author-avatar { width: 48px; height: 48px; border-radius: 50%; background: #2563EB; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px; flex-shrink: 0; }
+  .ekz-author-info .name { font-weight: 700; font-size: 15px; color: #0F172A; }
+  .ekz-author-info .role { font-size: 13px; color: #64748B; margin-top: 2px; }
+
+  footer { border-top: 1px solid #E2E8F0; padding: 28px 0 90px; text-align: center; font-size: 14px; color: #64748B; }
+
+  .ekz-sticky-cta { display: none; }
+
+  @media (max-width: 640px) {
+    .ekz-hero h1 { font-size: 26px; }
+    .ekz-hero-graphic { display: none; }
+    .ekz-nav-links a { margin-left: 12px; font-size: 13px; }
+    .ekz-formula-box code { padding-right: 0; display: block; margin-bottom: 10px; }
+    .ekz-copy-btn { position: static; margin-top: 4px; }
+
+    .ekz-sticky-cta {
+      display: flex; position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
+      background: #1D4ED8; padding: 12px 16px; box-shadow: 0 -4px 16px rgba(0,0,0,0.15);
+    }
+    .ekz-sticky-cta a { flex: 1; text-align: center; background: #fff; color: #1D4ED8; font-weight: 700; padding: 12px; border-radius: 8px; font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="ekz-nav">
+  <div class="ekz-nav-inner">
+    <a href="/" class="ekz-logo">EkZapp</a>
+    <div class="ekz-nav-links">
+      <a href="/">Home</a>
+      <a href="/blog">Blog</a>
+      <a href="/cft-calculator">CFT Calculator</a>
+    </div>
+  </div>
+</nav>
+
+<div class="ekz-container">
+  <nav class="ekz-breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span class="sep">&rsaquo;</span><a href="/blog">Blog</a><span class="sep">&rsaquo;</span><span class="current">CFT Calculator Guide</span>
+  </nav>
+</div>
+
+<header class="ekz-hero">
+  <div class="ekz-container ekz-hero-inner">
+    <div class="ekz-hero-text">
+      <div class="ekz-hero-eyebrow">Construction & Trade Calculators</div>
+      <h1>CFT Calculator: How to Calculate Cubic Feet for Timber, Sand & Stone</h1>
+      <p>A practical guide to the formulas timber merchants, stone suppliers and contractors actually use to measure material in CFT, with worked examples and the mistakes that cause billing disputes.</p>
+      <div class="ekz-hero-meta">Updated July 2026 &middot; 9 min read</div>
+    </div>
+    <svg class="ekz-hero-graphic" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <polygon points="90,20 150,50 150,120 90,150 30,120 30,50" fill="#ffffff" fill-opacity="0.08" stroke="#BFDBFE" stroke-width="2"/>
+      <polygon points="90,20 150,50 90,80 30,50" fill="#ffffff" fill-opacity="0.18" stroke="#BFDBFE" stroke-width="2"/>
+      <line x1="90" y1="80" x2="90" y2="150" stroke="#BFDBFE" stroke-width="2"/>
+      <line x1="30" y1="50" x2="30" y2="120" stroke="#BFDBFE" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="150" y1="50" x2="150" y2="120" stroke="#BFDBFE" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <text x="15" y="90" fill="#DBEAFE" font-size="11" font-family="Inter, sans-serif">H</text>
+      <text x="60" y="40" fill="#DBEAFE" font-size="11" font-family="Inter, sans-serif">L</text>
+      <text x="115" y="40" fill="#DBEAFE" font-size="11" font-family="Inter, sans-serif">W</text>
+    </svg>
+  </div>
+</header>
+
+<article class="ekz-container">
+
+  <p>If you have ever bought wood, sand, marble or granite in India, you have almost certainly seen the bill priced in <strong>CFT</strong> rather than kilograms or square feet. CFT is the standard unit for measuring bulk material by volume, and getting it wrong, even by a small margin, can mean paying for material you never received or arguing with a supplier over a number neither of you can verify on the spot. This guide walks through exactly how CFT is calculated for different materials, with the formulas and examples you need to check any bill yourself.</p>
+
+  <nav class="ekz-toc" aria-label="Table of contents">
+    <h2>What's in this guide</h2>
+    <ol>
+      <li><a href="#what-is-cft">What is CFT?</a></li>
+      <li><a href="#basic-formula">Basic CFT formula</a></li>
+      <li><a href="#round-log">Round log (girth method)</a></li>
+      <li><a href="#sand-aggregate">CFT for sand & aggregate</a></li>
+      <li><a href="#stone-slabs">CFT for stone, marble & granite</a></li>
+      <li><a href="#pricing-factors">How CFT pricing varies by material</a></li>
+      <li><a href="#conversion-table">Converting CFT to other units</a></li>
+      <li><a href="#common-mistakes">Common mistakes</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="what-is-cft">What is CFT?</h2>
+  <p>CFT stands for <strong>Cubic Feet</strong>, a unit of volume. One CFT is the volume of a cube measuring exactly 1 foot on each side, 1 ft x 1 ft x 1 ft. It is the default unit for pricing timber, firewood, sand, stone slabs, marble, granite and other bulk construction materials across most of India, largely because it maps neatly onto the imperial measurements still used on site: feet and inches for lengths, and a simple multiplication for volume.</p>
+
+  <figure>
+    <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" style="max-width:320px;width:100%;height:auto;">
+      <polygon points="60,150 140,150 170,110 90,110" fill="#DBEAFE" stroke="#2563EB" stroke-width="2"/>
+      <polygon points="60,150 90,110 90,60 60,100" fill="#93C5FD" stroke="#2563EB" stroke-width="2"/>
+      <polygon points="90,110 170,110 170,60 90,60" fill="#BFDBFE" stroke="#2563EB" stroke-width="2"/>
+      <text x="65" y="175" font-size="13" fill="#1E3A8A" font-family="Inter, sans-serif">Length (ft)</text>
+      <text x="185" y="90" font-size="13" fill="#1E3A8A" font-family="Inter, sans-serif">Width (ft)</text>
+      <text x="30" y="90" font-size="13" fill="#1E3A8A" font-family="Inter, sans-serif">Height (ft)</text>
+    </svg>
+    <figcaption>CFT = Length &times; Width &times; Height, all measured in feet</figcaption>
+  </figure>
+
+  <h2 id="basic-formula">The basic CFT formula</h2>
+  <p>For any rectangular block, plank, slab or sawn piece of timber, the formula is straightforward:</p>
+  <div class="ekz-formula-box">
+    <code id="formula1">CFT = Length (ft) &times; Width (ft) &times; Height (ft)</code>
+    <button class="ekz-copy-btn" onclick="navigator.clipboard.writeText('CFT = Length (ft) x Width (ft) x Height (ft)')">Copy</button>
+  </div>
+  <p>The only rule that trips people up: every dimension must be in feet before you multiply. If a measurement is in inches, divide it by 12 first. Mixing units, say multiplying feet by inches directly, is the single most common source of wrong CFT figures.</p>
+
+  <div class="ekz-example-box">
+    <div class="ekz-label">Worked example</div>
+    <p>A wooden plank measures 10 feet long, 8 inches wide and 2 inches thick.</p>
+    <ul>
+      <li>Length = 10 ft</li>
+      <li>Width = 8 &divide; 12 = 0.667 ft</li>
+      <li>Height = 2 &divide; 12 = 0.167 ft</li>
+    </ul>
+    <p style="margin-bottom:0;">CFT = 10 &times; 0.667 &times; 0.167 = <strong>1.11 CFT</strong></p>
+  </div>
+
+  <h2 id="round-log">Calculating CFT for round logs (girth method)</h2>
+  <p>Sawn planks have flat, measurable faces, but a felled tree trunk does not. For round logs, timber traders use the <strong>girth method</strong>, where girth is the distance around the log's circumference, because it is far easier to wrap a tape around a log on site than to estimate its diameter accurately.</p>
+  <div class="ekz-formula-box">
+    <code id="formula2">CFT = (Girth in inches &divide; 4)&sup2; &times; Length in feet &divide; 144</code>
+    <button class="ekz-copy-btn" onclick="navigator.clipboard.writeText('CFT = (Girth in inches / 4)^2 x Length in feet / 144')">Copy</button>
+  </div>
+  <p>This formula essentially treats the log as if it were a square post inscribed within the circular cross-section, which is why the girth is divided by 4 rather than by &pi;. It is a deliberately conservative estimate that has been standard practice in the timber trade for generations.</p>
+
+  <div class="ekz-example-box">
+    <div class="ekz-label">Worked example</div>
+    <p>A log has a girth of 48 inches and a length of 12 feet.</p>
+    <p style="margin-bottom:0;">CFT = (48 &divide; 4)&sup2; &times; 12 &divide; 144 = 12&sup2; &times; 12 &divide; 144 = 144 &times; 12 &divide; 144 = <strong>12 CFT</strong></p>
+  </div>
+
+  <h2 id="sand-aggregate">CFT for sand, aggregate and loose material</h2>
+  <p>For loose material like sand or aggregate delivered by truck, CFT is usually calculated from the dimensions of the container or truck bed it fills, or measured against a standard reference: a truck body of known length, width and height is used to back-calculate the volume of material it can carry. Since loose material settles and compacts differently depending on moisture and grain size, CFT here is an approximation rather than an exact figure, which is why serious buyers cross-check delivered quantity against the agreed truck capacity rather than trusting a verbal estimate.</p>
+
+  <figure>
+    <svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg" style="max-width:320px;width:100%;height:auto;">
+      <rect x="40" y="70" width="180" height="50" fill="#FDE68A" stroke="#B45309" stroke-width="2" rx="4"/>
+      <polygon points="220,70 250,55 250,105 220,120" fill="#FCD34D" stroke="#B45309" stroke-width="2"/>
+      <circle cx="70" cy="126" r="10" fill="#1E293B"/>
+      <circle cx="190" cy="126" r="10" fill="#1E293B"/>
+      <text x="90" y="100" font-size="12" fill="#78350F" font-family="Inter, sans-serif">Sand (truck bed volume)</text>
+    </svg>
+    <figcaption>Truck-load sand CFT is estimated from the bed's known volume</figcaption>
+  </figure>
+
+  <h2 id="stone-slabs">CFT for stone slabs, marble and granite</h2>
+  <p>Stone slabs are usually priced by CFT as well, using the same rectangular formula, but the height (thickness) is where disputes usually happen since slabs are rarely perfectly uniform. Suppliers typically measure thickness at multiple points and average them, or round up slightly, which is worth checking before agreeing to a rate.</p>
+
+  <h2 id="pricing-factors">How CFT pricing varies by material</h2>
+  <p>Two timber pieces with the exact same CFT figure can still sell at very different prices, because CFT only measures volume, not quality. When you get a quote per CFT, the rate itself is set by several factors layered on top of the raw volume calculation:</p>
+  <ul>
+    <li><strong>Wood species:</strong> hardwoods like Teak and Sal command a higher rate per CFT than softer, faster-growing species like Mango or Rubber wood, because of density, durability and how long the tree takes to mature</li>
+    <li><strong>Grade and defects:</strong> knots, cracks, warping or insect damage lower the effective rate even though the CFT volume stays the same</li>
+    <li><strong>Moisture content:</strong> freshly cut, unseasoned wood is heavier and can shrink as it dries, so seasoned timber is usually priced differently from green wood of the same CFT</li>
+    <li><strong>Regional supply:</strong> the same species can price differently between states depending on transport distance from the source forest or plantation and local demand</li>
+    <li><strong>Sawing waste:</strong> a log's CFT and the CFT of the planks eventually sawn from it are not identical, since sawing always loses some volume as sawdust and offcuts</li>
+  </ul>
+  <p>Because of this, always treat the CFT figure as the starting point of a negotiation, the volume both sides agree on, rather than the final price itself. The rate per CFT is a separate conversation that depends on the specifics above.</p>
+
+  <h2>Quick reference: CFT formulas cheat sheet</h2>
+  <table>
+    <tr><th>Material</th><th>Formula</th></tr>
+    <tr><td>Sawn plank / rectangular block</td><td>Length (ft) &times; Width (ft) &times; Height (ft)</td></tr>
+    <tr><td>Round log (girth method)</td><td>(Girth in inches &divide; 4)&sup2; &times; Length (ft) &divide; 144</td></tr>
+    <tr><td>Stone / marble / granite slab</td><td>Length (ft) &times; Width (ft) &times; Average thickness (ft)</td></tr>
+    <tr><td>Loose sand / aggregate</td><td>Truck bed Length (ft) &times; Width (ft) &times; Height (ft), or supplier-declared capacity</td></tr>
+  </table>
+
+  <h2 id="conversion-table">Converting CFT to other units</h2>
+  <table>
+    <tr><th>From</th><th>To</th><th>Multiply by</th></tr>
+    <tr><td>1 Cubic Foot (CFT)</td><td>Cubic Meter</td><td>0.0283168</td></tr>
+    <tr><td>1 Cubic Meter</td><td>Cubic Foot (CFT)</td><td>35.3147</td></tr>
+    <tr><td>1 CFT</td><td>Liters</td><td>28.3168</td></tr>
+    <tr><td>1 Cubic Meter</td><td>Liters</td><td>1000</td></tr>
+  </table>
+
+  <h2 id="common-mistakes">Common mistakes that lead to wrong CFT figures</h2>
+  <ul>
+    <li><strong>Mixing feet and inches</strong> without converting, which is the most frequent error in manual calculations</li>
+    <li><strong>Using the rectangular formula on round logs</strong> instead of the girth method, which overstates the volume</li>
+    <li><strong>Rounding intermediate steps too early</strong>, which compounds small errors across a large order</li>
+    <li><strong>Not accounting for irregular thickness</strong> in stone or marble slabs</li>
+    <li><strong>Confusing CFT with cubic meters</strong> when comparing quotes from different suppliers</li>
+  </ul>
+
+  <div class="ekz-warning">
+    <strong>Before you agree to a bill:</strong> re-measure at least one dimension yourself and re-run the calculation. A one-inch error in width on a large timber order can change the final CFT, and the price, by a noticeable margin.
+  </div>
+
+  <h2>Why use an online CFT calculator instead of manual math</h2>
+  <p>Manual CFT calculation is not complicated, but it is easy to make a small unit-conversion slip under pressure, standing in a timber yard with a supplier waiting for an answer. An online calculator removes that risk: enter the dimensions once, pick the right method for the material, and get an instant, repeatable result you can screenshot and keep as a record of the deal.</p>
+
+  <h2>Key takeaways</h2>
+  <p>CFT is simple in principle, a straight volume calculation, but the details that trip people up are almost always the same: forgetting to convert inches to feet, using the wrong formula for round logs versus sawn planks, and treating the CFT figure as a final price rather than the starting point for a rate negotiation that also depends on species, grade and moisture content. Whether you are buying a single plank or a full truckload of sand, re-measuring at least one dimension yourself and running the numbers independently takes a minute and can save a meaningful amount on a large order.</p>
+
+  <div class="ekz-cta">
+    <h3>Calculate CFT instantly</h3>
+    <p>Enter length, width and height, or girth and length for round logs, and get your CFT figure in seconds.</p>
+    <a href="/cft-calculator" class="ekz-cta-btn">Open Free CFT Calculator</a>
+  </div>
+
+  <h2 id="faq">Frequently asked questions</h2>
+  <div class="ekz-faq">
+    <div class="ekz-faq-item"><h3>What does CFT mean in construction?</h3><p>CFT stands for Cubic Feet, a unit of volume used across India to measure timber, sand, stone, granite, marble and other bulk construction materials. One CFT equals a cube of material measuring 1 foot on every side.</p></div>
+    <div class="ekz-faq-item"><h3>What is the formula to calculate CFT?</h3><p>For a rectangular piece, CFT = Length (ft) &times; Width (ft) &times; Height (ft). If any dimension is in inches, divide it by 12 first to convert it to feet before multiplying.</p></div>
+    <div class="ekz-faq-item"><h3>How do you calculate CFT for a round log or timber trunk?</h3><p>Round logs use the girth method: CFT = (Girth in inches &divide; 4)&sup2; &times; Length in feet &divide; 144, since a squared cross-section is estimated from the tree's circumference rather than a direct diameter measurement.</p></div>
+    <div class="ekz-faq-item"><h3>How many CFT are there in a cubic meter?</h3><p>1 cubic meter equals approximately 35.3147 CFT, and 1 CFT equals approximately 0.0283168 cubic meters.</p></div>
+    <div class="ekz-faq-item"><h3>Why do my manual CFT calculations not match the timber merchant's bill?</h3><p>The most common reason is mixing units, using inches in one dimension and feet in another, or forgetting that round logs need the girth formula instead of the straight length x width x height formula used for sawn planks.</p></div>
+    <div class="ekz-faq-item"><h3>100 CFT sand is equal to how many cubic meters?</h3><p>100 CFT of sand equals approximately 2.83 cubic meters, using the conversion 1 CFT = 0.0283168 cubic meters.</p></div>
+    <div class="ekz-faq-item"><h3>1 CFT of sand is equal to how many kg?</h3><p>1 CFT of dry sand weighs approximately 40 to 45 kg on average, though the exact weight depends on the sand's moisture content and density, so suppliers usually quote an approximate range rather than a fixed figure.</p></div>
+    <div class="ekz-faq-item"><h3>How is timber price per CFT calculated?</h3><p>Timber price per CFT is calculated by multiplying the calculated CFT volume of the wood by the market rate per CFT for that specific wood species, with the rate varying by species, grade and region.</p></div>
+    <div class="ekz-faq-item"><h3>How many CFT of sand does one truck carry?</h3><p>A standard small truck typically carries around 100 CFT of sand, while larger trucks can carry 200 to 400 CFT or more, so it is always worth confirming the truck's rated capacity with the supplier before delivery rather than assuming a standard figure.</p></div>
+    <div class="ekz-faq-item"><h3>What is the difference between CFT and square feet?</h3><p>Square feet measures a flat area using only length and width, while CFT (cubic feet) measures volume using length, width and height together, so the two units are not interchangeable and apply to different kinds of measurement.</p></div>
+    <div class="ekz-faq-item"><h3>Does CFT change based on the type of wood?</h3><p>The CFT calculation itself, based on dimensions, stays the same regardless of wood species. What changes by species is the price per CFT and the weight per CFT, not the volume formula.</p></div>
+    <div class="ekz-faq-item"><h3>Does the CFT formula change for plywood or board?</h3><p>No, plywood and boards are sold in standard sheet sizes and are usually priced per sheet or per square foot rather than per CFT, so the rectangular CFT formula is mainly used for solid sawn timber, logs and stone rather than manufactured board products.</p></div>
+    <div class="ekz-faq-item"><h3>How can I verify a timber merchant's CFT calculation on site?</h3><p>Re-measure the length, width and height (or girth, for round logs) yourself with a tape, convert every dimension to feet before multiplying, and recalculate independently rather than accepting a verbal figure, since a small measurement or unit-conversion error can noticeably change the final CFT on a large order.</p></div>
+  </div>
+
+  <div class="ekz-related">
+    <h3>Related tools</h3>
+    <p>Measuring land instead of timber? Use our <a href="/land-area-converter">Land Area Calculator</a> to convert between Bigha, Katha, Decimal, Acre and more.</p>
+    <p style="margin-top:10px;">Also check the <a href="/sand-calculator">Sand Calculator</a> and <a href="/brick-calculator">Brick Calculator</a>, or read our <a href="/blog/cement-sand-ratio-material-estimation-guide">Cement Sand Ratio guide</a> for plastering and concrete mix estimation.</p>
+  </div>
+
+  <div class="ekz-author">
+    <div class="ekz-author-avatar">EH</div>
+    <div class="ekz-author-info">
+      <div class="name">Written by Ekramul Haque</div>
+      <div class="role">Founder of EkZapp &middot; builds free utility tools for construction, PDF and everyday calculations</div>
+    </div>
+  </div>
+
+</article>
+
+<div class="ekz-sticky-cta">
+  <a href="/cft-calculator">Open Free CFT Calculator</a>
+</div>
+
+<footer>
+  <div class="ekz-container">
+    &copy; 2026 EkZapp &middot; Free Online Utility Tools &middot; <a href="/">ekzapp.com</a>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Land Area Calculator: Convert Bigha, Katha, Decimal, Acre & More | EkZapp</title>
+<meta name="description" content="Confused between Bigha, Katha, Decimal, Guntha and Acre? Learn how Indian land measurement units differ by state, with conversion formulas and a free online land area calculator.">
+<link rel="canonical" href="https://ekzapp.com/blog/land-area-calculator-guide">
+<meta property="og:title" content="Land Area Calculator: Convert Bigha, Katha, Decimal, Acre & More">
+<meta property="og:description" content="Indian land units explained state by state, with conversion formulas, worked examples and a free calculator.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ekzapp.com/blog/land-area-calculator-guide">
+<meta property="og:image" content="https://ekzapp.com/static/blog/land-guide-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Land Area Calculator: Convert Bigha, Katha, Decimal, Acre & More",
+  "description": "Confused between Bigha, Katha, Decimal, Guntha and Acre? Learn how Indian land measurement units differ by state, with conversion formulas and a free online land area calculator.",
+  "image": "https://ekzapp.com/static/blog/land-guide-cover.jpg",
+  "author": { "@type": "Person", "name": "Ekramul Haque", "url": "https://ekzapp.com/author/ekramul-hoque" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "EkZapp",
+    "logo": { "@type": "ImageObject", "url": "https://ekzapp.com/static/logo.png" }
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://ekzapp.com/blog/land-area-calculator-guide" },
+  "datePublished": "2026-07-22",
+  "dateModified": "2026-07-22"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ekzapp.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://ekzapp.com/blog" },
+    { "@type": "ListItem", "position": 3, "name": "Land Area Calculator Guide", "item": "https://ekzapp.com/blog/land-area-calculator-guide" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is 1 Bigha the same everywhere in India?", "acceptedAnswer": { "@type": "Answer", "text": "No. Bigha is not a fixed unit and its size varies significantly by state. In West Bengal 1 Bigha is about 1,600 square meters, while in Uttar Pradesh, Bihar, Punjab, Haryana, Rajasthan and Madhya Pradesh the value is different in each state. Always confirm the local Bigha before relying on it for a transaction." } },
+    { "@type": "Question", "name": "What is a Katha and how many Katha make a Bigha?", "acceptedAnswer": { "@type": "Answer", "text": "Katha is a smaller land unit common in West Bengal, Bihar, Assam and parts of Nepal. In West Bengal, 1 Bigha equals 20 Katha, while in Assam 1 Bigha equals 5 Katha, so the ratio itself also changes by state." } },
+    { "@type": "Question", "name": "What is a Decimal in land measurement?", "acceptedAnswer": { "@type": "Answer", "text": "A Decimal is a widely used land unit in eastern India, especially Bihar, West Bengal and Odisha, where 1 Decimal equals approximately 435.6 square feet, and 100 Decimals make up 1 Acre." } },
+    { "@type": "Question", "name": "How many square feet are in 1 Acre?", "acceptedAnswer": { "@type": "Answer", "text": "1 Acre equals 43,560 square feet, or approximately 4,046.86 square meters, and is a standardised unit that does not vary by state, unlike Bigha or Katha." } },
+    { "@type": "Question", "name": "Why do land measurement units differ across Indian states?", "acceptedAnswer": { "@type": "Answer", "text": "Units like Bigha, Katha and Guntha originated from local agricultural and revenue-survey practices under different regional administrations, long before any single national standard existed, so each state's land records office kept its own conversion values, which is still reflected in property documents today." } },
+    { "@type": "Question", "name": "5 Katha is equal to how many Decimal?", "acceptedAnswer": { "@type": "Answer", "text": "Using the West Bengal Katha value of approximately 720 square feet, 5 Katha equals about 3,600 square feet, which converts to roughly 8.26 Decimal. This figure changes if you are using a different state's Katha value." } },
+    { "@type": "Question", "name": "How many Katha are in 1 Acre?", "acceptedAnswer": { "@type": "Answer", "text": "Using the West Bengal Katha value of approximately 720 square feet, 1 Acre (43,560 sq ft) works out to roughly 60.5 Katha. This ratio is different in states where Katha is defined differently." } },
+    { "@type": "Question", "name": "How is Bigha calculated in West Bengal?", "acceptedAnswer": { "@type": "Answer", "text": "In West Bengal, 1 Bigha equals approximately 1,600 square meters or about 17,222 square feet, and is divided into 20 Katha, with each Katha equal to roughly 720 square feet." } },
+    { "@type": "Question", "name": "How is Bigha converted in Bihar?", "acceptedAnswer": { "@type": "Answer", "text": "In Bihar, 1 Bigha equals approximately 27,220 square feet, which is divided into 20 Katha of about 1,361 square feet each, and works out to roughly 62.5 Decimal." } },
+    { "@type": "Question", "name": "How many square feet are in 1 Decimal?", "acceptedAnswer": { "@type": "Answer", "text": "1 Decimal equals approximately 435.6 square feet, the same size as 1 Cent, which is why the two units are used interchangeably in different regions of India." } },
+    { "@type": "Question", "name": "Which document should I trust for a plot's exact area?", "acceptedAnswer": { "@type": "Answer", "text": "The registered sale deed and the local revenue department's land record (such as Khatian, Jamabandi or RTC depending on the state) carry the legally binding area figure, and should be checked over any verbal quote or broker estimate before relying on a converted unit." } },
+    { "@type": "Question", "name": "How many square meters are in 1 Katha?", "acceptedAnswer": { "@type": "Answer", "text": "Using the West Bengal value, 1 Katha is approximately 66.89 square meters, though this figure changes in states like Bihar or Assam where Katha is defined differently." } }
+  ]
+}
+</script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: #1E293B; line-height: 1.7; background: #FFFFFF; }
+  a { color: #2563EB; text-decoration: none; }
+  .ekz-container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+
+  .ekz-nav { border-bottom: 1px solid #E2E8F0; padding: 16px 0; }
+  .ekz-nav-inner { max-width: 800px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+  .ekz-logo { font-weight: 800; font-size: 20px; color: #2563EB; }
+  .ekz-nav-links a { margin-left: 20px; font-weight: 500; font-size: 14px; color: #475569; }
+
+  .ekz-breadcrumb { padding: 14px 0; font-size: 13px; color: #64748B; }
+  .ekz-breadcrumb a { color: #64748B; }
+  .ekz-breadcrumb a:hover { color: #2563EB; }
+  .ekz-breadcrumb span.sep { margin: 0 6px; color: #CBD5E1; }
+  .ekz-breadcrumb span.current { color: #1E293B; font-weight: 600; }
+
+  .ekz-hero { background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 60%, #1E3A8A 100%); color: #fff; padding: 56px 0; overflow: hidden; }
+  .ekz-hero-inner { display: flex; align-items: center; gap: 32px; }
+  .ekz-hero-text { flex: 1 1 auto; min-width: 0; }
+  .ekz-hero-eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #BFDBFE; margin-bottom: 14px; }
+  .ekz-hero h1 { font-size: 34px; font-weight: 800; line-height: 1.25; margin-bottom: 16px; }
+  .ekz-hero p { font-size: 17px; color: #DBEAFE; max-width: 580px; }
+  .ekz-hero-meta { margin-top: 24px; font-size: 13px; color: #BFDBFE; }
+  .ekz-hero-graphic { flex: 0 0 190px; display: block; }
+
+  article { padding: 40px 0 64px; }
+  h2 { font-size: 26px; font-weight: 700; margin: 40px 0 16px; color: #0F172A; scroll-margin-top: 20px; }
+  h3 { font-size: 19px; font-weight: 700; margin: 28px 0 10px; color: #1E293B; }
+  p { font-size: 16px; margin-bottom: 16px; color: #334155; }
+  ul, ol { margin: 0 0 16px 22px; color: #334155; }
+  li { margin-bottom: 8px; font-size: 16px; }
+  figure { margin: 24px 0; text-align: center; }
+  figure figcaption { font-size: 13px; color: #64748B; margin-top: 8px; }
+
+  .ekz-toc { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 22px 24px; margin: 8px 0 32px; }
+  .ekz-toc h2 { margin: 0 0 12px; font-size: 18px; }
+  .ekz-toc ol { margin: 0 0 0 20px; }
+  .ekz-toc li { margin-bottom: 6px; font-size: 15px; }
+  .ekz-toc a { color: #334155; font-weight: 500; }
+  .ekz-toc a:hover { color: #2563EB; }
+
+  .ekz-formula-box { background: #EFF6FF; border-left: 4px solid #2563EB; padding: 18px 22px; border-radius: 8px; margin: 20px 0; font-size: 16px; position: relative; }
+  .ekz-formula-box code { font-family: 'Courier New', monospace; font-weight: 700; color: #1D4ED8; padding-right: 76px; display: inline-block; }
+  .ekz-copy-btn { position: absolute; right: 14px; top: 14px; background: #fff; border: 1px solid #BFDBFE; color: #2563EB; font-size: 12px; font-weight: 600; padding: 5px 10px; border-radius: 6px; cursor: pointer; }
+  .ekz-copy-btn:hover { background: #EFF6FF; }
+
+  .ekz-example-box { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 20px 22px; margin: 20px 0; }
+  .ekz-example-box .ekz-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #2563EB; margin-bottom: 10px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14.5px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #E2E8F0; }
+  th { background: #F1F5F9; font-weight: 700; color: #0F172A; }
+  .ekz-table-scroll { overflow-x: auto; margin: 20px 0; }
+  .ekz-table-scroll table { margin: 0; min-width: 560px; }
+
+  .ekz-warning { background: #FEF2F2; border-left: 4px solid #EF4444; padding: 16px 20px; border-radius: 8px; margin: 20px 0; color: #7F1D1D; font-size: 15px; }
+
+  .ekz-cta { background: linear-gradient(135deg, #2563EB, #1E3A8A); border-radius: 16px; padding: 36px; text-align: center; margin: 44px 0; color: #fff; }
+  .ekz-cta h3 { color: #fff; font-size: 22px; margin-bottom: 10px; }
+  .ekz-cta p { color: #DBEAFE; margin-bottom: 20px; }
+  .ekz-cta-btn { display: inline-block; background: #fff; color: #1D4ED8; font-weight: 700; padding: 13px 28px; border-radius: 8px; font-size: 15px; }
+
+  .ekz-faq { margin-top: 12px; }
+  .ekz-faq-item { border-bottom: 1px solid #E2E8F0; padding: 18px 0; }
+  .ekz-faq-item h3 { margin: 0 0 8px; font-size: 17px; }
+  .ekz-faq-item p { margin: 0; color: #475569; }
+
+  .ekz-related { background: #F8FAFC; border-radius: 12px; padding: 22px; margin-top: 24px; }
+  .ekz-related h3 { margin-top: 0; }
+
+  .ekz-author { display: flex; align-items: center; gap: 14px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 18px 20px; margin-top: 40px; }
+  .ekz-author-avatar { width: 48px; height: 48px; border-radius: 50%; background: #2563EB; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px; flex-shrink: 0; }
+  .ekz-author-info .name { font-weight: 700; font-size: 15px; color: #0F172A; }
+  .ekz-author-info .role { font-size: 13px; color: #64748B; margin-top: 2px; }
+
+  footer { border-top: 1px solid #E2E8F0; padding: 28px 0 90px; text-align: center; font-size: 14px; color: #64748B; }
+
+  .ekz-sticky-cta { display: none; }
+
+  @media (max-width: 640px) {
+    .ekz-hero h1 { font-size: 25px; }
+    .ekz-hero-graphic { display: none; }
+    .ekz-nav-links a { margin-left: 12px; font-size: 13px; }
+    .ekz-formula-box code { padding-right: 0; display: block; margin-bottom: 10px; }
+    .ekz-copy-btn { position: static; margin-top: 4px; }
+
+    .ekz-sticky-cta {
+      display: flex; position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
+      background: #1D4ED8; padding: 12px 16px; box-shadow: 0 -4px 16px rgba(0,0,0,0.15);
+    }
+    .ekz-sticky-cta a { flex: 1; text-align: center; background: #fff; color: #1D4ED8; font-weight: 700; padding: 12px; border-radius: 8px; font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="ekz-nav">
+  <div class="ekz-nav-inner">
+    <a href="/" class="ekz-logo">EkZapp</a>
+    <div class="ekz-nav-links">
+      <a href="/">Home</a>
+      <a href="/blog">Blog</a>
+      <a href="/land-area-converter">Land Calculator</a>
+    </div>
+  </div>
+</nav>
+
+<div class="ekz-container">
+  <nav class="ekz-breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span class="sep">&rsaquo;</span><a href="/blog">Blog</a><span class="sep">&rsaquo;</span><span class="current">Land Area Calculator Guide</span>
+  </nav>
+</div>
+
+<header class="ekz-hero">
+  <div class="ekz-container ekz-hero-inner">
+    <div class="ekz-hero-text">
+      <div class="ekz-hero-eyebrow">Property & Land Measurement</div>
+      <h1>Land Area Calculator: Convert Bigha, Katha, Decimal, Acre & More</h1>
+      <p>Bigha in West Bengal is not the same as Bigha in Uttar Pradesh or Rajasthan. Here's a state-by-state breakdown of India's land units, with the formulas you need before signing any property paper.</p>
+      <div class="ekz-hero-meta">Updated July 2026 &middot; 10 min read</div>
+    </div>
+    <svg class="ekz-hero-graphic" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="20" y="20" width="140" height="140" fill="none" stroke="#BFDBFE" stroke-width="2"/>
+      <line x1="20" y1="70" x2="160" y2="70" stroke="#BFDBFE" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="20" y1="120" x2="160" y2="120" stroke="#BFDBFE" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="90" y1="20" x2="90" y2="160" stroke="#BFDBFE" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <rect x="20" y="20" width="70" height="50" fill="#ffffff" fill-opacity="0.12"/>
+      <rect x="90" y="70" width="70" height="50" fill="#ffffff" fill-opacity="0.18"/>
+      <text x="30" y="45" fill="#DBEAFE" font-size="11" font-family="Inter, sans-serif">Plot A</text>
+      <text x="100" y="95" fill="#DBEAFE" font-size="11" font-family="Inter, sans-serif">Plot B</text>
+    </svg>
+  </div>
+</header>
+
+<article class="ekz-container">
+
+  <p>Buying, selling or inheriting land in India almost always means running into a unit that does not appear on any standard measuring tape: Bigha, Katha, Decimal, Guntha, Cent. Unlike Acre or Hectare, these units were never standardised nationally, which means the same word can refer to a genuinely different area depending on which state's land records office issued the document. This guide breaks down where each unit is used, how they convert, and where people most often get caught out.</p>
+
+  <nav class="ekz-toc" aria-label="Table of contents">
+    <h2>What's in this guide</h2>
+    <ol>
+      <li><a href="#why-not-standard">Why Indian land units are not standardised</a></li>
+      <li><a href="#common-units">Common Indian land units</a></li>
+      <li><a href="#bigha-by-state">Bigha by state (conversion table)</a></li>
+      <li><a href="#katha-decimal">Katha and Decimal</a></li>
+      <li><a href="#guntha-cent">Guntha and Cent</a></li>
+      <li><a href="#acre-hectare">Acre and Hectare</a></li>
+      <li><a href="#sale-deed-tips">What to check on a sale deed</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="why-not-standard">Why Indian land units are not standardised</h2>
+  <p>Long before independence, land was measured and taxed by regional revenue administrations, each of which defined its own local unit for practical, on-the-ground survey work. Those units, and their exact conversion values, were never fully unified into the metric system, so they persist in land records, sale deeds and everyday conversation today, state by state.</p>
+
+  <figure>
+    <svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg" style="max-width:320px;width:100%;height:auto;">
+      <rect x="10" y="10" width="140" height="80" fill="#DBEAFE" stroke="#2563EB" stroke-width="2" rx="6"/>
+      <text x="35" y="55" font-size="13" fill="#1E3A8A" font-family="Inter, sans-serif">West Bengal</text>
+      <text x="35" y="72" font-size="11" fill="#1E3A8A" font-family="Inter, sans-serif">Bigha, Katha</text>
+      <rect x="170" y="10" width="140" height="80" fill="#BFDBFE" stroke="#2563EB" stroke-width="2" rx="6"/>
+      <text x="195" y="55" font-size="13" fill="#1E3A8A" font-family="Inter, sans-serif">Maharashtra</text>
+      <text x="195" y="72" font-size="11" fill="#1E3A8A" font-family="Inter, sans-serif">Guntha</text>
+      <rect x="10" y="100" width="140" height="80" fill="#93C5FD" stroke="#2563EB" stroke-width="2" rx="6"/>
+      <text x="35" y="145" font-size="13" fill="#1E3A8A" font-family="Inter, sans-serif">Kerala/TN</text>
+      <text x="35" y="162" font-size="11" fill="#1E3A8A" font-family="Inter, sans-serif">Cent</text>
+      <rect x="170" y="100" width="140" height="80" fill="#EFF6FF" stroke="#2563EB" stroke-width="2" rx="6"/>
+      <text x="195" y="145" font-size="13" fill="#1E3A8A" font-family="Inter, sans-serif">Nationwide</text>
+      <text x="195" y="162" font-size="11" fill="#1E3A8A" font-family="Inter, sans-serif">Acre, Hectare</text>
+    </svg>
+    <figcaption>Different regions of India use different local land units</figcaption>
+  </figure>
+
+  <h2 id="common-units">Common Indian land units</h2>
+  <table>
+    <tr><th>Unit</th><th>Commonly used in</th><th>Approx. value</th></tr>
+    <tr><td>Bigha</td><td>WB, UP, Bihar, Punjab, Haryana, Rajasthan, MP, Assam</td><td>Varies by state (see table below)</td></tr>
+    <tr><td>Katha</td><td>West Bengal, Bihar, Assam</td><td>Varies by state</td></tr>
+    <tr><td>Decimal</td><td>Bihar, West Bengal, Odisha</td><td>1 Decimal &asymp; 435.6 sq ft</td></tr>
+    <tr><td>Cent</td><td>Kerala, Tamil Nadu, Karnataka, Andhra Pradesh</td><td>1 Cent = 435.6 sq ft</td></tr>
+    <tr><td>Guntha</td><td>Maharashtra, Karnataka</td><td>1 Guntha = 1,089 sq ft</td></tr>
+    <tr><td>Acre</td><td>Nationwide (standard)</td><td>43,560 sq ft</td></tr>
+    <tr><td>Hectare</td><td>Nationwide (metric standard)</td><td>1 Hectare = 2.471 Acres</td></tr>
+  </table>
+
+  <h2 id="bigha-by-state">Bigha by state: full conversion table</h2>
+  <p>Bigha is the most inconsistent of all Indian land units. A property listed as "5 Bigha" means a genuinely different plot size depending on where it is, and even the smaller Katha unit it divides into is not the same everywhere:</p>
+
+  <div class="ekz-table-scroll">
+  <table>
+    <tr><th>State</th><th>1 Bigha &asymp;</th><th>Bigha divides into</th><th>1 Katha (that state) &asymp;</th></tr>
+    <tr><td>West Bengal</td><td>17,222 sq ft (1,600 sq m)</td><td>20 Katha</td><td>720 sq ft</td></tr>
+    <tr><td>Bihar</td><td>27,220 sq ft</td><td>20 Katha</td><td>1,361 sq ft</td></tr>
+    <tr><td>Uttar Pradesh</td><td>27,000 sq ft (Pucca)</td><td>20 Katha</td><td>1,350 sq ft</td></tr>
+    <tr><td>Assam</td><td>14,400 sq ft</td><td>5 Katha</td><td>2,880 sq ft</td></tr>
+    <tr><td>Rajasthan</td><td>27,225 sq ft (Pucca)</td><td>Biswa (not Katha)</td><td>&mdash;</td></tr>
+    <tr><td>Punjab & Haryana</td><td>9,070 sq ft</td><td>Marla / Kanal (not Katha)</td><td>&mdash;</td></tr>
+    <tr><td>Madhya Pradesh</td><td>12,000 sq ft</td><td>Not commonly divided into Katha</td><td>&mdash;</td></tr>
+  </table>
+  </div>
+
+  <figure>
+    <svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg" style="max-width:360px;width:100%;height:auto;">
+      <line x1="50" y1="20" x2="50" y2="190" stroke="#CBD5E1" stroke-width="1.5"/>
+      <line x1="50" y1="190" x2="340" y2="190" stroke="#CBD5E1" stroke-width="1.5"/>
+      <rect x="70" y="145" width="34" height="45" fill="#93C5FD"/>
+      <rect x="120" y="35" width="34" height="155" fill="#2563EB"/>
+      <rect x="170" y="35" width="34" height="155" fill="#2563EB"/>
+      <rect x="220" y="110" width="34" height="80" fill="#60A5FA"/>
+      <rect x="270" y="20" width="34" height="170" fill="#1E3A8A"/>
+      <text x="65" y="205" font-size="10" fill="#334155" font-family="Inter, sans-serif">WB</text>
+      <text x="120" y="205" font-size="10" fill="#334155" font-family="Inter, sans-serif">Bihar</text>
+      <text x="172" y="205" font-size="10" fill="#334155" font-family="Inter, sans-serif">UP</text>
+      <text x="225" y="205" font-size="10" fill="#334155" font-family="Inter, sans-serif">Assam</text>
+      <text x="265" y="205" font-size="10" fill="#334155" font-family="Inter, sans-serif">Rajasthan</text>
+      <text x="10" y="25" font-size="10" fill="#64748B" font-family="Inter, sans-serif">sq ft</text>
+    </svg>
+    <figcaption>Relative size of 1 Bigha across states (approximate sq ft)</figcaption>
+  </figure>
+
+  <div class="ekz-warning">
+    <strong>Before agreeing to a price per Bigha:</strong> always confirm which state's Bigha value the seller or broker is using. A quote based on the wrong regional Bigha can misstate the actual plot size by a wide margin.
+  </div>
+
+  <h2 id="katha-decimal">Katha and Decimal: the smaller units</h2>
+  <p>For smaller residential plots, Katha and Decimal are more commonly used than Bigha:</p>
+  <div class="ekz-formula-box">
+    <code id="formula1">1 Bigha (West Bengal) = 20 Katha | 1 Katha &asymp; 720 sq ft (WB)</code>
+    <button class="ekz-copy-btn" onclick="navigator.clipboard.writeText('1 Bigha (West Bengal) = 20 Katha, 1 Katha = 720 sq ft approx')">Copy</button>
+  </div>
+  <div class="ekz-formula-box">
+    <code id="formula2">1 Decimal &asymp; 435.6 sq ft | 100 Decimal = 1 Acre</code>
+    <button class="ekz-copy-btn" onclick="navigator.clipboard.writeText('1 Decimal = 435.6 sq ft approx, 100 Decimal = 1 Acre')">Copy</button>
+  </div>
+  <p>Decimal is popular in Bihar, West Bengal and Odisha specifically because it maps cleanly onto Acre in round numbers, which made it convenient for revenue record-keeping.</p>
+
+  <div class="ekz-example-box">
+    <div class="ekz-label">Worked example</div>
+    <p>A plot is listed as 3 Katha in West Bengal. What is that in square feet and Decimal?</p>
+    <p>3 Katha &times; 720 sq ft = 2,160 sq ft</p>
+    <p style="margin-bottom:0;">2,160 sq ft &divide; 435.6 sq ft = <strong>&asymp; 4.96 Decimal</strong></p>
+  </div>
+
+  <div class="ekz-example-box">
+    <div class="ekz-label">Worked example (Punjab / Haryana)</div>
+    <p>A plot in Punjab is listed as 2 Bigha. Since Punjab and Haryana use a smaller regional Bigha of about 9,070 sq ft rather than Biswa or Katha subdivisions in this comparison, the total works out simply:</p>
+    <p style="margin-bottom:0;">2 Bigha &times; 9,070 sq ft = <strong>18,140 sq ft &asymp; 0.42 Acre</strong></p>
+  </div>
+
+  <h2 id="guntha-cent">Guntha and Cent: regional units in the south and west</h2>
+  <p>In Maharashtra and Karnataka, small plots are often quoted in <strong>Guntha</strong>, where 1 Guntha equals 1,089 square feet and 40 Guntha make up 1 Acre. In Kerala, Tamil Nadu and parts of Andhra Pradesh and Karnataka, <strong>Cent</strong> is the everyday unit, equal to 435.6 square feet, the same value as a Decimal, just under a different name used in a different region.</p>
+
+  <h2 id="acre-hectare">Acre and Hectare: the standardised units</h2>
+  <p>Unlike Bigha, Katha or Guntha, Acre and Hectare do not vary by state, which is why they are used in official national land records, satellite mapping and large agricultural or industrial land deals.</p>
+  <div class="ekz-formula-box">
+    <code>1 Acre = 43,560 sq ft = 4,046.86 sq m | 1 Hectare = 2.471 Acres = 10,000 sq m</code>
+    <button class="ekz-copy-btn" onclick="navigator.clipboard.writeText('1 Acre = 43560 sq ft = 4046.86 sq m, 1 Hectare = 2.471 Acres = 10000 sq m')">Copy</button>
+  </div>
+
+  <h2 id="sale-deed-tips">What to check on a sale deed before you rely on any unit</h2>
+  <p>A broker's WhatsApp message or a verbal quote is not a legal record, and it is where most unit confusion actually starts. Before you treat any Bigha, Katha or Decimal figure as final, cross-check it against the documents that actually matter:</p>
+  <ul>
+    <li><strong>Registered sale deed:</strong> the area figure printed here, usually in the local unit plus a metric or square-foot equivalent, is the legally binding one</li>
+    <li><strong>Land records (Khatian / Jamabandi / RTC, depending on the state):</strong> the revenue department's own record often carries a different, more precise area than a colloquial round number used in conversation</li>
+    <li><strong>Mutation certificate:</strong> confirms the area transferred to the current owner's name, which should match the sale deed</li>
+    <li><strong>Survey or measurement report:</strong> for larger or irregularly shaped plots, an on-ground survey is worth commissioning separately rather than trusting a paper conversion alone</li>
+  </ul>
+  <p>Where a document lists two units together, say Bigha and Decimal, use that pairing to back-calculate the exact local conversion factor being used for that specific plot and state, rather than assuming a generic value from a guide like this one.</p>
+
+  <h2>Metric equivalents cheat sheet</h2>
+  <table>
+    <tr><th>Unit</th><th>&asymp; Square Meters</th><th>&asymp; Square Feet</th></tr>
+    <tr><td>1 Decimal / 1 Cent</td><td>40.47 sq m</td><td>435.6 sq ft</td></tr>
+    <tr><td>1 Guntha</td><td>101.17 sq m</td><td>1,089 sq ft</td></tr>
+    <tr><td>1 Katha (West Bengal)</td><td>66.89 sq m</td><td>720 sq ft</td></tr>
+    <tr><td>1 Acre</td><td>4,046.86 sq m</td><td>43,560 sq ft</td></tr>
+    <tr><td>1 Hectare</td><td>10,000 sq m</td><td>107,639 sq ft</td></tr>
+  </table>
+
+  <h2>Common mistakes when converting land units</h2>
+  <ul>
+    <li><strong>Assuming Bigha is the same everywhere</strong>, when it can differ by more than 3x between states</li>
+    <li><strong>Confusing Cent and Decimal</strong>, which are actually the same size but used in different regions and sometimes assumed to differ</li>
+    <li><strong>Mixing Pucca and Kaccha Bigha</strong> in states like Rajasthan and Uttar Pradesh, where both variants exist locally</li>
+    <li><strong>Applying the West Bengal Bigha-to-Katha ratio (20) in Assam</strong>, where the actual ratio is 5 Katha per Bigha</li>
+    <li><strong>Relying on a broker's verbal conversion</strong> instead of checking the local revenue department's official value</li>
+  </ul>
+
+  <h2>Why use an online land area calculator</h2>
+  <p>Because so many of these units depend on state-specific values, a manual conversion is one of the easier calculations to get wrong, especially when a plot listing mixes two units, say a headline size in Bigha and a rate in Decimal. An online calculator with state selection built in removes the guesswork and gives you a single trusted figure you can cross-check against the property paperwork before any money changes hands.</p>
+
+  <h2>Key takeaways</h2>
+  <p>The single most important thing to remember about Indian land units is that a name alone, Bigha, Katha or even Decimal, is not enough information to know a plot's real size. The same word carries a different value depending on the state, and sometimes the district, so the safe habit is to always ask which state's definition is being used, cross-check it against the registered sale deed or land record rather than a verbal quote, and convert everything into a standardised unit like square feet, square meters or Acre before comparing two properties or agreeing to a price. That one habit prevents almost every land-unit dispute before it starts.</p>
+
+  <div class="ekz-cta">
+    <h3>Convert land units instantly</h3>
+    <p>Select your state and convert between Bigha, Katha, Decimal, Cent, Guntha, Acre and Hectare in one click.</p>
+    <a href="/land-area-converter" class="ekz-cta-btn">Open Free Land Area Calculator</a>
+  </div>
+
+  <h2 id="faq">Frequently asked questions</h2>
+  <div class="ekz-faq">
+    <div class="ekz-faq-item"><h3>Is 1 Bigha the same everywhere in India?</h3><p>No. Bigha is not a fixed unit and its size varies significantly by state. In West Bengal 1 Bigha is about 1,600 square meters, while in Uttar Pradesh, Bihar, Punjab, Haryana, Rajasthan and Madhya Pradesh the value is different in each state. Always confirm the local Bigha before relying on it for a transaction.</p></div>
+    <div class="ekz-faq-item"><h3>What is a Katha and how many Katha make a Bigha?</h3><p>Katha is a smaller land unit common in West Bengal, Bihar, Assam and parts of Nepal. In West Bengal, 1 Bigha equals 20 Katha, while in Assam 1 Bigha equals 5 Katha, so the ratio itself also changes by state.</p></div>
+    <div class="ekz-faq-item"><h3>What is a Decimal in land measurement?</h3><p>A Decimal is a widely used land unit in eastern India, especially Bihar, West Bengal and Odisha, where 1 Decimal equals approximately 435.6 square feet, and 100 Decimals make up 1 Acre.</p></div>
+    <div class="ekz-faq-item"><h3>How many square feet are in 1 Acre?</h3><p>1 Acre equals 43,560 square feet, or approximately 4,046.86 square meters, and is a standardised unit that does not vary by state, unlike Bigha or Katha.</p></div>
+    <div class="ekz-faq-item"><h3>Why do land measurement units differ across Indian states?</h3><p>Units like Bigha, Katha and Guntha originated from local agricultural and revenue-survey practices under different regional administrations, long before any single national standard existed, so each state's land records office kept its own conversion values, which is still reflected in property documents today.</p></div>
+    <div class="ekz-faq-item"><h3>5 Katha is equal to how many Decimal?</h3><p>Using the West Bengal Katha value of approximately 720 square feet, 5 Katha equals about 3,600 square feet, which converts to roughly 8.26 Decimal. This figure changes if you are using a different state's Katha value.</p></div>
+    <div class="ekz-faq-item"><h3>How many Katha are in 1 Acre?</h3><p>Using the West Bengal Katha value of approximately 720 square feet, 1 Acre (43,560 sq ft) works out to roughly 60.5 Katha. This ratio is different in states where Katha is defined differently.</p></div>
+    <div class="ekz-faq-item"><h3>How is Bigha calculated in West Bengal?</h3><p>In West Bengal, 1 Bigha equals approximately 1,600 square meters or about 17,222 square feet, and is divided into 20 Katha, with each Katha equal to roughly 720 square feet.</p></div>
+    <div class="ekz-faq-item"><h3>How is Bigha converted in Bihar?</h3><p>In Bihar, 1 Bigha equals approximately 27,220 square feet, which is divided into 20 Katha of about 1,361 square feet each, and works out to roughly 62.5 Decimal.</p></div>
+    <div class="ekz-faq-item"><h3>How many square feet are in 1 Decimal?</h3><p>1 Decimal equals approximately 435.6 square feet, the same size as 1 Cent, which is why the two units are used interchangeably in different regions of India.</p></div>
+    <div class="ekz-faq-item"><h3>Which document should I trust for a plot's exact area?</h3><p>The registered sale deed and the local revenue department's land record (such as Khatian, Jamabandi or RTC depending on the state) carry the legally binding area figure, and should be checked over any verbal quote or broker estimate before relying on a converted unit.</p></div>
+    <div class="ekz-faq-item"><h3>How many square meters are in 1 Katha?</h3><p>Using the West Bengal value, 1 Katha is approximately 66.89 square meters, though this figure changes in states like Bihar or Assam where Katha is defined differently.</p></div>
+  </div>
+
+  <div class="ekz-related">
+    <h3>Related tools</h3>
+    <p>Working on a construction project instead? Check out our <a href="/cft-calculator">CFT Calculator</a> for timber, sand and stone measurements, or the <a href="/brick-calculator">Brick Calculator</a> and <a href="/sand-calculator">Sand Calculator</a> for estimating material quantities.</p>
+  </div>
+
+  <div class="ekz-author">
+    <div class="ekz-author-avatar">EH</div>
+    <div class="ekz-author-info">
+      <div class="name">Written by Ekramul Haque</div>
+      <div class="role">Founder of EkZapp &middot; builds free utility tools for construction, PDF and everyday calculations</div>
+    </div>
+  </div>
+
+</article>
+
+<div class="ekz-sticky-cta">
+  <a href="/land-area-converter">Open Free Land Calculator</a>
+</div>
+
+<footer>
+  <div class="ekz-container">
+    &copy; 2026 EkZapp &middot; Free Online Utility Tools &middot; <a href="/">ekzapp.com</a>
+  </div>
+</footer>
+
+</body>
+</html>

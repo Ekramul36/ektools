@@ -111,6 +111,8 @@ LASTMOD_OVERRIDES = {
     '/timestamp-converter': '2026-07-22',
     '/pdf-to-html': '2026-07-22',
     '/heic-to-jpg': '2026-07-22',
+    '/blog/cft-calculator-guide': '2026-07-22',
+    '/blog/land-area-calculator-guide': '2026-07-22',
 }
 
 
@@ -202,6 +204,8 @@ def sitemap():
         ('/blog/itr-filing-2026-last-date-old-vs-new-tax-regime', '0.7', 'monthly'),
         ('/blog/home-loan-emi-calculation-explained', '0.7', 'monthly'),
         ('/blog/cement-sand-ratio-material-estimation-guide', '0.7', 'monthly'),
+        ('/blog/cft-calculator-guide', '0.7', 'monthly'),
+        ('/blog/land-area-calculator-guide', '0.7', 'monthly'),
         ('/author/ekramul-hoque', '0.5', 'monthly'),
     ]
     xml = ['<?xml version="1.0" encoding="UTF-8"?>',
@@ -1994,6 +1998,20 @@ BLOG_POSTS = [
     "excerpt": "Standard cement-sand ratios for plastering, brickwork, and concrete, the dry volume factor everyone forgets, and a free calculator for exact bag-and-CFT quantities.",
     "category": "Calculators",
     "date": "July 19, 2026"
+    },
+    {
+    "slug": "cft-calculator-guide",
+    "title": "CFT Calculator: How to Calculate Cubic Feet for Timber, Sand & Stone",
+    "excerpt": "The formulas timber merchants, stone suppliers and contractors actually use to measure material in CFT, with worked examples and common billing mistakes.",
+    "category": "Calculators",
+    "date": "July 22, 2026"
+    },
+    {
+    "slug": "land-area-calculator-guide",
+    "title": "Land Area Calculator: Convert Bigha, Katha, Decimal, Acre & More",
+    "excerpt": "Bigha in West Bengal is not the same as Bigha in Uttar Pradesh. A state-by-state breakdown of India's land units, with conversion formulas.",
+    "category": "Calculators",
+    "date": "July 22, 2026"
     }
     # Add more posts here as dicts, e.g.:
     # {
@@ -2060,6 +2078,14 @@ def blog_home_loan_emi():
 @app.route("/blog/cement-sand-ratio-material-estimation-guide")
 def blog_cement_sand_ratio_guide():
     return render_template("blog_post_cement_sand_ratio_guide.html")
+
+@app.route("/blog/cft-calculator-guide")
+def blog_cft_calculator_guide():
+    return render_template("blog_post_cft_calculator_guide.html")
+
+@app.route("/blog/land-area-calculator-guide")
+def blog_land_area_calculator_guide():
+    return render_template("blog_post_land_calculator_guide.html")
 
 # NOTE: as you add more blog posts, add a matching @app.route("/blog/<slug>")
 # function for each new HTML file, the same way as blog_merge_pdf() above.
