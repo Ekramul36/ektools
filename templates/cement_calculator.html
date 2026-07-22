@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cement Calculator: Bags Needed for Plastering, Brickwork & Concrete | EkZapp</title>
+<meta name="description" content="Free cement calculator for plastering, brickwork and concrete. Enter area or volume and mix ratio to get exact cement bags, sand and aggregate quantities.">
+<link rel="canonical" href="https://ekzapp.com/cement-calculator">
+<meta property="og:title" content="Cement Calculator - Bags Needed for Plastering, Brickwork & Concrete">
+<meta property="og:description" content="Enter your area/volume and mix ratio to get exact cement bags needed, with dry volume factor applied automatically.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ekzapp.com/cement-calculator">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Cement Calculator",
+  "url": "https://ekzapp.com/cement-calculator",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html{scroll-behavior:smooth}
+body { font-family:'Inter',sans-serif; color:#1E293B; line-height:1.7; background:#FFFFFF; }
+a { color:#D97706; text-decoration:none; }
+.ekz-container { max-width:900px; margin:0 auto; padding:0 24px; }
+.ekz-nav { border-bottom:1px solid #E2E8F0; padding:16px 0; }
+.ekz-nav-inner { max-width:900px; margin:0 auto; padding:0 24px; display:flex; align-items:center; justify-content:space-between; }
+.ekz-logo { font-weight:800; font-size:20px; color:#D97706; }
+.ekz-nav-links a { margin-left:20px; font-weight:500; font-size:14px; color:#475569; }
+.ekz-hero { background:linear-gradient(135deg,#D97706 0%,#B45309 60%,#92400E 100%); color:#fff; padding:48px 0 40px; }
+.ekz-hero-eyebrow { font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#FDE68A; margin-bottom:12px; }
+.ekz-hero h1 { font-size:32px; font-weight:800; line-height:1.25; margin-bottom:12px; }
+.ekz-hero p { font-size:16px; color:#FEF3C7; max-width:620px; }
+.ekz-calc-card { background:#fff; border:1px solid #E2E8F0; border-radius:16px; box-shadow:0 10px 40px rgba(37,99,235,.12); padding:28px; margin:-28px 0 0; position:relative; z-index:2; }
+.ekz-field { margin-bottom:16px; }
+.ekz-field label { display:block; font-size:13px; font-weight:700; color:#334155; margin-bottom:6px; }
+.ekz-field select, .ekz-field input { width:100%; padding:11px 14px; border:1.5px solid #E2E8F0; border-radius:8px; font-size:15px; font-family:'Inter',sans-serif; color:#1E293B; }
+.ekz-field select:focus, .ekz-field input:focus { outline:none; border-color:#D97706; }
+.ekz-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.ekz-btn { width:100%; background:#D97706; color:#fff; font-weight:700; font-size:15px; padding:13px; border:none; border-radius:8px; cursor:pointer; margin-top:6px; }
+.ekz-btn:hover { background:#B45309; }
+.ekz-result { display:none; margin-top:20px; background:#FFFBEB; border:1px solid #FDE68A; border-radius:12px; padding:20px; }
+.ekz-result.show{display:block;}
+.ekz-result-row { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px dashed #FDE68A; font-size:14.5px; }
+.ekz-result-row:last-child{border-bottom:none;}
+.ekz-result-row .label{color:#475569;} .ekz-result-row .val{font-weight:800; color:#B45309;}
+article { padding:48px 0 64px; }
+h2 { font-size:24px; font-weight:700; margin:36px 0 14px; color:#0F172A; scroll-margin-top:20px;}
+h3 { font-size:18px; font-weight:700; margin:24px 0 10px; color:#1E293B; }
+p { font-size:15.5px; margin-bottom:14px; color:#334155; }
+ul,ol{margin:0 0 14px 22px; color:#334155;} li{margin-bottom:7px; font-size:15.5px;}
+table{width:100%; border-collapse:collapse; margin:18px 0; font-size:14.5px;}
+th,td{text-align:left; padding:9px 12px; border-bottom:1px solid #E2E8F0;}
+th{background:#F1F5F9; font-weight:700; color:#0F172A;}
+.ekz-formula-box{background:#FFFBEB;border-left:4px solid #D97706;padding:16px 20px;border-radius:8px;margin:18px 0;font-size:15px;}
+.ekz-formula-box code{font-family:'Courier New',monospace;font-weight:700;color:#B45309;}
+.ekz-warning{background:#FEF2F2;border-left:4px solid #EF4444;padding:14px 18px;border-radius:8px;margin:18px 0;color:#7F1D1D;font-size:14.5px;}
+.ekz-faq-item{border-bottom:1px solid #E2E8F0;padding:16px 0;} .ekz-faq-item h3{margin:0 0 6px;font-size:16px;} .ekz-faq-item p{margin:0;color:#475569;}
+.ekz-related{background:#F8FAFC;border-radius:12px;padding:20px;margin-top:32px;} .ekz-related h3{margin-top:0;}
+.ekz-related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:14px 0 0;}
+.ekz-related-grid a{display:block;padding:16px;border-radius:12px;color:#fff;text-decoration:none;font-weight:700;font-size:14px;}
+.ekz-related-grid a small{display:block;font-weight:400;opacity:.9;font-size:12px;margin-top:4px;}
+.ekz-related-grid a.rt1{background:linear-gradient(135deg,#7c3aed,#4c1d95)}
+.ekz-related-grid a.rt2{background:linear-gradient(135deg,#0ea5e9,#0369a1)}
+.ekz-related-grid a.rt3{background:linear-gradient(135deg,#f59e0b,#b45309)}
+.ekz-related-grid a.rt4{background:linear-gradient(135deg,#16a34a,#15803d)}
+.ekz-related-grid a.rt5{background:linear-gradient(135deg,#e11d48,#9f1239)}
+.ekz-related-grid a.rt6{background:linear-gradient(135deg,#0891b2,#155e75)}
+footer{border-top:1px solid #E2E8F0;padding:26px 0;text-align:center;font-size:13.5px;color:#64748B;}
+@media(max-width:640px){.ekz-hero h1{font-size:24px;} .ekz-row{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav class="ekz-nav">
+  <div class="ekz-nav-inner">
+    <a href="/" class="ekz-logo">EkZapp</a>
+    <div class="ekz-nav-links">
+      <a href="/">Home</a>
+      <a href="/blog">Blog</a>
+      <a href="/concrete-calculator">Concrete Calculator</a>
+    </div>
+  </div>
+</nav>
+
+<header class="ekz-hero">
+  <div class="ekz-container" style="display:flex;align-items:center;gap:28px;">
+    <div style="flex:1 1 auto;">
+      <div class="ekz-hero-eyebrow">Construction Calculators</div>
+      <h1>Cement Calculator &ndash; Calculate Cement Bags for Plastering, Brickwork & Concrete</h1>
+      <p>Enter your plastering area or brickwork/concrete volume and pick a mix ratio &mdash; get the exact number of cement bags needed, with the correct dry volume factor applied automatically for each work type.</p>
+    </div>
+    <svg viewBox="0 0 140 140" width="120" height="120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="flex-shrink:0;display:block;">
+      <rect x="15" y="55" width="55" height="65" rx="4" fill="#FEF3C7" stroke="#FDE68A" stroke-width="2"/>
+      <text x="24" y="90" font-size="11" font-family="Inter,sans-serif" fill="#92400E" font-weight="700">CEMENT</text>
+      <line x1="15" y1="70" x2="70" y2="70" stroke="#FDE68A" stroke-width="1.5"/>
+      <rect x="80" y="30" width="18" height="14" fill="#FDE68A" stroke="#FEF3C7" stroke-width="1"/>
+      <rect x="100" y="30" width="18" height="14" fill="#FDE68A" stroke="#FEF3C7" stroke-width="1"/>
+      <rect x="80" y="46" width="18" height="14" fill="#FDE68A" stroke="#FEF3C7" stroke-width="1"/>
+      <rect x="100" y="46" width="18" height="14" fill="#FDE68A" stroke="#FEF3C7" stroke-width="1"/>
+      <rect x="80" y="62" width="18" height="14" fill="#FDE68A" stroke="#FEF3C7" stroke-width="1"/>
+      <rect x="100" y="62" width="18" height="14" fill="#FDE68A" stroke="#FEF3C7" stroke-width="1"/>
+    </svg>
+  </div>
+</header>
+
+<div class="ekz-container">
+  <div class="ekz-calc-card">
+    <div class="ekz-field">
+      <label for="calcType">What are you calculating for?</label>
+      <select id="calcType" onchange="toggleInputs()">
+        <option value="plaster">Plastering (wall/ceiling)</option>
+        <option value="brickwork">Brickwork mortar (known volume)</option>
+        <option value="concrete">Concrete (known volume)</option>
+      </select>
+    </div>
+
+    <div id="plasterInputs">
+      <div class="ekz-row">
+        <div class="ekz-field"><label for="pLength">Wall Length (ft)</label><input type="number" id="pLength" placeholder="e.g. 10"></div>
+        <div class="ekz-field"><label for="pHeight">Wall Height (ft)</label><input type="number" id="pHeight" placeholder="e.g. 10"></div>
+      </div>
+      <div class="ekz-field"><label for="pThickness">Plaster Thickness (mm)</label><input type="number" id="pThickness" value="12" placeholder="12 or 15 or 20"></div>
+    </div>
+
+    <div id="volumeInputs" style="display:none">
+      <div class="ekz-field"><label for="vVolume">Wet Volume (cubic feet, CFT)</label><input type="number" id="vVolume" placeholder="e.g. 100"></div>
+    </div>
+
+    <div class="ekz-field">
+      <label for="ratio">Mix Ratio (Cement : Sand or Cement : Sand : Aggregate)</label>
+      <select id="ratio">
+        <option value="1:3">1:3 (rich plaster mix)</option>
+        <option value="1:4" selected>1:4 (standard plaster/brickwork)</option>
+        <option value="1:5">1:5 (brickwork, ceiling)</option>
+        <option value="1:6">1:6 (masonry, lean mix)</option>
+        <option value="1:1.5:3">1:1.5:3 (M20 concrete)</option>
+        <option value="1:2:4">1:2:4 (M15 concrete)</option>
+        <option value="1:3:6">1:3:6 (M10 concrete)</option>
+      </select>
+    </div>
+
+    <button class="ekz-btn" onclick="calculateCement()">Calculate Cement Needed</button>
+
+    <div class="ekz-result" id="result">
+      <div class="ekz-result-row"><span class="label">Wet Volume</span><span class="val" id="rWet"></span></div>
+      <div class="ekz-result-row"><span class="label">Dry Volume Factor Used</span><span class="val" id="rFactor"></span></div>
+      <div class="ekz-result-row"><span class="label">Dry Volume</span><span class="val" id="rDry"></span></div>
+      <div class="ekz-result-row"><span class="label">Cement Required</span><span class="val" id="rCementVol"></span></div>
+      <div class="ekz-result-row"><span class="label">Cement Bags (50 kg each)</span><span class="val" id="rBags"></span></div>
+      <div class="ekz-result-row" id="rSandRow"><span class="label">Sand Required</span><span class="val" id="rSand"></span></div>
+      <div class="ekz-result-row" id="rAggRow" style="display:none"><span class="label">Aggregate Required</span><span class="val" id="rAgg"></span></div>
+    </div>
+  </div>
+</div>
+
+<article class="ekz-container">
+
+  <nav class="ekz-toc" aria-label="Table of contents" style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:12px;padding:20px 22px;margin:8px 0 28px;">
+    <h2 style="margin:0 0 10px;font-size:17px;">What's in this guide</h2>
+    <ol style="margin:0 0 0 20px;">
+      <li style="margin-bottom:5px;font-size:14.5px;"><a href="#how-it-works" style="color:#334155;font-weight:500;">How this calculator works</a></li>
+      <li style="margin-bottom:5px;font-size:14.5px;"><a href="#ratios" style="color:#334155;font-weight:500;">Common mix ratios</a></li>
+      <li style="margin-bottom:5px;font-size:14.5px;"><a href="#how-to-use" style="color:#334155;font-weight:500;">How to use this calculator</a></li>
+      <li style="margin-bottom:5px;font-size:14.5px;"><a href="#wet-dry" style="color:#334155;font-weight:500;">Wet vs dry volume</a></li>
+      <li style="margin-bottom:5px;font-size:14.5px;"><a href="#faq" style="color:#334155;font-weight:500;">FAQ</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="how-it-works">How this calculator works</h2>
+  <p>This calculator finds the wet volume of material you need (from your wall area and plaster thickness, or a volume you already know), converts it to dry volume using the correct factor for your work type &mdash; 1.33 for plaster and mortar, 1.54 for concrete &mdash; then splits that dry volume across cement, sand, and aggregate according to your chosen mix ratio.</p>
+
+  <div class="ekz-formula-box">
+    <code>Dry Volume = Wet Volume &times; 1.33 (plaster/mortar) &nbsp;|&nbsp; &times; 1.54 (concrete)</code>
+  </div>
+  <div class="ekz-formula-box">
+    <code>Cement Volume = Dry Volume &times; (1 &divide; Sum of ratio parts) &times; 1</code>
+  </div>
+  <p>For example, in a 1:4 mix, the sum of parts is 5, so cement gets 1/5 of the dry volume and sand gets 4/5. Cement volume is then converted to bags using a standard density of 1440 kg per cubic meter and a 50 kg bag size (one bag &asymp; 1.25 CFT).</p>
+
+  <h2 id="ratios">Common mix ratios</h2>
+  <table>
+    <tr><th>Ratio</th><th>Typical use</th></tr>
+    <tr><td>1:3</td><td>Rich plaster mix, waterproofing coats</td></tr>
+    <tr><td>1:4</td><td>Standard wall plastering</td></tr>
+    <tr><td>1:5</td><td>Brickwork, ceiling plaster</td></tr>
+    <tr><td>1:6</td><td>Masonry work, lean mix</td></tr>
+    <tr><td>1:1.5:3 (M20)</td><td>RCC slabs, beams, columns</td></tr>
+    <tr><td>1:2:4 (M15)</td><td>General RCC work, foundations</td></tr>
+    <tr><td>1:3:6 (M10)</td><td>Leveling course, non-structural fill</td></tr>
+  </table>
+
+  <div class="ekz-warning">
+    <strong>Note:</strong> Always add 5-10% extra material for wastage on site, since this calculator gives the theoretical requirement only.
+  </div>
+
+  <h2 id="how-to-use">Step-by-step: how to use this calculator</h2>
+  <ol>
+    <li>Choose whether you're plastering a wall, doing brickwork mortar, or already know your wet volume in CFT.</li>
+    <li>For plastering, enter the wall's length and height in feet, and the plaster thickness in millimeters (12mm for a single coat, 15-20mm for a double coat or uneven surface).</li>
+    <li>Pick the mix ratio that matches your work — richer mixes (1:3) for finish coats, leaner mixes (1:5, 1:6) for backing coats or brickwork.</li>
+    <li>Click Calculate. The tool converts your wet volume to dry volume, then splits it into cement bags and sand quantity based on the ratio.</li>
+  </ol>
+
+  <h2 id="mistakes">Why manual cement estimation often goes wrong</h2>
+  <p>Most errors in manual cement calculation come from skipping the dry volume conversion entirely — treating the wet volume of a wall as if it were the raw material volume needed, which understates cement requirement by roughly a third. The second common mistake is mixing up which ratio number belongs to cement, especially when someone reads a ratio as "4 parts cement to 1 part sand" instead of the standard "1 part cement to 4 parts sand" convention.</p>
+  <p>A less obvious error is applying the plaster dry-volume factor (1.33) to concrete work, where the correct factor is 1.54 because of the added coarse aggregate — using the wrong factor either under-orders material (delays) or over-orders it (wasted cost).</p>
+
+  <h2 id="wet-dry">Understanding wet volume vs dry volume</h2>
+  <p>Wet volume is the volume the finished, compacted material actually occupies once mixed with water and applied or poured — this is what you measure from the wall area and thickness, or the slab dimensions. Dry volume is the volume of loose, unmixed cement and sand (or cement, sand and aggregate) required to produce that wet volume, and it is always larger because dry granular material has air gaps between particles that close up once water is added and the mix is compacted. This is a physical property of granular materials, not a rounding convention, which is why skipping the dry volume step is one of the most common causes of running short on cement mid-job.</p>
+
+  <h2 id="faq">Frequently asked questions</h2>
+  <div class="ekz-faq-item"><h3>Why is dry volume 1.33 times the wet volume?</h3><p>Dry cement and sand particles have gaps between them that get filled with water and settle when mixed, so a larger dry volume of material is needed to produce a given wet, compacted volume. 1.33 (or sometimes 1.30-1.35) is the standard bulking allowance used across Indian construction practice.</p></div>
+  <div class="ekz-faq-item"><h3>How many CFT is one bag of cement?</h3><p>One 50 kg bag of cement is approximately 1.25 cubic feet (CFT), based on a loose bulk density of around 1440 kg per cubic meter.</p></div>
+  <div class="ekz-faq-item"><h3>What mix ratio should I use for plastering?</h3><p>1:4 or 1:5 is standard for internal wall plastering, while 1:3 is used for a richer finish coat or waterproofing layer. Ceiling plaster typically uses a slightly richer mix than wall plaster since it must resist gravity better.</p></div>
+  <div class="ekz-faq-item"><h3>Does this calculator account for wastage?</h3><p>No, the result is the theoretical material requirement based on volume and ratio. Site practice is to add 5-10% extra to cover spillage, over-thickness application, and mixing losses.</p></div>
+  <div class="ekz-faq-item"><h3>Can I use this for both internal and external plastering?</h3><p>Yes, the formula is the same. External plastering is often done at a slightly higher thickness (15-20mm) and richer ratio (1:4 or 1:3) than internal plastering (12mm, 1:5 or 1:6), so just adjust the thickness and ratio fields accordingly.</p></div>
+  <div class="ekz-faq-item"><h3>Why does brickwork mortar use a different ratio than plaster?</h3><p>Brickwork mortar (typically 1:5 or 1:6) needs to bind bricks together and fill joint gaps rather than provide a smooth finish surface, so a leaner ratio is generally acceptable compared to the finish coat of a wall.</p></div>
+  <div class="ekz-faq-item"><h3>Does cement grade (OPC 43 vs OPC 53) change the quantity needed?</h3><p>No, the volume-based calculation here is the same regardless of cement grade. Grade affects the strength development and setting time of the cement, not the volume-to-weight relationship used in this calculator.</p></div>
+  <div class="ekz-faq-item"><h3>How many bags of cement are needed for 100 sq ft of plastering?</h3><p>For 100 sq ft at 12mm thickness with a 1:4 mix, roughly 3 to 3.5 bags of 50 kg cement are needed, though the exact figure depends on thickness and ratio chosen.</p></div>
+  <div class="ekz-faq-item"><h3>How many CFT is one 50 kg bag of cement?</h3><p>One 50 kg bag of cement is approximately 1.25 cubic feet (CFT), based on a loose bulk density of around 1440 kg per cubic meter &mdash; the same figure used throughout this calculator.</p></div>
+  <div class="ekz-faq-item"><h3>What is the actual volume of a 50 kg cement bag?</h3><p>A sealed 50 kg cement bag occupies approximately 0.035 cubic meters, or about 1.25 cubic feet, once accounting for the loose (uncompacted) bulk density of cement powder.</p></div>
+  <div class="ekz-faq-item"><h3>How much cement is needed for 1000 bricks?</h3><p>For roughly 1000 standard bricks laid with a typical 10mm mortar joint at a 1:5 or 1:6 ratio, expect approximately 3 to 4 bags of cement, though this varies with brick size, joint thickness, and the exact mortar ratio used &mdash; use the Brickwork mortar option above with your actual estimated mortar volume for a precise figure.</p></div>
+  <div class="ekz-faq-item"><h3>What is the M20 concrete mix ratio?</h3><p>M20 concrete uses a nominal mix ratio of 1:1.5:3 (cement:sand:aggregate) and is the most common grade specified for residential slabs, beams and columns in India.</p></div>
+
+  <div class="ekz-related">
+    <h3>Related tools</h3>
+    <div class="ekz-related-grid">
+      <a class="rt1" href="/concrete-calculator">Concrete Calculator<small>Cement, sand & aggregate for slabs</small></a>
+      <a class="rt2" href="/cft-calculator">CFT Calculator<small>Cubic feet for timber & stone</small></a>
+      <a class="rt3" href="/sand-calculator">Sand Calculator<small>Tractor trolley & heap volume</small></a>
+      <a class="rt4" href="/brick-calculator">Brick Calculator<small>Bricks needed for any wall</small></a>
+      <a class="rt5" href="/steel-weight-calculator">Steel Weight Calculator<small>TMT bar weight per meter</small></a>
+    </div>
+    <p style="margin-top:14px;">Read the full <a href="/blog/cement-calculator-guide">Cement Calculator guide</a> for worked examples.</p>
+  </div>
+
+  <div class="ekz-author" style="display:flex;align-items:center;gap:14px;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px;margin-top:28px;">
+    <div style="width:44px;height:44px;border-radius:50%;background:#D97706;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0;">EH</div>
+    <div>
+      <div style="font-weight:700;font-size:14.5px;color:#0F172A;">Written by Ekramul Hoque</div>
+      <div style="font-size:12.5px;color:#64748B;margin-top:2px;">Founder of EkZapp &middot; builds free utility tools for construction, PDF and everyday calculations</div>
+    </div>
+  </div>
+
+</article>
+
+<footer>
+  <div class="ekz-container">&copy; 2026 EkZapp &middot; Free Online Utility Tools &middot; <a href="/">ekzapp.com</a></div>
+</footer>
+
+<script>
+function toggleInputs(){
+  const t = document.getElementById('calcType').value;
+  document.getElementById('plasterInputs').style.display = (t==='plaster') ? 'block' : 'none';
+  document.getElementById('volumeInputs').style.display = (t==='concrete' || t==='brickwork') ? 'block' : 'none';
+}
+
+function calculateCement(){
+  const type = document.getElementById('calcType').value;
+  let wetCFT = 0;
+
+  if(type === 'plaster'){
+    const L = parseFloat(document.getElementById('pLength').value) || 0;
+    const H = parseFloat(document.getElementById('pHeight').value) || 0;
+    const T_mm = parseFloat(document.getElementById('pThickness').value) || 12;
+    const T_ft = T_mm / 304.8;
+    wetCFT = L * H * T_ft;
+  } else {
+    wetCFT = parseFloat(document.getElementById('vVolume').value) || 0;
+  }
+
+  if(wetCFT <= 0){ alert('Please enter valid dimensions.'); return; }
+
+  // Concrete uses a 1.54 dry volume factor (extra void space from coarse aggregate);
+  // plaster and brickwork mortar use 1.33.
+  const dryFactor = (type === 'concrete') ? 1.54 : 1.33;
+  const dryCFT = wetCFT * dryFactor;
+  const ratioStr = document.getElementById('ratio').value;
+  const parts = ratioStr.split(':').map(Number);
+  const sumParts = parts.reduce((a,b)=>a+b, 0);
+
+  const cementCFT = dryCFT * (parts[0] / sumParts);
+  const cementBags = cementCFT / 1.25; // 1 bag = 1.25 CFT
+
+  document.getElementById('rWet').textContent = wetCFT.toFixed(2) + ' CFT';
+  document.getElementById('rFactor').textContent = '\u00d7' + dryFactor.toFixed(2) + (type === 'concrete' ? ' (concrete)' : ' (plaster/mortar)');
+  document.getElementById('rDry').textContent = dryCFT.toFixed(2) + ' CFT';
+  document.getElementById('rCementVol').textContent = cementCFT.toFixed(2) + ' CFT';
+  document.getElementById('rBags').textContent = Math.ceil(cementBags) + ' bags (50 kg)';
+
+  if(parts.length === 2){
+    const sandCFT = dryCFT * (parts[1] / sumParts);
+    document.getElementById('rSand').textContent = sandCFT.toFixed(2) + ' CFT';
+    document.getElementById('rSandRow').style.display = 'flex';
+    document.getElementById('rAggRow').style.display = 'none';
+  } else if(parts.length === 3){
+    const sandCFT = dryCFT * (parts[1] / sumParts);
+    const aggCFT = dryCFT * (parts[2] / sumParts);
+    document.getElementById('rSand').textContent = sandCFT.toFixed(2) + ' CFT';
+    document.getElementById('rAgg').textContent = aggCFT.toFixed(2) + ' CFT';
+    document.getElementById('rSandRow').style.display = 'flex';
+    document.getElementById('rAggRow').style.display = 'flex';
+  }
+
+  document.getElementById('result').classList.add('show');
+}
+</script>
+
+</body>
+</html>

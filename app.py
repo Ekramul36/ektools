@@ -74,7 +74,7 @@ def ads_txt():
 LAUNCH_DATE = '2026-06-30'
 
 LASTMOD_OVERRIDES = {
-    '/': '2026-07-04',                          # homepage internal-link fix
+    '/': '2026-07-22',                          # construction calculators + cement/steel/concrete added
     '/about': '2026-07-08',                     # E-E-A-T rewrite
     '/merge-pdf': '2026-07-06',                 # Tier 1 redesign
     '/compress-pdf': '2026-07-06',
@@ -113,6 +113,12 @@ LASTMOD_OVERRIDES = {
     '/heic-to-jpg': '2026-07-22',
     '/blog/cft-calculator-guide': '2026-07-22',
     '/blog/land-area-calculator-guide': '2026-07-22',
+    '/cement-calculator': '2026-07-22',
+    '/steel-weight-calculator': '2026-07-22',
+    '/concrete-calculator': '2026-07-22',
+    '/blog/cement-calculator-guide': '2026-07-22',
+    '/blog/steel-weight-calculator-guide': '2026-07-22',
+    '/blog/concrete-calculator-guide': '2026-07-22',
 }
 
 
@@ -191,6 +197,9 @@ def sitemap():
         ('/timestamp-converter', '0.9', 'weekly'),
         ('/pdf-to-html', '0.9', 'weekly'),
         ('/heic-to-jpg', '0.9', 'weekly'),
+        ('/cement-calculator', '0.9', 'weekly'),
+        ('/steel-weight-calculator', '0.9', 'weekly'),
+        ('/concrete-calculator', '0.9', 'weekly'),
         ('/blog', '0.8', 'weekly'),
         ('/blog/merge-pdf-files-online', '0.7', 'monthly'),
         ('/blog/reduce-image-size-to-kb', '0.7', 'monthly'),
@@ -206,6 +215,9 @@ def sitemap():
         ('/blog/cement-sand-ratio-material-estimation-guide', '0.7', 'monthly'),
         ('/blog/cft-calculator-guide', '0.7', 'monthly'),
         ('/blog/land-area-calculator-guide', '0.7', 'monthly'),
+        ('/blog/cement-calculator-guide', '0.7', 'monthly'),
+        ('/blog/steel-weight-calculator-guide', '0.7', 'monthly'),
+        ('/blog/concrete-calculator-guide', '0.7', 'monthly'),
         ('/author/ekramul-hoque', '0.5', 'monthly'),
     ]
     xml = ['<?xml version="1.0" encoding="UTF-8"?>',
@@ -1550,6 +1562,23 @@ def timestamp_converter():
 
 
 # ──────────────────────────────────────────
+# NEWEST CALCULATORS — Cement, Steel Weight, Concrete
+# ──────────────────────────────────────────
+
+@app.route("/cement-calculator")
+def cement_calculator():
+    return render_template("cement_calculator.html")
+
+@app.route("/steel-weight-calculator")
+def steel_weight_calculator():
+    return render_template("steel_weight_calculator.html")
+
+@app.route("/concrete-calculator")
+def concrete_calculator():
+    return render_template("concrete_calculator.html")
+
+
+# ──────────────────────────────────────────
 # TEXT TOOLS
 # ──────────────────────────────────────────
 
@@ -2012,6 +2041,27 @@ BLOG_POSTS = [
     "excerpt": "Bigha in West Bengal is not the same as Bigha in Uttar Pradesh. A state-by-state breakdown of India's land units, with conversion formulas.",
     "category": "Calculators",
     "date": "July 22, 2026"
+    },
+    {
+    "slug": "cement-calculator-guide",
+    "title": "Cement Calculator Guide: How Much Cement for Plastering & Brickwork",
+    "excerpt": "The dry volume method, mix ratios explained, and worked examples for plastering, brickwork and concrete — so you never run short of cement mid-job again.",
+    "category": "Calculators",
+    "date": "July 22, 2026"
+    },
+    {
+    "slug": "steel-weight-calculator-guide",
+    "title": "Steel Weight Calculator Guide: TMT Bar Weight Formula Explained",
+    "excerpt": "The D²/162 formula that every reinforcement supplier and site engineer uses, with a full weight chart and worked examples for slabs, beams and columns.",
+    "category": "Calculators",
+    "date": "July 22, 2026"
+    },
+    {
+    "slug": "concrete-calculator-guide",
+    "title": "Concrete Calculator Guide: M15/M20/M25 Material Estimation Explained",
+    "excerpt": "The dry volume method for concrete, M-grade ratios explained, and worked examples for slabs, footings and columns.",
+    "category": "Calculators",
+    "date": "July 22, 2026"
     }
     # Add more posts here as dicts, e.g.:
     # {
@@ -2086,6 +2136,18 @@ def blog_cft_calculator_guide():
 @app.route("/blog/land-area-calculator-guide")
 def blog_land_area_calculator_guide():
     return render_template("blog_post_land_calculator_guide.html")
+
+@app.route("/blog/cement-calculator-guide")
+def blog_cement_calculator_guide():
+    return render_template("blog_post_cement_calculator_guide.html")
+
+@app.route("/blog/steel-weight-calculator-guide")
+def blog_steel_weight_calculator_guide():
+    return render_template("blog_post_steel_weight_calculator_guide.html")
+
+@app.route("/blog/concrete-calculator-guide")
+def blog_concrete_calculator_guide():
+    return render_template("blog_post_concrete_calculator_guide.html")
 
 # NOTE: as you add more blog posts, add a matching @app.route("/blog/<slug>")
 # function for each new HTML file, the same way as blog_merge_pdf() above.

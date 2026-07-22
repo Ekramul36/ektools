@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concrete Calculator: Cement, Sand & Aggregate for Any Slab or Footing | EkZapp</title>
+<meta name="description" content="Free concrete calculator. Enter slab or footing dimensions and pick M15/M20/M25 mix grade to get exact cement bags, sand and aggregate quantities.">
+<link rel="canonical" href="https://ekzapp.com/concrete-calculator">
+<meta property="og:title" content="Concrete Calculator - Cement, Sand & Aggregate for Any Slab or Footing">
+<meta property="og:description" content="Enter your slab dimensions and mix grade to get exact material quantities, with dry volume factor applied.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ekzapp.com/concrete-calculator">
+<meta property="article:modified_time" content="2026-07-22">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Concrete Calculator",
+  "url": "https://ekzapp.com/concrete-calculator",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ekzapp.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Construction Calculators", "item": "https://ekzapp.com/#cat-construction" },
+    { "@type": "ListItem", "position": 3, "name": "Concrete Calculator", "item": "https://ekzapp.com/concrete-calculator" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to use the Concrete Calculator",
+  "step": [
+    { "@type": "HowToStep", "name": "Measure length and width", "text": "Measure the length and width of your slab, footing, or column base in feet." },
+    { "@type": "HowToStep", "name": "Enter thickness and unit", "text": "Enter the thickness (or depth) and pick the unit — inches, feet, or millimeters." },
+    { "@type": "HowToStep", "name": "Pick a mix grade", "text": "Pick the mix grade that matches your structural requirement — M20 is standard for most residential slabs, beams, and columns." },
+    { "@type": "HowToStep", "name": "Calculate", "text": "Click Calculate to get the dry volume breakdown into cement bags, sand, and aggregate." }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Why is the dry volume factor 1.54 for concrete but 1.33 for plaster?", "acceptedAnswer": { "@type": "Answer", "text": "Concrete contains coarse aggregate in addition to cement and sand, and the larger particle sizes create more void space in the dry, unmixed state, which is why a bigger multiplier is used to estimate the loose material volume needed to produce a given compacted (wet) volume." } },
+    { "@type": "Question", "name": "Which mix grade should I use for a house slab?", "acceptedAnswer": { "@type": "Answer", "text": "M20 (1:1.5:3) is the most common grade for residential RCC slabs, beams and columns in India, offering a good balance of strength and cost for typical low-rise construction." } },
+    { "@type": "Question", "name": "Is the nominal mix ratio the same as the design mix?", "acceptedAnswer": { "@type": "Answer", "text": "No. A nominal mix (like 1:2:4 for M15) is a fixed-proportion mix used for smaller, less critical works, while a design mix is calculated through lab testing to hit an exact target strength (like M20 or M25) and can vary in proportion depending on the specific materials used." } },
+    { "@type": "Question", "name": "Do I need to add extra material for wastage?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, this calculator gives the theoretical requirement. Site practice typically adds 5-10% extra to account for spillage, over-excavation, and mixing losses." } },
+    { "@type": "Question", "name": "What aggregate size should I use?", "acceptedAnswer": { "@type": "Answer", "text": "20mm graded aggregate is standard for most slabs, beams and columns, while 40mm aggregate is sometimes used in mass concrete like large footings or foundations where finer surface finish is less important." } },
+    { "@type": "Question", "name": "Can I use this calculator for a foundation footing instead of a slab?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, the same length x width x thickness formula applies — just enter the footing's plan dimensions and depth, and select a mix grade appropriate for footings (M10 or M15 nominal mixes are common for residential footings)." } },
+    { "@type": "Question", "name": "How much concrete do I need for a 100 sq ft slab?", "acceptedAnswer": { "@type": "Answer", "text": "For a 100 sq ft slab at 5 inches (0.417 ft) thickness, wet volume is approximately 41.7 CFT. At M20 grade, that needs roughly 10 cement bags, 17.5 CFT of sand, and 35 CFT of aggregate after applying the 1.54 dry volume factor." } },
+    { "@type": "Question", "name": "What is the difference between M20 and M25 concrete?", "acceptedAnswer": { "@type": "Answer", "text": "M20 (1:1.5:3) and M25 (1:1:2) both use the same calculation method, but M25 has a richer cement-to-aggregate ratio, giving higher compressive strength (25 MPa vs 20 MPa) for heavier-duty structural elements." } }
+  ]
+}
+</script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html{scroll-behavior:smooth}
+body { font-family:'Inter',sans-serif; color:#1E293B; line-height:1.7; background:#FFFFFF; }
+a { color:#4F46E5; text-decoration:none; }
+.ekz-container { max-width:900px; margin:0 auto; padding:0 24px; }
+.ekz-nav { border-bottom:1px solid #E2E8F0; padding:16px 0; }
+.ekz-nav-inner { max-width:900px; margin:0 auto; padding:0 24px; display:flex; align-items:center; justify-content:space-between; }
+.ekz-logo { font-weight:800; font-size:20px; color:#4F46E5; }
+.ekz-nav-links a { margin-left:20px; font-weight:500; font-size:14px; color:#475569; }
+.ekz-hero { background:linear-gradient(135deg,#4F46E5 0%,#4338CA 60%,#3730A3 100%); color:#fff; padding:48px 0 40px; }
+.ekz-hero-eyebrow { font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#C7D2FE; margin-bottom:12px; }
+.ekz-hero h1 { font-size:32px; font-weight:800; line-height:1.25; margin-bottom:12px; }
+.ekz-hero p { font-size:16px; color:#E0E7FF; max-width:620px; }
+.ekz-calc-card { background:#fff; border:1px solid #E2E8F0; border-radius:16px; box-shadow:0 10px 40px rgba(79,70,229,.15); padding:28px; margin:-28px 0 0; position:relative; z-index:2; }
+.ekz-field { margin-bottom:16px; }
+.ekz-field label { display:block; font-size:13px; font-weight:700; color:#334155; margin-bottom:6px; }
+.ekz-field select, .ekz-field input { width:100%; padding:11px 14px; border:1.5px solid #E2E8F0; border-radius:8px; font-size:15px; font-family:'Inter',sans-serif; color:#1E293B; }
+.ekz-field select:focus, .ekz-field input:focus { outline:none; border-color:#4F46E5; }
+.ekz-row { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
+.ekz-btn { width:100%; background:#4F46E5; color:#fff; font-weight:700; font-size:15px; padding:13px; border:none; border-radius:8px; cursor:pointer; margin-top:6px; }
+.ekz-btn:hover { background:#4338CA; }
+.ekz-result { display:none; margin-top:20px; background:#EEF2FF; border:1px solid #C7D2FE; border-radius:12px; padding:20px; }
+.ekz-result.show{display:block;}
+.ekz-result-row { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px dashed #C7D2FE; font-size:14.5px; }
+.ekz-result-row:last-child{border-bottom:none;}
+.ekz-result-row .label{color:#475569;} .ekz-result-row .val{font-weight:800; color:#4338CA;}
+article { padding:48px 0 64px; }
+h2 { font-size:24px; font-weight:700; margin:36px 0 14px; color:#0F172A; scroll-margin-top:20px;}
+h3 { font-size:18px; font-weight:700; margin:24px 0 10px; color:#1E293B; }
+p { font-size:15.5px; margin-bottom:14px; color:#334155; }
+ul,ol{margin:0 0 14px 22px; color:#334155;} li{margin-bottom:7px; font-size:15.5px;}
+table{width:100%; border-collapse:collapse; margin:18px 0; font-size:14.5px;}
+th,td{text-align:left; padding:9px 12px; border-bottom:1px solid #E2E8F0;}
+th{background:#F1F5F9; font-weight:700; color:#0F172A;}
+.ekz-formula-box{background:#EEF2FF;border-left:4px solid #4F46E5;padding:16px 20px;border-radius:8px;margin:18px 0;font-size:15px;}
+.ekz-formula-box code{font-family:'Courier New',monospace;font-weight:700;color:#4338CA;}
+.ekz-warning{background:#FEF2F2;border-left:4px solid #EF4444;padding:14px 18px;border-radius:8px;margin:18px 0;color:#7F1D1D;font-size:14.5px;}
+.ekz-faq-item{border-bottom:1px solid #E2E8F0;padding:16px 0;} .ekz-faq-item h3{margin:0 0 6px;font-size:16px;} .ekz-faq-item p{margin:0;color:#475569;}
+.ekz-related{background:#F8FAFC;border-radius:12px;padding:20px;margin-top:32px;} .ekz-related h3{margin-top:0;}
+.ekz-related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:14px 0 0;}
+.ekz-related-grid a{display:block;padding:16px;border-radius:12px;color:#fff;text-decoration:none;font-weight:700;font-size:14px;}
+.ekz-related-grid a small{display:block;font-weight:400;opacity:.9;font-size:12px;margin-top:4px;}
+.ekz-related-grid a.rt1{background:linear-gradient(135deg,#D97706,#92400E)}
+.ekz-related-grid a.rt2{background:linear-gradient(135deg,#0D9488,#134E4A)}
+.ekz-related-grid a.rt3{background:linear-gradient(135deg,#0ea5e9,#0369a1)}
+.ekz-related-grid a.rt4{background:linear-gradient(135deg,#16a34a,#15803d)}
+.ekz-related-grid a.rt5{background:linear-gradient(135deg,#e11d48,#9f1239)}
+.ekz-related-grid a.rt6{background:linear-gradient(135deg,#ca8a04,#854d0e)}
+footer{border-top:1px solid #E2E8F0;padding:26px 0;text-align:center;font-size:13.5px;color:#64748B;}
+@media(max-width:640px){.ekz-hero h1{font-size:24px;} .ekz-row{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav class="ekz-nav">
+  <div class="ekz-nav-inner">
+    <a href="/" class="ekz-logo">EkZapp</a>
+    <div class="ekz-nav-links">
+      <a href="/">Home</a>
+      <a href="/blog">Blog</a>
+      <a href="/cement-calculator">Cement Calculator</a>
+    </div>
+  </div>
+</nav>
+
+<div class="ekz-container">
+  <nav aria-label="Breadcrumb" style="padding:14px 0;font-size:13px;color:#64748B;">
+    <a href="/" style="color:#64748B;">Home</a><span style="margin:0 6px;color:#CBD5E1;">&rsaquo;</span><a href="/#cat-construction" style="color:#64748B;">Construction Calculators</a><span style="margin:0 6px;color:#CBD5E1;">&rsaquo;</span><span style="color:#1E293B;font-weight:600;">Concrete Calculator</span>
+  </nav>
+</div>
+
+<header class="ekz-hero">
+  <div class="ekz-container" style="display:flex;align-items:center;gap:28px;">
+    <div style="flex:1 1 auto;">
+      <div class="ekz-hero-eyebrow">Construction Calculators</div>
+      <h1>Concrete Calculator &ndash; Cement, Sand & Aggregate Quantity Calculator</h1>
+      <p>Enter your slab, footing or column dimensions and pick a mix grade &mdash; get exact cement bags, sand and aggregate quantities, with the correct 1.54 dry volume factor already applied.</p>
+    </div>
+    <svg viewBox="0 0 140 140" width="110" height="110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="flex-shrink:0;display:block;">
+      <rect x="20" y="60" width="100" height="50" rx="4" fill="#E0E7FF" stroke="#C7D2FE" stroke-width="2"/>
+      <circle cx="35" cy="95" r="6" fill="#C7D2FE"/>
+      <circle cx="55" cy="90" r="5" fill="#C7D2FE"/>
+      <circle cx="75" cy="97" r="7" fill="#C7D2FE"/>
+      <circle cx="95" cy="88" r="5" fill="#C7D2FE"/>
+      <circle cx="110" cy="95" r="6" fill="#C7D2FE"/>
+      <rect x="20" y="35" width="100" height="18" rx="3" fill="#C7D2FE" stroke="#E0E7FF" stroke-width="1"/>
+      <text x="45" y="48" font-size="10" font-family="Inter,sans-serif" fill="#3730A3" font-weight="700">SLAB</text>
+    </svg>
+  </div>
+</header>
+
+<div class="ekz-container">
+  <div class="ekz-calc-card">
+    <div class="ekz-row">
+      <div class="ekz-field"><label for="cLength">Length (ft)</label><input type="number" id="cLength" placeholder="e.g. 10"></div>
+      <div class="ekz-field"><label for="cWidth">Width (ft)</label><input type="number" id="cWidth" placeholder="e.g. 10"></div>
+      <div class="ekz-field">
+        <label for="cThickness">Thickness</label>
+        <div style="display:flex;gap:6px;">
+          <input type="number" id="cThickness" placeholder="e.g. 4" style="flex:1;">
+          <select id="cThicknessUnit" style="flex:0 0 80px;">
+            <option value="in" selected>inches</option>
+            <option value="ft">feet</option>
+            <option value="mm">mm</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="ekz-field">
+      <label for="grade">Concrete Mix Grade</label>
+      <select id="grade">
+        <option value="1:5:10">M7.5 (1:5:10) — lean/PCC</option>
+        <option value="1:4:8">M10 (1:4:8) — PCC, leveling</option>
+        <option value="1:3:6">M10 (1:3:6) — footings</option>
+        <option value="1:2:4" selected>M15 (1:2:4) — general RCC</option>
+        <option value="1:1.5:3">M20 (1:1.5:3) — slabs, beams, columns</option>
+        <option value="1:1:2">M25 (1:1:2) — heavy-duty RCC</option>
+      </select>
+    </div>
+
+    <div class="ekz-row" style="grid-template-columns:1fr 1fr 1fr;">
+      <div class="ekz-field"><label for="rCement">Cement Rate (&#8377;/bag)</label><input type="number" id="rCement" placeholder="optional"></div>
+      <div class="ekz-field"><label for="rSandRate">Sand Rate (&#8377;/CFT)</label><input type="number" id="rSandRate" placeholder="optional"></div>
+      <div class="ekz-field"><label for="rAggRate">Aggregate Rate (&#8377;/CFT)</label><input type="number" id="rAggRate" placeholder="optional"></div>
+    </div>
+
+    <button class="ekz-btn" onclick="calculateConcrete()">Calculate Materials</button>
+
+    <div class="ekz-result" id="result">
+      <div class="ekz-result-row"><span class="label">Wet Volume</span><span class="val" id="rWet"></span></div>
+      <div class="ekz-result-row"><span class="label">Dry Volume (×1.54)</span><span class="val" id="rDry"></span></div>
+      <div class="ekz-result-row"><span class="label">Cement Required</span><span class="val" id="rCementVol"></span></div>
+      <div class="ekz-result-row"><span class="label">Cement Bags (50 kg each)</span><span class="val" id="rBags"></span></div>
+      <div class="ekz-result-row"><span class="label">Sand Required</span><span class="val" id="rSand"></span></div>
+      <div class="ekz-result-row"><span class="label">Aggregate Required</span><span class="val" id="rAgg"></span></div>
+      <div class="ekz-result-row" id="rCostRow" style="display:none"><span class="label">Estimated Total Cost</span><span class="val" id="rCost"></span></div>
+    </div>
+  </div>
+</div>
+
+<article class="ekz-container">
+
+  <nav aria-label="Table of contents" style="background:#EEF2FF;border:1px solid #C7D2FE;border-radius:12px;padding:20px 22px;margin:8px 0 28px;">
+    <h2 style="margin:0 0 10px;font-size:17px;">What's in this guide</h2>
+    <ol style="margin:0 0 0 20px;">
+      <li style="margin-bottom:5px;font-size:14.5px;"><a href="#how-it-works" style="color:#334155;font-weight:500;">How this calculator works</a></li>
+      <li style="margin-bottom:5px;font-size:14.5px;"><a href="#grades" style="color:#334155;font-weight:500;">Mix grades</a></li>
+      <li style="margin-bottom:5px;font-size:14.5px;"><a href="#how-to-use" style="color:#334155;font-weight:500;">How to use</a></li>
+      <li style="margin-bottom:5px;font-size:14.5px;"><a href="#mistakes" style="color:#334155;font-weight:500;">Common mistakes</a></li>
+      <li style="margin-bottom:5px;font-size:14.5px;"><a href="#faq" style="color:#334155;font-weight:500;">FAQ</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="how-it-works">How this calculator works</h2>
+  <p>This calculator takes your slab or footing's wet (compacted, in-place) volume from length &times; width &times; thickness, multiplies it by 1.54 to get the dry volume of loose materials needed before mixing and compaction, then splits that dry volume across cement, sand and aggregate according to the mix ratio for your chosen grade.</p>
+
+  <div class="ekz-formula-box">
+    <code>Dry Volume = Wet Volume &times; 1.54</code>
+  </div>
+  <p>The 1.54 factor for concrete is slightly higher than the 1.33 factor used for plaster and mortar, because concrete includes coarse aggregate, which increases the void ratio between dry, unmixed materials compared to a pure cement-sand mix.</p>
+
+  <h2 id="grades">Concrete mix grades and ratios</h2>
+  <table>
+    <tr><th>Grade</th><th>Ratio (Cement:Sand:Aggregate)</th><th>Typical use</th></tr>
+    <tr><td>M7.5</td><td>1:5:10</td><td>Lean concrete, PCC base</td></tr>
+    <tr><td>M10</td><td>1:4:8 or 1:3:6</td><td>Leveling course, footings</td></tr>
+    <tr><td>M15</td><td>1:2:4</td><td>General RCC work, small footings</td></tr>
+    <tr><td>M20</td><td>1:1.5:3</td><td>Slabs, beams, columns (most common for homes)</td></tr>
+    <tr><td>M25</td><td>1:1:2</td><td>Heavy-duty RCC, higher load-bearing members</td></tr>
+  </table>
+
+  <div class="ekz-warning">
+    <strong>Note:</strong> "M" grades (M15, M20, M25) technically refer to the design compressive strength in MPa achieved through proper mix design and testing, not just the nominal ratio. For any structurally critical work, follow your structural engineer's specified design mix rather than a nominal ratio alone.
+  </div>
+
+  <h2>Thickness conversion quick reference</h2>
+  <table>
+    <tr><th>Inches</th><th>Feet</th><th>mm</th></tr>
+    <tr><td>3 in</td><td>0.250 ft</td><td>76.2 mm</td></tr>
+    <tr><td>4 in</td><td>0.333 ft</td><td>101.6 mm</td></tr>
+    <tr><td>5 in</td><td>0.417 ft</td><td>127.0 mm</td></tr>
+    <tr><td>6 in</td><td>0.500 ft</td><td>152.4 mm</td></tr>
+    <tr><td>8 in</td><td>0.667 ft</td><td>203.2 mm</td></tr>
+  </table>
+
+  <h2>Worked example: 100 sq ft slab</h2>
+  <div class="ekz-formula-box">
+    <p style="margin-bottom:8px;">A 100 sq ft area (e.g. 10 ft &times; 10 ft) at 5 inches (0.417 ft) thickness, using M20 (1:1.5:3):</p>
+    <p style="margin-bottom:4px;">Wet Volume = 100 &times; 0.417 = 41.7 CFT</p>
+    <p style="margin-bottom:4px;">Dry Volume = 41.7 &times; 1.54 = 64.2 CFT</p>
+    <p style="margin-bottom:4px;">Cement = 64.2 &times; (1&divide;5.5) = 11.68 CFT &divide; 1.25 &asymp; 10 bags</p>
+    <p style="margin-bottom:4px;">Sand = 64.2 &times; (1.5&divide;5.5) = 17.5 CFT</p>
+    <p style="margin-bottom:0;">Aggregate = 64.2 &times; (3&divide;5.5) = 35 CFT</p>
+  </div>
+  <p>For a 500 sq ft roof slab at the same thickness and grade, simply multiply every figure above by 5 — approximately 50 cement bags, 87.5 CFT sand, and 175 CFT aggregate.</p>
+
+  <h2 id="how-to-use">Step-by-step: how to use this calculator</h2>
+  <ol>
+    <li>Measure the length and width of your slab, footing, or column base in feet.</li>
+    <li>Enter the thickness (or depth) and pick the unit — inches, feet, or millimeters — a typical residential roof slab is 4-5 inches thick.</li>
+    <li>Pick the mix grade that matches your structural requirement — M20 is standard for most residential slabs, beams, and columns.</li>
+    <li>Click Calculate to get the dry volume breakdown into cement bags, sand, and aggregate.</li>
+  </ol>
+
+  <h2 id="mistakes">Why manual concrete estimation often goes wrong</h2>
+  <p>The most frequent mistake is applying the plaster dry-volume factor (1.33) to concrete work instead of the correct concrete factor (1.54) — since concrete includes coarse aggregate, its dry, unmixed volume expands more than a cement-sand mortar mix does. Using 1.33 instead of 1.54 understates material needs by roughly 14%, which on a large slab pour can mean running short mid-pour, a genuinely disruptive and costly problem since concrete needs to be poured continuously.</p>
+  <p>A second common error is confusing the nominal mix ratio (like 1:2:4 for M15) with a fixed universal recipe — the exact aggregate size, water-cement ratio, and even the ratio itself can shift slightly based on local material quality and the specific strength target, which is why critical structural elements should follow a lab-verified design mix rather than a nominal ratio alone.</p>
+
+  <h2 id="m-grade">Understanding M-grade concrete strength</h2>
+  <p>The "M" in M15, M20, M25 stands for "Mix" and the number represents the characteristic compressive strength in megapascals (MPa) that the concrete should achieve after 28 days of curing, as verified through standard cube testing. A higher grade number means higher strength and is typically required for larger spans, heavier loads, or taller structures — M20 is the practical minimum most engineers specify for RCC work in residential construction today, even though M15 nominal mixes were common in older buildings.</p>
+
+  <h2 id="faq">Frequently asked questions</h2>
+  <div class="ekz-faq-item"><h3>Why is the dry volume factor 1.54 for concrete but 1.33 for plaster?</h3><p>Concrete contains coarse aggregate in addition to cement and sand, and the larger particle sizes create more void space in the dry, unmixed state, which is why a bigger multiplier is used to estimate the loose material volume needed to produce a given compacted (wet) volume.</p></div>
+  <div class="ekz-faq-item"><h3>Which mix grade should I use for a house slab?</h3><p>M20 (1:1.5:3) is the most common grade for residential RCC slabs, beams and columns in India, offering a good balance of strength and cost for typical low-rise construction.</p></div>
+  <div class="ekz-faq-item"><h3>Is the nominal mix ratio the same as the design mix?</h3><p>No. A nominal mix (like 1:2:4 for M15) is a fixed-proportion mix used for smaller, less critical works, while a design mix is calculated through lab testing to hit an exact target strength (like M20 or M25) and can vary in proportion depending on the specific materials used.</p></div>
+  <div class="ekz-faq-item"><h3>Do I need to add extra material for wastage?</h3><p>Yes, this calculator gives the theoretical requirement. Site practice typically adds 5-10% extra to account for spillage, over-excavation, and mixing losses.</p></div>
+  <div class="ekz-faq-item"><h3>What aggregate size should I use?</h3><p>20mm graded aggregate is standard for most slabs, beams and columns, while 40mm aggregate is sometimes used in mass concrete like large footings or foundations where finer surface finish is less important.</p></div>
+  <div class="ekz-faq-item"><h3>Can I use this calculator for a foundation footing instead of a slab?</h3><p>Yes, the same length &times; width &times; thickness formula applies — just enter the footing's plan dimensions and depth, and select a mix grade appropriate for footings (M10 or M15 nominal mixes are common for residential footings).</p></div>
+  <div class="ekz-faq-item"><h3>How much concrete do I need for a 100 sq ft slab?</h3><p>For a 100 sq ft slab at 5 inches (0.417 ft) thickness, wet volume is approximately 41.7 CFT. At M20 grade, that needs roughly 10 cement bags, 17.5 CFT of sand, and 35 CFT of aggregate after applying the 1.54 dry volume factor.</p></div>
+  <div class="ekz-faq-item"><h3>What is the difference between M20 and M25 concrete?</h3><p>M20 (1:1.5:3) and M25 (1:1:2) both use the same calculation method, but M25 has a richer cement-to-aggregate ratio, giving higher compressive strength (25 MPa vs 20 MPa) for heavier-duty structural elements.</p></div>
+
+  <div class="ekz-related">
+    <h3>Related tools</h3>
+    <div class="ekz-related-grid">
+      <a class="rt1" href="/cement-calculator">Cement Calculator<small>Bags for plastering & brickwork</small></a>
+      <a class="rt2" href="/steel-weight-calculator">Steel Weight Calculator<small>TMT bar weight per meter</small></a>
+      <a class="rt3" href="/cft-calculator">CFT Calculator<small>Cubic feet for timber & stone</small></a>
+      <a class="rt4" href="/sand-calculator">Sand Calculator<small>Tractor trolley & heap volume</small></a>
+      <a class="rt5" href="/brick-calculator">Brick Calculator<small>Bricks needed for any wall</small></a>
+      <a class="rt6" href="/land-area-converter">Land Area Converter<small>Bigha, Katha, Acre & more</small></a>
+    </div>
+    <p style="margin-top:14px;">Read the full <a href="/blog/concrete-calculator-guide">Concrete Calculator guide</a> for worked examples on slabs and footings.</p>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:14px;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px;margin-top:28px;">
+    <div style="width:44px;height:44px;border-radius:50%;background:#4F46E5;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0;">EH</div>
+    <div>
+      <div style="font-weight:700;font-size:14.5px;color:#0F172A;">Written by Ekramul Hoque</div>
+      <div style="font-size:12.5px;color:#64748B;margin-top:2px;">Founder of EkZapp &middot; builds free utility tools for construction, PDF and everyday calculations</div>
+    </div>
+  </div>
+
+</article>
+
+<footer>
+  <div class="ekz-container">&copy; 2026 EkZapp &middot; Free Online Utility Tools &middot; <a href="/">ekzapp.com</a></div>
+</footer>
+
+<script>
+function updateURLParams(L, W, T_val, T_unit, grade){
+  const params = new URLSearchParams();
+  params.set('length', L);
+  params.set('width', W);
+  params.set('thickness', T_val);
+  params.set('unit', T_unit);
+  params.set('grade', grade);
+  const newURL = window.location.pathname + '?' + params.toString();
+  window.history.replaceState({}, '', newURL);
+}
+
+function prefillFromURL(){
+  const params = new URLSearchParams(window.location.search);
+  if(params.has('length')) document.getElementById('cLength').value = params.get('length');
+  if(params.has('width')) document.getElementById('cWidth').value = params.get('width');
+  if(params.has('thickness')) document.getElementById('cThickness').value = params.get('thickness');
+  if(params.has('unit')) document.getElementById('cThicknessUnit').value = params.get('unit');
+  if(params.has('grade')) document.getElementById('grade').value = params.get('grade');
+  if(params.has('length') && params.has('width') && params.has('thickness')){
+    calculateConcrete(false);
+  }
+}
+window.addEventListener('DOMContentLoaded', prefillFromURL);
+
+function calculateConcrete(updateURL){
+  if(updateURL === undefined) updateURL = true;
+  const L = parseFloat(document.getElementById('cLength').value) || 0;
+  const W = parseFloat(document.getElementById('cWidth').value) || 0;
+  const T_val = parseFloat(document.getElementById('cThickness').value) || 0;
+  const T_unit = document.getElementById('cThicknessUnit').value;
+  const grade = document.getElementById('grade').value;
+
+  let T_ft;
+  if(T_unit === 'in'){ T_ft = T_val / 12; }
+  else if(T_unit === 'mm'){ T_ft = T_val / 304.8; }
+  else { T_ft = T_val; } // already feet
+
+  if(L <= 0 || W <= 0 || T_val <= 0){ alert('Please enter valid dimensions.'); return; }
+
+  if(updateURL) updateURLParams(L, W, T_val, T_unit, grade);
+
+  const wetCFT = L * W * T_ft;
+  const dryCFT = wetCFT * 1.54;
+
+  const ratioStr = grade;
+  const parts = ratioStr.split(':').map(Number);
+  const sumParts = parts.reduce((a,b)=>a+b, 0);
+
+  const cementCFT = dryCFT * (parts[0] / sumParts);
+  const sandCFT = dryCFT * (parts[1] / sumParts);
+  const aggCFT = dryCFT * (parts[2] / sumParts);
+  const cementBags = cementCFT / 1.25;
+  const cementBagsRounded = Math.ceil(cementBags);
+
+  document.getElementById('rWet').textContent = wetCFT.toFixed(2) + ' CFT';
+  document.getElementById('rDry').textContent = dryCFT.toFixed(2) + ' CFT';
+  document.getElementById('rCementVol').textContent = cementCFT.toFixed(2) + ' CFT';
+  document.getElementById('rBags').textContent = cementBagsRounded + ' bags (50 kg)';
+  document.getElementById('rSand').textContent = sandCFT.toFixed(2) + ' CFT';
+  document.getElementById('rAgg').textContent = aggCFT.toFixed(2) + ' CFT';
+
+  const cementRate = parseFloat(document.getElementById('rCement').value) || 0;
+  const sandRate = parseFloat(document.getElementById('rSandRate').value) || 0;
+  const aggRate = parseFloat(document.getElementById('rAggRate').value) || 0;
+
+  if(cementRate > 0 || sandRate > 0 || aggRate > 0){
+    const totalCost = (cementBagsRounded * cementRate) + (sandCFT * sandRate) + (aggCFT * aggRate);
+    document.getElementById('rCost').textContent = '\u20b9' + totalCost.toLocaleString('en-IN', {maximumFractionDigits:0});
+    document.getElementById('rCostRow').style.display = 'flex';
+  } else {
+    document.getElementById('rCostRow').style.display = 'none';
+  }
+
+  document.getElementById('result').classList.add('show');
+}
+</script>
+
+</body>
+</html>

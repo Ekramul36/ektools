@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steel Weight Calculator Guide: TMT Bar Weight Formula Explained | EkZapp</title>
+<meta name="description" content="Learn how to calculate TMT reinforcement bar weight using the D²/162 formula, with a standard weight chart, worked examples for slabs and columns, and a free calculator.">
+<link rel="canonical" href="https://ekzapp.com/blog/steel-weight-calculator-guide">
+<meta property="og:title" content="Steel Weight Calculator Guide: TMT Bar Weight Formula Explained">
+<meta property="og:description" content="The D²/162 formula explained with a weight chart and worked examples for slabs, columns and footings.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ekzapp.com/blog/steel-weight-calculator-guide">
+<meta property="og:image" content="https://ekzapp.com/static/blog/steel-guide-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Steel Weight Calculator Guide: TMT Bar Weight Formula Explained",
+  "description": "Learn how to calculate TMT reinforcement bar weight using the D²/162 formula, with a standard weight chart, worked examples for slabs and columns, and a free calculator.",
+  "image": "https://ekzapp.com/static/blog/steel-guide-cover.jpg",
+  "author": { "@type": "Person", "name": "Ekramul Hoque", "url": "https://ekzapp.com/author/ekramul-hoque" },
+  "publisher": { "@type": "Organization", "name": "EkZapp", "logo": { "@type": "ImageObject", "url": "https://ekzapp.com/static/logo.png" } },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://ekzapp.com/blog/steel-weight-calculator-guide" },
+  "datePublished": "2026-07-22",
+  "dateModified": "2026-07-22"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ekzapp.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://ekzapp.com/blog" },
+    { "@type": "ListItem", "position": 3, "name": "Steel Weight Calculator Guide", "item": "https://ekzapp.com/blog/steel-weight-calculator-guide" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What is the formula for TMT bar weight?", "acceptedAnswer": { "@type": "Answer", "text": "Weight per meter (kg/m) equals the bar diameter in millimeters squared, divided by 162. Multiply by length in meters for weight per bar, then by quantity for total weight." } },
+    { "@type": "Question", "name": "How much does a 12mm TMT bar weigh per meter?", "acceptedAnswer": { "@type": "Answer", "text": "A 12mm TMT bar weighs approximately 0.888 kg per meter, calculated as 12 squared (144) divided by 162." } },
+    { "@type": "Question", "name": "What is the standard length of a TMT bar in India?", "acceptedAnswer": { "@type": "Answer", "text": "TMT bars are most commonly supplied in 12-meter lengths in India, though some mills supply 11.8m or other lengths depending on transport and rolling constraints." } },
+    { "@type": "Question", "name": "Where does the 162 constant in the steel weight formula come from?", "acceptedAnswer": { "@type": "Answer", "text": "It is derived from steel's density of approximately 7850 kg per cubic meter combined with the formula for a cylinder's volume, simplified so diameter in millimeters can be squared and divided directly by 162 to give kilograms per meter." } },
+    { "@type": "Question", "name": "Do Fe415, Fe500 and Fe550 grades weigh differently?", "acceptedAnswer": { "@type": "Answer", "text": "No, the weight per meter is the same across grades since it depends on physical volume and steel density, not the grade's yield strength. Grade affects strength, not weight." } },
+    { "@type": "Question", "name": "How much extra steel should I order for lap and cutting waste?", "acceptedAnswer": { "@type": "Answer", "text": "Site practice typically adds 3 to 5 percent extra to the theoretical steel weight calculated from member lengths, to account for lap splices and unavoidable offcuts from cutting 12m bars to size." } },
+    { "@type": "Question", "name": "How do I calculate stirrup weight differently from main bar weight?", "acceptedAnswer": { "@type": "Answer", "text": "Stirrup weight uses the same D²/162 formula, but the length used is the perimeter of the closed loop shape plus hook allowance, multiplied by the number of stirrups needed along the member." } },
+    { "@type": "Question", "name": "Can this calculator estimate steel cost too?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, multiplying the total weight by your supplier's current per-kg rate gives an estimated cost, though rates change frequently and vary by region and grade so the current rate should always be confirmed with the supplier." } }
+  ]
+}
+</script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: #1E293B; line-height: 1.7; background: #FFFFFF; }
+  a { color: #0D9488; text-decoration: none; }
+  .ekz-container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+
+  .ekz-nav { border-bottom: 1px solid #E2E8F0; padding: 16px 0; }
+  .ekz-nav-inner { max-width: 800px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+  .ekz-logo { font-weight: 800; font-size: 20px; color: #0D9488; }
+  .ekz-nav-links a { margin-left: 20px; font-weight: 500; font-size: 14px; color: #475569; }
+
+  .ekz-breadcrumb { padding: 14px 0; font-size: 13px; color: #64748B; }
+  .ekz-breadcrumb a { color: #64748B; }
+  .ekz-breadcrumb a:hover { color: #0D9488; }
+  .ekz-breadcrumb span.sep { margin: 0 6px; color: #CBD5E1; }
+  .ekz-breadcrumb span.current { color: #1E293B; font-weight: 600; }
+
+  .ekz-hero { background: linear-gradient(135deg, #0D9488 0%, #0F766E 60%, #134E4A 100%); color: #fff; padding: 56px 0; overflow: hidden; }
+  .ekz-hero-inner { display: flex; align-items: center; gap: 32px; }
+  .ekz-hero-text { flex: 1 1 auto; min-width: 0; }
+  .ekz-hero-eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #99F6E4; margin-bottom: 14px; }
+  .ekz-hero h1 { font-size: 33px; font-weight: 800; line-height: 1.25; margin-bottom: 16px; }
+  .ekz-hero p { font-size: 17px; color: #CCFBF1; max-width: 560px; }
+  .ekz-hero-meta { margin-top: 24px; font-size: 13px; color: #CCFBF1; }
+  .ekz-hero-graphic { flex: 0 0 180px; display: block; }
+
+  article { padding: 40px 0 64px; }
+  h2 { font-size: 26px; font-weight: 700; margin: 40px 0 16px; color: #0F172A; scroll-margin-top: 20px; }
+  h3 { font-size: 19px; font-weight: 700; margin: 28px 0 10px; color: #1E293B; }
+  p { font-size: 16px; margin-bottom: 16px; color: #334155; }
+  ul, ol { margin: 0 0 16px 22px; color: #334155; }
+  li { margin-bottom: 8px; font-size: 16px; }
+  figure { margin: 24px 0; text-align: center; }
+  figure figcaption { font-size: 13px; color: #64748B; margin-top: 8px; }
+
+  .ekz-toc { background: #F0FDFA; border: 1px solid #99F6E4; border-radius: 12px; padding: 22px 24px; margin: 8px 0 32px; }
+  .ekz-toc h2 { margin: 0 0 12px; font-size: 18px; }
+  .ekz-toc ol { margin: 0 0 0 20px; }
+  .ekz-toc li { margin-bottom: 6px; font-size: 15px; }
+  .ekz-toc a { color: #334155; font-weight: 500; }
+  .ekz-toc a:hover { color: #0D9488; }
+
+  .ekz-formula-box { background: #F0FDFA; border-left: 4px solid #0D9488; padding: 18px 22px; border-radius: 8px; margin: 20px 0; font-size: 16px; position: relative; }
+  .ekz-formula-box code { font-family: 'Courier New', monospace; font-weight: 700; color: #0F766E; padding-right: 76px; display: inline-block; }
+  .ekz-copy-btn { position: absolute; right: 14px; top: 14px; background: #fff; border: 1px solid #99F6E4; color: #0D9488; font-size: 12px; font-weight: 600; padding: 5px 10px; border-radius: 6px; cursor: pointer; }
+  .ekz-copy-btn:hover { background: #F0FDFA; }
+
+  .ekz-example-box { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 20px 22px; margin: 20px 0; }
+  .ekz-example-box .ekz-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #0D9488; margin-bottom: 10px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 15px; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid #E2E8F0; }
+  th { background: #F1F5F9; font-weight: 700; color: #0F172A; }
+
+  .ekz-warning { background: #FEF2F2; border-left: 4px solid #EF4444; padding: 16px 20px; border-radius: 8px; margin: 20px 0; color: #7F1D1D; font-size: 15px; }
+
+  .ekz-cta { background: linear-gradient(135deg, #0D9488, #134E4A); border-radius: 16px; padding: 36px; text-align: center; margin: 44px 0; color: #fff; }
+  .ekz-cta h3 { color: #fff; font-size: 22px; margin-bottom: 10px; }
+  .ekz-cta p { color: #CCFBF1; margin-bottom: 20px; }
+  .ekz-cta-btn { display: inline-block; background: #fff; color: #0F766E; font-weight: 700; padding: 13px 28px; border-radius: 8px; font-size: 15px; }
+
+  .ekz-faq { margin-top: 12px; }
+  .ekz-faq-item { border-bottom: 1px solid #E2E8F0; padding: 18px 0; }
+  .ekz-faq-item h3 { margin: 0 0 8px; font-size: 17px; }
+  .ekz-faq-item p { margin: 0; color: #475569; }
+
+  .ekz-related { background: #F8FAFC; border-radius: 12px; padding: 22px; margin-top: 24px; }
+  .ekz-related h3 { margin-top: 0; }
+  .ekz-related ul { margin-bottom: 0; }
+
+  .ekz-author { display: flex; align-items: center; gap: 14px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 18px 20px; margin-top: 40px; }
+  .ekz-author-avatar { width: 48px; height: 48px; border-radius: 50%; background: #0D9488; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px; flex-shrink: 0; }
+  .ekz-author-info .name { font-weight: 700; font-size: 15px; color: #0F172A; }
+  .ekz-author-info .role { font-size: 13px; color: #64748B; margin-top: 2px; }
+
+  footer { border-top: 1px solid #E2E8F0; padding: 28px 0 90px; text-align: center; font-size: 14px; color: #64748B; }
+
+  .ekz-sticky-cta { display: none; }
+
+  @media (max-width: 640px) {
+    .ekz-hero h1 { font-size: 24px; }
+    .ekz-hero-graphic { display: none; }
+    .ekz-nav-links a { margin-left: 12px; font-size: 13px; }
+    .ekz-formula-box code { padding-right: 0; display: block; margin-bottom: 10px; }
+    .ekz-copy-btn { position: static; margin-top: 4px; }
+
+    .ekz-sticky-cta {
+      display: flex; position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
+      background: #0F766E; padding: 12px 16px; box-shadow: 0 -4px 16px rgba(0,0,0,0.15);
+    }
+    .ekz-sticky-cta a { flex: 1; text-align: center; background: #fff; color: #0F766E; font-weight: 700; padding: 12px; border-radius: 8px; font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="ekz-nav">
+  <div class="ekz-nav-inner">
+    <a href="/" class="ekz-logo">EkZapp</a>
+    <div class="ekz-nav-links">
+      <a href="/">Home</a>
+      <a href="/blog">Blog</a>
+      <a href="/steel-weight-calculator">Steel Weight Calculator</a>
+    </div>
+  </div>
+</nav>
+
+<div class="ekz-container">
+  <nav class="ekz-breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span class="sep">&rsaquo;</span><a href="/blog">Blog</a><span class="sep">&rsaquo;</span><span class="current">Steel Weight Calculator Guide</span>
+  </nav>
+</div>
+
+<header class="ekz-hero">
+  <div class="ekz-container ekz-hero-inner">
+    <div class="ekz-hero-text">
+      <div class="ekz-hero-eyebrow">Construction & Trade Calculators</div>
+      <h1>Steel Weight Calculator Guide: TMT Bar Weight Formula Explained</h1>
+      <p>The D&sup2;/162 formula that every reinforcement supplier and site engineer uses, with a full weight chart, worked examples for slabs, beams and columns, and the mistakes that throw off steel orders.</p>
+      <div class="ekz-hero-meta">Updated July 2026 &middot; 10 min read</div>
+    </div>
+    <svg class="ekz-hero-graphic" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="55" cy="90" r="12" fill="none" stroke="#99F6E4" stroke-width="4"/>
+      <circle cx="90" cy="90" r="12" fill="none" stroke="#99F6E4" stroke-width="4"/>
+      <circle cx="125" cy="90" r="12" fill="none" stroke="#99F6E4" stroke-width="4"/>
+      <line x1="25" y1="90" x2="155" y2="90" stroke="#99F6E4" stroke-width="2" stroke-dasharray="3 3"/>
+      <text x="60" y="45" font-size="13" font-family="Inter, sans-serif" fill="#CCFBF1" font-weight="700">D&sup2;/162</text>
+    </svg>
+  </div>
+</header>
+
+<article class="ekz-container">
+
+  <p>Steel is priced and delivered by weight, not by length or piece count, which means every reinforcement order eventually comes down to one calculation: converting bar diameter and length into kilograms. The formula behind this is short enough to memorize, but the details around laps, cutting waste, and unit mistakes are where real orders go wrong. This guide covers the formula, a full reference chart, and worked examples for typical slab, beam and column reinforcement.</p>
+
+  <nav class="ekz-toc" aria-label="Table of contents">
+    <h2>What's in this guide</h2>
+    <ol>
+      <li><a href="#formula">The D&sup2;/162 formula</a></li>
+      <li><a href="#chart">Standard TMT weight chart</a></li>
+      <li><a href="#slab-example">Worked example: slab reinforcement</a></li>
+      <li><a href="#beam-example">Worked example: beam reinforcement</a></li>
+      <li><a href="#column-example">Worked example: column reinforcement</a></li>
+      <li><a href="#footing-example">Worked example: footing reinforcement</a></li>
+      <li><a href="#laps">Lap length and cutting waste</a></li>
+      <li><a href="#mistakes">Common mistakes</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="formula">The D&sup2;/162 formula</h2>
+  <p>Reinforcement steel weight is derived from its physical volume and density (about 7850 kg per cubic meter), simplified into a constant that lets you work directly from millimeter diameter without converting units by hand:</p>
+  <div class="ekz-formula-box">
+    <code id="formula1">Weight per meter (kg/m) = D&sup2; &divide; 162</code>
+    <button class="ekz-copy-btn" onclick="navigator.clipboard.writeText('Weight per meter (kg/m) = D^2 / 162')">Copy</button>
+  </div>
+  <p>Where D is the bar's diameter in millimeters. Multiply by length in meters to get weight per bar, then by quantity for the total. This formula is universal across bar grades (Fe415, Fe500, Fe550) since grade affects yield strength, not the physical volume-to-weight relationship.</p>
+
+  <h2 id="chart">Standard TMT weight chart</h2>
+  <table>
+    <tr><th>Diameter</th><th>Weight per meter</th><th>Weight per 12m bar</th></tr>
+    <tr><td>6 mm</td><td>0.222 kg/m</td><td>2.66 kg</td></tr>
+    <tr><td>8 mm</td><td>0.395 kg/m</td><td>4.74 kg</td></tr>
+    <tr><td>10 mm</td><td>0.617 kg/m</td><td>7.40 kg</td></tr>
+    <tr><td>12 mm</td><td>0.888 kg/m</td><td>10.66 kg</td></tr>
+    <tr><td>16 mm</td><td>1.578 kg/m</td><td>18.94 kg</td></tr>
+    <tr><td>20 mm</td><td>2.469 kg/m</td><td>29.63 kg</td></tr>
+    <tr><td>25 mm</td><td>3.858 kg/m</td><td>46.30 kg</td></tr>
+    <tr><td>32 mm</td><td>6.321 kg/m</td><td>75.85 kg</td></tr>
+    <tr><td>36 mm</td><td>8.000 kg/m</td><td>96.00 kg</td></tr>
+    <tr><td>40 mm</td><td>9.877 kg/m</td><td>118.52 kg</td></tr>
+  </table>
+
+  <h2 id="slab-example">Worked example: slab reinforcement</h2>
+  <div class="ekz-example-box">
+    <div class="ekz-label">Scenario</div>
+    <p>A slab uses 10mm main bars, with 40 bars each cut to 4 meters length.</p>
+    <p>Weight per meter (10mm) = 10&sup2; &divide; 162 = 0.617 kg/m</p>
+    <p>Weight per bar = 0.617 &times; 4 = 2.47 kg</p>
+    <p style="margin-bottom:0;">Total weight = 2.47 &times; 40 = <strong>98.8 kg</strong></p>
+  </div>
+  <p>Add a similar calculation for the distribution bars (usually a smaller diameter running perpendicular to the main bars) and sum both totals to get the slab's full main-reinforcement steel weight.</p>
+
+  <h2 id="beam-example">Worked example: beam reinforcement</h2>
+  <div class="ekz-example-box">
+    <div class="ekz-label">Scenario</div>
+    <p>A beam spans 5 meters and uses 4 main bars of 20mm diameter running the full length, plus 8mm stirrups at 200mm spacing.</p>
+    <p>Main bars: Weight per meter (20mm) = 20&sup2; &divide; 162 = 2.469 kg/m</p>
+    <p>Main bar total = 2.469 &times; 5 &times; 4 = 49.4 kg</p>
+    <p>Stirrup perimeter (approx, for a 230mm &times; 450mm beam with cover) &asymp; 1.4m per loop including hooks</p>
+    <p>Number of stirrups over 5m at 200mm spacing &asymp; 26</p>
+    <p>Stirrup weight = (8&sup2;&divide;162) &times; 1.4 &times; 26 = 0.395 &times; 1.4 &times; 26 = 14.38 kg</p>
+    <p style="margin-bottom:0;">Total beam steel &asymp; 49.4 + 14.38 = <strong>63.8 kg</strong></p>
+  </div>
+
+  <h2 id="column-example">Worked example: column reinforcement</h2>
+  <div class="ekz-example-box">
+    <div class="ekz-label">Scenario</div>
+    <p>A column uses 8 main bars of 16mm diameter, each 3.5 meters long (floor-to-floor height plus lap allowance), plus 8mm stirrups spaced every 150mm along the column.</p>
+    <p>Main bars: Weight per meter (16mm) = 16&sup2; &divide; 162 = 1.578 kg/m</p>
+    <p>Main bar total = 1.578 &times; 3.5 &times; 8 = 44.2 kg</p>
+    <p>Stirrup perimeter (approx, for a 300mm &times; 300mm column with cover) &asymp; 1.1m per loop including hooks</p>
+    <p>Number of stirrups over 3.5m at 150mm spacing &asymp; 24</p>
+    <p>Stirrup weight = (8&sup2;&divide;162) &times; 1.1 &times; 24 = 0.395 &times; 1.1 &times; 24 = 10.43 kg</p>
+    <p style="margin-bottom:0;">Total column steel &asymp; 44.2 + 10.43 = <strong>54.6 kg</strong></p>
+  </div>
+
+  <h2 id="footing-example">Worked example: footing reinforcement</h2>
+  <div class="ekz-example-box">
+    <div class="ekz-label">Scenario</div>
+    <p>A footing uses a mesh of 12mm bars, with 15 bars running each direction, each 2 meters long (30 bars total).</p>
+    <p>Weight per meter (12mm) = 12&sup2; &divide; 162 = 0.888 kg/m</p>
+    <p>Weight per bar = 0.888 &times; 2 = 1.78 kg</p>
+    <p style="margin-bottom:0;">Total weight = 1.78 &times; 30 = <strong>53.3 kg</strong></p>
+  </div>
+
+  <h2 id="laps">Lap length and cutting waste</h2>
+  <p>TMT bars come in fixed 12-meter lengths, but structural members are rarely exact multiples of that, and long spans often need two bars joined together at a lap splice, where they overlap for a specified length (commonly 40-50 times the bar diameter) rather than butting end to end. This overlap adds real steel weight beyond the simple "length of the member" calculation, and cutting bars to size from 12m stock almost always leaves offcuts too short to reuse. Site practice typically adds 3-5% to the theoretical weight from member lengths alone to cover both effects.</p>
+
+  <table>
+    <tr><th>Element</th><th>Typical wastage allowance</th></tr>
+    <tr><td>Straight slab bars (few laps)</td><td>2-3%</td></tr>
+    <tr><td>Column main bars (frequent lap splices)</td><td>4-5%</td></tr>
+    <tr><td>Stirrups and ties (many small cuts)</td><td>5-8%</td></tr>
+    <tr><td>Footing mesh (large, mostly straight runs)</td><td>2-3%</td></tr>
+  </table>
+  <p>Elements with more splice joints or smaller repeated cuts naturally waste more material as offcuts, which is why a single blanket wastage percentage across an entire building's steel estimate is less accurate than applying a slightly different margin per element type. A large project's bar bending schedule typically breaks totals down by diameter and element for exactly this reason.</p>
+
+  <h2>Quick reference: steel weight formulas cheat sheet</h2>
+  <table>
+    <tr><th>What you need</th><th>Formula</th></tr>
+    <tr><td>Weight per meter</td><td>D&sup2; &divide; 162 (D in mm)</td></tr>
+    <tr><td>Weight per bar</td><td>Weight per meter &times; bar length (m)</td></tr>
+    <tr><td>Total weight</td><td>Weight per bar &times; number of bars</td></tr>
+    <tr><td>Stirrup weight</td><td>Weight per meter &times; loop perimeter (incl. hooks) &times; number of stirrups</td></tr>
+    <tr><td>Estimated cost</td><td>Total weight (kg) &times; current rate per kg</td></tr>
+  </table>
+
+  <div class="ekz-warning">
+    <strong>Before finalizing a steel order:</strong> confirm you're using the bar bending schedule from the structural drawing (which lists exact shapes, hooks and lap lengths) rather than a rough "length &times; count" estimate, and add the appropriate wastage margin per element type on top.
+  </div>
+
+  <h2 id="mistakes">Common mistakes in steel weight estimation</h2>
+  <ul>
+    <li><strong>Using the wrong unit for diameter</strong> — the formula only works with D in millimeters, not centimeters or inches</li>
+    <li><strong>Ignoring lap length</strong> at splice joints on long spans, understating total steel needed</li>
+    <li><strong>Treating stirrup length as a straight measurement</strong> instead of the loop's full perimeter plus hooks</li>
+    <li><strong>Not adding cutting waste</strong> when structural lengths don't divide evenly into 12m stock bars</li>
+  </ul>
+
+  <h2>Fe415 vs Fe500 vs Fe550: what actually differs</h2>
+  <p>These grade numbers refer to the minimum yield strength in MPa that the steel is guaranteed to withstand before permanently deforming — Fe415 yields at 415 MPa, Fe500 at 500 MPa, and Fe550 at 550 MPa. A higher grade means a structural engineer can often specify fewer or thinner bars to carry the same load, which is where grade choice affects total steel weight indirectly, through the design, not through the D&sup2;/162 formula itself. For a given bar diameter and length, a Fe500 bar and a Fe415 bar of identical size weigh exactly the same; what differs is how much load-bearing capacity that same weight of steel provides.</p>
+
+  <h2>How steel is priced and sold on site</h2>
+  <p>Structural steel is almost always priced and invoiced per kilogram rather than per bar or per piece, which is exactly why converting a bar bending schedule into weight is the essential step between a structural drawing and an actual purchase order. Suppliers typically quote a per-kg rate that varies by diameter, grade and current market rates, which change often enough that this guide deliberately doesn't quote a fixed figure — always confirm current pricing directly with your supplier.</p>
+
+  <h2>Why use an online steel weight calculator</h2>
+  <p>The formula is simple, but a real reinforcement schedule has many diameters, many bar counts, and multiple structural elements, making manual calculation slow and easy to mis-key. An online calculator removes the arithmetic risk — enter diameter, length and quantity per line item, and get an instant, accurate weight you can add up across the full bar bending schedule.</p>
+
+  <h2>Key takeaways</h2>
+  <p>Steel weight calculation is one formula, D&sup2;/162, applied consistently across every diameter and grade. The places estimates actually go wrong aren't the formula itself but everything around it: mixing up units, forgetting lap length at splices, treating a stirrup's loop as a straight measurement, and skipping a wastage margin that varies meaningfully by element type. Working element by element — main bars, distribution bars, stirrups — and applying the right wastage percentage to each gives a far more reliable total than a single rough blanket estimate for the whole structure.</p>
+
+  <div class="ekz-cta">
+    <h3>Calculate steel weight instantly</h3>
+    <p>Enter bar diameter, length and quantity to get weight per meter, per bar, and total weight in kg — plus an optional cost estimate.</p>
+    <a href="/steel-weight-calculator" class="ekz-cta-btn">Open Free Steel Weight Calculator</a>
+  </div>
+
+  <h2 id="faq">Frequently asked questions</h2>
+  <div class="ekz-faq">
+    <div class="ekz-faq-item"><h3>What is the formula for TMT bar weight?</h3><p>Weight per meter (kg/m) equals the bar diameter in millimeters squared, divided by 162. Multiply by length in meters for weight per bar, then by quantity for total weight.</p></div>
+    <div class="ekz-faq-item"><h3>How much does a 12mm TMT bar weigh per meter?</h3><p>A 12mm TMT bar weighs approximately 0.888 kg per meter, calculated as 12 squared (144) divided by 162.</p></div>
+    <div class="ekz-faq-item"><h3>What is the standard length of a TMT bar in India?</h3><p>TMT bars are most commonly supplied in 12-meter lengths in India, though some mills supply 11.8m or other lengths depending on transport and rolling constraints.</p></div>
+    <div class="ekz-faq-item"><h3>Where does the 162 constant in the steel weight formula come from?</h3><p>It is derived from steel's density of approximately 7850 kg per cubic meter combined with the formula for a cylinder's volume, simplified so diameter in millimeters can be squared and divided directly by 162 to give kilograms per meter.</p></div>
+    <div class="ekz-faq-item"><h3>Do Fe415, Fe500 and Fe550 grades weigh differently?</h3><p>No, the weight per meter is the same across grades since it depends on physical volume and steel density, not the grade's yield strength. Grade affects strength, not weight.</p></div>
+    <div class="ekz-faq-item"><h3>How much extra steel should I order for lap and cutting waste?</h3><p>Site practice typically adds 3 to 5 percent extra to the theoretical steel weight calculated from member lengths, to account for lap splices and unavoidable offcuts from cutting 12m bars to size, though this varies by element — stirrups and ties often need a higher margin than straight slab bars.</p></div>
+    <div class="ekz-faq-item"><h3>How do I calculate stirrup weight differently from main bar weight?</h3><p>Stirrup weight uses the same D&sup2;/162 formula, but the length used is the perimeter of the closed loop shape plus hook allowance, multiplied by the number of stirrups needed along the member.</p></div>
+    <div class="ekz-faq-item"><h3>Can this calculator estimate steel cost too?</h3><p>Yes, multiplying the total weight by your supplier's current per-kg rate gives an estimated cost, though rates change frequently and vary by region and grade so the current rate should always be confirmed with the supplier.</p></div>
+  </div>
+
+  <div class="ekz-related">
+    <h3>Related tools</h3>
+    <p>Also check the <a href="/cement-calculator">Cement Calculator</a> and <a href="/concrete-calculator">Concrete Calculator</a> for material estimation across the rest of your RCC work.</p>
+  </div>
+
+  <div class="ekz-author">
+    <div class="ekz-author-avatar">EH</div>
+    <div class="ekz-author-info">
+      <div class="name">Written by Ekramul Hoque</div>
+      <div class="role">Founder of EkZapp &middot; builds free utility tools for construction, PDF and everyday calculations</div>
+    </div>
+  </div>
+
+</article>
+
+<div class="ekz-sticky-cta">
+  <a href="/steel-weight-calculator">Open Free Steel Weight Calculator</a>
+</div>
+
+<footer>
+  <div class="ekz-container">
+    &copy; 2026 EkZapp &middot; Free Online Utility Tools &middot; <a href="/">ekzapp.com</a>
+  </div>
+</footer>
+
+</body>
+</html>

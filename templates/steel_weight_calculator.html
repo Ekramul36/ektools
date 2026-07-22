@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steel Weight Calculator: TMT Bar Weight per Meter & Total | EkZapp</title>
+<meta name="description" content="Free steel weight calculator for TMT reinforcement bars. Enter diameter and length to get weight per meter and total weight in kg, using the standard D²/162 formula.">
+<link rel="canonical" href="https://ekzapp.com/steel-weight-calculator">
+<meta property="og:title" content="Steel Weight Calculator - TMT Bar Weight per Meter & Total">
+<meta property="og:description" content="Enter bar diameter and length to get exact steel weight in kg, using the standard D²/162 engineering formula.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ekzapp.com/steel-weight-calculator">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Steel Weight Calculator",
+  "url": "https://ekzapp.com/steel-weight-calculator",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html{scroll-behavior:smooth}
+body { font-family:'Inter',sans-serif; color:#1E293B; line-height:1.7; background:#FFFFFF; }
+a { color:#0D9488; text-decoration:none; }
+.ekz-container { max-width:900px; margin:0 auto; padding:0 24px; }
+.ekz-nav { border-bottom:1px solid #E2E8F0; padding:16px 0; }
+.ekz-nav-inner { max-width:900px; margin:0 auto; padding:0 24px; display:flex; align-items:center; justify-content:space-between; }
+.ekz-logo { font-weight:800; font-size:20px; color:#0D9488; }
+.ekz-nav-links a { margin-left:20px; font-weight:500; font-size:14px; color:#475569; }
+.ekz-hero { background:linear-gradient(135deg,#0D9488 0%,#0F766E 60%,#134E4A 100%); color:#fff; padding:48px 0 40px; }
+.ekz-hero-eyebrow { font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#99F6E4; margin-bottom:12px; }
+.ekz-hero h1 { font-size:32px; font-weight:800; line-height:1.25; margin-bottom:12px; }
+.ekz-hero p { font-size:16px; color:#CCFBF1; max-width:620px; }
+.ekz-calc-card { background:#fff; border:1px solid #E2E8F0; border-radius:16px; box-shadow:0 10px 40px rgba(13,148,136,.15); padding:28px; margin:-28px 0 0; position:relative; z-index:2; }
+.ekz-field { margin-bottom:16px; }
+.ekz-field label { display:block; font-size:13px; font-weight:700; color:#334155; margin-bottom:6px; }
+.ekz-field select, .ekz-field input { width:100%; padding:11px 14px; border:1.5px solid #E2E8F0; border-radius:8px; font-size:15px; font-family:'Inter',sans-serif; color:#1E293B; }
+.ekz-field select:focus, .ekz-field input:focus { outline:none; border-color:#0D9488; }
+.ekz-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.ekz-btn { width:100%; background:#0D9488; color:#fff; font-weight:700; font-size:15px; padding:13px; border:none; border-radius:8px; cursor:pointer; margin-top:6px; }
+.ekz-btn:hover { background:#0F766E; }
+.ekz-result { display:none; margin-top:20px; background:#F0FDFA; border:1px solid #99F6E4; border-radius:12px; padding:20px; }
+.ekz-result.show{display:block;}
+.ekz-result-row { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px dashed #99F6E4; font-size:14.5px; }
+.ekz-result-row:last-child{border-bottom:none;}
+.ekz-result-row .label{color:#475569;} .ekz-result-row .val{font-weight:800; color:#0F766E;}
+article { padding:48px 0 64px; }
+h2 { font-size:24px; font-weight:700; margin:36px 0 14px; color:#0F172A; scroll-margin-top:20px;}
+h3 { font-size:18px; font-weight:700; margin:24px 0 10px; color:#1E293B; }
+p { font-size:15.5px; margin-bottom:14px; color:#334155; }
+ul,ol{margin:0 0 14px 22px; color:#334155;} li{margin-bottom:7px; font-size:15.5px;}
+table{width:100%; border-collapse:collapse; margin:18px 0; font-size:14.5px;}
+th,td{text-align:left; padding:9px 12px; border-bottom:1px solid #E2E8F0;}
+th{background:#F1F5F9; font-weight:700; color:#0F172A;}
+.ekz-formula-box{background:#F0FDFA;border-left:4px solid #0D9488;padding:16px 20px;border-radius:8px;margin:18px 0;font-size:15px;}
+.ekz-formula-box code{font-family:'Courier New',monospace;font-weight:700;color:#0F766E;}
+.ekz-warning{background:#FEF2F2;border-left:4px solid #EF4444;padding:14px 18px;border-radius:8px;margin:18px 0;color:#7F1D1D;font-size:14.5px;}
+.ekz-faq-item{border-bottom:1px solid #E2E8F0;padding:16px 0;} .ekz-faq-item h3{margin:0 0 6px;font-size:16px;} .ekz-faq-item p{margin:0;color:#475569;}
+.ekz-related{background:#F8FAFC;border-radius:12px;padding:20px;margin-top:32px;} .ekz-related h3{margin-top:0;}
+.ekz-related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:14px 0 0;}
+.ekz-related-grid a{display:block;padding:16px;border-radius:12px;color:#fff;text-decoration:none;font-weight:700;font-size:14px;}
+.ekz-related-grid a small{display:block;font-weight:400;opacity:.9;font-size:12px;margin-top:4px;}
+.ekz-related-grid a.rt1{background:linear-gradient(135deg,#7c3aed,#4c1d95)}
+.ekz-related-grid a.rt2{background:linear-gradient(135deg,#0ea5e9,#0369a1)}
+.ekz-related-grid a.rt3{background:linear-gradient(135deg,#f59e0b,#b45309)}
+.ekz-related-grid a.rt4{background:linear-gradient(135deg,#16a34a,#15803d)}
+.ekz-related-grid a.rt5{background:linear-gradient(135deg,#e11d48,#9f1239)}
+footer{border-top:1px solid #E2E8F0;padding:26px 0;text-align:center;font-size:13.5px;color:#64748B;}
+@media(max-width:640px){.ekz-hero h1{font-size:24px;} .ekz-row{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav class="ekz-nav">
+  <div class="ekz-nav-inner">
+    <a href="/" class="ekz-logo">EkZapp</a>
+    <div class="ekz-nav-links">
+      <a href="/">Home</a>
+      <a href="/blog">Blog</a>
+      <a href="/concrete-calculator">Concrete Calculator</a>
+    </div>
+  </div>
+</nav>
+
+<header class="ekz-hero">
+  <div class="ekz-container" style="display:flex;align-items:center;gap:28px;">
+    <div style="flex:1 1 auto;">
+      <div class="ekz-hero-eyebrow">Construction Calculators</div>
+      <h1>Steel Weight Calculator (TMT Bar Weight per Meter & Total Weight)</h1>
+      <p>Enter TMT bar diameter and length (or number of bars) to get the exact steel weight in kg, using the standard D&sup2;/162 formula used across Indian construction sites.</p>
+    </div>
+    <svg viewBox="0 0 140 140" width="110" height="110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="flex-shrink:0;display:block;">
+      <circle cx="45" cy="70" r="10" fill="none" stroke="#99F6E4" stroke-width="4"/>
+      <circle cx="75" cy="70" r="10" fill="none" stroke="#99F6E4" stroke-width="4"/>
+      <circle cx="105" cy="70" r="10" fill="none" stroke="#99F6E4" stroke-width="4"/>
+      <line x1="20" y1="70" x2="120" y2="70" stroke="#99F6E4" stroke-width="2" stroke-dasharray="3 3"/>
+      <text x="55" y="30" font-size="12" font-family="Inter,sans-serif" fill="#CCFBF1" font-weight="700">D&sup2;/162</text>
+    </svg>
+  </div>
+</header>
+
+<div class="ekz-container">
+  <div class="ekz-calc-card">
+    <div class="ekz-row">
+      <div class="ekz-field">
+        <label for="dia">Bar Diameter</label>
+        <select id="dia">
+          <option value="6">6 mm</option>
+          <option value="8" selected>8 mm</option>
+          <option value="10">10 mm</option>
+          <option value="12">12 mm</option>
+          <option value="16">16 mm</option>
+          <option value="20">20 mm</option>
+          <option value="25">25 mm</option>
+          <option value="32">32 mm</option>
+          <option value="36">36 mm</option>
+          <option value="40">40 mm</option>
+        </select>
+      </div>
+      <div class="ekz-field">
+        <label for="length">Length per Bar (meters)</label>
+        <input type="number" id="length" value="12" placeholder="e.g. 12 (standard bar length)">
+      </div>
+    </div>
+    <div class="ekz-field">
+      <label for="qty">Number of Bars</label>
+      <input type="number" id="qty" value="1" placeholder="e.g. 10">
+    </div>
+    <div class="ekz-field">
+      <label for="rate">Steel Rate (&#8377; per kg) &mdash; optional, for cost estimate</label>
+      <input type="number" id="rate" placeholder="e.g. 65">
+    </div>
+
+    <button class="ekz-btn" onclick="calculateSteel()">Calculate Steel Weight</button>
+
+    <div class="ekz-result" id="result">
+      <div class="ekz-result-row"><span class="label">Weight per Meter</span><span class="val" id="rPerM"></span></div>
+      <div class="ekz-result-row"><span class="label">Weight per Bar</span><span class="val" id="rPerBar"></span></div>
+      <div class="ekz-result-row"><span class="label">Total Weight</span><span class="val" id="rTotal"></span></div>
+      <div class="ekz-result-row" id="rCostRow" style="display:none"><span class="label">Estimated Cost</span><span class="val" id="rCost"></span></div>
+    </div>
+  </div>
+</div>
+
+<article class="ekz-container">
+
+  <nav aria-label="Table of contents" style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:20px 22px;margin:8px 0 28px;">
+    <h2 style="margin:0 0 10px;font-size:17px;">What's in this guide</h2>
+    <ol style="margin:0 0 0 20px;">
+      <li style="margin-bottom:5px;font-size:14.5px;"><a href="#formula" style="color:#334155;font-weight:500;">Steel weight formula</a></li>
+      <li style="margin-bottom:5px;font-size:14.5px;"><a href="#chart" style="color:#334155;font-weight:500;">Weight table</a></li>
+      <li style="margin-bottom:5px;font-size:14.5px;"><a href="#how-to-use" style="color:#334155;font-weight:500;">How to use</a></li>
+      <li style="margin-bottom:5px;font-size:14.5px;"><a href="#mistakes" style="color:#334155;font-weight:500;">Common mistakes</a></li>
+      <li style="margin-bottom:5px;font-size:14.5px;"><a href="#faq" style="color:#334155;font-weight:500;">FAQ</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="formula">The steel weight formula</h2>
+  <p>Reinforcement steel weight is calculated using a formula derived from the density of steel (about 7850 kg per cubic meter) and the cross-sectional area of a round bar. Rather than computing the full density formula every time, the construction industry uses a simplified constant:</p>
+  <div class="ekz-formula-box">
+    <code>Weight per meter (kg/m) = D&sup2; &divide; 162</code>
+  </div>
+  <p>Where D is the bar diameter in millimeters. Multiply by the bar length in meters to get weight per bar, then by the number of bars for the total.</p>
+
+  <h2 id="chart">Standard TMT bar weights per meter</h2>
+  <table>
+    <tr><th>Diameter</th><th>Weight per meter</th></tr>
+    <tr><td>6 mm</td><td>0.222 kg/m</td></tr>
+    <tr><td>8 mm</td><td>0.395 kg/m</td></tr>
+    <tr><td>10 mm</td><td>0.617 kg/m</td></tr>
+    <tr><td>12 mm</td><td>0.888 kg/m</td></tr>
+    <tr><td>16 mm</td><td>1.578 kg/m</td></tr>
+    <tr><td>20 mm</td><td>2.469 kg/m</td></tr>
+    <tr><td>25 mm</td><td>3.858 kg/m</td></tr>
+    <tr><td>32 mm</td><td>6.321 kg/m</td></tr>
+    <tr><td>36 mm</td><td>8.000 kg/m</td></tr>
+    <tr><td>40 mm</td><td>9.877 kg/m</td></tr>
+  </table>
+
+  <div class="ekz-warning">
+    <strong>Note:</strong> Actual delivered TMT bars may vary slightly (&plusmn;2-3%) from the theoretical D&sup2;/162 value depending on the manufacturer's rolling tolerance — always cross-check against the mill test certificate for large orders.
+  </div>
+
+  <h2 id="how-to-use">Step-by-step: how to use this calculator</h2>
+  <ol>
+    <li>Select the bar diameter you're working with, from 6mm distribution bars up to 32mm heavy main bars.</li>
+    <li>Enter the length per bar in meters — 12 meters is the standard full-length TMT bar in India.</li>
+    <li>Enter the total number of bars of that diameter you need.</li>
+    <li>Click Calculate to get weight per meter, weight per bar, and total weight in kg.</li>
+    <li>Repeat for each diameter used in your reinforcement design, then add the totals together for the full steel requirement.</li>
+  </ol>
+
+  <h2 id="mistakes">Why manual steel estimation often goes wrong</h2>
+  <p>The most common mistake is applying the D&sup2;/162 formula with the wrong unit for diameter — the formula only works when D is entered in millimeters, and using centimeters or inches by mistake produces wildly incorrect weights. Another frequent error is forgetting to account for bar overlaps (laps) in long spans, where two bars are joined with an overlap length, effectively adding extra length beyond the simple total-length-of-members calculation.</p>
+  <p>A third issue is treating cutting waste as negligible — TMT bars come in fixed 12m lengths, and cutting them to match structural member dimensions almost always leaves offcuts, so site estimates typically add 3-5% extra to the theoretical steel weight to cover this.</p>
+
+  <h2>Understanding reinforcement weight vs reinforcement design</h2>
+  <p>This calculator answers "how much does this length of this diameter bar weigh," which is a straightforward physical calculation. It does not answer "how much reinforcement does my slab or column need," which is a structural design question depending on load, span, and applicable building code (like IS 456 in India) — that number comes from a structural engineer's drawing, expressed as a bar bending schedule listing every bar's diameter, shape, and length. Once you have that schedule, this calculator converts each line item into a weight, and the sum across all line items gives your total steel tonnage for ordering purposes.</p>
+
+  <h2 id="faq">Frequently asked questions</h2>
+  <div class="ekz-faq-item"><h3>Where does the 162 constant come from?</h3><p>It's derived from steel's density (7850 kg/m&sup3;) and the formula for the volume of a cylinder, simplified so that diameter in millimeters can be squared and divided directly by 162 to get kg per meter, without needing to convert units manually.</p></div>
+  <div class="ekz-faq-item"><h3>What is the standard length of a TMT bar?</h3><p>TMT bars are most commonly supplied in 12-meter lengths in India, though 11.8m and other lengths exist depending on the mill and transport constraints.</p></div>
+  <div class="ekz-faq-item"><h3>How do I estimate total steel needed for a slab or column?</h3><p>Total steel weight is the sum of weight per meter &times; total bar length for every bar diameter used in the reinforcement design (main bars, stirrups, distribution bars), which typically comes from a structural drawing rather than a single calculation.</p></div>
+  <div class="ekz-faq-item"><h3>Does bar diameter affect the formula differently for different steel grades (Fe415, Fe500)?</h3><p>No — the D&sup2;/162 formula is based on physical volume and density, which is the same regardless of grade (Fe415, Fe500, Fe550). Grade affects strength, not weight per unit length.</p></div>
+  <div class="ekz-faq-item"><h3>Should I add extra for bar laps and cutting waste?</h3><p>Yes, site estimates typically add 3-5% to the theoretical weight calculated from member lengths alone, to account for lap lengths at splice joints and unavoidable offcuts from cutting 12m bars to size.</p></div>
+  <div class="ekz-faq-item"><h3>How do stirrups get calculated differently from main bars?</h3><p>Stirrups are usually smaller-diameter bars (6-10mm) bent into a closed loop shape, so their "length" for weight calculation is the perimeter of the loop (plus hook allowance) multiplied by the number of stirrups needed along the member, rather than a single straight length.</p></div>
+  <div class="ekz-faq-item"><h3>Can this calculator estimate steel cost too?</h3><p>Yes — enter your supplier's current rate per kg in the optional "Steel Rate" field and the calculator multiplies it by the total weight to give an estimated cost. Rates change frequently and vary by region and grade, so always confirm the current rate with your supplier before finalizing an order.</p></div>
+
+  <div class="ekz-related">
+    <h3>Related tools</h3>
+    <div class="ekz-related-grid">
+      <a class="rt1" href="/cement-calculator">Cement Calculator<small>Bags for plastering & brickwork</small></a>
+      <a class="rt2" href="/concrete-calculator">Concrete Calculator<small>Cement, sand & aggregate for slabs</small></a>
+      <a class="rt3" href="/cft-calculator">CFT Calculator<small>Cubic feet for timber & stone</small></a>
+      <a class="rt4" href="/brick-calculator">Brick Calculator<small>Bricks needed for any wall</small></a>
+    </div>
+    <p style="margin-top:14px;">Read the full <a href="/blog/steel-weight-calculator-guide">Steel Weight Calculator guide</a> for worked examples on slabs and columns.</p>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:14px;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px;margin-top:28px;">
+    <div style="width:44px;height:44px;border-radius:50%;background:#0D9488;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0;">EH</div>
+    <div>
+      <div style="font-weight:700;font-size:14.5px;color:#0F172A;">Written by Ekramul Hoque</div>
+      <div style="font-size:12.5px;color:#64748B;margin-top:2px;">Founder of EkZapp &middot; builds free utility tools for construction, PDF and everyday calculations</div>
+    </div>
+  </div>
+
+</article>
+
+<footer>
+  <div class="ekz-container">&copy; 2026 EkZapp &middot; Free Online Utility Tools &middot; <a href="/">ekzapp.com</a></div>
+</footer>
+
+<script>
+function calculateSteel(){
+  const dia = parseFloat(document.getElementById('dia').value);
+  const length = parseFloat(document.getElementById('length').value) || 0;
+  const qty = parseFloat(document.getElementById('qty').value) || 0;
+  const rate = parseFloat(document.getElementById('rate').value) || 0;
+
+  if(length <= 0 || qty <= 0){ alert('Please enter valid length and quantity.'); return; }
+
+  const perMeter = (dia * dia) / 162;
+  const perBar = perMeter * length;
+  const total = perBar * qty;
+
+  document.getElementById('rPerM').textContent = perMeter.toFixed(3) + ' kg/m';
+  document.getElementById('rPerBar').textContent = perBar.toFixed(2) + ' kg';
+  document.getElementById('rTotal').textContent = total.toFixed(2) + ' kg';
+
+  if(rate > 0){
+    const cost = total * rate;
+    document.getElementById('rCost').textContent = '\u20b9' + cost.toLocaleString('en-IN', {maximumFractionDigits:2});
+    document.getElementById('rCostRow').style.display = 'flex';
+  } else {
+    document.getElementById('rCostRow').style.display = 'none';
+  }
+
+  document.getElementById('result').classList.add('show');
+}
+</script>
+
+</body>
+</html>
