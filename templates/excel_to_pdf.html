@@ -94,6 +94,18 @@ table.compare td.no{color:var(--gray)}
 .related-item .ico{font-size:1.3rem;margin-bottom:6px;display:block}
 .related-item .name{font-size:12.5px;font-weight:700;color:#fff}
 footer{margin:64px 0 32px;text-align:center;font-size:12px;color:var(--gray)}
+
+/* example table (new block) */
+.example-box{background:white;border:1px solid var(--border);border-radius:14px;padding:24px}
+.example-box h3{font-size:1rem;font-weight:800;margin-bottom:6px}
+.example-box .example-sub{font-size:13px;color:var(--gray);margin-bottom:16px}
+table.example{width:100%;border-collapse:collapse;font-size:12.5px}
+table.example th,table.example td{padding:8px 10px;border-bottom:1px solid var(--border);text-align:left}
+table.example th{background:var(--light);color:var(--ink);font-weight:700}
+table.example td.num{text-align:right;font-variant-numeric:tabular-nums}
+.example-result{margin-top:14px;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:10px;padding:12px 16px;font-size:13px;color:#166534}
+.example-result strong{color:#065F46}
+
 @media(max-width:720px){
   .use-cases{grid-template-columns:1fr}
   .feature-grid{grid-template-columns:1fr}
@@ -104,6 +116,7 @@ footer{margin:64px 0 32px;text-align:center;font-size:12px;color:var(--gray)}
   .hero h1{font-size:1.7rem}
   .tool-card-wrap{margin-top:-56px}
   .hero{padding-bottom:88px}
+  table.example{font-size:11.5px}
 }
 </style>
 <script type="application/ld+json">
@@ -174,32 +187,7 @@ footer{margin:64px 0 32px;text-align:center;font-size:12px;color:var(--gray)}
     </div>
   </div>
 
-  <!-- PHOTO + COPY (first this time, order varied) -->
-  <div class="wide section">
-    <div class="photo-block">
-      <img src="{{ url_for('static', filename='images/photo-data-analysis.jpg') }}" alt="Reviewing a spreadsheet before converting to PDF">
-      <div class="photo-copy">
-        <h2>From working sheet to shareable report</h2>
-        <p>A spreadsheet is a workspace — full of formulas, helper columns, and drafts that make sense to you but weren't meant for anyone else's eyes. Before sending numbers to a client, manager, or auditor, converting to PDF strips away the working scaffolding and leaves a clean, page-formatted document that shows exactly the rows and columns you intended, with no risk of someone accidentally scrolling into a hidden formula column or resizing a cell that breaks the whole layout.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- USE CASES -->
-  <div class="wide section">
-    <h2>When people convert Excel to PDF</h2>
-    <p class="sub">A few common situations</p>
-    <div class="use-cases">
-      <div class="use-case"><h3>🧾 Invoices & quotes</h3><p>Send a finished invoice as a fixed PDF so totals and line items can't be edited after the fact.</p></div>
-      <div class="use-case"><h3>📊 Reports for stakeholders</h3><p>Share a monthly or quarterly report that looks identical whether opened on a phone or printed for a meeting.</p></div>
-      <div class="use-case"><h3>🗂️ Data for archiving</h3><p>Keep a permanent, unchangeable record of figures at a specific point in time.</p></div>
-      <div class="use-case"><h3>📥 Forms & submissions</h3><p>Submit a completed budget sheet or application form in the format a portal or reviewer expects.</p></div>
-      <div class="use-case"><h3>🖨️ Print-ready pages</h3><p>Get properly paginated output for printing, instead of a spreadsheet that spills across dozens of loose pages.</p></div>
-      <div class="use-case"><h3>📁 Client deliverables</h3><p>Hand over a polished, professional-looking file rather than a raw working spreadsheet.</p></div>
-    </div>
-  </div>
-
-  <!-- FEATURE GRID -->
+  <!-- FEATURE GRID (moved up, first content section) -->
   <div class="wide section">
     <h2>Why convert with EkZapp</h2>
     <p class="sub">Built for people who just need a clean PDF, fast</p>
@@ -219,19 +207,21 @@ footer{margin:64px 0 32px;text-align:center;font-size:12px;color:var(--gray)}
     </div>
   </div>
 
-  <!-- COMPARISON TABLE -->
+  <!-- USE CASES -->
   <div class="wide section">
-    <h2>How this compares</h2>
-    <p class="sub">A quick, factual look at common ways to get a PDF from Excel</p>
-    <table class="compare">
-      <tr><th>Method</th><th>Cost</th><th>Account needed</th><th>Works on phone</th></tr>
-      <tr><td>EkZapp Excel to PDF</td><td class="yes">Free</td><td class="yes">No</td><td class="yes">Yes</td></tr>
-      <tr><td>Excel "Save As PDF"</td><td class="no">Requires Excel license</td><td class="no">Microsoft account</td><td class="no">Desktop app only</td></tr>
-      <tr><td>Google Sheets export</td><td class="yes">Free</td><td class="no">Google account</td><td class="yes">Yes</td></tr>
-    </table>
+    <h2>When people convert Excel to PDF</h2>
+    <p class="sub">A few common situations</p>
+    <div class="use-cases">
+      <div class="use-case"><h3>🧾 Invoices & quotes</h3><p>Send a finished invoice as a fixed PDF so totals and line items can't be edited after the fact.</p></div>
+      <div class="use-case"><h3>📊 Reports for stakeholders</h3><p>Share a monthly or quarterly report that looks identical whether opened on a phone or printed for a meeting.</p></div>
+      <div class="use-case"><h3>🗂️ Data for archiving</h3><p>Keep a permanent, unchangeable record of figures at a specific point in time.</p></div>
+      <div class="use-case"><h3>📥 Forms & submissions</h3><p>Submit a completed budget sheet or application form in the format a portal or reviewer expects.</p></div>
+      <div class="use-case"><h3>🖨️ Print-ready pages</h3><p>Get properly paginated output for printing, instead of a spreadsheet that spills across dozens of loose pages.</p></div>
+      <div class="use-case"><h3>📁 Client deliverables</h3><p>Hand over a polished, professional-looking file rather than a raw working spreadsheet.</p></div>
+    </div>
   </div>
 
-  <!-- WHY CONVERT (deep text) -->
+  <!-- WHY PDF (deep text, moved earlier) -->
   <div class="narrow section">
     <h2>Why PDF is the right format for finished spreadsheets</h2>
     <p class="sub">&nbsp;</p>
@@ -243,14 +233,45 @@ footer{margin:64px 0 32px;text-align:center;font-size:12px;color:var(--gray)}
     </div>
   </div>
 
-  <!-- DATA ACCURACY -->
-  <div class="narrow section">
-    <h2>Keeping numbers accurate through the conversion</h2>
-    <p class="sub">&nbsp;</p>
-    <div class="text-block">
-      <p>Because PDF is a snapshot rather than a live document, the values shown are whatever the formulas resolved to at the moment of conversion. If a spreadsheet pulls data from another file, a database connection, or a manual entry that hasn't been refreshed, the PDF will faithfully capture that possibly-outdated number. It's worth opening the file in Excel first, pressing recalculate (F9) if formulas depend on external data, and confirming the figures are current before converting — the tool converts exactly what it's given, so accuracy upstream matters more than anything the conversion itself can do.</p>
-      <p>Number formatting is preserved as it appears in the cell, not the raw underlying value — so a cell showing "$1,204.50" in Excel will show the same in the PDF, while a cell showing "1204.5" without currency formatting will look the same way too. Reviewing how figures are displayed in Excel before conversion is the simplest way to guarantee the PDF reads exactly as intended, rather than relying on the conversion to add formatting after the fact.</p>
+  <!-- PHOTO + COPY (moved after the deep text this time) -->
+  <div class="wide section">
+    <div class="photo-block">
+      <img src="{{ url_for('static', filename='images/photo-data-analysis.jpg') }}" alt="Reviewing a spreadsheet before converting to PDF">
+      <div class="photo-copy">
+        <h2>From working sheet to shareable report</h2>
+        <p>A spreadsheet is a workspace — full of formulas, helper columns, and drafts that make sense to you but weren't meant for anyone else's eyes. Before sending numbers to a client, manager, or auditor, converting to PDF strips away the working scaffolding and leaves a clean, page-formatted document that shows exactly the rows and columns you intended, with no risk of someone accidentally scrolling into a hidden formula column or resizing a cell that breaks the whole layout.</p>
+      </div>
     </div>
+  </div>
+
+  <!-- NEW: WORKED EXAMPLE — unique information gain, not present on the sibling converter pages -->
+  <div class="narrow section">
+    <div class="example-box">
+      <h3>📐 A quick example: a 20-row sales sheet</h3>
+      <p class="example-sub">Here's what actually happens to a typical wide sheet when it's converted, using a small sample instead of an abstract description.</p>
+      <table class="example">
+        <tr><th>Item</th><th>Qty</th><th class="num">Rate (₹)</th><th class="num">Amount (₹)</th></tr>
+        <tr><td>Office Chairs</td><td>12</td><td class="num">3,200.00</td><td class="num">38,400.00</td></tr>
+        <tr><td>Desk Lamps</td><td>20</td><td class="num">650.00</td><td class="num">13,000.00</td></tr>
+        <tr><td>Whiteboards</td><td>4</td><td class="num">2,100.00</td><td class="num">8,400.00</td></tr>
+        <tr><td colspan="3" style="text-align:right;font-weight:700">Total</td><td class="num" style="font-weight:700">59,800.00</td></tr>
+      </table>
+      <div class="example-result">
+        <strong>What carries over:</strong> column widths, the currency formatting on the Rate/Amount columns, and the bold total row — all rendered exactly as shown, with the sheet auto-scaled to fit a single A4 page width since this table is only 4 columns wide. A sheet with 15+ columns would instead be split across two PDF pages side by side, matching whatever print area was set in Excel.
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="wide section">
+    <h2>How this compares</h2>
+    <p class="sub">A quick, factual look at common ways to get a PDF from Excel</p>
+    <table class="compare">
+      <tr><th>Method</th><th>Cost</th><th>Account needed</th><th>Works on phone</th></tr>
+      <tr><td>EkZapp Excel to PDF</td><td class="yes">Free</td><td class="yes">No</td><td class="yes">Yes</td></tr>
+      <tr><td>Excel "Save As PDF"</td><td class="no">Requires Excel license</td><td class="no">Microsoft account</td><td class="no">Desktop app only</td></tr>
+      <tr><td>Google Sheets export</td><td class="yes">Free</td><td class="no">Google account</td><td class="yes">Yes</td></tr>
+    </table>
   </div>
 
   <!-- HOW TO -->
@@ -265,27 +286,32 @@ footer{margin:64px 0 32px;text-align:center;font-size:12px;color:var(--gray)}
     </div>
   </div>
 
-  <!-- TIPS -->
+  <!-- DATA ACCURACY -->
   <div class="narrow section">
-    <h2>Tips for a cleaner Excel-to-PDF conversion</h2>
+    <h2>Keeping numbers accurate through the conversion</h2>
     <p class="sub">&nbsp;</p>
     <div class="text-block">
-      <p>Before converting, set the print area in Excel (Page Layout > Print Area) to exactly the range you want in the PDF — otherwise the tool may include empty rows and columns that were never meant to be part of the printed output. Checking Print Preview first shows you the same page breaks that will appear in the final PDF.</p>
-      <p>For wide tables, switching the page orientation to Landscape (Page Layout > Orientation) before converting keeps more columns on a single page instead of splitting a table awkwardly down the middle. If a sheet still doesn't fit, "Fit to 1 page wide" under Scale to Fit shrinks the content proportionally rather than cutting it off.</p>
-      <p>If your workbook has multiple sheets but you only need one in the PDF, it's often cleaner to duplicate the workbook and delete the sheets you don't need before uploading — this avoids extra pages in the final document.</p>
+      <p>Because PDF is a snapshot rather than a live document, the values shown are whatever the formulas resolved to at the moment of conversion. If a spreadsheet pulls data from another file, a database connection, or a manual entry that hasn't been refreshed, the PDF will faithfully capture that possibly-outdated number. It's worth opening the file in Excel first, pressing recalculate (F9) if formulas depend on external data, and confirming the figures are current before converting — the tool converts exactly what it's given, so accuracy upstream matters more than anything the conversion itself can do.</p>
+      <p>Number formatting is preserved as it appears in the cell, not the raw underlying value — so a cell showing "$1,204.50" in Excel will show the same in the PDF, while a cell showing "1204.5" without currency formatting will look the same way too. Reviewing how figures are displayed in Excel before conversion is the simplest way to guarantee the PDF reads exactly as intended, rather than relying on the conversion to add formatting after the fact.</p>
     </div>
   </div>
 
-  <!-- COMMON ISSUES -->
+  <!-- TIPS + COMMON ISSUES (merged into one section with subheadings) -->
   <div class="narrow section">
-    <h2>Common problems when converting Excel to PDF</h2>
+    <h2>Tips and common problems, in one place</h2>
     <p class="sub">&nbsp;</p>
     <div class="text-block">
-      <p><strong style="color:var(--ink)">Columns get cut off at the page edge.</strong> This happens when the sheet is wider than the printable page area. Switching to landscape orientation or using "Fit to page width" in Excel's print settings before converting resolves this in almost every case.</p>
-      <p><strong style="color:var(--ink)">Extra blank pages appear.</strong> Usually caused by stray formatting or data far outside the intended range — for example, a cell that was clicked once at row 500 even though the real data ends at row 40. Selecting the intended range and setting it explicitly as the print area avoids this.</p>
-      <p><strong style="color:var(--ink)">Charts look shifted or resized.</strong> Charts and images are anchored to cell positions, so when a sheet scales down to fit a page, their relative position can shift slightly. Keeping charts within the normal print area, rather than floating far to the right of the data, minimizes this.</p>
-      <p><strong style="color:var(--ink)">The file won't upload.</strong> Confirm the extension is .xlsx or .xls, not a renamed .csv or .numbers file, which use different underlying formats despite sometimes sharing an icon.</p>
-      <p><strong style="color:var(--ink)">Frozen panes or filters look different.</strong> View-only settings like frozen header rows and applied filters affect how a sheet looks on screen in Excel but don't carry the same interactive behavior into a static PDF page — the visible data is accurate, but the ability to scroll within a frozen area or toggle a filter is naturally lost once the sheet becomes a fixed document.</p>
+      <p style="color:var(--ink);font-weight:700;margin-bottom:6px">Before converting</p>
+      <p>Set the print area in Excel (Page Layout &gt; Print Area) to exactly the range you want in the PDF — otherwise the tool may include empty rows and columns that were never meant to be part of the printed output. Checking Print Preview first shows you the same page breaks that will appear in the final PDF.</p>
+      <p>For wide tables, switching the page orientation to Landscape (Page Layout &gt; Orientation) before converting keeps more columns on a single page instead of splitting a table awkwardly down the middle. If a sheet still doesn't fit, "Fit to 1 page wide" under Scale to Fit shrinks the content proportionally rather than cutting it off.</p>
+      <p style="color:var(--ink);font-weight:700;margin:20px 0 6px">If columns get cut off at the page edge</p>
+      <p>This happens when the sheet is wider than the printable page area. Switching to landscape orientation or using "Fit to page width" in Excel's print settings before converting resolves this in almost every case.</p>
+      <p style="color:var(--ink);font-weight:700;margin:20px 0 6px">If extra blank pages appear</p>
+      <p>Usually caused by stray formatting or data far outside the intended range — for example, a cell that was clicked once at row 500 even though the real data ends at row 40. Selecting the intended range and setting it explicitly as the print area avoids this.</p>
+      <p style="color:var(--ink);font-weight:700;margin:20px 0 6px">If charts look shifted or resized</p>
+      <p>Charts and images are anchored to cell positions, so when a sheet scales down to fit a page, their relative position can shift slightly. Keeping charts within the normal print area, rather than floating far to the right of the data, minimizes this.</p>
+      <p style="color:var(--ink);font-weight:700;margin:20px 0 6px">If frozen panes or filters look different</p>
+      <p>View-only settings like frozen header rows and applied filters affect how a sheet looks on screen in Excel but don't carry the same interactive behavior into a static PDF page — the visible data is accurate, but the ability to scroll within a frozen area or toggle a filter is naturally lost once the sheet becomes a fixed document.</p>
     </div>
   </div>
 
