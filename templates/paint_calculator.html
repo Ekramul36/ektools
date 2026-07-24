@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VW5QLMV046"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-VW5QLMV046');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paint Calculator – Estimate Wall Paint Quantity & Cost | EkZapp</title>
+<meta name="description" content="Calculate how much paint you need for a room, including number of coats and door/window deductions. Free instant paint quantity calculator for Indian coverage rates.">
+<link rel="canonical" href="https://ekzapp.com/paint-calculator">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Paint Calculator – Estimate Wall Paint Quantity & Cost">
+<meta property="og:description" content="Calculate how much paint you need for a room, including number of coats and door/window deductions.">
+<meta property="og:url" content="https://ekzapp.com/paint-calculator">
+<meta name="article:modified_time" content="2026-07-24">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--rose:#E11D48;--rose-dk:#BE123C;--rose-deep:#881337;--rose-lt:#FFF1F2;--rose-border:#FECDD3;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626;--green:#16A34A;}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+a{color:inherit}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--rose);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}.logo-text span{color:var(--rose)}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.back:hover{border-color:var(--rose);color:var(--rose)}
+.breadcrumb-bar{max-width:960px;margin:0 auto;padding:14px 20px 0;font-size:12.5px;color:var(--gray)}
+.breadcrumb-bar a{color:var(--rose);text-decoration:none}
+.hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#881337,#E11D48 45%,#2563EB 80%);background-size:200% 200%;animation:heroShift 12s ease-in-out infinite;padding:40px 20px 120px;margin-top:14px}
+@keyframes heroShift{0%{background-position:0% 40%}50%{background-position:100% 60%}100%{background-position:0% 40%}}
+.hero-inner{max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:12px;font-weight:600;padding:6px 14px;border-radius:999px;margin-bottom:18px;backdrop-filter:blur(4px)}
+.hero h1{color:#fff;font-size:2.2rem;font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
+.hero p{color:rgba(255,255,255,.9);font-size:15px;max-width:480px;margin:0 auto}
+.hero-paint{position:absolute;opacity:.45}
+.hero-paint svg{display:block}
+.p1{top:20px;left:6%;animation:float1 7s ease-in-out infinite}
+.p2{top:56px;right:8%;animation:float2 8s ease-in-out infinite}
+.p3{bottom:26px;left:16%;animation:float1 9s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-14px) rotate(-3deg)}}
+@keyframes float2{0%,100%{transform:translateY(0) rotate(8deg)}50%{transform:translateY(-10px) rotate(4deg)}}
+.outer{max-width:960px;margin:0 auto;padding:0 20px}
+.narrow{max-width:680px;margin:0 auto}
+.wide{max-width:900px;margin:0 auto}
+.tool-card-wrap{margin-top:-84px;position:relative;z-index:3}
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 12px 32px -8px rgba(225,29,72,.25)}
+.calc-tabs{display:flex;gap:8px;margin-bottom:18px;background:var(--light);border-radius:10px;padding:4px}
+.calc-tab{flex:1;text-align:center;padding:8px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;color:var(--gray);transition:all .15s}
+.calc-tab.active{background:var(--rose);color:#fff}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:12.5px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.field input,.field select{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none}
+.field input:focus,.field select:focus{border-color:var(--rose)}
+.btn{width:100%;padding:13px;background:var(--rose);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;margin-top:4px}
+.btn:hover{background:var(--rose-dk)}
+.result-box{margin-top:18px;background:var(--rose-lt);border:1px solid var(--rose-border);border-radius:12px;padding:18px 20px;display:none}
+.result-box.show{display:block}
+.result-row{display:flex;justify-content:space-between;padding:6px 0;font-size:13.5px;border-bottom:1px dashed #FBD5DB}
+.result-row:last-child{border-bottom:none}
+.result-row .lbl{color:var(--gray)}
+.result-row .val{font-weight:800;color:var(--rose-deep)}
+.section{margin-top:56px}
+.section h2{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:8px}
+.section .sub{text-align:center;color:var(--gray);font-size:14px;margin-bottom:28px}
+.toc{background:white;border:1px solid var(--border);border-radius:12px;padding:18px 22px;margin-top:40px}
+.toc strong{display:block;font-size:.95rem;margin-bottom:8px}
+.toc ul{margin:0;padding-left:18px}
+.toc li{font-size:12.8px;margin-bottom:5px}
+.toc a{color:var(--rose-dk);text-decoration:none;font-weight:500}
+.use-cases{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.use-case{background:white;border:1px solid var(--border);border-left:4px solid var(--rose);border-radius:10px;padding:18px 20px}
+.use-case h3{font-size:13.5px;font-weight:700;margin-bottom:6px}
+.use-case p{font-size:12.5px;color:var(--gray);line-height:1.5}
+table.ref{width:100%;border-collapse:collapse;background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden;font-size:13px}
+table.ref th,table.ref td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border)}
+table.ref th{background:var(--rose-lt);color:var(--rose-deep);font-weight:700}
+table.ref tr:last-child td{border-bottom:none}
+table.ref td.num{text-align:right;font-variant-numeric:tabular-nums}
+.text-block p{font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px}
+.how-to{background:white;border:1px solid var(--border);border-radius:14px;padding:24px}
+.steps{display:flex;flex-direction:column;gap:12px}
+.step{display:flex;gap:12px;align-items:flex-start}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--rose-lt);color:var(--rose-dk);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-text{font-size:13px;color:var(--gray);line-height:1.5;padding-top:4px}
+.step-text strong{color:var(--ink)}
+.example-box{background:white;border:1px solid var(--border);border-radius:14px;padding:24px}
+.example-box h3{font-size:1rem;font-weight:800;margin-bottom:6px}
+.example-box .example-sub{font-size:13px;color:var(--gray);margin-bottom:16px}
+.example-result{margin-top:14px;background:var(--rose-lt);border:1px solid var(--rose-border);border-radius:10px;padding:12px 16px;font-size:13px;color:var(--rose-deep)}
+.example-result strong{color:#9F1239}
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-list details{background:white;border:1px solid var(--border);border-radius:10px;padding:14px 18px}
+.faq-list summary{font-size:13.5px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:'+';font-size:18px;color:var(--rose);font-weight:400}
+.faq-list details[open] summary::after{content:'−'}
+.faq-list p{font-size:13px;color:var(--gray);line-height:1.6;margin-top:10px}
+.related{background:linear-gradient(115deg,#881337,#E11D48,#2563EB);border-radius:16px;padding:32px 28px;color:#fff}
+.related h2{color:#fff;font-size:1.2rem;margin-bottom:18px;text-align:left}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.related-item{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:14px;text-decoration:none;transition:background .15s}
+.related-item:hover{background:rgba(255,255,255,.22)}
+.related-item .ico{font-size:1.3rem;margin-bottom:6px;display:block}
+.related-item .name{font-size:12.5px;font-weight:700;color:#fff}
+.author-box{background:white;border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin-top:40px;display:flex;gap:16px;align-items:flex-start}
+.author-box .avatar{width:52px;height:52px;border-radius:50%;background:var(--rose);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;flex-shrink:0}
+.author-box h4{margin:0 0 2px;font-size:1rem}
+.author-box .role{font-size:.85rem;color:var(--rose-dk);font-weight:600;margin-bottom:8px}
+.author-box p{margin:0;font-size:.9rem;color:var(--gray)}
+footer{margin:64px 0 32px;text-align:center;font-size:12px;color:var(--gray)}
+@media(max-width:720px){
+  .field-row,.field-row-3{grid-template-columns:1fr}
+  .use-cases{grid-template-columns:1fr}
+  .related-grid{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:1.6rem}
+  .tool-card-wrap{margin-top:-56px}
+  .hero{padding-bottom:88px}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Paint Calculator",
+  "url": "https://ekzapp.com/paint-calculator",
+  "description": "Calculate how much paint is needed for a room, including number of coats and door/window deductions.",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web",
+  "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://ekzapp.com/"},
+    {"@type":"ListItem","position":2,"name":"Paint Calculator","item":"https://ekzapp.com/paint-calculator"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to calculate how much paint you need",
+  "step": [
+    {"@type":"HowToStep","name":"Enter room dimensions","text":"Enter wall length, width, and ceiling height, or enter the wall area directly if already known."},
+    {"@type":"HowToStep","name":"Deduct doors and windows","text":"Enter the number and average size of doors and windows to subtract their area from the total wall area."},
+    {"@type":"HowToStep","name":"Set number of coats","text":"Choose how many coats of paint will be applied — 2 coats is standard for most interior walls."},
+    {"@type":"HowToStep","name":"Get your result","text":"View the total paintable area, liters of paint required, and estimated number of cans and cost."}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How many coats of paint do I actually need?","acceptedAnswer":{"@type":"Answer","text":"Two coats is the standard recommendation for most interior walls, giving even, opaque coverage. A single coat may look patchy, especially over a darker existing color or a repaired patch, while a third coat is rarely needed except for very light colors going over a dark base or for extra durability in high-traffic areas."}},
+    {"@type":"Question","name":"What's a typical paint coverage rate?","acceptedAnswer":{"@type":"Answer","text":"Most interior emulsion paints cover roughly 120-140 square feet per liter per coat on a smooth, previously painted wall. Rough or porous surfaces, and the first coat on bare plaster, typically need more paint since the surface absorbs more."}},
+    {"@type":"Question","name":"Should I subtract door and window area?","acceptedAnswer":{"@type":"Answer","text":"Yes. Doors and windows aren't painted with wall paint, so subtracting their combined area avoids over-ordering. A standard door is roughly 21 sq ft (7ft x 3ft) and a standard window is roughly 15 sq ft, though exact sizes vary."}},
+    {"@type":"Question","name":"Do I need a separate primer?","acceptedAnswer":{"@type":"Answer","text":"A primer coat is recommended for bare plaster, new walls, or when changing from a dark color to a much lighter one, since it seals the surface and helps the topcoat color show true. For a simple repaint in a similar shade over an existing painted wall, primer is often skipped."}},
+    {"@type":"Question","name":"Does the ceiling need separate paint calculation?","acceptedAnswer":{"@type":"Answer","text":"Yes, ceilings are usually painted with a separate ceiling paint (typically flat white) and should be calculated as their own area — length times width of the room — rather than combined with the wall area figure from this calculator."}},
+    {"@type":"Question","name":"How much paint is wasted in the process?","acceptedAnswer":{"@type":"Answer","text":"A small amount is inevitably left in trays, rollers, and brushes, or used for touch-ups later. Buying a slightly rounded-up quantity (to the next full can size) naturally accounts for this rather than needing a separate wastage percentage."}},
+    {"@type":"Question","name":"What paint can sizes are commonly available?","acceptedAnswer":{"@type":"Answer","text":"Common sizes in India are 1 liter, 4 liters, 10 liters, and 20 liters. Larger cans are more cost-effective per liter for bigger jobs, while smaller cans reduce leftover paint for small rooms or touch-up work."}},
+    {"@type":"Question","name":"Does texture or wall finish affect paint quantity?","acceptedAnswer":{"@type":"Answer","text":"Yes. Textured surfaces (like a rough plaster finish or exposed brick) have more surface area per square foot of wall than a smooth surface and generally require 10-20% more paint than the coverage rate on a smooth wall."}},
+    {"@type":"Question","name":"How do I estimate cost, not just quantity?","acceptedAnswer":{"@type":"Answer","text":"Enter the price per liter or per can in the calculator alongside the required quantity, and it will estimate the total cost based on the number of cans needed, rounded up to whole cans."}},
+    {"@type":"Question","name":"Is exterior paint calculated the same way?","acceptedAnswer":{"@type":"Answer","text":"The area calculation method is the same, but exterior paints often have a different coverage rate than interior emulsion — check the specific product's coverage rate (usually printed on the can) rather than assuming the same 120-140 sq ft/liter figure used for interior walls."}}
+  ]
+}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav><div class="nav-inner">
+  <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+  <a class="back" href="/">← All Tools</a>
+</div></nav>
+
+<div class="breadcrumb-bar">
+  <a href="/">Home</a> → Paint Calculator
+</div>
+
+<div class="hero">
+  <div class="hero-paint p1"><svg width="48" height="52" viewBox="0 0 48 52" fill="none"><rect x="14" y="18" width="20" height="26" rx="3" fill="#fff" fill-opacity=".16" stroke="#fff" stroke-opacity=".4"/><rect x="18" y="8" width="12" height="12" rx="2" fill="#fff" fill-opacity=".14" stroke="#fff" stroke-opacity=".35"/><rect x="10" y="44" width="28" height="5" rx="1.5" fill="#fff" fill-opacity=".2"/></svg></div>
+  <div class="hero-paint p2"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" fill="#fff" fill-opacity=".1" stroke="#fff" stroke-opacity=".3"/><path d="M13 20a7 7 0 0114 0c0 4-3 6-7 11-4-5-7-7-7-11z" fill="#fff" fill-opacity=".18"/></svg></div>
+  <div class="hero-paint p3"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><rect x="1" y="1" width="32" height="32" rx="3" fill="#fff" fill-opacity=".12" stroke="#fff" stroke-opacity=".3"/></svg></div>
+  <div class="hero-inner">
+    <div class="hero-badge">🎨 Wall Paint Estimator</div>
+    <h1>Paint Calculator – How Much Paint Do You Need?</h1>
+    <p>Enter your room size and number of coats to get the exact paint quantity in liters, plus estimated cans and cost.</p>
+  </div>
+</div>
+
+<div class="outer">
+  <div class="narrow tool-card-wrap">
+    <div class="card">
+      <div class="calc-tabs">
+        <div class="calc-tab active" onclick="setMode('room')">Room L × W × H</div>
+        <div class="calc-tab" onclick="setMode('area')">I know the wall area</div>
+      </div>
+
+      <div id="roomFields">
+        <div class="field-row-3">
+          <div class="field"><label>Room Length (ft)</label><input type="number" id="roomLength" step="0.1" placeholder="e.g. 12"></div>
+          <div class="field"><label>Room Width (ft)</label><input type="number" id="roomWidth" step="0.1" placeholder="e.g. 10"></div>
+          <div class="field"><label>Wall Height (ft)</label><input type="number" id="roomHeight" step="0.1" placeholder="e.g. 9"></div>
+        </div>
+      </div>
+      <div id="areaFields" style="display:none">
+        <div class="field"><label>Total Wall Area (sq ft)</label><input type="number" id="directArea" step="0.1" placeholder="e.g. 396"></div>
+      </div>
+
+      <div class="field-row">
+        <div class="field"><label>Number of Doors (~21 sq ft each)</label><input type="number" id="numDoors" value="1" step="1"></div>
+        <div class="field"><label>Number of Windows (~15 sq ft each)</label><input type="number" id="numWindows" value="2" step="1"></div>
+      </div>
+
+      <div class="field-row">
+        <div class="field"><label>Number of Coats</label><select id="coats">
+          <option value="1">1 coat</option>
+          <option value="2" selected>2 coats (standard)</option>
+          <option value="3">3 coats</option>
+        </select></div>
+        <div class="field"><label>Coverage (sq ft per liter)</label><input type="number" id="coverage" value="130" step="1"></div>
+      </div>
+
+      <div class="field-row">
+        <div class="field"><label>Can Size (liters)</label><select id="canSize">
+          <option value="1">1 L</option>
+          <option value="4" selected>4 L</option>
+          <option value="10">10 L</option>
+          <option value="20">20 L</option>
+        </select></div>
+        <div class="field"><label>Price per Can (₹, optional)</label><input type="number" id="canPrice" step="1" placeholder="e.g. 1200"></div>
+      </div>
+
+      <button class="btn" onclick="calculatePaint()">🎨 Calculate Paint Needed</button>
+
+      <div class="result-box" id="resultBox">
+        <div class="result-row"><span class="lbl">Gross wall area</span><span class="val" id="rGross">-</span></div>
+        <div class="result-row"><span class="lbl">Doors + windows deducted</span><span class="val" id="rDeduct">-</span></div>
+        <div class="result-row"><span class="lbl">Paintable area</span><span class="val" id="rNet">-</span></div>
+        <div class="result-row"><span class="lbl">Total paint required</span><span class="val" id="rLiters">-</span></div>
+        <div class="result-row"><span class="lbl">Cans to buy</span><span class="val" id="rCans">-</span></div>
+        <div class="result-row" id="rCostRow" style="display:none"><span class="lbl">Estimated cost</span><span class="val" id="rCost">-</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <strong>In this guide</strong>
+    <ul>
+      <li><a href="#why">Why paint quantity is easy to underestimate</a></li>
+      <li><a href="#usecases">When people use a paint calculator</a></li>
+      <li><a href="#coverage">Coverage rates for common paint types</a></li>
+      <li><a href="#example">Worked example</a></li>
+      <li><a href="#howto">How to use this calculator</a></li>
+      <li><a href="#coats">How many coats do you really need</a></li>
+      <li><a href="#faqs">Frequently asked questions</a></li>
+    </ul>
+  </div>
+
+  <!-- WHY -->
+  <div class="narrow section" id="why">
+    <h2>Why paint quantity is easy to underestimate</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="text-block">
+      <p>Paint is usually bought by the can, not the exact liter, which means a rough guess either leaves an odd amount of unusable leftover paint or forces a last-minute second trip to the store mid-job — awkward when a wall is half-painted and the shade needs to match exactly. Getting the area and coat count right upfront avoids both problems.</p>
+      <p>The two details people most often skip are the second coat (which roughly doubles the required paint versus a single coat) and door/window deductions (which can overstate the area by 15-20% in a room with several openings). This calculator accounts for both automatically.</p>
+    </div>
+  </div>
+
+  <!-- USE CASES -->
+  <div class="wide section" id="usecases">
+    <h2>When people use a paint calculator</h2>
+    <p class="sub">A few common situations</p>
+    <div class="use-cases">
+      <div class="use-case"><h3>🏠 Full room repaint</h3><p>Estimate paint quantity for an entire bedroom, living room, or office before buying.</p></div>
+      <div class="use-case"><h3>🎨 Accent wall</h3><p>Calculate the smaller quantity needed for a single feature wall in a contrasting color.</p></div>
+      <div class="use-case"><h3>🏗️ New construction</h3><p>Plan paint purchases for multiple rooms in a new build, room by room.</p></div>
+      <div class="use-case"><h3>🧾 Contractor quotations</h3><p>Cross-check a painter's material estimate against an independent calculation before approving a quote.</p></div>
+    </div>
+  </div>
+
+  <!-- COVERAGE TABLE -->
+  <div class="wide section" id="coverage">
+    <h2>Coverage rates for common paint types</h2>
+    <p class="sub">Approximate — always check the specific product's label</p>
+    <table class="ref">
+      <tr><th>Paint type</th><th>Surface</th><th class="num">Coverage (sq ft / liter)</th></tr>
+      <tr><td>Interior emulsion</td><td>Smooth, previously painted wall</td><td class="num">130-140</td></tr>
+      <tr><td>Interior emulsion (first coat)</td><td>Bare plaster / new wall</td><td class="num">100-110</td></tr>
+      <tr><td>Exterior emulsion</td><td>Textured exterior surface</td><td class="num">90-110</td></tr>
+      <tr><td>Primer / wall putty finish</td><td>Bare plaster</td><td class="num">110-120</td></tr>
+      <tr><td>Ceiling paint (flat white)</td><td>Smooth ceiling</td><td class="num">130-150</td></tr>
+    </table>
+  </div>
+
+  <!-- WORKED EXAMPLE -->
+  <div class="narrow section" id="example">
+    <div class="example-box">
+      <h3>📐 Worked example: a 12×10 ft room, 9 ft height</h3>
+      <p class="example-sub">2 coats, 1 door, 2 windows, 130 sq ft/liter coverage</p>
+      <p style="font-size:13px;color:var(--gray);line-height:1.7">
+        Wall perimeter = 2 × (12 + 10) = 44 ft<br>
+        Gross wall area = 44 × 9 = <strong>396 sq ft</strong><br>
+        Deductions = (1 door × 21) + (2 windows × 15) = 21 + 30 = 51 sq ft<br>
+        Paintable area = 396 − 51 = <strong>345 sq ft</strong><br>
+        Paint per coat = 345 ÷ 130 ≈ 2.65 liters<br>
+        Total for 2 coats = 2.65 × 2 ≈ <strong>5.3 liters</strong><br>
+        Cans needed (4L cans) = 2 cans (rounded up from 1.33)
+      </p>
+      <div class="example-result">
+        <strong>Note:</strong> Rounding up to whole cans always leaves a small amount of spare paint — useful for future touch-ups since matching a color exactly later can be difficult.
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW TO -->
+  <div class="narrow section" id="howto">
+    <div class="how-to">
+      <h2 style="text-align:left;font-size:1.1rem;margin-bottom:16px">📖 How to use this calculator</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Enter room dimensions</strong> — length, width, and wall height, or switch to "I know the wall area" if already measured.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Enter doors and windows</strong> — the calculator subtracts their standard area from the total automatically.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Choose the number of coats</strong> — 2 is standard for most walls.</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Set coverage and can size</strong> — check the paint tin's label for the exact coverage rate, then get liters, cans, and estimated cost.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COATS GUIDE -->
+  <div class="narrow section" id="coats">
+    <h2>How many coats do you really need</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="text-block">
+      <p>Two coats is the standard recommendation for nearly all interior repainting, and skipping straight to one coat to save paint often backfires — a single coat over most colors shows roller marks, patchy opacity, and inconsistent sheen once it dries, meaning the job needs to be redone anyway.</p>
+      <p>A third coat becomes worth considering in two specific situations: going from a dark existing color to a much lighter new one (where two coats may still show the old color faintly through), or for high-traffic areas like a hallway or a rental property where extra durability against scuffs matters more than usual.</p>
+      <p>Primer is a separate consideration from coats — it's not a substitute for the topcoat but a preparation layer, typically needed once for bare plaster or a major color change, and not counted in the "number of coats" figure used for coverage calculations here.</p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="narrow section" id="faqs">
+    <h2>Frequently asked questions</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="faq-list">
+      <details><summary>How many coats of paint do I actually need?</summary><p>Two coats is the standard recommendation for most interior walls, giving even, opaque coverage. A third coat is rarely needed except for very light colors going over a dark base or for extra durability in high-traffic areas.</p></details>
+      <details><summary>What's a typical paint coverage rate?</summary><p>Most interior emulsion paints cover roughly 120-140 square feet per liter per coat on a smooth, previously painted wall. Rough surfaces and bare plaster typically need more paint.</p></details>
+      <details><summary>Should I subtract door and window area?</summary><p>Yes. A standard door is roughly 21 sq ft and a standard window is roughly 15 sq ft, though exact sizes vary — subtracting them avoids over-ordering.</p></details>
+      <details><summary>Do I need a separate primer?</summary><p>A primer coat is recommended for bare plaster, new walls, or when changing from a dark color to a much lighter one. For a simple repaint in a similar shade, primer is often skipped.</p></details>
+      <details><summary>Does the ceiling need separate paint calculation?</summary><p>Yes, ceilings are usually painted with a separate ceiling paint and should be calculated as their own area rather than combined with wall area.</p></details>
+      <details><summary>How much paint is wasted in the process?</summary><p>A small amount is inevitably left in trays, rollers, and brushes. Buying a slightly rounded-up quantity naturally accounts for this.</p></details>
+      <details><summary>What paint can sizes are commonly available?</summary><p>Common sizes in India are 1 liter, 4 liters, 10 liters, and 20 liters. Larger cans are more cost-effective per liter for bigger jobs.</p></details>
+      <details><summary>Does texture or wall finish affect paint quantity?</summary><p>Yes. Textured surfaces have more surface area per square foot of wall and generally require 10-20% more paint than a smooth surface.</p></details>
+      <details><summary>How do I estimate cost, not just quantity?</summary><p>Enter the price per can alongside the required quantity, and it will estimate the total cost based on the number of cans needed, rounded up to whole cans.</p></details>
+      <details><summary>Is exterior paint calculated the same way?</summary><p>The area calculation method is the same, but exterior paints often have a different coverage rate — check the specific product's coverage rate rather than assuming the interior figure.</p></details>
+    </div>
+  </div>
+
+  <!-- RELATED TOOLS -->
+  <div class="wide section">
+    <div class="related">
+      <h2>Related construction calculators</h2>
+      <div class="related-grid">
+        <a class="related-item" href="/tile-calculator"><span class="ico">🧱</span><span class="name">Tile Calculator</span></a>
+        <a class="related-item" href="/cement-calculator"><span class="ico">🏗️</span><span class="name">Cement Calculator</span></a>
+        <a class="related-item" href="/concrete-calculator"><span class="ico">🧮</span><span class="name">Concrete Calculator</span></a>
+        <a class="related-item" href="/cft-calculator"><span class="ico">📐</span><span class="name">CFT Calculator</span></a>
+        <a class="related-item" href="/brick-calculator"><span class="ico">🧱</span><span class="name">Brick Calculator</span></a>
+        <a class="related-item" href="/land-area-converter"><span class="ico">🗺️</span><span class="name">Land Area Converter</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="author-box">
+    <div class="avatar">EH</div>
+    <div>
+      <h4>Written by <a href="/author/ekramul-hoque" style="color:inherit;text-decoration:underline">Ekramul Hoque</a></h4>
+      <div class="role">Founder, EkZapp</div>
+      <p>Builds and maintains EkZapp's construction calculators, including Tile, Cement, and Concrete Calculator referenced above.</p>
+    </div>
+  </div>
+
+  <footer>© EkZapp — Free online utility tools</footer>
+</div>
+
+<script>
+function setMode(mode){
+  const tabs = document.querySelectorAll('.calc-tab');
+  tabs.forEach(t=>t.classList.remove('active'));
+  if(mode==='room'){
+    tabs[0].classList.add('active');
+    document.getElementById('roomFields').style.display='block';
+    document.getElementById('areaFields').style.display='none';
+  } else {
+    tabs[1].classList.add('active');
+    document.getElementById('roomFields').style.display='none';
+    document.getElementById('areaFields').style.display='block';
+  }
+}
+
+function calculatePaint(){
+  const isRoomMode = document.querySelector('.calc-tab.active').textContent.includes('Room');
+  let grossArea = 0;
+
+  if(isRoomMode){
+    const L = parseFloat(document.getElementById('roomLength').value) || 0;
+    const W = parseFloat(document.getElementById('roomWidth').value) || 0;
+    const H = parseFloat(document.getElementById('roomHeight').value) || 0;
+    const perimeter = 2 * (L + W);
+    grossArea = perimeter * H;
+  } else {
+    grossArea = parseFloat(document.getElementById('directArea').value) || 0;
+  }
+
+  if(grossArea <= 0){
+    alert('Please enter valid room dimensions (or wall area).');
+    return;
+  }
+
+  const numDoors = parseFloat(document.getElementById('numDoors').value) || 0;
+  const numWindows = parseFloat(document.getElementById('numWindows').value) || 0;
+  const deduction = (numDoors * 21) + (numWindows * 15);
+  const netArea = Math.max(grossArea - deduction, 0);
+
+  const coats = parseFloat(document.getElementById('coats').value) || 2;
+  const coverage = parseFloat(document.getElementById('coverage').value) || 130;
+
+  const litersNeeded = (netArea / coverage) * coats;
+
+  document.getElementById('rGross').textContent = grossArea.toFixed(1) + ' sq ft';
+  document.getElementById('rDeduct').textContent = deduction.toFixed(1) + ' sq ft';
+  document.getElementById('rNet').textContent = netArea.toFixed(1) + ' sq ft';
+  document.getElementById('rLiters').textContent = litersNeeded.toFixed(2) + ' liters';
+
+  const canSize = parseFloat(document.getElementById('canSize').value) || 4;
+  const cansNeeded = Math.ceil(litersNeeded / canSize);
+  document.getElementById('rCans').textContent = cansNeeded + ' × ' + canSize + 'L can(s)';
+
+  const canPrice = parseFloat(document.getElementById('canPrice').value) || 0;
+  const costRow = document.getElementById('rCostRow');
+  if(canPrice > 0){
+    const totalCost = cansNeeded * canPrice;
+    document.getElementById('rCost').textContent = '₹' + totalCost.toLocaleString('en-IN');
+    costRow.style.display = 'flex';
+  } else {
+    costRow.style.display = 'none';
+  }
+
+  document.getElementById('resultBox').classList.add('show');
+
+  // shareable URL
+  const params = new URLSearchParams();
+  if(isRoomMode){
+    params.set('length', document.getElementById('roomLength').value);
+    params.set('width', document.getElementById('roomWidth').value);
+    params.set('height', document.getElementById('roomHeight').value);
+  } else {
+    params.set('area', document.getElementById('directArea').value);
+  }
+  params.set('doors', numDoors);
+  params.set('windows', numWindows);
+  params.set('coats', coats);
+  params.set('coverage', coverage);
+  params.set('can', canSize);
+  history.replaceState(null, '', '?' + params.toString());
+}
+
+// restore from URL on load
+window.addEventListener('DOMContentLoaded', () => {
+  const p = new URLSearchParams(window.location.search);
+  if(p.has('length')){ document.getElementById('roomLength').value = p.get('length'); }
+  if(p.has('width')){ document.getElementById('roomWidth').value = p.get('width'); }
+  if(p.has('height')){ document.getElementById('roomHeight').value = p.get('height'); }
+  if(p.has('area')){ setMode('area'); document.getElementById('directArea').value = p.get('area'); }
+  if(p.has('doors')){ document.getElementById('numDoors').value = p.get('doors'); }
+  if(p.has('windows')){ document.getElementById('numWindows').value = p.get('windows'); }
+  if(p.has('coats')){ document.getElementById('coats').value = p.get('coats'); }
+  if(p.has('coverage')){ document.getElementById('coverage').value = p.get('coverage'); }
+  if(p.has('can')){ document.getElementById('canSize').value = p.get('can'); }
+});
+</script>
+</body></html>

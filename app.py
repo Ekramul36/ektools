@@ -119,6 +119,8 @@ LASTMOD_OVERRIDES = {
     '/blog/cement-calculator-guide': '2026-07-22',
     '/blog/steel-weight-calculator-guide': '2026-07-22',
     '/blog/concrete-calculator-guide': '2026-07-22',
+    '/tile-calculator': '2026-07-24',
+    '/paint-calculator': '2026-07-24',
 }
 
 
@@ -200,6 +202,8 @@ def sitemap():
         ('/cement-calculator', '0.9', 'weekly'),
         ('/steel-weight-calculator', '0.9', 'weekly'),
         ('/concrete-calculator', '0.9', 'weekly'),
+        ('/tile-calculator', '0.9', 'weekly'),
+        ('/paint-calculator', '0.9', 'weekly'),
         ('/blog', '0.8', 'weekly'),
         ('/blog/merge-pdf-files-online', '0.7', 'monthly'),
         ('/blog/reduce-image-size-to-kb', '0.7', 'monthly'),
@@ -1562,7 +1566,7 @@ def timestamp_converter():
 
 
 # ──────────────────────────────────────────
-# NEWEST CALCULATORS — Cement, Steel Weight, Concrete
+# NEWEST CALCULATORS — Cement, Steel Weight, Concrete, Tile, Paint
 # ──────────────────────────────────────────
 
 @app.route("/cement-calculator")
@@ -1576,6 +1580,14 @@ def steel_weight_calculator():
 @app.route("/concrete-calculator")
 def concrete_calculator():
     return render_template("concrete_calculator.html")
+
+@app.route("/tile-calculator")
+def tile_calculator():
+    return render_template("tile_calculator.html")
+
+@app.route("/paint-calculator")
+def paint_calculator():
+    return render_template("paint_calculator.html")
 
 
 # ──────────────────────────────────────────

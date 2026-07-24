@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VW5QLMV046"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-VW5QLMV046');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tile Calculator – Calculate Tiles Needed for Floor & Wall | EkZapp</title>
+<meta name="description" content="Calculate how many tiles you need for a floor or wall, including wastage allowance and box quantity. Free instant calculator for Indian tile sizes.">
+<link rel="canonical" href="https://ekzapp.com/tile-calculator">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tile Calculator – Calculate Tiles Needed for Floor & Wall">
+<meta property="og:description" content="Calculate how many tiles you need for a floor or wall, including wastage allowance and box quantity.">
+<meta property="og:url" content="https://ekzapp.com/tile-calculator">
+<meta name="article:modified_time" content="2026-07-24">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--cyan:#0891B2;--cyan-dk:#0E7490;--cyan-deep:#164E63;--cyan-lt:#ECFEFF;--cyan-border:#A5F3FC;--ink:#111827;--gray:#6B7280;--border:#E5E7EB;--white:#fff;--light:#F9FAFB;--red:#DC2626;--green:#16A34A;}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);min-height:100vh}
+a{color:inherit}
+nav{background:var(--white);border-bottom:1px solid var(--border);height:54px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;gap:12px}
+.logo{text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:var(--cyan);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:800}
+.logo-text{font-size:15px;font-weight:700;color:var(--ink)}.logo-text span{color:var(--cyan)}
+.back{margin-left:auto;color:var(--gray);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:white}
+.back:hover{border-color:var(--cyan);color:var(--cyan)}
+.breadcrumb-bar{max-width:960px;margin:0 auto;padding:14px 20px 0;font-size:12.5px;color:var(--gray)}
+.breadcrumb-bar a{color:var(--cyan);text-decoration:none}
+.hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#164E63,#0891B2 45%,#2563EB 80%);background-size:200% 200%;animation:heroShift 12s ease-in-out infinite;padding:40px 20px 120px;margin-top:14px}
+@keyframes heroShift{0%{background-position:0% 40%}50%{background-position:100% 60%}100%{background-position:0% 40%}}
+.hero-inner{max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:12px;font-weight:600;padding:6px 14px;border-radius:999px;margin-bottom:18px;backdrop-filter:blur(4px)}
+.hero h1{color:#fff;font-size:2.2rem;font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
+.hero p{color:rgba(255,255,255,.9);font-size:15px;max-width:480px;margin:0 auto}
+.hero-tile{position:absolute;opacity:.45}
+.hero-tile svg{display:block}
+.t1{top:20px;left:6%;animation:float1 7s ease-in-out infinite}
+.t2{top:56px;right:8%;animation:float2 8s ease-in-out infinite}
+.t3{bottom:26px;left:16%;animation:float1 9s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-14px) rotate(-3deg)}}
+@keyframes float2{0%,100%{transform:translateY(0) rotate(8deg)}50%{transform:translateY(-10px) rotate(4deg)}}
+.outer{max-width:960px;margin:0 auto;padding:0 20px}
+.narrow{max-width:680px;margin:0 auto}
+.wide{max-width:900px;margin:0 auto}
+.tool-card-wrap{margin-top:-84px;position:relative;z-index:3}
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 12px 32px -8px rgba(8,145,178,.25)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:12.5px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.field input,.field select{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none}
+.field input:focus,.field select:focus{border-color:var(--cyan)}
+.calc-tabs{display:flex;gap:8px;margin-bottom:18px;background:var(--light);border-radius:10px;padding:4px}
+.calc-tab{flex:1;text-align:center;padding:8px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;color:var(--gray);transition:all .15s}
+.calc-tab.active{background:var(--cyan);color:#fff}
+.btn{width:100%;padding:13px;background:var(--cyan);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;margin-top:4px}
+.btn:hover{background:var(--cyan-dk)}
+.result-box{margin-top:18px;background:var(--cyan-lt);border:1px solid var(--cyan-border);border-radius:12px;padding:18px 20px;display:none}
+.result-box.show{display:block}
+.result-row{display:flex;justify-content:space-between;padding:6px 0;font-size:13.5px;border-bottom:1px dashed #CFFAFE}
+.result-row:last-child{border-bottom:none}
+.result-row .lbl{color:var(--gray)}
+.result-row .val{font-weight:800;color:var(--cyan-deep)}
+.section{margin-top:56px}
+.section h2{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:8px}
+.section .sub{text-align:center;color:var(--gray);font-size:14px;margin-bottom:28px}
+.toc{background:white;border:1px solid var(--border);border-radius:12px;padding:18px 22px;margin-top:40px}
+.toc strong{display:block;font-size:.95rem;margin-bottom:8px}
+.toc ul{margin:0;padding-left:18px}
+.toc li{font-size:12.8px;margin-bottom:5px}
+.toc a{color:var(--cyan-dk);text-decoration:none;font-weight:500}
+.use-cases{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.use-case{background:white;border:1px solid var(--border);border-left:4px solid var(--cyan);border-radius:10px;padding:18px 20px}
+.use-case h3{font-size:13.5px;font-weight:700;margin-bottom:6px}
+.use-case p{font-size:12.5px;color:var(--gray);line-height:1.5}
+table.ref{width:100%;border-collapse:collapse;background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden;font-size:13px}
+table.ref th,table.ref td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border)}
+table.ref th{background:var(--cyan-lt);color:var(--cyan-deep);font-weight:700}
+table.ref tr:last-child td{border-bottom:none}
+table.ref td.num{text-align:right;font-variant-numeric:tabular-nums}
+.text-block p{font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:14px}
+.how-to{background:white;border:1px solid var(--border);border-radius:14px;padding:24px}
+.steps{display:flex;flex-direction:column;gap:12px}
+.step{display:flex;gap:12px;align-items:flex-start}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--cyan-lt);color:var(--cyan-dk);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-text{font-size:13px;color:var(--gray);line-height:1.5;padding-top:4px}
+.step-text strong{color:var(--ink)}
+.example-box{background:white;border:1px solid var(--border);border-radius:14px;padding:24px}
+.example-box h3{font-size:1rem;font-weight:800;margin-bottom:6px}
+.example-box .example-sub{font-size:13px;color:var(--gray);margin-bottom:16px}
+.example-result{margin-top:14px;background:var(--cyan-lt);border:1px solid var(--cyan-border);border-radius:10px;padding:12px 16px;font-size:13px;color:var(--cyan-deep)}
+.example-result strong{color:#0E7490}
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-list details{background:white;border:1px solid var(--border);border-radius:10px;padding:14px 18px}
+.faq-list summary{font-size:13.5px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:'+';font-size:18px;color:var(--cyan);font-weight:400}
+.faq-list details[open] summary::after{content:'−'}
+.faq-list p{font-size:13px;color:var(--gray);line-height:1.6;margin-top:10px}
+.related{background:linear-gradient(115deg,#164E63,#0891B2,#2563EB);border-radius:16px;padding:32px 28px;color:#fff}
+.related h2{color:#fff;font-size:1.2rem;margin-bottom:18px;text-align:left}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.related-item{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:14px;text-decoration:none;transition:background .15s}
+.related-item:hover{background:rgba(255,255,255,.22)}
+.related-item .ico{font-size:1.3rem;margin-bottom:6px;display:block}
+.related-item .name{font-size:12.5px;font-weight:700;color:#fff}
+.author-box{background:white;border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin-top:40px;display:flex;gap:16px;align-items:flex-start}
+.author-box .avatar{width:52px;height:52px;border-radius:50%;background:var(--cyan);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;flex-shrink:0}
+.author-box h4{margin:0 0 2px;font-size:1rem}
+.author-box .role{font-size:.85rem;color:var(--cyan-dk);font-weight:600;margin-bottom:8px}
+.author-box p{margin:0;font-size:.9rem;color:var(--gray)}
+footer{margin:64px 0 32px;text-align:center;font-size:12px;color:var(--gray)}
+@media(max-width:720px){
+  .field-row{grid-template-columns:1fr}
+  .use-cases{grid-template-columns:1fr}
+  .related-grid{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:1.6rem}
+  .tool-card-wrap{margin-top:-56px}
+  .hero{padding-bottom:88px}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Tile Calculator",
+  "url": "https://ekzapp.com/tile-calculator",
+  "description": "Calculate how many tiles are needed for a floor or wall, including wastage allowance and box quantity.",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web",
+  "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://ekzapp.com/"},
+    {"@type":"ListItem","position":2,"name":"Tile Calculator","item":"https://ekzapp.com/tile-calculator"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to calculate the number of tiles needed",
+  "step": [
+    {"@type":"HowToStep","name":"Measure the area","text":"Enter the length and width of the floor or wall in feet or meters."},
+    {"@type":"HowToStep","name":"Enter tile size","text":"Enter the size of a single tile, in inches, mm, or feet."},
+    {"@type":"HowToStep","name":"Set wastage percentage","text":"Add a wastage allowance (typically 5-10%) to cover cutting and breakage."},
+    {"@type":"HowToStep","name":"Get your result","text":"View the total tiles needed, area in square feet, and box quantity if tiles-per-box is entered."}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How much extra should I add for wastage?","acceptedAnswer":{"@type":"Answer","text":"5% wastage is typical for a simple rectangular room. 10% is safer for rooms with many corners, diagonal (herringbone) patterns, or larger tiles that need more cutting."}},
+    {"@type":"Question","name":"Should I subtract the area of doors and windows?","acceptedAnswer":{"@type":"Answer","text":"For wall tiling, yes — subtract door and window openings from the total wall area first, since tiles aren't needed there. For floor tiling, door openings are usually small enough to ignore, but a walk-in closet or alcove should be added as a separate area."}},
+    {"@type":"Question","name":"Does grout spacing change the tile count?","acceptedAnswer":{"@type":"Answer","text":"Grout lines take up a small amount of space between tiles, which very slightly increases the number of tiles needed for a fixed area compared to edge-to-edge tiles. This calculator doesn't adjust for grout width directly, which is why the wastage percentage is there to absorb small differences like this."}},
+    {"@type":"Question","name":"How many tiles come in a box?","acceptedAnswer":{"@type":"Answer","text":"It varies by tile size and brand — commonly 4 to 10 tiles per box for larger floor tiles, and more for smaller wall tiles. Check the box or ask the supplier for the exact count, then enter it in the calculator to get the number of boxes to buy."}},
+    {"@type":"Question","name":"What's the difference between floor tiles and wall tiles?","acceptedAnswer":{"@type":"Answer","text":"Wall tiles are typically thinner and lighter, made for vertical, low-traffic surfaces, while floor tiles are thicker and more slip- and impact-resistant to handle foot traffic. Using a wall tile on a floor can lead to cracking under weight."}},
+    {"@type":"Question","name":"What tile sizes are common in India?","acceptedAnswer":{"@type":"Answer","text":"Common floor tile sizes include 600x600mm (2x2 ft), 800x800mm, and 300x300mm, while wall tiles are often 300x450mm or 250x375mm. Larger format tiles (600x1200mm and above) are increasingly used for a seamless look with fewer grout lines."}},
+    {"@type":"Question","name":"Can I use this for both floor and wall tiling?","acceptedAnswer":{"@type":"Answer","text":"Yes. Enter the area to be tiled — whether that's a floor or a wall — and the size of the tile you're using, and the calculation works the same way for both."}},
+    {"@type":"Question","name":"Does this account for tile pattern (herringbone, diagonal)?","acceptedAnswer":{"@type":"Answer","text":"Not directly — pattern-based layouts like herringbone or diagonal generate more offcuts than a straight grid layout. For these patterns, use a wastage allowance of 12-15% instead of the standard 5-10%."}},
+    {"@type":"Question","name":"Is the calculation accurate for irregularly shaped rooms?","acceptedAnswer":{"@type":"Answer","text":"For an L-shaped or irregular room, split it into two or more rectangular sections, calculate each separately, and add the totals together — this calculator assumes a single rectangular area per calculation."}},
+    {"@type":"Question","name":"Should I buy extra tiles beyond what's calculated?","acceptedAnswer":{"@type":"Answer","text":"It's common practice to keep a few extra tiles from the same batch after installation, since tile dye lots can vary slightly between production runs — having spares from the original batch makes future repairs match exactly."}}
+  ]
+}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3671123199046758" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav><div class="nav-inner">
+  <a class="logo" href="/"><div class="logo-icon">EZ</div><span class="logo-text">Ek<span>Zapp</span></span></a>
+  <a class="back" href="/">← All Tools</a>
+</div></nav>
+
+<div class="breadcrumb-bar">
+  <a href="/">Home</a> → Tile Calculator
+</div>
+
+<div class="hero">
+  <div class="hero-tile t1"><svg width="50" height="50" viewBox="0 0 50 50" fill="none"><rect x="1" y="1" width="22" height="22" rx="2" fill="#fff" fill-opacity=".18" stroke="#fff" stroke-opacity=".4"/><rect x="27" y="1" width="22" height="22" rx="2" fill="#fff" fill-opacity=".12" stroke="#fff" stroke-opacity=".35"/><rect x="1" y="27" width="22" height="22" rx="2" fill="#fff" fill-opacity=".12" stroke="#fff" stroke-opacity=".35"/><rect x="27" y="27" width="22" height="22" rx="2" fill="#fff" fill-opacity=".18" stroke="#fff" stroke-opacity=".4"/></svg></div>
+  <div class="hero-tile t2"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="1" y="1" width="38" height="38" rx="4" fill="#fff" fill-opacity=".14" stroke="#fff" stroke-opacity=".35"/><line x1="20" y1="1" x2="20" y2="39" stroke="#fff" stroke-opacity=".3" stroke-width="1.5"/><line x1="1" y1="20" x2="39" y2="20" stroke="#fff" stroke-opacity=".3" stroke-width="1.5"/></svg></div>
+  <div class="hero-tile t3"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><rect x="1" y="1" width="32" height="32" rx="3" fill="#fff" fill-opacity=".12" stroke="#fff" stroke-opacity=".3"/></svg></div>
+  <div class="hero-inner">
+    <div class="hero-badge">🧱 Floor & Wall Tiling</div>
+    <h1>Tile Calculator – How Many Tiles Do You Need?</h1>
+    <p>Enter your room size and tile dimensions to get the exact tile count, area, and box quantity — with a safe wastage allowance built in.</p>
+  </div>
+</div>
+
+<div class="outer">
+  <div class="narrow tool-card-wrap">
+    <div class="card">
+      <div class="calc-tabs">
+        <div class="calc-tab active" onclick="setMode('room')">Room L × W</div>
+        <div class="calc-tab" onclick="setMode('area')">I know the area</div>
+      </div>
+
+      <div id="roomFields">
+        <div class="field-row">
+          <div class="field"><label>Room Length (ft)</label><input type="number" id="roomLength" step="0.1" placeholder="e.g. 12"></div>
+          <div class="field"><label>Room Width (ft)</label><input type="number" id="roomWidth" step="0.1" placeholder="e.g. 10"></div>
+        </div>
+      </div>
+      <div id="areaFields" style="display:none">
+        <div class="field"><label>Total Area (sq ft)</label><input type="number" id="directArea" step="0.1" placeholder="e.g. 120"></div>
+      </div>
+
+      <div class="field-row">
+        <div class="field"><label>Tile Size</label><select id="tileUnit" onchange="updateTilePlaceholders()">
+          <option value="in">Inches</option>
+          <option value="mm">Millimeters</option>
+          <option value="ft">Feet</option>
+        </select></div>
+        <div class="field"><label>&nbsp;</label>
+          <div style="display:flex;gap:8px">
+            <input type="number" id="tileL" step="0.1" placeholder="Length">
+            <input type="number" id="tileW" step="0.1" placeholder="Width">
+          </div>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field"><label>Wastage Allowance (%)</label><input type="number" id="wastage" value="8" step="1"></div>
+        <div class="field"><label>Tiles per Box (optional)</label><input type="number" id="tilesPerBox" placeholder="e.g. 6"></div>
+      </div>
+
+      <div class="field"><label>Price per Box or Tile (₹, optional)</label><input type="number" id="unitPrice" step="1" placeholder="e.g. 450"></div>
+
+      <button class="btn" onclick="calculateTiles()">🧱 Calculate Tiles Needed</button>
+
+      <div class="result-box" id="resultBox">
+        <div class="result-row"><span class="lbl">Total area</span><span class="val" id="rArea">-</span></div>
+        <div class="result-row"><span class="lbl">Area per tile</span><span class="val" id="rTileArea">-</span></div>
+        <div class="result-row"><span class="lbl">Tiles needed (before wastage)</span><span class="val" id="rBase">-</span></div>
+        <div class="result-row"><span class="lbl">Tiles needed (with wastage)</span><span class="val" id="rFinal">-</span></div>
+        <div class="result-row" id="rBoxRow" style="display:none"><span class="lbl">Boxes to buy</span><span class="val" id="rBoxes">-</span></div>
+        <div class="result-row" id="rCostRow" style="display:none"><span class="lbl">Estimated cost</span><span class="val" id="rCost">-</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <strong>In this guide</strong>
+    <ul>
+      <li><a href="#why">Why tile quantity is easy to get wrong</a></li>
+      <li><a href="#sizes">Common tile sizes in India</a></li>
+      <li><a href="#usecases">When people use a tile calculator</a></li>
+      <li><a href="#example">Worked example</a></li>
+      <li><a href="#howto">How to use this calculator</a></li>
+      <li><a href="#wastage">Choosing the right wastage %</a></li>
+      <li><a href="#faqs">Frequently asked questions</a></li>
+    </ul>
+  </div>
+
+  <!-- WHY -->
+  <div class="narrow section" id="why">
+    <h2>Why tile quantity is easy to get wrong</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="text-block">
+      <p>Ordering tiles by eye, or rounding "roughly" from a room's dimensions, is one of the most common ways a tiling job runs into a mid-project shortage. Unlike paint or cement, tiles are typically dye-lot specific — a box bought a few weeks later to make up a shortfall can be a visibly different shade, especially with natural-stone-look porcelain tiles. Getting the count right in one order, with a sensible buffer, avoids that mismatch entirely.</p>
+      <p>The calculation itself is simple — total area divided by the area of one tile — but the details that trip people up are the wastage allowance (cutting loss at edges and corners) and unit mismatches, like measuring a room in feet but a tile box labeled in millimeters. This calculator handles both in one place.</p>
+    </div>
+  </div>
+
+  <!-- SIZES TABLE -->
+  <div class="wide section" id="sizes">
+    <h2>Common tile sizes in India</h2>
+    <p class="sub">A quick reference while you shop</p>
+    <table class="ref">
+      <tr><th>Tile size</th><th>Typical use</th><th class="num">Tiles per sq ft (approx.)</th></tr>
+      <tr><td>300 × 300 mm (1×1 ft)</td><td>Small rooms, bathrooms</td><td class="num">1.0</td></tr>
+      <tr><td>300 × 450 mm</td><td>Wall tiles, kitchens</td><td class="num">0.75</td></tr>
+      <tr><td>600 × 600 mm (2×2 ft)</td><td>Living rooms, floors</td><td class="num">0.25</td></tr>
+      <tr><td>800 × 800 mm</td><td>Large living areas</td><td class="num">0.14</td></tr>
+      <tr><td>600 × 1200 mm</td><td>Premium large-format floors</td><td class="num">0.125</td></tr>
+    </table>
+  </div>
+
+  <!-- USE CASES -->
+  <div class="wide section" id="usecases">
+    <h2>When people use a tile calculator</h2>
+    <p class="sub">A few common situations</p>
+    <div class="use-cases">
+      <div class="use-case"><h3>🏠 New home flooring</h3><p>Get an accurate tile count before ordering for a full house or a single room during construction.</p></div>
+      <div class="use-case"><h3>🚿 Bathroom renovation</h3><p>Calculate both floor and wall tile quantities separately for a bathroom remodel.</p></div>
+      <div class="use-case"><h3>🍳 Kitchen backsplash</h3><p>Work out wall tile needs for a backsplash area, after subtracting cabinet and window space.</p></div>
+      <div class="use-case"><h3>🧾 Contractor quotations</h3><p>Cross-check a contractor's material estimate against an independent calculation before approving a quote.</p></div>
+    </div>
+  </div>
+
+  <!-- WORKED EXAMPLE -->
+  <div class="narrow section" id="example">
+    <div class="example-box">
+      <h3>📐 Worked example: a 12×10 ft bedroom</h3>
+      <p class="example-sub">Using 600×600mm (2×2 ft) floor tiles, 8% wastage, 4 tiles per box</p>
+      <p style="font-size:13px;color:var(--gray);line-height:1.7">
+        Room area = 12 × 10 = <strong>120 sq ft</strong><br>
+        One tile = 2 ft × 2 ft = 4 sq ft per tile<br>
+        Base tiles needed = 120 ÷ 4 = 30 tiles<br>
+        With 8% wastage = 30 × 1.08 ≈ <strong>33 tiles</strong><br>
+        Boxes needed (4 tiles/box) = 33 ÷ 4 ≈ <strong>9 boxes</strong> (rounded up)
+      </p>
+      <div class="example-result">
+        <strong>Note:</strong> Always round up to the next whole box — buying 8.25 boxes isn't possible, and rounding down risks running short mid-installation.
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW TO -->
+  <div class="narrow section" id="howto">
+    <div class="how-to">
+      <h2 style="text-align:left;font-size:1.1rem;margin-bottom:16px">📖 How to use this calculator</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Enter the room size</strong> — length and width in feet, or switch to "I know the area" if you already have the total square footage.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Enter the tile dimensions</strong> — pick the unit (inches, mm, or feet) that matches what's printed on the tile box.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Set the wastage %</strong> — 8% is a safe default for a simple rectangular room; adjust for pattern or room shape.</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Optionally add tiles-per-box and price</strong> — get the exact number of boxes to buy and an estimated cost.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WASTAGE GUIDE -->
+  <div class="narrow section" id="wastage">
+    <h2>Choosing the right wastage percentage</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="text-block">
+      <p>Wastage covers tiles lost to cutting at edges, corners, around door frames, and the occasional breakage during handling. A simple rectangular room with no obstructions can get away with as little as 5%, since most cuts are clean, full-length pieces that can be positioned efficiently.</p>
+      <p>Rooms with more corners, alcoves, or fixtures (like an L-shaped room, or a bathroom with a step-down shower area) generate more small, unusable offcuts, so 10% is a safer default. Diagonal and herringbone patterns cut tiles at an angle, which wastes more material per cut — 12-15% wastage is recommended for these layouts.</p>
+      <p>Larger tiles also tend to waste more proportionally when a cut piece is needed, since a single cut can turn an 800mm tile into two unusable fragments if the remaining space doesn't fit either half — keeping this in mind when tiling with large-format tiles in a smaller or irregularly shaped room is worth the extra buffer.</p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="narrow section" id="faqs">
+    <h2>Frequently asked questions</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="faq-list">
+      <details><summary>How much extra should I add for wastage?</summary><p>5% wastage is typical for a simple rectangular room. 10% is safer for rooms with many corners, diagonal (herringbone) patterns, or larger tiles that need more cutting.</p></details>
+      <details><summary>Should I subtract the area of doors and windows?</summary><p>For wall tiling, yes — subtract door and window openings from the total wall area first. For floor tiling, door openings are usually small enough to ignore, but a walk-in closet or alcove should be added as a separate area.</p></details>
+      <details><summary>Does grout spacing change the tile count?</summary><p>Grout lines take up a small amount of space between tiles, which very slightly increases the number of tiles needed compared to edge-to-edge tiles. This calculator doesn't adjust for grout width directly, which is why the wastage percentage is there to absorb small differences like this.</p></details>
+      <details><summary>How many tiles come in a box?</summary><p>It varies by tile size and brand — commonly 4 to 10 tiles per box for larger floor tiles, and more for smaller wall tiles. Check the box or ask the supplier for the exact count.</p></details>
+      <details><summary>What's the difference between floor tiles and wall tiles?</summary><p>Wall tiles are typically thinner and lighter, made for vertical, low-traffic surfaces, while floor tiles are thicker and more slip- and impact-resistant to handle foot traffic.</p></details>
+      <details><summary>What tile sizes are common in India?</summary><p>Common floor tile sizes include 600x600mm (2x2 ft), 800x800mm, and 300x300mm, while wall tiles are often 300x450mm or 250x375mm.</p></details>
+      <details><summary>Can I use this for both floor and wall tiling?</summary><p>Yes. Enter the area to be tiled — whether that's a floor or a wall — and the size of the tile you're using, and the calculation works the same way for both.</p></details>
+      <details><summary>Does this account for tile pattern (herringbone, diagonal)?</summary><p>Not directly — pattern-based layouts generate more offcuts than a straight grid layout. For these patterns, use a wastage allowance of 12-15% instead of the standard 5-10%.</p></details>
+      <details><summary>Is the calculation accurate for irregularly shaped rooms?</summary><p>For an L-shaped or irregular room, split it into two or more rectangular sections, calculate each separately, and add the totals together.</p></details>
+      <details><summary>Should I buy extra tiles beyond what's calculated?</summary><p>It's common practice to keep a few extra tiles from the same batch after installation, since tile dye lots can vary slightly between production runs.</p></details>
+    </div>
+  </div>
+
+  <!-- RELATED TOOLS -->
+  <div class="wide section">
+    <div class="related">
+      <h2>Related construction calculators</h2>
+      <div class="related-grid">
+        <a class="related-item" href="/cement-calculator"><span class="ico">🧱</span><span class="name">Cement Calculator</span></a>
+        <a class="related-item" href="/concrete-calculator"><span class="ico">🏗️</span><span class="name">Concrete Calculator</span></a>
+        <a class="related-item" href="/cft-calculator"><span class="ico">📐</span><span class="name">CFT Calculator</span></a>
+        <a class="related-item" href="/brick-calculator"><span class="ico">🧱</span><span class="name">Brick Calculator</span></a>
+        <a class="related-item" href="/steel-weight-calculator"><span class="ico">⚙️</span><span class="name">Steel Weight Calculator</span></a>
+        <a class="related-item" href="/land-area-converter"><span class="ico">🗺️</span><span class="name">Land Area Converter</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="author-box">
+    <div class="avatar">EH</div>
+    <div>
+      <h4>Written by <a href="/author/ekramul-hoque" style="color:inherit;text-decoration:underline">Ekramul Hoque</a></h4>
+      <div class="role">Founder, EkZapp</div>
+      <p>Builds and maintains EkZapp's construction calculators, including Cement, Steel Weight, and Concrete Calculator referenced above.</p>
+    </div>
+  </div>
+
+  <footer>© EkZapp — Free online utility tools</footer>
+</div>
+
+<script>
+function setMode(mode){
+  const tabs = document.querySelectorAll('.calc-tab');
+  tabs.forEach(t=>t.classList.remove('active'));
+  if(mode==='room'){
+    tabs[0].classList.add('active');
+    document.getElementById('roomFields').style.display='block';
+    document.getElementById('areaFields').style.display='none';
+  } else {
+    tabs[1].classList.add('active');
+    document.getElementById('roomFields').style.display='none';
+    document.getElementById('areaFields').style.display='block';
+  }
+}
+
+function updateTilePlaceholders(){
+  const unit = document.getElementById('tileUnit').value;
+  const tl = document.getElementById('tileL');
+  const tw = document.getElementById('tileW');
+  if(unit==='mm'){ tl.placeholder='e.g. 600'; tw.placeholder='e.g. 600'; }
+  else if(unit==='ft'){ tl.placeholder='e.g. 2'; tw.placeholder='e.g. 2'; }
+  else { tl.placeholder='e.g. 24'; tw.placeholder='e.g. 24'; }
+}
+
+function calculateTiles(){
+  const isRoomMode = document.querySelector('.calc-tab.active').textContent.includes('Room');
+  let areaSqFt = 0;
+
+  if(isRoomMode){
+    const L = parseFloat(document.getElementById('roomLength').value) || 0;
+    const W = parseFloat(document.getElementById('roomWidth').value) || 0;
+    areaSqFt = L * W;
+  } else {
+    areaSqFt = parseFloat(document.getElementById('directArea').value) || 0;
+  }
+
+  const tileUnit = document.getElementById('tileUnit').value;
+  let tL = parseFloat(document.getElementById('tileL').value) || 0;
+  let tW = parseFloat(document.getElementById('tileW').value) || 0;
+
+  // convert tile dimensions to feet
+  if(tileUnit === 'in'){ tL = tL/12; tW = tW/12; }
+  else if(tileUnit === 'mm'){ tL = tL/304.8; tW = tW/304.8; }
+  // 'ft' needs no conversion
+
+  const tileAreaSqFt = tL * tW;
+
+  if(areaSqFt <= 0 || tileAreaSqFt <= 0){
+    alert('Please enter valid room dimensions (or area) and tile size.');
+    return;
+  }
+
+  const wastagePct = parseFloat(document.getElementById('wastage').value) || 0;
+  const baseTiles = areaSqFt / tileAreaSqFt;
+  const finalTiles = Math.ceil(baseTiles * (1 + wastagePct/100));
+
+  document.getElementById('rArea').textContent = areaSqFt.toFixed(1) + ' sq ft';
+  document.getElementById('rTileArea').textContent = tileAreaSqFt.toFixed(3) + ' sq ft';
+  document.getElementById('rBase').textContent = Math.ceil(baseTiles) + ' tiles';
+  document.getElementById('rFinal').textContent = finalTiles + ' tiles';
+
+  const tilesPerBox = parseFloat(document.getElementById('tilesPerBox').value) || 0;
+  const boxRow = document.getElementById('rBoxRow');
+  let boxesNeeded = 0;
+  if(tilesPerBox > 0){
+    boxesNeeded = Math.ceil(finalTiles / tilesPerBox);
+    document.getElementById('rBoxes').textContent = boxesNeeded + ' boxes';
+    boxRow.style.display = 'flex';
+  } else {
+    boxRow.style.display = 'none';
+  }
+
+  const unitPrice = parseFloat(document.getElementById('unitPrice').value) || 0;
+  const costRow = document.getElementById('rCostRow');
+  if(unitPrice > 0){
+    let cost = 0;
+    if(tilesPerBox > 0){
+      cost = boxesNeeded * unitPrice;
+    } else {
+      cost = finalTiles * unitPrice;
+    }
+    document.getElementById('rCost').textContent = '₹' + cost.toLocaleString('en-IN');
+    costRow.style.display = 'flex';
+  } else {
+    costRow.style.display = 'none';
+  }
+
+  document.getElementById('resultBox').classList.add('show');
+
+  // shareable URL
+  const params = new URLSearchParams();
+  if(isRoomMode){
+    params.set('length', document.getElementById('roomLength').value);
+    params.set('width', document.getElementById('roomWidth').value);
+  } else {
+    params.set('area', document.getElementById('directArea').value);
+  }
+  params.set('tileUnit', tileUnit);
+  params.set('tileL', document.getElementById('tileL').value);
+  params.set('tileW', document.getElementById('tileW').value);
+  params.set('wastage', wastagePct);
+  if(tilesPerBox) params.set('perBox', tilesPerBox);
+  history.replaceState(null, '', '?' + params.toString());
+}
+
+// restore from URL on load
+window.addEventListener('DOMContentLoaded', () => {
+  const p = new URLSearchParams(window.location.search);
+  if(p.has('length')){ document.getElementById('roomLength').value = p.get('length'); }
+  if(p.has('width')){ document.getElementById('roomWidth').value = p.get('width'); }
+  if(p.has('area')){ setMode('area'); document.getElementById('directArea').value = p.get('area'); }
+  if(p.has('tileUnit')){ document.getElementById('tileUnit').value = p.get('tileUnit'); }
+  if(p.has('tileL')){ document.getElementById('tileL').value = p.get('tileL'); }
+  if(p.has('tileW')){ document.getElementById('tileW').value = p.get('tileW'); }
+  if(p.has('wastage')){ document.getElementById('wastage').value = p.get('wastage'); }
+  if(p.has('perBox')){ document.getElementById('tilesPerBox').value = p.get('perBox'); }
+});
+</script>
+</body></html>
